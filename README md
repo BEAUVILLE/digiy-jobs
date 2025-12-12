@@ -1,0 +1,108 @@
+# 🦅 DIGIY JOBS  
+### Emploi local. Opportunités réelles. 0% commission.
+
+DIGIY JOBS est le module emploi de l’écosystème **DIGIYLYFE**.  
+Il connecte **travailleurs locaux, artisans, indépendants et entreprises** sans intermédiaires inutiles, sans commissions cachées, avec des outils simples et adaptés au terrain africain.
+
+> DIGIY JOBS ne vend pas des CV.  
+> Il crée des connexions humaines, locales et durables.
+
+---
+
+## 🌍 Vision
+
+- Valoriser le **travail local**
+- Faciliter l’accès à l’emploi **sans paperasse lourde**
+- Respecter les **langues, cultures et réalités du terrain**
+- Offrir une alternative souveraine aux plateformes centralisées
+
+DIGIY JOBS est pensé pour fonctionner aussi bien :
+- en zone urbaine
+- en zone semi-connectée
+- sur mobile avant tout
+
+---
+
+## 🧱 Fonctionnalités clés
+
+### 👤 Côté travailleurs
+- Création de profil simple (nom, métier, zone, contact)
+- Métiers :  
+  - chauffeur  
+  - serveur / cuisinier  
+  - artisan (maçon, menuisier, électricien…)  
+  - agent de sécurité  
+  - personnel hôtelier  
+  - jobs ponctuels / saisonniers
+- Contact direct (appel / WhatsApp)
+- Aucun abonnement obligatoire au départ
+
+### 🏢 Côté recruteurs / pros
+- Publication d’offres locales
+- Recherche par :
+  - métier
+  - zone
+  - disponibilité
+- Contact direct sans commission
+- Historique des contacts (option DIGIY HUB)
+
+---
+
+## 🔐 Modèle DIGIY
+
+- **0% commission**
+- **Paiement direct** si option payante activée
+- Données hébergées dans l’écosystème DIGIY
+- Aucun algorithme opaque
+- Pas de revente de données
+
+DIGIY JOBS respecte la souveraineté numérique.
+
+---
+
+## 📱 Intégration PWA
+
+DIGIY JOBS est conçu pour fonctionner :
+- dans la **PWA DIGIY HUB**
+- avec support **offline partiel**
+- installation directe sur téléphone (Android / iOS)
+
+---
+
+## 🧩 Intégration écosystème DIGIY
+
+DIGIY JOBS se connecte naturellement avec :
+- DIGIY HUB (accès central)
+- DIGIY PAY (si paiement activé)
+- DIGIY SERVICES (prestations terrain)
+- DIGIY DRIVER / RESTO / LOC (recrutement ciblé)
+
+---
+
+## 🛠️ Stack technique (indicatif)
+
+- Frontend : HTML / CSS / JavaScript
+- Backend : Supabase (Auth + Database)
+- PWA : Service Worker + Manifest
+- Hébergement : GitHub Pages / DIGIY Infra
+- Paiement (optionnel) : Wave
+
+---
+
+## 🚀 Philosophie
+
+DIGIY JOBS n’est pas une plateforme de plus.  
+C’est un **outil communautaire**, enraciné, utile, honnête.
+
+> Quand le travail circule librement,  
+> la dignité reste debout.
+
+---
+
+## 📄 Licence
+
+Projet DIGIYLYFE  
+Usage encadré – reproduction interdite sans accord  
+© DIGIYLYFE — Tous droits réservés
+
+🦅 DIGIY — L’aigle qui survole toutes les apps.
