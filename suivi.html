@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>DIGIY JOBS — Suivi dossier</title>
+  <meta name="description" content="Suivi dossier DIGIY JOBS (public). Checklist documents + résumé WhatsApp." />
+  <meta name="theme-color" content="#0A1128" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --dark:#0A1128;--blue:#0ea5e9;--green:#10b981;--red:#ef4444;
+      --bg:#F0F2F5;--card:#fff;--ink:#0f172a;--muted:#475569;
+      --line:#e5e7eb;--shadow:0 12px 30px rgba(0,0,0,.10);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto;background:var(--bg);color:var(--ink)}
+    .wrap{max-width:980px;margin:0 auto;padding:18px 12px 60px}
+    .top{
+      background:linear-gradient(135deg, rgba(10,17,40,.96), rgba(18,26,48,.92));
+      color:#fff;border-radius:22px;padding:18px 16px;
+      box-shadow:0 15px 40px rgba(0,0,0,.28);
+      position:relative;overflow:hidden;
+    }
+    .top::before{content:"🧾";position:absolute;right:-30px;top:-35px;font-size:160px;opacity:.08;transform:rotate(10deg)}
+    .top h1{margin:0;font-weight:900;font-size:1.8rem;line-height:1.15}
+    .top p{margin:10px 0 0;color:#cbd5ff}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-top:12px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media(max-width:720px){.row{grid-template-columns:1fr}}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:#0A1128;color:#fff;font-weight:900;font-size:.85rem}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+    .muted{color:var(--muted)}
+    .kpiRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .kpi{flex:1;min-width:180px;background:#f9fbfd;border:1px solid #e2e8f0;border-radius:14px;padding:12px}
+    .kpi .big{font-size:1.35rem;font-weight:900;color:var(--dark)}
+    .kpi .small{font-size:.9rem;color:#64748b;margin-top:2px}
+    .bar{height:10px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin-top:10px}
+    .bar > div{height:100%;width:0%;background:var(--green)}
+    .list{margin-top:12px}
+    .item{
+      display:flex;align-items:flex-start;gap:12px;
+      padding:12px;border:1px solid #e2e8f0;border-radius:14px;background:#fff;
+      margin:10px 0;
+    }
+    .item input{transform:scale(1.25);margin-top:2px}
+    .item .title{font-weight:900;color:var(--dark)}
+    .item .desc{font-size:.92rem;color:var(--muted);margin-top:2px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .btn{
+      border:0;border-radius:14px;padding:12px 14px;font-weight:900;
+      cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;
+      transition:transform .18s ease, filter .18s ease;font-size:1rem;
+    }
+    .btn:hover{transform:translateY(-1px);filter:brightness(.97)}
+    .btn.primary{background:var(--blue);color:#fff}
+    .btn.dark{background:var(--dark);color:#fff}
+    .btn.green{background:var(--green);color:#fff}
+    .btn.ghost{background:#f1f5f9;color:var(--dark);border:1px solid #cbd5e1}
+    .btn.danger{background:var(--red);color:#fff}
+    .tiny{font-size:.86rem;color:#64748b;margin-top:10px}
+    textarea{
+      width:100%;min-height:110px;border-radius:14px;border:1px solid #d1d5db;
+      padding:12px;font-size:.95rem;outline:none;background:#fff
+    }
+    textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(14,165,233,.15)}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+    @media(max-width:720px){.split{grid-template-columns:1fr}}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <h1>DIGIY JOBS — Suivi dossier</h1>
+      <p>Checklist documents • Résumé WhatsApp • Sauvegarde locale par dossier</p>
+    </div>
+
+    <div class="card">
+      <div class="pill">📌 Dossier : <span class="mono" id="dossierId">—</span></div>
+
+      <div class="kpiRow">
+        <div class="kpi">
+          <div class="big" id="kpiOk">0</div>
+          <div class="small">Reçus</div>
+        </div>
+        <div class="kpi">
+          <div class="big" id="kpiTotal">0</div>
+          <div class="small">Total</div>
+        </div>
+        <div class="kpi">
+          <div class="big" id="kpiPct">0%</div>
+          <div class="small">Avancement</div>
+        </div>
+      </div>
+
+      <div class="bar" aria-label="Progression">
+        <div id="barFill"></div>
+      </div>
+
+      <div class="tiny muted" style="margin-top:10px">
+        Conseil terrain : au début, on privilégie un hébergement (employeur ou famille) pour sécuriser l’arrivée.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0;font-size:1.15rem;font-weight:900;color:#0A1128">✅ Documents à préparer</h2>
+      <div class="muted" style="margin-top:8px;font-size:.95rem">
+        Coche ce que tu as déjà. Le résumé se met à jour automatiquement.
+      </div>
+
+      <div class="list" id="checklist"></div>
+
+      <div class="actions">
+        <a class="btn dark" id="btnWASN" href="#" aria-disabled="true">💬 WhatsApp SN</a>
+        <a class="btn ghost" id="btnWAFR" href="#" aria-disabled="true">💬 WhatsApp FR</a>
+        <button class="btn primary" id="btnCopy" type="button">📋 Copier le résumé</button>
+        <button class="btn danger" id="btnReset" type="button">🧹 Reset dossier</button>
+      </div>
+
+      <div class="tiny">
+        ⚠️ DIGIY JOBS ne promet jamais un visa. Chaque dossier dépend des validations officielles.
+        Le suivi ici sert à organiser et accélérer les échanges.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0;font-size:1.15rem;font-weight:900;color:#0A1128">🧰 Export / Import</h2>
+      <div class="split">
+        <div>
+          <div class="muted" style="margin:8px 0 8px">Export JSON (pour transférer sur un autre appareil)</div>
+          <textarea id="exportBox" readonly></textarea>
+          <div class="actions" style="margin-top:10px">
+            <button class="btn ghost" id="btnExport" type="button">⬇️ Générer export</button>
+            <button class="btn ghost" id="btnCopyExport" type="button">📋 Copier export</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="muted" style="margin:8px 0 8px">Import JSON (colle ici puis “Importer”)</div>
+          <textarea id="importBox" placeholder='{"dossier":"...","checked":{"passport":true,...}}'></textarea>
+          <div class="actions" style="margin-top:10px">
+            <button class="btn green" id="btnImport" type="button">⬆️ Importer</button>
+          </div>
+        </div>
+      </div>
+      <div class="tiny">Astuce : l’export inclut le dossier + les cases cochées.</div>
+    </div>
+
+  </div>
+
+  <script>
+    (function(){
+      "use strict";
+
+      // === CONFIG ===
+      const WA_SN = "https://wa.me/221771342889";
+      const WA_FR = "https://wa.me/33638329423";
+
+      // Documents (V1 terrain). Tu peux ajuster plus tard.
+      const DOCS = [
+        { key:"passport",  title:"Passeport valide", desc:"Au moins 2 pages libres. Vérifier date d’expiration." },
+        { key:"photos",    title:"Photos d’identité", desc:"Format visa (Schengen) — propre, récent." },
+        { key:"cv",        title:"CV à jour", desc:"Simple, lisible, métier clair, expériences datées." },
+        { key:"diplomas",  title:"Diplômes / attestations", desc:"Tout ce qui prouve le métier (même formation courte)." },
+        { key:"experience",title:"Justificatifs d’expérience", desc:"Certificats travail / attestations / contacts employeurs." },
+        { key:"contract",  title:"Contrat / promesse d’embauche", desc:"Doc employeur. Le cœur du dossier." },
+        { key:"workauth",  title:"Autorisation de travail (France)", desc:"Étape centrale côté employeur (DREETS)." },
+        { key:"housing",   title:"Hébergement à l’arrivée", desc:"Employeur héberge ou famille/proche (fortement recommandé)." },
+        { key:"vfs",       title:"Rendez-vous dépôt (VFS)", desc:"Préparer ordre des documents + preuves demandées." }
+      ];
+
+      // === HELPERS ===
+      function enc(s){ return encodeURIComponent(s || ""); }
+
+      function setEnabled(a, on){
+        a.setAttribute("aria-disabled", on ? "false" : "true");
+        a.style.pointerEvents = on ? "auto" : "none";
+        a.style.opacity = on ? "1" : ".55";
+      }
+
+      function getDossier(){
+        const u = new URL(location.href);
+        return (u.searchParams.get("dossier") || "").trim();
+      }
+
+      function storageKey(dossier){
+        return "DIGIY_JOBS_SUIVI_V1::" + (dossier || "NO_DOSSIER");
+      }
+
+      function loadState(dossier){
+        try{
+          const raw = localStorage.getItem(storageKey(dossier));
+          return raw ? JSON.parse(raw) : { checked:{} };
+        }catch(e){
+          return { checked:{} };
+        }
+      }
+
+      function saveState(dossier, state){
+        try{
+          localStorage.setItem(storageKey(dossier), JSON.stringify(state));
+        }catch(e){}
+      }
+
+      function computeCounts(state){
+        const total = DOCS.length;
+        let ok = 0;
+        for(const d of DOCS){
+          if(state.checked && state.checked[d.key]) ok++;
+        }
+        const pct = total ? Math.round((ok/total)*100) : 0;
+        return { ok, total, pct };
+      }
+
+      function listReceived(state){
+        const arr = [];
+        for(const d of DOCS){
+          if(state.checked && state.checked[d.key]) arr.push("• " + d.title);
+        }
+        return arr.join("\n");
+      }
+
+      function listMissing(state){
+        const arr = [];
+        for(const d of DOCS){
+          if(!(state.checked && state.checked[d.key])) arr.push("• " + d.title);
+        }
+        return arr.join("\n");
+      }
+
+      function waUrl(base, msg){
+        try{
+          const u = new URL(base);
+          u.searchParams.set("text", msg);
+          return u.toString();
+        }catch(e){
+          return base + "?text=" + enc(msg);
+        }
+      }
+
+      function buildSummaryMessage(dossier, c2, received, missing){
+        const msg =
+          "🧾 DIGIY JOBS — Suivi dossier\n" +
+          "Dossier: " + (dossier || "(non défini)") + "\n" +
+          "État: " + c2.ok + "/" + c2.total + " (" + c2.pct + "%)\n\n" +
+          "✅ Reçus:\n" + (received || "—") + "\n\n" +
+          "❌ Manquants:\n" + (missing || "—") + "\n\n" +
+          "Prochaine étape: RDV WhatsApp pour cadrer pièces + timing.\n" +
+          "⚠️ Au début, hébergement (employeur/famille) recommandé.";
+        return msg;
+      }
+
+      async function copyToClipboard(text){
+        try{
+          await navigator.clipboard.writeText(text);
+          alert("Copié ✅");
+          return true;
+        }catch(e){
+          prompt("Copie le texte :", text);
+          return false;
+        }
+      }
+
+      // === INIT ===
+      const dossier = getDossier();
+      document.getElementById("dossierId").textContent = dossier || "— (ajoute ?dossier=...)";
+
+      const checklistEl = document.getElementById("checklist");
+      const kpiOk = document.getElementById("kpiOk");
+      const kpiTotal = document.getElementById("kpiTotal");
+      const kpiPct = document.getElementById("kpiPct");
+      const barFill = document.getElementById("barFill");
+
+      const btnWASN = document.getElementById("btnWASN");
+      const btnWAFR = document.getElementById("btnWAFR");
+      const btnCopy = document.getElementById("btnCopy");
+      const btnReset = document.getElementById("btnReset");
+
+      const exportBox = document.getElementById("exportBox");
+      const importBox = document.getElementById("importBox");
+      const btnExport = document.getElementById("btnExport");
+      const btnCopyExport = document.getElementById("btnCopyExport");
+      const btnImport = document.getElementById("btnImport");
+
+      let state = loadState(dossier);
+
+      function renderChecklist(){
+        checklistEl.innerHTML = "";
+        for(const d of DOCS){
+          const checked = !!(state.checked && state.checked[d.key]);
+          const wrap = document.createElement("div");
+          wrap.className = "item";
+          wrap.innerHTML = `
+            <input type="checkbox" id="chk_${d.key}" ${checked ? "checked" : ""} />
+            <div>
+              <div class="title">${d.title}</div>
+              <div class="desc">${d.desc}</div>
+            </div>
+          `;
+          checklistEl.appendChild(wrap);
+
+          const chk = wrap.querySelector("#chk_" + d.key);
+          chk.addEventListener("change", () => {
+            state.checked = state.checked || {};
+            state.checked[d.key] = !!chk.checked;
+            saveState(dossier, state);
+            updateUI();
+          });
+        }
+      }
+
+      function updateUI(){
+        const c2 = computeCounts(state);
+        kpiOk.textContent = String(c2.ok);
+        kpiTotal.textContent = String(c2.total);
+        kpiPct.textContent = String(c2.pct) + "%";
+        barFill.style.width = c2.pct + "%";
+
+        const received = listReceived(state);
+        const missing = listMissing(state);
+        const summary = buildSummaryMessage(dossier, c2, received, missing);
+
+        // WhatsApp links
+        btnWASN.href = waUrl(WA_SN, summary);
+        btnWAFR.href = waUrl(WA_FR, summary);
+
+        // enable only if dossier exists
+        const hasDossier = !!dossier;
+        setEnabled(btnWASN, hasDossier);
+        setEnabled(btnWAFR, hasDossier);
+
+        // keep export box fresh
+        exportBox.value = JSON.stringify({ dossier: dossier || null, checked: state.checked || {} }, null, 2);
+
+        // GTM (si présent)
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "jobs_suivi_update",
+          dossier: dossier || null,
+          ok: c2.ok,
+          total: c2.total,
+          pct: c2.pct
+        });
+
+        // store summary for copy
+        btnCopy.dataset.summary = summary;
+      }
+
+      // Actions
+      btnCopy.addEventListener("click", () => {
+        const summary = btnCopy.dataset.summary || "";
+        if(!summary) return;
+        copyToClipboard(summary);
+      });
+
+      btnReset.addEventListener("click", () => {
+        if(!confirm("Reset du dossier : tu veux vraiment tout décocher ?")) return;
+        state = { checked:{} };
+        saveState(dossier, state);
+        renderChecklist();
+        updateUI();
+      });
+
+      btnExport.addEventListener("click", () => {
+        exportBox.value = JSON.stringify({ dossier: dossier || null, checked: state.checked || {} }, null, 2);
+      });
+
+      btnCopyExport.addEventListener("click", () => {
+        copyToClipboard(exportBox.value || "");
+      });
+
+      btnImport.addEventListener("click", () => {
+        let obj = null;
+        try{
+          obj = JSON.parse(importBox.value || "null");
+        }catch(e){
+          alert("JSON invalide. Vérifie le format.");
+          return;
+        }
+        if(!obj || typeof obj !== "object"){
+          alert("JSON invalide.");
+          return;
+        }
+        if(obj.dossier && dossier && obj.dossier !== dossier){
+          if(!confirm("Le JSON est pour un autre dossier (" + obj.dossier + "). Importer quand même ?")) return;
+        }
+        state.checked = (obj.checked && typeof obj.checked === "object") ? obj.checked : {};
+        saveState(dossier, state);
+        renderChecklist();
+        updateUI();
+        alert("Import OK ✅");
+      });
+
+      // Render initial
+      renderChecklist();
+      updateUI();
+
+      // If no dossier param, still show UI but disable WA buttons
+      if(!dossier){
+        setEnabled(btnWASN,false);
+        setEnabled(btnWAFR,false);
+      }
+    })();
+  </script>
+</body>
+</html>
+
