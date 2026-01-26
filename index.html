@@ -2,326 +2,653 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DIGIY JOBS — Créer mon dossier</title>
-  <meta name="description" content="Créer un dossier DIGIY JOBS (public). 2 minutes. Génère un lien de suivi + message WhatsApp automatique." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>DIGIY JOBS — Emplois légaux en France</title>
+  <meta name="description" content="DIGIY JOBS — Emplois légaux en France. Priorité restauration, BTP, aide à la personne. Dossier cadré, partenaires sérieux, accompagnement humain. Premier contact sur WhatsApp." />
+
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.json" />
   <meta name="theme-color" content="#0A1128" />
+  <link rel="icon" href="./icons/icon-192x192.png" />
+  <link rel="apple-touch-icon" href="./icons/icon-192x192.png" />
+
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PHGX42GR');
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --dark:#0A1128;--blue:#0ea5e9;--green:#10b981;
-      --bg:#F0F2F5;--card:#fff;--ink:#0f172a;--muted:#475569;
-      --line:#e5e7eb;--shadow:0 12px 30px rgba(0,0,0,.10);
-      --radius:18px;
+      --dark:#0A1128;
+      --dark2:#121A30;
+      --blue:#0ea5e9;
+      --blue2:#0284c7;
+      --green:#10b981;
+      --green2:#059669;
+      --bg:#F0F2F5;
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --line:#e5e7eb;
+      --shadow:0 12px 30px rgba(0,0,0,.10);
+      --radius:20px;
     }
+
     *{box-sizing:border-box}
     body{
+      font-family:'Poppins', sans-serif;
       margin:0;
-      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto;
       background:var(--bg);
+      color:#333;
+      line-height:1.6;
+      font-size:17px;
+    }
+
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 12px 60px;
+    }
+
+    /* Dossier banner */
+    .dossierBanner{
+      max-width:1000px;
+      margin:18px auto -6px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 14px;
+      box-shadow:0 10px 25px rgba(0,0,0,.08);
+      display:none;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .dossierBanner .mono{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+      font-weight:900;
+      color:var(--dark);
+    }
+    .dossierBanner .right{
+      display:flex;gap:8px;flex-wrap:wrap;
+    }
+
+    .hero{
+      background: var(--dark);
+      border-radius: 22px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      padding: 68px 18px 45px;
+      margin: 34px auto 18px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background-blend-mode: overlay;
+      background-image:
+        linear-gradient(135deg, rgba(10, 17, 40, 0.86) 0%, rgba(18, 26, 48, 0.80) 100%),
+        url('https://picsum.photos/seed/jobs-network/1920/1080');
+    }
+    .hero::before{
+      content:"🌍";
+      position:absolute;top:-40px;left:-40px;
+      font-size:170px;opacity:.06;color:var(--blue);
+      transform:rotate(-15deg);
+    }
+    .hero::after{
+      content:"🤝";
+      position:absolute;bottom:-45px;right:-45px;
+      font-size:170px;opacity:.06;color:var(--blue);
+      transform:rotate(15deg);
+    }
+    .hero-inner{position:relative;z-index:1;max-width:920px;margin:0 auto}
+    h1{
+      margin:0 0 10px;
+      color:#fff;
+      font-size:3.2rem;
+      line-height:1.08;
+      font-weight:900;
+      text-shadow: 0 4px 10px rgba(0,0,0,.28);
+    }
+    .lead{
+      margin:0 auto 16px;
+      color:#BDC6FF;
+      font-size:1.18rem;
+      max-width:820px;
+    }
+
+    .chips{
+      list-style:none;
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+      padding:0;
+      margin:14px 0 10px;
+    }
+    .chip{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.22);
+      color:#fff;
+      border-radius:999px;
+      padding:7px 14px;
+      font-weight:800;
+      font-size:.9rem;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+    }
+
+    .cta-row{
+      display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .cta{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:15px 22px;border-radius:999px;
+      font-weight:900;font-size:1.02rem;
+      text-decoration:none;color:#fff;
+      background:var(--blue);
+      box-shadow:0 10px 30px rgba(14,165,233,.35);
+      transition: transform .18s ease, filter .18s ease;
+    }
+    .cta:hover{transform:translateY(-2px);filter:brightness(.96)}
+    .cta.alt{background:var(--green);box-shadow:0 10px 30px rgba(16,185,129,.35)}
+    .cta.dark{background:var(--dark);box-shadow:0 10px 30px rgba(10,17,40,.35)}
+    .cta:focus-visible{
+      outline:none;
+      box-shadow:0 0 0 3px rgba(255,255,255,.65), 0 0 0 6px rgba(14,165,233,.55);
+    }
+
+    .panel{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px 18px;
+      max-width:1000px;
+      margin:14px auto 18px;
+      text-align:center;
       color:var(--ink);
     }
-    .wrap{max-width:980px;margin:0 auto;padding:22px 12px 60px}
-    .top{
-      background:linear-gradient(135deg, rgba(10,17,40,.96), rgba(18,26,48,.92));
-      color:#fff;border-radius:22px;padding:22px 18px;
-      box-shadow:0 15px 40px rgba(0,0,0,.28);
-      position:relative;overflow:hidden;
+    .panel h3{margin:0;font-size:1.1rem;font-weight:900;color:var(--dark)}
+    .panel p{margin:10px 0 0;color:var(--muted);font-size:1rem}
+    .panel .kpi{margin:10px 0 0;color:var(--blue);font-weight:900}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:16px;
+      max-width:1000px;
+      margin: 18px auto;
     }
-    .top::before{
-      content:"📁";position:absolute;right:-30px;top:-30px;
-      font-size:150px;opacity:.08;transform:rotate(12deg);
+    .cardJob{
+      background:#f9fbfd;
+      border:1px solid #e2e8f0;
+      border-radius:16px;
+      padding:16px;
+      box-shadow:0 6px 14px rgba(0,0,0,.06);
+      transition: transform .18s ease, box-shadow .18s ease;
     }
-    .top h1{margin:0;font-weight:900;font-size:2rem;line-height:1.15}
-    .top p{margin:10px 0 0;color:#cbd5ff}
-    .card{
-      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-      box-shadow:var(--shadow);padding:18px;margin-top:14px;
+    .cardJob:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,.10)}
+    .cardJob h4{
+      margin:0 0 6px;
+      font-weight:900;
+      color:var(--dark);
+      font-size:1.15rem;
+      line-height:1.2;
     }
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media(max-width:720px){.row{grid-template-columns:1fr}}
-    label{display:block;font-weight:800;font-size:.95rem;margin:0 0 6px}
-    input, select{
-      width:100%;padding:12px 12px;border-radius:14px;border:1px solid #d1d5db;
-      font-size:1rem;outline:none;
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:.85rem;
+      font-weight:800;
+      background:#0A1128;
+      color:#fff;
+      padding:6px 10px;
+      border-radius:999px;
+      margin:0 0 10px;
     }
-    input:focus, select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(14,165,233,.15)}
-    .hint{color:var(--muted);font-size:.95rem;margin:8px 0 0}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .cardJob ul{list-style:none;padding:0;margin:10px 0 0;color:#334155;font-size:.95rem}
+    .cardJob li{position:relative;padding-left:14px;margin:6px 0}
+    .cardJob li::before{content:"•";position:absolute;left:0;color:var(--blue);font-weight:900}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
     .btn{
-      border:0;border-radius:14px;padding:12px 14px;font-weight:900;
-      cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;
-      transition:transform .18s ease, filter .18s ease;
-      font-size:1rem;
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border-radius:12px;
+      text-decoration:none;font-weight:900;font-size:.9rem;
+      transition: transform .18s ease, filter .18s ease;
+      white-space:nowrap;
+      border:0;
+      cursor:pointer;
     }
-    .btn:hover{transform:translateY(-1px);filter:brightness(.97)}
-    .btn.primary{background:var(--blue);color:#fff}
-    .btn.green{background:var(--green);color:#fff}
-    .btn.ghost{background:#f1f5f9;color:var(--dark);border:1px solid #cbd5e1}
-    .box{
-      background:#f9fbfd;border:1px dashed #cbd5e1;border-radius:14px;
-      padding:14px;margin-top:12px
+    .btn.sn{background:var(--dark);color:#fff}
+    .btn.fr{background:#fff;color:var(--dark);border:1px solid #cbd5e1}
+    .btn:hover{transform:translateY(-1px);filter:brightness(.98)}
+
+    .faq{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:20px;
+      max-width:1000px;
+      margin:18px auto;
+      color:var(--ink);
     }
-    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:.92rem}
-    .tiny{font-size:.86rem;color:#64748b;margin-top:10px}
-    .ok{color:#065f46;font-weight:900}
-    .warn{color:#b45309;font-weight:900}
+    .faq h2{
+      margin:0 0 14px;
+      text-align:center;
+      color:var(--blue);
+      font-size:1.4rem;
+      font-weight:900;
+    }
+    details{
+      background:#fdfdfe;
+      border:1px solid #d1d5db;
+      border-radius:14px;
+      padding:14px 16px;
+      margin:10px 0;
+      box-shadow:0 6px 16px rgba(0,0,0,.06);
+    }
+    summary{
+      cursor:pointer;
+      font-weight:900;
+      color:#374151;
+      display:flex;
+      align-items:center;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    summary::before{
+      content:"➕";
+      margin-right:10px;
+      color:var(--blue);
+      font-weight:900;
+    }
+    details[open] summary::before{content:"➖"}
+    .faq p{margin:10px 0 0;color:var(--muted);font-size:1rem}
+
+    .cta-pdf{
+      display:block;
+      text-align:center;
+      background:linear-gradient(135deg, var(--green), var(--green2));
+      color:#fff;
+      text-decoration:none;
+      padding:14px 16px;
+      border-radius:14px;
+      font-weight:900;
+      font-size:1.05rem;
+      box-shadow:0 10px 25px rgba(16,185,129,.30);
+      transition: transform .18s ease, filter .18s ease;
+      margin-top:14px;
+    }
+    .cta-pdf:hover{transform:translateY(-2px);filter:brightness(.97)}
+
+    .footnote{
+      max-width:1000px;margin:10px auto 0;
+      color:#64748b;font-size:.88rem;
+      text-align:center;
+      padding:0 8px;
+    }
+
+    @media (max-width:768px){
+      h1{font-size:2.55rem}
+      .lead{font-size:1.05rem}
+      .hero{padding:55px 14px 38px}
+      .cta{padding:13px 18px;font-size:1rem}
+    }
+    @media (max-width:480px){
+      h1{font-size:2.15rem}
+      .hero::before,.hero::after{font-size:110px}
+      .grid{grid-template-columns:1fr}
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none !important}
+    }
   </style>
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHGX42GR"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
   <div class="wrap">
-    <div class="top">
-      <h1>DIGIY JOBS — Créer mon dossier</h1>
-      <p>Public • 2 minutes • Génère un lien + message WhatsApp automatique (Saly ⇄ Sarlat)</p>
-    </div>
 
-    <div class="card">
-      <div class="row">
-        <div>
-          <label for="role">Je suis</label>
-          <select id="role">
-            <option value="candidat">👤 Candidat (Sénégal → France)</option>
-            <option value="employeur">🏢 Employeur (France)</option>
-          </select>
-          <div class="hint">On adapte le message WhatsApp selon ton profil.</div>
-        </div>
-
-        <div>
-          <label for="metier">Métier prioritaire</label>
-          <select id="metier">
-            <optgroup label="🍽️ Restauration">
-              <option value="Serveur/Serveuse (S2Z61)">Serveur/Serveuse (S2Z61)</option>
-              <option value="Cuisinier (S1Z40)">Cuisinier (S1Z40)</option>
-              <option value="Chef cuisinier (S1Z80)">Chef cuisinier (S1Z80)</option>
-            </optgroup>
-            <optgroup label="🧱 BTP">
-              <option value="Maçon (B2Z40)">Maçon (B2Z40)</option>
-              <option value="Peinture & finition (B4Z44)">Peinture & finition (B4Z44)</option>
-            </optgroup>
-            <optgroup label="👵 Aide à la personne">
-              <option value="Aide à domicile (T2A60)">Aide à domicile (T2A60)</option>
-            </optgroup>
-          </select>
-          <div class="hint">Zone visée : Nouvelle-Aquitaine (Périgord/Dordogne).</div>
-        </div>
+    <!-- DOSSIER BANNER (si ?dossier=...) -->
+    <div class="dossierBanner" id="dossierBanner" role="region" aria-label="Dossier en cours">
+      <div>
+        📌 <strong>Dossier :</strong> <span class="mono" id="dossierText">—</span>
       </div>
-
-      <div class="row" style="margin-top:12px">
-        <div>
-          <label for="phone">WhatsApp (téléphone)</label>
-          <input id="phone" placeholder="+22177xxxxxxx ou +33..." inputmode="tel" autocomplete="tel" />
-          <div class="hint">Conseil : mets l’indicatif +221 / +33.</div>
-        </div>
-
-        <div>
-          <label for="ville">Ville</label>
-          <input id="ville" placeholder="Saly / Dakar / Sarlat / Bordeaux..." autocomplete="address-level2" />
-          <div class="hint">Saly (SN) et Sarlat (FR) = nos points d’ancrage.</div>
-        </div>
-      </div>
-
-      <div class="actions">
-        <button class="btn primary" id="btnCreate" type="button">📁 Créer mon dossier</button>
-        <a class="btn ghost" id="btnCopy" href="#" role="button" aria-disabled="true">📋 Copier le lien</a>
-        <a class="btn green" id="btnWhatsApp" href="#" role="button" aria-disabled="true">💬 Ouvrir WhatsApp</a>
-      </div>
-
-      <div class="box" id="out" style="display:none">
-        <div><strong>✅ Dossier créé :</strong> <span class="mono" id="slug"></span></div>
-        <div style="margin-top:8px"><strong>Lien :</strong> <span class="mono" id="link"></span></div>
-        <div class="tiny">Ce lien est public. Il sert à identifier le dossier et accélérer la coordination.</div>
-      </div>
-
-      <div class="tiny">
-        ⚠️ DIGIY JOBS ne promet jamais un visa. Chaque dossier dépend des validations officielles.
-        L’accompagnement est <strong>au cas par cas</strong> après qualification WhatsApp.
+      <div class="right">
+        <a class="btn sn" id="btnOpenSuivi" href="./suivi.html" aria-label="Ouvrir le suivi dossier">🧾 Ouvrir suivi</a>
+        <button class="btn fr" id="btnCopyDossier" type="button" aria-label="Copier le lien du dossier">📋 Copier lien</button>
       </div>
     </div>
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="jobs-hero-title">
+      <div class="hero-inner">
+        <h1 id="jobs-hero-title">DIGIY JOBS — Emplois légaux en France</h1>
+        <p class="lead">
+          Priorité <strong>Restauration</strong>, <strong>BTP</strong>, <strong>Aide à la personne</strong> — procédure cadrée, partenaires sérieux, accompagnement humain.
+          <br />🎯 Périgord / Nouvelle-Aquitaine (Sarlat & alentours)
+        </p>
+
+        <ul class="chips" aria-label="Garanties DIGIY JOBS">
+          <li class="chip">Contrat légal</li>
+          <li class="chip">Procédure cadrée</li>
+          <li class="chip">Accompagnement</li>
+        </ul>
+
+        <!-- ✅ CTA ROW (3 boutons) -->
+        <div class="cta-row">
+
+          <!-- 1) WhatsApp SN -->
+          <a class="cta js-wa"
+             href="https://wa.me/221771342889"
+             data-wa-text="📞 DIGIY JOBS — Je veux un rendez-vous WhatsApp.\nPays: Sénégal\nVille: ____\nMétier visé: ____\nHébergement: Employeur / Famille / À confirmer"
+             aria-label="Rendez-vous WhatsApp (Sénégal)">
+            🇸🇳 <strong>Postuler (WhatsApp SN)</strong>
+          </a>
+
+          <!-- 2) WhatsApp FR -->
+          <a class="cta alt js-wa"
+             href="https://wa.me/33638329423"
+             data-wa-text="📞 DIGIY JOBS FR — Besoin recrutement.\nVille: ____\nMétier: ____\nHébergement possible: Oui / Non\nDébut: ____"
+             aria-label="Rendez-vous WhatsApp (France)">
+            🇫🇷 <strong>Employeur (WhatsApp FR)</strong>
+          </a>
+
+          <!-- 3) Dossier / Reprendre suivi (auto) -->
+          <a class="cta dark" id="btnResumeSuivi"
+             href="./dossier.html"
+             aria-label="Créer ou reprendre mon dossier">
+            📁 <strong>Créer mon dossier</strong>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL RDV + PRESENCE -->
+    <div class="panel" role="region" aria-label="Rendez-vous et présence">
+      <h3>📞 Premier contact = Rendez-vous WhatsApp</h3>
+      <p>
+        DIGIY JOBS fonctionne avec une <strong>présence réelle</strong> des deux côtés :
+        <strong>Saly (Sénégal)</strong> pour préparer les candidats,
+        <strong>Sarlat (France)</strong> pour cadrer les employeurs et sécuriser le suivi.
+        <br /><strong>Au démarrage</strong>, nous privilégions un <strong>hébergement</strong> à l’arrivée :
+        employeur ou famille/proche en France.
+      </p>
+      <div class="kpi">✅ Fluide • ✅ Direct • ✅ Sérieux • ✅ Cas par cas</div>
+    </div>
+
+    <!-- PANEL METIERS -->
+    <div class="panel" style="max-width:1000px">
+      <h3>🎯 Priorités Périgord / Nouvelle-Aquitaine</h3>
+      <p style="margin-top:8px">
+        Référence officielle : <strong>Arrêté du 21/05/2025</strong> (liste régionale en vigueur).
+        On commence par les besoins les plus fréquents : <strong>Restauration</strong>, <strong>BTP</strong>, <strong>Aide à la personne</strong>.
+      </p>
+    </div>
+
+    <!-- 5 CARTES MAX -->
+    <section aria-label="Métiers prioritaires">
+      <div class="grid">
+
+        <!-- RESTO 1 -->
+        <article class="cardJob">
+          <div class="badge">🍽️ Restauration • S2Z61</div>
+          <h4>Serveur / Serveuse (cafés-restaurants)</h4>
+          <ul>
+            <li>Service en salle, mise en place</li>
+            <li>Relation client, rythme service</li>
+            <li>Tenue, ponctualité, sérieux</li>
+          </ul>
+          <div class="actions">
+            <a class="btn sn wa-job" href="https://wa.me/221771342889" data-wa-job="Serveur/Serveuse (S2Z61)">2 profils (SN)</a>
+            <a class="btn fr wa-job" href="https://wa.me/33638329423" data-wa-job="Serveur/Serveuse (S2Z61)">2 profils (FR)</a>
+          </div>
+        </article>
+
+        <!-- RESTO 2 -->
+        <article class="cardJob">
+          <div class="badge">🍽️ Restauration • S1Z40</div>
+          <h4>Cuisinier</h4>
+          <ul>
+            <li>Préparation & dressage</li>
+            <li>Hygiène / rigueur (HACCP)</li>
+            <li>Travail en équipe</li>
+          </ul>
+          <div class="actions">
+            <a class="btn sn wa-job" href="https://wa.me/221771342889" data-wa-job="Cuisinier (S1Z40)">2 profils (SN)</a>
+            <a class="btn fr wa-job" href="https://wa.me/33638329423" data-wa-job="Cuisinier (S1Z40)">2 profils (FR)</a>
+          </div>
+        </article>
+
+        <!-- BTP 1 -->
+        <article class="cardJob">
+          <div class="badge">🧱 BTP • B2Z40</div>
+          <h4>Maçon</h4>
+          <ul>
+            <li>Fondations, murs, dalles</li>
+            <li>Coffrage / ferraillage</li>
+            <li>Sécurité chantier</li>
+          </ul>
+          <div class="actions">
+            <a class="btn sn wa-job" href="https://wa.me/221771342889" data-wa-job="Maçon (B2Z40)">2 profils (SN)</a>
+            <a class="btn fr wa-job" href="https://wa.me/33638329423" data-wa-job="Maçon (B2Z40)">2 profils (FR)</a>
+          </div>
+        </article>
+
+        <!-- BTP 2 -->
+        <article class="cardJob">
+          <div class="badge">🧱 BTP • B4Z44</div>
+          <h4>Peinture & finition</h4>
+          <ul>
+            <li>Préparation supports</li>
+            <li>Peinture / enduits</li>
+            <li>Finitions propres</li>
+          </ul>
+          <div class="actions">
+            <a class="btn sn wa-job" href="https://wa.me/221771342889" data-wa-job="Peinture & finition (B4Z44)">2 profils (SN)</a>
+            <a class="btn fr wa-job" href="https://wa.me/33638329423" data-wa-job="Peinture & finition (B4Z44)">2 profils (FR)</a>
+          </div>
+        </article>
+
+        <!-- AIDE 1 -->
+        <article class="cardJob">
+          <div class="badge">👵 Aide à la personne • T2A60</div>
+          <h4>Aide à domicile / Aide ménagère</h4>
+          <ul>
+            <li>Accompagnement quotidien</li>
+            <li>Courses / repas / entretien</li>
+            <li>Respect & discrétion</li>
+          </ul>
+          <div class="actions">
+            <a class="btn sn wa-job" href="https://wa.me/221771342889" data-wa-job="Aide à domicile (T2A60)">2 profils (SN)</a>
+            <a class="btn fr wa-job" href="https://wa.me/33638329423" data-wa-job="Aide à domicile (T2A60)">2 profils (FR)</a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="footnote">
+        ⚠️ La liste des métiers en tension est régionale : la validité dépend de la région de l’employeur.
+        Référence : Arrêté du 21/05/2025.
+      </div>
+    </section>
+
+    <!-- FAQ + DOCS -->
+    <section class="faq" aria-labelledby="jobs-faq-title">
+      <h2 id="jobs-faq-title">Questions fréquentes</h2>
+
+      <details>
+        <summary>📌 <strong>Est-ce légal ?</strong></summary>
+        <p>Oui. DIGIY JOBS travaille uniquement sur des démarches cadrées et légales, avec partenaires sérieux. Le résultat dépend toujours de la validation des autorités compétentes.</p>
+      </details>
+
+      <details>
+        <summary>📌 <strong>Y a-t-il des frais ?</strong></summary>
+        <p>Il existe un forfait d’accompagnement <strong>au cas par cas</strong> (cadrage, tri, préparation dossier, suivi). Tout est expliqué clairement avant engagement.</p>
+      </details>
+
+      <details>
+        <summary>📌 <strong>Combien de temps ?</strong></summary>
+        <p>En moyenne <strong>4 à 12 semaines</strong> selon le profil, le secteur et l’employeur. La rapidité dépend aussi des procédures officielles.</p>
+      </details>
+
+      <!-- ✅ PDF: ouvre le doc, pas la page drive générale -->
+      <a class="cta-pdf"
+         href="https://drive.google.com/file/d/17f58aaNVb9qu6tzs7R8BQz5o7_9K0d2/preview"
+         target="_blank"
+         rel="noopener">
+        📄 <strong>Liste des documents requis (PDF)</strong>
+      </a>
+    </section>
+
   </div>
+
+  <!-- SEO (optionnel) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"DIGIY JOBS — Emplois légaux en France",
+    "description":"DIGIY JOBS — Restauration, BTP, aide à la personne. Premier contact WhatsApp. Dossier cadré. Suivi par lien dossier."
+  }
+  </script>
 
   <script>
     (function(){
-      "use strict";
-
-      // === CONFIG ===
-      const WA_SN = "https://wa.me/221771342889";
-      const WA_FR = "https://wa.me/33638329423";
-
-      // Le dossier pointe vers cette page jobs (publique) + slug dans l’URL
-      // 👉 adapte si ton fichier jobs final s’appelle autrement (ex: jobs.html)
-      const JOBS_PAGE = "./jobs.html";
-
-      const LS_KEY = "DIGIY_JOBS_DOSSIER_V1";
-
-      // === HELPERS ===
-      function enc(s){ return encodeURIComponent(s || ""); }
-
-      function normalizePhone(raw){
-        if(!raw) return "";
-        let p = (""+raw).trim();
-        // remplace espaces / tirets
-        p = p.replace(/[\s\-\.]/g,"");
-        // si commence par 00 => +
-        if(p.startsWith("00")) p = "+" + p.slice(2);
-        // si commence par 221 ou 33 sans + (cas fréquent)
-        if(/^(221|33)\d+/.test(p)) p = "+" + p;
-        return p;
-      }
-
-      function slugify(s){
-        return (s||"")
-          .toLowerCase()
-          .normalize("NFD").replace(/[\u0300-\u036f]/g,"")
-          .replace(/[^a-z0-9]+/g,"-")
-          .replace(/^-+|-+$/g,"")
-          .slice(0,64);
-      }
-
-      function shortRand(){
-        // 6 chars base36
-        return Math.random().toString(36).slice(2,8);
-      }
-
-      function buildDossierSlug(role, metier, phone, ville){
-        const met = slugify((metier||"metier").split("(")[0].trim());
-        const ph = (phone||"").replace(/\D/g,"").slice(-6) || shortRand();
-        const v = slugify(ville || "");
-        const r = role === "employeur" ? "emp" : "cand";
-        const parts = [ "jobs", r, met, v, ph, shortRand() ].filter(Boolean);
-        return parts.join("-");
-      }
-
-      function buildLink(slug){
-        const u = new URL(JOBS_PAGE, location.href);
-        u.searchParams.set("dossier", slug);
-        return u.toString();
-      }
-
-      function waUrl(base, msg){
+      // =========================
+      // 1) WhatsApp: ajoute text= sur CTA + track GTM
+      // =========================
+      function buildWaLink(baseHref, msg){
         try{
-          const u = new URL(base);
-          u.searchParams.set("text", msg);
+          var u = new URL(baseHref);
+          if (!u.searchParams.get('text')) u.searchParams.set('text', msg || 'Bonjour DIGIY JOBS');
           return u.toString();
         }catch(e){
-          return base + "?text=" + enc(msg);
+          return baseHref;
         }
       }
 
-      function setEnabled(a, on){
-        if(!a) return;
-        a.setAttribute("aria-disabled", on ? "false" : "true");
-        a.style.pointerEvents = on ? "auto" : "none";
-        a.style.opacity = on ? "1" : ".55";
+      document.querySelectorAll('a.js-wa').forEach(function(a){
+        var msg = a.getAttribute('data-wa-text') || 'Bonjour DIGIY JOBS';
+        a.href = buildWaLink(a.href, msg);
+        a.addEventListener('click', function(){
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event:'whatsapp_click', label: msg, href:a.href, context:'jobs_hero_cta' });
+        });
+      });
+
+      document.querySelectorAll('a.wa-job').forEach(function(a){
+        var job = a.getAttribute('data-wa-job') || 'Métier';
+        var isFR = a.href.includes('33638329423');
+        var msg = isFR
+          ? ("DIGIY JOBS FR — RDV WhatsApp\nRégion: Nouvelle-Aquitaine (Périgord/Dordogne)\nMétier: " + job + "\nBesoin: 2 profils (FR)\nHébergement possible: Oui/Non\n")
+          : ("DIGIY JOBS — RDV WhatsApp\nRégion: Nouvelle-Aquitaine (Périgord/Dordogne)\nMétier: " + job + "\nDemande: 2 profils (SN)\nHébergement: Employeur/Famille/À confirmer\n");
+
+        a.href = buildWaLink(a.href, msg);
+
+        a.addEventListener('click', function(){
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event:'whatsapp_click', label: job, href:a.href, context:'jobs_cards' });
+        });
+      });
+
+      // Track clic PDF
+      var pdf = document.querySelector('.cta-pdf');
+      if (pdf){
+        pdf.addEventListener('click', function(){
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event:'documents_pdf_click', href: pdf.href, context:'jobs_pdf' });
+        });
       }
 
-      // === DOM ===
-      const roleEl = document.getElementById("role");
-      const metierEl = document.getElementById("metier");
-      const phoneEl = document.getElementById("phone");
-      const villeEl = document.getElementById("ville");
-      const btnCreate = document.getElementById("btnCreate");
-      const btnCopy = document.getElementById("btnCopy");
-      const btnWA = document.getElementById("btnWhatsApp");
+      // =========================
+      // 2) Bouton intelligent: dossier -> reprendre suivi
+      // =========================
+      (function(){
+        var last = localStorage.getItem("DIGIY_JOBS_DOSSIER_V2");
+        if(!last) return;
+        try{
+          var obj = JSON.parse(last);
+          if(!obj.slug) return;
+          var btn = document.getElementById("btnResumeSuivi");
+          if(!btn) return;
 
-      const out = document.getElementById("out");
-      const slugOut = document.getElementById("slug");
-      const linkOut = document.getElementById("link");
+          btn.innerHTML = "🧾 <strong>Reprendre mon suivi</strong>";
+          btn.href = "./suivi.html?dossier=" + encodeURIComponent(obj.slug);
 
-      let last = null;
+          btn.addEventListener('click', function(){
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event:'jobs_resume_suivi_click', slug: obj.slug });
+          });
+        }catch(e){}
+      })();
 
-      // Restore last dossier if exists
-      try{
-        const saved = JSON.parse(localStorage.getItem(LS_KEY) || "null");
-        if(saved && saved.slug && saved.link){
-          last = saved;
-          out.style.display = "block";
-          slugOut.textContent = saved.slug;
-          linkOut.textContent = saved.link;
-          btnCopy.href = saved.link;
-          btnWA.href = saved.wa || "#";
-          setEnabled(btnCopy,true);
-          setEnabled(btnWA,true);
-        }
-      }catch(e){}
+      // =========================
+      // 3) Bandeau dossier si ?dossier=...
+      // =========================
+      (function(){
+        var d = new URL(location.href).searchParams.get("dossier");
+        if(!d) return;
 
-      btnCreate.addEventListener("click", function(){
-        const role = roleEl.value;
-        const metier = metierEl.value;
-        const phone = normalizePhone(phoneEl.value);
-        const ville = (villeEl.value || "").trim();
+        var banner = document.getElementById("dossierBanner");
+        var txt = document.getElementById("dossierText");
+        var openSuivi = document.getElementById("btnOpenSuivi");
+        var copyBtn = document.getElementById("btnCopyDossier");
 
-        // Validation ultra légère
-        if(!phone){
-          alert("Mets ton numéro WhatsApp (avec indicatif +221 / +33) pour créer le dossier.");
-          phoneEl.focus();
-          return;
-        }
+        if(!banner || !txt || !openSuivi || !copyBtn) return;
 
-        const slug = buildDossierSlug(role, metier, phone, ville);
-        const link = buildLink(slug);
+        banner.style.display = "flex";
+        txt.textContent = d;
+        openSuivi.href = "./suivi.html?dossier=" + encodeURIComponent(d);
 
-        const msgCommon =
-          "📁 DIGIY JOBS — Nouveau dossier\n" +
-          "Rôle: " + (role === "employeur" ? "Employeur (FR)" : "Candidat (SN)") + "\n" +
-          "Métier: " + metier + "\n" +
-          "Téléphone: " + phone + "\n" +
-          (ville ? ("Ville: " + ville + "\n") : "") +
-          "Zone: Nouvelle-Aquitaine (Périgord/Dordogne)\n" +
-          "Lien dossier: " + link + "\n\n" +
-          "Je veux un rendez-vous WhatsApp pour cadrer la suite.";
-
-        const waBase = (role === "employeur") ? WA_FR : WA_SN;
-        const wa = waUrl(waBase, msgCommon);
-
-        last = { slug, link, wa, role, metier, phone, ville, ts: Date.now() };
-
-        // UI
-        out.style.display = "block";
-        slugOut.textContent = slug;
-        linkOut.textContent = link;
-
-        btnCopy.href = link;
-        btnWA.href = wa;
-        setEnabled(btnCopy,true);
-        setEnabled(btnWA,true);
-
-        // Persist
-        try{ localStorage.setItem(LS_KEY, JSON.stringify(last)); }catch(e){}
-
-        // Tracking GTM (si présent)
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "jobs_dossier_created",
-          slug: slug,
-          role: role,
-          metier: metier
+        copyBtn.addEventListener("click", async function(){
+          try{
+            await navigator.clipboard.writeText(location.href);
+            alert("Lien copié ✅");
+          }catch(e){
+            prompt("Copie le lien :", location.href);
+          }
         });
 
-        // Option: ouvre directement WhatsApp (plus fluide)
-        // Décommente si tu veux auto-open après création:
-        // location.href = wa;
-      });
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event:'jobs_dossier_view', dossier: d });
+      })();
 
-      btnCopy.addEventListener("click", async function(e){
-        e.preventDefault();
-        if(!last || !last.link) return;
-        try{
-          await navigator.clipboard.writeText(last.link);
-          alert("Lien copié ✅");
+      // Track clic "Créer mon dossier"
+      var createBtn = document.getElementById("btnResumeSuivi");
+      if (createBtn && createBtn.href && createBtn.href.includes("dossier.html")){
+        createBtn.addEventListener("click", function(){
           window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event:"jobs_dossier_link_copied", slug:last.slug });
-        }catch(err){
-          // fallback
-          prompt("Copie le lien :", last.link);
-        }
-      });
-
-      // Style disabled init
-      setEnabled(btnCopy, !!(last && last.link));
-      setEnabled(btnWA, !!(last && last.wa));
+          window.dataLayer.push({ event:'jobs_create_dossier_click', context:'jobs_hero' });
+        });
+      }
     })();
   </script>
+
+  <!-- PWA: register service worker -->
+  <script>
+    (function(){
+      if ('serviceWorker' in navigator){
+        window.addEventListener('load', function(){
+          navigator.serviceWorker.register('./service-worker.js')
+            .catch(function(err){ console.warn('SW register failed', err); });
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>
