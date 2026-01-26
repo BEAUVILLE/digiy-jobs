@@ -357,25 +357,44 @@
              aria-label="Rendez-vous WhatsApp (Sénégal)">
             🇸🇳 <strong>Postuler (WhatsApp SN)</strong>
           </a>
+          <a class="cta" id="btnSuiviAlways" href="./suivi.html" aria-label="Suivi mon dossier">
+  🧾 <strong>Suivi mon dossier</strong>
+</a>
+          <!-- ✅ CTA ROW -->
+<div class="cta-row">
 
-          <!-- 2) WhatsApp FR -->
-          <a class="cta alt js-wa"
-             href="https://wa.me/33638329423"
-             data-wa-text="📞 DIGIY JOBS FR — Besoin recrutement.\nVille: ____\nMétier: ____\nHébergement possible: Oui / Non\nDébut: ____"
-             aria-label="Rendez-vous WhatsApp (France)">
-            🇫🇷 <strong>Employeur (WhatsApp FR)</strong>
-          </a>
+  <!-- 1) WhatsApp SN -->
+  <a class="cta js-wa"
+     href="https://wa.me/221771342889"
+     data-wa-text="📞 DIGIY JOBS — Je veux un rendez-vous WhatsApp.\nPays: Sénégal\nVille: ____\nMétier visé: ____\nHébergement: Employeur / Famille / À confirmer"
+     aria-label="Rendez-vous WhatsApp (Sénégal)">
+    🇸🇳 <strong>Postuler (WhatsApp SN)</strong>
+  </a>
 
-          <!-- 3) Dossier / Reprendre suivi (auto) -->
-          <a class="cta dark" id="btnResumeSuivi"
-             href="./dossier.html"
-             aria-label="Créer ou reprendre mon dossier">
-            📁 <strong>Créer mon dossier</strong>
-          </a>
+  <!-- 2) WhatsApp FR -->
+  <a class="cta alt js-wa"
+     href="https://wa.me/33638329423"
+     data-wa-text="📞 DIGIY JOBS FR — Besoin recrutement.\nVille: ____\nMétier: ____\nHébergement possible: Oui / Non\nDébut: ____"
+     aria-label="Rendez-vous WhatsApp (France)">
+    🇫🇷 <strong>Employeur (WhatsApp FR)</strong>
+  </a>
 
-        </div>
-      </div>
-    </section>
+  <!-- 3) Dossier / Reprendre suivi (auto) -->
+  <a class="cta dark" id="btnResumeSuivi"
+     href="./dossier.html"
+     aria-label="Créer ou reprendre mon dossier">
+    📁 <strong>Créer mon dossier</strong>
+  </a>
+
+  <!-- 4) Suivi dossier (toujours visible) -->
+  <a class="cta" id="btnSuiviAlways"
+     href="./suivi.html"
+     aria-label="Suivi mon dossier">
+    🧾 <strong>Suivi mon dossier</strong>
+  </a>
+</div> <!-- fin hero-inner -->
+</div> <!-- fin hero -->
+</section>
 
     <!-- PANEL RDV + PRESENCE -->
     <div class="panel" role="region" aria-label="Rendez-vous et présence">
@@ -649,6 +668,55 @@
       }
     })();
   </script>
+       <script>
+(function(){
+  function getLastSlug(){
+    try{
+      const raw = localStorage.getItem("DIGIY_JOBS_DOSSIER_V2");
+      if(!raw) return null;
+      const obj = JSON.parse(raw);
+      return (obj && obj.slug) ? obj.slug : null;
+    }catch(e){ return null; }
+  }
+
+  // (A) Transformer "Créer mon dossier" -> "Reprendre mon suivi"
+  const btnResume = document.getElementById("btnResumeSuivi");
+  const lastSlug = getLastSlug();
+  if(btnResume && lastSlug){
+    btnResume.innerHTML = "🧾 <strong>Reprendre mon suivi</strong>";
+    btnResume.href = "./suivi.html?dossier=" + encodeURIComponent(lastSlug);
+  }
+
+  // (B) "Suivi mon dossier" : ouvre suivi avec slug (ou demande le slug)
+  const btnSuivi = document.getElementById("btnSuiviAlways");
+  if(btnSuivi){
+    btnSuivi.addEventListener("click", function(e){
+      e.preventDefault();
+
+      const slug = getLastSlug();
+      if(slug){
+        location.href = "./suivi.html?dossier=" + encodeURIComponent(slug);
+        return;
+      }
+
+      const manual = prompt("Entre ton code dossier (slug) :");
+      if(manual && manual.trim()){
+        location.href = "./suivi.html?dossier=" + encodeURIComponent(manual.trim());
+        return;
+      }
+
+      location.href = "./dossier.html";
+    });
+  }
+
+  // (C) Debug léger (tu peux laisser)
+  console.log("[JOBS] CTA OK", {
+    btnResume: !!btnResume,
+    btnSuivi: !!btnSuivi,
+    lastSlug: lastSlug
+  });
+})();
+</script
 
 </body>
 </html>
