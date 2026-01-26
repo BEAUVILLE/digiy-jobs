@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DIGIY JOBS — Créer mon dossier</title>
+  <meta name="description" content="Créer un dossier DIGIY JOBS (public). 2 minutes. Génère un lien de suivi + message WhatsApp automatique." />
+  <meta name="theme-color" content="#0A1128" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --dark:#0A1128;--blue:#0ea5e9;--green:#10b981;
+      --bg:#F0F2F5;--card:#fff;--ink:#0f172a;--muted:#475569;
+      --line:#e5e7eb;--shadow:0 12px 30px rgba(0,0,0,.10);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto;
+      background:var(--bg);
+      color:var(--ink);
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:22px 12px 60px}
+    .top{
+      background:linear-gradient(135deg, rgba(10,17,40,.96), rgba(18,26,48,.92));
+      color:#fff;border-radius:22px;padding:22px 18px;
+      box-shadow:0 15px 40px rgba(0,0,0,.28);
+      position:relative;overflow:hidden;
+    }
+    .top::before{
+      content:"📁";position:absolute;right:-30px;top:-30px;
+      font-size:150px;opacity:.08;transform:rotate(12deg);
+    }
+    .top h1{margin:0;font-weight:900;font-size:2rem;line-height:1.15}
+    .top p{margin:10px 0 0;color:#cbd5ff}
+    .card{
+      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+      box-shadow:var(--shadow);padding:18px;margin-top:14px;
+    }
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media(max-width:720px){.row{grid-template-columns:1fr}}
+    label{display:block;font-weight:800;font-size:.95rem;margin:0 0 6px}
+    input, select{
+      width:100%;padding:12px 12px;border-radius:14px;border:1px solid #d1d5db;
+      font-size:1rem;outline:none;
+      background:#fff;
+    }
+    input:focus, select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(14,165,233,.15)}
+    .hint{color:var(--muted);font-size:.95rem;margin:8px 0 0}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .btn{
+      border:0;border-radius:14px;padding:12px 14px;font-weight:900;
+      cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;
+      transition:transform .18s ease, filter .18s ease;
+      font-size:1rem;
+    }
+    .btn:hover{transform:translateY(-1px);filter:brightness(.97)}
+    .btn.primary{background:var(--blue);color:#fff}
+    .btn.green{background:var(--green);color:#fff}
+    .btn.ghost{background:#f1f5f9;color:var(--dark);border:1px solid #cbd5e1}
+    .box{
+      background:#f9fbfd;border:1px dashed #cbd5e1;border-radius:14px;
+      padding:14px;margin-top:12px
+    }
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:.92rem}
+    .tiny{font-size:.86rem;color:#64748b;margin-top:10px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 10px;border-radius:999px;
+      background:#0A1128;color:#fff;font-weight:900;font-size:.85rem;
+      margin-top:10px
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <h1>DIGIY JOBS — Créer mon dossier</h1>
+      <p>Public • 2 minutes • Lien dossier + RDV WhatsApp (Saly ⇄ Sarlat)</p>
+    </div>
+
+    <div class="card">
+      <div class="pill">✅ Conseil terrain : au début, on privilégie un hébergement (employeur ou famille)</div>
+
+      <div class="row" style="margin-top:12px">
+        <div>
+          <label for="role">Je suis</label>
+          <select id="role">
+            <option value="candidat">👤 Candidat (Sénégal → France)</option>
+            <option value="employeur">🏢 Employeur (France)</option>
+          </select>
+          <div class="hint">On adapte le message WhatsApp selon ton profil.</div>
+        </div>
+
+        <div>
+          <label for="metier">Métier prioritaire</label>
+          <select id="metier">
+            <optgroup label="🍽️ Restauration">
+              <option value="Serveur/Serveuse (S2Z61)">Serveur/Serveuse (S2Z61)</option>
+              <option value="Cuisinier (S1Z40)">Cuisinier (S1Z40)</option>
+              <option value="Chef cuisinier (S1Z80)">Chef cuisinier (S1Z80)</option>
+            </optgroup>
+            <optgroup label="🧱 BTP">
+              <option value="Maçon (B2Z40)">Maçon (B2Z40)</option>
+              <option value="Peinture & finition (B4Z44)">Peinture & finition (B4Z44)</option>
+            </optgroup>
+            <optgroup label="👵 Aide à la personne">
+              <option value="Aide à domicile (T2A60)">Aide à domicile (T2A60)</option>
+            </optgroup>
+          </select>
+          <div class="hint">Zone visée : Nouvelle-Aquitaine (Périgord/Dordogne).</div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:12px">
+        <div>
+          <label for="phone">WhatsApp (téléphone)</label>
+          <input id="phone" placeholder="+22177xxxxxxx ou +33..." inputmode="tel" autocomplete="tel" />
+          <div class="hint">Conseil : mets l’indicatif +221 / +33 (ou 00...).</div>
+        </div>
+
+        <div>
+          <label for="ville">Ville (où tu es)</label>
+          <input id="ville" placeholder="Saly / Dakar / Sarlat / Bordeaux..." autocomplete="address-level2" />
+          <div class="hint">Saly (SN) et Sarlat (FR) = nos points d’ancrage.</div>
+        </div>
+      </div>
+
+      <!-- ✅ HEBERGEMENT -->
+      <div class="row" style="margin-top:12px">
+        <div>
+          <label for="hebergement">Hébergement à l’arrivée (recommandé)</label>
+          <select id="hebergement">
+            <option value="employeur">🏠 Employeur peut héberger (début)</option>
+            <option value="famille">👨‍👩‍👧 Famille / proche en France</option>
+            <option value="a-confirmer">🕒 Pas encore (à confirmer)</option>
+          </select>
+          <div class="hint">
+            Au démarrage, on privilégie un accueil (employeur ou famille) pour sécuriser l’arrivée.
+          </div>
+        </div>
+
+        <div>
+          <label for="accueilVille">Ville d’accueil (France)</label>
+          <input id="accueilVille" placeholder="Sarlat / Périgueux / Bordeaux..." autocomplete="address-level2" />
+          <div class="hint">Si hébergement employeur/famille : mets la ville où la personne sera reçue.</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" id="btnCreate" type="button">📁 Créer mon dossier</button>
+        <a class="btn ghost" id="btnCopy" href="#" role="button" aria-disabled="true">📋 Copier le lien</a>
+        <a class="btn green" id="btnWhatsApp" href="#" role="button" aria-disabled="true">💬 Ouvrir WhatsApp</a>
+      </div>
+
+      <div class="box" id="out" style="display:none">
+        <div><strong>✅ Dossier créé :</strong> <span class="mono" id="slug"></span></div>
+        <div style="margin-top:8px"><strong>Lien :</strong> <span class="mono" id="link"></span></div>
+        <div class="tiny">
+          Ce lien est public. Il sert à identifier le dossier et accélérer la coordination (rendez-vous + checklist).
+        </div>
+      </div>
+
+      <div class="tiny">
+        ⚠️ DIGIY JOBS ne promet jamais un visa. Chaque dossier dépend des validations officielles.
+        L’accompagnement est <strong>au cas par cas</strong> après qualification WhatsApp.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      "use strict";
+
+      // === CONFIG ===
+      const WA_SN = "https://wa.me/221771342889";
+      const WA_FR = "https://wa.me/33638329423";
+
+      // Le dossier pointe vers la page jobs (publique) + dossier=slug
+      // 👉 adapte si ton fichier final n’est pas jobs.html
+      const JOBS_PAGE = "./index.html";
+
+      const LS_KEY = "DIGIY_JOBS_DOSSIER_V2";
+
+      // === HELPERS ===
+      function enc(s){ return encodeURIComponent(s || ""); }
+
+      function normalizePhone(raw){
+        if(!raw) return "";
+        let p = (""+raw).trim();
+        p = p.replace(/[\s\-\.]/g,"");
+        if(p.startsWith("00")) p = "+" + p.slice(2);
+        if(/^(221|33)\d+/.test(p)) p = "+" + p;
+        return p;
+      }
+
+      function slugify(s){
+        return (s||"")
+          .toLowerCase()
+          .normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+          .replace(/[^a-z0-9]+/g,"-")
+          .replace(/^-+|-+$/g,"")
+          .slice(0,64);
+      }
+
+      function shortRand(){
+        return Math.random().toString(36).slice(2,8);
+      }
+
+      function buildDossierSlug(role, metier, phone, ville, accueilVille){
+        const met = slugify((metier||"metier").split("(")[0].trim());
+        const ph = (phone||"").replace(/\D/g,"").slice(-6) || shortRand();
+        const v = slugify(ville || "");
+        const av = slugify(accueilVille || "");
+        const r = role === "employeur" ? "emp" : "cand";
+        const parts = [ "jobs", r, met, v, av, ph, shortRand() ].filter(Boolean);
+        return parts.join("-");
+      }
+
+      function buildLink(slug){
+        const u = new URL(JOBS_PAGE, location.href);
+        u.searchParams.set("dossier", slug);
+        return u.toString();
+      }
+
+      function waUrl(base, msg){
+        try{
+          const u = new URL(base);
+          u.searchParams.set("text", msg);
+          return u.toString();
+        }catch(e){
+          return base + "?text=" + enc(msg);
+        }
+      }
+
+      function setEnabled(a, on){
+        if(!a) return;
+        a.setAttribute("aria-disabled", on ? "false" : "true");
+        a.style.pointerEvents = on ? "auto" : "none";
+        a.style.opacity = on ? "1" : ".55";
+      }
+
+      function hebergementLabel(v){
+        if(v === "employeur") return "Employeur (hébergement au début)";
+        if(v === "famille") return "Famille / proche (France)";
+        return "À confirmer";
+      }
+
+      // === DOM ===
+      const roleEl = document.getElementById("role");
+      const metierEl = document.getElementById("metier");
+      const phoneEl = document.getElementById("phone");
+      const villeEl = document.getElementById("ville");
+      const hebEl = document.getElementById("hebergement");
+      const accueilVilleEl = document.getElementById("accueilVille");
+
+      const btnCreate = document.getElementById("btnCreate");
+      const btnCopy = document.getElementById("btnCopy");
+      const btnWA = document.getElementById("btnWhatsApp");
+
+      const out = document.getElementById("out");
+      const slugOut = document.getElementById("slug");
+      const linkOut = document.getElementById("link");
+
+      let last = null;
+
+      // Restore last dossier if exists
+      try{
+        const saved = JSON.parse(localStorage.getItem(LS_KEY) || "null");
+        if(saved && saved.slug && saved.link){
+          last = saved;
+          out.style.display = "block";
+          slugOut.textContent = saved.slug;
+          linkOut.textContent = saved.link;
+          btnCopy.href = saved.link;
+          btnWA.href = saved.wa || "#";
+          setEnabled(btnCopy,true);
+          setEnabled(btnWA,true);
+
+          // restore some fields (optional)
+          if(saved.role) roleEl.value = saved.role;
+          if(saved.metier) metierEl.value = saved.metier;
+          if(saved.phone) phoneEl.value = saved.phone;
+          if(saved.ville) villeEl.value = saved.ville;
+          if(saved.hebergement) hebEl.value = saved.hebergement;
+          if(saved.accueilVille) accueilVilleEl.value = saved.accueilVille;
+        }
+      }catch(e){}
+
+      btnCreate.addEventListener("click", function(){
+        const role = roleEl.value;
+        const metier = metierEl.value;
+        const phone = normalizePhone(phoneEl.value);
+        const ville = (villeEl.value || "").trim();
+        const hebergement = hebEl ? hebEl.value : "";
+        const accueilVille = accueilVilleEl ? (accueilVilleEl.value || "").trim() : "";
+
+        if(!phone){
+          alert("Mets ton numéro WhatsApp (avec indicatif +221 / +33) pour créer le dossier.");
+          phoneEl.focus();
+          return;
+        }
+
+        const slug = buildDossierSlug(role, metier, phone, ville, accueilVille);
+        const link = buildLink(slug);
+
+        const msgCommon =
+          "📁 DIGIY JOBS — Nouveau dossier\n" +
+          "Rôle: " + (role === "employeur" ? "Employeur (FR)" : "Candidat (SN)") + "\n" +
+          "Métier: " + metier + "\n" +
+          "Téléphone: " + phone + "\n" +
+          (ville ? ("Ville (actuelle): " + ville + "\n") : "") +
+          "Hébergement: " + hebergementLabel(hebergement) + "\n" +
+          (accueilVille ? ("Ville d’accueil (FR): " + accueilVille + "\n") : "") +
+          "Zone: Nouvelle-Aquitaine (Périgord/Dordogne)\n" +
+          "Lien dossier: " + link + "\n\n" +
+          "Je veux un rendez-vous WhatsApp pour cadrer la suite (dossier + pièces + timing).";
+
+        const waBase = (role === "employeur") ? WA_FR : WA_SN;
+        const wa = waUrl(waBase, msgCommon);
+
+        last = { slug, link, wa, role, metier, phone, ville, hebergement, accueilVille, ts: Date.now() };
+
+        out.style.display = "block";
+        slugOut.textContent = slug;
+        linkOut.textContent = link;
+
+        btnCopy.href = link;
+        btnWA.href = wa;
+        setEnabled(btnCopy,true);
+        setEnabled(btnWA,true);
+
+        try{ localStorage.setItem(LS_KEY, JSON.stringify(last)); }catch(e){}
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "jobs_dossier_created",
+          slug: slug,
+          role: role,
+          metier: metier,
+          hebergement: hebergement
+        });
+
+        // Option ultra-fluide : ouvrir WhatsApp direct après création
+        // Décommente si tu veux
+        // location.href = wa;
+      });
+
+      btnCopy.addEventListener("click", async function(e){
+        e.preventDefault();
+        if(!last || !last.link) return;
+        try{
+          await navigator.clipboard.writeText(last.link);
+          alert("Lien copié ✅");
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event:"jobs_dossier_link_copied", slug:last.slug });
+        }catch(err){
+          prompt("Copie le lien :", last.link);
+        }
+      });
+
+      setEnabled(btnCopy, !!(last && last.link));
+      setEnabled(btnWA, !!(last && last.wa));
+    })();
+  </script>
+</body>
+</html>
