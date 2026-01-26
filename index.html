@@ -48,7 +48,6 @@
       background: var(--bg1);
       background-size: cover;
       background-position: center center;
-      /* Sur mobile, fixed peut lagger : on garde simple */
       background-attachment: scroll;
 
       color: #E0E7FF;
@@ -306,6 +305,10 @@
       font-weight: 700;
       transition: all 0.2s ease;
       box-shadow: 0 4px 8px rgba(0,0,0,.05);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
     }
     .jobs-tension-cta.green {
       background: var(--jobs-green);
@@ -352,7 +355,7 @@
       color: var(--jobs-dark);
     }
     .jobs-tension-job-card ul {
-      margin: 12px 0 0 16px;
+      margin: 12px 0 0 0;
       padding: 0;
       font-size: 0.95rem;
       color: #334155;
@@ -383,16 +386,28 @@
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 700;
-      transition: background 0.2s ease;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
     }
     .jobs-tension-job-card-actions .sn-cta {
       background: var(--jobs-dark);
       color: #fff;
     }
+    .jobs-tension-job-card-actions .sn-cta:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
     .jobs-tension-job-card-actions .fr-cta {
       background: #fff;
       color: var(--jobs-dark);
       border: 1px solid #cbd5e1;
+    }
+    .jobs-tension-job-card-actions .fr-cta:hover {
+      background: #f1f5f9;
+      transform: translateY(-1px);
     }
 
     .jobs-tension-footer {
@@ -430,6 +445,8 @@
 
     @media (prefers-reduced-motion: reduce){
       .cta{ transition:none }
+      .jobs-faq details{ transition:none }
+      .jobs-tension-job-card{ transition:none }
     }
   </style>
 </head>
@@ -573,7 +590,7 @@
 
   </div>
 
-  <!-- SEO (tu peux laisser) -->
+  <!-- SEO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -583,20 +600,29 @@
     "thumbnailUrl": "https://digiylyfe.com/images/miniature-jobs.jpg",
     "uploadDate": "2025-09-28",
     "contentUrl": "https://digiylyfe.com/videos/digiyjobs.mp4",
-    "embedUrl": "https://digiylyfe.com/videos/digiyjobs.mp4"
+    "embedUrl": "https://digiylyfe.com/videos/digiyjobs.mp4",
+    "inLanguage": "fr",
+    "isFamilyFriendly": true
   }
   </script>
 
   <script>
     (function(){
+      function buildWaLink(baseHref, msg){
+        try{
+          var u = new URL(baseHref);
+          // si déjà un text= dans l'URL, on n’écrase pas
+          if (!u.searchParams.get('text')) u.searchParams.set('text', msg || 'Bonjour DIGIY JOBS');
+          return u.toString();
+        }catch(e){
+          return baseHref;
+        }
+      }
+
       // Enrichit les liens WhatsApp avec le texte + tracking GTM
       document.querySelectorAll('a.js-wa').forEach(function(a){
         var msg = a.getAttribute('data-wa-text') || 'Bonjour DIGIY JOBS';
-        try{
-          var u = new URL(a.href);
-          if (!u.searchParams.get('text')) u.searchParams.set('text', msg);
-          a.href = u.toString();
-        }catch(e){}
+        a.href = buildWaLink(a.href, msg);
 
         a.addEventListener('click', function(){
           window.dataLayer = window.dataLayer || [];
@@ -609,7 +635,7 @@
         });
       });
 
-      // Track clic PDF aussi (GTM)
+      // Track clic PDF (GTM)
       var pdf = document.querySelector('.cta-pdf');
       if (pdf){
         pdf.addEventListener('click', function(){
@@ -630,9 +656,6 @@
       if ('serviceWorker' in navigator){
         window.addEventListener('load', function(){
           navigator.serviceWorker.register('./service-worker.js')
-            .then(function(reg){
-              // console.log('SW registered', reg);
-            })
             .catch(function(err){
               console.warn('SW register failed', err);
             });
@@ -643,16 +666,10 @@
 
   <!-- Supabase (OPTIONNEL) : tracking de leads (WhatsApp + PDF) -->
   <script type="module">
-    /**
-     * ✅ À activer seulement quand tu as créé la table "jobs_leads" dans Supabase
-     * et ajouté une policy RLS qui autorise INSERT (ex: pour anon).
-     *
-     * Remplace les 2 valeurs ci-dessous par tes vraies clés.
-     */
     const ENABLE_SUPABASE = false; // ← mets true quand tu es prêt
 
     if (ENABLE_SUPABASE){
-      import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+      const { createClient } = await import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm");
 
       const SUPABASE_URL = "https://TONPROJET.supabase.co";
       const SUPABASE_ANON_KEY = "TON_ANON_KEY";
