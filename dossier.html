@@ -3,368 +3,483 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DIGIY JOBS — Créer mon dossier</title>
-  <meta name="description" content="Créer un dossier DIGIY JOBS (public). 2 minutes. Génère un lien de suivi + message WhatsApp automatique." />
+  <title>DIGIY JOBS — Double entrée BUILD + Hôtellerie Restauration</title>
+  <meta name="description" content="DIGIY JOBS — double entrée claire : BUILD et Hôtellerie-Restauration. Disponibilité, métier, zone, téléphone, expérience, hébergement éventuel et mise en relation simple." />
   <meta name="theme-color" content="#0A1128" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
   <style>
     :root{
-      --dark:#0A1128;--blue:#0ea5e9;--green:#10b981;
-      --bg:#F0F2F5;--card:#fff;--ink:#0f172a;--muted:#475569;
-      --line:#e5e7eb;--shadow:0 12px 30px rgba(0,0,0,.10);
-      --radius:18px;
+      --dark:#0A1128;
+      --blue:#0ea5e9;
+      --green:#10b981;
+      --gold:#d4a84f;
+      --bg:#eff3f8;
+      --sand:#f6efe2;
+      --card:#ffffffd8;
+      --ink:#0f172a;
+      --muted:#475569;
+      --line:#e5e7eb;
+      --shadow:0 18px 40px rgba(0,0,0,.10);
+      --radius:22px;
+      --radius-sm:16px;
+      --max:1180px;
     }
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto;
-      background:var(--bg);
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       color:var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(14,165,233,.08), transparent 28%),
+        radial-gradient(circle at right 10%, rgba(16,185,129,.07), transparent 24%),
+        linear-gradient(180deg,var(--bg) 0%, var(--sand) 100%);
     }
-    .wrap{max-width:980px;margin:0 auto;padding:22px 12px 60px}
-    .top{
-      background:linear-gradient(135deg, rgba(10,17,40,.96), rgba(18,26,48,.92));
-      color:#fff;border-radius:22px;padding:22px 18px;
-      box-shadow:0 15px 40px rgba(0,0,0,.28);
-      position:relative;overflow:hidden;
+    a{text-decoration:none;color:inherit}
+    .wrap{width:min(calc(100% - 28px), var(--max));margin:0 auto}
+
+    .topbar{
+      position:sticky;top:0;z-index:40;
+      backdrop-filter:blur(10px);
+      background:rgba(239,243,248,.78);
+      border-bottom:1px solid rgba(229,231,235,.92);
     }
-    .top::before{
-      content:"📁";position:absolute;right:-30px;top:-30px;
-      font-size:150px;opacity:.08;transform:rotate(12deg);
+    .topbar-inner{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;
     }
-    .top h1{margin:0;font-weight:900;font-size:2rem;line-height:1.15}
-    .top p{margin:10px 0 0;color:#cbd5ff}
-    .card{
-      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-      box-shadow:var(--shadow);padding:18px;margin-top:14px;
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.02em}
+    .brand-mark{
+      width:42px;height:42px;border-radius:14px;display:grid;place-items:center;color:#fff;
+      background:linear-gradient(135deg,var(--dark),#1c2b57);box-shadow:var(--shadow);font-size:14px;
     }
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media(max-width:720px){.row{grid-template-columns:1fr}}
-    label{display:block;font-weight:800;font-size:.95rem;margin:0 0 6px}
-    input, select{
-      width:100%;padding:12px 12px;border-radius:14px;border:1px solid #d1d5db;
-      font-size:1rem;outline:none;
-      background:#fff;
+    .brand small{display:block;font-size:12px;color:var(--muted);font-weight:800;letter-spacing:.08em}
+    .nav{display:flex;gap:10px;flex-wrap:wrap}
+    .nav a{
+      padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:#ffffffc9;
+      font-weight:800;font-size:14px;
     }
-    input:focus, select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(14,165,233,.15)}
-    .hint{color:var(--muted);font-size:.95rem;margin:8px 0 0}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .nav a.primary{background:linear-gradient(135deg,var(--blue),#38bdf8);color:#fff;border-color:transparent}
+
+    .hero{padding:34px 0 22px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
+    .glass,.mini,.rail-card,.stat,.step,.example,.cta-card,.foot{
+      border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);
+    }
+    .hero-main{
+      padding:28px;position:relative;overflow:hidden;
+      background:
+        radial-gradient(circle at top right, rgba(212,168,79,.16), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,.97), rgba(255,255,255,.88));
+    }
+    .hero-main::after{
+      content:"";position:absolute;right:-50px;bottom:-50px;width:180px;height:180px;border-radius:50%;
+      border:28px solid rgba(10,17,40,.05);
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:999px;
+      border:1px solid var(--line);background:#fff;font-size:12px;font-weight:900;letter-spacing:.08em;
+      text-transform:uppercase;color:#6b4f1f;
+    }
+    h1{margin:16px 0 14px;font-size:clamp(34px,5vw,62px);line-height:.96;letter-spacing:-.04em;max-width:12ch}
+    .lead{margin:0 0 18px;max-width:62ch;color:#334155;line-height:1.68;font-size:17px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
     .btn{
-      border:0;border-radius:14px;padding:12px 14px;font-weight:900;
-      cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;
-      transition:transform .18s ease, filter .18s ease;
-      font-size:1rem;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 18px;
+      border-radius:15px;font-weight:900;border:1px solid transparent;transition:transform .16s ease, filter .16s ease;
     }
-    .btn:hover{transform:translateY(-1px);filter:brightness(.97)}
-    .btn.primary{background:var(--blue);color:#fff}
-    .btn.green{background:var(--green);color:#fff}
-    .btn.ghost{background:#f1f5f9;color:var(--dark);border:1px solid #cbd5e1}
-    .box{
-      background:#f9fbfd;border:1px dashed #cbd5e1;border-radius:14px;
-      padding:14px;margin-top:12px
+    .btn:hover{transform:translateY(-1px);filter:brightness(.98)}
+    .btn.dark{background:var(--dark);color:#fff;box-shadow:0 12px 24px rgba(10,17,40,.16)}
+    .btn.light{background:#fff;color:var(--ink);border-color:var(--line)}
+    .hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .tag{
+      padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:700;font-size:14px;color:var(--muted)
     }
-    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:.92rem}
-    .tiny{font-size:.86rem;color:#64748b;margin-top:10px}
-    .pill{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:7px 10px;border-radius:999px;
-      background:#0A1128;color:#fff;font-weight:900;font-size:.85rem;
-      margin-top:10px
+
+    .hero-side{
+      padding:18px;background:linear-gradient(180deg, rgba(10,17,40,.98), rgba(20,31,58,.98));color:#fff;border-color:#23314f;
+      display:flex;flex-direction:column;gap:14px;
+    }
+    .hero-side h2{margin:0;font-size:20px;letter-spacing:-.02em}
+    .hero-side p{margin:0;color:#d7e2f3;line-height:1.6}
+    .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .mini{padding:14px;border-radius:18px;border-color:#2c3a58;background:rgba(255,255,255,.04);box-shadow:none}
+    .mini strong{display:block;font-size:14px;margin-bottom:6px}
+    .mini span{display:block;color:#cbd5e1;font-size:13px;line-height:1.5}
+    .signal{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:14px;
+      background:rgba(212,168,79,.12);border:1px solid rgba(212,168,79,.25);color:#ffe8b1;font-size:13px;font-weight:800;
+    }
+
+    .stats{padding:10px 0 4px}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .stat{padding:18px}
+    .stat strong{display:block;font-size:30px;line-height:1;margin-bottom:8px}
+    .stat span{display:block;color:var(--muted);font-weight:700;font-size:14px;line-height:1.5}
+
+    .section{padding:18px 0 8px}
+    .section-head{display:flex;justify-content:space-between;gap:16px;align-items:end;flex-wrap:wrap;margin-bottom:18px}
+    .section-head h2{margin:0;font-size:clamp(24px,3vw,40px);letter-spacing:-.03em}
+    .section-head p{margin:8px 0 0;max-width:70ch;color:var(--muted);line-height:1.65}
+
+    .rails{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .rail-card{padding:22px;position:relative;overflow:hidden}
+    .rail-card.build{background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(250,248,243,.96))}
+    .rail-card.hotel{background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(245,251,248,.96))}
+    .rail-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:12px}
+    .rail-badge{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border-radius:999px;font-size:12px;
+      font-weight:900;text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line);background:#fff;
+    }
+    .rail-card h3{margin:0;font-size:30px;letter-spacing:-.03em}
+    .rail-sub{margin:8px 0 0;color:#475569;font-weight:700;line-height:1.6}
+    .bullets{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+    .bullet{
+      padding:12px;border-radius:14px;background:#fff;border:1px solid var(--line);font-weight:800;color:#1e293b;font-size:14px
+    }
+    .rail-note{
+      padding:14px 15px;border-radius:16px;background:rgba(10,17,40,.04);border:1px dashed rgba(71,85,105,.25);
+      color:#475569;font-size:14px;line-height:1.6;font-weight:700;
+    }
+    .rail-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .rail-actions a{
+      flex:1 1 200px;text-align:center;padding:13px 14px;border-radius:14px;font-weight:900;border:1px solid var(--line);background:#fff;
+    }
+    .rail-actions a.primary{background:var(--dark);color:#fff;border-color:var(--dark)}
+
+    .examples-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .example{padding:18px}
+    .example h3{margin:0 0 12px;font-size:22px;letter-spacing:-.02em}
+    .example-list{display:grid;gap:10px}
+    .example-item{padding:12px;border-radius:14px;background:#fff;border:1px solid var(--line)}
+    .example-item strong{display:block;font-size:15px;margin-bottom:4px}
+    .example-item span{display:block;color:var(--muted);font-size:14px;line-height:1.55}
+
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .step{padding:20px}
+    .step-num{
+      width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold),#e6bf6b);
+      color:#23180a;font-weight:900;margin-bottom:14px;
+    }
+    .step h3{margin:0 0 10px;font-size:20px}
+    .step p{margin:0;color:var(--muted);line-height:1.65}
+
+    .cta{padding:24px 0 38px}
+    .cta-card{
+      padding:24px;display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center;
+      background:linear-gradient(135deg,#0A1128,#1b2a56);color:#fff;border-color:#26365a;
+    }
+    .cta-card h2{margin:0 0 12px;font-size:clamp(26px,4vw,42px);letter-spacing:-.03em}
+    .cta-card p{margin:0;color:#dce7f5;line-height:1.68;max-width:62ch}
+    .cta-boxes{display:grid;gap:12px}
+    .cta-box{padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10)}
+    .cta-box small{display:block;color:#e7c97f;font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+    .cta-box strong{font-size:16px;line-height:1.5}
+
+    footer{padding:0 0 34px}
+    .foot{padding:18px 20px;display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+    .foot p{margin:0;color:var(--muted);line-height:1.6}
+    .foot-links{display:flex;gap:10px;flex-wrap:wrap}
+    .foot-links a{padding:10px 12px;border-radius:12px;background:#fff;border:1px solid var(--line);font-weight:800}
+
+    @media (max-width:1080px){
+      .hero-grid,.rails,.examples-grid,.cta-card,.stats-grid,.steps{grid-template-columns:1fr 1fr}
+      .steps .step:last-child{grid-column:1 / -1}
+    }
+    @media (max-width:820px){
+      .hero-grid,.rails,.examples-grid,.cta-card,.stats-grid,.steps{grid-template-columns:1fr}
+      .mini-grid,.bullets{grid-template-columns:1fr}
+      .nav{display:none}
+      h1{max-width:none}
     }
   </style>
 </head>
-
 <body>
-  <div class="wrap">
-    <div class="top">
-      <h1>DIGIY JOBS — Créer mon dossier</h1>
-      <p>Public • 2 minutes • Lien dossier + RDV WhatsApp (Saly ⇄ Sarlat)</p>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="Retour en haut">
+        <span class="brand-mark">DJ</span>
+        <span>
+          DIGIY JOBS
+          <small>DOUBLE ENTRÉE MÉTIERS</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#rails">Les deux rails</a>
+        <a href="#exemples">Exemples</a>
+        <a href="#process">Process</a>
+        <a class="primary" href="#contact">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="card">
-      <div class="pill">✅ Conseil terrain : au début, on privilégie un hébergement (employeur ou famille)</div>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <article class="hero-main glass">
+          <span class="eyebrow">Grand hall DIGIY JOBS</span>
+          <h1>Deux portes d’entrée. Un seul esprit terrain.</h1>
+          <p class="lead">
+            Ici, DIGIY JOBS ouvre large sans devenir confus. D’un côté le <strong>BUILD</strong> pour les métiers de chantier.
+            De l’autre, <strong>Hôtellerie-Restauration</strong> pour les profils d’accueil, de salle, de cuisine, d’entretien et de service.
+            Le même socle reste visible : disponibilité, métier, zone, téléphone, expérience, hébergement éventuel et contact clair.
+          </p>
+          <div class="actions">
+            <a class="btn dark" href="#rails">Voir les deux entrées</a>
+            <a class="btn light" href="./dossier.html">Créer mon dossier</a>
+          </div>
+          <div class="hero-tags">
+            <span class="tag">Lisible sur téléphone</span>
+            <span class="tag">Ouvert aux profils terrain</span>
+            <span class="tag">Mise en relation directe</span>
+            <span class="tag">Simple sans être pauvre</span>
+          </div>
+        </article>
 
-      <div class="row" style="margin-top:12px">
-        <div>
-          <label for="role">Je suis</label>
-          <select id="role">
-            <option value="candidat">👤 Candidat (Sénégal → France)</option>
-            <option value="employeur">🏢 Employeur (France)</option>
-          </select>
-          <div class="hint">On adapte le message WhatsApp selon ton profil.</div>
-        </div>
-
-        <div>
-          <label for="metier">Métier prioritaire</label>
-          <select id="metier">
-            <optgroup label="🍽️ Restauration">
-              <option value="Serveur/Serveuse (S2Z61)">Serveur/Serveuse (S2Z61)</option>
-              <option value="Cuisinier (S1Z40)">Cuisinier (S1Z40)</option>
-              <option value="Chef cuisinier (S1Z80)">Chef cuisinier (S1Z80)</option>
-            </optgroup>
-            <optgroup label="🧱 BTP">
-              <option value="Maçon (B2Z40)">Maçon (B2Z40)</option>
-              <option value="Peinture & finition (B4Z44)">Peinture & finition (B4Z44)</option>
-            </optgroup>
-            <optgroup label="👵 Aide à la personne">
-              <option value="Aide à domicile (T2A60)">Aide à domicile (T2A60)</option>
-            </optgroup>
-          </select>
-          <div class="hint">Zone visée : Nouvelle-Aquitaine (Périgord/Dordogne).</div>
-        </div>
+        <aside class="hero-side glass">
+          <span class="signal">Version hall prête à raccorder au bureau PRO</span>
+          <h2>Le vrai rôle du module</h2>
+          <p>
+            Faire respirer le travail local. Montrer vite les secteurs, guider les profils, et éviter le fouillis.
+            On ne mélange pas tout. On ouvre proprement, puis chaque rail suit sa logique métier.
+          </p>
+          <div class="mini-grid">
+            <div class="mini">
+              <strong>Socle commun</strong>
+              <span>Disponibilité, métier, zone, téléphone, expérience, hébergement éventuel.</span>
+            </div>
+            <div class="mini">
+              <strong>Rail BUILD</strong>
+              <span>Maçons, plombiers, électriciens, soudeurs, menuisiers, manoeuvres.</span>
+            </div>
+            <div class="mini">
+              <strong>Rail Hôtellerie</strong>
+              <span>Salle, cuisine, chambre, accueil, entretien, polyvalence.</span>
+            </div>
+            <div class="mini">
+              <strong>Suite logique</strong>
+              <span>Hall public d’abord, bureau de tri et de mise en relation ensuite.</span>
+            </div>
+          </div>
+        </aside>
       </div>
+    </section>
 
-      <div class="row" style="margin-top:12px">
-        <div>
-          <label for="phone">WhatsApp (téléphone)</label>
-          <input id="phone" placeholder="+22177xxxxxxx ou +33..." inputmode="tel" autocomplete="tel" />
-          <div class="hint">Conseil : mets l’indicatif +221 / +33 (ou 00...).</div>
-        </div>
-
-        <div>
-          <label for="ville">Ville (où tu es)</label>
-          <input id="ville" placeholder="Saly / Dakar / Sarlat / Bordeaux..." autocomplete="address-level2" />
-          <div class="hint">Saly (SN) et Sarlat (FR) = nos points d’ancrage.</div>
-        </div>
+    <section class="stats">
+      <div class="wrap stats-grid">
+        <article class="stat"><strong>2</strong><span>entrées claires dès la page d’accueil</span></article>
+        <article class="stat"><strong>1</strong><span>socle commun pour tous les profils</span></article>
+        <article class="stat"><strong>0</strong><span>labyrinthe inutile pour contacter</span></article>
+        <article class="stat"><strong>100%</strong><span>pensé terrain, pas bureau pour bureau</span></article>
       </div>
+    </section>
 
-      <!-- ✅ HEBERGEMENT -->
-      <div class="row" style="margin-top:12px">
-        <div>
-          <label for="hebergement">Hébergement à l’arrivée (recommandé)</label>
-          <select id="hebergement">
-            <option value="employeur">🏠 Employeur peut héberger (début)</option>
-            <option value="famille">👨‍👩‍👧 Famille / proche en France</option>
-            <option value="a-confirmer">🕒 Pas encore (à confirmer)</option>
-          </select>
-          <div class="hint">
-            Au démarrage, on privilégie un accueil (employeur ou famille) pour sécuriser l’arrivée.
+    <section class="section" id="rails">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Les deux rails d’entrée</h2>
+            <p>
+              Le visiteur comprend vite où il se trouve. Le candidat n’est pas perdu. Le recruteur voit tout de suite s’il cherche du chantier ou du service.
+            </p>
           </div>
         </div>
 
-        <div>
-          <label for="accueilVille">Ville d’accueil (France)</label>
-          <input id="accueilVille" placeholder="Sarlat / Périgueux / Bordeaux..." autocomplete="address-level2" />
-          <div class="hint">Si hébergement employeur/famille : mets la ville où la personne sera reçue.</div>
+        <div class="rails">
+          <article class="rail-card build">
+            <div class="rail-top">
+              <div>
+                <span class="rail-badge">🧱 Rail BUILD</span>
+                <h3>Chantiers, interventions, métiers de construction</h3>
+                <p class="rail-sub">
+                  Pour les profils terrain qui savent poser, réparer, monter, raccorder, finir ou renforcer.
+                  Ici, on parle concret : qui est disponible, sur quelle zone, et pour quel type de mission.
+                </p>
+              </div>
+            </div>
+            <div class="bullets">
+              <div class="bullet">Maçon</div>
+              <div class="bullet">Plombier</div>
+              <div class="bullet">Électricien</div>
+              <div class="bullet">Soudeur métal / alu</div>
+              <div class="bullet">Menuisier bois</div>
+              <div class="bullet">Manoeuvre / finition</div>
+            </div>
+            <div class="rail-note">
+              Bon pour Dakar, Thiès, Mbour, Saly, Ngaparou, Somone, Rufisque et zones autour.
+              L’idée : rendre visibles les mains qui savent faire.
+            </div>
+            <div class="rail-actions">
+              <a class="primary" href="./dossier.html?secteur=build">Créer mon dossier BUILD</a>
+              <a href="https://wa.me/221771342889?text=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20un%20profil%20ou%20un%20besoin%20sur%20le%20rail%20BUILD.">WhatsApp BUILD</a>
+            </div>
+          </article>
+
+          <article class="rail-card hotel">
+            <div class="rail-top">
+              <div>
+                <span class="rail-badge">🍽️ Hôtellerie-Restauration</span>
+                <h3>Salle, cuisine, accueil, chambre, entretien</h3>
+                <p class="rail-sub">
+                  Pour les profils qui savent recevoir, servir, préparer, ranger, accueillir et tenir le rythme.
+                  Ici aussi, on garde le terrain au centre : disponibilité, horaires, présentation et contact direct.
+                </p>
+              </div>
+            </div>
+            <div class="bullets">
+              <div class="bullet">Serveur / Serveuse</div>
+              <div class="bullet">Cuisinier / Commis</div>
+              <div class="bullet">Plonge</div>
+              <div class="bullet">Réception / Accueil</div>
+              <div class="bullet">Femme de chambre</div>
+              <div class="bullet">Entretien / Polyvalence</div>
+            </div>
+            <div class="rail-note">
+              Très fort pour les zones vivantes comme Saly, Ngaparou, Somone, Mbour, Dakar et les pôles touristiques.
+              L’idée : valoriser les qualités humaines et la tenue de service.
+            </div>
+            <div class="rail-actions">
+              <a class="primary" href="./dossier.html?secteur=hotellerie-restauration">Créer mon dossier Hôtellerie</a>
+              <a href="https://wa.me/221771342889?text=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20un%20profil%20ou%20un%20besoin%20sur%20le%20rail%20H%C3%B4tellerie-Restauration.">WhatsApp Hôtellerie</a>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
 
-      <div class="actions">
-        <button class="btn primary" id="btnCreate" type="button">📁 Créer mon dossier</button>
-        <a class="btn ghost" id="btnCopy" href="#" role="button" aria-disabled="true">📋 Copier le lien</a>
-        <a class="btn green" id="btnWhatsApp" href="#" role="button" aria-disabled="true">💬 Ouvrir WhatsApp</a>
-      </div>
+    <section class="section" id="exemples">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Exemples de profils visibles</h2>
+            <p>
+              On pose des exemples pour guider l’intention. Pas pour remplir le vide. Le visiteur doit se dire : “ah, voilà comment je peux me présenter.”
+            </p>
+          </div>
+        </div>
 
-      <div class="box" id="out" style="display:none">
-        <div><strong>✅ Dossier créé :</strong> <span class="mono" id="slug"></span></div>
-        <div style="margin-top:8px"><strong>Lien :</strong> <span class="mono" id="link"></span></div>
-        <div class="tiny">
-          Ce lien est public. Il sert à identifier le dossier et accélérer la coordination (rendez-vous + checklist).
+        <div class="examples-grid">
+          <article class="example">
+            <h3>Exemples côté BUILD</h3>
+            <div class="example-list">
+              <div class="example-item">
+                <strong>Moussa — Maçon coffreur</strong>
+                <span>Disponible immédiatement • Saly / Mbour • 5 ans+ • Dalles, cloisons, reprises • Hébergement possible si chantier long.</span>
+              </div>
+              <div class="example-item">
+                <strong>Ibrahima — Électricien</strong>
+                <span>Libre sous 72h • Thiès / Mbour • Confirmé • Tableaux, luminaires, dépannage, sécurité de base.</span>
+              </div>
+              <div class="example-item">
+                <strong>Cheikh — Soudeur</strong>
+                <span>Disponible maintenant • Dakar / Pikine • Portails, grilles, reprises métal/alu • Contact rapide WhatsApp.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="example">
+            <h3>Exemples côté Hôtellerie-Restauration</h3>
+            <div class="example-list">
+              <div class="example-item">
+                <strong>Awa — Serveuse polyvalente</strong>
+                <span>Disponible immédiatement • Saly / Ngaparou • Bon contact client • Service salle, prise de commande, encaissement simple.</span>
+              </div>
+              <div class="example-item">
+                <strong>Mamadou — Commis cuisine</strong>
+                <span>Disponible sous 48h • Mbour / Saly • Préparation, nettoyage poste, aide chaude/froide, rythme soutenu.</span>
+              </div>
+              <div class="example-item">
+                <strong>Fatou — Femme de chambre</strong>
+                <span>Disponible cette semaine • Somone / Saly • Sérieuse, présentation propre, chambres, linge, entretien et discrétion.</span>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
 
-      <div class="tiny">
-        ⚠️ DIGIY JOBS ne promet jamais un visa. Chaque dossier dépend des validations officielles.
-        L’accompagnement est <strong>au cas par cas</strong> après qualification WhatsApp.
+    <section class="section" id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Comment ça circule</h2>
+            <p>
+              Le besoin est formulé simplement. Le profil devient lisible. Le contact se fait sans confusion. Voilà la vraie mécanique.
+            </p>
+          </div>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-num">1</div>
+            <h3>Choisir le bon rail</h3>
+            <p>
+              BUILD pour le chantier. Hôtellerie-Restauration pour le service, l’accueil et l’exploitation quotidienne. Dès l’entrée, le bon monde se reconnaît.
+            </p>
+          </article>
+          <article class="step">
+            <div class="step-num">2</div>
+            <h3>Créer un dossier léger</h3>
+            <p>
+              Métier, zone, téléphone, disponibilité, niveau, hébergement éventuel. On capture juste ce qu’il faut pour déclencher une vraie mise en relation.
+            </p>
+          </article>
+          <article class="step">
+            <div class="step-num">3</div>
+            <h3>WhatsApp ou bureau DIGIY</h3>
+            <p>
+              Le lien dossier part dans WhatsApp. Ensuite le bureau peut aider à cadrer le besoin, filtrer et fluidifier la rencontre entre les deux côtés.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="wrap">
+        <article class="cta-card">
+          <div>
+            <h2>Le hall est posé. Les wagons métiers peuvent suivre.</h2>
+            <p>
+              Cette page donne une vraie architecture au module JOBS. On garde l’ouverture, mais on ne sacrifie pas la clarté. Ensuite, chaque rail peut recevoir son dossier propre, ses profils, puis son bureau PRO de mise en relation.
+            </p>
+            <div class="actions" style="margin-top:18px">
+              <a class="btn dark" href="./dossier.html">Créer mon dossier</a>
+              <a class="btn light" href="https://wa.me/221771342889?text=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20poser%20un%20profil%20ou%20un%20besoin%20sur%20un%20des%20deux%20rails.">WhatsApp DIGIY JOBS</a>
+            </div>
+          </div>
+          <div class="cta-boxes">
+            <div class="cta-box">
+              <small>Socle commun</small>
+              <strong>Disponibilité • Métier • Zone • Téléphone • Expérience • Hébergement éventuel</strong>
+            </div>
+            <div class="cta-box">
+              <small>Rail 1</small>
+              <strong>BUILD = chantiers, dépannage, installation, finition, main d’œuvre locale</strong>
+            </div>
+            <div class="cta-box">
+              <small>Rail 2</small>
+              <strong>Hôtellerie-Restauration = accueil, cuisine, salle, chambre, entretien, polyvalence</strong>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <p>
+          DIGIY JOBS — double entrée métiers. Une structure simple pour faire circuler le travail et montrer les forces du terrain sans confusion.
+        </p>
+        <div class="foot-links">
+          <a href="#top">Retour haut</a>
+          <a href="#rails">Les rails</a>
+          <a href="#exemples">Exemples</a>
+          <a href="#contact">Contact</a>
+        </div>
       </div>
     </div>
-  </div>
-
-  <script>
-    (function(){
-      "use strict";
-
-      // === CONFIG ===
-      const WA_SN = "https://wa.me/221771342889";
-      const WA_FR = "https://wa.me/33638329423";
-
-      // Le dossier pointe vers la page jobs (publique) + dossier=slug
-      // 👉 adapte si ton fichier final n’est pas jobs.html
-      const JOBS_PAGE = "./index.html";
-
-      const LS_KEY = "DIGIY_JOBS_DOSSIER_V2";
-
-      // === HELPERS ===
-      function enc(s){ return encodeURIComponent(s || ""); }
-
-      function normalizePhone(raw){
-        if(!raw) return "";
-        let p = (""+raw).trim();
-        p = p.replace(/[\s\-\.]/g,"");
-        if(p.startsWith("00")) p = "+" + p.slice(2);
-        if(/^(221|33)\d+/.test(p)) p = "+" + p;
-        return p;
-      }
-
-      function slugify(s){
-        return (s||"")
-          .toLowerCase()
-          .normalize("NFD").replace(/[\u0300-\u036f]/g,"")
-          .replace(/[^a-z0-9]+/g,"-")
-          .replace(/^-+|-+$/g,"")
-          .slice(0,64);
-      }
-
-      function shortRand(){
-        return Math.random().toString(36).slice(2,8);
-      }
-
-      function buildDossierSlug(role, metier, phone, ville, accueilVille){
-        const met = slugify((metier||"metier").split("(")[0].trim());
-        const ph = (phone||"").replace(/\D/g,"").slice(-6) || shortRand();
-        const v = slugify(ville || "");
-        const av = slugify(accueilVille || "");
-        const r = role === "employeur" ? "emp" : "cand";
-        const parts = [ "jobs", r, met, v, av, ph, shortRand() ].filter(Boolean);
-        return parts.join("-");
-      }
-
-      function buildLink(slug){
-        const u = new URL(JOBS_PAGE, location.href);
-        u.searchParams.set("dossier", slug);
-        return u.toString();
-      }
-
-      function waUrl(base, msg){
-        try{
-          const u = new URL(base);
-          u.searchParams.set("text", msg);
-          return u.toString();
-        }catch(e){
-          return base + "?text=" + enc(msg);
-        }
-      }
-
-      function setEnabled(a, on){
-        if(!a) return;
-        a.setAttribute("aria-disabled", on ? "false" : "true");
-        a.style.pointerEvents = on ? "auto" : "none";
-        a.style.opacity = on ? "1" : ".55";
-      }
-
-      function hebergementLabel(v){
-        if(v === "employeur") return "Employeur (hébergement au début)";
-        if(v === "famille") return "Famille / proche (France)";
-        return "À confirmer";
-      }
-
-      // === DOM ===
-      const roleEl = document.getElementById("role");
-      const metierEl = document.getElementById("metier");
-      const phoneEl = document.getElementById("phone");
-      const villeEl = document.getElementById("ville");
-      const hebEl = document.getElementById("hebergement");
-      const accueilVilleEl = document.getElementById("accueilVille");
-
-      const btnCreate = document.getElementById("btnCreate");
-      const btnCopy = document.getElementById("btnCopy");
-      const btnWA = document.getElementById("btnWhatsApp");
-
-      const out = document.getElementById("out");
-      const slugOut = document.getElementById("slug");
-      const linkOut = document.getElementById("link");
-
-      let last = null;
-
-      // Restore last dossier if exists
-      try{
-        const saved = JSON.parse(localStorage.getItem(LS_KEY) || "null");
-        if(saved && saved.slug && saved.link){
-          last = saved;
-          out.style.display = "block";
-          slugOut.textContent = saved.slug;
-          linkOut.textContent = saved.link;
-          btnCopy.href = saved.link;
-          btnWA.href = saved.wa || "#";
-          setEnabled(btnCopy,true);
-          setEnabled(btnWA,true);
-
-          // restore some fields (optional)
-          if(saved.role) roleEl.value = saved.role;
-          if(saved.metier) metierEl.value = saved.metier;
-          if(saved.phone) phoneEl.value = saved.phone;
-          if(saved.ville) villeEl.value = saved.ville;
-          if(saved.hebergement) hebEl.value = saved.hebergement;
-          if(saved.accueilVille) accueilVilleEl.value = saved.accueilVille;
-        }
-      }catch(e){}
-
-      btnCreate.addEventListener("click", function(){
-        const role = roleEl.value;
-        const metier = metierEl.value;
-        const phone = normalizePhone(phoneEl.value);
-        const ville = (villeEl.value || "").trim();
-        const hebergement = hebEl ? hebEl.value : "";
-        const accueilVille = accueilVilleEl ? (accueilVilleEl.value || "").trim() : "";
-
-        if(!phone){
-          alert("Mets ton numéro WhatsApp (avec indicatif +221 / +33) pour créer le dossier.");
-          phoneEl.focus();
-          return;
-        }
-
-        const slug = buildDossierSlug(role, metier, phone, ville, accueilVille);
-        const link = buildLink(slug);
-
-        const msgCommon =
-          "📁 DIGIY JOBS — Nouveau dossier\n" +
-          "Rôle: " + (role === "employeur" ? "Employeur (FR)" : "Candidat (SN)") + "\n" +
-          "Métier: " + metier + "\n" +
-          "Téléphone: " + phone + "\n" +
-          (ville ? ("Ville (actuelle): " + ville + "\n") : "") +
-          "Hébergement: " + hebergementLabel(hebergement) + "\n" +
-          (accueilVille ? ("Ville d’accueil (FR): " + accueilVille + "\n") : "") +
-          "Zone: Nouvelle-Aquitaine (Périgord/Dordogne)\n" +
-          "Lien dossier: " + link + "\n\n" +
-          "Je veux un rendez-vous WhatsApp pour cadrer la suite (dossier + pièces + timing).";
-
-        const waBase = (role === "employeur") ? WA_FR : WA_SN;
-        const wa = waUrl(waBase, msgCommon);
-
-        last = { slug, link, wa, role, metier, phone, ville, hebergement, accueilVille, ts: Date.now() };
-
-        out.style.display = "block";
-        slugOut.textContent = slug;
-        linkOut.textContent = link;
-
-        btnCopy.href = link;
-        btnWA.href = wa;
-        setEnabled(btnCopy,true);
-        setEnabled(btnWA,true);
-
-        try{ localStorage.setItem(LS_KEY, JSON.stringify(last)); }catch(e){}
-
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "jobs_dossier_created",
-          slug: slug,
-          role: role,
-          metier: metier,
-          hebergement: hebergement
-        });
-
-        // Option ultra-fluide : ouvrir WhatsApp direct après création
-        // Décommente si tu veux
-        // location.href = wa;
-      });
-
-      btnCopy.addEventListener("click", async function(e){
-        e.preventDefault();
-        if(!last || !last.link) return;
-        try{
-          await navigator.clipboard.writeText(last.link);
-          alert("Lien copié ✅");
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event:"jobs_dossier_link_copied", slug:last.slug });
-        }catch(err){
-          prompt("Copie le lien :", last.link);
-        }
-      });
-
-      setEnabled(btnCopy, !!(last && last.link));
-      setEnabled(btnWA, !!(last && last.wa));
-    })();
-  </script>
+  </footer>
 </body>
 </html>
