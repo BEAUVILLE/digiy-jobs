@@ -245,6 +245,34 @@
     .foot-links{display:flex;gap:10px;flex-wrap:wrap}
     .foot-links a{padding:10px 12px;border-radius:12px;background:#fff;border:1px solid var(--line);font-weight:800}
 
+    .floating-site-btn{
+      position:fixed;
+      right:16px;
+      bottom:calc(16px + env(safe-area-inset-bottom, 0px));
+      z-index:95;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 16px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--deep),#233548);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 18px 32px rgba(15,23,32,.22);
+      font-weight:900;
+      font-size:14px;
+      letter-spacing:.01em;
+      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+    }
+    .floating-site-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 22px 38px rgba(15,23,32,.28);
+    }
+    .floating-site-btn:active{
+      transform:translateY(0);
+    }
+
     @media (max-width: 1080px){
       .hero-grid,.cta-card,.jobs-grid,.flow-grid,.stats{grid-template-columns:1fr 1fr}
       .jobs-grid .job-card:last-child{grid-column:1 / -1}
@@ -255,6 +283,12 @@
       .nav{display:none}
       .hero{padding-top:22px}
       h1{max-width:none}
+      .floating-site-btn{
+        right:12px;
+        left:12px;
+        bottom:calc(12px + env(safe-area-inset-bottom, 0px));
+        padding:15px 16px;
+      }
     }
   </style>
 </head>
@@ -673,5 +707,14 @@
       </div>
     </div>
   </footer>
+
+  <a
+    class="floating-site-btn"
+    href="https://digiylyfe.com/"
+    aria-label="Retour au site DIGIYLYFE"
+    title="Retour au site"
+  >
+    ← Retour au site
+  </a>
 </body>
 </html>
