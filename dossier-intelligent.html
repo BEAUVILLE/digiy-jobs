@@ -502,11 +502,9 @@
 
       <nav class="nav" aria-label="Navigation DIGIY JOBS">
         <a id="navHome" href="./index.html">Accueil</a>
-        <a id="navWall" href="./mur des missions.html">Mur</a>
+        <a id="navWall" href="./mur%20des%20missions.html">Mur</a>
         <a id="navApply" href="./postuler.html">Postuler</a>
-        <a id="navPin" href="./pin.html">PIN</a>
-        <a id="navCockpit" href="./cockpit.html">Cockpit</a>
-        <a id="navBureau" class="primary" href="./bureau.html">Bureau</a>
+        <a id="navPin" class="primary" href="./pin.html">PIN</a>
       </nav>
     </div>
   </header>
@@ -546,7 +544,7 @@
       </div>
 
       <div class="top-actions">
-        <a id="quickWall" class="mini-btn" href="./mur des missions.html">Mur des missions</a>
+        <a id="quickWall" class="mini-btn" href="./mur%20des%20missions.html">Mur des missions</a>
         <a id="quickApply" class="mini-btn" href="./postuler.html">Postuler</a>
         <a id="quickPin" class="mini-btn" href="./pin.html">Entrée PIN</a>
       </div>
@@ -829,11 +827,9 @@
 
       const PATHS = {
         home: "./index.html",
-        wall: "./mur des missions.html",
+        wall: "./mur%20des%20missions.html",
         apply: "./postuler.html",
-        pin: "./pin.html",
-        cockpit: "./cockpit.html",
-        bureau: "./bureau.html"
+        pin: "./pin.html"
       };
 
       const railBoxes = Array.from(document.querySelectorAll(".rail-box"));
@@ -1020,7 +1016,7 @@
         }
 
         if(data.note) lines.push("Note: " + data.note);
-        if(data.workspaceSlug) lines.push("Workspace: " + data.workspaceSlug);
+        if(data.workspaceSlug) lines.push("Slug: " + data.workspaceSlug);
         lines.push("Dossier: " + data.slug);
         lines.push("Lien suivi: " + data.link);
         lines.push("");
@@ -1083,8 +1079,6 @@
       setHref("navWall", PATHS.wall);
       setHref("navApply", PATHS.apply);
       setHref("navPin", PATHS.pin);
-      setHref("navCockpit", PATHS.cockpit);
-      setHref("navBureau", PATHS.bureau);
 
       setHref("quickWall", PATHS.wall);
       setHref("quickApply", PATHS.apply);
@@ -1094,7 +1088,7 @@
 
       if(workspaceSlugParam){
         modePill.textContent =
-          "✅ Dossier intelligent actif • workspace " +
+          "✅ Dossier intelligent actif • slug " +
           workspaceSlugParam +
           " • suivi branché sur le bon rail";
       }
