@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>DIGIY JOBS — Entrée PIN</title>
+  <meta name="theme-color" content="#071711" />
+  <meta
+    name="description"
+    content="DIGIY JOBS — entrée PIN pro pour ouvrir le rail interne proprement."
+  />
+
+  <script>
+    window.DIGIY_SUPABASE_URL = "https://wesqmwjjtsefyjnluosj.supabase.co";
+    window.DIGIY_SUPABASE_ANON_KEY = "sb_publishable_tGHItRgeWDmGjnd0CK1DVQ_BIep4Ug3";
+    window.DIGIY_SUPABASE_ANON = window.DIGIY_SUPABASE_ANON_KEY;
+    window.DIGIY_MODULE = "JOBS";
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root{
+      --bg:#071711;
+      --bg2:#0c241b;
+      --card:#102a20;
+      --line:rgba(255,255,255,.12);
+      --text:#ecfff4;
+      --muted:rgba(236,255,244,.72);
+      --gold:#facc15;
+      --gold2:#fde68a;
+      --green:#22c55e;
+      --red:#fb7185;
+      --blue:#38bdf8;
+      --max:760px;
+      --shadow:0 18px 60px rgba(0,0,0,.28);
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top, rgba(250,204,21,.08), transparent 22%),
+        linear-gradient(180deg,var(--bg),#06120d 100%);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:18px 16px 80px;
+    }
+
+    .topbar{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+
+    .chip-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      font-weight:800;
+    }
+
+    .chip-link.gold{
+      border-color:rgba(250,204,21,.28);
+      background:rgba(250,204,21,.08);
+      color:#fff3b0;
+    }
+
+    .hero{
+      border:1px solid var(--line);
+      border-radius:30px;
+      padding:24px 20px;
+      background:
+        radial-gradient(circle at 90% 18%, rgba(250,204,21,.15), transparent 18%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)),
+        var(--bg2);
+      box-shadow:var(--shadow);
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#fff0b8;
+      font-weight:900;
+      margin-bottom:10px;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size:clamp(30px,5vw,52px);
+      line-height:1;
+      letter-spacing:-.03em;
+    }
+
+    .lead{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:16px;
+      max-width:60ch;
+    }
+
+    .meta-line{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:16px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .meta-chip{
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--line);
+    }
+
+    .card{
+      margin-top:18px;
+      border:1px solid var(--line);
+      border-radius:30px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)),
+        var(--card);
+      box-shadow:var(--shadow);
+      padding:22px 18px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-bottom:14px;
+    }
+
+    label{
+      font-size:13px;
+      font-weight:800;
+      color:#d9fbe7;
+    }
+
+    input{
+      width:100%;
+      border:none;
+      outline:none;
+      border-radius:16px;
+      padding:14px 14px;
+      color:var(--text);
+      background:rgba(255,255,255,.08);
+      border:1px solid transparent;
+    }
+
+    input::placeholder{color:rgba(236,255,244,.42)}
+
+    input:focus{
+      border-color:rgba(250,204,21,.45);
+      box-shadow:0 0 0 4px rgba(250,204,21,.08);
+    }
+
+    input[readonly]{
+      opacity:.88;
+    }
+
+    .hint{
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.55;
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      min-height:52px;
+      padding:14px 18px;
+      border-radius:18px;
+      font-weight:900;
+      cursor:pointer;
+      border:none;
+    }
+
+    .btn-primary{
+      background:linear-gradient(180deg,var(--gold),#eab308);
+      color:#171717;
+      min-width:220px;
+    }
+
+    .btn-secondary{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+    }
+
+    .status{
+      margin-top:16px;
+      border-radius:20px;
+      padding:14px 16px;
+      display:none;
+      line-height:1.6;
+      font-weight:700;
+      white-space:pre-line;
+    }
+
+    .status.ok{
+      display:block;
+      background:rgba(34,197,94,.1);
+      color:#c6ffd3;
+      border:1px solid rgba(34,197,94,.22);
+    }
+
+    .status.err{
+      display:block;
+      background:rgba(251,113,133,.1);
+      color:#ffd9df;
+      border:1px solid rgba(251,113,133,.22);
+    }
+
+    .status.info{
+      display:block;
+      background:rgba(56,189,248,.10);
+      color:#d8f4ff;
+      border:1px solid rgba(56,189,248,.22);
+    }
+
+    @media (max-width: 640px){
+      .wrap{padding:14px 12px 70px}
+      .hero{padding:22px 14px}
+      .card{padding:18px 14px}
+      h1{font-size:34px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="chip-link" href="https://digiylyfe.com/" target="_blank" rel="noopener">← Retour au site</a>
+      <a id="wallLink" class="chip-link gold" href="./mur%20des%20missions.html">Mur des missions</a>
+      <a id="applyLink" class="chip-link" href="./postuler.html">Postuler</a>
+      <a id="dossierLink" class="chip-link" href="./dossier-intelligent.html">Dossier</a>
+    </div>
+
+    <section class="hero">
+      <div class="kicker">DIGIY JOBS • entrée pro protégée</div>
+      <h1>Entrer par le PIN, pas par la fenêtre.</h1>
+      <p class="lead">
+        Cette page sert uniquement à ouvrir le rail pro. Le public s’arrête ici.
+        Après validation du PIN, la porte interne s’ouvre proprement.
+      </p>
+
+      <div class="meta-line">
+        <div class="meta-chip">Module : <strong>JOBS</strong></div>
+        <div class="meta-chip">Slug actif : <strong id="slugChip">détection…</strong></div>
+        <div class="meta-chip">Source : <strong id="sourceChip">Supabase réel</strong></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <form id="pinForm">
+        <div class="field">
+          <label for="slug">Slug</label>
+          <input id="slug" name="slug" type="text" placeholder="Ex: jobs-221771342889" />
+          <div class="hint">Si le slug est dans l’URL, il sera repris automatiquement.</div>
+        </div>
+
+        <div class="field">
+          <label for="phone">Téléphone du rail</label>
+          <input id="phone" name="phone" type="tel" placeholder="Ex: 221771234567" />
+          <div class="hint" id="phoneHint">Le téléphone peut être résolu automatiquement depuis le slug.</div>
+        </div>
+
+        <div class="field">
+          <label for="pin">PIN</label>
+          <input id="pin" name="pin" type="password" inputmode="numeric" maxlength="8" placeholder="Entre ton PIN" required />
+          <div class="hint">PIN court, propre, et réservé au rail pro.</div>
+        </div>
+
+        <div class="actions">
+          <button id="submitBtn" type="submit" class="btn btn-primary">Ouvrir le rail pro</button>
+          <a id="backWallBtn" class="btn btn-secondary" href="./mur%20des%20missions.html">Retour au mur</a>
+        </div>
+
+        <div id="statusBox" class="status"></div>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    (function(){
+      "use strict";
+
+      const SUPABASE_URL =
+        window.DIGIY_SUPABASE_URL ||
+        "https://wesqmwjjtsefyjnluosj.supabase.co";
+
+      const SUPABASE_ANON_KEY =
+        window.DIGIY_SUPABASE_ANON ||
+        window.DIGIY_SUPABASE_ANON_KEY ||
+        "";
+
+      const sb =
+        window.supabase && SUPABASE_URL && SUPABASE_ANON_KEY
+          ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+          : null;
+
+      const MODULE = "JOBS";
+      const SLUG_STORAGE_KEY = "digiy_jobs_slug";
+      const SESSION_KEYS = [
+        "digiy_jobs_session",
+        "DIGIY_JOBS_SESSION",
+        "digiy_guard_session_jobs",
+        "digiy_guard_session"
+      ];
+
+      const params = new URLSearchParams(window.location.search);
+
+      const $ = (id) => document.getElementById(id);
+
+      const state = {
+        slug: String(params.get("slug") || "").trim().toLowerCase(),
+        phone: ""
+      };
+
+      function normalizeSlug(v = ""){
+        return String(v || "").trim().toLowerCase();
+      }
+
+      function normalizePhone(v = ""){
+        return String(v || "").replace(/[^\d]/g, "");
+      }
+
+      function withSlug(path, slug){
+        const clean = normalizeSlug(slug);
+        if (!clean) return path;
+        const joiner = path.includes("?") ? "&" : "?";
+        return `${path}${joiner}slug=${encodeURIComponent(clean)}`;
+      }
+
+      function showStatus(type, text){
+        const box = $("statusBox");
+        if (!box) return;
+
+        if (!type) {
+          box.className = "status";
+          box.textContent = "";
+          box.style.display = "none";
+          return;
+        }
+
+        box.className = `status ${type}`;
+        box.textContent = text;
+        box.style.display = "block";
+      }
+
+      function saveSlug(slug){
+        try{
+          if (slug) localStorage.setItem(SLUG_STORAGE_KEY, slug);
+        }catch(_){}
+      }
+
+      function readSavedSlug(){
+        try{
+          return normalizeSlug(localStorage.getItem(SLUG_STORAGE_KEY) || "");
+        }catch(_){
+          return "";
+        }
+      }
+
+      function saveSession(payload){
+        SESSION_KEYS.forEach((key) => {
+          try{
+            localStorage.setItem(key, JSON.stringify(payload));
+          }catch(_){}
+          try{
+            sessionStorage.setItem(key, JSON.stringify(payload));
+          }catch(_){}
+        });
+      }
+
+      function syncLinks(){
+        const slug = state.slug || "";
+        $("wallLink").href = withSlug("./mur%20des%20missions.html", slug);
+        $("applyLink").href = withSlug("./postuler.html", slug);
+        $("dossierLink").href = withSlug("./dossier-intelligent.html", slug);
+        $("backWallBtn").href = withSlug("./mur%20des%20missions.html", slug);
+        $("slugChip").textContent = slug || "aucun slug détecté";
+      }
+
+      function setSlug(nextSlug){
+        state.slug = normalizeSlug(nextSlug);
+        if ($("slug")) $("slug").value = state.slug;
+        if (state.slug) saveSlug(state.slug);
+        syncLinks();
+      }
+
+      function setPhone(nextPhone, autoResolved = false){
+        state.phone = normalizePhone(nextPhone);
+        if ($("phone")) $("phone").value = state.phone;
+        $("phoneHint").textContent = autoResolved
+          ? "Téléphone résolu automatiquement depuis le slug."
+          : "Le téléphone peut être résolu automatiquement depuis le slug.";
+      }
+
+      async function resolvePhoneBySlug(){
+        if (!sb || !state.slug) return;
+
+        const { data, error } = await sb
+          .from("digiy_subscriptions_public")
+          .select("slug, phone, module")
+          .eq("slug", state.slug)
+          .eq("module", MODULE)
+          .maybeSingle();
+
+        if (error) {
+          console.error(error);
+          return;
+        }
+
+        if (data?.phone) {
+          setPhone(data.phone, true);
+        }
+      }
+
+      async function resolveSlugByPhone(phone){
+        if (!sb || !phone) return "";
+
+        const { data, error } = await sb
+          .from("digiy_subscriptions_public")
+          .select("slug, phone, module")
+          .eq("phone", phone)
+          .eq("module", MODULE)
+          .maybeSingle();
+
+        if (error) {
+          console.error(error);
+          return "";
+        }
+
+        return normalizeSlug(data?.slug || "");
+      }
+
+      function rpcLooksOk(data){
+        if (data === true) return true;
+
+        if (data && typeof data === "object" && !Array.isArray(data)) {
+          if ("ok" in data) return Boolean(data.ok);
+          if ("access" in data) return Boolean(data.access);
+          if ("success" in data) return Boolean(data.success);
+          const vals = Object.values(data);
+          if (vals.length && typeof vals[0] === "boolean") return vals[0];
+        }
+
+        if (Array.isArray(data) && data.length) {
+          const row = data[0];
+          if (row === true) return true;
+          if (row && typeof row === "object") {
+            if ("ok" in row) return Boolean(row.ok);
+            if ("access" in row) return Boolean(row.access);
+            if ("success" in row) return Boolean(row.success);
+            const vals = Object.values(row);
+            if (vals.length && typeof vals[0] === "boolean") return vals[0];
+          }
+        }
+
+        return false;
+      }
+
+      async function verifyPin(phone, pin){
+        const { data, error } = await sb.rpc("digiy_verify_pin", {
+          p_phone: phone,
+          p_module: MODULE,
+          p_pin: pin
+        });
+
+        if (error) throw error;
+        return data;
+      }
+
+      async function handleSubmit(e){
+        e.preventDefault();
+        showStatus("", "");
+
+        if (!sb) {
+          showStatus("err", "Supabase non chargé. Vérifie la configuration front.");
+          return;
+        }
+
+        const rawSlug = normalizeSlug($("slug").value);
+        const rawPhone = normalizePhone($("phone").value);
+        const rawPin = String($("pin").value || "").trim();
+
+        if (rawSlug) setSlug(rawSlug);
+        if (rawPhone) setPhone(rawPhone, false);
+
+        let phone = state.phone || rawPhone;
+        let slug = state.slug || rawSlug;
+
+        if (!slug && !phone) {
+          showStatus("err", "Il faut au moins un slug ou un téléphone pour ouvrir le rail.");
+          return;
+        }
+
+        if (!phone && slug) {
+          await resolvePhoneBySlug();
+          phone = state.phone;
+        }
+
+        if (!slug && phone) {
+          const resolvedSlug = await resolveSlugByPhone(phone);
+          if (resolvedSlug) {
+            setSlug(resolvedSlug);
+            slug = resolvedSlug;
+          }
+        }
+
+        if (!phone) {
+          showStatus("err", "Téléphone du rail introuvable. Vérifie le slug ou saisis le téléphone.");
+          return;
+        }
+
+        if (!rawPin || rawPin.length < 4) {
+          showStatus("err", "Entre un PIN valide.");
+          return;
+        }
+
+        const btn = $("submitBtn");
+        btn.disabled = true;
+        btn.textContent = "Vérification...";
+
+        try {
+          const data = await verifyPin(phone, rawPin);
+
+          if (!rpcLooksOk(data)) {
+            btn.disabled = false;
+            btn.textContent = "Ouvrir le rail pro";
+            showStatus("err", "PIN incorrect ou accès JOBS non valide.");
+            return;
+          }
+
+          const payload = {
+            module: MODULE,
+            slug: slug || "",
+            phone: phone || "",
+            access: true,
+            ts: Date.now()
+          };
+
+          saveSession(payload);
+          if (slug) saveSlug(slug);
+
+          showStatus("ok", "PIN validé. Ouverture du rail pro...");
+
+          const target = slug
+            ? `./cockpit.html?slug=${encodeURIComponent(slug)}`
+            : "./cockpit.html";
+
+          setTimeout(() => {
+            window.location.href = target;
+          }, 500);
+        } catch (err) {
+          console.error(err);
+          btn.disabled = false;
+          btn.textContent = "Ouvrir le rail pro";
+          showStatus("err", "Impossible de vérifier le PIN pour le moment. Vérifie le SQL/RLS puis réessaie.");
+          return;
+        }
+      }
+
+      $("pinForm").addEventListener("submit", handleSubmit);
+
+      (async () => {
+        if (!state.slug) {
+          const saved = readSavedSlug();
+          if (saved) state.slug = saved;
+        }
+
+        if (state.slug) {
+          setSlug(state.slug);
+          await resolvePhoneBySlug();
+        } else {
+          syncLinks();
+        }
+      })();
+    })();
+  </script>
+</body>
+</html>
