@@ -6,7 +6,7 @@
   <title>DIGIY JOBS — Hall public</title>
   <meta
     name="description"
-    content="DIGIY JOBS — hall public pour voir les missions, déposer une candidature et accéder au rail pro proprement."
+    content="DIGIY JOBS — hall public pour voir les missions, déposer une candidature, ouvrir le dossier intelligent et accéder au rail pro proprement."
   />
   <meta name="theme-color" content="#0f1720" />
 
@@ -25,6 +25,7 @@
       --green:#1f7a5a;
       --red:#b64a3c;
       --blue:#0ea5e9;
+      --blue-2:#38bdf8;
       --shadow:0 18px 40px rgba(21,32,43,.08);
       --radius:24px;
       --radius-sm:16px;
@@ -112,6 +113,12 @@
       background:linear-gradient(135deg,var(--gold),var(--gold-2));
       border-color:transparent;
       color:#23180a;
+    }
+
+    .nav a.blue{
+      background:linear-gradient(135deg,var(--blue),var(--blue-2));
+      border-color:transparent;
+      color:#fff;
     }
 
     .hero{padding:42px 0 24px}
@@ -214,6 +221,12 @@
       border-color:var(--line);
     }
 
+    .btn-blue{
+      background:linear-gradient(135deg,var(--blue),var(--blue-2));
+      color:#fff;
+      box-shadow:0 12px 24px rgba(14,165,233,.18);
+    }
+
     .hero-notes{
       display:flex;
       flex-wrap:wrap;
@@ -228,6 +241,12 @@
       color:var(--muted);
       font-size:14px;
       font-weight:700;
+    }
+
+    .pill.blue{
+      color:#075985;
+      border-color:rgba(14,165,233,.18);
+      background:rgba(14,165,233,.08);
     }
 
     .panel{
@@ -289,6 +308,13 @@
       color:#ffeab8;
       font-weight:800;
       font-size:13px;
+      flex-wrap:wrap;
+    }
+
+    .signal.blue{
+      background:rgba(14,165,233,.10);
+      border-color:rgba(14,165,233,.18);
+      color:#d8f2ff;
     }
 
     .stats{
@@ -340,7 +366,7 @@
 
     .nav-grid{
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-columns:repeat(4,minmax(0,1fr));
       gap:16px;
     }
 
@@ -369,6 +395,7 @@
     .nav-card .badge.ok{color:var(--green)}
     .nav-card .badge.warn{color:var(--earth)}
     .nav-card .badge.hot{color:var(--red)}
+    .nav-card .badge.blue{color:#075985}
 
     .nav-card h3{
       margin:0;
@@ -436,9 +463,15 @@
       border-color:var(--deep);
     }
 
+    .action-link.blue{
+      background:rgba(14,165,233,.10);
+      border-color:rgba(14,165,233,.18);
+      color:#075985;
+    }
+
     .flow-grid{
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-columns:repeat(4,minmax(0,1fr));
       gap:16px;
     }
 
@@ -582,9 +615,13 @@
       transform:translateY(0);
     }
 
+    @media (max-width: 1180px){
+      .nav-grid{grid-template-columns:1fr 1fr}
+      .flow-grid{grid-template-columns:1fr 1fr}
+    }
+
     @media (max-width: 1080px){
-      .hero-grid,.cta-card,.nav-grid,.flow-grid,.stats{grid-template-columns:1fr 1fr}
-      .nav-grid .nav-card:last-child{grid-column:1 / -1}
+      .hero-grid,.cta-card,.stats{grid-template-columns:1fr 1fr}
     }
 
     @media (max-width: 820px){
@@ -612,9 +649,11 @@
           <small>HALL PUBLIC</small>
         </span>
       </a>
+
       <nav class="nav" aria-label="Navigation principale">
         <a id="navWall" href="./mur des missions.html">Mur</a>
         <a id="navApply" href="./postuler.html">Postuler</a>
+        <a id="navDossier" class="blue" href="./dossier-intelligent.html">Dossier</a>
         <a id="navPin" href="./pin.html">PIN</a>
         <a id="navCockpit" href="./cockpit.html">Cockpit</a>
         <a class="primary" href="#entrer">Entrer</a>
@@ -629,16 +668,21 @@
           <span class="eyebrow">Rail public DIGIY JOBS</span>
           <h1>Le travail visible. Les missions lisibles. Le terrain d’abord.</h1>
           <p class="lead">
-            DIGIY JOBS montre les missions, ouvre la porte aux candidatures et relie proprement
-            le public au bureau pro. Ici on cherche la clarté : besoin réel, profil réel, contact utile.
+            DIGIY JOBS montre les missions, ouvre la porte aux candidatures, au dossier intelligent
+            et relie proprement le public au bureau pro. Ici on cherche la clarté :
+            besoin réel, profil réel, contact utile.
           </p>
+
           <div class="hero-actions">
             <a id="heroWallBtn" class="btn btn-dark" href="./mur des missions.html">Voir les missions</a>
             <a id="heroApplyBtn" class="btn btn-light" href="./postuler.html">Déposer ma candidature</a>
+            <a id="heroDossierBtn" class="btn btn-blue" href="./dossier-intelligent.html">Ouvrir le dossier</a>
           </div>
+
           <div class="hero-notes">
             <span class="pill">Mur des missions</span>
             <span class="pill">Candidature spontanée</span>
+            <span class="pill blue">Dossier intelligent</span>
             <span class="pill">Entrée PIN pro</span>
             <span class="pill">Rail bureau raccordé</span>
           </div>
@@ -646,11 +690,14 @@
 
         <aside class="panel" aria-label="Résumé du module">
           <span class="signal" id="workspacePill">Workspace : public</span>
+          <span class="signal blue" id="railPill">Rail : mixte</span>
+
           <h2>Ce que cette porte fait</h2>
           <p>
             Elle sert d’accueil public propre pour DIGIY JOBS. Depuis ici on ouvre le mur des missions,
-            on postule, et on rejoint le rail pro sans mélanger les portes.
+            on postule, on prépare le dossier, et on rejoint le rail pro sans mélanger les portes.
           </p>
+
           <div class="panel-grid">
             <div class="mini-card">
               <strong>Public</strong>
@@ -661,8 +708,8 @@
               <span>Déposer une candidature simple, liée ou spontanée.</span>
             </div>
             <div class="mini-card">
-              <strong>Pro</strong>
-              <span>Entrer par PIN puis ouvrir cockpit et bureau.</span>
+              <strong>Dossier</strong>
+              <span>Préparer un dossier plus intelligent selon le bon rail métier.</span>
             </div>
             <div class="mini-card">
               <strong>Slug</strong>
@@ -680,8 +727,8 @@
           <span>Pour entrer proprement dans le module</span>
         </article>
         <article class="stat">
-          <strong>3 rails</strong>
-          <span>Public, candidature, bureau pro</span>
+          <strong>4 portes</strong>
+          <span>Mur, postuler, dossier, bureau pro</span>
         </article>
         <article class="stat">
           <strong>0 détour</strong>
@@ -700,7 +747,7 @@
           <div>
             <h2>Choisir sa porte</h2>
             <p>
-              Public, candidat, ou pro : chacun a son entrée. On évite de tout mélanger dans une seule page molle.
+              Public, candidat, dossier ou pro : chacun a son entrée. On évite de tout mélanger dans une seule page molle.
             </p>
           </div>
         </div>
@@ -749,6 +796,27 @@
           </article>
 
           <article class="nav-card">
+            <span class="badge blue">Dossier</span>
+            <h3>Dossier intelligent</h3>
+            <p>
+              Préparer un dossier plus clair selon le bon rail métier, avec BUILD ou Hôtellerie-Restauration.
+            </p>
+            <div class="card-meta">
+              <div class="meta-item">
+                <small>Page</small>
+                <strong>dossier-intelligent.html</strong>
+              </div>
+              <div class="meta-item">
+                <small>Usage</small>
+                <strong>Qualifier le profil ou le besoin</strong>
+              </div>
+            </div>
+            <div class="job-actions">
+              <a id="dossierCardBtn" class="action-link blue" href="./dossier-intelligent.html">Ouvrir le dossier</a>
+            </div>
+          </article>
+
+          <article class="nav-card">
             <span class="badge hot">Pro</span>
             <h3>Rail bureau</h3>
             <p>
@@ -780,7 +848,8 @@
           <div>
             <h2>Lecture simple du rail</h2>
             <p>
-              Le public voit, le candidat postule, le pro trie. Chacun reste sur sa page. C’est ça qui garde le module propre.
+              Le public voit, le candidat postule, le dossier affine, le pro trie. Chacun reste sur sa page.
+              C’est ça qui garde le module propre.
             </p>
           </div>
         </div>
@@ -793,6 +862,7 @@
               Le mur des missions affiche les offres actives sans ouvrir directement le bureau pro.
             </p>
           </article>
+
           <article class="step">
             <div class="step-num">2</div>
             <h3>Le candidat se présente</h3>
@@ -800,8 +870,17 @@
               Il ouvre la fiche mission ou la page postuler, remplit l’essentiel, puis la candidature entre dans la base.
             </p>
           </article>
+
           <article class="step">
             <div class="step-num">3</div>
+            <h3>Le dossier qualifie mieux</h3>
+            <p>
+              Le dossier intelligent affine le rail métier et rend la lecture plus nette côté bureau.
+            </p>
+          </article>
+
+          <article class="step">
+            <div class="step-num">4</div>
             <h3>Le pro pilote derrière</h3>
             <p>
               Le cockpit et le bureau prennent le relais pour trier, noter, appeler et relier.
@@ -818,13 +897,16 @@
             <h2>Le hall public doit être simple, net et sans confusion.</h2>
             <p>
               Cette page n’a pas besoin de tout faire. Son rôle est d’ouvrir les bonnes portes :
-              mur, candidature, PIN et cockpit. Le travail lourd se fait derrière, pas ici.
+              mur, candidature, dossier intelligent, PIN et cockpit. Le travail lourd se fait derrière, pas ici.
             </p>
+
             <div class="hero-actions" style="margin-top:18px;margin-bottom:0">
               <a id="ctaWallBtn" class="btn btn-dark" href="./mur des missions.html">Ouvrir le mur</a>
               <a id="ctaApplyBtn" class="btn btn-light" href="./postuler.html">Postuler</a>
+              <a id="ctaDossierBtn" class="btn btn-blue" href="./dossier-intelligent.html">Dossier intelligent</a>
             </div>
           </div>
+
           <div class="cta-right">
             <div class="cta-box">
               <small>Porte publique</small>
@@ -833,6 +915,10 @@
             <div class="cta-box">
               <small>Porte candidat</small>
               <strong>Une page simple pour entrer son profil sans détour.</strong>
+            </div>
+            <div class="cta-box">
+              <small>Porte dossier</small>
+              <strong>Une qualification plus propre selon le rail métier.</strong>
             </div>
             <div class="cta-box">
               <small>Porte pro</small>
@@ -850,10 +936,12 @@
         <p>
           DIGIY JOBS — hall public. Une porte claire pour ouvrir le bon rail sans mélanger les usages.
         </p>
+
         <div class="foot-links">
           <a href="#top">Retour haut</a>
           <a id="footWall" href="./mur des missions.html">Mur</a>
           <a id="footApply" href="./postuler.html">Postuler</a>
+          <a id="footDossier" href="./dossier-intelligent.html">Dossier</a>
           <a id="footPin" href="./pin.html">PIN</a>
         </div>
       </div>
@@ -875,31 +963,64 @@
 
       const params = new URLSearchParams(window.location.search);
       const slug = String(params.get("slug") || "").trim().toLowerCase();
+      const secteur = normalizeSecteur(String(params.get("secteur") || params.get("rail") || "").trim().toLowerCase());
 
       const PATHS = {
         wall: "./mur des missions.html",
         apply: "./postuler.html",
+        dossier: "./dossier-intelligent.html",
         pin: "./pin.html",
         cockpit: "./cockpit.html",
         bureau: "./bureau.html"
       };
 
-      function withSlug(path){
-        if (!slug) return path;
-        const joiner = path.includes("?") ? "&" : "?";
-        return `${path}${joiner}slug=${encodeURIComponent(slug)}`;
+      function normalizeSecteur(value){
+        const raw = String(value || "").trim().toLowerCase();
+
+        if (
+          raw === "build" ||
+          raw === "btp" ||
+          raw === "chantier"
+        ) return "build";
+
+        if (
+          raw === "resto" ||
+          raw === "hotellerie-restauration" ||
+          raw === "hôtellerie-restauration" ||
+          raw === "food"
+        ) return "hotellerie-restauration";
+
+        return "";
+      }
+
+      function secteurLabel(value){
+        if (value === "build") return "BUILD";
+        if (value === "hotellerie-restauration") return "Hôtellerie-Restauration";
+        return "mixte";
+      }
+
+      function withContext(path){
+        const url = new URL(path, window.location.href);
+        if (slug) url.searchParams.set("slug", slug);
+        if (secteur) url.searchParams.set("secteur", secteur);
+        return url.toString();
       }
 
       function setHref(id, path){
         const el = document.getElementById(id);
-        if (el) el.href = withSlug(path);
+        if (el) el.href = withContext(path);
       }
 
       const workspacePill = document.getElementById("workspacePill");
+      const railPill = document.getElementById("railPill");
       const slugText = document.getElementById("slugText");
 
       if (workspacePill) {
         workspacePill.textContent = slug ? `Workspace : ${slug}` : "Workspace : public";
+      }
+
+      if (railPill) {
+        railPill.textContent = `Rail : ${secteurLabel(secteur)}`;
       }
 
       if (slugText) {
@@ -908,23 +1029,28 @@
 
       setHref("navWall", PATHS.wall);
       setHref("navApply", PATHS.apply);
+      setHref("navDossier", PATHS.dossier);
       setHref("navPin", PATHS.pin);
       setHref("navCockpit", PATHS.cockpit);
 
       setHref("heroWallBtn", PATHS.wall);
       setHref("heroApplyBtn", PATHS.apply);
+      setHref("heroDossierBtn", PATHS.dossier);
 
       setHref("wallCardBtn", PATHS.wall);
       setHref("applyCardBtn", PATHS.apply);
+      setHref("dossierCardBtn", PATHS.dossier);
       setHref("pinCardBtn", PATHS.pin);
       setHref("cockpitCardBtn", PATHS.cockpit);
       setHref("bureauCardBtn", PATHS.bureau);
 
       setHref("ctaWallBtn", PATHS.wall);
       setHref("ctaApplyBtn", PATHS.apply);
+      setHref("ctaDossierBtn", PATHS.dossier);
 
       setHref("footWall", PATHS.wall);
       setHref("footApply", PATHS.apply);
+      setHref("footDossier", PATHS.dossier);
       setHref("footPin", PATHS.pin);
     })();
   </script>
