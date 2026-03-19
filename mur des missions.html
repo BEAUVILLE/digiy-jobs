@@ -430,8 +430,6 @@
       <a id="missionsWallLink" class="chip-link gold" href="./mur%20des%20missions.html">Mur des missions</a>
       <a id="dossierLink" class="chip-link blue" href="./dossier-intelligent.html">Dossier intelligent</a>
       <a id="pinLink" class="chip-link" href="./pin.html">Entrée PIN</a>
-      <a id="cockpitLink" class="chip-link" href="./cockpit.html">Cockpit pro</a>
-      <a id="bureauLink" class="chip-link" href="./bureau.html">Bureau</a>
     </div>
 
     <section class="hero">
@@ -447,8 +445,8 @@
 
           <div class="meta-line">
             <div class="meta-chip">Mode : <strong id="modeChip">mur public</strong></div>
-            <div class="meta-chip">Workspace : <strong id="workspaceChip">global</strong></div>
-            <div class="meta-chip">Rail : <strong id="railChip">mixte</strong></div>
+            <div class="meta-chip">Slug : <strong id="slugChip">public</strong></div>
+            <div class="meta-chip">Rail : <strong id="railChip">public</strong></div>
             <div class="meta-chip">Source : <strong id="sourceChip">Supabase réel</strong></div>
           </div>
         </div>
@@ -536,12 +534,12 @@
     const params = new URLSearchParams(location.search);
     const $ = (id) => document.getElementById(id);
 
+    const SLUG_STORAGE_KEY = "digiy_jobs_slug";
+
     const JOBS_PATHS = {
       home: "./index.html",
       missions: "./mur%20des%20missions.html",
       pin: "./pin.html",
-      cockpit: "./cockpit.html",
-      bureau: "./bureau.html",
       postuler: "./postuler.html",
       mission: "./mission.html",
       dossier: "./dossier-intelligent.html"
@@ -550,9 +548,22 @@
     const state = {
       offers: [],
       filtered: [],
-      workspaceSlug: String(params.get("slug") || "").trim().toLowerCase(),
+      slug: resolveSlug(),
       secteur: normalizeSecteur(String(params.get("secteur") || params.get("rail") || "").trim().toLowerCase())
     };
+
+    function resolveSlug(){
+      const qs = String(params.get("slug") || "").trim().toLowerCase();
+      if (qs) {
+        try { localStorage.setItem(SLUG_STORAGE_KEY, qs); } catch(_) {}
+        return qs;
+      }
+      try {
+        return String(localStorage.getItem(SLUG_STORAGE_KEY) || "").trim().toLowerCase();
+      } catch(_) {
+        return "";
+      }
+    }
 
     function escapeHtml(v=''){
       return String(v)
@@ -581,16 +592,10 @@
       return '';
     }
 
-    function secteurToRail(v=''){
-      if (v === 'build') return 'build';
-      if (v === 'hotellerie-restauration') return 'resto';
-      return '';
-    }
-
     function secteurLabel(v=''){
       if (v === 'build') return 'BUILD';
       if (v === 'hotellerie-restauration') return 'Hôtellerie-Restauration';
-      return 'mixte';
+      return 'public';
     }
 
     function labelSector(v=''){
@@ -656,6 +661,11 @@
       return url.toString();
     }
 
+    function setHref(id, path){
+      const el = $(id);
+      if (el) el.href = withContext(path, { slug: state.slug, secteur: state.secteur });
+    }
+
     function inferSecteurFromOffer(item){
       const sector = String(item?.sector || '').trim().toLowerCase();
 
@@ -689,22 +699,19 @@
     }
 
     function syncLinks(){
-      const slug = state.workspaceSlug || '';
-      const secteur = state.secteur || '';
+      $('slugChip').textContent = state.slug || 'public';
+      $('modeChip').textContent = state.slug ? 'mur public lié au slug' : 'mur public';
+      $('railChip').textContent = state.slug
+        ? `${secteurLabel(state.secteur)} + contexte slug`
+        : secteurLabel(state.secteur);
+      $('sourceChip').textContent = 'digiy_jobs_offers_pro';
 
-      $('workspaceChip').textContent = slug || 'global';
-      $('modeChip').textContent = slug ? 'mur workspace' : 'mur public';
-      $('railChip').textContent = secteurLabel(secteur);
-
-      $('homeLink').href = withContext(JOBS_PATHS.home, { slug, secteur });
-      $('missionsWallLink').href = withContext(JOBS_PATHS.missions, { slug, secteur });
-      $('dossierLink').href = withContext(JOBS_PATHS.dossier, { slug, secteur });
-      $('pinLink').href = withContext(JOBS_PATHS.pin, { slug, secteur });
-      $('cockpitLink').href = withContext(JOBS_PATHS.cockpit, { slug, secteur });
-      $('bureauLink').href = withContext(JOBS_PATHS.bureau, { slug, secteur });
-
-      $('spontaneousLink').href = withContext(JOBS_PATHS.postuler, { slug, secteur });
-      $('toolbarDossierLink').href = withContext(JOBS_PATHS.dossier, { slug, secteur });
+      setHref('homeLink', JOBS_PATHS.home);
+      setHref('missionsWallLink', JOBS_PATHS.missions);
+      setHref('dossierLink', JOBS_PATHS.dossier);
+      setHref('pinLink', JOBS_PATHS.pin);
+      setHref('spontaneousLink', JOBS_PATHS.postuler);
+      setHref('toolbarDossierLink', JOBS_PATHS.dossier);
     }
 
     function renderStatus(type, text){
@@ -716,7 +723,7 @@
     }
 
     function missionHref(item){
-      const slug = item.workspace_slug || state.workspaceSlug || '';
+      const slug = item.slug || state.slug || '';
       const secteur = inferSecteurFromOffer(item) || state.secteur || '';
 
       return withContext(JOBS_PATHS.mission, {
@@ -727,7 +734,7 @@
     }
 
     function applyHref(item){
-      const slug = item.workspace_slug || state.workspaceSlug || '';
+      const slug = item.slug || state.slug || '';
       const secteur = inferSecteurFromOffer(item) || state.secteur || '';
 
       return withContext(JOBS_PATHS.postuler, {
@@ -738,7 +745,7 @@
     }
 
     function dossierHref(item){
-      const slug = item.workspace_slug || state.workspaceSlug || '';
+      const slug = item.slug || state.slug || '';
       const secteur = inferSecteurFromOffer(item) || state.secteur || '';
 
       return withContext(JOBS_PATHS.dossier, {
@@ -754,8 +761,8 @@
       if (!list.length) {
         renderStatus(
           'empty',
-          state.workspaceSlug
-            ? 'Aucune mission active trouvée pour ce workspace pour le moment.'
+          state.slug
+            ? 'Aucune mission active trouvée pour ce slug pour le moment.'
             : 'Aucune mission ne correspond à ce filtre pour le moment.'
         );
         $('count').textContent = '0 mission trouvée';
@@ -769,6 +776,7 @@
       cards.innerHTML = list.map(item => {
         const flags = [];
         const inferredSecteur = inferSecteurFromOffer(item);
+        const offerSlug = item.slug || state.slug || '';
 
         if (item.has_housing) {
           flags.push('<span class="flag">Logement possible</span>');
@@ -778,8 +786,8 @@
           flags.push('<span class="flag">Accueil familial possible</span>');
         }
 
-        if (item.workspace_slug) {
-          flags.push(`<span class="flag">Workspace : ${escapeHtml(item.workspace_slug)}</span>`);
+        if (offerSlug) {
+          flags.push(`<span class="flag">Slug : ${escapeHtml(offerSlug)}</span>`);
         }
 
         return `
@@ -821,6 +829,7 @@
       state.filtered = state.offers.filter(item => {
         const hay = [
           item.title,
+          item.slug,
           item.sector,
           item.city,
           item.country,
@@ -828,8 +837,7 @@
           item.description,
           item.requirements,
           item.employer_name,
-          item.pay,
-          item.workspace_slug
+          item.pay
         ].join(' ').toLowerCase();
 
         if (q && !hay.includes(q)) return false;
@@ -840,6 +848,10 @@
         if (state.secteur) {
           const inferred = inferSecteurFromOffer(item);
           if (inferred !== state.secteur) return false;
+        }
+
+        if (state.slug) {
+          if (String(item.slug || '').toLowerCase() !== state.slug) return false;
         }
 
         return true;
@@ -857,20 +869,20 @@
 
       renderStatus(
         'loading',
-        state.workspaceSlug
-          ? 'Chargement des missions du workspace...'
+        state.slug
+          ? 'Chargement des missions de ce slug...'
           : 'Chargement des missions...'
       );
 
       let query = sb
         .from('digiy_jobs_offers_pro')
-        .select('id,workspace_slug,title,sector,city,country,contract_type,pay,status,description,requirements,has_housing,has_family_welcome,employer_name,published_at,created_at')
+        .select('id,slug,title,sector,city,country,contract_type,pay,status,description,requirements,has_housing,has_family_welcome,employer_name,published_at,created_at')
         .eq('status', 'active')
         .order('published_at', { ascending:false })
         .order('created_at', { ascending:false });
 
-      if (state.workspaceSlug) {
-        query = query.eq('workspace_slug', state.workspaceSlug);
+      if (state.slug) {
+        query = query.eq('slug', state.slug);
       }
 
       const { data, error } = await query;
