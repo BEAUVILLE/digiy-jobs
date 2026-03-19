@@ -4,70 +4,290 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>DIGIY JOBS — Suivi dossier</title>
-  <meta name="description" content="Suivi dossier DIGIY JOBS (public). Checklist documents + résumé WhatsApp." />
+  <meta
+    name="description"
+    content="Suivi dossier DIGIY JOBS (public). Checklist documents + résumé WhatsApp."
+  />
   <meta name="theme-color" content="#0A1128" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
     :root{
-      --dark:#0A1128;--blue:#0ea5e9;--green:#10b981;--red:#ef4444;
-      --bg:#F0F2F5;--card:#fff;--ink:#0f172a;--muted:#475569;
-      --line:#e5e7eb;--shadow:0 12px 30px rgba(0,0,0,.10);
+      --dark:#0A1128;
+      --blue:#0ea5e9;
+      --green:#10b981;
+      --red:#ef4444;
+      --gold:#d4a84f;
+      --bg:#F0F2F5;
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --line:#e5e7eb;
+      --shadow:0 12px 30px rgba(0,0,0,.10);
       --radius:18px;
     }
+
     *{box-sizing:border-box}
-    body{margin:0;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto;background:var(--bg);color:var(--ink)}
-    .wrap{max-width:980px;margin:0 auto;padding:18px 12px 60px}
+
+    body{
+      margin:0;
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+    }
+
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:18px 12px 60px;
+    }
+
     .top{
       background:linear-gradient(135deg, rgba(10,17,40,.96), rgba(18,26,48,.92));
-      color:#fff;border-radius:22px;padding:18px 16px;
+      color:#fff;
+      border-radius:22px;
+      padding:18px 16px;
       box-shadow:0 15px 40px rgba(0,0,0,.28);
-      position:relative;overflow:hidden;
+      position:relative;
+      overflow:hidden;
     }
-    .top::before{content:"🧾";position:absolute;right:-30px;top:-35px;font-size:160px;opacity:.08;transform:rotate(10deg)}
-    .top h1{margin:0;font-weight:900;font-size:1.8rem;line-height:1.15}
-    .top p{margin:10px 0 0;color:#cbd5ff}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-top:12px}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media(max-width:720px){.row{grid-template-columns:1fr}}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:#0A1128;color:#fff;font-weight:900;font-size:.85rem}
-    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+
+    .top::before{
+      content:"🧾";
+      position:absolute;
+      right:-30px;
+      top:-35px;
+      font-size:160px;
+      opacity:.08;
+      transform:rotate(10deg);
+    }
+
+    .top h1{
+      margin:0;
+      font-weight:900;
+      font-size:1.8rem;
+      line-height:1.15;
+    }
+
+    .top p{
+      margin:10px 0 0;
+      color:#cbd5ff;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+      margin-top:12px;
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    @media (max-width:720px){
+      .row{grid-template-columns:1fr}
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#0A1128;
+      color:#fff;
+      font-weight:900;
+      font-size:.85rem;
+      flex-wrap:wrap;
+    }
+
+    .pill.alt{
+      background:#eef2ff;
+      color:#1e293b;
+      border:1px solid #cbd5e1;
+    }
+
+    .mono{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+    }
+
     .muted{color:var(--muted)}
-    .kpiRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .kpi{flex:1;min-width:180px;background:#f9fbfd;border:1px solid #e2e8f0;border-radius:14px;padding:12px}
-    .kpi .big{font-size:1.35rem;font-weight:900;color:var(--dark)}
-    .kpi .small{font-size:.9rem;color:#64748b;margin-top:2px}
-    .bar{height:10px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin-top:10px}
-    .bar > div{height:100%;width:0%;background:var(--green)}
+
+    .metaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .kpiRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+
+    .kpi{
+      flex:1;
+      min-width:180px;
+      background:#f9fbfd;
+      border:1px solid #e2e8f0;
+      border-radius:14px;
+      padding:12px;
+    }
+
+    .kpi .big{
+      font-size:1.35rem;
+      font-weight:900;
+      color:var(--dark);
+    }
+
+    .kpi .small{
+      font-size:.9rem;
+      color:#64748b;
+      margin-top:2px;
+    }
+
+    .bar{
+      height:10px;
+      background:#e2e8f0;
+      border-radius:999px;
+      overflow:hidden;
+      margin-top:10px;
+    }
+
+    .bar > div{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg, var(--green), #22c55e);
+      transition:width .2s ease;
+    }
+
     .list{margin-top:12px}
+
     .item{
-      display:flex;align-items:flex-start;gap:12px;
-      padding:12px;border:1px solid #e2e8f0;border-radius:14px;background:#fff;
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      padding:12px;
+      border:1px solid #e2e8f0;
+      border-radius:14px;
+      background:#fff;
       margin:10px 0;
     }
-    .item input{transform:scale(1.25);margin-top:2px}
-    .item .title{font-weight:900;color:var(--dark)}
-    .item .desc{font-size:.92rem;color:var(--muted);margin-top:2px}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-    .btn{
-      border:0;border-radius:14px;padding:12px 14px;font-weight:900;
-      cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;
-      transition:transform .18s ease, filter .18s ease;font-size:1rem;
+
+    .item input{
+      transform:scale(1.25);
+      margin-top:2px;
+      cursor:pointer;
     }
+
+    .item .title{
+      font-weight:900;
+      color:var(--dark);
+    }
+
+    .item .desc{
+      font-size:.92rem;
+      color:var(--muted);
+      margin-top:2px;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .btn{
+      border:0;
+      border-radius:14px;
+      padding:12px 14px;
+      font-weight:900;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      transition:transform .18s ease, filter .18s ease, opacity .18s ease;
+      font-size:1rem;
+    }
+
     .btn:hover{transform:translateY(-1px);filter:brightness(.97)}
     .btn.primary{background:var(--blue);color:#fff}
     .btn.dark{background:var(--dark);color:#fff}
     .btn.green{background:var(--green);color:#fff}
     .btn.ghost{background:#f1f5f9;color:var(--dark);border:1px solid #cbd5e1}
     .btn.danger{background:var(--red);color:#fff}
-    .tiny{font-size:.86rem;color:#64748b;margin-top:10px}
-    textarea{
-      width:100%;min-height:110px;border-radius:14px;border:1px solid #d1d5db;
-      padding:12px;font-size:.95rem;outline:none;background:#fff
+
+    .btn[aria-disabled="true"]{
+      pointer-events:none;
+      opacity:.55;
     }
-    textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(14,165,233,.15)}
-    .split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-    @media(max-width:720px){.split{grid-template-columns:1fr}}
+
+    .tiny{
+      font-size:.86rem;
+      color:#64748b;
+      margin-top:10px;
+    }
+
+    textarea{
+      width:100%;
+      min-height:110px;
+      border-radius:14px;
+      border:1px solid #d1d5db;
+      padding:12px;
+      font-size:.95rem;
+      outline:none;
+      background:#fff;
+      resize:vertical;
+    }
+
+    textarea:focus{
+      border-color:var(--blue);
+      box-shadow:0 0 0 4px rgba(14,165,233,.15);
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+
+    @media (max-width:720px){
+      .split{grid-template-columns:1fr}
+    }
+
+    .notice{
+      margin-top:10px;
+      padding:12px;
+      border-radius:14px;
+      background:#fff7ed;
+      border:1px solid #fed7aa;
+      color:#9a3412;
+      font-size:.92rem;
+      font-weight:600;
+    }
+
+    .okline{
+      margin-top:10px;
+      font-size:.9rem;
+      color:#334155;
+    }
+
+    .okline strong{
+      color:var(--dark);
+    }
   </style>
 </head>
 
@@ -79,7 +299,10 @@
     </div>
 
     <div class="card">
-      <div class="pill">📌 Dossier : <span class="mono" id="dossierId">—</span></div>
+      <div class="metaRow">
+        <div class="pill">📌 Dossier : <span class="mono" id="dossierId">—</span></div>
+        <div class="pill alt">🧭 Rail : <span class="mono" id="railLabel">GÉNÉRAL</span></div>
+      </div>
 
       <div class="kpiRow">
         <div class="kpi">
@@ -100,13 +323,27 @@
         <div id="barFill"></div>
       </div>
 
+      <div class="okline">
+        Dernière mise à jour locale :
+        <strong id="lastUpdate">—</strong>
+      </div>
+
       <div class="tiny muted" style="margin-top:10px">
-        Conseil terrain : au début, on privilégie un hébergement (employeur ou famille) pour sécuriser l’arrivée.
+        Conseil terrain : au début, on privilégie un hébergement (employeur ou famille)
+        pour sécuriser l’arrivée.
+      </div>
+
+      <div class="notice" id="missingDossierNotice" style="display:none">
+        Ajoute un identifiant dans l’URL pour activer la vraie sauvegarde par dossier.
+        Exemple : <span class="mono">?dossier=jobs-221771342889&rail=build</span>
       </div>
     </div>
 
     <div class="card">
-      <h2 style="margin:0;font-size:1.15rem;font-weight:900;color:#0A1128">✅ Documents à préparer</h2>
+      <h2 style="margin:0;font-size:1.15rem;font-weight:900;color:#0A1128">
+        ✅ Documents à préparer
+      </h2>
+
       <div class="muted" style="margin-top:8px;font-size:.95rem">
         Coche ce que tu as déjà. Le résumé se met à jour automatiquement.
       </div>
@@ -121,16 +358,19 @@
       </div>
 
       <div class="tiny">
-        ⚠️ DIGIY JOBS ne promet jamais un visa. Chaque dossier dépend des validations officielles.
-        Le suivi ici sert à organiser et accélérer les échanges.
+        ⚠️ DIGIY JOBS ne promet jamais un visa. Chaque dossier dépend des validations
+        officielles. Le suivi ici sert à organiser et accélérer les échanges.
       </div>
     </div>
 
     <div class="card">
       <h2 style="margin:0;font-size:1.15rem;font-weight:900;color:#0A1128">🧰 Export / Import</h2>
+
       <div class="split">
         <div>
-          <div class="muted" style="margin:8px 0 8px">Export JSON (pour transférer sur un autre appareil)</div>
+          <div class="muted" style="margin:8px 0 8px">
+            Export JSON (pour transférer sur un autre appareil)
+          </div>
           <textarea id="exportBox" readonly></textarea>
           <div class="actions" style="margin-top:10px">
             <button class="btn ghost" id="btnExport" type="button">⬇️ Générer export</button>
@@ -139,94 +379,240 @@
         </div>
 
         <div>
-          <div class="muted" style="margin:8px 0 8px">Import JSON (colle ici puis “Importer”)</div>
-          <textarea id="importBox" placeholder='{"dossier":"...","checked":{"passport":true,...}}'></textarea>
+          <div class="muted" style="margin:8px 0 8px">
+            Import JSON (colle ici puis “Importer”)
+          </div>
+          <textarea
+            id="importBox"
+            placeholder='{"dossier":"jobs-221771342889","rail":"build","checked":{"passport":true}}'
+          ></textarea>
           <div class="actions" style="margin-top:10px">
             <button class="btn green" id="btnImport" type="button">⬆️ Importer</button>
           </div>
         </div>
       </div>
-      <div class="tiny">Astuce : l’export inclut le dossier + les cases cochées.</div>
-    </div>
 
+      <div class="tiny">
+        Astuce : l’export inclut le dossier, le rail, les cases cochées et la date de mise à jour.
+      </div>
+    </div>
   </div>
 
   <script>
     (function(){
       "use strict";
 
-      // === CONFIG ===
       const WA_SN = "https://wa.me/221771342889";
       const WA_FR = "https://wa.me/33638329423";
 
-      // Documents (V1 terrain). Tu peux ajuster plus tard.
-      const DOCS = [
-        { key:"passport",  title:"Passeport valide", desc:"Au moins 2 pages libres. Vérifier date d’expiration." },
-        { key:"photos",    title:"Photos d’identité", desc:"Format visa (Schengen) — propre, récent." },
-        { key:"cv",        title:"CV à jour", desc:"Simple, lisible, métier clair, expériences datées." },
-        { key:"diplomas",  title:"Diplômes / attestations", desc:"Tout ce qui prouve le métier (même formation courte)." },
-        { key:"experience",title:"Justificatifs d’expérience", desc:"Certificats travail / attestations / contacts employeurs." },
-        { key:"contract",  title:"Contrat / promesse d’embauche", desc:"Doc employeur. Le cœur du dossier." },
-        { key:"workauth",  title:"Autorisation de travail (France)", desc:"Étape centrale côté employeur (DREETS)." },
-        { key:"housing",   title:"Hébergement à l’arrivée", desc:"Employeur héberge ou famille/proche (fortement recommandé)." },
-        { key:"vfs",       title:"Rendez-vous dépôt (VFS)", desc:"Préparer ordre des documents + preuves demandées." }
+      const COMMON_DOCS = [
+        {
+          key: "passport",
+          title: "Passeport valide",
+          desc: "Au moins 2 pages libres. Vérifier la date d’expiration."
+        },
+        {
+          key: "photos",
+          title: "Photos d’identité",
+          desc: "Format visa Schengen, récentes et propres."
+        },
+        {
+          key: "cv",
+          title: "CV à jour",
+          desc: "Simple, lisible, métier clair, expériences datées."
+        },
+        {
+          key: "diplomas",
+          title: "Diplômes / attestations",
+          desc: "Tout ce qui prouve le métier, même formation courte."
+        },
+        {
+          key: "experience",
+          title: "Justificatifs d’expérience",
+          desc: "Certificats de travail, attestations, contacts employeurs."
+        },
+        {
+          key: "contract",
+          title: "Contrat / promesse d’embauche",
+          desc: "Document employeur. Le cœur du dossier."
+        },
+        {
+          key: "workauth",
+          title: "Autorisation de travail (France)",
+          desc: "Étape centrale côté employeur."
+        },
+        {
+          key: "housing",
+          title: "Hébergement à l’arrivée",
+          desc: "Employeur héberge ou famille/proche, fortement recommandé."
+        },
+        {
+          key: "vfs",
+          title: "Rendez-vous dépôt (VFS)",
+          desc: "Préparer l’ordre des pièces et les preuves demandées."
+        }
       ];
 
-      // === HELPERS ===
-      function enc(s){ return encodeURIComponent(s || ""); }
+      const DOCS_BY_RAIL = {
+        build: [
+          {
+            key: "skills_build",
+            title: "Preuves métier BUILD",
+            desc: "Photos de chantiers, attestations techniques, références clients."
+          },
+          {
+            key: "tools_build",
+            title: "Liste savoir-faire / outils maîtrisés",
+            desc: "Maçonnerie, plomberie, électricité, soudure, peinture, etc."
+          }
+        ],
+        resto: [
+          {
+            key: "skills_resto",
+            title: "Preuves métier hôtellerie-restauration",
+            desc: "Service, cuisine, plonge, réception, ménage, bar, production."
+          },
+          {
+            key: "hygiene_resto",
+            title: "Références hygiène / rythme travail",
+            desc: "Expérience en cadence, équipe, horaires tôt/tard, nettoyage."
+          }
+        ],
+        general: []
+      };
 
-      function setEnabled(a, on){
-        a.setAttribute("aria-disabled", on ? "false" : "true");
-        a.style.pointerEvents = on ? "auto" : "none";
-        a.style.opacity = on ? "1" : ".55";
+      function $(id){
+        return document.getElementById(id);
       }
 
-      function getDossier(){
-        const u = new URL(location.href);
-        return (u.searchParams.get("dossier") || "").trim();
+      function enc(value){
+        return encodeURIComponent(String(value || ""));
       }
 
-      function storageKey(dossier){
-        return "DIGIY_JOBS_SUIVI_V1::" + (dossier || "NO_DOSSIER");
-      }
-
-      function loadState(dossier){
-        try{
-          const raw = localStorage.getItem(storageKey(dossier));
-          return raw ? JSON.parse(raw) : { checked:{} };
-        }catch(e){
-          return { checked:{} };
+      function setEnabled(el, enabled){
+        if(!el) return;
+        el.setAttribute("aria-disabled", enabled ? "false" : "true");
+        if(!enabled && el.tagName === "A"){
+          el.removeAttribute("href");
         }
       }
 
-      function saveState(dossier, state){
-        try{
-          localStorage.setItem(storageKey(dossier), JSON.stringify(state));
-        }catch(e){}
+      function normalizeText(value){
+        return String(value || "").trim();
       }
 
-      function computeCounts(state){
-        const total = DOCS.length;
+      function normalizeRail(value){
+        const raw = normalizeText(value).toLowerCase();
+        if(
+          raw === "build" ||
+          raw === "batiment" ||
+          raw === "bâtiment" ||
+          raw === "multi-service" ||
+          raw === "multiservice"
+        ){
+          return "build";
+        }
+        if(
+          raw === "resto" ||
+          raw === "hotel" ||
+          raw === "hôtel" ||
+          raw === "hr" ||
+          raw === "hotellerie" ||
+          raw === "hôtellerie" ||
+          raw === "hotellerie-restauration" ||
+          raw === "hôtellerie-restauration"
+        ){
+          return "resto";
+        }
+        return "general";
+      }
+
+      function railLabel(rail){
+        if(rail === "build") return "BUILD";
+        if(rail === "resto") return "HÔTELLERIE-RESTAURATION";
+        return "GÉNÉRAL";
+      }
+
+      function getParams(){
+        const url = new URL(window.location.href);
+        return {
+          dossier: normalizeText(url.searchParams.get("dossier")),
+          rail: normalizeRail(url.searchParams.get("rail"))
+        };
+      }
+
+      function getDocs(rail){
+        return [...COMMON_DOCS, ...(DOCS_BY_RAIL[rail] || [])];
+      }
+
+      function storageKey(dossier, rail){
+        if(!dossier) return null;
+        return "DIGIY_JOBS_SUIVI_V2::" + dossier + "::" + rail;
+      }
+
+      function createEmptyState(){
+        return {
+          checked: {},
+          updatedAt: null
+        };
+      }
+
+      function loadState(dossier, rail){
+        const key = storageKey(dossier, rail);
+        if(!key) return createEmptyState();
+
+        try{
+          const raw = localStorage.getItem(key);
+          if(!raw) return createEmptyState();
+          const parsed = JSON.parse(raw);
+          return {
+            checked: parsed && parsed.checked && typeof parsed.checked === "object" ? parsed.checked : {},
+            updatedAt: parsed && parsed.updatedAt ? parsed.updatedAt : null
+          };
+        }catch(_){
+          return createEmptyState();
+        }
+      }
+
+      function saveState(dossier, rail, state){
+        state.updatedAt = new Date().toISOString();
+
+        const key = storageKey(dossier, rail);
+        if(!key) return;
+
+        try{
+          localStorage.setItem(key, JSON.stringify(state));
+        }catch(_){}
+      }
+
+      function computeCounts(state, docs){
+        const total = docs.length;
         let ok = 0;
-        for(const d of DOCS){
-          if(state.checked && state.checked[d.key]) ok++;
+
+        for(const doc of docs){
+          if(state.checked && state.checked[doc.key]) ok++;
         }
-        const pct = total ? Math.round((ok/total)*100) : 0;
+
+        const pct = total ? Math.round((ok / total) * 100) : 0;
         return { ok, total, pct };
       }
 
-      function listReceived(state){
+      function listReceived(state, docs){
         const arr = [];
-        for(const d of DOCS){
-          if(state.checked && state.checked[d.key]) arr.push("• " + d.title);
+        for(const doc of docs){
+          if(state.checked && state.checked[doc.key]){
+            arr.push("• " + doc.title);
+          }
         }
         return arr.join("\n");
       }
 
-      function listMissing(state){
+      function listMissing(state, docs){
         const arr = [];
-        for(const d of DOCS){
-          if(!(state.checked && state.checked[d.key])) arr.push("• " + d.title);
+        for(const doc of docs){
+          if(!(state.checked && state.checked[doc.key])){
+            arr.push("• " + doc.title);
+          }
         }
         return arr.join("\n");
       }
@@ -236,175 +622,223 @@
           const u = new URL(base);
           u.searchParams.set("text", msg);
           return u.toString();
-        }catch(e){
+        }catch(_){
           return base + "?text=" + enc(msg);
         }
       }
 
-      function buildSummaryMessage(dossier, c2, received, missing){
-        const msg =
-          "🧾 DIGIY JOBS — Suivi dossier\n" +
-          "Dossier: " + (dossier || "(non défini)") + "\n" +
-          "État: " + c2.ok + "/" + c2.total + " (" + c2.pct + "%)\n\n" +
-          "✅ Reçus:\n" + (received || "—") + "\n\n" +
-          "❌ Manquants:\n" + (missing || "—") + "\n\n" +
-          "Prochaine étape: RDV WhatsApp pour cadrer pièces + timing.\n" +
-          "⚠️ Au début, hébergement (employeur/famille) recommandé.";
-        return msg;
+      function formatDate(value){
+        if(!value) return "—";
+        try{
+          return new Date(value).toLocaleString("fr-FR");
+        }catch(_){
+          return "—";
+        }
+      }
+
+      function buildSummaryMessage(dossier, rail, counts, received, missing){
+        return [
+          "🧾 DIGIY JOBS — Suivi dossier",
+          "Dossier : " + (dossier || "(non défini)"),
+          "Rail : " + railLabel(rail),
+          "État : " + counts.ok + "/" + counts.total + " (" + counts.pct + "%)",
+          "",
+          "✅ Reçus :",
+          received || "—",
+          "",
+          "❌ Manquants :",
+          missing || "—",
+          "",
+          "Prochaine étape : RDV WhatsApp pour cadrer pièces + timing.",
+          "⚠️ Au début, hébergement (employeur/famille) recommandé."
+        ].join("\n");
       }
 
       async function copyToClipboard(text){
         try{
           await navigator.clipboard.writeText(text);
           alert("Copié ✅");
-          return true;
-        }catch(e){
-          prompt("Copie le texte :", text);
-          return false;
+        }catch(_){
+          window.prompt("Copie le texte :", text);
         }
       }
 
-      // === INIT ===
-      const dossier = getDossier();
-      document.getElementById("dossierId").textContent = dossier || "— (ajoute ?dossier=...)";
+      const params = getParams();
+      const dossier = params.dossier;
+      const rail = params.rail;
+      const docs = getDocs(rail);
 
-      const checklistEl = document.getElementById("checklist");
-      const kpiOk = document.getElementById("kpiOk");
-      const kpiTotal = document.getElementById("kpiTotal");
-      const kpiPct = document.getElementById("kpiPct");
-      const barFill = document.getElementById("barFill");
+      $("dossierId").textContent = dossier || "— (ajoute ?dossier=...)";
+      $("railLabel").textContent = railLabel(rail);
 
-      const btnWASN = document.getElementById("btnWASN");
-      const btnWAFR = document.getElementById("btnWAFR");
-      const btnCopy = document.getElementById("btnCopy");
-      const btnReset = document.getElementById("btnReset");
+      if(!dossier){
+        $("missingDossierNotice").style.display = "block";
+      }
 
-      const exportBox = document.getElementById("exportBox");
-      const importBox = document.getElementById("importBox");
-      const btnExport = document.getElementById("btnExport");
-      const btnCopyExport = document.getElementById("btnCopyExport");
-      const btnImport = document.getElementById("btnImport");
+      const checklistEl = $("checklist");
+      const kpiOk = $("kpiOk");
+      const kpiTotal = $("kpiTotal");
+      const kpiPct = $("kpiPct");
+      const barFill = $("barFill");
+      const lastUpdate = $("lastUpdate");
 
-      let state = loadState(dossier);
+      const btnWASN = $("btnWASN");
+      const btnWAFR = $("btnWAFR");
+      const btnCopy = $("btnCopy");
+      const btnReset = $("btnReset");
+      const exportBox = $("exportBox");
+      const importBox = $("importBox");
+      const btnExport = $("btnExport");
+      const btnCopyExport = $("btnCopyExport");
+      const btnImport = $("btnImport");
+
+      let state = loadState(dossier, rail);
 
       function renderChecklist(){
         checklistEl.innerHTML = "";
-        for(const d of DOCS){
-          const checked = !!(state.checked && state.checked[d.key]);
+
+        for(const doc of docs){
+          const checked = !!(state.checked && state.checked[doc.key]);
           const wrap = document.createElement("div");
           wrap.className = "item";
-          wrap.innerHTML = `
-            <input type="checkbox" id="chk_${d.key}" ${checked ? "checked" : ""} />
-            <div>
-              <div class="title">${d.title}</div>
-              <div class="desc">${d.desc}</div>
-            </div>
-          `;
+
+          const input = document.createElement("input");
+          input.type = "checkbox";
+          input.id = "chk_" + doc.key;
+          input.checked = checked;
+
+          const textWrap = document.createElement("div");
+
+          const title = document.createElement("div");
+          title.className = "title";
+          title.textContent = doc.title;
+
+          const desc = document.createElement("div");
+          desc.className = "desc";
+          desc.textContent = doc.desc;
+
+          textWrap.appendChild(title);
+          textWrap.appendChild(desc);
+
+          wrap.appendChild(input);
+          wrap.appendChild(textWrap);
           checklistEl.appendChild(wrap);
 
-          const chk = wrap.querySelector("#chk_" + d.key);
-          chk.addEventListener("change", () => {
+          input.addEventListener("change", function(){
             state.checked = state.checked || {};
-            state.checked[d.key] = !!chk.checked;
-            saveState(dossier, state);
+            state.checked[doc.key] = !!input.checked;
+            saveState(dossier, rail, state);
             updateUI();
           });
         }
       }
 
+      function buildExportPayload(){
+        return {
+          dossier: dossier || null,
+          rail: rail,
+          checked: state.checked || {},
+          updatedAt: state.updatedAt || null
+        };
+      }
+
       function updateUI(){
-        const c2 = computeCounts(state);
-        kpiOk.textContent = String(c2.ok);
-        kpiTotal.textContent = String(c2.total);
-        kpiPct.textContent = String(c2.pct) + "%";
-        barFill.style.width = c2.pct + "%";
+        const counts = computeCounts(state, docs);
 
-        const received = listReceived(state);
-        const missing = listMissing(state);
-        const summary = buildSummaryMessage(dossier, c2, received, missing);
+        kpiOk.textContent = String(counts.ok);
+        kpiTotal.textContent = String(counts.total);
+        kpiPct.textContent = String(counts.pct) + "%";
+        barFill.style.width = counts.pct + "%";
+        lastUpdate.textContent = formatDate(state.updatedAt);
 
-        // WhatsApp links
-        btnWASN.href = waUrl(WA_SN, summary);
-        btnWAFR.href = waUrl(WA_FR, summary);
+        const received = listReceived(state, docs);
+        const missing = listMissing(state, docs);
+        const summary = buildSummaryMessage(dossier, rail, counts, received, missing);
 
-        // enable only if dossier exists
         const hasDossier = !!dossier;
+
+        if(hasDossier){
+          btnWASN.href = waUrl(WA_SN, summary);
+          btnWAFR.href = waUrl(WA_FR, summary);
+        }
+
         setEnabled(btnWASN, hasDossier);
         setEnabled(btnWAFR, hasDossier);
 
-        // keep export box fresh
-        exportBox.value = JSON.stringify({ dossier: dossier || null, checked: state.checked || {} }, null, 2);
+        exportBox.value = JSON.stringify(buildExportPayload(), null, 2);
+        btnCopy.dataset.summary = summary;
 
-        // GTM (si présent)
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: "jobs_suivi_update",
           dossier: dossier || null,
-          ok: c2.ok,
-          total: c2.total,
-          pct: c2.pct
+          rail: rail,
+          ok: counts.ok,
+          total: counts.total,
+          pct: counts.pct
         });
-
-        // store summary for copy
-        btnCopy.dataset.summary = summary;
       }
 
-      // Actions
-      btnCopy.addEventListener("click", () => {
+      btnCopy.addEventListener("click", function(){
         const summary = btnCopy.dataset.summary || "";
-        if(!summary) return;
-        copyToClipboard(summary);
+        if(summary) copyToClipboard(summary);
       });
 
-      btnReset.addEventListener("click", () => {
-        if(!confirm("Reset du dossier : tu veux vraiment tout décocher ?")) return;
-        state = { checked:{} };
-        saveState(dossier, state);
+      btnReset.addEventListener("click", function(){
+        if(!window.confirm("Reset du dossier : tu veux vraiment tout décocher ?")) return;
+
+        state = createEmptyState();
+        saveState(dossier, rail, state);
         renderChecklist();
         updateUI();
       });
 
-      btnExport.addEventListener("click", () => {
-        exportBox.value = JSON.stringify({ dossier: dossier || null, checked: state.checked || {} }, null, 2);
+      btnExport.addEventListener("click", function(){
+        exportBox.value = JSON.stringify(buildExportPayload(), null, 2);
       });
 
-      btnCopyExport.addEventListener("click", () => {
+      btnCopyExport.addEventListener("click", function(){
         copyToClipboard(exportBox.value || "");
       });
 
-      btnImport.addEventListener("click", () => {
+      btnImport.addEventListener("click", function(){
         let obj = null;
+
         try{
           obj = JSON.parse(importBox.value || "null");
-        }catch(e){
+        }catch(_){
           alert("JSON invalide. Vérifie le format.");
           return;
         }
+
         if(!obj || typeof obj !== "object"){
           alert("JSON invalide.");
           return;
         }
+
         if(obj.dossier && dossier && obj.dossier !== dossier){
-          if(!confirm("Le JSON est pour un autre dossier (" + obj.dossier + "). Importer quand même ?")) return;
+          const ok = window.confirm(
+            "Le JSON vise un autre dossier (" + obj.dossier + "). Importer quand même ?"
+          );
+          if(!ok) return;
         }
-        state.checked = (obj.checked && typeof obj.checked === "object") ? obj.checked : {};
-        saveState(dossier, state);
+
+        state.checked =
+          obj.checked && typeof obj.checked === "object"
+            ? obj.checked
+            : {};
+
+        state.updatedAt = obj.updatedAt || new Date().toISOString();
+
+        saveState(dossier, rail, state);
         renderChecklist();
         updateUI();
         alert("Import OK ✅");
       });
 
-      // Render initial
       renderChecklist();
       updateUI();
-
-      // If no dossier param, still show UI but disable WA buttons
-      if(!dossier){
-        setEnabled(btnWASN,false);
-        setEnabled(btnWAFR,false);
-      }
     })();
   </script>
 </body>
 </html>
-
