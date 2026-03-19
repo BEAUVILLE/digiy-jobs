@@ -29,7 +29,6 @@
       --gold:#facc15;
       --green:#22c55e;
       --danger:#fb7185;
-      --blue:#38bdf8;
       --max:920px;
       --shadow:0 18px 60px rgba(0,0,0,.28);
     }
@@ -74,12 +73,6 @@
       border-color:rgba(250,204,21,.28);
       background:rgba(250,204,21,.08);
       color:#fff3b0;
-    }
-
-    .chip-link.blue{
-      border-color:rgba(56,189,248,.28);
-      background:rgba(56,189,248,.10);
-      color:#d9f4ff;
     }
 
     .hero{
@@ -153,22 +146,6 @@
       color:var(--muted);
       font-size:14px;
       line-height:1.55;
-    }
-
-    .offer-rail{
-      margin-top:10px;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      background:rgba(56,189,248,.10);
-      border:1px solid rgba(56,189,248,.20);
-      color:#d9f4ff;
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:.04em;
-      text-transform:uppercase;
     }
 
     .form-card{
@@ -246,7 +223,6 @@
       font-weight:900;
       cursor:pointer;
       border:none;
-      text-decoration:none;
     }
 
     .btn-primary{
@@ -261,12 +237,6 @@
       color:var(--text);
     }
 
-    .btn-blue{
-      border:1px solid rgba(56,189,248,.25);
-      background:rgba(56,189,248,.12);
-      color:#d9f4ff;
-    }
-
     .status{
       margin-top:16px;
       border-radius:20px;
@@ -274,6 +244,7 @@
       display:none;
       line-height:1.6;
       font-weight:700;
+      white-space:pre-line;
     }
 
     .status.ok{
@@ -305,10 +276,8 @@
       <a class="chip-link" href="https://digiylyfe.com/" target="_blank" rel="noopener">← Retour au site</a>
       <a id="homeLink" class="chip-link" href="./index.html">Accueil JOBS</a>
       <a id="wallLink" class="chip-link gold" href="./mur%20des%20missions.html">Mur des missions</a>
-      <a id="dossierLink" class="chip-link blue" href="./dossier-intelligent.html">Dossier intelligent</a>
+      <a id="dossierLink" class="chip-link" href="./dossier-intelligent.html">Dossier</a>
       <a id="pinLink" class="chip-link" href="./pin.html">Entrée PIN</a>
-      <a id="cockpitLink" class="chip-link" href="./cockpit.html">Cockpit pro</a>
-      <a id="bureauLink" class="chip-link" href="./bureau.html">Bureau</a>
       <a id="offerBackLink" class="chip-link" href="./mission.html" style="display:none">Retour à la mission</a>
     </div>
 
@@ -322,15 +291,13 @@
 
       <div class="meta-line">
         <div class="meta-chip">Mode : <strong id="modeChip">candidature publique</strong></div>
-        <div class="meta-chip">Workspace : <strong id="workspaceChip">global</strong></div>
-        <div class="meta-chip">Rail : <strong id="railChip">build</strong></div>
+        <div class="meta-chip">Slug actif : <strong id="slugChip">global</strong></div>
         <div class="meta-chip">Source : <strong id="sourceChip">Supabase réel</strong></div>
       </div>
 
       <div id="offerBox" class="offer-box" style="display:none">
         <strong id="offerTitle">Mission</strong>
         <div id="offerMeta" class="offer-meta"></div>
-        <div id="offerRail" class="offer-rail">rail détecté</div>
       </div>
     </section>
 
@@ -343,8 +310,8 @@
           </div>
 
           <div class="field">
-            <label for="whatsapp_phone">Téléphone WhatsApp</label>
-            <input id="whatsapp_phone" name="whatsapp_phone" type="tel" placeholder="Ex: +221771234567" required />
+            <label for="phone">Téléphone WhatsApp</label>
+            <input id="phone" name="phone" type="tel" placeholder="Ex: +221771234567" required />
           </div>
 
           <div class="field">
@@ -380,8 +347,8 @@
 
           <div class="field">
             <label for="source">Origine</label>
-            <input id="source" name="source" type="text" value="public_form:build" />
-            <div class="hint">Tu peux laisser tel quel. Le rail est déjà marqué dedans.</div>
+            <input id="source" name="source" type="text" value="public_form" />
+            <div class="hint">Tu peux laisser tel quel.</div>
           </div>
 
           <div class="field full">
@@ -392,7 +359,6 @@
 
         <div class="actions">
           <button id="submitBtn" type="submit" class="btn btn-primary">Envoyer ma candidature</button>
-          <a class="btn btn-blue" id="openDossierLink" href="./dossier-intelligent.html">Ouvrir le dossier intelligent</a>
           <a class="btn btn-secondary" id="seeOffersLink" href="./mur%20des%20missions.html">Voir les missions</a>
         </div>
 
@@ -419,71 +385,35 @@
     const params = new URLSearchParams(location.search);
     const offerId = String(params.get("offer") || params.get("id") || "").trim();
     const slugFromUrl = String(params.get("slug") || "").trim().toLowerCase();
-    const secteurFromUrl = String(params.get("secteur") || params.get("rail") || "").trim().toLowerCase();
 
     const $ = (id) => document.getElementById(id);
+    const SLUG_STORAGE_KEY = "digiy_jobs_slug";
+    const DB_SLUG_COLUMN = "workspace_slug";
 
     const JOBS_PATHS = {
       home: "./index.html",
       wall: "./mur%20des%20missions.html",
+      dossier: "./dossier-intelligent.html",
       pin: "./pin.html",
-      cockpit: "./cockpit.html",
-      bureau: "./bureau.html",
       postuler: "./postuler.html",
-      mission: "./mission.html",
-      dossier: "./dossier-intelligent.html"
+      mission: "./mission.html"
     };
 
     const state = {
       offer: null,
-      workspaceSlug: slugFromUrl,
-      secteur: normalizeSecteur(secteurFromUrl || "build")
+      slug: slugFromUrl,
+      ownerId: null
     };
 
     function normalizePhone(v = ""){
       return String(v).trim().replace(/\s+/g, "");
     }
 
-    function normalizeSecteur(v = ""){
-      const raw = String(v).trim().toLowerCase();
-      if (
-        raw === "resto" ||
-        raw === "hotellerie-restauration" ||
-        raw === "hôtellerie-restauration"
-      ) {
-        return "hotellerie-restauration";
-      }
-      return "build";
-    }
-
-    function secteurToRail(secteur){
-      return secteur === "hotellerie-restauration" ? "resto" : "build";
-    }
-
-    function secteurLabel(secteur){
-      return secteur === "hotellerie-restauration" ? "Hôtellerie-Restauration" : "BUILD";
-    }
-
-    function escapeHtml(v = "") {
-      return String(v)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    function withContext(path, options = {}){
-      const url = new URL(path, location.href);
-      const slug = String(options.slug || "").trim().toLowerCase();
-      const secteur = normalizeSecteur(options.secteur || state.secteur || "build");
-      const offer = String(options.offer || "").trim();
-
-      if (slug) url.searchParams.set("slug", slug);
-      if (secteur) url.searchParams.set("secteur", secteur);
-      if (offer) url.searchParams.set("offer", offer);
-
-      return url.toString();
+    function withSlug(path, slug){
+      const cleanSlug = String(slug || "").trim().toLowerCase();
+      if (!cleanSlug) return path;
+      const joiner = path.includes("?") ? "&" : "?";
+      return `${path}${joiner}slug=${encodeURIComponent(cleanSlug)}`;
     }
 
     function showStatus(type, text){
@@ -502,55 +432,40 @@
       box.style.display = "block";
     }
 
-    function inferSecteurFromText(text = ""){
-      const s = String(text || "").toLowerCase();
+    function saveSlug(slug){
+      try{
+        if (slug) localStorage.setItem(SLUG_STORAGE_KEY, slug);
+      }catch(_){}
+    }
 
-      const restoKeywords = [
-        "serveur", "serveuse", "cuisine", "cuisinier", "cuisinière",
-        "commis", "plonge", "réception", "reception", "hôtel", "hotel",
-        "restaurant", "chambre", "ménage", "menage", "bar", "salle"
-      ];
-
-      const buildKeywords = [
-        "maçon", "macon", "plombier", "électricien", "electricien",
-        "soudeur", "menuisier", "peintre", "carreleur", "chantier",
-        "bâtiment", "batiment", "travaux", "construction", "dépannage", "depannage"
-      ];
-
-      if (restoKeywords.some(k => s.includes(k))) return "hotellerie-restauration";
-      if (buildKeywords.some(k => s.includes(k))) return "build";
-
-      return state.secteur || "build";
+    function readSavedSlug(){
+      try{
+        return String(localStorage.getItem(SLUG_STORAGE_KEY) || "").trim().toLowerCase();
+      }catch(_){
+        return "";
+      }
     }
 
     function syncMeta(){
-      $("workspaceChip").textContent = state.workspaceSlug || "global";
+      $("slugChip").textContent = state.slug || "global";
       $("modeChip").textContent = state.offer ? "candidature liée" : "candidature publique";
-      $("railChip").textContent = secteurToRail(state.secteur);
-      $("source").value = `public_form:${secteurToRail(state.secteur)}`;
     }
 
     function syncLinks() {
-      const slug = state.workspaceSlug || "";
-      const secteur = state.secteur || "build";
-      const offer = state.offer?.id || offerId || "";
+      const slug = state.slug || "";
 
-      $("homeLink").href = withContext(JOBS_PATHS.home, { slug, secteur });
-      $("wallLink").href = withContext(JOBS_PATHS.wall, { slug, secteur });
-      $("pinLink").href = withContext(JOBS_PATHS.pin, { slug, secteur });
-      $("cockpitLink").href = withContext(JOBS_PATHS.cockpit, { slug, secteur });
-      $("bureauLink").href = withContext(JOBS_PATHS.bureau, { slug, secteur });
-      $("seeOffersLink").href = withContext(JOBS_PATHS.wall, { slug, secteur });
-      $("dossierLink").href = withContext(JOBS_PATHS.dossier, { slug, secteur, offer });
-      $("openDossierLink").href = withContext(JOBS_PATHS.dossier, { slug, secteur, offer });
+      $("homeLink").href = withSlug(JOBS_PATHS.home, slug);
+      $("wallLink").href = withSlug(JOBS_PATHS.wall, slug);
+      $("dossierLink").href = withSlug(JOBS_PATHS.dossier, slug);
+      $("pinLink").href = withSlug(JOBS_PATHS.pin, slug);
+      $("seeOffersLink").href = withSlug(JOBS_PATHS.wall, slug);
 
       const offerBackLink = $("offerBackLink");
       if (offerBackLink && state.offer?.id) {
-        offerBackLink.href = withContext(JOBS_PATHS.mission, {
-          slug,
-          secteur,
-          offer: state.offer.id
-        }).replace("offer=", "id=");
+        const href = new URL(JOBS_PATHS.mission, location.href);
+        href.searchParams.set("id", state.offer.id);
+        if (slug) href.searchParams.set("slug", slug);
+        offerBackLink.href = href.toString();
         offerBackLink.style.display = "inline-flex";
       } else if (offerBackLink) {
         offerBackLink.style.display = "none";
@@ -559,32 +474,32 @@
       syncMeta();
     }
 
-    function prefillFromOffer(){
-      if (!state.offer) return;
+    async function inferOwnerIdFromSlug(){
+      if (!sb || !state.slug || state.ownerId) return;
 
-      if (!$("trade").value.trim()) {
-        $("trade").value = state.offer.title || "";
-      }
+      const { data, error } = await sb
+        .from("digiy_jobs_offers_pro")
+        .select("owner_id")
+        .eq(DB_SLUG_COLUMN, state.slug)
+        .limit(1)
+        .maybeSingle();
 
-      if (!$("city").value.trim() && state.offer.city) {
-        $("city").value = state.offer.city;
-      }
-
-      if (!$("country").value.trim() && state.offer.country) {
-        $("country").value = state.offer.country;
-      }
-
-      if (!$("message").value.trim()) {
-        $("message").value =
-          "Je postule à cette mission. " +
-          "Je suis disponible pour échanger rapidement sur le poste et les conditions.";
+      if (!error && data?.owner_id) {
+        state.ownerId = data.owner_id;
       }
     }
 
     async function loadOfferIfAny(){
       syncLinks();
 
-      if (!offerId) return;
+      if (!offerId) {
+        if (state.slug) {
+          saveSlug(state.slug);
+          await inferOwnerIdFromSlug();
+        }
+        syncLinks();
+        return;
+      }
 
       if (!sb) {
         showStatus("err", "Supabase non chargé. Vérifie la configuration front.");
@@ -593,7 +508,7 @@
 
       const { data, error } = await sb
         .from("digiy_jobs_offers_pro")
-        .select("id,workspace_slug,title,city,country,contract_type,pay,employer_name,status")
+        .select("id,workspace_slug,owner_id,title,city,country,contract_type,pay,employer_name,status")
         .eq("id", offerId)
         .eq("status", "active")
         .maybeSingle();
@@ -606,14 +521,10 @@
       }
 
       state.offer = data;
-      state.workspaceSlug = String(data.workspace_slug || state.workspaceSlug || "").trim().toLowerCase();
-      state.secteur = inferSecteurFromText(
-        [
-          data.title,
-          data.contract_type,
-          data.employer_name
-        ].filter(Boolean).join(" ")
-      );
+      state.ownerId = data.owner_id || null;
+      state.slug = String(data.workspace_slug || state.slug || "").trim().toLowerCase();
+
+      if (state.slug) saveSlug(state.slug);
 
       $("offerBox").style.display = "block";
       $("offerTitle").textContent = data.title || "Mission";
@@ -624,9 +535,6 @@
         `${data.contract_type || "Contrat à préciser"} • ` +
         `${data.pay || "Rémunération à préciser"}`;
 
-      $("offerRail").textContent = `rail détecté : ${secteurLabel(state.secteur)}`;
-
-      prefillFromOffer();
       syncLinks();
     }
 
@@ -639,33 +547,41 @@
         return;
       }
 
-      const payload = {
-        offer_id: state.offer?.id || null,
-        workspace_slug: state.offer?.workspace_slug || state.workspaceSlug || null,
-        full_name: $("full_name").value.trim(),
-        whatsapp_phone: normalizePhone($("whatsapp_phone").value),
-        city: $("city").value.trim() || null,
-        country: $("country").value.trim() || "Sénégal",
-        trade: $("trade").value.trim() || null,
-        years_experience: $("years_experience").value.trim() || null,
-        availability: $("availability").value || null,
-        message: $("message").value.trim() || null,
-        status: "new",
-        source: $("source").value.trim() || `public_form:${secteurToRail(state.secteur)}`
-      };
+      const fullName = $("full_name").value.trim();
+      const phone = normalizePhone($("phone").value);
+      const trade = $("trade").value.trim();
+      const slug = state.offer?.workspace_slug || state.slug || null;
 
-      if (!payload.full_name || !payload.whatsapp_phone) {
+      if (!fullName || !phone) {
         showStatus("err", "Nom complet et téléphone WhatsApp sont obligatoires.");
         return;
       }
 
-      if (!payload.offer_id && !payload.workspace_slug) {
-        showStatus(
-          "err",
-          "Aucune mission ni espace JOBS détecté. Ouvre la page depuis le mur des missions, une fiche mission, ou avec un slug workspace."
-        );
+      if (!state.offer?.id && !slug) {
+        showStatus("err", "Aucun slug JOBS détecté. Ouvre la page depuis le mur des missions ou une fiche mission.");
         return;
       }
+
+      if (!state.ownerId && slug) {
+        await inferOwnerIdFromSlug();
+      }
+
+      const payload = {
+        offer_id: state.offer?.id || null,
+        workspace_slug: slug,
+        owner_id: state.offer?.owner_id || state.ownerId || null,
+        full_name: fullName,
+        phone: phone,
+        job_title: trade || state.offer?.title || null,
+        city: $("city").value.trim() || null,
+        country: $("country").value.trim() || "Sénégal",
+        trade: trade || null,
+        years_experience: $("years_experience").value.trim() || null,
+        availability: $("availability").value || null,
+        message: $("message").value.trim() || null,
+        status: "new",
+        source: $("source").value.trim() || "public_form"
+      };
 
       const btn = $("submitBtn");
       btn.disabled = true;
@@ -680,39 +596,38 @@
 
       if (error) {
         console.error(error);
-        showStatus("err", "Impossible d’envoyer la candidature pour le moment. Vérifie le SQL/RLS puis réessaie.");
+        showStatus(
+          "err",
+          "Impossible d’envoyer la candidature pour le moment.\nVérifie le SQL/RLS puis réessaie."
+        );
         return;
       }
 
       $("applyForm").reset();
       $("country").value = "Sénégal";
-      $("source").value = `public_form:${secteurToRail(state.secteur)}`;
-
-      prefillFromOffer();
+      $("source").value = "public_form";
 
       showStatus(
         "ok",
-        state.offer
-          ? "Candidature envoyée. Elle est entrée en base avec le statut « new ». Tu peux maintenant ouvrir le dossier intelligent si tu veux aller plus loin."
-          : "Candidature spontanée envoyée. Elle est entrée en base avec le statut « new »."
+        "Candidature envoyée. Elle est entrée en base avec le statut « new »."
       );
-
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "digiy_jobs_apply_sent",
-        offer_id: payload.offer_id,
-        workspace_slug: payload.workspace_slug,
-        rail: secteurToRail(state.secteur),
-        source: payload.source
-      });
 
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     $("applyForm").addEventListener("submit", handleSubmit);
 
-    syncLinks();
-    loadOfferIfAny();
+    (async () => {
+      if (!state.slug) {
+        const saved = readSavedSlug();
+        if (saved) state.slug = saved;
+      }
+
+      if (state.slug) saveSlug(state.slug);
+
+      syncLinks();
+      await loadOfferIfAny();
+    })();
   </script>
 </body>
 </html>
