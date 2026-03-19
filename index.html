@@ -613,7 +613,7 @@
         </span>
       </a>
       <nav class="nav" aria-label="Navigation principale">
-        <a id="navWall" href="./mur%20des%20missions.html">Mur</a>
+        <a id="navWall" href="./mur des missions.html">Mur</a>
         <a id="navApply" href="./postuler.html">Postuler</a>
         <a id="navPin" href="./pin.html">PIN</a>
         <a id="navCockpit" href="./cockpit.html">Cockpit</a>
@@ -633,7 +633,7 @@
             le public au bureau pro. Ici on cherche la clarté : besoin réel, profil réel, contact utile.
           </p>
           <div class="hero-actions">
-            <a id="heroWallBtn" class="btn btn-dark" href="./mur%20des%20missions.html">Voir les missions</a>
+            <a id="heroWallBtn" class="btn btn-dark" href="./mur des missions.html">Voir les missions</a>
             <a id="heroApplyBtn" class="btn btn-light" href="./postuler.html">Déposer ma candidature</a>
           </div>
           <div class="hero-notes">
@@ -662,7 +662,7 @@
             </div>
             <div class="mini-card">
               <strong>Pro</strong>
-              <span>Entrer par PIN puis ouvrir cockpit, bureau et match.</span>
+              <span>Entrer par PIN puis ouvrir cockpit et bureau.</span>
             </div>
             <div class="mini-card">
               <strong>Slug</strong>
@@ -723,7 +723,7 @@
               </div>
             </div>
             <div class="job-actions">
-              <a id="wallCardBtn" class="action-link dark" href="./mur%20des%20missions.html">Ouvrir le mur</a>
+              <a id="wallCardBtn" class="action-link dark" href="./mur des missions.html">Ouvrir le mur</a>
             </div>
           </article>
 
@@ -752,12 +752,12 @@
             <span class="badge hot">Pro</span>
             <h3>Rail bureau</h3>
             <p>
-              Entrer par PIN puis ouvrir le cockpit, le bureau de tri et le matching sans faux rail de démonstration.
+              Entrer par PIN puis ouvrir le cockpit et le bureau de tri sans faux rail de démonstration.
             </p>
             <div class="card-meta">
               <div class="meta-item">
                 <small>Pages</small>
-                <strong>pin • cockpit • bureau • match</strong>
+                <strong>pin • cockpit • bureau</strong>
               </div>
               <div class="meta-item">
                 <small>Usage</small>
@@ -767,6 +767,7 @@
             <div class="job-actions">
               <a id="pinCardBtn" class="action-link dark" href="./pin.html">Entrée PIN</a>
               <a id="cockpitCardBtn" class="action-link" href="./cockpit.html">Cockpit</a>
+              <a id="bureauCardBtn" class="action-link" href="./bureau.html">Bureau</a>
             </div>
           </article>
         </div>
@@ -803,7 +804,7 @@
             <div class="step-num">3</div>
             <h3>Le pro pilote derrière</h3>
             <p>
-              Le cockpit, le bureau et le match prennent le relais pour trier, noter, appeler et relier.
+              Le cockpit et le bureau prennent le relais pour trier, noter, appeler et relier.
             </p>
           </article>
         </div>
@@ -820,7 +821,7 @@
               mur, candidature, PIN et cockpit. Le travail lourd se fait derrière, pas ici.
             </p>
             <div class="hero-actions" style="margin-top:18px;margin-bottom:0">
-              <a id="ctaWallBtn" class="btn btn-dark" href="./mur%20des%20missions.html">Ouvrir le mur</a>
+              <a id="ctaWallBtn" class="btn btn-dark" href="./mur des missions.html">Ouvrir le mur</a>
               <a id="ctaApplyBtn" class="btn btn-light" href="./postuler.html">Postuler</a>
             </div>
           </div>
@@ -835,7 +836,7 @@
             </div>
             <div class="cta-box">
               <small>Porte pro</small>
-              <strong>PIN, cockpit, bureau et match déjà cousus ensemble.</strong>
+              <strong>PIN, cockpit et bureau déjà cousus ensemble.</strong>
             </div>
           </div>
         </article>
@@ -851,7 +852,7 @@
         </p>
         <div class="foot-links">
           <a href="#top">Retour haut</a>
-          <a id="footWall" href="./mur%20des%20missions.html">Mur</a>
+          <a id="footWall" href="./mur des missions.html">Mur</a>
           <a id="footApply" href="./postuler.html">Postuler</a>
           <a id="footPin" href="./pin.html">PIN</a>
         </div>
@@ -876,12 +877,11 @@
       const slug = String(params.get("slug") || "").trim().toLowerCase();
 
       const PATHS = {
-        wall: "./mur%20des%20missions.html",
+        wall: "./mur des missions.html",
         apply: "./postuler.html",
         pin: "./pin.html",
         cockpit: "./cockpit.html",
-        bureau: "./bureau.html",
-        match: "./match.html"
+        bureau: "./bureau.html"
       };
 
       function withSlug(path){
@@ -895,13 +895,16 @@
         if (el) el.href = withSlug(path);
       }
 
-      document.getElementById("workspacePill").textContent = slug
-        ? `Workspace : ${slug}`
-        : "Workspace : public";
+      const workspacePill = document.getElementById("workspacePill");
+      const slugText = document.getElementById("slugText");
 
-      document.getElementById("slugText").textContent = slug
-        ? slug
-        : "Aucun slug détecté";
+      if (workspacePill) {
+        workspacePill.textContent = slug ? `Workspace : ${slug}` : "Workspace : public";
+      }
+
+      if (slugText) {
+        slugText.textContent = slug || "Aucun slug détecté";
+      }
 
       setHref("navWall", PATHS.wall);
       setHref("navApply", PATHS.apply);
@@ -915,6 +918,7 @@
       setHref("applyCardBtn", PATHS.apply);
       setHref("pinCardBtn", PATHS.pin);
       setHref("cockpitCardBtn", PATHS.cockpit);
+      setHref("bureauCardBtn", PATHS.bureau);
 
       setHref("ctaWallBtn", PATHS.wall);
       setHref("ctaApplyBtn", PATHS.apply);
