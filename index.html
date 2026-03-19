@@ -683,18 +683,19 @@
             <span class="pill">Candidature spontanée</span>
             <span class="pill blue">Dossier intelligent</span>
             <span class="pill">Entrée PIN pro</span>
-            <span class="pill">Rail bureau derrière PIN</span>
+            <span class="pill">Bureau / cockpit / match derrière PIN</span>
           </div>
         </article>
 
         <aside class="panel" aria-label="Résumé du module">
-          <span class="signal" id="workspacePill">Slug : public</span>
-          <span class="signal blue" id="railPill">Rail : mixte</span>
+          <span class="signal" id="slugPill">Slug : public</span>
+          <span class="signal blue" id="railPill">Rail : public</span>
 
           <h2>Ce que cette porte fait</h2>
           <p>
             Elle sert d’accueil public propre pour DIGIY JOBS. Depuis ici on ouvre le mur des missions,
-            on postule, on prépare le dossier, et on rejoint proprement l’entrée pro sans mélanger les portes.
+            on postule, on prépare le dossier, et on rejoint l’entrée PIN sans mélanger le hall public
+            avec les outils internes.
           </p>
 
           <div class="panel-grid">
@@ -711,7 +712,7 @@
               <span>Préparer un dossier plus intelligent selon le bon rail métier.</span>
             </div>
             <div class="mini-card">
-              <strong>Slug</strong>
+              <strong>Contexte</strong>
               <span id="slugText">Aucun slug détecté</span>
             </div>
           </div>
@@ -819,7 +820,7 @@
             <span class="badge hot">Pro</span>
             <h3>Entrée PIN</h3>
             <p>
-              Le public s’arrête à l’entrée PIN. Le reste du pilotage pro se fait derrière, pas dans le hall public.
+              Le public s’arrête à l’entrée PIN. Bureau, cockpit et match restent derrière cette porte protégée.
             </p>
             <div class="card-meta">
               <div class="meta-item">
@@ -864,7 +865,7 @@
             <div class="step-num">2</div>
             <h3>Le candidat se présente</h3>
             <p>
-              Il ouvre la fiche mission ou la page postuler, remplit l’essentiel, puis la candidature entre dans la base.
+              Il ouvre la fiche mission ou la page postuler, remplit l’essentiel, puis la candidature entre dans le rail prévu.
             </p>
           </article>
 
@@ -880,7 +881,7 @@
             <div class="step-num">4</div>
             <h3>Le pro entre par PIN</h3>
             <p>
-              L’entrée protégée ouvre la suite côté pro. Le hall public ne montre pas les outils internes.
+              L’entrée protégée ouvre bureau, cockpit et match côté pro. Le hall public ne montre pas les outils internes.
             </p>
           </article>
         </div>
@@ -919,7 +920,7 @@
             </div>
             <div class="cta-box">
               <small>Porte pro</small>
-              <strong>Le passage public s’arrête à l’entrée PIN.</strong>
+              <strong>Le passage public s’arrête à l’entrée PIN, puis le rail interne prend le relais.</strong>
             </div>
           </div>
         </article>
@@ -958,16 +959,7 @@
     (function(){
       "use strict";
 
-      const params = new URLSearchParams(window.location.search);
-      const slug = String(params.get("slug") || "").trim().toLowerCase();
-      const secteur = normalizeSecteur(String(params.get("secteur") || params.get("rail") || "").trim().toLowerCase());
-
-      const PATHS = {
-        wall: "./mur des missions.html",
-        apply: "./postuler.html",
-        dossier: "./dossier-intelligent.html",
-        pin: "./pin.html"
-      };
+      const SLUG_STORAGE_KEY = "digiy_jobs_slug";
 
       function normalizeSecteur(value){
         const raw = String(value || "").trim().toLowerCase();
@@ -988,10 +980,29 @@
         return "";
       }
 
+      function readSavedSlug(){
+        try{
+          return String(localStorage.getItem(SLUG_STORAGE_KEY) || "").trim().toLowerCase();
+        }catch(_){
+          return "";
+        }
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const slug = String(params.get("slug") || "").trim().toLowerCase() || readSavedSlug();
+      const secteur = normalizeSecteur(String(params.get("secteur") || params.get("rail") || "").trim().toLowerCase());
+
+      const PATHS = {
+        wall: "./mur des missions.html",
+        apply: "./postuler.html",
+        dossier: "./dossier-intelligent.html",
+        pin: "./pin.html"
+      };
+
       function secteurLabel(value){
         if (value === "build") return "BUILD";
         if (value === "hotellerie-restauration") return "Hôtellerie-Restauration";
-        return "mixte";
+        return "public";
       }
 
       function withContext(path){
@@ -1006,20 +1017,24 @@
         if (el) el.href = withContext(path);
       }
 
-      const workspacePill = document.getElementById("workspacePill");
+      const slugPill = document.getElementById("slugPill");
       const railPill = document.getElementById("railPill");
       const slugText = document.getElementById("slugText");
 
-      if (workspacePill) {
-        workspacePill.textContent = slug ? `Slug : ${slug}` : "Slug : public";
+      if (slugPill) {
+        slugPill.textContent = slug ? `Slug : ${slug}` : "Slug : public";
       }
 
       if (railPill) {
-        railPill.textContent = `Rail : ${secteurLabel(secteur)}`;
+        railPill.textContent = slug
+          ? `Rail : ${secteurLabel(secteur)} + contexte slug`
+          : `Rail : ${secteurLabel(secteur)}`;
       }
 
       if (slugText) {
-        slugText.textContent = slug || "Aucun slug détecté";
+        slugText.textContent = slug
+          ? `Slug actif détecté : ${slug}`
+          : "Aucun slug détecté";
       }
 
       setHref("navWall", PATHS.wall);
