@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>DIGIY JOBS — Entrée PIN</title>
+  <title>DIGIY JOBS — Entrée sécurisée</title>
   <meta name="theme-color" content="#071711" />
   <meta
     name="description"
-    content="DIGIY JOBS — entrée PIN pro pour ouvrir le rail interne proprement."
+    content="DIGIY JOBS — entrée sécurisée pour ouvrir l’espace interne proprement."
   />
 
   <script>
@@ -266,16 +266,16 @@
     </div>
 
     <section class="hero">
-      <div class="kicker">DIGIY JOBS • entrée pro protégée</div>
-      <h1>Entrer par le PIN, pas par la fenêtre.</h1>
+      <div class="kicker">DIGIY JOBS • entrée sécurisée</div>
+      <h1>Entrer proprement dans l’espace privé.</h1>
       <p class="lead">
-        Cette page sert uniquement à ouvrir le rail pro. Le public s’arrête ici.
-        Après validation du PIN, la porte interne s’ouvre proprement.
+        Cette page sert uniquement à ouvrir l’espace privé. Le public s’arrête ici.
+        Après validation du code, la porte interne s’ouvre proprement.
       </p>
 
       <div class="meta-line">
         <div class="meta-chip">Module : <strong>JOBS</strong></div>
-        <div class="meta-chip">Slug actif : <strong id="slugChip">détection…</strong></div>
+        <div class="meta-chip">Identifiant actif : <strong id="slugChip">détection…</strong></div>
         <div class="meta-chip">Source : <strong id="sourceChip">Supabase réel</strong></div>
       </div>
     </section>
@@ -283,25 +283,25 @@
     <section class="card">
       <form id="pinForm">
         <div class="field">
-          <label for="slug">Slug</label>
+          <label for="slug">Identifiant</label>
           <input id="slug" name="slug" type="text" placeholder="Ex: jobs-221771342889" />
-          <div class="hint">Si le slug est dans l’URL, il sera repris automatiquement.</div>
+          <div class="hint">Si l’identifiant est dans l’URL, il sera repris automatiquement.</div>
         </div>
 
         <div class="field">
-          <label for="phone">Téléphone du rail</label>
+          <label for="phone">Téléphone</label>
           <input id="phone" name="phone" type="tel" placeholder="Ex: 221771234567" />
-          <div class="hint" id="phoneHint">Le téléphone peut être résolu automatiquement depuis le slug.</div>
+          <div class="hint" id="phoneHint">Le téléphone peut être résolu automatiquement depuis l’identifiant.</div>
         </div>
 
         <div class="field">
-          <label for="pin">PIN</label>
-          <input id="pin" name="pin" type="password" inputmode="numeric" maxlength="8" placeholder="Entre ton PIN" required />
-          <div class="hint">PIN court, propre, et réservé au rail pro.</div>
+          <label for="pin">Code</label>
+          <input id="pin" name="pin" type="password" inputmode="numeric" maxlength="8" placeholder="Entre ton code" required />
+          <div class="hint">Code court, propre, et réservé à l’espace privé.</div>
         </div>
 
         <div class="actions">
-          <button id="submitBtn" type="submit" class="btn btn-primary">Ouvrir le rail pro</button>
+          <button id="submitBtn" type="submit" class="btn btn-primary">Ouvrir l’espace privé</button>
           <a id="backWallBtn" class="btn btn-secondary" href="./mur%20des%20missions.html">Retour au mur</a>
         </div>
 
@@ -408,7 +408,7 @@
         $("applyLink").href = withSlug("./postuler.html", slug);
         $("dossierLink").href = withSlug("./dossier-intelligent.html", slug);
         $("backWallBtn").href = withSlug("./mur%20des%20missions.html", slug);
-        $("slugChip").textContent = slug || "aucun slug détecté";
+        $("slugChip").textContent = slug || "aucun identifiant détecté";
       }
 
       function setSlug(nextSlug){
@@ -422,8 +422,8 @@
         state.phone = normalizePhone(nextPhone);
         if ($("phone")) $("phone").value = state.phone;
         $("phoneHint").textContent = autoResolved
-          ? "Téléphone résolu automatiquement depuis le slug."
-          : "Le téléphone peut être résolu automatiquement depuis le slug.";
+          ? "Téléphone résolu automatiquement depuis l’identifiant."
+          : "Le téléphone peut être résolu automatiquement depuis l’identifiant.";
       }
 
       async function resolvePhoneBySlug(){
@@ -521,7 +521,7 @@
         let slug = state.slug || rawSlug;
 
         if (!slug && !phone) {
-          showStatus("err", "Il faut au moins un slug ou un téléphone pour ouvrir le rail.");
+          showStatus("err", "Il faut au moins un identifiant ou un téléphone pour ouvrir l’espace.");
           return;
         }
 
@@ -539,12 +539,12 @@
         }
 
         if (!phone) {
-          showStatus("err", "Téléphone du rail introuvable. Vérifie le slug ou saisis le téléphone.");
+          showStatus("err", "Téléphone introuvable. Vérifie l’identifiant ou saisis le téléphone.");
           return;
         }
 
         if (!rawPin || rawPin.length < 4) {
-          showStatus("err", "Entre un PIN valide.");
+          showStatus("err", "Entre un code valide.");
           return;
         }
 
@@ -557,8 +557,8 @@
 
           if (!rpcLooksOk(data)) {
             btn.disabled = false;
-            btn.textContent = "Ouvrir le rail pro";
-            showStatus("err", "PIN incorrect ou accès JOBS non valide.");
+            btn.textContent = "Ouvrir l’espace privé";
+            showStatus("err", "Code incorrect ou accès JOBS non valide.");
             return;
           }
 
@@ -573,7 +573,7 @@
           saveSession(payload);
           if (slug) saveSlug(slug);
 
-          showStatus("ok", "PIN validé. Ouverture du rail pro...");
+          showStatus("ok", "Code validé. Ouverture de l’espace privé...");
 
           const target = slug
             ? `./cockpit.html?slug=${encodeURIComponent(slug)}`
@@ -585,8 +585,8 @@
         } catch (err) {
           console.error(err);
           btn.disabled = false;
-          btn.textContent = "Ouvrir le rail pro";
-          showStatus("err", "Impossible de vérifier le PIN pour le moment. Vérifie le SQL/RLS puis réessaie.");
+          btn.textContent = "Ouvrir l’espace privé";
+          showStatus("err", "Impossible de vérifier le code pour le moment. Vérifie le SQL/RLS puis réessaie.");
           return;
         }
       }
