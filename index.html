@@ -689,7 +689,7 @@
 
         <aside class="panel" aria-label="Résumé du module">
           <span class="signal" id="slugPill">Identifiant : public</span>
-          <span class="signal blue" id="railPill">Rail : public</span>
+          <span class="signal blue" id="contextPill">Contexte : public</span>
 
           <h2>Ce que cette porte fait</h2>
           <p>
@@ -709,7 +709,7 @@
             </div>
             <div class="mini-card">
               <strong>Dossier</strong>
-              <span>Préparer un dossier plus intelligent selon le bon rail métier.</span>
+              <span>Préparer un dossier plus intelligent selon le bon contexte métier.</span>
             </div>
             <div class="mini-card">
               <strong>Contexte</strong>
@@ -736,7 +736,7 @@
         </article>
         <article class="stat">
           <strong>100%</strong>
-          <span>Raccordé au rail JOBS</span>
+          <span>Raccordé à DIGIY JOBS</span>
         </article>
       </div>
     </section>
@@ -799,7 +799,7 @@
             <span class="badge blue">Dossier</span>
             <h3>Dossier intelligent</h3>
             <p>
-              Préparer un dossier plus clair selon le bon rail métier, avec BUILD ou Hôtellerie-Restauration.
+              Préparer un dossier plus clair selon le bon contexte métier, avec BUILD ou Hôtellerie-Restauration.
             </p>
             <div class="card-meta">
               <div class="meta-item">
@@ -844,7 +844,7 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <h2>Lecture simple du rail</h2>
+            <h2>Lecture simple du parcours</h2>
             <p>
               Le public voit, le candidat postule, le dossier affine, puis l’entrée sécurisée ouvre la suite côté privé.
               Chacun reste sur sa page. C’est ça qui garde le parcours propre.
@@ -857,7 +857,7 @@
             <div class="step-num">1</div>
             <h3>Le public voit le besoin</h3>
             <p>
-              Le mur des missions affiche les offres actives sans ouvrir directement le rail interne.
+              Le mur des missions affiche les offres actives sans ouvrir directement les outils privés.
             </p>
           </article>
 
@@ -865,7 +865,7 @@
             <div class="step-num">2</div>
             <h3>Le candidat se présente</h3>
             <p>
-              Il ouvre la fiche mission ou la page postuler, remplit l’essentiel, puis la candidature entre dans le rail prévu.
+              Il ouvre la fiche mission ou la page postuler, remplit l’essentiel, puis la candidature entre dans le bon parcours.
             </p>
           </article>
 
@@ -873,7 +873,7 @@
             <div class="step-num">3</div>
             <h3>Le dossier qualifie mieux</h3>
             <p>
-              Le dossier intelligent affine le rail métier et rend la lecture plus nette côté bureau.
+              Le dossier intelligent affine le contexte métier et rend la lecture plus nette côté bureau.
             </p>
           </article>
 
@@ -916,11 +916,11 @@
             </div>
             <div class="cta-box">
               <small>Porte dossier</small>
-              <strong>Une qualification plus propre selon le rail métier.</strong>
+              <strong>Une qualification plus propre selon le bon contexte métier.</strong>
             </div>
             <div class="cta-box">
               <small>Porte pro</small>
-              <strong>Le passage public s’arrête à l’entrée sécurisée, puis le rail interne prend le relais.</strong>
+              <strong>Le passage public s’arrête à l’entrée sécurisée, puis l’espace privé prend le relais.</strong>
             </div>
           </div>
         </article>
@@ -932,7 +932,7 @@
     <div class="wrap">
       <div class="foot-card">
         <p>
-          DIGIY JOBS — entrée publique. Une porte claire pour ouvrir le bon rail sans mélanger les usages.
+          DIGIY JOBS — entrée publique. Une porte claire pour ouvrir la bonne suite sans mélanger les usages.
         </p>
 
         <div class="foot-links">
@@ -989,8 +989,20 @@
       }
 
       const params = new URLSearchParams(window.location.search);
-      const slug = String(params.get("slug") || "").trim().toLowerCase() || readSavedSlug();
-      const secteur = normalizeSecteur(String(params.get("secteur") || params.get("rail") || "").trim().toLowerCase());
+
+      const urlSlug = String(params.get("slug") || "").trim().toLowerCase();
+      const slug = urlSlug || readSavedSlug();
+
+      if (slug) {
+        try {
+          localStorage.setItem(SLUG_STORAGE_KEY, slug);
+        } catch(_) {}
+      }
+
+      // Compatibilité arrière silencieuse pour ?rail=...
+      const secteur = normalizeSecteur(
+        String(params.get("secteur") || params.get("rail") || "").trim().toLowerCase()
+      );
 
       const PATHS = {
         wall: "./mur des missions.html",
@@ -1018,23 +1030,27 @@
       }
 
       const slugPill = document.getElementById("slugPill");
-      const railPill = document.getElementById("railPill");
+      const contextPill = document.getElementById("contextPill");
       const slugText = document.getElementById("slugText");
 
       if (slugPill) {
         slugPill.textContent = slug ? `Identifiant : ${slug}` : "Identifiant : public";
       }
 
-      if (railPill) {
-        railPill.textContent = slug
-          ? `Rail : ${secteurLabel(secteur)} + contexte slug`
-          : `Rail : ${secteurLabel(secteur)}`;
+      if (contextPill) {
+        contextPill.textContent = `Contexte : ${secteurLabel(secteur)}`;
       }
 
       if (slugText) {
-        slugText.textContent = slug
-          ? `Identifiant actif détecté : ${slug}`
-          : "Aucun identifiant détecté";
+        if (slug && secteur) {
+          slugText.textContent = `Identifiant actif détecté : ${slug} • contexte métier : ${secteurLabel(secteur)}`;
+        } else if (slug) {
+          slugText.textContent = `Identifiant actif détecté : ${slug}`;
+        } else if (secteur) {
+          slugText.textContent = `Contexte métier détecté : ${secteurLabel(secteur)}`;
+        } else {
+          slugText.textContent = "Aucun identifiant détecté";
+        }
       }
 
       setHref("navWall", PATHS.wall);
