@@ -1,9 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>DIGIY JOBS — Déposer ma candidature</title>
+  <title>DIGIY JOBS — Postuler</title>
   <meta name="theme-color" content="#071711" />
   <meta
     name="description"
@@ -27,6 +27,7 @@
       --text:#ecfff4;
       --muted:rgba(236,255,244,.72);
       --gold:#facc15;
+      --blue:#38bdf8;
       --green:#22c55e;
       --danger:#fb7185;
       --max:920px;
@@ -34,7 +35,6 @@
     }
 
     *{box-sizing:border-box}
-
     html,body{
       margin:0;
       padding:0;
@@ -73,6 +73,12 @@
       border-color:rgba(250,204,21,.28);
       background:rgba(250,204,21,.08);
       color:#fff3b0;
+    }
+
+    .chip-link.blue{
+      border-color:rgba(56,189,248,.28);
+      background:rgba(56,189,248,.10);
+      color:#d8f5ff;
     }
 
     .hero{
@@ -134,6 +140,7 @@
       border-radius:22px;
       background:rgba(255,255,255,.04);
       padding:16px;
+      display:none;
     }
 
     .offer-box strong{
@@ -146,6 +153,59 @@
       color:var(--muted);
       font-size:14px;
       line-height:1.55;
+    }
+
+    .assist{
+      margin-top:16px;
+      border:1px solid rgba(56,189,248,.22);
+      border-radius:22px;
+      background:rgba(56,189,248,.08);
+      padding:16px;
+    }
+
+    .assist strong{
+      display:block;
+      margin-bottom:6px;
+      color:#d8f5ff;
+      font-size:16px;
+    }
+
+    .assist p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .assist-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .assist-actions a{
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      min-height:46px;
+      padding:12px 14px;
+      border-radius:16px;
+      font-weight:900;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+    }
+
+    .assist-actions a.gold{
+      background:rgba(250,204,21,.12);
+      border-color:rgba(250,204,21,.28);
+      color:#fff3b0;
+    }
+
+    .assist-actions a.blue{
+      background:rgba(56,189,248,.12);
+      border-color:rgba(56,189,248,.28);
+      color:#d8f5ff;
     }
 
     .form-card{
@@ -191,7 +251,6 @@
     }
 
     textarea{min-height:140px;resize:vertical}
-
     input::placeholder,textarea::placeholder{color:rgba(236,255,244,.42)}
 
     input:focus,select:focus,textarea:focus{
@@ -231,6 +290,11 @@
       min-width:220px;
     }
 
+    .btn-primary:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+    }
+
     .btn-secondary{
       border:1px solid var(--line);
       background:rgba(255,255,255,.06);
@@ -261,11 +325,19 @@
       border:1px solid rgba(251,113,133,.22);
     }
 
+    .status.info{
+      display:block;
+      background:rgba(56,189,248,.1);
+      color:#d8f5ff;
+      border:1px solid rgba(56,189,248,.22);
+    }
+
     @media (max-width: 700px){
       .wrap{padding:14px 12px 70px}
       .hero{padding:22px 14px}
       .form-card{padding:18px 14px}
       .grid{grid-template-columns:1fr}
+      .field.full{grid-column:auto}
       h1{font-size:34px}
     }
   </style>
@@ -275,29 +347,40 @@
     <div class="topbar">
       <a class="chip-link" href="https://digiylyfe.com/" target="_blank" rel="noopener">← Retour au site</a>
       <a id="homeLink" class="chip-link" href="./index.html">Accueil JOBS</a>
-      <a id="wallLink" class="chip-link gold" href="./mur%20des%20missions.html">Mur des missions</a>
-      <a id="dossierLink" class="chip-link" href="./dossier-intelligent.html">Dossier</a>
-      <a id="pinLink" class="chip-link" href="./pin.html">Entrée sécurisée</a>
-      <a id="offerBackLink" class="chip-link" href="./mission.html" style="display:none">Retour à la mission</a>
+      <a id="wallLink" class="chip-link gold" href="./mur%20des%20missions.html">Voir les missions</a>
+      <a id="missionLink" class="chip-link" href="./mission.html" hidden>Relire la mission</a>
+      <a id="helpLink" class="chip-link blue" href="./index.html#clawSection">Aide guidée</a>
     </div>
 
     <section class="hero">
-      <div class="kicker">DIGIY JOBS • candidature réelle</div>
-      <h1>Postuler sans tourner autour du baobab.</h1>
+      <div class="kicker">JOBS • candidature réelle</div>
+      <h1>Postuler simplement.</h1>
       <p class="lead">
-        Ici tu poses une candidature claire, simple et exploitable.
-        Pas besoin de théâtre. Nom, téléphone, métier, disponibilité, message. Et ça part en base.
+        Ici tu poses une candidature claire : ton nom, ton WhatsApp, ton métier,
+        ta disponibilité et un petit message. DIGIY l’envoie au bon bureau pour traitement.
       </p>
 
       <div class="meta-line">
-        <div class="meta-chip">Mode : <strong id="modeChip">candidature publique</strong></div>
-        <div class="meta-chip">Slug actif : <strong id="slugChip">global</strong></div>
-        <div class="meta-chip">Source : <strong id="sourceChip">Supabase réel</strong></div>
+        <div class="meta-chip">Mode : <strong id="modeChip">candidature</strong></div>
+        <div class="meta-chip">Lecture : <strong id="sourceChip">mission publique</strong></div>
       </div>
 
-      <div id="offerBox" class="offer-box" style="display:none">
+      <div id="offerBox" class="offer-box">
         <strong id="offerTitle">Mission</strong>
         <div id="offerMeta" class="offer-meta"></div>
+      </div>
+
+      <div class="assist">
+        <strong>Avant d’envoyer</strong>
+        <p>
+          Écris comme tu parles, mais reste précis. Le téléphone demandé ici est le tien,
+          pour que le bureau puisse te joindre si ton profil correspond.
+        </p>
+        <div class="assist-actions">
+          <a id="assistMissionLink" href="./mission.html" hidden>Relire la mission</a>
+          <a id="assistWallLink" class="gold" href="./mur%20des%20missions.html">Voir les autres missions</a>
+          <a id="assistHelpLink" class="blue" href="./index.html#clawSection">Ouvrir l’aide</a>
+        </div>
       </div>
     </section>
 
@@ -306,22 +389,23 @@
         <div class="grid">
           <div class="field">
             <label for="full_name">Nom complet</label>
-            <input id="full_name" name="full_name" type="text" placeholder="Ex: Moussa Diop" required />
+            <input id="full_name" name="full_name" type="text" placeholder="Ex: Moussa Diop" required autocomplete="name" />
           </div>
 
           <div class="field">
-            <label for="phone">Téléphone WhatsApp</label>
-            <input id="phone" name="phone" type="tel" placeholder="Ex: +221771234567" required />
+            <label for="phone">Ton WhatsApp</label>
+            <input id="phone" name="phone" type="tel" placeholder="Ex: +221771234567" required autocomplete="tel" />
+            <div class="hint">Ce numéro sert uniquement à te recontacter pour cette candidature.</div>
           </div>
 
           <div class="field">
             <label for="city">Ville</label>
-            <input id="city" name="city" type="text" placeholder="Ex: Saly, Mbour, Dakar" />
+            <input id="city" name="city" type="text" placeholder="Ex: Saly, Mbour, Dakar" autocomplete="address-level2" />
           </div>
 
           <div class="field">
             <label for="country">Pays</label>
-            <input id="country" name="country" type="text" placeholder="Ex: Sénégal" value="Sénégal" />
+            <input id="country" name="country" type="text" placeholder="Ex: Sénégal" value="Sénégal" autocomplete="country-name" />
           </div>
 
           <div class="field">
@@ -334,7 +418,7 @@
             <input id="years_experience" name="years_experience" type="text" placeholder="Ex: 3 ans, confirmé, débutant sérieux" />
           </div>
 
-          <div class="field">
+          <div class="field full">
             <label for="availability">Disponibilité</label>
             <select id="availability" name="availability">
               <option value="">Choisir</option>
@@ -343,12 +427,6 @@
               <option value="this_month">Ce mois-ci</option>
               <option value="to_discuss">À discuter</option>
             </select>
-          </div>
-
-          <div class="field">
-            <label for="source">Origine</label>
-            <input id="source" name="source" type="text" value="public_form" />
-            <div class="hint">Tu peux laisser tel quel.</div>
           </div>
 
           <div class="field full">
@@ -368,266 +446,276 @@
   </div>
 
   <script>
-    const SUPABASE_URL =
-      window.DIGIY_SUPABASE_URL ||
-      "https://wesqmwjjtsefyjnluosj.supabase.co";
+    (function(){
+      "use strict";
 
-    const SUPABASE_ANON_KEY =
-      window.DIGIY_SUPABASE_ANON ||
-      window.DIGIY_SUPABASE_ANON_KEY ||
-      "";
+      const SUPABASE_URL =
+        window.DIGIY_SUPABASE_URL ||
+        "https://wesqmwjjtsefyjnluosj.supabase.co";
 
-    const sb =
-      window.supabase && SUPABASE_URL && SUPABASE_ANON_KEY
-        ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-        : null;
+      const SUPABASE_ANON_KEY =
+        window.DIGIY_SUPABASE_ANON ||
+        window.DIGIY_SUPABASE_ANON_KEY ||
+        "";
 
-    const params = new URLSearchParams(location.search);
-    const offerId = String(params.get("offer") || params.get("id") || "").trim();
-    const slugFromUrl = String(params.get("slug") || "").trim().toLowerCase();
+      const sb =
+        window.supabase && SUPABASE_URL && SUPABASE_ANON_KEY
+          ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+          : null;
 
-    const $ = (id) => document.getElementById(id);
-    const SLUG_STORAGE_KEY = "digiy_jobs_slug";
-    const DB_SLUG_COLUMN = "workspace_slug";
+      const params = new URLSearchParams(location.search);
+      const $ = (id) => document.getElementById(id);
 
-    const JOBS_PATHS = {
-      home: "./index.html",
-      wall: "./mur%20des%20missions.html",
-      dossier: "./dossier-intelligent.html",
-      pin: "./pin.html",
-      postuler: "./postuler.html",
-      mission: "./mission.html"
-    };
+      const legacySlug = String(params.get("slug") || "").trim().toLowerCase();
+      const offerParam = String(params.get("offer") || params.get("id") || "").trim();
+      const sensitiveParams = [
+        "slug",
+        "phone",
+        "tel",
+        "resa_tel",
+        "owner_phone",
+        "owner_id",
+        "contact_phone",
+        "business_code",
+        "keybox_code",
+        "keybox_location",
+        "access_note"
+      ];
 
-    const state = {
-      offer: null,
-      slug: slugFromUrl,
-      ownerId: null
-    };
-
-    function normalizePhone(v = ""){
-      return String(v).trim().replace(/\s+/g, "");
-    }
-
-    function withSlug(path, slug){
-      const cleanSlug = String(slug || "").trim().toLowerCase();
-      if (!cleanSlug) return path;
-      const joiner = path.includes("?") ? "&" : "?";
-      return `${path}${joiner}slug=${encodeURIComponent(cleanSlug)}`;
-    }
-
-    function showStatus(type, text){
-      const box = $("statusBox");
-      if (!box) return;
-
-      if (!type) {
-        box.className = "status";
-        box.textContent = "";
-        box.style.display = "none";
-        return;
-      }
-
-      box.className = `status ${type}`;
-      box.textContent = text;
-      box.style.display = "block";
-    }
-
-    function saveSlug(slug){
-      try{
-        if (slug) localStorage.setItem(SLUG_STORAGE_KEY, slug);
-      }catch(_){}
-    }
-
-    function readSavedSlug(){
-      try{
-        return String(localStorage.getItem(SLUG_STORAGE_KEY) || "").trim().toLowerCase();
-      }catch(_){
-        return "";
-      }
-    }
-
-    function syncMeta(){
-      $("slugChip").textContent = state.slug || "global";
-      $("modeChip").textContent = state.offer ? "candidature liée" : "candidature publique";
-    }
-
-    function syncLinks() {
-      const slug = state.slug || "";
-
-      $("homeLink").href = withSlug(JOBS_PATHS.home, slug);
-      $("wallLink").href = withSlug(JOBS_PATHS.wall, slug);
-      $("dossierLink").href = withSlug(JOBS_PATHS.dossier, slug);
-      $("pinLink").href = withSlug(JOBS_PATHS.pin, slug);
-      $("seeOffersLink").href = withSlug(JOBS_PATHS.wall, slug);
-
-      const offerBackLink = $("offerBackLink");
-      if (offerBackLink && state.offer?.id) {
-        const href = new URL(JOBS_PATHS.mission, location.href);
-        href.searchParams.set("id", state.offer.id);
-        if (slug) href.searchParams.set("slug", slug);
-        offerBackLink.href = href.toString();
-        offerBackLink.style.display = "inline-flex";
-      } else if (offerBackLink) {
-        offerBackLink.style.display = "none";
-      }
-
-      syncMeta();
-    }
-
-    async function inferOwnerIdFromSlug(){
-      if (!sb || !state.slug || state.ownerId) return;
-
-      const { data, error } = await sb
-        .from("digiy_jobs_offers_pro")
-        .select("owner_id")
-        .eq(DB_SLUG_COLUMN, state.slug)
-        .limit(1)
-        .maybeSingle();
-
-      if (!error && data?.owner_id) {
-        state.ownerId = data.owner_id;
-      }
-    }
-
-    async function loadOfferIfAny(){
-      syncLinks();
-
-      if (!offerId) {
-        if (state.slug) {
-          saveSlug(state.slug);
-          await inferOwnerIdFromSlug();
-        }
-        syncLinks();
-        return;
-      }
-
-      if (!sb) {
-        showStatus("err", "Supabase non chargé. Vérifie la configuration front.");
-        return;
-      }
-
-      const { data, error } = await sb
-        .from("digiy_jobs_offers_pro")
-        .select("id,workspace_slug,owner_id,title,city,country,contract_type,pay,employer_name,status")
-        .eq("id", offerId)
-        .eq("status", "active")
-        .maybeSingle();
-
-      if (error || !data) {
-        console.error(error);
-        showStatus("err", "La mission liée à cette candidature est introuvable ou indisponible.");
-        syncLinks();
-        return;
-      }
-
-      state.offer = data;
-      state.ownerId = data.owner_id || null;
-      state.slug = String(data.workspace_slug || state.slug || "").trim().toLowerCase();
-
-      if (state.slug) saveSlug(state.slug);
-
-      $("offerBox").style.display = "block";
-      $("offerTitle").textContent = data.title || "Mission";
-      $("offerMeta").textContent =
-        `${data.employer_name || data.workspace_slug || "Structure"} • ` +
-        `${data.city || "Ville à préciser"} • ` +
-        `${data.country || "Sénégal"} • ` +
-        `${data.contract_type || "Contrat à préciser"} • ` +
-        `${data.pay || "Rémunération à préciser"}`;
-
-      syncLinks();
-    }
-
-    async function handleSubmit(e){
-      e.preventDefault();
-      showStatus("", "");
-
-      if (!sb) {
-        showStatus("err", "Supabase non chargé. Vérifie la configuration front.");
-        return;
-      }
-
-      const fullName = $("full_name").value.trim();
-      const phone = normalizePhone($("phone").value);
-      const trade = $("trade").value.trim();
-      const slug = state.offer?.workspace_slug || state.slug || null;
-
-      if (!fullName || !phone) {
-        showStatus("err", "Nom complet et téléphone WhatsApp sont obligatoires.");
-        return;
-      }
-
-      if (!state.offer?.id && !slug) {
-        showStatus("err", "Aucun identifiant JOBS détecté. Ouvre la page depuis le mur des missions ou une fiche mission.");
-        return;
-      }
-
-      if (!state.ownerId && slug) {
-        await inferOwnerIdFromSlug();
-      }
-
-      const payload = {
-        offer_id: state.offer?.id || null,
-        workspace_slug: slug,
-        owner_id: state.offer?.owner_id || state.ownerId || null,
-        full_name: fullName,
-        phone: phone,
-        job_title: trade || state.offer?.title || null,
-        city: $("city").value.trim() || null,
-        country: $("country").value.trim() || "Sénégal",
-        trade: trade || null,
-        years_experience: $("years_experience").value.trim() || null,
-        availability: $("availability").value || null,
-        message: $("message").value.trim() || null,
-        status: "new",
-        source: $("source").value.trim() || "public_form"
+      const state = {
+        offerId: offerParam,
+        legacySlug: legacySlug,
+        offer: null
       };
 
-      const btn = $("submitBtn");
-      btn.disabled = true;
-      btn.textContent = "Envoi en cours...";
+      const JOBS_PATHS = {
+        home: "./index.html",
+        wall: "./mur%20des%20missions.html",
+        mission: "./mission.html"
+      };
 
-      const { error } = await sb
-        .from("digiy_jobs_candidates_pro")
-        .insert(payload);
+      function cleanSensitiveUrl(nextOfferId){
+        try{
+          const url = new URL(location.href);
+          sensitiveParams.forEach((key) => url.searchParams.delete(key));
 
-      btn.disabled = false;
-      btn.textContent = "Envoyer ma candidature";
+          const cleanOffer = String(nextOfferId || state.offerId || "").trim();
+          url.searchParams.delete("id");
 
-      if (error) {
-        console.error(error);
-        showStatus(
-          "err",
-          "Impossible d’envoyer la candidature pour le moment.\nVérifie le SQL/RLS puis réessaie."
-        );
-        return;
+          if (cleanOffer) {
+            url.searchParams.set("offer", cleanOffer);
+          } else {
+            url.searchParams.delete("offer");
+          }
+
+          const clean = url.pathname + url.search + url.hash;
+          const current = location.pathname + location.search + location.hash;
+
+          if (clean !== current) {
+            history.replaceState({}, "", clean);
+          }
+        }catch(_){}
       }
 
-      $("applyForm").reset();
-      $("country").value = "Sénégal";
-      $("source").value = "public_form";
-
-      showStatus(
-        "ok",
-        "Candidature envoyée. Elle est entrée en base avec le statut « new »."
-      );
-
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    $("applyForm").addEventListener("submit", handleSubmit);
-
-    (async () => {
-      if (!state.slug) {
-        const saved = readSavedSlug();
-        if (saved) state.slug = saved;
+      function safePhone(v = ""){
+        return String(v || "").replace(/[^\d+]/g, "");
       }
 
-      if (state.slug) saveSlug(state.slug);
+      function showStatus(type, text){
+        const box = $("statusBox");
+        if (!box) return;
+        if (!type) {
+          box.className = "status";
+          box.textContent = "";
+          box.style.display = "none";
+          return;
+        }
+        box.className = "status " + type;
+        box.textContent = text;
+        box.style.display = "block";
+      }
+
+      function labelContract(v = ""){
+        const map = {
+          cdi:"CDI",
+          cdd:"CDD",
+          mission:"Mission",
+          stage:"Stage",
+          freelance:"Freelance",
+          extra:"Extra"
+        };
+        return map[String(v || "").toLowerCase()] || v || "Contrat à préciser";
+      }
+
+      function missionUrl(){
+        const offerId = state.offer?.id || state.offerId || "";
+        if (!offerId) return JOBS_PATHS.mission;
+        const url = new URL(JOBS_PATHS.mission, location.href);
+        url.searchParams.set("id", offerId);
+        return url.pathname + url.search;
+      }
+
+      function syncLinks(){
+        $("homeLink").href = JOBS_PATHS.home;
+        $("wallLink").href = JOBS_PATHS.wall;
+        $("assistWallLink").href = JOBS_PATHS.wall;
+        $("seeOffersLink").href = JOBS_PATHS.wall;
+        $("helpLink").href = JOBS_PATHS.home + "#clawSection";
+        $("assistHelpLink").href = JOBS_PATHS.home + "#clawSection";
+
+        const hasMission = Boolean(state.offer?.id || state.offerId);
+        $("missionLink").hidden = !hasMission;
+        $("assistMissionLink").hidden = !hasMission;
+
+        if (hasMission) {
+          const href = missionUrl();
+          $("missionLink").href = href;
+          $("assistMissionLink").href = href;
+        }
+
+        $("modeChip").textContent = state.offer ? "candidature liée" : "candidature";
+        $("sourceChip").textContent = state.offer ? "mission publique" : "mission à choisir";
+      }
+
+      function renderOffer(){
+        const offer = state.offer;
+        if (!offer) {
+          $("offerBox").style.display = "none";
+          syncLinks();
+          return;
+        }
+
+        $("offerBox").style.display = "block";
+        $("offerTitle").textContent = offer.title || "Mission";
+        $("offerMeta").textContent = [
+          offer.city || "Ville à préciser",
+          offer.country || "Sénégal",
+          labelContract(offer.contract_type),
+          offer.pay || "Rémunération à préciser"
+        ].join(" • ");
+
+        state.offerId = offer.id || state.offerId || "";
+        cleanSensitiveUrl(state.offerId);
+        syncLinks();
+      }
+
+      async function loadOffer(){
+        cleanSensitiveUrl(state.offerId);
+
+        if (!sb) {
+          showStatus("err", "Chargement indisponible pour le moment.");
+          syncLinks();
+          return;
+        }
+
+        let query = sb
+          .from("digiy_jobs_offers_pro")
+          .select("id,slug,owner_id,title,city,country,contract_type,pay,status,published_at,created_at")
+          .eq("status", "active")
+          .order("published_at", { ascending: false })
+          .order("created_at", { ascending: false })
+          .limit(1);
+
+        if (state.offerId) {
+          query = query.eq("id", state.offerId);
+        } else if (state.legacySlug) {
+          query = query.eq("slug", state.legacySlug);
+        } else {
+          syncLinks();
+          showStatus("info", "Choisis une mission depuis le mur, puis envoie ta candidature.");
+          return;
+        }
+
+        const { data, error } = await query;
+
+        if (error) {
+          console.error(error);
+          showStatus("err", "Impossible de relire la mission pour le moment.");
+          syncLinks();
+          return;
+        }
+
+        const offer = Array.isArray(data) ? data[0] : null;
+        if (!offer) {
+          showStatus("err", "Mission introuvable ou plus active.");
+          syncLinks();
+          return;
+        }
+
+        state.offer = offer;
+        renderOffer();
+      }
+
+      async function handleSubmit(e){
+        e.preventDefault();
+        showStatus("", "");
+
+        if (!sb) {
+          showStatus("err", "Chargement indisponible pour le moment.");
+          return;
+        }
+
+        if (!state.offer?.id || !state.offer?.slug) {
+          showStatus("err", "Ouvre cette page depuis une mission active pour que ta candidature arrive au bon bureau.");
+          return;
+        }
+
+        const fullName = $("full_name").value.trim();
+        const phone = safePhone($("phone").value);
+        const trade = $("trade").value.trim();
+
+        if (!fullName || !phone) {
+          showStatus("err", "Nom complet et WhatsApp sont obligatoires.");
+          return;
+        }
+
+        const payload = {
+          offer_id: state.offer.id,
+          slug: state.offer.slug,
+          owner_id: state.offer.owner_id || null,
+          full_name: fullName,
+          phone: phone,
+          job_title: trade || state.offer.title || null,
+          city: $("city").value.trim() || null,
+          country: $("country").value.trim() || "Sénégal",
+          trade: trade || null,
+          years_experience: $("years_experience").value.trim() || null,
+          availability: $("availability").value || null,
+          message: $("message").value.trim() || null,
+          status: "new",
+          source: "public_form"
+        };
+
+        const btn = $("submitBtn");
+        btn.disabled = true;
+        btn.textContent = "Envoi en cours...";
+
+        const { error } = await sb
+          .from("digiy_jobs_candidates_pro")
+          .insert(payload);
+
+        btn.disabled = false;
+        btn.textContent = "Envoyer ma candidature";
+
+        if (error) {
+          console.error(error);
+          showStatus("err", "Impossible d’envoyer la candidature pour le moment. Le bureau doit vérifier l’accès d’écriture.");
+          return;
+        }
+
+        $("applyForm").reset();
+        $("country").value = "Sénégal";
+
+        showStatus("ok", "Candidature envoyée. Le bureau JOBS pourra la lire et te recontacter si ton profil correspond.");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      $("applyForm").addEventListener("submit", handleSubmit);
 
       syncLinks();
-      await loadOfferIfAny();
+      loadOffer();
     })();
   </script>
 </body>
 </html>
+
