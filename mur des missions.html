@@ -851,12 +851,7 @@
 
         renderStatus('loading', 'Chargement des missions...');
 
-        const { data, error } = await sb
-          .from('digiy_jobs_offers_pro')
-          .select('id,title,sector,city,country,contract_type,pay,status,description,requirements,has_housing,has_family_welcome,employer_name,published_at,created_at')
-          .eq('status', 'active')
-          .order('published_at', { ascending:false })
-          .order('created_at', { ascending:false });
+        const { data, error } = await sb.rpc('digiy_jobs_public_offers');
 
         if (error) {
           console.error(error);
@@ -865,7 +860,14 @@
           return;
         }
 
-        state.offers = Array.isArray(data) ? data : [];
+        if (!data || data.ok !== true) {
+          console.warn('RPC digiy_jobs_public_offers réponse inattendue', data);
+          renderStatus('error', 'Les missions ne sont pas disponibles pour le moment.');
+          $('count').textContent = 'Erreur de lecture';
+          return;
+        }
+
+        state.offers = Array.isArray(data.items) ? data.items : [];
 
         buildOptions(
           $('sectorSelect'),
