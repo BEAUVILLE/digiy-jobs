@@ -6,7 +6,7 @@
   <title>DIGIY JOBS — Entrée publique</title>
   <meta
     name="description"
-    content="DIGIY JOBS — entrée publique pour voir les missions, déposer une candidature, ouvrir le dossier intelligent et accéder proprement à l’entrée sécurisée."
+    content="DIGIY JOBS — entrée publique pour voir les missions, déposer une candidature, ouvrir le dossier intelligent et suivre sa candidature."
   />
   <meta name="theme-color" content="#0f1720" />
 
@@ -33,7 +33,9 @@
     }
 
     *{box-sizing:border-box}
+
     html{scroll-behavior:smooth}
+
     body{
       margin:0;
       font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -42,9 +44,12 @@
         radial-gradient(circle at top left, rgba(200,154,61,.10), transparent 30%),
         radial-gradient(circle at right 20%, rgba(31,122,90,.07), transparent 28%),
         linear-gradient(180deg,var(--bg),var(--bg-2));
+      padding-bottom:calc(84px + env(safe-area-inset-bottom,0px));
     }
 
     a{color:inherit;text-decoration:none}
+    button{font:inherit}
+
     .wrap{width:min(calc(100% - 28px), var(--max));margin:0 auto}
 
     .topbar{
@@ -205,6 +210,7 @@
       font-weight:900;
       border:1px solid transparent;
       transition:transform .18s ease, box-shadow .18s ease;
+      text-align:center;
     }
 
     .btn:hover{transform:translateY(-1px)}
@@ -475,9 +481,7 @@
       gap:16px;
     }
 
-    .step{
-      padding:20px;
-    }
+    .step{padding:20px}
 
     .step-num{
       width:40px;
@@ -554,6 +558,35 @@
       line-height:1.5;
     }
 
+    .return-house{
+      padding:22px;
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      margin-top:20px;
+    }
+
+    .return-house h2{
+      margin:0 0 8px;
+      font-size:clamp(24px,3vw,36px);
+      letter-spacing:-.03em;
+    }
+
+    .return-house p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      max-width:70ch;
+    }
+
+    .return-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
     footer{padding:0 0 38px}
 
     .foot-card{
@@ -585,11 +618,19 @@
       font-weight:800;
     }
 
-    .floating-site-btn{
+    .floating-returns{
       position:fixed;
       right:16px;
-      bottom:calc(16px + env(safe-area-inset-bottom, 0px));
+      bottom:calc(96px + env(safe-area-inset-bottom, 0px));
       z-index:95;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+
+    .floating-site-btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -611,60 +652,9 @@
       box-shadow:0 22px 38px rgba(15,23,32,.28);
     }
 
-    .floating-site-btn:active{
-      transform:translateY(0);
-    }
-
-    .floating-returns{
-      position:fixed;
-      right:16px;
-      bottom:calc(16px + env(safe-area-inset-bottom, 0px));
-      z-index:95;
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:flex-end;
-    }
-
-    .floating-returns .floating-site-btn{
-      position:static;
-      right:auto;
-      bottom:auto;
-    }
-
     .floating-site-btn.hub{
       background:linear-gradient(135deg,var(--gold),var(--gold-2));
       color:#23180a;
-    }
-
-    .return-house{
-      padding:22px;
-      border:1px solid var(--line);
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      margin-top:20px;
-    }
-
-    .return-house h2{
-      margin:0 0 8px;
-      font-size:clamp(24px,3vw,36px);
-      letter-spacing:-.03em;
-    }
-
-    .return-house p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.6;
-      max-width:70ch;
-    }
-
-    .return-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
     }
 
     .bottom-nav{
@@ -688,7 +678,7 @@
       gap:6px;
     }
 
-    .bottom-nav a,.bottom-nav button{
+    .bottom-nav a{
       min-height:54px;
       border-radius:14px;
       display:grid;
@@ -703,19 +693,13 @@
       text-decoration:none;
       background:transparent;
       padding:0 4px;
-      font-family:inherit;
-      cursor:pointer;
     }
 
     .bottom-nav .ico{font-size:18px;line-height:1}
 
-    .bottom-nav a.active,.bottom-nav button.active{
+    .bottom-nav a.active{
       background:var(--deep);
       color:#fff;
-    }
-
-    body{
-      padding-bottom:calc(84px + env(safe-area-inset-bottom,0px));
     }
 
     #digiy-audio-btn{
@@ -765,10 +749,10 @@
         <a href="https://digiylyfe.com/">🌍 Site</a>
         <a href="https://digiy-hub.digiylyfe.com/">🧭 HUB</a>
         <a href="https://tarifs.digiylyfe.com/" target="_blank" rel="noopener noreferrer">📦 Tarifs</a>
-        <a id="navWall" href="./mur des missions.html">Mur</a>
+        <a id="navWall" href="./mur%20des%20missions.html">Missions</a>
         <a id="navApply" href="./postuler.html">Postuler</a>
         <a id="navDossier" class="blue" href="./dossier-intelligent.html">Dossier</a>
-        <a id="navPin" href="./pin.html">Accès</a>
+        <a id="navSuivi" href="./suivi.html">Suivi</a>
         <a class="primary" href="#entrer">Entrer</a>
       </nav>
     </div>
@@ -781,15 +765,16 @@
           <span class="eyebrow">Entrée publique DIGIY JOBS</span>
           <h1>Le travail visible. Les missions lisibles. Le terrain d’abord.</h1>
           <p class="lead">
-            DIGIY JOBS montre les missions, ouvre la porte aux candidatures, au dossier intelligent
-            et relie proprement le public à l’espace privé. Ici on cherche la clarté :
-            besoin réel, profil réel, contact utile.
+            DIGIY JOBS montre les missions, ouvre la porte aux candidatures, aide à préparer un dossier plus clair,
+            puis permet au candidat de suivre son dépôt. Ici on cherche la clarté :
+            besoin réel, profil réel, opportunité utile.
           </p>
 
           <div class="hero-actions">
-            <a id="heroWallBtn" class="btn btn-dark" href="./mur des missions.html">Voir les missions</a>
+            <a id="heroWallBtn" class="btn btn-dark" href="./mur%20des%20missions.html">Voir les missions</a>
             <a id="heroApplyBtn" class="btn btn-light" href="./postuler.html">Déposer ma candidature</a>
             <a id="heroDossierBtn" class="btn btn-blue" href="./dossier-intelligent.html">Ouvrir le dossier</a>
+            <a id="heroSuiviBtn" class="btn btn-light" href="./suivi.html">Suivre ma candidature</a>
             <a class="btn btn-light" href="https://digiylyfe.com/">🌍 Site DIGIYLYFE</a>
             <a class="btn btn-light" href="https://digiy-hub.digiylyfe.com/">🧭 HUB DIGIY</a>
             <a class="btn btn-light" href="https://tarifs.digiylyfe.com/" target="_blank" rel="noopener noreferrer">📦 Tarifs</a>
@@ -797,22 +782,20 @@
 
           <div class="hero-notes">
             <span class="pill">Mur des missions</span>
-            <span class="pill">Candidature spontanée</span>
+            <span class="pill">Candidature simple</span>
             <span class="pill blue">Dossier intelligent</span>
-            <span class="pill">Entrée sécurisée</span>
-            <span class="pill">Bureau / espace / match derrière l’accès</span>
+            <span class="pill">Suivi candidature</span>
           </div>
         </article>
 
         <aside class="panel" aria-label="Résumé du module">
-          <span class="signal" id="slugPill">Identifiant : public</span>
+          <span class="signal" id="publicPill">Accès : public candidat</span>
           <span class="signal blue" id="contextPill">Contexte : public</span>
 
           <h2>Ce que cette porte fait</h2>
           <p>
-            Elle sert d’accueil public propre pour DIGIY JOBS. Depuis ici on ouvre le mur des missions,
-            on postule, on prépare le dossier, et on rejoint l’entrée sécurisée sans mélanger l’entrée publique
-            avec les outils internes.
+            Elle sert d’accueil public propre pour DIGIY JOBS. Depuis ici on ouvre les missions,
+            on postule, on prépare son dossier et on suit sa candidature sans mélanger avec le coffre professionnel.
           </p>
 
           <div class="panel-grid">
@@ -826,11 +809,11 @@
             </div>
             <div class="mini-card">
               <strong>Dossier</strong>
-              <span>Préparer un dossier plus intelligent selon le bon contexte métier.</span>
+              <span>Préparer un profil plus clair selon le bon contexte métier.</span>
             </div>
             <div class="mini-card">
-              <strong>Contexte</strong>
-              <span id="slugText">Aucun identifiant détecté</span>
+              <strong>Suivi</strong>
+              <span>Retrouver son dépôt et garder un fil clair côté candidat.</span>
             </div>
           </div>
         </aside>
@@ -845,15 +828,15 @@
         </article>
         <article class="stat">
           <strong>4 portes</strong>
-          <span>Missions, postuler, dossier, accès</span>
+          <span>Missions, postuler, dossier, suivi</span>
         </article>
         <article class="stat">
-          <strong>0 détour</strong>
-          <span>Navigation directe vers les vraies pages</span>
+          <strong>0 code</strong>
+          <span>Le candidat ne cherche pas un PIN</span>
         </article>
         <article class="stat">
           <strong>100%</strong>
-          <span>Raccordé à DIGIY JOBS</span>
+          <span>Parcours public candidat</span>
         </article>
       </div>
     </section>
@@ -864,7 +847,7 @@
           <div>
             <h2>Choisir sa porte</h2>
             <p>
-              Public, candidat, dossier ou entrée pro : chacun a son passage. On évite de tout mélanger dans une seule page molle.
+              Mission, candidature, dossier ou suivi : chacun a son passage. Le coffre professionnel reste séparé.
             </p>
           </div>
         </div>
@@ -887,7 +870,7 @@
               </div>
             </div>
             <div class="job-actions">
-              <a id="wallCardBtn" class="action-link dark" href="./mur des missions.html">Ouvrir le mur</a>
+              <a id="wallCardBtn" class="action-link dark" href="./mur%20des%20missions.html">Ouvrir le mur</a>
             </div>
           </article>
 
@@ -895,7 +878,7 @@
             <span class="badge warn">Candidat</span>
             <h3>Postuler</h3>
             <p>
-              Déposer une candidature liée à une mission ou envoyer une candidature spontanée dans le bon identifiant.
+              Déposer une candidature liée à une mission ou envoyer une candidature spontanée.
             </p>
             <div class="card-meta">
               <div class="meta-item">
@@ -904,7 +887,7 @@
               </div>
               <div class="meta-item">
                 <small>Usage</small>
-                <strong>Nom, téléphone, métier, dispo</strong>
+                <strong>Nom, WhatsApp, métier, dispo</strong>
               </div>
             </div>
             <div class="job-actions">
@@ -925,7 +908,7 @@
               </div>
               <div class="meta-item">
                 <small>Usage</small>
-                <strong>Qualifier le profil ou le besoin</strong>
+                <strong>Qualifier le profil</strong>
               </div>
             </div>
             <div class="job-actions">
@@ -934,23 +917,23 @@
           </article>
 
           <article class="nav-card">
-            <span class="badge hot">Privé</span>
-            <h3>Entrée sécurisée</h3>
+            <span class="badge hot">Suivi</span>
+            <h3>Suivre ma candidature</h3>
             <p>
-              Le public s’arrête à l’entrée sécurisée. Bureau, espace et match restent derrière cette porte protégée.
+              Retrouver le fil de son dépôt et rester orienté sans passer par une entrée professionnelle.
             </p>
             <div class="card-meta">
               <div class="meta-item">
                 <small>Page</small>
-                <strong>pin.html</strong>
+                <strong>suivi.html</strong>
               </div>
               <div class="meta-item">
                 <small>Usage</small>
-                <strong>Accès protégé pour l’espace privé</strong>
+                <strong>Voir où en est mon dépôt</strong>
               </div>
             </div>
             <div class="job-actions">
-              <a id="pinCardBtn" class="action-link dark" href="./pin.html">Entrée sécurisée</a>
+              <a id="suiviCardBtn" class="action-link dark" href="./suivi.html">Ouvrir le suivi</a>
             </div>
           </article>
         </div>
@@ -963,8 +946,8 @@
           <div>
             <h2>Lecture simple du parcours</h2>
             <p>
-              Le public voit, le candidat postule, le dossier affine, puis l’entrée sécurisée ouvre la suite côté privé.
-              Chacun reste sur sa page. C’est ça qui garde le parcours propre.
+              Le public voit, le candidat postule, le dossier affine, puis le suivi garde un fil clair.
+              Le professionnel travaille dans son espace séparé.
             </p>
           </div>
         </div>
@@ -974,7 +957,7 @@
             <div class="step-num">1</div>
             <h3>Le public voit le besoin</h3>
             <p>
-              Le mur des missions affiche les offres actives sans ouvrir directement les outils privés.
+              Le mur des missions affiche les offres actives sans ouvrir les outils professionnels.
             </p>
           </article>
 
@@ -982,7 +965,7 @@
             <div class="step-num">2</div>
             <h3>Le candidat se présente</h3>
             <p>
-              Il ouvre la fiche mission ou la page postuler, remplit l’essentiel, puis la candidature entre dans le bon parcours.
+              Il ouvre la fiche mission ou la page postuler, remplit l’essentiel, puis la candidature part au bon bureau.
             </p>
           </article>
 
@@ -990,15 +973,15 @@
             <div class="step-num">3</div>
             <h3>Le dossier qualifie mieux</h3>
             <p>
-              Le dossier intelligent affine le contexte métier et rend la lecture plus nette côté bureau.
+              Le dossier intelligent affine le contexte métier et rend la lecture plus nette côté traitement.
             </p>
           </article>
 
           <article class="step">
             <div class="step-num">4</div>
-            <h3>L’espace privé s’ouvre par code</h3>
+            <h3>Le suivi garde le fil</h3>
             <p>
-              L’entrée protégée ouvre bureau, espace et match côté privé. L’entrée publique ne montre pas les outils internes.
+              Le candidat retrouve son dépôt sans chercher un code professionnel.
             </p>
           </article>
         </div>
@@ -1012,13 +995,14 @@
             <h2>L’entrée publique doit être simple, nette et sans confusion.</h2>
             <p>
               Cette page n’a pas besoin de tout faire. Son rôle est d’ouvrir les bonnes portes :
-              missions, candidature, dossier intelligent, accès. Le travail lourd se fait derrière, pas ici.
+              missions, candidature, dossier intelligent et suivi. Le travail professionnel se fait dans l’autre coffre.
             </p>
 
             <div class="hero-actions" style="margin-top:18px;margin-bottom:0">
-              <a id="ctaWallBtn" class="btn btn-dark" href="./mur des missions.html">Ouvrir le mur</a>
+              <a id="ctaWallBtn" class="btn btn-dark" href="./mur%20des%20missions.html">Ouvrir le mur</a>
               <a id="ctaApplyBtn" class="btn btn-light" href="./postuler.html">Postuler</a>
               <a id="ctaDossierBtn" class="btn btn-blue" href="./dossier-intelligent.html">Dossier intelligent</a>
+              <a id="ctaSuiviBtn" class="btn btn-light" href="./suivi.html">Suivre ma candidature</a>
               <a class="btn btn-light" href="https://digiy-hub.digiylyfe.com/">🧭 HUB DIGIY</a>
               <a class="btn btn-light" href="https://tarifs.digiylyfe.com/" target="_blank" rel="noopener noreferrer">📦 Tarifs</a>
             </div>
@@ -1031,22 +1015,20 @@
             </div>
             <div class="cta-box">
               <small>Porte candidat</small>
-              <strong>Une page simple pour entrer son profil sans détour.</strong>
+              <strong>Une page simple pour envoyer son profil sans détour.</strong>
             </div>
             <div class="cta-box">
               <small>Porte dossier</small>
               <strong>Une qualification plus propre selon le bon contexte métier.</strong>
             </div>
             <div class="cta-box">
-              <small>Porte pro</small>
-              <strong>Le passage public s’arrête à l’entrée sécurisée, puis l’espace privé prend le relais.</strong>
+              <small>Porte suivi</small>
+              <strong>Un fil public pour retrouver sa candidature.</strong>
             </div>
           </div>
         </article>
       </div>
     </section>
-  </main>
-
 
     <section class="section" id="retours-digiy">
       <div class="wrap">
@@ -1064,13 +1046,13 @@
         </div>
       </div>
     </section>
-
+  </main>
 
   <footer>
     <div class="wrap">
       <div class="foot-card">
         <p>
-          DIGIY JOBS — entrée publique. Une porte claire pour ouvrir la bonne suite sans mélanger les usages.
+          DIGIY JOBS — entrée publique. Une porte claire pour voir, postuler, préparer et suivre.
         </p>
 
         <div class="foot-links">
@@ -1078,42 +1060,30 @@
           <a href="https://digiy-hub.digiylyfe.com/">🧭 HUB</a>
           <a href="https://tarifs.digiylyfe.com/" target="_blank" rel="noopener noreferrer">📦 Tarifs</a>
           <a href="#top">Retour haut</a>
-          <a id="footWall" href="./mur des missions.html">Mur</a>
+          <a id="footWall" href="./mur%20des%20missions.html">Missions</a>
           <a id="footApply" href="./postuler.html">Postuler</a>
           <a id="footDossier" href="./dossier-intelligent.html">Dossier</a>
-          <a id="footPin" href="./pin.html">Accès</a>
+          <a id="footSuivi" href="./suivi.html">Suivi</a>
         </div>
       </div>
     </div>
   </footer>
-
 
   <nav class="bottom-nav" aria-label="Navigation rapide DIGIY JOBS">
     <div class="bottom-nav-inner">
       <a href="https://digiylyfe.com/"><span class="ico">🌍</span><span>Site</span></a>
       <a href="https://digiy-hub.digiylyfe.com/"><span class="ico">🧭</span><span>HUB</span></a>
       <a href="https://tarifs.digiylyfe.com/" target="_blank" rel="noopener noreferrer"><span class="ico">📦</span><span>Tarifs</span></a>
-      <a class="active" id="bottomWall" href="./mur des missions.html"><span class="ico">📌</span><span>Missions</span></a>
+      <a class="active" id="bottomWall" href="./mur%20des%20missions.html"><span class="ico">📌</span><span>Missions</span></a>
       <a id="bottomApply" href="./postuler.html"><span class="ico">📝</span><span>Postuler</span></a>
     </div>
   </nav>
 
-
   <div class="floating-returns" aria-label="Retours DIGIY">
-    <a
-      class="floating-site-btn"
-      href="https://digiylyfe.com/"
-      aria-label="Retour au site DIGIYLYFE"
-      title="Retour au site"
-    >
+    <a class="floating-site-btn" href="https://digiylyfe.com/" aria-label="Retour au site DIGIYLYFE" title="Retour au site">
       🌍 Site
     </a>
-    <a
-      class="floating-site-btn hub"
-      href="https://digiy-hub.digiylyfe.com/"
-      aria-label="Retour au HUB DIGIY"
-      title="Retour au HUB"
-    >
+    <a class="floating-site-btn hub" href="https://digiy-hub.digiylyfe.com/" aria-label="Retour au HUB DIGIY" title="Retour au HUB">
       🧭 HUB
     </a>
   </div>
@@ -1122,7 +1092,19 @@
     (function(){
       "use strict";
 
-      const SLUG_STORAGE_KEY = "digiy_jobs_slug";
+      const SENSITIVE_PARAMS = [
+        "slug",
+        "phone",
+        "tel",
+        "resa_tel",
+        "owner_phone",
+        "owner",
+        "owner_id",
+        "business_code",
+        "keybox_code",
+        "keybox_location",
+        "access_note"
+      ];
 
       function normalizeSecteur(value){
         const raw = String(value || "").trim().toLowerCase();
@@ -1143,392 +1125,361 @@
         return "";
       }
 
-      function readSavedSlug(){
-        try{
-          return String(localStorage.getItem(SLUG_STORAGE_KEY) || "").trim().toLowerCase();
-        }catch(_){
-          return "";
-        }
-      }
-
       const params = new URLSearchParams(window.location.search);
-
-      const urlSlug = String(params.get("slug") || "").trim().toLowerCase();
-      const slug = urlSlug || readSavedSlug();
-
-      if (slug) {
-        try {
-          localStorage.setItem(SLUG_STORAGE_KEY, slug);
-        } catch(_) {}
-      }
-
-      // Compatibilité arrière silencieuse pour ?rail=...
       const secteur = normalizeSecteur(
         String(params.get("secteur") || params.get("rail") || "").trim().toLowerCase()
       );
 
       const PATHS = {
-        wall: "./mur des missions.html",
+        wall: "./mur%20des%20missions.html",
         apply: "./postuler.html",
         dossier: "./dossier-intelligent.html",
-        pin: "./pin.html"
+        suivi: "./suivi.html"
       };
 
+      function scrubUrl(){
+        const clean = new URL(window.location.href);
+        let changed = false;
+
+        SENSITIVE_PARAMS.forEach((key) => {
+          if (clean.searchParams.has(key)) {
+            clean.searchParams.delete(key);
+            changed = true;
+          }
+        });
+
+        if (changed) {
+          history.replaceState({}, document.title, clean.pathname + clean.search + clean.hash);
+        }
+      }
+
       function secteurLabel(value){
-        if (value === "build") return "BUILD";
+        if (value === "build") return "BTP / travaux";
         if (value === "hotellerie-restauration") return "Hôtellerie-Restauration";
         return "public";
       }
 
-      function withContext(path){
+      function withPublicContext(path){
         const url = new URL(path, window.location.href);
-        if (slug) url.searchParams.set("slug", slug);
         if (secteur) url.searchParams.set("secteur", secteur);
-        return url.toString();
+        return url.pathname + url.search;
       }
 
       function setHref(id, path){
         const el = document.getElementById(id);
-        if (el) el.href = withContext(path);
+        if (el) el.href = withPublicContext(path);
       }
 
-      const slugPill = document.getElementById("slugPill");
       const contextPill = document.getElementById("contextPill");
-      const slugText = document.getElementById("slugText");
-
-      if (slugPill) {
-        slugPill.textContent = slug ? `Identifiant : ${slug}` : "Identifiant : public";
-      }
-
       if (contextPill) {
         contextPill.textContent = `Contexte : ${secteurLabel(secteur)}`;
       }
 
-      if (slugText) {
-        if (slug && secteur) {
-          slugText.textContent = `Identifiant actif détecté : ${slug} • contexte métier : ${secteurLabel(secteur)}`;
-        } else if (slug) {
-          slugText.textContent = `Identifiant actif détecté : ${slug}`;
-        } else if (secteur) {
-          slugText.textContent = `Contexte métier détecté : ${secteurLabel(secteur)}`;
-        } else {
-          slugText.textContent = "Aucun identifiant détecté";
-        }
-      }
+      [
+        ["navWall", PATHS.wall],
+        ["navApply", PATHS.apply],
+        ["navDossier", PATHS.dossier],
+        ["navSuivi", PATHS.suivi],
+        ["heroWallBtn", PATHS.wall],
+        ["heroApplyBtn", PATHS.apply],
+        ["heroDossierBtn", PATHS.dossier],
+        ["heroSuiviBtn", PATHS.suivi],
+        ["wallCardBtn", PATHS.wall],
+        ["applyCardBtn", PATHS.apply],
+        ["dossierCardBtn", PATHS.dossier],
+        ["suiviCardBtn", PATHS.suivi],
+        ["ctaWallBtn", PATHS.wall],
+        ["ctaApplyBtn", PATHS.apply],
+        ["ctaDossierBtn", PATHS.dossier],
+        ["ctaSuiviBtn", PATHS.suivi],
+        ["footWall", PATHS.wall],
+        ["footApply", PATHS.apply],
+        ["footDossier", PATHS.dossier],
+        ["footSuivi", PATHS.suivi],
+        ["bottomWall", PATHS.wall],
+        ["bottomApply", PATHS.apply]
+      ].forEach(function(pair){
+        setHref(pair[0], pair[1]);
+      });
 
-      setHref("navWall", PATHS.wall);
-      setHref("navApply", PATHS.apply);
-      setHref("navDossier", PATHS.dossier);
-      setHref("navPin", PATHS.pin);
-
-      setHref("heroWallBtn", PATHS.wall);
-      setHref("heroApplyBtn", PATHS.apply);
-      setHref("heroDossierBtn", PATHS.dossier);
-
-      setHref("wallCardBtn", PATHS.wall);
-      setHref("applyCardBtn", PATHS.apply);
-      setHref("dossierCardBtn", PATHS.dossier);
-      setHref("pinCardBtn", PATHS.pin);
-
-      setHref("ctaWallBtn", PATHS.wall);
-      setHref("ctaApplyBtn", PATHS.apply);
-      setHref("ctaDossierBtn", PATHS.dossier);
-
-      setHref("footWall", PATHS.wall);
-      setHref("footApply", PATHS.apply);
-      setHref("footDossier", PATHS.dossier);
-      setHref("footPin", PATHS.pin);
-      setHref("bottomWall", PATHS.wall);
-      setHref("bottomApply", PATHS.apply);
+      scrubUrl();
     })();
   </script>
-<!-- ============================================================
-     DIGIY AUDIO — JOBS
-     À coller juste avant </body> dans ta page travail / emploi
-     ============================================================ -->
 
-<script>
-window.DIGIY_AUDIO_CONFIG = {
-  label: "Écouter travail",
-  stopLabel: "Arrêter",
-  text: "Bienvenue. Ici, tu peux montrer ce que tu sais faire, rendre ton profil visible, ou chercher la bonne personne pour avancer. Candidat ou recruteur, chacun peut devenir joignable plus simplement. Direct. Clair. Humain. DIGIYLYFE.",
-  buttonBg: "linear-gradient(135deg,#d4af37,#b78b34)",
-  buttonColor: "#111827",
-  bottom: "24px",
-  left: "24px",
-  rate: 0.82,
-  pitch: 1,
-  volume: 1,
-  zIndex: 99999,
-  shadow: "0 10px 30px rgba(0,0,0,.26)"
-};
-</script>
+  <!-- ============================================================
+       DIGIY AUDIO — JOBS
+       ============================================================ -->
 
-<style>
-#digiy-audio-btn{
-position:fixed;
-display:inline-flex;
-align-items:center;
-gap:12px;
-padding:16px 26px;
-border:none;
-border-radius:999px;
-cursor:pointer;
-font-family:'Outfit',Inter,sans-serif;
-font-weight:900;
-font-size:17px;
-line-height:1;
--webkit-tap-highlight-color:transparent;
-user-select:none;
-transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease;
-}
-#digiy-audio-btn:hover{
-transform:translateY(-2px);
-}
-#digiy-audio-btn:active{
-transform:scale(.97);
-}
-#digiy-audio-btn:disabled{
-opacity:.65;
-cursor:not-allowed;
-}
-#digiy-audio-btn .digiy-audio-ico{
-font-size:18px;
-line-height:1;
-}
-#digiy-audio-progress-wrap{
-position:fixed;
-left:0;
-right:0;
-bottom:0;
-height:3px;
-opacity:0;
-pointer-events:none;
-transition:opacity .25s ease;
-}
-#digiy-audio-progress{
-width:0%;
-height:100%;
-transition:width .18s linear;
-}
-@media (max-width:600px){
-#digiy-audio-btn{
-font-size:16px;
-padding:15px 22px;
-gap:11px;
-}
-#digiy-audio-btn .digiy-audio-ico{
-font-size:17px;
-}
-}
-</style>
+  <script>
+    window.DIGIY_AUDIO_CONFIG = {
+      label: "Écouter travail",
+      stopLabel: "Arrêter",
+      text: "Bienvenue sur DIGIY JOBS. Ici, tu peux voir des missions, déposer ta candidature, préparer ton dossier et suivre ton dépôt. Le candidat cherche une opportunité claire. Le professionnel, lui, travaille dans son espace protégé. DIGIYLYFE garde le terrain simple, direct et humain.",
+      buttonBg: "linear-gradient(135deg,#d4af37,#b78b34)",
+      buttonColor: "#111827",
+      bottom: "24px",
+      left: "24px",
+      rate: 0.82,
+      pitch: 1,
+      volume: 1,
+      zIndex: 99999,
+      shadow: "0 10px 30px rgba(0,0,0,.26)"
+    };
+  </script>
 
-<button id="digiy-audio-btn" type="button" aria-label="Écouter travail">
-  <span class="digiy-audio-ico">&#9654;</span>
-  <span class="digiy-audio-lbl">Écouter travail</span>
-</button>
+  <style>
+    #digiy-audio-btn{
+      position:fixed;
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      padding:16px 26px;
+      border:none;
+      border-radius:999px;
+      cursor:pointer;
+      font-family:Inter,sans-serif;
+      font-weight:900;
+      font-size:17px;
+      line-height:1;
+      -webkit-tap-highlight-color:transparent;
+      user-select:none;
+      transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease;
+    }
+    #digiy-audio-btn:hover{transform:translateY(-2px)}
+    #digiy-audio-btn:active{transform:scale(.97)}
+    #digiy-audio-btn:disabled{opacity:.65;cursor:not-allowed}
+    #digiy-audio-btn .digiy-audio-ico{font-size:18px;line-height:1}
+    #digiy-audio-progress-wrap{
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      height:3px;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .25s ease;
+    }
+    #digiy-audio-progress{
+      width:0%;
+      height:100%;
+      transition:width .18s linear;
+    }
+    @media (max-width:600px){
+      #digiy-audio-btn{
+        font-size:16px;
+        padding:15px 22px;
+        gap:11px;
+      }
+      #digiy-audio-btn .digiy-audio-ico{font-size:17px}
+    }
+  </style>
 
-<div id="digiy-audio-progress-wrap" aria-hidden="true">
-  <div id="digiy-audio-progress"></div>
-</div>
+  <button id="digiy-audio-btn" type="button" aria-label="Écouter travail">
+    <span class="digiy-audio-ico">&#9654;</span>
+    <span class="digiy-audio-lbl">Écouter travail</span>
+  </button>
 
-<script>
-(function(){
-  var cfg = window.DIGIY_AUDIO_CONFIG || {};
+  <div id="digiy-audio-progress-wrap" aria-hidden="true">
+    <div id="digiy-audio-progress"></div>
+  </div>
 
-  var config = {
-    label: cfg.label || "Écouter DIGIY",
-    stopLabel: cfg.stopLabel || "Arrêter",
-    text: cfg.text || "Bienvenue sur DIGIYLYFE.",
-    buttonBg: cfg.buttonBg || "linear-gradient(135deg,#d4af37,#b78b34)",
-    buttonColor: cfg.buttonColor || "#111827",
-    bottom: cfg.bottom || "24px",
-    left: cfg.left || "24px",
-    rate: typeof cfg.rate === "number" ? cfg.rate : 0.82,
-    pitch: typeof cfg.pitch === "number" ? cfg.pitch : 1,
-    volume: typeof cfg.volume === "number" ? cfg.volume : 1,
-    zIndex: cfg.zIndex || 99999,
-    shadow: cfg.shadow || "0 8px 28px rgba(0,0,0,.24)"
-  };
+  <script>
+    (function(){
+      var cfg = window.DIGIY_AUDIO_CONFIG || {};
 
-  var btn = document.getElementById("digiy-audio-btn");
-  var lbl = btn ? btn.querySelector(".digiy-audio-lbl") : null;
-  var ico = btn ? btn.querySelector(".digiy-audio-ico") : null;
-  var progressWrap = document.getElementById("digiy-audio-progress-wrap");
-  var progressBar = document.getElementById("digiy-audio-progress");
+      var config = {
+        label: cfg.label || "Écouter DIGIY",
+        stopLabel: cfg.stopLabel || "Arrêter",
+        text: cfg.text || "Bienvenue sur DIGIYLYFE.",
+        buttonBg: cfg.buttonBg || "linear-gradient(135deg,#d4af37,#b78b34)",
+        buttonColor: cfg.buttonColor || "#111827",
+        bottom: cfg.bottom || "24px",
+        left: cfg.left || "24px",
+        rate: typeof cfg.rate === "number" ? cfg.rate : 0.82,
+        pitch: typeof cfg.pitch === "number" ? cfg.pitch : 1,
+        volume: typeof cfg.volume === "number" ? cfg.volume : 1,
+        zIndex: cfg.zIndex || 99999,
+        shadow: cfg.shadow || "0 8px 28px rgba(0,0,0,.24)"
+      };
 
-  if (!btn || !lbl || !ico || !progressWrap || !progressBar) return;
+      var btn = document.getElementById("digiy-audio-btn");
+      var lbl = btn ? btn.querySelector(".digiy-audio-lbl") : null;
+      var ico = btn ? btn.querySelector(".digiy-audio-ico") : null;
+      var progressWrap = document.getElementById("digiy-audio-progress-wrap");
+      var progressBar = document.getElementById("digiy-audio-progress");
 
-  btn.style.bottom = config.bottom;
-  btn.style.left = config.left;
-  btn.style.zIndex = String(config.zIndex);
-  btn.style.background = config.buttonBg;
-  btn.style.color = config.buttonColor;
-  btn.style.boxShadow = config.shadow;
+      if (!btn || !lbl || !ico || !progressWrap || !progressBar) return;
 
-  progressWrap.style.zIndex = String(config.zIndex - 1);
-  progressWrap.style.background = "rgba(212,175,55,.2)";
-  progressBar.style.background = "linear-gradient(90deg,#d4af37,#b78b34)";
+      btn.style.bottom = config.bottom;
+      btn.style.left = config.left;
+      btn.style.zIndex = String(config.zIndex);
+      btn.style.background = config.buttonBg;
+      btn.style.color = config.buttonColor;
+      btn.style.boxShadow = config.shadow;
 
-  if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-    btn.style.display = "none";
-    return;
-  }
+      progressWrap.style.zIndex = String(config.zIndex - 1);
+      progressWrap.style.background = "rgba(212,175,55,.2)";
+      progressBar.style.background = "linear-gradient(90deg,#d4af37,#b78b34)";
 
-  var synth = window.speechSynthesis;
-  var utterance = null;
-  var playing = false;
-  var timer = null;
-  var launchId = 0;
-
-  function getFrenchVoice(){
-    var voices = synth.getVoices() || [];
-    if (!voices.length) return null;
-
-    return (
-      voices.find(function(v){ return /fr[-_]?FR/i.test(v.lang) && /google/i.test(v.name); }) ||
-      voices.find(function(v){ return /fr[-_]?FR/i.test(v.lang); }) ||
-      voices.find(function(v){ return /^fr/i.test(v.lang); }) ||
-      null
-    );
-  }
-
-  function setIdle(){
-    playing = false;
-    ico.innerHTML = "&#9654;";
-    lbl.textContent = config.label;
-    btn.setAttribute("aria-label", config.label);
-    clearInterval(timer);
-    timer = null;
-    progressWrap.style.opacity = "0";
-    progressBar.style.width = "0%";
-  }
-
-  function setPlaying(){
-    playing = true;
-    ico.innerHTML = "&#9632;";
-    lbl.textContent = config.stopLabel;
-    btn.setAttribute("aria-label", config.stopLabel);
-  }
-
-  function stop(){
-    clearInterval(timer);
-    timer = null;
-    try { synth.cancel(); } catch(e){}
-    utterance = null;
-    setIdle();
-  }
-
-  function startProgress(text, currentId){
-    var words = (text.trim().match(/\S+/g) || []).length;
-    var estimatedDuration = Math.max(2500, words * 520);
-    var elapsed = 0;
-
-    clearInterval(timer);
-    progressBar.style.width = "0%";
-    progressWrap.style.opacity = "1";
-
-    timer = setInterval(function(){
-      if (!playing || currentId !== launchId) {
-        clearInterval(timer);
-        timer = null;
+      if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        btn.style.display = "none";
         return;
       }
-      elapsed += 150;
-      var pct = Math.min((elapsed / estimatedDuration) * 100, 97);
-      progressBar.style.width = pct + "%";
-    }, 150);
-  }
 
-  function launch(){
-    launchId += 1;
-    var currentId = launchId;
+      var synth = window.speechSynthesis;
+      var utterance = null;
+      var playing = false;
+      var timer = null;
+      var launchId = 0;
 
-    try { synth.cancel(); } catch(e){}
+      function getFrenchVoice(){
+        var voices = synth.getVoices() || [];
+        if (!voices.length) return null;
 
-    utterance = new SpeechSynthesisUtterance(config.text);
-    utterance.lang = "fr-FR";
-    utterance.rate = config.rate;
-    utterance.pitch = config.pitch;
-    utterance.volume = config.volume;
+        return (
+          voices.find(function(v){ return /fr[-_]?FR/i.test(v.lang) && /google/i.test(v.name); }) ||
+          voices.find(function(v){ return /fr[-_]?FR/i.test(v.lang); }) ||
+          voices.find(function(v){ return /^fr/i.test(v.lang); }) ||
+          null
+        );
+      }
 
-    var voice = getFrenchVoice();
-    if (voice) utterance.voice = voice;
+      function setIdle(){
+        playing = false;
+        ico.innerHTML = "&#9654;";
+        lbl.textContent = config.label;
+        btn.setAttribute("aria-label", config.label);
+        clearInterval(timer);
+        timer = null;
+        progressWrap.style.opacity = "0";
+        progressBar.style.width = "0%";
+      }
 
-    utterance.onstart = function(){
-      if (currentId !== launchId) return;
-      setPlaying();
-      startProgress(config.text, currentId);
-    };
+      function setPlaying(){
+        playing = true;
+        ico.innerHTML = "&#9632;";
+        lbl.textContent = config.stopLabel;
+        btn.setAttribute("aria-label", config.stopLabel);
+      }
 
-    utterance.onend = function(){
-      if (currentId !== launchId) return;
-      clearInterval(timer);
-      timer = null;
-      progressBar.style.width = "100%";
-      setTimeout(function(){
-        if (currentId === launchId) setIdle();
-      }, 250);
-    };
+      function stop(){
+        clearInterval(timer);
+        timer = null;
+        try { synth.cancel(); } catch(e){}
+        utterance = null;
+        setIdle();
+      }
 
-    utterance.onerror = function(){
-      if (currentId !== launchId) return;
-      stop();
-    };
+      function startProgress(text, currentId){
+        var words = (text.trim().match(/\S+/g) || []).length;
+        var estimatedDuration = Math.max(2500, words * 520);
+        var elapsed = 0;
 
-    synth.speak(utterance);
-  }
+        clearInterval(timer);
+        progressBar.style.width = "0%";
+        progressWrap.style.opacity = "1";
 
-  function play(){
-    if (playing) return;
+        timer = setInterval(function(){
+          if (!playing || currentId !== launchId) {
+            clearInterval(timer);
+            timer = null;
+            return;
+          }
+          elapsed += 150;
+          var pct = Math.min((elapsed / estimatedDuration) * 100, 97);
+          progressBar.style.width = pct + "%";
+        }, 150);
+      }
 
-    if (synth.speaking || synth.pending) {
-      try { synth.cancel(); } catch(e){}
-    }
+      function launch(){
+        launchId += 1;
+        var currentId = launchId;
 
-    var voices = synth.getVoices();
-    if (voices && voices.length) {
-      launch();
-      return;
-    }
+        try { synth.cancel(); } catch(e){}
 
-    var launched = false;
+        utterance = new SpeechSynthesisUtterance(config.text);
+        utterance.lang = "fr-FR";
+        utterance.rate = config.rate;
+        utterance.pitch = config.pitch;
+        utterance.volume = config.volume;
 
-    function handleVoicesChanged(){
-      if (launched) return;
-      launched = true;
-      synth.removeEventListener("voiceschanged", handleVoicesChanged);
-      launch();
-    }
+        var voice = getFrenchVoice();
+        if (voice) utterance.voice = voice;
 
-    synth.addEventListener("voiceschanged", handleVoicesChanged);
+        utterance.onstart = function(){
+          if (currentId !== launchId) return;
+          setPlaying();
+          startProgress(config.text, currentId);
+        };
 
-    setTimeout(function(){
-      if (launched) return;
-      launched = true;
-      synth.removeEventListener("voiceschanged", handleVoicesChanged);
-      launch();
-    }, 700);
-  }
+        utterance.onend = function(){
+          if (currentId !== launchId) return;
+          clearInterval(timer);
+          timer = null;
+          progressBar.style.width = "100%";
+          setTimeout(function(){
+            if (currentId === launchId) setIdle();
+          }, 250);
+        };
 
-  btn.addEventListener("click", function(){
-    if (playing) stop();
-    else play();
-  });
+        utterance.onerror = function(){
+          if (currentId !== launchId) return;
+          stop();
+        };
 
-  window.addEventListener("beforeunload", stop);
+        synth.speak(utterance);
+      }
 
-  document.addEventListener("visibilitychange", function(){
-    if (document.hidden && playing) stop();
-  });
+      function play(){
+        if (playing) return;
 
-  setIdle();
-})();
-</script>
+        if (synth.speaking || synth.pending) {
+          try { synth.cancel(); } catch(e){}
+        }
 
-<!-- ============================================================
-     FIN DIGIY AUDIO — JOBS
-     ============================================================ -->
-  
+        var voices = synth.getVoices();
+        if (voices && voices.length) {
+          launch();
+          return;
+        }
+
+        var launched = false;
+
+        function handleVoicesChanged(){
+          if (launched) return;
+          launched = true;
+          synth.removeEventListener("voiceschanged", handleVoicesChanged);
+          launch();
+        }
+
+        synth.addEventListener("voiceschanged", handleVoicesChanged);
+
+        setTimeout(function(){
+          if (launched) return;
+          launched = true;
+          synth.removeEventListener("voiceschanged", handleVoicesChanged);
+          launch();
+        }, 700);
+      }
+
+      btn.addEventListener("click", function(){
+        if (playing) stop();
+        else play();
+      });
+
+      window.addEventListener("beforeunload", stop);
+
+      document.addEventListener("visibilitychange", function(){
+        if (document.hidden && playing) stop();
+      });
+
+      setIdle();
+    })();
+  </script>
 </body>
 </html>
+
+
+out = Path("/mnt/data/index-jobs-public-securise.html")
+out.write_text(html, encoding="utf-8")
+print(f"Fichier créé : {out.name}")
