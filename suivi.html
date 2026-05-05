@@ -1,80 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>DIGIY JOBS — Suivi de dossier</title>
+  <title>DIGIY JOBS — Suivi candidature</title>
   <meta
     name="description"
-    content="Suivi de dossier DIGIY JOBS. Checklist documents et résumé WhatsApp."
+    content="DIGIY JOBS — suivi public de candidature : garder son fil, préparer ses pièces et copier un résumé propre."
   />
   <meta name="theme-color" content="#0A1128" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
-  />
 
   <style>
     :root{
       --dark:#0A1128;
+      --dark2:#142041;
       --blue:#0ea5e9;
+      --blue2:#38bdf8;
       --green:#10b981;
       --red:#ef4444;
       --gold:#d4a84f;
+      --gold2:#e8bf63;
       --bg:#F0F2F5;
       --card:#ffffff;
       --ink:#0f172a;
       --muted:#475569;
       --line:#e5e7eb;
       --shadow:0 12px 30px rgba(0,0,0,.10);
-      --radius:18px;
+      --radius:20px;
+      --max:980px;
     }
 
     *{box-sizing:border-box}
 
+    html{scroll-behavior:smooth}
+
     body{
       margin:0;
-      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-      background:var(--bg);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(14,165,233,.08), transparent 30%),
+        radial-gradient(circle at right 12%, rgba(16,185,129,.07), transparent 24%),
+        linear-gradient(180deg,var(--bg),#fff8ec);
       color:var(--ink);
+      padding-bottom:calc(84px + env(safe-area-inset-bottom,0px));
     }
+
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
 
     .wrap{
-      max-width:980px;
+      max-width:var(--max);
       margin:0 auto;
-      padding:18px 12px 60px;
+      padding:16px 12px 48px;
     }
 
-    .top{
-      background:linear-gradient(135deg, rgba(10,17,40,.96), rgba(18,26,48,.92));
+    .top-links{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:12px;
+    }
+
+    .chip-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:850;
+      box-shadow:0 8px 20px rgba(15,23,42,.06);
+    }
+
+    .chip-link.gold{
+      border-color:rgba(212,168,79,.30);
+      background:rgba(212,168,79,.10);
+      color:#6b4f1f;
+    }
+
+    .chip-link.blue{
+      border-color:rgba(14,165,233,.22);
+      background:rgba(14,165,233,.09);
+      color:#075985;
+    }
+
+    .hero{
+      background:
+        radial-gradient(circle at 88% 18%, rgba(212,168,79,.16), transparent 18%),
+        linear-gradient(135deg, rgba(10,17,40,.98), rgba(20,32,65,.98));
       color:#fff;
-      border-radius:22px;
-      padding:18px 16px;
-      box-shadow:0 15px 40px rgba(0,0,0,.28);
+      border-radius:26px;
+      padding:22px 16px;
+      box-shadow:0 15px 40px rgba(0,0,0,.24);
       position:relative;
       overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
     }
 
-    .top::before{
+    .hero::before{
       content:"🧾";
       position:absolute;
-      right:-30px;
-      top:-35px;
-      font-size:160px;
+      right:-28px;
+      top:-34px;
+      font-size:150px;
       opacity:.08;
       transform:rotate(10deg);
     }
 
-    .top h1{
-      margin:0;
-      font-weight:900;
-      font-size:1.8rem;
-      line-height:1.15;
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:#ffeab8;
+      font-size:12px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      font-weight:950;
+      margin-bottom:10px;
     }
 
-    .top p{
-      margin:10px 0 0;
-      color:#cbd5ff;
+    h1{
+      margin:0;
+      font-weight:950;
+      font-size:clamp(30px,5vw,48px);
+      line-height:1;
+      letter-spacing:-.035em;
+      max-width:12ch;
+    }
+
+    .lead{
+      margin:12px 0 0;
+      color:#dbe6f6;
+      line-height:1.65;
+      max-width:720px;
+      font-size:16px;
+    }
+
+    .metaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 11px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      font-weight:900;
+      font-size:.86rem;
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .pill.alt{
+      background:#fff;
+      color:#1e293b;
+      border:1px solid #cbd5e1;
     }
 
     .card{
@@ -86,46 +177,54 @@
       margin-top:12px;
     }
 
+    .card h2{
+      margin:0;
+      font-size:1.18rem;
+      font-weight:950;
+      color:var(--dark);
+      letter-spacing:-.02em;
+    }
+
+    .muted{color:var(--muted);line-height:1.55}
+
     .row{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:12px;
     }
 
-    @media (max-width:720px){
-      .row{grid-template-columns:1fr}
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:7px 10px;
-      border-radius:999px;
-      background:#0A1128;
-      color:#fff;
-      font-weight:900;
-      font-size:.85rem;
-      flex-wrap:wrap;
-    }
-
-    .pill.alt{
-      background:#eef2ff;
-      color:#1e293b;
-      border:1px solid #cbd5e1;
-    }
-
-    .mono{
-      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
-    }
-
-    .muted{color:var(--muted)}
-
-    .metaRow{
+    .field{
       display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:10px;
+      flex-direction:column;
+      gap:7px;
+    }
+
+    label{
+      font-size:13px;
+      font-weight:900;
+      color:#334155;
+    }
+
+    input,select,textarea{
+      width:100%;
+      border-radius:14px;
+      border:1px solid #d1d5db;
+      padding:12px;
+      font-size:.95rem;
+      outline:none;
+      background:#fff;
+      color:var(--ink);
+    }
+
+    textarea{
+      min-height:110px;
+      resize:vertical;
+      line-height:1.55;
+    }
+
+    input:focus,select:focus,textarea:focus{
+      border-color:var(--blue);
+      box-shadow:0 0 0 4px rgba(14,165,233,.15);
     }
 
     .kpiRow{
@@ -137,7 +236,7 @@
 
     .kpi{
       flex:1;
-      min-width:180px;
+      min-width:160px;
       background:#f9fbfd;
       border:1px solid #e2e8f0;
       border-radius:14px;
@@ -146,7 +245,7 @@
 
     .kpi .big{
       font-size:1.35rem;
-      font-weight:900;
+      font-weight:950;
       color:var(--dark);
     }
 
@@ -154,6 +253,7 @@
       font-size:.9rem;
       color:#64748b;
       margin-top:2px;
+      font-weight:700;
     }
 
     .bar{
@@ -188,10 +288,11 @@
       transform:scale(1.25);
       margin-top:2px;
       cursor:pointer;
+      width:auto;
     }
 
     .item .title{
-      font-weight:900;
+      font-weight:950;
       color:var(--dark);
     }
 
@@ -199,6 +300,7 @@
       font-size:.92rem;
       color:var(--muted);
       margin-top:2px;
+      line-height:1.45;
     }
 
     .actions{
@@ -212,71 +314,43 @@
       border:0;
       border-radius:14px;
       padding:12px 14px;
-      font-weight:900;
+      font-weight:950;
       cursor:pointer;
       text-decoration:none;
       display:inline-flex;
       align-items:center;
+      justify-content:center;
       gap:10px;
       transition:transform .18s ease, filter .18s ease, opacity .18s ease;
       font-size:1rem;
+      min-height:48px;
     }
 
     .btn:hover{transform:translateY(-1px);filter:brightness(.97)}
     .btn.primary{background:var(--blue);color:#fff}
     .btn.dark{background:var(--dark);color:#fff}
     .btn.green{background:var(--green);color:#fff}
+    .btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#171717}
     .btn.ghost{background:#f1f5f9;color:var(--dark);border:1px solid #cbd5e1}
     .btn.danger{background:var(--red);color:#fff}
-
-    .btn[aria-disabled="true"]{
-      pointer-events:none;
-      opacity:.55;
-    }
 
     .tiny{
       font-size:.86rem;
       color:#64748b;
       margin-top:10px;
-    }
-
-    textarea{
-      width:100%;
-      min-height:110px;
-      border-radius:14px;
-      border:1px solid #d1d5db;
-      padding:12px;
-      font-size:.95rem;
-      outline:none;
-      background:#fff;
-      resize:vertical;
-    }
-
-    textarea:focus{
-      border-color:var(--blue);
-      box-shadow:0 0 0 4px rgba(14,165,233,.15);
-    }
-
-    .split{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      margin-top:12px;
-    }
-
-    @media (max-width:720px){
-      .split{grid-template-columns:1fr}
+      line-height:1.5;
     }
 
     .notice{
       margin-top:10px;
       padding:12px;
       border-radius:14px;
-      background:#fff7ed;
-      border:1px solid #fed7aa;
-      color:#9a3412;
+      background:#eff6ff;
+      border:1px solid #bfdbfe;
+      color:#1e3a8a;
       font-size:.92rem;
-      font-weight:600;
+      font-weight:700;
+      line-height:1.5;
     }
 
     .okline{
@@ -285,29 +359,134 @@
       color:#334155;
     }
 
-    .okline strong{
-      color:var(--dark);
+    .okline strong{color:var(--dark)}
+
+    .summaryBox{
+      width:100%;
+      min-height:132px;
+      border-radius:14px;
+      border:1px solid #d1d5db;
+      padding:12px;
+      background:#f8fafc;
+      color:#0f172a;
+      resize:vertical;
+    }
+
+    .bottom-nav{
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:80;
+      padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));
+      background:rgba(248,250,252,.94);
+      border-top:1px solid rgba(226,232,240,.95);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+    }
+
+    .bottom-nav-inner{
+      width:min(760px,100%);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:6px;
+    }
+
+    .bottom-nav a{
+      min-height:54px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      align-content:center;
+      gap:2px;
+      color:#64748b;
+      font-size:11px;
+      font-weight:1000;
+      text-align:center;
+      border:1px solid transparent;
+      text-decoration:none;
+      background:transparent;
+      padding:0 4px;
+    }
+
+    .bottom-nav .ico{font-size:18px;line-height:1}
+
+    .bottom-nav a.active{
+      background:var(--dark);
+      color:#fff;
+    }
+
+    @media (max-width:720px){
+      .row{grid-template-columns:1fr}
+      .wrap{padding:14px 10px 48px}
+      .actions .btn{width:100%}
+      h1{max-width:none}
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <div class="top">
-      <h1>DIGIY JOBS — Suivi dossier</h1>
-      <p>Checklist documents • Résumé WhatsApp • Sauvegarde locale par dossier</p>
-    </div>
+    <nav class="top-links" aria-label="Navigation publique JOBS">
+      <a class="chip-link" href="https://digiylyfe.com/">← Site</a>
+      <a class="chip-link" href="./index.html">Accueil JOBS</a>
+      <a class="chip-link gold" href="./mur%20des%20missions.html">Voir les missions</a>
+      <a class="chip-link blue" href="./postuler.html">Postuler</a>
+      <a class="chip-link" href="./dossier-intelligent.html">Dossier</a>
+    </nav>
 
-    <div class="card">
+    <section class="hero">
+      <div class="kicker">DIGIY JOBS • suivi candidat</div>
+      <h1>Garder le fil de ma candidature.</h1>
+      <p class="lead">
+        Ici, le candidat garde une trace simple : ce qui est prêt, ce qui manque,
+        son résumé propre et les prochaines pièces à préparer. Aucun code professionnel n’est demandé.
+      </p>
+
       <div class="metaRow">
-        <div class="pill">📌 Dossier : <span class="mono" id="dossierId">—</span></div>
-        <div class="pill alt">🧭 Rail : <span class="mono" id="railLabel">GÉNÉRAL</span></div>
+        <div class="pill">Accès : public candidat</div>
+        <div class="pill">Mode : suivi local</div>
+        <div class="pill">Contact : via candidature</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Mon suivi</h2>
+      <p class="muted" style="margin:8px 0 12px">
+        Ces informations restent sur ton appareil. Elles t’aident à te préparer et à copier un résumé clair si on te le demande.
+      </p>
+
+      <div class="row">
+        <div class="field">
+          <label for="candidateName">Nom complet</label>
+          <input id="candidateName" type="text" placeholder="Ex : Moussa Diop" autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="candidatePhone">WhatsApp candidat</label>
+          <input id="candidatePhone" type="tel" placeholder="Ex : +221771234567" autocomplete="tel" />
+        </div>
+
+        <div class="field">
+          <label for="candidateTrade">Métier / profil</label>
+          <input id="candidateTrade" type="text" placeholder="Ex : maçon, chauffeur, serveuse..." />
+        </div>
+
+        <div class="field">
+          <label for="railSelect">Contexte métier</label>
+          <select id="railSelect">
+            <option value="general">Général</option>
+            <option value="build">BTP / travaux</option>
+            <option value="resto">Hôtellerie-Restauration</option>
+          </select>
+        </div>
       </div>
 
       <div class="kpiRow">
         <div class="kpi">
           <div class="big" id="kpiOk">0</div>
-          <div class="small">Reçus</div>
+          <div class="small">Prêts</div>
         </div>
         <div class="kpi">
           <div class="big" id="kpiTotal">0</div>
@@ -328,128 +507,100 @@
         <strong id="lastUpdate">—</strong>
       </div>
 
-      <div class="tiny muted" style="margin-top:10px">
-        Conseil terrain : au début, on privilégie un hébergement (employeur ou famille)
-        pour sécuriser l’arrivée.
+      <div class="notice">
+        Le suivi ne remplace pas une réponse officielle. Il aide simplement à rester prêt, clair et joignable.
       </div>
+    </section>
 
-      <div class="notice" id="missingDossierNotice" style="display:none">
-        Ajoute un identifiant dans l’URL pour activer la vraie sauvegarde par dossier.
-        Exemple : <span class="mono">?dossier=jobs-221771342889&rail=build</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2 style="margin:0;font-size:1.15rem;font-weight:900;color:#0A1128">
-        ✅ Documents à préparer
-      </h2>
-
-      <div class="muted" style="margin-top:8px;font-size:.95rem">
+    <section class="card">
+      <h2>✅ Ce que je prépare</h2>
+      <p class="muted" style="margin-top:8px;font-size:.95rem">
         Coche ce que tu as déjà. Le résumé se met à jour automatiquement.
-      </div>
+      </p>
 
       <div class="list" id="checklist"></div>
 
       <div class="actions">
-        <a class="btn dark" id="btnWASN" href="#" aria-disabled="true">💬 WhatsApp SN</a>
-        <a class="btn ghost" id="btnWAFR" href="#" aria-disabled="true">💬 WhatsApp FR</a>
-        <button class="btn primary" id="btnCopy" type="button">📋 Copier le résumé</button>
-        <button class="btn danger" id="btnReset" type="button">🧹 Reset dossier</button>
+        <button class="btn primary" id="btnCopy" type="button">📋 Copier mon résumé</button>
+        <button class="btn ghost" id="btnSave" type="button">💾 Sauvegarder</button>
+        <button class="btn danger" id="btnReset" type="button">🧹 Réinitialiser</button>
       </div>
 
       <div class="tiny">
-        ⚠️ DIGIY JOBS ne promet jamais un visa. Chaque dossier dépend des validations
-        officielles. Le suivi ici sert à organiser et accélérer les échanges.
+        DIGIY JOBS organise le suivi. Les décisions restent faites par les personnes ou structures concernées.
       </div>
-    </div>
+    </section>
 
-    <div class="card">
-      <h2 style="margin:0;font-size:1.15rem;font-weight:900;color:#0A1128">🧰 Export / Import</h2>
+    <section class="card">
+      <h2>Résumé propre</h2>
+      <p class="muted" style="margin-top:8px;font-size:.95rem">
+        Ce texte peut être copié puis envoyé à la bonne personne si nécessaire.
+      </p>
 
-      <div class="split">
-        <div>
-          <div class="muted" style="margin:8px 0 8px">
-            Export JSON (pour transférer sur un autre appareil)
-          </div>
-          <textarea id="exportBox" readonly></textarea>
-          <div class="actions" style="margin-top:10px">
-            <button class="btn ghost" id="btnExport" type="button">⬇️ Générer export</button>
-            <button class="btn ghost" id="btnCopyExport" type="button">📋 Copier export</button>
-          </div>
-        </div>
+      <textarea id="summaryBox" class="summaryBox" readonly></textarea>
 
-        <div>
-          <div class="muted" style="margin:8px 0 8px">
-            Import JSON (colle ici puis “Importer”)
-          </div>
-          <textarea
-            id="importBox"
-            placeholder='{"dossier":"jobs-221771342889","rail":"build","checked":{"passport":true}}'
-          ></textarea>
-          <div class="actions" style="margin-top:10px">
-            <button class="btn green" id="btnImport" type="button">⬆️ Importer</button>
-          </div>
-        </div>
+      <div class="actions">
+        <a class="btn dark" href="./mur%20des%20missions.html">Voir d’autres missions</a>
+        <a class="btn gold" href="./postuler.html">Déposer une candidature</a>
+        <a class="btn ghost" href="./dossier-intelligent.html">Ouvrir le dossier intelligent</a>
       </div>
-
-      <div class="tiny">
-        Astuce : l’export inclut le dossier, le rail, les cases cochées et la date de mise à jour.
-      </div>
-    </div>
+    </section>
   </div>
+
+  <nav class="bottom-nav" aria-label="Navigation rapide DIGIY JOBS">
+    <div class="bottom-nav-inner">
+      <a href="./index.html"><span class="ico">🏠</span><span>Accueil</span></a>
+      <a href="./mur%20des%20missions.html"><span class="ico">📌</span><span>Missions</span></a>
+      <a href="./postuler.html"><span class="ico">📝</span><span>Postuler</span></a>
+      <a href="./dossier-intelligent.html"><span class="ico">🧾</span><span>Dossier</span></a>
+      <a class="active" href="./suivi.html"><span class="ico">✅</span><span>Suivi</span></a>
+    </div>
+  </nav>
 
   <script>
     (function(){
       "use strict";
 
-      const WA_SN = "https://wa.me/221771342889";
-      const WA_FR = "https://wa.me/33638329423";
+      const SENSITIVE_PARAMS = [
+        "slug",
+        "phone",
+        "tel",
+        "resa_tel",
+        "owner_phone",
+        "owner",
+        "owner_id",
+        "business_code",
+        "keybox_code",
+        "keybox_location",
+        "access_note",
+        "dossier"
+      ];
 
       const COMMON_DOCS = [
         {
-          key: "passport",
-          title: "Passeport valide",
-          desc: "Au moins 2 pages libres. Vérifier la date d’expiration."
-        },
-        {
-          key: "photos",
-          title: "Photos d’identité",
-          desc: "Format visa Schengen, récentes et propres."
+          key: "profile",
+          title: "Profil clair",
+          desc: "Nom, téléphone WhatsApp, ville, métier et disponibilité."
         },
         {
           key: "cv",
-          title: "CV à jour",
-          desc: "Simple, lisible, métier clair, expériences datées."
-        },
-        {
-          key: "diplomas",
-          title: "Diplômes / attestations",
-          desc: "Tout ce qui prouve le métier, même formation courte."
+          title: "CV ou présentation simple",
+          desc: "Même une page suffit : métier, expériences, ville, contacts."
         },
         {
           key: "experience",
-          title: "Justificatifs d’expérience",
-          desc: "Certificats de travail, attestations, contacts employeurs."
+          title: "Preuves d’expérience",
+          desc: "Photos de travaux, attestations, anciens contacts, références."
         },
         {
-          key: "contract",
-          title: "Contrat / promesse d’embauche",
-          desc: "Document employeur. Le cœur du dossier."
+          key: "availability",
+          title: "Disponibilité confirmée",
+          desc: "Savoir dire quand tu peux commencer : aujourd’hui, cette semaine, ce mois-ci."
         },
         {
-          key: "workauth",
-          title: "Autorisation de travail (France)",
-          desc: "Étape centrale côté employeur."
-        },
-        {
-          key: "housing",
-          title: "Hébergement à l’arrivée",
-          desc: "Employeur héberge ou famille/proche, fortement recommandé."
-        },
-        {
-          key: "vfs",
-          title: "Rendez-vous dépôt (VFS)",
-          desc: "Préparer l’ordre des pièces et les preuves demandées."
+          key: "message",
+          title: "Message de candidature propre",
+          desc: "Une phrase claire : qui tu es, ce que tu sais faire, où tu es."
         }
       ];
 
@@ -457,54 +608,76 @@
         build: [
           {
             key: "skills_build",
-            title: "Preuves métier BUILD",
-            desc: "Photos de chantiers, attestations techniques, références clients."
+            title: "Preuves métier BTP / travaux",
+            desc: "Photos de chantiers, outils maîtrisés, références clients ou patrons."
           },
           {
             key: "tools_build",
-            title: "Liste savoir-faire / outils maîtrisés",
-            desc: "Maçonnerie, plomberie, électricité, soudure, peinture, etc."
+            title: "Liste des savoir-faire",
+            desc: "Maçonnerie, plomberie, électricité, soudure, peinture, carrelage, dépannage."
           }
         ],
         resto: [
           {
             key: "skills_resto",
-            title: "Preuves métier hôtellerie-restauration",
-            desc: "Service, cuisine, plonge, réception, ménage, bar, production."
+            title: "Preuves hôtellerie-restauration",
+            desc: "Service, cuisine, plonge, réception, ménage, bar ou expérience salle."
           },
           {
-            key: "hygiene_resto",
-            title: "Références hygiène / rythme travail",
-            desc: "Expérience en cadence, équipe, horaires tôt/tard, nettoyage."
+            key: "rhythm_resto",
+            title: "Rythme de travail compris",
+            desc: "Horaires, ponctualité, équipe, hygiène, cadence et sérieux."
           }
         ],
         general: []
       };
 
+      const STORAGE_KEY = "DIGIY_JOBS_SUIVI_PUBLIC_V1";
+
       function $(id){
         return document.getElementById(id);
       }
 
-      function enc(value){
-        return encodeURIComponent(String(value || ""));
-      }
+      function scrubUrl(){
+        try{
+          const clean = new URL(window.location.href);
+          let changed = false;
 
-      function setEnabled(el, enabled){
-        if(!el) return;
-        el.setAttribute("aria-disabled", enabled ? "false" : "true");
-        if(!enabled && el.tagName === "A"){
-          el.removeAttribute("href");
-        }
+          SENSITIVE_PARAMS.forEach((key) => {
+            if (clean.searchParams.has(key)) {
+              clean.searchParams.delete(key);
+              changed = true;
+            }
+          });
+
+          const rail = normalizeRail(clean.searchParams.get("rail") || clean.searchParams.get("secteur") || "");
+          clean.searchParams.delete("rail");
+
+          if (rail && rail !== "general") {
+            clean.searchParams.set("secteur", rail === "resto" ? "hotellerie-restauration" : rail);
+          }
+
+          if (changed) {
+            history.replaceState({}, document.title, clean.pathname + clean.search + clean.hash);
+          }
+        }catch(_){}
       }
 
       function normalizeText(value){
         return String(value || "").trim();
       }
 
+      function normalizePhone(value){
+        return String(value || "").replace(/[^\d+]/g, "");
+      }
+
       function normalizeRail(value){
         const raw = normalizeText(value).toLowerCase();
+
         if(
           raw === "build" ||
+          raw === "btp" ||
+          raw === "chantier" ||
           raw === "batiment" ||
           raw === "bâtiment" ||
           raw === "multi-service" ||
@@ -512,8 +685,10 @@
         ){
           return "build";
         }
+
         if(
           raw === "resto" ||
+          raw === "food" ||
           raw === "hotel" ||
           raw === "hôtel" ||
           raw === "hr" ||
@@ -524,68 +699,61 @@
         ){
           return "resto";
         }
+
         return "general";
       }
 
       function railLabel(rail){
-        if(rail === "build") return "BUILD";
+        if(rail === "build") return "BTP / TRAVAUX";
         if(rail === "resto") return "HÔTELLERIE-RESTAURATION";
         return "GÉNÉRAL";
-      }
-
-      function getParams(){
-        const url = new URL(window.location.href);
-        return {
-          dossier: normalizeText(url.searchParams.get("dossier")),
-          rail: normalizeRail(url.searchParams.get("rail"))
-        };
       }
 
       function getDocs(rail){
         return [...COMMON_DOCS, ...(DOCS_BY_RAIL[rail] || [])];
       }
 
-      function storageKey(dossier, rail){
-        if(!dossier) return null;
-        return "DIGIY_JOBS_SUIVI_V2::" + dossier + "::" + rail;
-      }
-
       function createEmptyState(){
         return {
+          name: "",
+          phone: "",
+          trade: "",
+          rail: "general",
           checked: {},
           updatedAt: null
         };
       }
 
-      function loadState(dossier, rail){
-        const key = storageKey(dossier, rail);
-        if(!key) return createEmptyState();
-
+      function loadState(){
         try{
-          const raw = localStorage.getItem(key);
+          const raw = localStorage.getItem(STORAGE_KEY);
           if(!raw) return createEmptyState();
           const parsed = JSON.parse(raw);
           return {
-            checked: parsed && parsed.checked && typeof parsed.checked === "object" ? parsed.checked : {},
-            updatedAt: parsed && parsed.updatedAt ? parsed.updatedAt : null
+            ...createEmptyState(),
+            ...parsed,
+            checked: parsed && parsed.checked && typeof parsed.checked === "object" ? parsed.checked : {}
           };
         }catch(_){
           return createEmptyState();
         }
       }
 
-      function saveState(dossier, rail, state){
+      function saveState(){
+        state.name = normalizeText($("candidateName").value);
+        state.phone = normalizePhone($("candidatePhone").value);
+        state.trade = normalizeText($("candidateTrade").value);
+        state.rail = normalizeRail($("railSelect").value);
         state.updatedAt = new Date().toISOString();
 
-        const key = storageKey(dossier, rail);
-        if(!key) return;
-
         try{
-          localStorage.setItem(key, JSON.stringify(state));
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
         }catch(_){}
+
+        render();
       }
 
-      function computeCounts(state, docs){
+      function computeCounts(docs){
         const total = docs.length;
         let ok = 0;
 
@@ -597,34 +765,18 @@
         return { ok, total, pct };
       }
 
-      function listReceived(state, docs){
-        const arr = [];
-        for(const doc of docs){
-          if(state.checked && state.checked[doc.key]){
-            arr.push("• " + doc.title);
-          }
-        }
-        return arr.join("\n");
+      function listReceived(docs){
+        return docs
+          .filter((doc) => state.checked && state.checked[doc.key])
+          .map((doc) => "• " + doc.title)
+          .join("\n");
       }
 
-      function listMissing(state, docs){
-        const arr = [];
-        for(const doc of docs){
-          if(!(state.checked && state.checked[doc.key])){
-            arr.push("• " + doc.title);
-          }
-        }
-        return arr.join("\n");
-      }
-
-      function waUrl(base, msg){
-        try{
-          const u = new URL(base);
-          u.searchParams.set("text", msg);
-          return u.toString();
-        }catch(_){
-          return base + "?text=" + enc(msg);
-        }
+      function listMissing(docs){
+        return docs
+          .filter((doc) => !(state.checked && state.checked[doc.key]))
+          .map((doc) => "• " + doc.title)
+          .join("\n");
       }
 
       function formatDate(value){
@@ -636,21 +788,26 @@
         }
       }
 
-      function buildSummaryMessage(dossier, rail, counts, received, missing){
+      function buildSummary(docs){
+        const counts = computeCounts(docs);
+        const received = listReceived(docs);
+        const missing = listMissing(docs);
+
         return [
-          "🧾 DIGIY JOBS — Suivi dossier",
-          "Dossier : " + (dossier || "(non défini)"),
-          "Rail : " + railLabel(rail),
-          "État : " + counts.ok + "/" + counts.total + " (" + counts.pct + "%)",
+          "🧾 DIGIY JOBS — Suivi candidat",
+          "Nom : " + (state.name || "—"),
+          "WhatsApp candidat : " + (state.phone || "—"),
+          "Métier / profil : " + (state.trade || "—"),
+          "Contexte : " + railLabel(state.rail),
+          "Avancement : " + counts.ok + "/" + counts.total + " (" + counts.pct + "%)",
           "",
-          "✅ Reçus :",
+          "✅ Prêt :",
           received || "—",
           "",
-          "❌ Manquants :",
+          "À préparer :",
           missing || "—",
           "",
-          "Prochaine étape : RDV WhatsApp pour cadrer pièces + timing.",
-          "⚠️ Au début, hébergement (employeur/famille) recommandé."
+          "Prochaine étape : garder le téléphone joignable et vérifier les missions ouvertes."
         ].join("\n");
       }
 
@@ -663,38 +820,8 @@
         }
       }
 
-      const params = getParams();
-      const dossier = params.dossier;
-      const rail = params.rail;
-      const docs = getDocs(rail);
-
-      $("dossierId").textContent = dossier || "— (ajoute ?dossier=...)";
-      $("railLabel").textContent = railLabel(rail);
-
-      if(!dossier){
-        $("missingDossierNotice").style.display = "block";
-      }
-
-      const checklistEl = $("checklist");
-      const kpiOk = $("kpiOk");
-      const kpiTotal = $("kpiTotal");
-      const kpiPct = $("kpiPct");
-      const barFill = $("barFill");
-      const lastUpdate = $("lastUpdate");
-
-      const btnWASN = $("btnWASN");
-      const btnWAFR = $("btnWAFR");
-      const btnCopy = $("btnCopy");
-      const btnReset = $("btnReset");
-      const exportBox = $("exportBox");
-      const importBox = $("importBox");
-      const btnExport = $("btnExport");
-      const btnCopyExport = $("btnCopyExport");
-      const btnImport = $("btnImport");
-
-      let state = loadState(dossier, rail);
-
-      function renderChecklist(){
+      function renderChecklist(docs){
+        const checklistEl = $("checklist");
         checklistEl.innerHTML = "";
 
         for(const doc of docs){
@@ -727,118 +854,66 @@
           input.addEventListener("change", function(){
             state.checked = state.checked || {};
             state.checked[doc.key] = !!input.checked;
-            saveState(dossier, rail, state);
-            updateUI();
+            saveState();
           });
         }
       }
 
-      function buildExportPayload(){
-        return {
-          dossier: dossier || null,
-          rail: rail,
-          checked: state.checked || {},
-          updatedAt: state.updatedAt || null
-        };
+      function render(){
+        const docs = getDocs(state.rail);
+        const counts = computeCounts(docs);
+
+        $("candidateName").value = state.name || "";
+        $("candidatePhone").value = state.phone || "";
+        $("candidateTrade").value = state.trade || "";
+        $("railSelect").value = state.rail || "general";
+
+        $("kpiOk").textContent = String(counts.ok);
+        $("kpiTotal").textContent = String(counts.total);
+        $("kpiPct").textContent = String(counts.pct) + "%";
+        $("barFill").style.width = counts.pct + "%";
+        $("lastUpdate").textContent = formatDate(state.updatedAt);
+        $("summaryBox").value = buildSummary(docs);
+
+        renderChecklist(docs);
       }
 
-      function updateUI(){
-        const counts = computeCounts(state, docs);
+      const params = new URLSearchParams(window.location.search);
+      let state = loadState();
 
-        kpiOk.textContent = String(counts.ok);
-        kpiTotal.textContent = String(counts.total);
-        kpiPct.textContent = String(counts.pct) + "%";
-        barFill.style.width = counts.pct + "%";
-        lastUpdate.textContent = formatDate(state.updatedAt);
-
-        const received = listReceived(state, docs);
-        const missing = listMissing(state, docs);
-        const summary = buildSummaryMessage(dossier, rail, counts, received, missing);
-
-        const hasDossier = !!dossier;
-
-        if(hasDossier){
-          btnWASN.href = waUrl(WA_SN, summary);
-          btnWAFR.href = waUrl(WA_FR, summary);
-        }
-
-        setEnabled(btnWASN, hasDossier);
-        setEnabled(btnWAFR, hasDossier);
-
-        exportBox.value = JSON.stringify(buildExportPayload(), null, 2);
-        btnCopy.dataset.summary = summary;
-
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "jobs_suivi_update",
-          dossier: dossier || null,
-          rail: rail,
-          ok: counts.ok,
-          total: counts.total,
-          pct: counts.pct
-        });
+      const railFromUrl = normalizeRail(params.get("secteur") || params.get("rail") || "");
+      if (railFromUrl !== "general") {
+        state.rail = railFromUrl;
       }
 
-      btnCopy.addEventListener("click", function(){
-        const summary = btnCopy.dataset.summary || "";
-        if(summary) copyToClipboard(summary);
+      $("candidateName").addEventListener("input", saveState);
+      $("candidatePhone").addEventListener("input", saveState);
+      $("candidateTrade").addEventListener("input", saveState);
+      $("railSelect").addEventListener("change", function(){
+        state.rail = normalizeRail(this.value);
+        saveState();
       });
 
-      btnReset.addEventListener("click", function(){
-        if(!window.confirm("Reset du dossier : tu veux vraiment tout décocher ?")) return;
+      $("btnSave").addEventListener("click", function(){
+        saveState();
+        alert("Suivi sauvegardé sur cet appareil ✅");
+      });
 
+      $("btnCopy").addEventListener("click", function(){
+        copyToClipboard($("summaryBox").value || "");
+      });
+
+      $("btnReset").addEventListener("click", function(){
+        if(!window.confirm("Réinitialiser le suivi sur cet appareil ?")) return;
         state = createEmptyState();
-        saveState(dossier, rail, state);
-        renderChecklist();
-        updateUI();
+        try{ localStorage.removeItem(STORAGE_KEY); }catch(_){}
+        render();
       });
 
-      btnExport.addEventListener("click", function(){
-        exportBox.value = JSON.stringify(buildExportPayload(), null, 2);
-      });
-
-      btnCopyExport.addEventListener("click", function(){
-        copyToClipboard(exportBox.value || "");
-      });
-
-      btnImport.addEventListener("click", function(){
-        let obj = null;
-
-        try{
-          obj = JSON.parse(importBox.value || "null");
-        }catch(_){
-          alert("JSON invalide. Vérifie le format.");
-          return;
-        }
-
-        if(!obj || typeof obj !== "object"){
-          alert("JSON invalide.");
-          return;
-        }
-
-        if(obj.dossier && dossier && obj.dossier !== dossier){
-          const ok = window.confirm(
-            "Le JSON vise un autre dossier (" + obj.dossier + "). Importer quand même ?"
-          );
-          if(!ok) return;
-        }
-
-        state.checked =
-          obj.checked && typeof obj.checked === "object"
-            ? obj.checked
-            : {};
-
-        state.updatedAt = obj.updatedAt || new Date().toISOString();
-
-        saveState(dossier, rail, state);
-        renderChecklist();
-        updateUI();
-        alert("Import OK ✅");
-      });
-
-      renderChecklist();
-      updateUI();
+      scrubUrl();
+      render();
     })();
   </script>
 </body>
 </html>
+
