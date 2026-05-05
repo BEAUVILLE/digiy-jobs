@@ -608,25 +608,15 @@
           return;
         }
 
-        let query = sb
-          .from("digiy_jobs_offers_pro")
-          .select("id,slug,owner_id,title,city,country,contract_type,pay,status,published_at,created_at")
-          .eq("status", "active")
-          .order("published_at", { ascending: false })
-          .order("created_at", { ascending: false })
-          .limit(1);
-
-        if (state.offerId) {
-          query = query.eq("id", state.offerId);
-        } else if (state.legacySlug) {
-          query = query.eq("slug", state.legacySlug);
-        } else {
+        if (!state.offerId) {
           syncLinks();
           showStatus("info", "Choisis une mission depuis le mur, puis envoie ta candidature.");
           return;
         }
 
-        const { data, error } = await query;
+        const { data, error } = await sb.rpc("digiy_jobs_public_offer", {
+          p_offer_id: state.offerId
+        });
 
         if (error) {
           console.error(error);
@@ -635,14 +625,14 @@
           return;
         }
 
-        const offer = Array.isArray(data) ? data[0] : null;
-        if (!offer) {
+        if (!data || data.ok !== true || !data.item) {
+          console.warn("RPC digiy_jobs_public_offer réponse inattendue", data);
           showStatus("err", "Mission introuvable ou plus active.");
           syncLinks();
           return;
         }
 
-        state.offer = offer;
+        state.offer = data.item;
         renderOffer();
       }
 
@@ -655,7 +645,7 @@
           return;
         }
 
-        if (!state.offer?.id || !state.offer?.slug) {
+        if (!state.offer?.id) {
           showStatus("err", "Ouvre cette page depuis une mission active pour que ta candidature arrive au bon bureau.");
           return;
         }
@@ -670,36 +660,35 @@
         }
 
         const payload = {
-          offer_id: state.offer.id,
-          slug: state.offer.slug,
-          owner_id: state.offer.owner_id || null,
-          full_name: fullName,
-          phone: phone,
-          job_title: trade || state.offer.title || null,
-          city: $("city").value.trim() || null,
-          country: $("country").value.trim() || "Sénégal",
-          trade: trade || null,
-          years_experience: $("years_experience").value.trim() || null,
-          availability: $("availability").value || null,
-          message: $("message").value.trim() || null,
-          status: "new",
-          source: "public_form"
+          p_offer_id: state.offer.id,
+          p_full_name: fullName,
+          p_phone: phone,
+          p_job_title: trade || state.offer.title || null,
+          p_city: $("city").value.trim() || null,
+          p_country: $("country").value.trim() || "Sénégal",
+          p_availability: $("availability").value || "immediate",
+          p_years_experience: $("years_experience").value.trim() || null,
+          p_message: $("message").value.trim() || null
         };
 
         const btn = $("submitBtn");
         btn.disabled = true;
         btn.textContent = "Envoi en cours...";
 
-        const { error } = await sb
-          .from("digiy_jobs_candidates_pro")
-          .insert(payload);
+        const { data, error } = await sb.rpc("digiy_jobs_public_apply", payload);
 
         btn.disabled = false;
         btn.textContent = "Envoyer ma candidature";
 
         if (error) {
           console.error(error);
-          showStatus("err", "Impossible d’envoyer la candidature pour le moment. Le bureau doit vérifier l’accès d’écriture.");
+          showStatus("err", "Impossible d’envoyer la candidature pour le moment.");
+          return;
+        }
+
+        if (!data || data.ok !== true) {
+          console.warn("RPC digiy_jobs_public_apply réponse inattendue", data);
+          showStatus("err", "La candidature n’a pas pu être envoyée. Vérifie la mission et réessaie.");
           return;
         }
 
