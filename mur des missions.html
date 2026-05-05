@@ -6,7 +6,7 @@
   <title>DIGIY JOBS — Mur des missions</title>
   <meta
     name="description"
-    content="DIGIY JOBS — Missions, emplois, terrain, quartier, chantier, services et travail réel."
+    content="DIGIY JOBS — missions, emplois, terrain, quartier, chantier, services et travail réel."
   />
   <meta name="theme-color" content="#071711" />
 
@@ -398,6 +398,7 @@
       text-align:center;
       color:var(--muted);
       background:rgba(255,255,255,.03);
+      line-height:1.6;
     }
 
     .error{
@@ -419,6 +420,8 @@
       .grid{grid-template-columns:1fr}
       .toolbar{flex-direction:column;align-items:flex-start}
       h1{font-size:36px}
+      .actions{flex-direction:column}
+      .btn{width:100%}
     }
   </style>
 </head>
@@ -427,9 +430,8 @@
     <div class="top-links">
       <a class="chip-link" href="https://digiylyfe.com/" target="_blank" rel="noopener">← Retour au site</a>
       <a id="homeLink" class="chip-link" href="./index.html">Accueil JOBS</a>
-      <a id="missionsWallLink" class="chip-link gold" href="./mur%20des%20missions.html">Mur des missions</a>
+      <a id="missionsWallLink" class="chip-link gold" href="./mur%20des%20missions.html">Voir les missions</a>
       <a id="dossierLink" class="chip-link blue" href="./dossier-intelligent.html">Dossier intelligent</a>
-      <a id="pinLink" class="chip-link" href="./pin.html">Entrée sécurisée</a>
     </div>
 
     <section class="hero">
@@ -444,10 +446,9 @@
           </p>
 
           <div class="meta-line">
-            <div class="meta-chip">Mode : <strong id="modeChip">mur public</strong></div>
-            <div class="meta-chip">Identifiant : <strong id="slugChip">public</strong></div>
-            <div class="meta-chip">Rail : <strong id="railChip">public</strong></div>
-            <div class="meta-chip">Source : <strong id="sourceChip">Supabase réel</strong></div>
+            <div class="meta-chip">Accès : <strong>public candidat</strong></div>
+            <div class="meta-chip">Parcours : <strong>lire puis postuler</strong></div>
+            <div class="meta-chip">Contact : <strong>via DIGIY JOBS</strong></div>
           </div>
         </div>
 
@@ -517,409 +518,381 @@
   </div>
 
   <script>
-    const SUPABASE_URL =
-      window.DIGIY_SUPABASE_URL ||
-      "https://wesqmwjjtsefyjnluosj.supabase.co";
+    (function(){
+      "use strict";
 
-    const SUPABASE_ANON_KEY =
-      window.DIGIY_SUPABASE_ANON ||
-      window.DIGIY_SUPABASE_ANON_KEY ||
-      "";
+      const SUPABASE_URL =
+        window.DIGIY_SUPABASE_URL ||
+        "https://wesqmwjjtsefyjnluosj.supabase.co";
 
-    const sb =
-      window.supabase && SUPABASE_URL && SUPABASE_ANON_KEY
-        ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-        : null;
+      const SUPABASE_ANON_KEY =
+        window.DIGIY_SUPABASE_ANON ||
+        window.DIGIY_SUPABASE_ANON_KEY ||
+        "";
 
-    const params = new URLSearchParams(location.search);
-    const $ = (id) => document.getElementById(id);
+      const sb =
+        window.supabase && SUPABASE_URL && SUPABASE_ANON_KEY
+          ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+          : null;
 
-    const SLUG_STORAGE_KEY = "digiy_jobs_slug";
+      const params = new URLSearchParams(location.search);
+      const $ = (id) => document.getElementById(id);
 
-    const JOBS_PATHS = {
-      home: "./index.html",
-      missions: "./mur%20des%20missions.html",
-      pin: "./pin.html",
-      postuler: "./postuler.html",
-      mission: "./mission.html",
-      dossier: "./dossier-intelligent.html"
-    };
-
-    const state = {
-      offers: [],
-      filtered: [],
-      slug: resolveSlug(),
-      secteur: normalizeSecteur(String(params.get("secteur") || params.get("rail") || "").trim().toLowerCase())
-    };
-
-    function resolveSlug(){
-      const qs = String(params.get("slug") || "").trim().toLowerCase();
-      if (qs) {
-        try { localStorage.setItem(SLUG_STORAGE_KEY, qs); } catch(_) {}
-        return qs;
-      }
-      try {
-        return String(localStorage.getItem(SLUG_STORAGE_KEY) || "").trim().toLowerCase();
-      } catch(_) {
-        return "";
-      }
-    }
-
-    function escapeHtml(v=''){
-      return String(v)
-        .replaceAll('&','&amp;')
-        .replaceAll('<','&lt;')
-        .replaceAll('>','&gt;')
-        .replaceAll('"','&quot;')
-        .replaceAll("'","&#039;");
-    }
-
-    function normalizeSecteur(v=''){
-      const raw = String(v || '').trim().toLowerCase();
-      if (
-        raw === 'build' ||
-        raw === 'btp' ||
-        raw === 'chantier'
-      ) return 'build';
-
-      if (
-        raw === 'resto' ||
-        raw === 'hotellerie-restauration' ||
-        raw === 'hôtellerie-restauration' ||
-        raw === 'food'
-      ) return 'hotellerie-restauration';
-
-      return '';
-    }
-
-    function secteurLabel(v=''){
-      if (v === 'build') return 'BUILD';
-      if (v === 'hotellerie-restauration') return 'Hôtellerie-Restauration';
-      return 'public';
-    }
-
-    function labelSector(v=''){
-      const map = {
-        build:'BTP',
-        beauty:'Beauté',
-        shop:'Boutique',
-        food:'Restauration',
-        service:'Services',
-        driver:'Chauffeur',
-        market:'Marché',
-        admin:'Admin'
-      };
-      return map[v] || v || 'Secteur';
-    }
-
-    function labelContract(v=''){
-      const map = {
-        cdi:'CDI',
-        cdd:'CDD',
-        mission:'Mission',
-        stage:'Stage',
-        freelance:'Freelance',
-        extra:'Extra'
-      };
-      return map[v] || v || 'Contrat';
-    }
-
-    function shortText(v='', max=170){
-      const s = String(v || '').trim();
-      if (s.length <= max) return s;
-      return s.slice(0, max).trim() + '…';
-    }
-
-    function buildOptions(selectEl, values, formatter = (x) => x, firstLabel = 'Tous'){
-      const current = selectEl.value;
-      const unique = [...new Set(values.filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),'fr'));
-
-      selectEl.innerHTML =
-        `<option value="">${firstLabel}</option>` +
-        unique
-          .map(v => `<option value="${escapeHtml(v)}">${escapeHtml(formatter(v))}</option>`)
-          .join('');
-
-      if ([...selectEl.options].some(opt => opt.value === current)) {
-        selectEl.value = current;
-      }
-    }
-
-    function withContext(path, options = {}){
-      const url = new URL(path, location.href);
-
-      const slug = String(options.slug || '').trim().toLowerCase();
-      const secteur = normalizeSecteur(options.secteur || '');
-      const offer = String(options.offer || '').trim();
-      const missionId = String(options.id || '').trim();
-
-      if (slug) url.searchParams.set('slug', slug);
-      if (secteur) url.searchParams.set('secteur', secteur);
-      if (offer) url.searchParams.set('offer', offer);
-      if (missionId) url.searchParams.set('id', missionId);
-
-      return url.toString();
-    }
-
-    function setHref(id, path){
-      const el = $(id);
-      if (el) el.href = withContext(path, { slug: state.slug, secteur: state.secteur });
-    }
-
-    function inferSecteurFromOffer(item){
-      const sector = String(item?.sector || '').trim().toLowerCase();
-
-      if (sector === 'build') return 'build';
-      if (sector === 'food') return 'hotellerie-restauration';
-
-      const hay = [
-        item?.title,
-        item?.description,
-        item?.requirements,
-        item?.employer_name,
-        item?.contract_type
-      ].join(' ').toLowerCase();
-
-      const buildKeywords = [
-        'maçon','macon','plombier','électricien','electricien',
-        'soudeur','menuisier','peintre','carreleur','chantier',
-        'bâtiment','batiment','travaux','construction','dépannage','depannage'
+      const SENSITIVE_PARAMS = [
+        "slug",
+        "phone",
+        "tel",
+        "resa_tel",
+        "owner_phone",
+        "owner",
+        "owner_id",
+        "business_code",
+        "keybox_code",
+        "keybox_location",
+        "access_note"
       ];
 
-      const restoKeywords = [
-        'serveur','serveuse','restaurant','restauration','cuisine',
-        'cuisinier','cuisinière','commis','plonge','réception',
-        'reception','hôtel','hotel','chambre','bar','salle'
-      ];
+      const JOBS_PATHS = {
+        home: "./index.html",
+        missions: "./mur%20des%20missions.html",
+        postuler: "./postuler.html",
+        mission: "./mission.html",
+        dossier: "./dossier-intelligent.html"
+      };
 
-      if (buildKeywords.some(k => hay.includes(k))) return 'build';
-      if (restoKeywords.some(k => hay.includes(k))) return 'hotellerie-restauration';
+      const state = {
+        offers: [],
+        filtered: [],
+        secteur: normalizeSecteur(String(params.get("secteur") || params.get("rail") || "").trim().toLowerCase())
+      };
 
-      return '';
-    }
+      function scrubUrl(){
+        const clean = new URL(location.href);
+        let changed = false;
 
-    function syncLinks(){
-      $('slugChip').textContent = state.slug || 'public';
-      $('modeChip').textContent = state.slug ? 'mur public lié au slug' : 'mur public';
-      $('railChip').textContent = state.slug
-        ? `${secteurLabel(state.secteur)} + contexte slug`
-        : secteurLabel(state.secteur);
-      $('sourceChip').textContent = 'digiy_jobs_offers_pro';
+        SENSITIVE_PARAMS.forEach((key) => {
+          if (clean.searchParams.has(key)) {
+            clean.searchParams.delete(key);
+            changed = true;
+          }
+        });
 
-      setHref('homeLink', JOBS_PATHS.home);
-      setHref('missionsWallLink', JOBS_PATHS.missions);
-      setHref('dossierLink', JOBS_PATHS.dossier);
-      setHref('pinLink', JOBS_PATHS.pin);
-      setHref('spontaneousLink', JOBS_PATHS.postuler);
-      setHref('toolbarDossierLink', JOBS_PATHS.dossier);
-    }
-
-    function renderStatus(type, text){
-      const box = $('statusBox');
-      box.style.display = 'block';
-      box.className = type;
-      box.textContent = text;
-      $('cards').style.display = 'none';
-    }
-
-    function missionHref(item){
-      const slug = item.slug || state.slug || '';
-      const secteur = inferSecteurFromOffer(item) || state.secteur || '';
-
-      return withContext(JOBS_PATHS.mission, {
-        slug,
-        secteur,
-        id: item.id
-      });
-    }
-
-    function applyHref(item){
-      const slug = item.slug || state.slug || '';
-      const secteur = inferSecteurFromOffer(item) || state.secteur || '';
-
-      return withContext(JOBS_PATHS.postuler, {
-        slug,
-        secteur,
-        offer: item.id
-      });
-    }
-
-    function dossierHref(item){
-      const slug = item.slug || state.slug || '';
-      const secteur = inferSecteurFromOffer(item) || state.secteur || '';
-
-      return withContext(JOBS_PATHS.dossier, {
-        slug,
-        secteur,
-        offer: item.id
-      });
-    }
-
-    function renderCards(list){
-      const cards = $('cards');
-
-      if (!list.length) {
-        renderStatus(
-          'empty',
-          state.slug
-            ? 'Aucune mission active trouvée pour ce slug pour le moment.'
-            : 'Aucune mission ne correspond à ce filtre pour le moment.'
-        );
-        $('count').textContent = '0 mission trouvée';
-        return;
+        if (changed) {
+          history.replaceState({}, document.title, clean.pathname + clean.search + clean.hash);
+        }
       }
 
-      $('statusBox').style.display = 'none';
-      cards.style.display = 'grid';
-      $('count').textContent = `${list.length} mission${list.length > 1 ? 's' : ''} trouvée${list.length > 1 ? 's' : ''}`;
+      function escapeHtml(v=''){
+        return String(v)
+          .replaceAll('&','&amp;')
+          .replaceAll('<','&lt;')
+          .replaceAll('>','&gt;')
+          .replaceAll('"','&quot;')
+          .replaceAll("'","&#039;");
+      }
 
-      cards.innerHTML = list.map(item => {
-        const flags = [];
-        const inferredSecteur = inferSecteurFromOffer(item);
-        const offerSlug = item.slug || state.slug || '';
+      function normalizeSecteur(v=''){
+        const raw = String(v || '').trim().toLowerCase();
 
-        if (item.has_housing) {
-          flags.push('<span class="flag">Logement possible</span>');
+        if (
+          raw === 'build' ||
+          raw === 'btp' ||
+          raw === 'chantier'
+        ) return 'build';
+
+        if (
+          raw === 'resto' ||
+          raw === 'hotellerie-restauration' ||
+          raw === 'hôtellerie-restauration' ||
+          raw === 'food'
+        ) return 'hotellerie-restauration';
+
+        return '';
+      }
+
+      function secteurLabel(v=''){
+        if (v === 'build') return 'BTP / travaux';
+        if (v === 'hotellerie-restauration') return 'Hôtellerie-Restauration';
+        return '';
+      }
+
+      function labelSector(v=''){
+        const map = {
+          build:'BTP',
+          beauty:'Beauté',
+          shop:'Boutique',
+          food:'Restauration',
+          service:'Services',
+          driver:'Chauffeur',
+          market:'Marché',
+          admin:'Admin'
+        };
+        return map[String(v || '').toLowerCase()] || v || 'Secteur';
+      }
+
+      function labelContract(v=''){
+        const map = {
+          cdi:'CDI',
+          cdd:'CDD',
+          mission:'Mission',
+          stage:'Stage',
+          freelance:'Freelance',
+          extra:'Extra'
+        };
+        return map[String(v || '').toLowerCase()] || v || 'Contrat';
+      }
+
+      function shortText(v='', max=170){
+        const s = String(v || '').trim();
+        if (s.length <= max) return s;
+        return s.slice(0, max).trim() + '…';
+      }
+
+      function buildOptions(selectEl, values, formatter = (x) => x, firstLabel = 'Tous'){
+        const current = selectEl.value;
+        const unique = [...new Set(values.filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),'fr'));
+
+        selectEl.innerHTML =
+          `<option value="">${firstLabel}</option>` +
+          unique
+            .map(v => `<option value="${escapeHtml(v)}">${escapeHtml(formatter(v))}</option>`)
+            .join('');
+
+        if ([...selectEl.options].some(opt => opt.value === current)) {
+          selectEl.value = current;
         }
+      }
 
-        if (item.has_family_welcome) {
-          flags.push('<span class="flag">Accueil familial possible</span>');
-        }
+      function withPublicContext(path, options = {}){
+        const url = new URL(path, location.href);
+        const secteur = normalizeSecteur(options.secteur || state.secteur || '');
+        const offer = String(options.offer || '').trim();
+        const missionId = String(options.id || '').trim();
 
-        if (offerSlug) {
-          flags.push(`<span class="flag">Slug : ${escapeHtml(offerSlug)}</span>`);
-        }
+        if (secteur) url.searchParams.set('secteur', secteur);
+        if (offer) url.searchParams.set('offer', offer);
+        if (missionId) url.searchParams.set('id', missionId);
 
-        return `
-          <article class="card">
-            <div class="badge-row">
-              <span class="badge gold">${escapeHtml(labelSector(item.sector))}</span>
-              <span class="badge">${escapeHtml(labelContract(item.contract_type))}</span>
-              ${item.employer_name ? `<span class="badge green">${escapeHtml(item.employer_name)}</span>` : ''}
-              ${inferredSecteur ? `<span class="badge blue">${escapeHtml(secteurLabel(inferredSecteur))}</span>` : ''}
-            </div>
+        return url.pathname + url.search;
+      }
 
-            <h3 class="title">${escapeHtml(item.title || 'Mission')}</h3>
+      function setHref(id, path){
+        const el = $(id);
+        if (el) el.href = withPublicContext(path);
+      }
 
-            <div class="meta">
-              <span>${escapeHtml(item.city || 'Ville à préciser')}</span>
-              <span>${escapeHtml(item.country || 'Sénégal')}</span>
-              <span>${escapeHtml(item.pay || 'Rémunération à préciser')}</span>
-            </div>
+      function inferSecteurFromOffer(item){
+        const sector = String(item?.sector || '').trim().toLowerCase();
 
-            <p class="desc">${escapeHtml(shortText(item.description || 'Description à venir.'))}</p>
+        if (sector === 'build') return 'build';
+        if (sector === 'food') return 'hotellerie-restauration';
 
-            <div class="flags">${flags.join('')}</div>
-
-            <div class="actions">
-              <a class="btn btn-secondary" href="${missionHref(item)}">Voir la mission</a>
-              <a class="btn btn-primary" href="${applyHref(item)}">Je postule</a>
-            </div>
-          </article>
-        `;
-      }).join('');
-    }
-
-    function applyFilters(){
-      const q = $('searchInput').value.trim().toLowerCase();
-      const sector = $('sectorSelect').value.trim().toLowerCase();
-      const city = $('citySelect').value.trim().toLowerCase();
-      const contract = $('contractSelect').value.trim().toLowerCase();
-
-      state.filtered = state.offers.filter(item => {
         const hay = [
-          item.title,
-          item.slug,
-          item.sector,
-          item.city,
-          item.country,
-          item.contract_type,
-          item.description,
-          item.requirements,
-          item.employer_name,
-          item.pay
+          item?.title,
+          item?.description,
+          item?.requirements,
+          item?.employer_name,
+          item?.contract_type
         ].join(' ').toLowerCase();
 
-        if (q && !hay.includes(q)) return false;
-        if (sector && String(item.sector || '').toLowerCase() !== sector) return false;
-        if (city && String(item.city || '').toLowerCase() !== city) return false;
-        if (contract && String(item.contract_type || '').toLowerCase() !== contract) return false;
+        const buildKeywords = [
+          'maçon','macon','plombier','électricien','electricien',
+          'soudeur','menuisier','peintre','carreleur','chantier',
+          'bâtiment','batiment','travaux','construction','dépannage','depannage'
+        ];
 
-        if (state.secteur) {
-          const inferred = inferSecteurFromOffer(item);
-          if (inferred !== state.secteur) return false;
+        const restoKeywords = [
+          'serveur','serveuse','restaurant','restauration','cuisine',
+          'cuisinier','cuisinière','commis','plonge','réception',
+          'reception','hôtel','hotel','chambre','bar','salle'
+        ];
+
+        if (buildKeywords.some(k => hay.includes(k))) return 'build';
+        if (restoKeywords.some(k => hay.includes(k))) return 'hotellerie-restauration';
+
+        return '';
+      }
+
+      function syncLinks(){
+        setHref('homeLink', JOBS_PATHS.home);
+        setHref('missionsWallLink', JOBS_PATHS.missions);
+        setHref('dossierLink', JOBS_PATHS.dossier);
+        setHref('spontaneousLink', JOBS_PATHS.postuler);
+        setHref('toolbarDossierLink', JOBS_PATHS.dossier);
+      }
+
+      function renderStatus(type, text){
+        const box = $('statusBox');
+        box.style.display = 'block';
+        box.className = type;
+        box.textContent = text;
+        $('cards').style.display = 'none';
+      }
+
+      function missionHref(item){
+        const secteur = inferSecteurFromOffer(item) || state.secteur || '';
+
+        return withPublicContext(JOBS_PATHS.mission, {
+          secteur,
+          id: item.id
+        });
+      }
+
+      function applyHref(item){
+        const secteur = inferSecteurFromOffer(item) || state.secteur || '';
+
+        return withPublicContext(JOBS_PATHS.postuler, {
+          secteur,
+          offer: item.id
+        });
+      }
+
+      function renderCards(list){
+        const cards = $('cards');
+
+        if (!list.length) {
+          renderStatus(
+            'empty',
+            state.secteur
+              ? `Aucune mission active trouvée pour ${secteurLabel(state.secteur)} pour le moment.`
+              : 'Aucune mission active trouvée pour le moment.'
+          );
+          $('count').textContent = '0 mission trouvée';
+          return;
         }
 
-        if (state.slug) {
-          if (String(item.slug || '').toLowerCase() !== state.slug) return false;
+        $('statusBox').style.display = 'none';
+        cards.style.display = 'grid';
+        $('count').textContent = `${list.length} mission${list.length > 1 ? 's' : ''} trouvée${list.length > 1 ? 's' : ''}`;
+
+        cards.innerHTML = list.map(item => {
+          const flags = [];
+          const inferredSecteur = inferSecteurFromOffer(item);
+
+          if (item.has_housing) {
+            flags.push('<span class="flag">Logement possible</span>');
+          }
+
+          if (item.has_family_welcome) {
+            flags.push('<span class="flag">Accueil familial possible</span>');
+          }
+
+          return `
+            <article class="card">
+              <div class="badge-row">
+                <span class="badge gold">${escapeHtml(labelSector(item.sector))}</span>
+                <span class="badge">${escapeHtml(labelContract(item.contract_type))}</span>
+                ${item.employer_name ? `<span class="badge green">${escapeHtml(item.employer_name)}</span>` : ''}
+                ${inferredSecteur ? `<span class="badge blue">${escapeHtml(secteurLabel(inferredSecteur))}</span>` : ''}
+              </div>
+
+              <h3 class="title">${escapeHtml(item.title || 'Mission')}</h3>
+
+              <div class="meta">
+                <span>${escapeHtml(item.city || 'Ville à préciser')}</span>
+                <span>${escapeHtml(item.country || 'Sénégal')}</span>
+                <span>${escapeHtml(item.pay || 'Rémunération à préciser')}</span>
+              </div>
+
+              <p class="desc">${escapeHtml(shortText(item.description || 'Description à venir.'))}</p>
+
+              <div class="flags">${flags.join('')}</div>
+
+              <div class="actions">
+                <a class="btn btn-secondary" href="${missionHref(item)}">Voir la mission</a>
+                <a class="btn btn-primary" href="${applyHref(item)}">Je postule</a>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      function applyFilters(){
+        const q = $('searchInput').value.trim().toLowerCase();
+        const sector = $('sectorSelect').value.trim().toLowerCase();
+        const city = $('citySelect').value.trim().toLowerCase();
+        const contract = $('contractSelect').value.trim().toLowerCase();
+
+        state.filtered = state.offers.filter(item => {
+          const hay = [
+            item.title,
+            item.sector,
+            item.city,
+            item.country,
+            item.contract_type,
+            item.description,
+            item.requirements,
+            item.employer_name,
+            item.pay
+          ].join(' ').toLowerCase();
+
+          if (q && !hay.includes(q)) return false;
+          if (sector && String(item.sector || '').toLowerCase() !== sector) return false;
+          if (city && String(item.city || '').toLowerCase() !== city) return false;
+          if (contract && String(item.contract_type || '').toLowerCase() !== contract) return false;
+
+          if (state.secteur) {
+            const inferred = inferSecteurFromOffer(item);
+            if (inferred !== state.secteur) return false;
+          }
+
+          return true;
+        });
+
+        renderCards(state.filtered);
+      }
+
+      async function loadOffers(){
+        if (!sb) {
+          renderStatus('error', 'Chargement indisponible. Réessaie dans un instant.');
+          $('count').textContent = 'Erreur de configuration';
+          return;
         }
 
-        return true;
-      });
+        renderStatus('loading', 'Chargement des missions...');
 
-      renderCards(state.filtered);
-    }
+        const { data, error } = await sb
+          .from('digiy_jobs_offers_pro')
+          .select('id,title,sector,city,country,contract_type,pay,status,description,requirements,has_housing,has_family_welcome,employer_name,published_at,created_at')
+          .eq('status', 'active')
+          .order('published_at', { ascending:false })
+          .order('created_at', { ascending:false });
 
-    async function loadOffers(){
-      if (!sb) {
-        renderStatus('error', 'Supabase non chargé. Vérifie la configuration front.');
-        $('count').textContent = 'Erreur de configuration';
-        return;
+        if (error) {
+          console.error(error);
+          renderStatus('error', 'Impossible de charger les missions pour le moment.');
+          $('count').textContent = 'Erreur de chargement';
+          return;
+        }
+
+        state.offers = Array.isArray(data) ? data : [];
+
+        buildOptions(
+          $('sectorSelect'),
+          state.offers.map(x => x.sector),
+          labelSector,
+          'Tous les secteurs'
+        );
+
+        buildOptions(
+          $('citySelect'),
+          state.offers.map(x => x.city),
+          (x) => x,
+          'Toutes les villes'
+        );
+
+        applyFilters();
       }
 
-      renderStatus(
-        'loading',
-        state.slug
-          ? 'Chargement des missions de ce slug...'
-          : 'Chargement des missions...'
-      );
+      $('searchInput').addEventListener('input', applyFilters);
+      $('sectorSelect').addEventListener('change', applyFilters);
+      $('citySelect').addEventListener('change', applyFilters);
+      $('contractSelect').addEventListener('change', applyFilters);
 
-      let query = sb
-        .from('digiy_jobs_offers_pro')
-        .select('id,slug,title,sector,city,country,contract_type,pay,status,description,requirements,has_housing,has_family_welcome,employer_name,published_at,created_at')
-        .eq('status', 'active')
-        .order('published_at', { ascending:false })
-        .order('created_at', { ascending:false });
-
-      if (state.slug) {
-        query = query.eq('slug', state.slug);
-      }
-
-      const { data, error } = await query;
-
-      if (error) {
-        console.error(error);
-        renderStatus('error', 'Impossible de charger les missions pour le moment.');
-        $('count').textContent = 'Erreur de chargement';
-        return;
-      }
-
-      state.offers = data || [];
-
-      buildOptions(
-        $('sectorSelect'),
-        state.offers.map(x => x.sector),
-        labelSector,
-        'Tous les secteurs'
-      );
-
-      buildOptions(
-        $('citySelect'),
-        state.offers.map(x => x.city),
-        (x) => x,
-        'Toutes les villes'
-      );
-
-      applyFilters();
-    }
-
-    $('searchInput').addEventListener('input', applyFilters);
-    $('sectorSelect').addEventListener('change', applyFilters);
-    $('citySelect').addEventListener('change', applyFilters);
-    $('contractSelect').addEventListener('change', applyFilters);
-
-    syncLinks();
-    loadOffers();
+      scrubUrl();
+      syncLinks();
+      loadOffers();
+    })();
   </script>
 </body>
 </html>
