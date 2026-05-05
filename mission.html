@@ -523,8 +523,8 @@
         scrubUrl();
         syncLinks();
 
-        if (!state.offerId && !state.legacySlug) {
-          setLoadingMessage("Mission introuvable : aucun identifiant public de mission n’a été reçu.", "error");
+        if (!state.offerId) {
+          setLoadingMessage("Mission introuvable : ouvre une mission depuis le mur des missions.", "error");
           return;
         }
 
@@ -533,21 +533,9 @@
           return;
         }
 
-        let query = sb
-          .from("digiy_jobs_offers_pro")
-          .select("id,slug,title,sector,city,country,contract_type,pay,description,requirements,has_housing,has_family_welcome,employer_name,status,published_at,created_at")
-          .eq("status", "active")
-          .order("published_at", { ascending: false })
-          .order("created_at", { ascending: false })
-          .limit(1);
-
-        if (state.offerId) {
-          query = query.eq("id", state.offerId);
-        } else {
-          query = query.eq("slug", state.legacySlug);
-        }
-
-        const { data, error } = await query;
+        const { data, error } = await sb.rpc("digiy_jobs_public_offer", {
+          p_offer_id: state.offerId
+        });
 
         if (error) {
           console.error(error);
@@ -555,12 +543,13 @@
           return;
         }
 
-        const offer = Array.isArray(data) ? data[0] : null;
-
-        if (!offer) {
+        if (!data || data.ok !== true || !data.item) {
+          console.warn("RPC digiy_jobs_public_offer réponse inattendue", data);
           setLoadingMessage("Aucune mission active trouvée pour ce lien.", "error");
           return;
         }
+
+        const offer = data.item;
 
         state.offer = offer;
         state.offerId = offer.id || state.offerId || "";
