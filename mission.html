@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>DIGIY JOBS — Offre</title>
+  <title>DIGIY JOBS — Mission ouverte</title>
   <meta name="theme-color" content="#071711" />
   <meta
     name="description"
-    content="DIGIY JOBS — fiche offre publique pour lire une offre, postuler proprement et ouvrir le dossier intelligent."
+    content="DIGIY JOBS — fiche mission publique pour lire une offre et postuler simplement."
   />
 
   <script>
@@ -30,12 +30,12 @@
       --gold2:#fde68a;
       --green:#22c55e;
       --blue:#38bdf8;
+      --danger:#fb7185;
       --max:1080px;
       --shadow:0 18px 60px rgba(0,0,0,.28);
     }
 
     *{box-sizing:border-box}
-
     html,body{
       margin:0;
       padding:0;
@@ -47,6 +47,7 @@
     }
 
     a{color:inherit;text-decoration:none}
+    button{font:inherit}
 
     .wrap{
       max-width:var(--max);
@@ -80,9 +81,9 @@
     }
 
     .chip-link.blue{
-      border-color:rgba(56,189,248,.25);
+      border-color:rgba(56,189,248,.28);
       background:rgba(56,189,248,.10);
-      color:#d9f4ff;
+      color:#d8f5ff;
     }
 
     .hero{
@@ -118,12 +119,6 @@
       border-color:rgba(250,204,21,.3);
       background:rgba(250,204,21,.08);
       color:#fff0a9;
-    }
-
-    .badge.blue{
-      border-color:rgba(56,189,248,.25);
-      background:rgba(56,189,248,.10);
-      color:#d9f4ff;
     }
 
     h1{
@@ -262,10 +257,16 @@
       color:var(--text);
     }
 
-    .cta-blue{
-      border:1px solid rgba(56,189,248,.25);
-      background:rgba(56,189,248,.10);
-      color:#d9f4ff;
+    .note-box{
+      margin-top:14px;
+      border:1px solid rgba(250,204,21,.22);
+      border-radius:22px;
+      padding:14px;
+      background:rgba(250,204,21,.07);
+      color:#fff4bd;
+      line-height:1.6;
+      font-size:14px;
+      font-weight:700;
     }
 
     .status{
@@ -276,6 +277,12 @@
       color:var(--muted);
       background:rgba(255,255,255,.03);
       line-height:1.65;
+    }
+
+    .status.error{
+      color:#ffd7de;
+      border-color:rgba(251,113,133,.28);
+      background:rgba(251,113,133,.08);
     }
 
     @media (max-width: 920px){
@@ -297,12 +304,8 @@
     <div class="topbar">
       <a class="chip-link" href="https://digiylyfe.com/" target="_blank" rel="noopener">← Retour au site</a>
       <a id="homeLink" class="chip-link" href="./index.html">Accueil JOBS</a>
-      <a id="wallLink" class="chip-link gold" href="./mur%20des%20missions.html">Mur des missions</a>
-      <a id="dossierTopLink" class="chip-link blue" href="./dossier-intelligent.html">Dossier intelligent</a>
-      <a id="pinLink" class="chip-link" href="./pin.html">Entrée sécurisée</a>
-      <a id="cockpitLink" class="chip-link" href="./cockpit.html">Mon espace</a>
-      <a id="bureauLink" class="chip-link" href="./bureau.html">Bureau</a>
-      <a id="postulerTop" class="chip-link" href="./postuler.html">Postuler</a>
+      <a id="wallLink" class="chip-link gold" href="./mur%20des%20missions.html">Voir les missions</a>
+      <a id="postulerTop" class="chip-link blue" href="./postuler.html">Postuler</a>
     </div>
 
     <div id="loadingBox" class="status">Chargement de la mission...</div>
@@ -312,17 +315,15 @@
         <div class="badge-row">
           <span id="badgeSector" class="badge gold">Secteur</span>
           <span id="badgeContract" class="badge">Contrat</span>
-          <span id="badgeRail" class="badge blue">Rail</span>
         </div>
 
         <h1 id="title">Mission</h1>
         <p id="descriptionLead" class="lead"></p>
 
         <div class="meta-line">
-          <div class="meta-chip">Mode : <strong id="modeChip">fiche mission</strong></div>
-          <div class="meta-chip">Workspace : <strong id="workspaceChip">global</strong></div>
-          <div class="meta-chip">Rail : <strong id="railChip">mixte</strong></div>
-          <div class="meta-chip">Source : <strong id="sourceChip">Supabase réel</strong></div>
+          <div class="meta-chip">Accès : <strong>fiche publique</strong></div>
+          <div class="meta-chip">Parcours : <strong>lire puis postuler</strong></div>
+          <div class="meta-chip">Contact : <strong>via DIGIY JOBS</strong></div>
         </div>
 
         <div class="meta-grid">
@@ -350,23 +351,26 @@
           <h2>Détail de la mission</h2>
           <div id="detailText" class="body-text"></div>
 
-          <h2 style="margin-top:22px;">Exigences</h2>
+          <h2 style="margin-top:22px;">Ce qui est demandé</h2>
           <div id="requirementsText" class="body-text"></div>
 
           <div id="goodRow" class="good-row"></div>
         </div>
 
         <aside class="panel">
-          <h2>Agir maintenant</h2>
+          <h2>Postuler maintenant</h2>
           <div class="body-text" style="margin-bottom:16px;">
-            Cette mission est ouverte. Si ton profil colle, tu peux postuler tout de suite
-            ou préparer un dossier plus propre sur le bon rail.
+            Cette mission est ouverte. Lis bien les informations, puis envoie ta candidature si ton profil correspond.
+            DIGIY JOBS aide à faire circuler les opportunités sans détour inutile.
           </div>
 
           <div class="cta-box">
             <a id="postulerBtn" class="cta-btn cta-primary" href="./postuler.html">Je postule à cette mission</a>
-            <a id="dossierBtn" class="cta-btn cta-blue" href="./dossier-intelligent.html">Ouvrir le dossier intelligent</a>
             <a id="otherOffersLink" class="cta-btn cta-secondary" href="./mur%20des%20missions.html">Voir d'autres missions</a>
+          </div>
+
+          <div class="note-box">
+            Les informations sensibles du professionnel restent protégées. Le candidat passe par la candidature, et le suivi se fait côté bureau JOBS.
           </div>
         </aside>
       </section>
@@ -374,263 +378,219 @@
   </div>
 
   <script>
-    const SUPABASE_URL =
-      window.DIGIY_SUPABASE_URL ||
-      "https://wesqmwjjtsefyjnluosj.supabase.co";
+    (function(){
+      "use strict";
 
-    const SUPABASE_ANON_KEY =
-      window.DIGIY_SUPABASE_ANON ||
-      window.DIGIY_SUPABASE_ANON_KEY ||
-      "";
+      const SUPABASE_URL =
+        window.DIGIY_SUPABASE_URL ||
+        "https://wesqmwjjtsefyjnluosj.supabase.co";
 
-    const sb =
-      window.supabase && SUPABASE_URL && SUPABASE_ANON_KEY
-        ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-        : null;
+      const SUPABASE_ANON_KEY =
+        window.DIGIY_SUPABASE_ANON ||
+        window.DIGIY_SUPABASE_ANON_KEY ||
+        "";
 
-    const params = new URLSearchParams(location.search);
-    const offerId = String(params.get("id") || params.get("offer") || "").trim();
-    const slugFromUrl = String(params.get("slug") || "").trim().toLowerCase();
-    const secteurFromUrl = String(params.get("secteur") || params.get("rail") || "").trim().toLowerCase();
+      const sb =
+        window.supabase && SUPABASE_URL && SUPABASE_ANON_KEY
+          ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+          : null;
 
-    const $ = (id) => document.getElementById(id);
+      const params = new URLSearchParams(location.search);
+      const offerId =
+        String(params.get("id") || params.get("offer") || params.get("mission") || "").trim();
 
-    const JOBS_PATHS = {
-      home: "./index.html",
-      wall: "./mur%20des%20missions.html",
-      pin: "./pin.html",
-      cockpit: "./cockpit.html",
-      bureau: "./bureau.html",
-      postuler: "./postuler.html",
-      dossier: "./dossier-intelligent.html"
-    };
+      /*
+        Fallback seulement pour anciens liens.
+        On peut lire une mission par slug si l'ancien lien arrive encore,
+        mais on ne l'affiche pas, on ne le stocke pas et on ne le propage pas.
+      */
+      const legacySlug = String(params.get("slug") || "").trim().toLowerCase();
 
-    const state = {
-      offer: null,
-      workspaceSlug: slugFromUrl,
-      secteur: normalizeSecteur(secteurFromUrl)
-    };
+      const $ = (id) => document.getElementById(id);
 
-    function escapeHtml(v = ""){
-      return String(v)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-    }
-
-    function normalizeSecteur(v = ""){
-      const raw = String(v || "").trim().toLowerCase();
-
-      if (
-        raw === "build" ||
-        raw === "btp" ||
-        raw === "chantier"
-      ) return "build";
-
-      if (
-        raw === "resto" ||
-        raw === "hotellerie-restauration" ||
-        raw === "hôtellerie-restauration" ||
-        raw === "food"
-      ) return "hotellerie-restauration";
-
-      return "";
-    }
-
-    function secteurLabel(v = ""){
-      if (v === "build") return "BUILD";
-      if (v === "hotellerie-restauration") return "Hôtellerie-Restauration";
-      return "mixte";
-    }
-
-    function labelSector(v = ""){
-      const map = {
-        build:"BTP",
-        beauty:"Beauté",
-        shop:"Boutique",
-        food:"Restauration",
-        service:"Services",
-        driver:"Chauffeur",
-        market:"Marché",
-        admin:"Admin"
+      const JOBS_PATHS = {
+        home: "./index.html",
+        wall: "./mur%20des%20missions.html",
+        postuler: "./postuler.html"
       };
-      return map[v] || v || "Secteur";
-    }
 
-    function labelContract(v = ""){
-      const map = {
-        cdi:"CDI",
-        cdd:"CDD",
-        mission:"Mission",
-        stage:"Stage",
-        freelance:"Freelance",
-        extra:"Extra"
-      };
-      return map[v] || v || "Contrat";
-    }
-
-    function inferSecteurFromOffer(data){
-      const sector = String(data?.sector || "").trim().toLowerCase();
-
-      if (sector === "build") return "build";
-      if (sector === "food") return "hotellerie-restauration";
-
-      const hay = [
-        data?.title,
-        data?.description,
-        data?.requirements,
-        data?.employer_name,
-        data?.contract_type
-      ].join(" ").toLowerCase();
-
-      const buildKeywords = [
-        "maçon","macon","plombier","électricien","electricien",
-        "soudeur","menuisier","peintre","carreleur","chantier",
-        "bâtiment","batiment","travaux","construction","dépannage","depannage"
+      const SENSITIVE_PARAMS = [
+        "slug",
+        "phone",
+        "tel",
+        "resa_tel",
+        "owner_phone",
+        "owner",
+        "owner_id",
+        "business_code",
+        "keybox_code",
+        "keybox_location",
+        "access_note"
       ];
 
-      const restoKeywords = [
-        "serveur","serveuse","restaurant","restauration","cuisine",
-        "cuisinier","cuisinière","commis","plonge","réception",
-        "reception","hôtel","hotel","chambre","bar","salle"
-      ];
+      const state = {
+        offer: null,
+        offerId,
+        legacySlug
+      };
 
-      if (buildKeywords.some(k => hay.includes(k))) return "build";
-      if (restoKeywords.some(k => hay.includes(k))) return "hotellerie-restauration";
+      function scrubUrl() {
+        const clean = new URL(location.href);
+        let changed = false;
 
-      return "";
-    }
+        SENSITIVE_PARAMS.forEach((key) => {
+          if (clean.searchParams.has(key)) {
+            clean.searchParams.delete(key);
+            changed = true;
+          }
+        });
 
-    function withContext(path, options = {}){
-      const url = new URL(path, location.href);
+        if (state.offerId) {
+          clean.searchParams.set("id", state.offerId);
+        }
 
-      const slug = String(options.slug || "").trim().toLowerCase();
-      const secteur = normalizeSecteur(options.secteur || "");
-      const offer = String(options.offer || "").trim();
-      const id = String(options.id || "").trim();
-
-      if (slug) url.searchParams.set("slug", slug);
-      if (secteur) url.searchParams.set("secteur", secteur);
-      if (offer) url.searchParams.set("offer", offer);
-      if (id) url.searchParams.set("id", id);
-
-      return url.toString();
-    }
-
-    function setLoadingMessage(text) {
-      const box = $("loadingBox");
-      if (!box) return;
-      box.textContent = text;
-      box.style.display = "block";
-      $("page").style.display = "none";
-    }
-
-    function showPage() {
-      $("loadingBox").style.display = "none";
-      $("page").style.display = "block";
-    }
-
-    function syncMeta(){
-      $("workspaceChip").textContent = state.workspaceSlug || "global";
-      $("modeChip").textContent = "fiche mission";
-      $("railChip").textContent = secteurLabel(state.secteur);
-      $("badgeRail").textContent = `Rail : ${secteurLabel(state.secteur)}`;
-    }
-
-    function syncLinks() {
-      const slug = state.workspaceSlug || "";
-      const secteur = state.secteur || "";
-
-      $("homeLink").href = withContext(JOBS_PATHS.home, { slug, secteur });
-      $("wallLink").href = withContext(JOBS_PATHS.wall, { slug, secteur });
-      $("dossierTopLink").href = withContext(JOBS_PATHS.dossier, {
-        slug,
-        secteur,
-        offer: state.offer?.id || offerId
-      });
-      $("pinLink").href = withContext(JOBS_PATHS.pin, { slug, secteur });
-      $("cockpitLink").href = withContext(JOBS_PATHS.cockpit, { slug, secteur });
-      $("bureauLink").href = withContext(JOBS_PATHS.bureau, { slug, secteur });
-      $("otherOffersLink").href = withContext(JOBS_PATHS.wall, { slug, secteur });
-
-      const postulerHref = withContext(JOBS_PATHS.postuler, {
-        slug,
-        secteur,
-        offer: state.offer?.id || offerId
-      });
-
-      const dossierHref = withContext(JOBS_PATHS.dossier, {
-        slug,
-        secteur,
-        offer: state.offer?.id || offerId
-      });
-
-      $("postulerBtn").href = postulerHref;
-      $("postulerTop").href = postulerHref;
-      $("dossierBtn").href = dossierHref;
-
-      syncMeta();
-    }
-
-    async function loadOffer(){
-      syncLinks();
-
-      if (!offerId) {
-        setLoadingMessage("Mission introuvable : identifiant manquant.");
-        return;
+        if (changed) {
+          history.replaceState({}, document.title, clean.pathname + clean.search + clean.hash);
+        }
       }
 
-      if (!sb) {
-        setLoadingMessage("Supabase non chargé. Vérifie la configuration front.");
-        return;
+      function escapeHtml(v = ""){
+        return String(v)
+          .replaceAll("&","&amp;")
+          .replaceAll("<","&lt;")
+          .replaceAll(">","&gt;")
+          .replaceAll('"',"&quot;")
+          .replaceAll("'","&#039;");
       }
 
-      const { data, error } = await sb
-        .from("digiy_jobs_offers_pro")
-        .select("id,workspace_slug,title,sector,city,country,contract_type,pay,description,requirements,has_housing,has_family_welcome,employer_name,contact_phone,status")
-        .eq("id", offerId)
-        .eq("status", "active")
-        .maybeSingle();
-
-      if (error || !data) {
-        console.error(error);
-        setLoadingMessage("Impossible de charger cette mission.");
-        return;
+      function labelSector(v = ""){
+        const map = {
+          build:"BTP",
+          beauty:"Beauté",
+          shop:"Boutique",
+          food:"Restauration",
+          service:"Services",
+          driver:"Chauffeur",
+          market:"Marché",
+          admin:"Admin"
+        };
+        return map[String(v || "").toLowerCase()] || v || "Secteur";
       }
 
-      state.offer = data;
-      state.workspaceSlug = String(data.workspace_slug || state.workspaceSlug || "").trim().toLowerCase();
-      state.secteur = state.secteur || inferSecteurFromOffer(data);
+      function labelContract(v = ""){
+        const map = {
+          cdi:"CDI",
+          cdd:"CDD",
+          mission:"Mission",
+          stage:"Stage",
+          freelance:"Freelance",
+          extra:"Extra"
+        };
+        return map[String(v || "").toLowerCase()] || v || "Contrat";
+      }
 
-      document.title = `${data.title || "Mission"} — DIGIY JOBS`;
+      function setLoadingMessage(text, tone = "") {
+        const box = $("loadingBox");
+        if (!box) return;
+        box.textContent = text;
+        box.className = tone ? `status ${tone}` : "status";
+        box.style.display = "block";
+        $("page").style.display = "none";
+      }
 
-      $("badgeSector").textContent = labelSector(data.sector);
-      $("badgeContract").textContent = labelContract(data.contract_type);
-      $("title").textContent = data.title || "Mission";
-      $("descriptionLead").textContent = data.description || "Description à venir.";
-      $("metaCity").textContent = data.city || "Ville à préciser";
-      $("metaCountry").textContent = data.country || "Sénégal";
-      $("metaPay").textContent = data.pay || "À préciser";
-      $("metaEmployer").textContent = data.employer_name || data.workspace_slug || "Structure à préciser";
-      $("detailText").textContent = data.description || "Description à venir.";
-      $("requirementsText").textContent = data.requirements || "Exigences à préciser.";
+      function showPage() {
+        $("loadingBox").style.display = "none";
+        $("page").style.display = "block";
+      }
 
-      const goods = [];
-      if (data.has_housing) goods.push('<span class="good">Logement possible</span>');
-      if (data.has_family_welcome) goods.push('<span class="good">Accueil familial possible</span>');
-      if (data.contact_phone) goods.push(`<span class="good">Contact : ${escapeHtml(data.contact_phone)}</span>`);
-      if (data.workspace_slug) goods.push(`<span class="good">Workspace : ${escapeHtml(data.workspace_slug)}</span>`);
-      if (state.secteur) goods.push(`<span class="good">Rail : ${escapeHtml(secteurLabel(state.secteur))}</span>`);
-      $("goodRow").innerHTML = goods.join("");
+      function postulerHref(offer) {
+        const url = new URL(JOBS_PATHS.postuler, location.href);
+        if (offer?.id) url.searchParams.set("offer", offer.id);
+        return url.pathname + url.search;
+      }
 
-      syncLinks();
-      showPage();
-    }
+      function syncLinks(offer = null) {
+        $("homeLink").href = JOBS_PATHS.home;
+        $("wallLink").href = JOBS_PATHS.wall;
+        $("otherOffersLink").href = JOBS_PATHS.wall;
 
-    syncLinks();
-    loadOffer();
+        const applyUrl = postulerHref(offer);
+        $("postulerBtn").href = applyUrl;
+        $("postulerTop").href = applyUrl;
+      }
+
+      async function loadOffer(){
+        scrubUrl();
+        syncLinks();
+
+        if (!state.offerId && !state.legacySlug) {
+          setLoadingMessage("Mission introuvable : aucun identifiant public de mission n’a été reçu.", "error");
+          return;
+        }
+
+        if (!sb) {
+          setLoadingMessage("Chargement indisponible. Réessaie dans un instant.", "error");
+          return;
+        }
+
+        let query = sb
+          .from("digiy_jobs_offers_pro")
+          .select("id,slug,title,sector,city,country,contract_type,pay,description,requirements,has_housing,has_family_welcome,employer_name,status,published_at,created_at")
+          .eq("status", "active")
+          .order("published_at", { ascending: false })
+          .order("created_at", { ascending: false })
+          .limit(1);
+
+        if (state.offerId) {
+          query = query.eq("id", state.offerId);
+        } else {
+          query = query.eq("slug", state.legacySlug);
+        }
+
+        const { data, error } = await query;
+
+        if (error) {
+          console.error(error);
+          setLoadingMessage("Impossible de charger cette mission pour le moment.", "error");
+          return;
+        }
+
+        const offer = Array.isArray(data) ? data[0] : null;
+
+        if (!offer) {
+          setLoadingMessage("Aucune mission active trouvée pour ce lien.", "error");
+          return;
+        }
+
+        state.offer = offer;
+        state.offerId = offer.id || state.offerId || "";
+
+        document.title = `${offer.title || "Mission"} — DIGIY JOBS`;
+
+        $("badgeSector").textContent = labelSector(offer.sector);
+        $("badgeContract").textContent = labelContract(offer.contract_type);
+        $("title").textContent = offer.title || "Mission";
+        $("descriptionLead").textContent = offer.description || "Description à venir.";
+        $("metaCity").textContent = offer.city || "Ville à préciser";
+        $("metaCountry").textContent = offer.country || "Sénégal";
+        $("metaPay").textContent = offer.pay || "À préciser";
+        $("metaEmployer").textContent = offer.employer_name || "Structure à préciser";
+        $("detailText").textContent = offer.description || "Description à venir.";
+        $("requirementsText").textContent = offer.requirements || "Exigences à préciser.";
+
+        const goods = [];
+        if (offer.has_housing) goods.push('<span class="good">Logement possible</span>');
+        if (offer.has_family_welcome) goods.push('<span class="good">Accueil familial possible</span>');
+        $("goodRow").innerHTML = goods.join("");
+
+        syncLinks(offer);
+        scrubUrl();
+
+        showPage();
+      }
+
+      loadOffer();
+    })();
   </script>
 </body>
 </html>
