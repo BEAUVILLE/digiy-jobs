@@ -1,26 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>DIGIY JOBS — Dossier intelligent</title>
   <meta
     name="description"
-    content="Créer un dossier DIGIY JOBS intelligent selon le secteur choisi. Socle commun et champs adaptés au métier."
+    content="DIGIY JOBS — préparer un dossier candidat simple selon le secteur choisi : profil, métier, disponibilité et résumé propre."
   />
   <meta name="theme-color" content="#0A1128" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
-  />
 
   <style>
     :root{
       --dark:#0A1128;
       --dark-2:#131d3d;
       --blue:#0ea5e9;
+      --blue2:#38bdf8;
       --green:#10b981;
       --gold:#d4a84f;
+      --gold2:#e8bf63;
       --bg:#eef3f8;
       --sand:#f7efe2;
       --card:#ffffff;
@@ -29,7 +27,6 @@
       --line:#e5e7eb;
       --shadow:0 16px 40px rgba(0,0,0,.10);
       --radius:20px;
-      --radius-sm:14px;
       --max:1020px;
     }
 
@@ -38,12 +35,13 @@
 
     body{
       margin:0;
-      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       color:var(--ink);
       background:
         radial-gradient(circle at top left, rgba(14,165,233,.08), transparent 28%),
         radial-gradient(circle at right 12%, rgba(16,185,129,.06), transparent 24%),
         linear-gradient(180deg,var(--bg),var(--sand));
+      padding-bottom:calc(84px + env(safe-area-inset-bottom,0px));
     }
 
     a{text-decoration:none;color:inherit}
@@ -54,7 +52,7 @@
       top:0;
       z-index:40;
       backdrop-filter:blur(10px);
-      background:rgba(238,243,248,.82);
+      background:rgba(238,243,248,.86);
       border-bottom:1px solid rgba(229,231,235,.9);
     }
 
@@ -118,7 +116,7 @@
     }
 
     .nav a.primary{
-      background:linear-gradient(135deg,var(--blue),#38bdf8);
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
       color:#fff;
       border-color:transparent;
     }
@@ -126,17 +124,18 @@
     .wrap{
       max-width:var(--max);
       margin:0 auto;
-      padding:20px 12px 80px;
+      padding:20px 12px 54px;
     }
 
     .hero{
       background:linear-gradient(135deg, rgba(10,17,40,.98), rgba(19,29,61,.94));
       color:#fff;
-      border-radius:24px;
+      border-radius:26px;
       padding:24px 18px;
       position:relative;
       overflow:hidden;
       box-shadow:0 18px 45px rgba(0,0,0,.24);
+      border:1px solid rgba(255,255,255,.10);
     }
 
     .hero::before{
@@ -158,7 +157,7 @@
       background:rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.10);
       font-size:12px;
-      font-weight:900;
+      font-weight:950;
       letter-spacing:.08em;
       text-transform:uppercase;
     }
@@ -167,6 +166,7 @@
       margin:14px 0 10px;
       font-size:clamp(2rem,4vw,3.4rem);
       line-height:1.05;
+      letter-spacing:-.035em;
     }
 
     .hero p{
@@ -189,7 +189,7 @@
       background:rgba(255,255,255,.07);
       border:1px solid rgba(255,255,255,.10);
       font-size:.92rem;
-      font-weight:700;
+      font-weight:800;
       color:#eef4ff;
     }
 
@@ -213,6 +213,13 @@
       font-weight:900;
       font-size:.85rem;
       flex-wrap:wrap;
+      line-height:1.45;
+    }
+
+    .pill.blue{
+      background:rgba(14,165,233,.10);
+      color:#075985;
+      border:1px solid rgba(14,165,233,.22);
     }
 
     .top-actions{
@@ -230,6 +237,7 @@
       padding:10px 12px;
       font-weight:900;
       cursor:pointer;
+      text-decoration:none;
     }
 
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -261,6 +269,7 @@
       background:#fbfdff;
       cursor:pointer;
       transition:transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+      text-align:left;
     }
 
     .rail-box:hover{transform:translateY(-1px)}
@@ -287,7 +296,7 @@
     .section-title{
       margin:0 0 10px;
       font-size:1.12rem;
-      font-weight:900;
+      font-weight:950;
       letter-spacing:-.01em;
     }
 
@@ -299,7 +308,7 @@
 
     label{
       display:block;
-      font-weight:800;
+      font-weight:850;
       font-size:.95rem;
       margin:0 0 6px;
     }
@@ -317,6 +326,7 @@
     textarea{
       min-height:110px;
       resize:vertical;
+      line-height:1.55;
     }
 
     input:focus,select:focus,textarea:focus{
@@ -403,14 +413,16 @@
       border:0;
       border-radius:14px;
       padding:12px 14px;
-      font-weight:900;
+      font-weight:950;
       font-size:1rem;
       cursor:pointer;
       text-decoration:none;
       display:inline-flex;
       align-items:center;
+      justify-content:center;
       gap:10px;
       transition:transform .16s ease, filter .16s ease, opacity .16s ease;
+      min-height:48px;
     }
 
     .btn:hover{
@@ -421,6 +433,7 @@
     .btn.primary{background:var(--blue);color:#fff}
     .btn.green{background:var(--green);color:#fff}
     .btn.dark{background:var(--dark);color:#fff}
+    .btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#171717}
     .btn.ghost{
       background:#f1f5f9;
       color:var(--dark);
@@ -440,10 +453,22 @@
       margin-top:14px;
     }
 
+    .summary{
+      width:100%;
+      min-height:150px;
+      border-radius:14px;
+      border:1px dashed #cbd5e1;
+      padding:14px;
+      margin-top:12px;
+      background:#f8fafc;
+      color:#0f172a;
+      line-height:1.55;
+    }
+
     .mono{
       font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
       font-size:.92rem;
-      word-break:break-all;
+      word-break:break-word;
     }
 
     .tiny{
@@ -453,11 +478,17 @@
       margin-top:10px;
     }
 
-    .floating-site-btn{
+    .floating-returns{
       position:fixed;
       right:16px;
-      bottom:calc(16px + env(safe-area-inset-bottom, 0px));
+      bottom:calc(96px + env(safe-area-inset-bottom, 0px));
       z-index:95;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .floating-site-btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -479,13 +510,69 @@
       box-shadow:0 22px 38px rgba(15,23,32,.28);
     }
 
+    .floating-site-btn.hub{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#171717;
+    }
+
+    .bottom-nav{
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:80;
+      padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));
+      background:rgba(248,250,252,.94);
+      border-top:1px solid rgba(226,232,240,.95);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+    }
+
+    .bottom-nav-inner{
+      width:min(760px,100%);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:6px;
+    }
+
+    .bottom-nav a{
+      min-height:54px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      align-content:center;
+      gap:2px;
+      color:#64748b;
+      font-size:11px;
+      font-weight:1000;
+      text-align:center;
+      border:1px solid transparent;
+      text-decoration:none;
+      background:transparent;
+      padding:0 4px;
+    }
+
+    .bottom-nav .ico{font-size:18px;line-height:1}
+
+    .bottom-nav a.active{
+      background:var(--dark);
+      color:#fff;
+    }
+
     @media(max-width:860px){
       .nav{display:none}
-      .floating-site-btn{
+      .floating-returns{
         right:12px;
         left:12px;
-        bottom:calc(12px + env(safe-area-inset-bottom, 0px));
+        bottom:calc(84px + env(safe-area-inset-bottom, 0px));
+        justify-content:center;
       }
+      .floating-site-btn{flex:1}
+    }
+
+    @media(max-width:640px){
+      .actions .btn{width:100%}
     }
   </style>
 </head>
@@ -502,56 +589,55 @@
 
       <nav class="nav" aria-label="Navigation DIGIY JOBS">
         <a id="navHome" href="./index.html">Accueil</a>
-        <a id="navWall" href="./mur%20des%20missions.html">Mur</a>
+        <a id="navWall" href="./mur%20des%20missions.html">Missions</a>
         <a id="navApply" href="./postuler.html">Postuler</a>
-        <a id="navPin" class="primary" href="./pin.html">Accès</a>
+        <a id="navSuivi" class="primary" href="./suivi.html">Suivi</a>
       </nav>
     </div>
   </header>
 
   <div class="wrap">
     <section class="hero">
-      <span class="eyebrow">DIGIY JOBS • Dossier intelligent</span>
-      <h1>Un seul formulaire. Deux rails. Le bon langage au bon endroit.</h1>
+      <span class="eyebrow">DIGIY JOBS • dossier candidat</span>
+      <h1>Un dossier plus clair, sans compliquer la route.</h1>
       <p>
-        Le socle reste commun, mais le formulaire devient plus intelligent selon le rail choisi.
-        <strong>BUILD</strong> affiche les besoins chantier.
-        <strong>Hôtellerie-Restauration</strong> affiche les besoins de service,
-        d’horaires et de relation client.
+        Le socle reste simple : nom, WhatsApp candidat, métier, zone, disponibilité.
+        Ensuite le dossier s’adapte au secteur : BTP / travaux ou Hôtellerie-Restauration.
+        Tout reste côté candidat, sans code professionnel.
       </p>
       <div class="hero-tags">
         <span>Socle commun</span>
         <span>Champs adaptés au secteur</span>
-        <span>Lien dossier → suivi</span>
-        <span>WhatsApp direct</span>
+        <span>Résumé copiable</span>
+        <span>Suivi local</span>
       </div>
     </section>
 
     <section class="card">
       <div class="pill" id="modePill">
-        ✅ Le dossier s’adapte automatiquement si l’URL contient ?secteur=build ou ?secteur=hotellerie-restauration
+        ✅ Le dossier reste public candidat. Il peut préremplir le suivi local, sans exposer de coffre professionnel.
       </div>
 
       <div class="guide">
         <div class="guide-card">
           <strong>Socle commun</strong>
-          <span>Rôle, nom, téléphone, zone, disponibilité, niveau, hébergement éventuel, note utile.</span>
+          <span>Nom, téléphone candidat, zone, disponibilité, expérience, hébergement éventuel, note utile.</span>
         </div>
         <div class="guide-card">
           <strong>Intelligence simple</strong>
-          <span>Le rail choisi change les métiers, les libellés et les champs spécifiques sans alourdir le parcours.</span>
+          <span>Le secteur choisi change les métiers, les libellés et les champs spécifiques sans alourdir le parcours.</span>
         </div>
       </div>
 
       <div class="top-actions">
-        <a id="quickWall" class="mini-btn" href="./mur%20des%20missions.html">Mur des missions</a>
+        <a id="quickWall" class="mini-btn" href="./mur%20des%20missions.html">Voir les missions</a>
         <a id="quickApply" class="mini-btn" href="./postuler.html">Postuler</a>
-        <a id="quickPin" class="mini-btn" href="./pin.html">Entrée sécurisée</a>
+        <a id="quickSuivi" class="mini-btn" href="./suivi.html">Suivre ma candidature</a>
       </div>
 
       <div class="rail-switch" id="railSwitch">
         <button type="button" class="rail-box" data-secteur="build">
-          <strong>🧱 BUILD</strong>
+          <strong>🧱 BTP / travaux</strong>
           <span>Maçon, plombier, électricien, soudeur, menuisier, manoeuvre, peinture, carrelage.</span>
         </button>
         <button type="button" class="rail-box" data-secteur="hotellerie-restauration">
@@ -569,26 +655,19 @@
 
       <div class="grid-2">
         <div>
-          <label for="role">Je suis</label>
-          <select id="role">
-            <option value="candidat">👤 Candidat terrain</option>
-            <option value="recruteur">🏢 Recruteur / employeur / chantier</option>
-          </select>
-          <div class="hint">Le message WhatsApp s’adapte au rôle choisi.</div>
-        </div>
-        <div>
           <label for="nom">Nom / prénom</label>
           <input id="nom" placeholder="Ex. Moussa Diop / Awa Ndiaye" autocomplete="name" />
           <div class="hint">Optionnel, mais très utile pour humaniser le dossier.</div>
         </div>
+
+        <div>
+          <label for="phone">WhatsApp candidat</label>
+          <input id="phone" placeholder="+22177xxxxxxx" inputmode="tel" autocomplete="tel" />
+          <div class="hint">C’est ton numéro de candidat, pas celui du professionnel.</div>
+        </div>
       </div>
 
       <div class="grid-2" style="margin-top:12px">
-        <div>
-          <label for="phone">WhatsApp / téléphone</label>
-          <input id="phone" placeholder="+22177xxxxxxx" inputmode="tel" autocomplete="tel" />
-          <div class="hint">Mets l’indicatif complet pour éviter les pertes de temps.</div>
-        </div>
         <div>
           <label for="zone">Zone principale</label>
           <select id="zone">
@@ -601,11 +680,9 @@
             <option value="Somone">Somone</option>
             <option value="Autre">Autre</option>
           </select>
-          <div class="hint">La zone où la personne travaille, cherche ou recrute.</div>
+          <div class="hint">La zone où tu travailles ou recherches.</div>
         </div>
-      </div>
 
-      <div class="grid-3" style="margin-top:12px">
         <div>
           <label for="dispo">Disponibilité</label>
           <select id="dispo">
@@ -616,6 +693,9 @@
           </select>
           <div class="hint">Très utile pour déclencher vite le contact.</div>
         </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:12px">
         <div>
           <label for="niveau">Niveau d’expérience</label>
           <select id="niveau">
@@ -626,15 +706,27 @@
           </select>
           <div class="hint">Un repère clair pour le besoin terrain.</div>
         </div>
+
         <div>
           <label for="hebergement">Hébergement éventuel</label>
           <select id="hebergement">
-            <option value="Non">Non</option>
+            <option value="Non concerné">Non concerné</option>
             <option value="Possible si mission longue">Possible si mission longue</option>
             <option value="Souhaité">Souhaité</option>
             <option value="À confirmer">À confirmer</option>
           </select>
-          <div class="hint">Indication simple, pas besoin d’un roman.</div>
+          <div class="hint">Indication simple, sans promesse.</div>
+        </div>
+
+        <div>
+          <label for="objectif">Objectif</label>
+          <select id="objectif">
+            <option value="Trouver une mission">Trouver une mission</option>
+            <option value="Être rappelé">Être rappelé</option>
+            <option value="Préparer mon profil">Préparer mon profil</option>
+            <option value="Répondre à une offre">Répondre à une offre</option>
+          </select>
+          <div class="hint">Pourquoi tu prépares ce dossier.</div>
         </div>
       </div>
     </section>
@@ -643,12 +735,12 @@
       <div id="buildPanel" class="sector-panel hidden">
         <div class="sector-head">
           <div>
-            <h2 class="section-title">Rail BUILD</h2>
+            <h2 class="section-title">BTP / travaux</h2>
             <p class="section-sub">
               On parle chantier, intervention, installation, finition, renfort d’équipe et disponibilité réelle.
             </p>
           </div>
-          <span class="sector-chip">🧱 Métiers BUILD</span>
+          <span class="sector-chip">🧱 Métiers terrain</span>
         </div>
 
         <div class="grid-2">
@@ -663,10 +755,11 @@
               <option value="Peintre / finition">Peintre / finition</option>
               <option value="Carreleur">Carreleur</option>
               <option value="Manoeuvre">Manoeuvre</option>
-              <option value="Autre métier BUILD">Autre métier BUILD</option>
+              <option value="Autre métier travaux">Autre métier travaux</option>
             </select>
             <div class="hint">Le métier principal qui déclenche la lecture du dossier.</div>
           </div>
+
           <div>
             <label for="buildMission">Type de mission</label>
             <select id="buildMission">
@@ -676,7 +769,7 @@
               <option value="Finition">Finition</option>
               <option value="Renfort d’équipe">Renfort d’équipe</option>
             </select>
-            <div class="hint">Très parlant pour le bureau et pour le client final.</div>
+            <div class="hint">Très parlant pour le bureau ou le recruteur.</div>
           </div>
         </div>
 
@@ -686,6 +779,7 @@
             <input id="buildSpecialite" placeholder="Ex. dalles, cloisons, tableaux, portails, pose, dépannage..." />
             <div class="hint">Une ligne suffit pour rendre le profil concret.</div>
           </div>
+
           <div>
             <label for="buildMobilite">Mobilité</label>
             <select id="buildMobilite">
@@ -693,7 +787,7 @@
               <option value="Déplacement possible">Déplacement possible</option>
               <option value="Déplacement + mission longue">Déplacement + mission longue</option>
             </select>
-            <div class="hint">Permet de savoir si la personne peut bouger selon le chantier.</div>
+            <div class="hint">Permet de savoir si tu peux bouger selon le chantier.</div>
           </div>
         </div>
       </div>
@@ -701,12 +795,12 @@
       <div id="hotelPanel" class="sector-panel hidden">
         <div class="sector-head">
           <div>
-            <h2 class="section-title">Rail Hôtellerie-Restauration</h2>
+            <h2 class="section-title">Hôtellerie-Restauration</h2>
             <p class="section-sub">
               On parle service, accueil, cuisine, chambres, entretien, horaires et relation client.
             </p>
           </div>
-          <span class="sector-chip">🍽️ Métiers Hôtellerie-Restauration</span>
+          <span class="sector-chip">🍽️ Métiers accueil/service</span>
         </div>
 
         <div class="grid-2">
@@ -724,6 +818,7 @@
             </select>
             <div class="hint">Le métier principal qui donne tout de suite la couleur du profil.</div>
           </div>
+
           <div>
             <label for="hotelService">Service principal</label>
             <select id="hotelService">
@@ -750,6 +845,7 @@
             </select>
             <div class="hint">L’info qui évite beaucoup de confusion.</div>
           </div>
+
           <div>
             <label for="hotelRelation">Relation client / présentation</label>
             <select id="hotelRelation">
@@ -757,8 +853,9 @@
               <option value="Très bon niveau">Très bon niveau</option>
               <option value="À renforcer">À renforcer</option>
             </select>
-            <div class="hint">Particulièrement important pour accueil, salle et réception.</div>
+            <div class="hint">Important pour accueil, salle et réception.</div>
           </div>
+
           <div>
             <label for="hotelRythme">Rythme de travail</label>
             <select id="hotelRythme">
@@ -775,74 +872,97 @@
         <label for="note">Note utile</label>
         <textarea
           id="note"
-          placeholder="Ex. Disponible sur Saly / Mbour. Sérieux, joignable vite. Préfère besoin clair. Peut démarrer cette semaine."
+          placeholder="Ex. Disponible sur Saly / Mbour. Sérieux, joignable vite. Peut démarrer cette semaine."
         ></textarea>
         <div class="hint">Message libre, court et utile. Le terrain aime ce qui est net.</div>
       </div>
 
       <div class="actions">
-        <button class="btn primary" id="btnCreate" type="button">📁 Créer mon dossier</button>
-        <a class="btn dark" id="btnOpen" href="#" role="button" aria-disabled="true">🧾 Ouvrir le suivi</a>
-        <a class="btn ghost" id="btnCopy" href="#" role="button" aria-disabled="true">📋 Copier le lien</a>
-        <a class="btn green" id="btnWhatsApp" href="#" target="_blank" rel="noopener" role="button" aria-disabled="true">💬 Ouvrir WhatsApp</a>
+        <button class="btn primary" id="btnCreate" type="button">📁 Préparer mon dossier</button>
+        <a class="btn dark" id="btnOpen" href="./suivi.html" role="button">🧾 Ouvrir le suivi</a>
+        <button class="btn ghost" id="btnCopy" type="button">📋 Copier le résumé</button>
+        <a class="btn green" id="btnApply" href="./postuler.html">📝 Aller postuler</a>
       </div>
 
       <div class="out hidden" id="outBox">
-        <div><strong>✅ Dossier créé :</strong> <span class="mono" id="slugOut"></span></div>
-        <div style="margin-top:8px"><strong>Lien suivi :</strong> <span class="mono" id="linkOut"></span></div>
+        <div><strong>✅ Dossier préparé :</strong> <span id="preparedText">suivi local mis à jour</span></div>
+        <div style="margin-top:8px"><strong>Résumé :</strong></div>
+        <textarea class="summary" id="summaryOut" readonly></textarea>
         <div class="tiny">
-          Le lien sert à ouvrir directement la page de suivi du dossier sur le bon rail.
+          Le résumé reste sur ton appareil. Tu peux le copier ou ouvrir le suivi pour continuer.
         </div>
       </div>
 
       <div class="tiny">
         DIGIY JOBS ne promet pas automatiquement une mission ou un poste.
-        Le but ici est de rendre le profil ou le besoin lisible,
-        puis d’accélérer la prise de contact de façon propre.
+        Le but ici est de rendre le profil lisible, puis d’aider à avancer proprement.
       </div>
     </section>
   </div>
 
-  <a
-    class="floating-site-btn"
-    href="https://digiylyfe.com/"
-    aria-label="Retour au site DIGIYLYFE"
-    title="Retour au site"
-  >
-    ← Retour au site
-  </a>
+  <nav class="bottom-nav" aria-label="Navigation rapide DIGIY JOBS">
+    <div class="bottom-nav-inner">
+      <a href="./index.html"><span class="ico">🏠</span><span>Accueil</span></a>
+      <a href="./mur%20des%20missions.html"><span class="ico">📌</span><span>Missions</span></a>
+      <a href="./postuler.html"><span class="ico">📝</span><span>Postuler</span></a>
+      <a class="active" href="./dossier-intelligent.html"><span class="ico">🧾</span><span>Dossier</span></a>
+      <a href="./suivi.html"><span class="ico">✅</span><span>Suivi</span></a>
+    </div>
+  </nav>
+
+  <div class="floating-returns" aria-label="Retours DIGIY">
+    <a class="floating-site-btn" href="https://digiylyfe.com/" aria-label="Retour au site DIGIYLYFE">
+      🌍 Site
+    </a>
+    <a class="floating-site-btn hub" href="https://digiy-hub.digiylyfe.com/" aria-label="Retour au HUB DIGIY">
+      🧭 HUB
+    </a>
+  </div>
 
   <script>
     (function(){
       "use strict";
 
-      const WA_DIGIY = "https://wa.me/221771342889";
       const FOLLOWUP_PAGE = "./suivi.html";
-      const STORAGE_PREFIX = "DIGIY_JOBS_DOSSIER_INTELLIGENT_V2";
+      const SUIVI_STORAGE_KEY = "DIGIY_JOBS_SUIVI_PUBLIC_V1";
+      const DOSSIER_STORAGE_KEY = "DIGIY_JOBS_DOSSIER_PUBLIC_V1";
+
+      const SENSITIVE_PARAMS = [
+        "slug",
+        "phone",
+        "tel",
+        "resa_tel",
+        "owner_phone",
+        "owner",
+        "owner_id",
+        "business_code",
+        "keybox_code",
+        "keybox_location",
+        "access_note",
+        "dossier"
+      ];
 
       const params = new URLSearchParams(location.search);
-      const secteurParamRaw = (params.get("secteur") || "").trim().toLowerCase();
-      const workspaceSlugParam = (params.get("slug") || "").trim().toLowerCase();
-      const dossierParam = (params.get("dossier") || "").trim().toLowerCase();
+      const secteurParamRaw = (params.get("secteur") || params.get("rail") || "").trim().toLowerCase();
 
       const PATHS = {
         home: "./index.html",
         wall: "./mur%20des%20missions.html",
         apply: "./postuler.html",
-        pin: "./pin.html"
+        suivi: "./suivi.html"
       };
 
       const railBoxes = Array.from(document.querySelectorAll(".rail-box"));
       const buildPanel = document.getElementById("buildPanel");
       const hotelPanel = document.getElementById("hotelPanel");
 
-      const roleEl = document.getElementById("role");
       const nomEl = document.getElementById("nom");
       const phoneEl = document.getElementById("phone");
       const zoneEl = document.getElementById("zone");
       const dispoEl = document.getElementById("dispo");
       const niveauEl = document.getElementById("niveau");
       const hebEl = document.getElementById("hebergement");
+      const objectifEl = document.getElementById("objectif");
       const noteEl = document.getElementById("note");
 
       const buildMetierEl = document.getElementById("buildMetier");
@@ -859,15 +979,38 @@
       const btnCreate = document.getElementById("btnCreate");
       const btnOpen = document.getElementById("btnOpen");
       const btnCopy = document.getElementById("btnCopy");
-      const btnWA = document.getElementById("btnWhatsApp");
       const outBox = document.getElementById("outBox");
-      const slugOut = document.getElementById("slugOut");
-      const linkOut = document.getElementById("linkOut");
-
+      const summaryOut = document.getElementById("summaryOut");
       const modePill = document.getElementById("modePill");
 
       let currentSecteur = "build";
-      let last = null;
+      let lastSummary = "";
+
+      function scrubUrl(){
+        try{
+          const clean = new URL(location.href);
+          let changed = false;
+
+          SENSITIVE_PARAMS.forEach((key) => {
+            if (clean.searchParams.has(key)) {
+              clean.searchParams.delete(key);
+              changed = true;
+            }
+          });
+
+          const rail = normalizeSecteur(clean.searchParams.get("rail") || "");
+          clean.searchParams.delete("rail");
+
+          if (rail && !clean.searchParams.get("secteur")) {
+            clean.searchParams.set("secteur", rail);
+            changed = true;
+          }
+
+          if (changed) {
+            history.replaceState({}, document.title, clean.pathname + clean.search + clean.hash);
+          }
+        }catch(_){}
+      }
 
       function normalizePhone(raw){
         if(!raw) return "";
@@ -877,25 +1020,29 @@
         return p;
       }
 
-      function slugify(value){
-        return String(value || "")
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/^-+|-+$/g, "")
-          .slice(0, 64);
-      }
-
-      function shortRand(){
-        return Math.random().toString(36).slice(2, 8);
-      }
-
       function normalizeSecteur(value){
         const v = String(value || "").trim().toLowerCase();
-        if(v === "hotellerie-restauration" || v === "hôtellerie-restauration" || v === "resto"){
+
+        if(
+          v === "hotellerie-restauration" ||
+          v === "hôtellerie-restauration" ||
+          v === "resto" ||
+          v === "food" ||
+          v === "hotel" ||
+          v === "hôtel"
+        ){
           return "hotellerie-restauration";
         }
+
+        if(
+          v === "build" ||
+          v === "btp" ||
+          v === "chantier" ||
+          v === "travaux"
+        ){
+          return "build";
+        }
+
         return "build";
       }
 
@@ -903,146 +1050,142 @@
         return secteur === "hotellerie-restauration" ? "resto" : "build";
       }
 
+      function secteurForUrl(secteur){
+        return secteur === "hotellerie-restauration" ? "hotellerie-restauration" : "build";
+      }
+
       function secteurLabel(secteur){
-        return secteur === "hotellerie-restauration" ? "Hôtellerie-Restauration" : "BUILD";
+        return secteur === "hotellerie-restauration" ? "Hôtellerie-Restauration" : "BTP / travaux";
       }
 
-      function storageKey(){
-        return [
-          STORAGE_PREFIX,
-          workspaceSlugParam || "public",
-          dossierParam || "draft"
-        ].join("::");
-      }
-
-      function withWorkspace(path){
-        if(!workspaceSlugParam) return path;
-        const joiner = path.includes("?") ? "&" : "?";
-        return path + joiner + "slug=" + encodeURIComponent(workspaceSlugParam);
+      function withPublicContext(path){
+        const u = new URL(path, location.href);
+        u.searchParams.set("secteur", secteurForUrl(currentSecteur));
+        return u.pathname + u.search;
       }
 
       function setHref(id, path){
         const el = document.getElementById(id);
-        if(el) el.href = withWorkspace(path);
-      }
-
-      function buildFollowLink(dossierSlug){
-        const u = new URL(FOLLOWUP_PAGE, location.href);
-        u.searchParams.set("dossier", dossierSlug);
-        u.searchParams.set("rail", secteurToRail(currentSecteur));
-        u.searchParams.set("secteur", currentSecteur);
-        if(workspaceSlugParam){
-          u.searchParams.set("slug", workspaceSlugParam);
-        }
-        return u.toString();
-      }
-
-      function waUrl(base, msg){
-        try{
-          const u = new URL(base);
-          u.searchParams.set("text", msg);
-          return u.toString();
-        }catch(_){
-          return base + "?text=" + encodeURIComponent(msg);
-        }
-      }
-
-      function setEnabled(el, on){
-        if(!el) return;
-        el.setAttribute("aria-disabled", on ? "false" : "true");
-        el.style.pointerEvents = on ? "auto" : "none";
-        el.style.opacity = on ? "1" : ".55";
+        if(el) el.href = withPublicContext(path);
       }
 
       function applySecteur(secteur){
         currentSecteur = normalizeSecteur(secteur);
+
         railBoxes.forEach(function(box){
           box.classList.toggle("active", box.dataset.secteur === currentSecteur);
         });
+
         buildPanel.classList.toggle("hidden", currentSecteur !== "build");
         hotelPanel.classList.toggle("hidden", currentSecteur !== "hotellerie-restauration");
+
+        modePill.textContent =
+          "✅ Dossier public candidat • contexte : " +
+          secteurLabel(currentSecteur) +
+          " • suivi local prêt";
+
+        syncLinks();
       }
 
       function getMetier(){
         return currentSecteur === "build" ? buildMetierEl.value : hotelMetierEl.value;
       }
 
-      function buildDossierSlug(role, metier, zone, phone){
-        const rolePart = role === "recruteur" ? "recruteur" : "candidat";
-        const secteurPart = secteurToRail(currentSecteur);
-        const metierPart = slugify(metier || "metier");
-        const zonePart = slugify(zone || "zone");
-        const phonePart = String(phone || "").replace(/\D/g, "").slice(-6) || shortRand();
-
-        return [
-          "jobs",
-          secteurPart,
-          rolePart,
-          metierPart,
-          zonePart,
-          phonePart,
-          shortRand()
-        ].filter(Boolean).join("-");
-      }
-
-      function buildMessage(data){
+      function buildSummary(data){
         const lines = [
-          "📁 DIGIY JOBS — Nouveau dossier",
-          "Secteur: " + secteurLabel(data.secteur),
-          "Rail suivi: " + data.rail,
-          "Rôle: " + (data.role === "recruteur" ? "Recruteur / employeur" : "Candidat terrain"),
-          data.nom ? ("Nom: " + data.nom) : null,
-          "Téléphone: " + data.phone,
-          "Zone: " + data.zone,
-          "Disponibilité: " + data.dispo,
-          "Niveau: " + data.niveau,
-          "Hébergement éventuel: " + data.hebergement,
-          "Métier: " + data.metier
+          "🧾 DIGIY JOBS — Dossier candidat",
+          "Contexte : " + secteurLabel(data.secteur),
+          "Nom : " + (data.nom || "—"),
+          "WhatsApp candidat : " + (data.phone || "—"),
+          "Zone : " + data.zone,
+          "Disponibilité : " + data.dispo,
+          "Niveau : " + data.niveau,
+          "Hébergement éventuel : " + data.hebergement,
+          "Objectif : " + data.objectif,
+          "Métier : " + data.metier
         ];
 
         if(data.secteur === "build"){
           lines.push(
-            "Type de mission: " + data.buildMission,
-            data.buildSpecialite ? ("Spécialité terrain: " + data.buildSpecialite) : null,
-            "Mobilité: " + data.buildMobilite
+            "Type de mission : " + data.buildMission,
+            data.buildSpecialite ? ("Spécialité terrain : " + data.buildSpecialite) : null,
+            "Mobilité : " + data.buildMobilite
           );
         }else{
           lines.push(
-            "Service principal: " + data.hotelService,
-            "Horaires possibles: " + data.hotelHoraires,
-            "Relation client / présentation: " + data.hotelRelation,
-            "Rythme de travail: " + data.hotelRythme
+            "Service principal : " + data.hotelService,
+            "Horaires possibles : " + data.hotelHoraires,
+            "Relation client / présentation : " + data.hotelRelation,
+            "Rythme de travail : " + data.hotelRythme
           );
         }
 
-        if(data.note) lines.push("Note: " + data.note);
-        if(data.workspaceSlug) lines.push("Slug: " + data.workspaceSlug);
-        lines.push("Dossier: " + data.slug);
-        lines.push("Lien suivi: " + data.link);
+        if(data.note) lines.push("Note : " + data.note);
+
         lines.push("");
-        lines.push("Je veux une mise en relation claire sur le bon rail.");
+        lines.push("Je veux garder un profil clair et être joignable pour les bonnes opportunités.");
 
         return lines.filter(Boolean).join("\n");
       }
 
-      function pushDataLayer(eventName, payload){
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push(Object.assign({ event: eventName }, payload || {}));
+      function collectData(){
+        return {
+          secteur: currentSecteur,
+          rail: secteurToRail(currentSecteur),
+          nom: String(nomEl.value || "").trim(),
+          phone: normalizePhone(phoneEl.value),
+          zone: zoneEl.value,
+          dispo: dispoEl.value,
+          niveau: niveauEl.value,
+          hebergement: hebEl.value,
+          objectif: objectifEl.value,
+          note: String(noteEl.value || "").trim(),
+          metier: getMetier(),
+          buildMetier: buildMetierEl.value,
+          buildMission: buildMissionEl.value,
+          buildSpecialite: String(buildSpecialiteEl.value || "").trim(),
+          buildMobilite: buildMobiliteEl.value,
+          hotelMetier: hotelMetierEl.value,
+          hotelService: hotelServiceEl.value,
+          hotelHoraires: hotelHorairesEl.value,
+          hotelRelation: hotelRelationEl.value,
+          hotelRythme: hotelRythmeEl.value,
+          updatedAt: new Date().toISOString()
+        };
+      }
+
+      function saveForSuivi(data){
+        const suiviState = {
+          name: data.nom || "",
+          phone: data.phone || "",
+          trade: data.metier || "",
+          rail: data.rail || "general",
+          checked: {
+            profile: !!(data.nom && data.phone && data.metier),
+            availability: !!data.dispo,
+            message: !!data.note
+          },
+          updatedAt: new Date().toISOString()
+        };
+
+        try{
+          localStorage.setItem(SUIVI_STORAGE_KEY, JSON.stringify(suiviState));
+          localStorage.setItem(DOSSIER_STORAGE_KEY, JSON.stringify(data));
+        }catch(_){}
       }
 
       function restoreData(saved){
         if(!saved || typeof saved !== "object") return;
 
-        last = saved;
         applySecteur(saved.secteur || "build");
 
-        roleEl.value = saved.role || "candidat";
         nomEl.value = saved.nom || "";
         phoneEl.value = saved.phone || "";
         zoneEl.value = saved.zone || "Dakar";
         dispoEl.value = saved.dispo || "Immédiate";
         niveauEl.value = saved.niveau || "Débutant";
-        hebEl.value = saved.hebergement || "Non";
+        hebEl.value = saved.hebergement || "Non concerné";
+        objectifEl.value = saved.objectif || "Trouver une mission";
         noteEl.value = saved.note || "";
 
         if(saved.buildMetier) buildMetierEl.value = saved.buildMetier;
@@ -1056,16 +1199,32 @@
         if(saved.hotelRelation) hotelRelationEl.value = saved.hotelRelation;
         if(saved.hotelRythme) hotelRythmeEl.value = saved.hotelRythme;
 
-        if(saved.slug && saved.link){
+        lastSummary = buildSummary(saved);
+        if(lastSummary){
           outBox.classList.remove("hidden");
-          slugOut.textContent = saved.slug;
-          linkOut.textContent = saved.link;
-          btnOpen.href = saved.link;
-          btnCopy.href = saved.link;
-          btnWA.href = saved.wa || "#";
-          setEnabled(btnOpen, true);
-          setEnabled(btnCopy, true);
-          setEnabled(btnWA, true);
+          summaryOut.value = lastSummary;
+        }
+      }
+
+      function syncLinks(){
+        setHref("navHome", PATHS.home);
+        setHref("navWall", PATHS.wall);
+        setHref("navApply", PATHS.apply);
+        setHref("navSuivi", PATHS.suivi);
+        setHref("quickWall", PATHS.wall);
+        setHref("quickApply", PATHS.apply);
+        setHref("quickSuivi", PATHS.suivi);
+
+        btnOpen.href = withPublicContext(FOLLOWUP_PAGE);
+        document.getElementById("btnApply").href = withPublicContext(PATHS.apply);
+      }
+
+      async function copyToClipboard(text){
+        try{
+          await navigator.clipboard.writeText(text);
+          alert("Copié ✅");
+        }catch(_){
+          window.prompt("Copie le résumé :", text);
         }
       }
 
@@ -1075,134 +1234,51 @@
         });
       });
 
-      setHref("navHome", PATHS.home);
-      setHref("navWall", PATHS.wall);
-      setHref("navApply", PATHS.apply);
-      setHref("navPin", PATHS.pin);
-
-      setHref("quickWall", PATHS.wall);
-      setHref("quickApply", PATHS.apply);
-      setHref("quickPin", PATHS.pin);
-
-      applySecteur(normalizeSecteur(secteurParamRaw || "build"));
-
-      if(workspaceSlugParam){
-        modePill.textContent =
-          "✅ Dossier intelligent actif • slug " +
-          workspaceSlugParam +
-          " • suivi branché sur le bon rail";
-      }
-
-      try{
-        const saved = JSON.parse(localStorage.getItem(storageKey()) || "null");
-        if(saved){
-          restoreData(saved);
-        }
-      }catch(_){}
-
       btnCreate.addEventListener("click", function(){
-        const role = roleEl.value;
-        const nom = String(nomEl.value || "").trim();
-        const phone = normalizePhone(phoneEl.value);
-        const zone = zoneEl.value;
-        const dispo = dispoEl.value;
-        const niveau = niveauEl.value;
-        const hebergement = hebEl.value;
-        const note = String(noteEl.value || "").trim();
-        const metier = getMetier();
+        const data = collectData();
 
-        if(!phone){
-          alert("Mets un numéro WhatsApp / téléphone valide avec indicatif pour créer le dossier.");
+        if(!data.phone){
+          alert("Mets ton WhatsApp candidat avec indicatif pour préparer le dossier.");
           phoneEl.focus();
           return;
         }
 
-        const dossierSlug = buildDossierSlug(role, metier, zone, phone);
-        const followLink = buildFollowLink(dossierSlug);
-        const rail = secteurToRail(currentSecteur);
-
-        const data = {
-          secteur: currentSecteur,
-          rail: rail,
-          workspaceSlug: workspaceSlugParam || "",
-          role: role,
-          nom: nom,
-          phone: phone,
-          zone: zone,
-          dispo: dispo,
-          niveau: niveau,
-          hebergement: hebergement,
-          note: note,
-          metier: metier,
-          buildMetier: buildMetierEl.value,
-          buildMission: buildMissionEl.value,
-          buildSpecialite: String(buildSpecialiteEl.value || "").trim(),
-          buildMobilite: buildMobiliteEl.value,
-          hotelMetier: hotelMetierEl.value,
-          hotelService: hotelServiceEl.value,
-          hotelHoraires: hotelHorairesEl.value,
-          hotelRelation: hotelRelationEl.value,
-          hotelRythme: hotelRythmeEl.value,
-          slug: dossierSlug,
-          link: followLink,
-          createdAt: new Date().toISOString()
-        };
-
-        data.wa = waUrl(WA_DIGIY, buildMessage(data));
-        last = data;
+        saveForSuivi(data);
+        lastSummary = buildSummary(data);
 
         outBox.classList.remove("hidden");
-        slugOut.textContent = dossierSlug;
-        linkOut.textContent = followLink;
+        summaryOut.value = lastSummary;
+        btnOpen.href = withPublicContext(FOLLOWUP_PAGE);
 
-        btnOpen.href = followLink;
-        btnCopy.href = followLink;
-        btnWA.href = data.wa;
+        alert("Dossier préparé sur cet appareil ✅");
+      });
 
-        setEnabled(btnOpen, true);
-        setEnabled(btnCopy, true);
-        setEnabled(btnWA, true);
+      btnCopy.addEventListener("click", function(){
+        const data = collectData();
+        lastSummary = buildSummary(data);
+        summaryOut.value = lastSummary;
+        outBox.classList.remove("hidden");
+        copyToClipboard(lastSummary);
+      });
 
-        try{
-          localStorage.setItem(storageKey(), JSON.stringify(data));
-        }catch(_){}
-
-        pushDataLayer("digiy_jobs_dossier_intelligent_created", {
-          secteur: currentSecteur,
-          rail: rail,
-          role: role,
-          metier: metier,
-          zone: zone,
-          dispo: dispo,
-          niveau: niveau,
-          dossier: dossierSlug
+      ["nom","phone","zone","dispo","niveau","hebergement","objectif","note","buildMetier","buildMission","buildSpecialite","buildMobilite","hotelMetier","hotelService","hotelHoraires","hotelRelation","hotelRythme"].forEach(function(id){
+        const el = document.getElementById(id);
+        if(!el) return;
+        el.addEventListener("change", function(){
+          const data = collectData();
+          try{ localStorage.setItem(DOSSIER_STORAGE_KEY, JSON.stringify(data)); }catch(_){}
         });
       });
 
-      btnOpen.addEventListener("click", function(e){
-        if(!last || !last.link){
-          e.preventDefault();
-        }
-      });
+      scrubUrl();
+      applySecteur(normalizeSecteur(secteurParamRaw || "build"));
 
-      btnCopy.addEventListener("click", async function(e){
-        e.preventDefault();
-        if(!last || !last.link) return;
+      try{
+        const saved = JSON.parse(localStorage.getItem(DOSSIER_STORAGE_KEY) || "null");
+        if(saved) restoreData(saved);
+      }catch(_){}
 
-        try{
-          await navigator.clipboard.writeText(last.link);
-          alert("Lien copié ✅");
-          pushDataLayer("digiy_jobs_dossier_intelligent_link_copied", {
-            dossier: last.slug
-          });
-        }catch(_){
-          window.prompt("Copie le lien :", last.link);
-        }
-      });
-
-      setEnabled(btnOpen, !!(last && last.link));
-      setEnabled(btnCopy, !!(last && last.link));
-      setEnabled(btnWA, !!(last && last.wa));
+      syncLinks();
     })();
   </script>
 </body>
