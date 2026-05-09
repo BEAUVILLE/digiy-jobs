@@ -3,28 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-
-  <title>DIGIY JOBS — Suivi candidature</title>
-  <meta name="description" content="DIGIY JOBS — suivi public de candidature : garder son fil, préparer ses pièces et copier un résumé propre.">
-  <meta name="theme-color" content="#0a1128">
+  <title>DIGIY JOBS — Entrée publique</title>
+  <meta name="description" content="DIGIY JOBS — voir les missions, postuler simplement, préparer son dossier et suivre sa candidature.">
+  <meta name="theme-color" content="#0f1720">
 
   <style>
     :root{
-      --dark:#0a1128;
-      --dark2:#142041;
+      --bg:#f6f1e8;
+      --bg2:#fffaf1;
+      --ink:#15202b;
+      --muted:#667085;
+      --line:#e7dac4;
+      --card:#ffffffdd;
+      --deep:#0f1720;
+      --gold:#c89a3d;
+      --gold2:#e6bf6b;
       --blue:#0ea5e9;
-      --blue2:#38bdf8;
-      --green:#10b981;
-      --red:#ef4444;
-      --gold:#d4a84f;
-      --gold2:#e8bf63;
-      --bg:#f0f2f5;
-      --card:#ffffff;
-      --ink:#0f172a;
-      --muted:#475569;
-      --line:#e5e7eb;
-      --shadow:0 12px 30px rgba(0,0,0,.10);
-      --max:980px;
+      --green:#1f7a5a;
+      --shadow:0 18px 42px rgba(21,32,43,.08);
+      --radius:24px;
+      --max:1120px;
     }
 
     *{box-sizing:border-box}
@@ -32,48 +30,51 @@
 
     body{
       margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-      background:
-        radial-gradient(circle at top left,rgba(14,165,233,.08),transparent 30%),
-        radial-gradient(circle at right 12%,rgba(16,185,129,.07),transparent 24%),
-        linear-gradient(180deg,var(--bg),#fff8ec);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       color:var(--ink);
+      background:
+        radial-gradient(circle at top left,rgba(200,154,61,.12),transparent 32%),
+        radial-gradient(circle at right 20%,rgba(31,122,90,.08),transparent 28%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
       padding-bottom:calc(84px + env(safe-area-inset-bottom,0px));
     }
 
     a{color:inherit;text-decoration:none}
-    button,input,select,textarea{font:inherit}
-    button{cursor:pointer}
+    .wrap{width:min(calc(100% - 28px),var(--max));margin:0 auto}
 
-    .wrap{
-      width:min(calc(100% - 24px),var(--max));
-      margin:0 auto;
-      padding:16px 0 48px;
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:40;
+      background:rgba(246,241,232,.88);
+      border-bottom:1px solid rgba(231,218,196,.9);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
     }
 
-    .top{
+    .topbar-inner{
       display:flex;
-      justify-content:space-between;
       align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-bottom:14px;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:12px;
       font-weight:1000;
+      letter-spacing:.02em;
     }
 
     .brand-mark{
-      width:44px;
-      height:44px;
-      border-radius:16px;
+      width:42px;
+      height:42px;
+      border-radius:15px;
       display:grid;
       place-items:center;
-      background:linear-gradient(135deg,var(--dark),#20305e);
+      background:linear-gradient(135deg,var(--deep),#233548);
       color:#fff;
       box-shadow:var(--shadow);
       flex:0 0 auto;
@@ -88,321 +89,352 @@
       letter-spacing:.08em;
     }
 
-    .top-links{
+    .nav{
       display:flex;
-      gap:8px;
-      flex-wrap:wrap;
+      align-items:center;
       justify-content:flex-end;
+      flex-wrap:wrap;
+      gap:10px;
     }
 
-    .chip{
-      min-height:42px;
+    .nav a{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff8;
+      font-size:14px;
+      font-weight:850;
+    }
+
+    .nav a.primary{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#23180a;
+      border-color:transparent;
+    }
+
+    .nav a.blue{
+      background:linear-gradient(135deg,var(--blue),#38bdf8);
+      color:#fff;
+      border-color:transparent;
+    }
+
+    .hero{padding:42px 0 24px}
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.12fr .88fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .hero-card,.panel,.door,.stat,.step,.cta-card,.foot-card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--card);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card{
+      padding:28px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at top right,rgba(200,154,61,.16),transparent 34%),
+        linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.88));
+    }
+
+    .eyebrow{
       display:inline-flex;
       align-items:center;
-      justify-content:center;
-      padding:10px 13px;
+      gap:8px;
+      padding:9px 12px;
       border-radius:999px;
       border:1px solid var(--line);
       background:#fff;
-      font-size:13px;
-      font-weight:900;
-      color:var(--ink);
-      box-shadow:0 8px 20px rgba(15,23,42,.05);
-    }
-
-    .chip.gold{
-      border-color:rgba(212,168,79,.30);
-      background:rgba(212,168,79,.10);
-      color:#6b4f1f;
-    }
-
-    .chip.blue{
-      border-color:rgba(14,165,233,.22);
-      background:rgba(14,165,233,.09);
-      color:#075985;
-    }
-
-    .hero{
-      border-radius:26px;
-      padding:22px 16px;
-      color:#fff;
-      background:
-        radial-gradient(circle at 88% 18%,rgba(212,168,79,.16),transparent 18%),
-        linear-gradient(135deg,rgba(10,17,40,.98),rgba(20,32,65,.98));
-      box-shadow:0 15px 40px rgba(0,0,0,.24);
-      border:1px solid rgba(255,255,255,.10);
-      overflow:hidden;
-    }
-
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-      color:#ffeab8;
       font-size:12px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
       font-weight:1000;
-      margin-bottom:10px;
+      letter-spacing:.08em;
+      color:#7a5a31;
+      text-transform:uppercase;
     }
 
     h1{
-      margin:0;
-      font-weight:1000;
-      font-size:clamp(30px,5vw,50px);
-      line-height:1;
+      margin:16px 0 14px;
+      font-size:clamp(34px,5vw,64px);
+      line-height:.96;
       letter-spacing:-.04em;
-      max-width:14ch;
+      max-width:12ch;
     }
 
     .lead{
-      margin:12px 0 0;
-      color:#dbe6f6;
+      margin:0 0 20px;
+      max-width:64ch;
+      font-size:17px;
       line-height:1.65;
-      max-width:760px;
-      font-size:16px;
-      font-weight:650;
-    }
-
-    .meta-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:14px;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 11px;
-      border-radius:999px;
-      background:rgba(255,255,255,.08);
-      color:#fff;
-      font-weight:900;
-      font-size:13px;
-      border:1px solid rgba(255,255,255,.12);
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:22px;
-      box-shadow:var(--shadow);
-      padding:16px;
-      margin-top:12px;
-    }
-
-    .card h2{
-      margin:0;
-      font-size:20px;
-      font-weight:1000;
-      color:var(--dark);
-      letter-spacing:-.02em;
-    }
-
-    .muted{
-      color:var(--muted);
-      line-height:1.55;
-      font-weight:650;
-    }
-
-    .row{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-    }
-
-    .field{
-      display:flex;
-      flex-direction:column;
-      gap:7px;
-    }
-
-    label{
-      font-size:13px;
-      font-weight:900;
-      color:#334155;
-    }
-
-    input,select,textarea{
-      width:100%;
-      border-radius:14px;
-      border:1px solid #d1d5db;
-      padding:12px;
-      outline:none;
-      background:#fff;
-      color:var(--ink);
-    }
-
-    textarea{
-      min-height:132px;
-      resize:vertical;
-      line-height:1.55;
-    }
-
-    input:focus,select:focus,textarea:focus{
-      border-color:var(--blue);
-      box-shadow:0 0 0 4px rgba(14,165,233,.15);
-    }
-
-    .kpi-row{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:12px;
-    }
-
-    .kpi{
-      flex:1;
-      min-width:150px;
-      background:#f9fbfd;
-      border:1px solid #e2e8f0;
-      border-radius:14px;
-      padding:12px;
-    }
-
-    .kpi .big{
-      font-size:22px;
-      font-weight:1000;
-      color:var(--dark);
-    }
-
-    .kpi .small{
-      font-size:13px;
-      color:#64748b;
-      margin-top:2px;
-      font-weight:800;
-    }
-
-    .bar{
-      height:10px;
-      background:#e2e8f0;
-      border-radius:999px;
-      overflow:hidden;
-      margin-top:10px;
-    }
-
-    .bar > div{
-      height:100%;
-      width:0%;
-      background:linear-gradient(90deg,var(--green),#22c55e);
-      transition:width .2s ease;
-    }
-
-    .notice{
-      margin-top:10px;
-      padding:12px;
-      border-radius:14px;
-      background:#eff6ff;
-      border:1px solid #bfdbfe;
-      color:#1e3a8a;
-      font-size:14px;
-      font-weight:800;
-      line-height:1.5;
-    }
-
-    .okline{
-      margin-top:10px;
-      font-size:14px;
       color:#334155;
       font-weight:650;
     }
 
-    .okline strong{color:var(--dark)}
-
-    .list{margin-top:12px}
-
-    .item{
+    .hero-actions{
       display:flex;
-      align-items:flex-start;
       gap:12px;
-      padding:12px;
-      border:1px solid #e2e8f0;
-      border-radius:14px;
-      background:#fff;
-      margin:10px 0;
-    }
-
-    .item input{
-      width:auto;
-      transform:scale(1.25);
-      margin-top:3px;
-      cursor:pointer;
-    }
-
-    .item .title{
-      font-weight:1000;
-      color:var(--dark);
-    }
-
-    .item .desc{
-      font-size:14px;
-      color:var(--muted);
-      margin-top:2px;
-      line-height:1.45;
-      font-weight:650;
-    }
-
-    .actions{
-      display:flex;
-      gap:10px;
       flex-wrap:wrap;
-      margin-top:14px;
+      margin-bottom:18px;
     }
 
     .btn{
-      min-height:48px;
-      border:0;
-      border-radius:14px;
-      padding:12px 14px;
-      font-weight:1000;
+      min-height:50px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
+      padding:14px 18px;
+      border-radius:16px;
+      font-weight:1000;
       text-align:center;
+      border:1px solid transparent;
     }
 
-    .btn.primary{background:var(--blue);color:#fff}
-    .btn.dark{background:var(--dark);color:#fff}
-    .btn.green{background:var(--green);color:#fff}
-    .btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#171717}
-    .btn.ghost{background:#f1f5f9;color:var(--dark);border:1px solid #cbd5e1}
-    .btn.danger{background:var(--red);color:#fff}
+    .btn-dark{background:var(--deep);color:#fff}
+    .btn-light{background:#fff;color:var(--ink);border-color:var(--line)}
+    .btn-blue{background:linear-gradient(135deg,var(--blue),#38bdf8);color:#fff}
 
-    .tiny{
+    .hero-notes{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .pill{
+      padding:10px 12px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:14px;
+      font-weight:850;
+    }
+
+    .pill.blue{
+      color:#075985;
+      background:rgba(14,165,233,.08);
+      border-color:rgba(14,165,233,.18);
+    }
+
+    .panel{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      background:linear-gradient(180deg,rgba(15,23,32,.98),rgba(23,35,49,.98));
+      color:#fff;
+      border-color:#263243;
+    }
+
+    .signal{
+      width:max-content;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(200,154,61,.12);
+      border:1px solid rgba(230,191,107,.25);
+      color:#ffeab8;
+      font-weight:900;
       font-size:13px;
-      color:#64748b;
-      margin-top:10px;
-      line-height:1.5;
+    }
+
+    .signal.blue{
+      background:rgba(14,165,233,.10);
+      border-color:rgba(14,165,233,.18);
+      color:#d8f2ff;
+    }
+
+    .panel h2{margin:0;font-size:21px}
+    .panel p{margin:0;color:#d2dae4;line-height:1.6;font-weight:650}
+
+    .panel-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .mini{
+      padding:14px;
+      border-radius:18px;
+      border:1px solid #2f3f54;
+      background:rgba(255,255,255,.04);
+    }
+
+    .mini strong{display:block;font-size:14px;margin-bottom:6px}
+    .mini span{font-size:13px;color:#cbd5e1;line-height:1.45;font-weight:650}
+
+    .section{padding:20px 0 12px}
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:14px;
+      padding:10px 0 8px;
+    }
+
+    .stat{padding:18px}
+    .stat strong{display:block;font-size:28px;line-height:1;margin-bottom:8px}
+    .stat span{color:var(--muted);font-weight:850;font-size:14px;line-height:1.5}
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:end;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .section-head h2{
+      margin:0;
+      font-size:clamp(24px,3vw,38px);
+      letter-spacing:-.03em;
+    }
+
+    .section-head p{
+      margin:6px 0 0;
+      color:var(--muted);
+      max-width:65ch;
+      line-height:1.6;
       font-weight:650;
     }
 
-    .summary-box{
-      width:100%;
-      min-height:150px;
-      border-radius:14px;
-      border:1px solid #d1d5db;
-      padding:12px;
-      background:#f8fafc;
-      color:#0f172a;
-      resize:vertical;
+    .door-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:16px;
     }
+
+    .door{
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .badge{
+      width:max-content;
+      display:inline-flex;
+      padding:8px 11px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:1000;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      background:#fff;
+      border:1px solid var(--line);
+    }
+
+    .badge.ok{color:var(--green)}
+    .badge.warn{color:#7a5a31}
+    .badge.blue{color:#075985}
+    .badge.hot{color:#b64a3c}
+
+    .door h3{margin:0;font-size:23px;letter-spacing:-.03em}
+    .door p{margin:0;color:#475569;line-height:1.6;font-size:14px;font-weight:650;flex:1}
+
+    .meta{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+    }
+
+    .meta div{
+      padding:12px;
+      border-radius:16px;
+      background:#fff;
+      border:1px solid var(--line);
+      min-height:74px;
+    }
+
+    .meta small{
+      display:block;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:1000;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:6px;
+    }
+
+    .meta strong{display:block;font-size:14px;line-height:1.45}
+
+    .door-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+    .action-link{
+      flex:1 1 160px;
+      text-align:center;
+      padding:13px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      font-weight:1000;
+      background:#fff;
+    }
+
+    .action-link.dark{background:var(--deep);color:#fff;border-color:var(--deep)}
+    .action-link.blue{background:rgba(14,165,233,.10);border-color:rgba(14,165,233,.18);color:#075985}
+
+    .flow-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:16px;
+    }
+
+    .step{padding:20px}
+    .step-num{
+      width:42px;
+      height:42px;
+      border-radius:13px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      font-weight:1000;
+      color:#23180a;
+      margin-bottom:14px;
+    }
+
+    .step h3{margin:0 0 10px;font-size:20px}
+    .step p{margin:0;color:var(--muted);line-height:1.65;font-weight:650}
+
+    .cta{padding:26px 0 40px}
+
+    .cta-card{
+      padding:26px;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      align-items:center;
+      background:linear-gradient(135deg,#15202b,#233548);
+      color:#fff;
+      border-color:#28364a;
+    }
+
+    .cta-card h2{margin:0 0 12px;font-size:clamp(26px,4vw,42px);letter-spacing:-.03em}
+    .cta-card p{margin:0;color:#d7e0ea;line-height:1.65;font-weight:650}
+
+    .cta-right{display:grid;gap:12px}
+    .cta-box{padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10)}
+    .cta-box small{display:block;color:#e7c97f;font-weight:1000;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+    .cta-box strong{font-size:16px;line-height:1.5}
+
+    footer{padding:0 0 38px}
+    .foot-card{padding:18px 20px;display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+    .foot-card p{margin:0;color:var(--muted);line-height:1.6;font-weight:650}
+    .foot-links{display:flex;gap:10px;flex-wrap:wrap}
+    .foot-links a{padding:10px 12px;border-radius:12px;background:#fff;border:1px solid var(--line);font-weight:900}
 
     .bottom-nav{
       position:fixed;
       left:0;
       right:0;
       bottom:0;
-      z-index:80;
+      z-index:94;
       padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));
-      background:rgba(248,250,252,.94);
-      border-top:1px solid rgba(226,232,240,.95);
+      background:rgba(246,241,232,.94);
+      border-top:1px solid rgba(231,218,196,.9);
       backdrop-filter:blur(12px);
       -webkit-backdrop-filter:blur(12px);
     }
@@ -431,525 +463,643 @@
     }
 
     .bottom-nav .ico{font-size:18px;line-height:1}
-    .bottom-nav a.active{background:var(--dark);color:#fff}
+    .bottom-nav a.active{background:var(--deep);color:#fff}
 
-    @media (max-width:720px){
-      .row{grid-template-columns:1fr}
-      .wrap{padding:14px 0 48px}
-      .top-links{width:100%}
-      .chip{flex:1 1 auto}
-      .actions .btn{width:100%}
-      h1{max-width:none;font-size:34px}
-      .card,.hero{border-radius:20px}
+    @media (max-width:1180px){
+      .door-grid,.flow-grid{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width:1080px){
+      .hero-grid,.cta-card,.stats{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width:820px){
+      .hero-grid,.cta-card,.door-grid,.flow-grid,.stats{grid-template-columns:1fr}
+      .panel-grid,.meta{grid-template-columns:1fr}
+      .nav{display:none}
+      .hero{padding-top:22px}
+      h1{max-width:none}
+    }
+
+    @media (max-width:520px){
+      .wrap{width:min(calc(100% - 20px),var(--max))}
+      .hero-card,.panel,.door,.step,.cta-card{border-radius:20px;padding:18px}
+      .hero-actions .btn{width:100%}
+      .door-actions .action-link{flex:1 1 100%}
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header class="top">
-      <a class="brand" href="./index.html" aria-label="Retour accueil JOBS">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="Retour en haut de page">
         <span class="brand-mark">DJ</span>
         <span>
           DIGIY JOBS
-          <small>SUIVI CANDIDAT</small>
+          <small>ENTRÉE PUBLIQUE</small>
         </span>
       </a>
 
-      <nav class="top-links" aria-label="Navigation">
-        <a class="chip" href="./index.html">Accueil</a>
-        <a class="chip gold" href="./missions.html">Missions</a>
-        <a class="chip blue" href="./postuler.html">Postuler</a>
-        <a class="chip" href="./dossier-intelligent.html">Dossier</a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="https://digiylyfe.com/">🌍 Site</a>
+        <a href="https://digiy-hub.digiylyfe.com/">🧭 HUB</a>
+        <a href="https://tarifs.digiylyfe.com/" target="_blank" rel="noopener noreferrer">📦 Tarifs</a>
+        <a href="./missions.html">Missions</a>
+        <a href="./postuler.html">Postuler</a>
+        <a class="blue" href="./dossier-intelligent.html">Dossier</a>
+        <a href="./suivi.html">Suivi</a>
+        <a class="primary" href="#entrer">Entrer</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <section class="hero">
-        <div class="kicker">DIGIY JOBS · suivi candidat</div>
-        <h1>Garder le fil de ma candidature.</h1>
-        <p class="lead">
-          Ici, le candidat garde une trace simple : ce qui est prêt, ce qui manque,
-          son résumé propre et les prochaines pièces à préparer.
-        </p>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <article class="hero-card">
+          <span class="eyebrow">Entrée publique DIGIY JOBS</span>
+          <h1>Voir une mission. Postuler simplement.</h1>
+          <p class="lead">
+            DIGIY JOBS montre les missions utiles, ouvre la candidature et garde un parcours clair.
+            Le public voit, comprend, postule et suit son dépôt sans entrer dans l’espace professionnel.
+          </p>
 
-        <div class="meta-row">
-          <div class="pill">Accès public candidat</div>
-          <div class="pill">Suivi local</div>
-          <div class="pill">Aucun code pro</div>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>Mon suivi</h2>
-        <p class="muted" style="margin:8px 0 12px">
-          Ces informations restent sur ton appareil. Elles t’aident à te préparer et à copier un résumé clair.
-        </p>
-
-        <div class="row">
-          <div class="field">
-            <label for="candidateName">Nom complet</label>
-            <input id="candidateName" type="text" placeholder="Ex : Moussa Diop" autocomplete="name">
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="./missions.html">Voir les missions</a>
+            <a class="btn btn-light" href="./postuler.html">Déposer ma candidature</a>
+            <a class="btn btn-blue" href="./dossier-intelligent.html">Ouvrir mon dossier</a>
+            <a class="btn btn-light" href="./suivi.html">Suivre ma candidature</a>
           </div>
 
-          <div class="field">
-            <label for="candidatePhone">WhatsApp candidat</label>
-            <input id="candidatePhone" type="tel" placeholder="Ex : +221771234567" autocomplete="tel">
+          <div class="hero-notes">
+            <span class="pill">Missions lisibles</span>
+            <span class="pill">Candidature simple</span>
+            <span class="pill blue">Dossier clair</span>
+            <span class="pill">Suivi candidat</span>
           </div>
+        </article>
 
-          <div class="field">
-            <label for="candidateTrade">Métier / profil</label>
-            <input id="candidateTrade" type="text" placeholder="Ex : maçon, chauffeur, serveuse...">
+        <aside class="panel" aria-label="Résumé du module">
+          <span class="signal">Accès : public candidat</span>
+          <span class="signal blue">Contexte : JOBS public</span>
+
+          <h2>Ce que cette porte fait</h2>
+          <p>
+            Elle sert d’accueil public propre : voir les missions, postuler, préparer un dossier,
+            puis suivre son dépôt. Le coffre professionnel reste séparé.
+          </p>
+
+          <div class="panel-grid">
+            <div class="mini"><strong>Voir</strong><span>Lire les missions publiées et comprendre le besoin.</span></div>
+            <div class="mini"><strong>Postuler</strong><span>Déposer un profil simple avec WhatsApp et disponibilité.</span></div>
+            <div class="mini"><strong>Dossier</strong><span>Clarifier son profil avant ou après une candidature.</span></div>
+            <div class="mini"><strong>Suivi</strong><span>Retrouver son dépôt sans confusion.</span></div>
           </div>
+        </aside>
+      </div>
+    </section>
 
-          <div class="field">
-            <label for="railSelect">Contexte métier</label>
-            <select id="railSelect">
-              <option value="general">Général</option>
-              <option value="build">BTP / travaux</option>
-              <option value="resto">Hôtellerie-Restauration</option>
-            </select>
+    <section class="section">
+      <div class="wrap stats">
+        <article class="stat"><strong>1</strong><span>Entrée publique claire</span></article>
+        <article class="stat"><strong>4</strong><span>Actions simples</span></article>
+        <article class="stat"><strong>0</strong><span>Code PIN pour le candidat</span></article>
+        <article class="stat"><strong>100%</strong><span>Parcours public</span></article>
+      </div>
+    </section>
+
+    <section class="section" id="entrer">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Choisir sa porte</h2>
+            <p>Le public n’a pas besoin d’une interface lourde. Il choisit : missions, candidature, dossier ou suivi.</p>
           </div>
         </div>
 
-        <div class="kpi-row">
-          <div class="kpi">
-            <div class="big" id="kpiOk">0</div>
-            <div class="small">Prêts</div>
+        <div class="door-grid">
+          <article class="door">
+            <span class="badge ok">Public</span>
+            <h3>Missions</h3>
+            <p>Voir les missions publiées, filtrer les besoins, puis ouvrir la fiche qui t’intéresse.</p>
+            <div class="meta">
+              <div><small>Page</small><strong>missions.html</strong></div>
+              <div><small>Usage</small><strong>Lire avant d’agir</strong></div>
+            </div>
+            <div class="door-actions"><a class="action-link dark" href="./missions.html">Voir les missions</a></div>
+          </article>
+
+          <article class="door">
+            <span class="badge warn">Candidat</span>
+            <h3>Postuler</h3>
+            <p>Déposer une candidature liée à une mission ou envoyer une candidature simple.</p>
+            <div class="meta">
+              <div><small>Page</small><strong>postuler.html</strong></div>
+              <div><small>Usage</small><strong>Nom, WhatsApp, métier</strong></div>
+            </div>
+            <div class="door-actions"><a class="action-link dark" href="./postuler.html">Déposer un profil</a></div>
+          </article>
+
+          <article class="door">
+            <span class="badge blue">Dossier</span>
+            <h3>Dossier</h3>
+            <p>Préparer un profil plus clair selon son métier, son expérience et sa disponibilité.</p>
+            <div class="meta">
+              <div><small>Page</small><strong>dossier-intelligent.html</strong></div>
+              <div><small>Usage</small><strong>Clarifier le profil</strong></div>
+            </div>
+            <div class="door-actions"><a class="action-link blue" href="./dossier-intelligent.html">Ouvrir le dossier</a></div>
+          </article>
+
+          <article class="door">
+            <span class="badge hot">Suivi</span>
+            <h3>Suivi</h3>
+            <p>Retrouver son dépôt et garder un fil clair après avoir postulé.</p>
+            <div class="meta">
+              <div><small>Page</small><strong>suivi.html</strong></div>
+              <div><small>Usage</small><strong>Voir où en est mon dépôt</strong></div>
+            </div>
+            <div class="door-actions"><a class="action-link dark" href="./suivi.html">Ouvrir le suivi</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Parcours simple</h2>
+            <p>Le candidat n’a pas besoin de comprendre l’arrière-cuisine. Il avance par étapes claires.</p>
           </div>
+        </div>
 
-          <div class="kpi">
-            <div class="big" id="kpiTotal">0</div>
-            <div class="small">Total</div>
+        <div class="flow-grid">
+          <article class="step"><div class="step-num">1</div><h3>Voir</h3><p>Il ouvre les missions et repère un besoin réel.</p></article>
+          <article class="step"><div class="step-num">2</div><h3>Comprendre</h3><p>Il lit la fiche : métier, ville, type, conditions utiles.</p></article>
+          <article class="step"><div class="step-num">3</div><h3>Postuler</h3><p>Il dépose son nom, WhatsApp, métier et disponibilité.</p></article>
+          <article class="step"><div class="step-num">4</div><h3>Suivre</h3><p>Il garde un fil clair avec son dépôt.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap cta-card">
+        <div>
+          <h2>Le travail doit être visible, pas compliqué.</h2>
+          <p>
+            DIGIY JOBS garde la porte publique claire : voir les missions, postuler simplement,
+            préparer son dossier, suivre son dépôt. Le terrain avance quand l’écran respire.
+          </p>
+        </div>
+
+        <div class="cta-right">
+          <div class="cta-box">
+            <small>Action principale</small>
+            <strong><a href="./missions.html">Voir les missions disponibles</a></strong>
           </div>
-
-          <div class="kpi">
-            <div class="big" id="kpiPct">0%</div>
-            <div class="small">Avancement</div>
+          <div class="cta-box">
+            <small>Après la lecture</small>
+            <strong><a href="./postuler.html">Déposer une candidature</a></strong>
           </div>
         </div>
+      </div>
+    </section>
+  </main>
 
-        <div class="bar" aria-label="Progression">
-          <div id="barFill"></div>
-        </div>
+  <footer>
+    <div class="wrap foot-card">
+      <p>DIGIY JOBS · Entrée publique candidat · BY DIGIYLYFE</p>
+      <div class="foot-links">
+        <a href="https://digiylyfe.com/">Site</a>
+        <a href="https://digiy-hub.digiylyfe.com/">HUB</a>
+        <a href="https://tarifs.digiylyfe.com/">Tarifs</a>
+      </div>
+    </div>
+  </footer>
 
-        <div class="okline">
-          Dernière mise à jour locale :
-          <strong id="lastUpdate">—</strong>
-        </div>
-
-        <div class="notice">
-          Le suivi ne remplace pas une réponse officielle. Il aide simplement à rester prêt, clair et joignable.
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>✅ Ce que je prépare</h2>
-        <p class="muted" style="margin-top:8px">
-          Coche ce que tu as déjà. Le résumé se met à jour automatiquement.
-        </p>
-
-        <div class="list" id="checklist"></div>
-
-        <div class="actions">
-          <button class="btn primary" id="btnCopy" type="button">📋 Copier mon résumé</button>
-          <button class="btn ghost" id="btnSave" type="button">💾 Sauvegarder</button>
-          <button class="btn danger" id="btnReset" type="button">🧹 Réinitialiser</button>
-        </div>
-
-        <div class="tiny">
-          DIGIY JOBS organise le suivi. Les décisions restent faites par les personnes ou structures concernées.
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>Résumé propre</h2>
-        <p class="muted" style="margin-top:8px">
-          Ce texte peut être copié puis envoyé à la bonne personne si nécessaire.
-        </p>
-
-        <textarea id="summaryBox" class="summary-box" readonly></textarea>
-
-        <div class="actions">
-          <a class="btn dark" href="./missions.html">Voir d’autres missions</a>
-          <a class="btn gold" href="./postuler.html">Déposer une candidature</a>
-          <a class="btn ghost" href="./dossier-intelligent.html">Ouvrir le dossier</a>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <nav class="bottom-nav" aria-label="Navigation rapide DIGIY JOBS">
+  <nav class="bottom-nav" aria-label="Navigation mobile">
     <div class="bottom-nav-inner">
-      <a href="./index.html"><span class="ico">🏠</span><span>Accueil</span></a>
-      <a href="./missions.html"><span class="ico">📌</span><span>Missions</span></a>
-      <a href="./postuler.html"><span class="ico">📝</span><span>Postuler</span></a>
-      <a href="./dossier-intelligent.html"><span class="ico">🧾</span><span>Dossier</span></a>
-      <a class="active" href="./suivi.html"><span class="ico">✅</span><span>Suivi</span></a>
+      <a class="active" href="./index.html"><span class="ico">⌂</span>Accueil</a>
+      <a href="./missions.html"><span class="ico">◎</span>Missions</a>
+      <a href="./postuler.html"><span class="ico">＋</span>Postuler</a>
+      <a href="./dossier-intelligent.html"><span class="ico">□</span>Dossier</a>
+      <a href="./suivi.html"><span class="ico">↗</span>Suivi</a>
     </div>
   </nav>
 
   <script>
-    (() => {
-      "use strict";
+// digiy-jobs-audio.js
+// DIGIY JOBS PUBLIC — lecteur vocal d’accueil
+// Rôle : accueillir le nouveau venu, expliquer la page, donner la bonne direction.
+// À charger avant </body> sur index.html, missions.html, mission.html, postuler.html, dossier-intelligent.html, suivi.html
 
-      const SENSITIVE_PARAMS = [
-        "slug",
-        "phone",
-        "tel",
-        "resa_tel",
-        "owner_phone",
-        "owner",
-        "owner_id",
-        "business_code",
-        "keybox_code",
-        "keybox_location",
-        "access_note",
-        "dossier"
-      ];
+(() => {
+  "use strict";
 
-      const COMMON_DOCS = [
-        {
-          key: "profile",
-          title: "Profil clair",
-          desc: "Nom, téléphone WhatsApp, ville, métier et disponibilité."
-        },
-        {
-          key: "cv",
-          title: "CV ou présentation simple",
-          desc: "Même une page suffit : métier, expériences, ville, contacts."
-        },
-        {
-          key: "experience",
-          title: "Preuves d’expérience",
-          desc: "Photos de travaux, attestations, anciens contacts, références."
-        },
-        {
-          key: "availability",
-          title: "Disponibilité confirmée",
-          desc: "Savoir dire quand tu peux commencer : aujourd’hui, cette semaine, ce mois-ci."
-        },
-        {
-          key: "message",
-          title: "Message de candidature propre",
-          desc: "Une phrase claire : qui tu es, ce que tu sais faire, où tu es."
-        }
-      ];
+  const CFG = {
+    buttonId: "digiyJobsAudioBtn",
+    panelId: "digiyJobsAudioPanel",
+    rate: 0.86,
+    pitch: 1.04,
+    volume: 1
+  };
 
-      const DOCS_BY_RAIL = {
-        build: [
-          {
-            key: "skills_build",
-            title: "Preuves métier BTP / travaux",
-            desc: "Photos de chantiers, outils maîtrisés, références clients ou patrons."
-          },
-          {
-            key: "tools_build",
-            title: "Liste des savoir-faire",
-            desc: "Maçonnerie, plomberie, électricité, soudure, peinture, carrelage, dépannage."
-          }
-        ],
-        resto: [
-          {
-            key: "skills_resto",
-            title: "Preuves hôtellerie-restauration",
-            desc: "Service, cuisine, plonge, réception, ménage, bar ou expérience salle."
-          },
-          {
-            key: "rhythm_resto",
-            title: "Rythme de travail compris",
-            desc: "Horaires, ponctualité, équipe, hygiène, cadence et sérieux."
-          }
-        ],
-        general: []
+  const ROUTES = {
+    home: "./index.html",
+    missions: "./missions.html",
+    postuler: "./postuler.html",
+    dossier: "./dossier-intelligent.html",
+    suivi: "./suivi.html"
+  };
+
+  const PAGE_TEXTS = {
+    "index": {
+      title: "Accueil DIGIY JOBS",
+      text:
+        "Bienvenue sur DIGIY JOBS. Ici, tu n’es pas dans un labyrinthe. Tu es à l’entrée publique du travail terrain. Si tu veux chercher une opportunité, commence par Voir les missions. Si tu as déjà repéré une offre, va sur Postuler. Si tu veux préparer ton profil avant d’agir, ouvre le Dossier. Et si tu as déjà déposé quelque chose, va dans Suivi. DIGIY t’aide à avancer étape par étape, sans code professionnel, sans confusion, avec des actions simples."
+    },
+
+    "missions": {
+      title: "Missions DIGIY JOBS",
+      text:
+        "Tu es sur la page des missions. Ici, tu peux lire les offres disponibles, regarder la ville, le métier, le type de contrat et la rémunération si elle est indiquée. Utilise la recherche ou les filtres si tu veux aller plus vite. Quand une mission te parle, ouvre la fiche pour comprendre. Si c’est bon pour toi, clique sur Je postule. Le bon ordre est simple : voir, comprendre, postuler."
+    },
+
+    "mission": {
+      title: "Fiche mission",
+      text:
+        "Tu es sur une fiche mission. Prends le temps de lire le besoin, la ville, le type de travail, la rémunération et les conditions utiles. Si la mission correspond à ton profil, clique sur Je postule. Si tu n’es pas sûr, retourne voir les autres missions ou prépare ton dossier. Ici, on ne force pas. On comprend d’abord, puis on agit proprement."
+    },
+
+    "postuler": {
+      title: "Candidature",
+      text:
+        "Tu es sur la page pour postuler. Pas besoin d’écrire un long discours. Commence par choisir ton chemin : répondre à une mission ou laisser ton profil. Ensuite clique ton métier, choisis ta disponibilité, ajoute ton nom et ton WhatsApp. DIGIY prépare déjà un message simple. Tu peux l’ajuster avec tes mots. Quand c’est clair, tu envoies ta candidature."
+    },
+
+    "dossier": {
+      title: "Dossier candidat",
+      text:
+        "Tu es dans le dossier candidat. Cette page sert à préparer ton profil avant de postuler. Choisis ton secteur, par exemple BTP ou hôtellerie restauration. Clique ton métier, indique ta zone, ta disponibilité et ton expérience. Ensuite DIGIY prépare un résumé propre. Tu peux le copier, le garder, ou l’utiliser pour mieux postuler."
+    },
+
+    "suivi": {
+      title: "Suivi candidature",
+      text:
+        "Tu es dans le suivi candidat. Cette page t’aide à garder le fil. Tu peux noter ton nom, ton WhatsApp, ton métier, puis cocher ce que tu as déjà préparé. Le résumé te permet de rester clair et joignable. Ce suivi reste sur ton appareil. Il ne remplace pas une réponse officielle, mais il t’aide à rester prêt."
+    }
+  };
+
+  function detectPageKey() {
+    const path = String(window.location.pathname || "").toLowerCase();
+
+    if (path.includes("missions.html")) return "missions";
+    if (path.includes("mission.html")) return "mission";
+    if (path.includes("postuler.html")) return "postuler";
+    if (path.includes("dossier-intelligent.html")) return "dossier";
+    if (path.includes("suivi.html")) return "suivi";
+
+    return "index";
+  }
+
+  function pageData() {
+    const key = detectPageKey();
+    return PAGE_TEXTS[key] || PAGE_TEXTS.index;
+  }
+
+  function canSpeak() {
+    return "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  }
+
+  function getFrenchVoice() {
+    const voices = window.speechSynthesis.getVoices() || [];
+
+    const exact = voices.find((v) => /fr[-_]?fr/i.test(v.lang || ""));
+    if (exact) return exact;
+
+    const anyFrench = voices.find((v) => /^fr/i.test(v.lang || ""));
+    if (anyFrench) return anyFrench;
+
+    return voices[0] || null;
+  }
+
+  function loadVoices() {
+    return new Promise((resolve) => {
+      if (!canSpeak()) {
+        resolve([]);
+        return;
+      }
+
+      let voices = window.speechSynthesis.getVoices();
+
+      if (voices && voices.length) {
+        resolve(voices);
+        return;
+      }
+
+      let done = false;
+
+      const finish = () => {
+        if (done) return;
+        done = true;
+        resolve(window.speechSynthesis.getVoices() || []);
       };
 
-      const STORAGE_KEY = "DIGIY_JOBS_SUIVI_PUBLIC_V2";
+      window.speechSynthesis.onvoiceschanged = finish;
+      setTimeout(finish, 700);
+    });
+  }
 
-      const $ = (id) => document.getElementById(id);
+  function stopSpeech() {
+    if (!canSpeak()) return;
+    window.speechSynthesis.cancel();
+    updateButton(false);
+  }
 
-      function scrubUrl(){
-        try {
-          const clean = new URL(window.location.href);
-          let changed = false;
+  async function speak() {
+    if (!canSpeak()) {
+      showPanel("La lecture vocale n’est pas disponible sur ce navigateur.");
+      return;
+    }
 
-          SENSITIVE_PARAMS.forEach((key) => {
-            if (clean.searchParams.has(key)) {
-              clean.searchParams.delete(key);
-              changed = true;
-            }
-          });
+    const data = pageData();
+    const text = data.text;
 
-          const rail = normalizeRail(clean.searchParams.get("rail") || clean.searchParams.get("secteur") || "");
-          clean.searchParams.delete("rail");
+    await loadVoices();
 
-          if (rail && rail !== "general") {
-            clean.searchParams.set("secteur", rail === "resto" ? "hotellerie-restauration" : rail);
-          }
+    window.speechSynthesis.cancel();
 
-          if (changed) {
-            history.replaceState({}, document.title, clean.pathname + clean.search + clean.hash);
-          }
-        } catch (_) {}
+    const utterance = new SpeechSynthesisUtterance(text);
+    const voice = getFrenchVoice();
+
+    if (voice) utterance.voice = voice;
+
+    utterance.lang = voice?.lang || "fr-FR";
+    utterance.rate = CFG.rate;
+    utterance.pitch = CFG.pitch;
+    utterance.volume = CFG.volume;
+
+    utterance.onstart = () => updateButton(true);
+    utterance.onend = () => updateButton(false);
+    utterance.onerror = () => updateButton(false);
+
+    window.speechSynthesis.speak(utterance);
+  }
+
+  function toggleSpeech() {
+    if (!canSpeak()) {
+      showPanel("La lecture vocale n’est pas disponible sur ce navigateur.");
+      return;
+    }
+
+    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+      stopSpeech();
+      return;
+    }
+
+    speak();
+  }
+
+  function updateButton(isPlaying) {
+    const btn = document.getElementById(CFG.buttonId);
+    if (!btn) return;
+
+    btn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+    btn.innerHTML = isPlaying
+      ? '<span>⏹</span><strong>Stop</strong>'
+      : '<span>🎧</span><strong>Écouter DIGIY</strong>';
+  }
+
+  function showPanel(message) {
+    const panel = document.getElementById(CFG.panelId);
+    if (!panel) return;
+
+    panel.querySelector("[data-audio-message]").textContent = message;
+    panel.hidden = false;
+  }
+
+  function hidePanel() {
+    const panel = document.getElementById(CFG.panelId);
+    if (panel) panel.hidden = true;
+  }
+
+  function goTo(path) {
+    window.location.href = path;
+  }
+
+  function injectStyles() {
+    if (document.getElementById("digiyJobsAudioStyle")) return;
+
+    const style = document.createElement("style");
+    style.id = "digiyJobsAudioStyle";
+
+    style.textContent = `
+      #${CFG.buttonId}{
+        position:fixed;
+        left:14px;
+        bottom:calc(92px + env(safe-area-inset-bottom,0px));
+        z-index:120;
+        min-height:50px;
+        border:none;
+        border-radius:999px;
+        padding:12px 16px;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        gap:9px;
+        background:linear-gradient(135deg,#facc15,#eab308);
+        color:#171717;
+        font:900 14px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+        box-shadow:0 18px 38px rgba(0,0,0,.24);
+        cursor:pointer;
       }
 
-      function normalizeText(value){
-        return String(value || "").trim();
+      #${CFG.buttonId} span{
+        font-size:18px;
+        line-height:1;
       }
 
-      function normalizePhone(value){
-        return String(value || "").replace(/[^\d+]/g, "");
+      #${CFG.buttonId}[aria-pressed="true"]{
+        background:linear-gradient(135deg,#0f172a,#233548);
+        color:#fff;
       }
 
-      function normalizeRail(value){
-        const raw = normalizeText(value).toLowerCase();
+      #${CFG.panelId}{
+        position:fixed;
+        left:14px;
+        bottom:calc(152px + env(safe-area-inset-bottom,0px));
+        z-index:121;
+        width:min(360px,calc(100vw - 28px));
+        border:1px solid rgba(255,255,255,.16);
+        border-radius:22px;
+        background:rgba(15,23,42,.94);
+        color:#fff;
+        box-shadow:0 22px 60px rgba(0,0,0,.34);
+        padding:14px;
+        font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      }
 
-        if (
-          raw === "build" ||
-          raw === "btp" ||
-          raw === "chantier" ||
-          raw === "batiment" ||
-          raw === "bâtiment" ||
-          raw === "multi-service" ||
-          raw === "multiservice"
-        ) {
-          return "build";
+      #${CFG.panelId} h3{
+        margin:0 0 7px;
+        font-size:16px;
+        line-height:1.2;
+      }
+
+      #${CFG.panelId} p{
+        margin:0;
+        color:rgba(255,255,255,.78);
+        font-size:13px;
+        line-height:1.5;
+        font-weight:650;
+      }
+
+      .digiy-audio-actions{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+        margin-top:12px;
+      }
+
+      .digiy-audio-actions button,
+      .digiy-audio-actions a{
+        min-height:40px;
+        border-radius:14px;
+        border:1px solid rgba(255,255,255,.14);
+        background:rgba(255,255,255,.08);
+        color:#fff;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        padding:9px 10px;
+        font-size:12px;
+        font-weight:900;
+        text-decoration:none;
+        cursor:pointer;
+      }
+
+      .digiy-audio-actions button.primary,
+      .digiy-audio-actions a.primary{
+        background:linear-gradient(135deg,#facc15,#eab308);
+        color:#171717;
+        border-color:transparent;
+      }
+
+      @media(max-width:640px){
+        #${CFG.buttonId}{
+          left:10px;
+          right:auto;
+          bottom:calc(86px + env(safe-area-inset-bottom,0px));
+          padding:12px 14px;
         }
 
-        if (
-          raw === "resto" ||
-          raw === "food" ||
-          raw === "hotel" ||
-          raw === "hôtel" ||
-          raw === "hr" ||
-          raw === "hotellerie" ||
-          raw === "hôtellerie" ||
-          raw === "hotellerie-restauration" ||
-          raw === "hôtellerie-restauration"
-        ) {
-          return "resto";
-        }
-
-        return "general";
-      }
-
-      function railLabel(rail){
-        if (rail === "build") return "BTP / TRAVAUX";
-        if (rail === "resto") return "HÔTELLERIE-RESTAURATION";
-        return "GÉNÉRAL";
-      }
-
-      function getDocs(rail){
-        return [...COMMON_DOCS, ...(DOCS_BY_RAIL[rail] || [])];
-      }
-
-      function createEmptyState(){
-        return {
-          name: "",
-          phone: "",
-          trade: "",
-          rail: "general",
-          checked: {},
-          updatedAt: null
-        };
-      }
-
-      function loadState(){
-        try {
-          const raw = localStorage.getItem(STORAGE_KEY);
-          if (!raw) return createEmptyState();
-
-          const parsed = JSON.parse(raw);
-
-          return {
-            ...createEmptyState(),
-            ...parsed,
-            checked: parsed && parsed.checked && typeof parsed.checked === "object" ? parsed.checked : {}
-          };
-        } catch (_) {
-          return createEmptyState();
+        #${CFG.panelId}{
+          left:10px;
+          bottom:calc(144px + env(safe-area-inset-bottom,0px));
+          width:min(350px,calc(100vw - 20px));
         }
       }
+    `;
 
-      function saveState(){
-        state.name = normalizeText($("candidateName").value);
-        state.phone = normalizePhone($("candidatePhone").value);
-        state.trade = normalizeText($("candidateTrade").value);
-        state.rail = normalizeRail($("railSelect").value);
-        state.updatedAt = new Date().toISOString();
+    document.head.appendChild(style);
+  }
 
-        try {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-        } catch (_) {}
+  function injectUi() {
+    if (document.getElementById(CFG.buttonId)) return;
 
-        render();
+    const data = pageData();
+
+    const panel = document.createElement("aside");
+    panel.id = CFG.panelId;
+    panel.hidden = true;
+    panel.setAttribute("aria-live", "polite");
+
+    panel.innerHTML = `
+      <h3>Réception DIGIY</h3>
+      <p data-audio-message>${data.text}</p>
+
+      <div class="digiy-audio-actions">
+        <button class="primary" type="button" data-audio-action="listen">Écouter</button>
+        <button type="button" data-audio-action="close">Fermer</button>
+        <a href="${ROUTES.missions}">Missions</a>
+        <a href="${ROUTES.postuler}">Postuler</a>
+        <a href="${ROUTES.dossier}">Dossier</a>
+        <a href="${ROUTES.suivi}">Suivi</a>
+      </div>
+    `;
+
+    const btn = document.createElement("button");
+    btn.id = CFG.buttonId;
+    btn.type = "button";
+    btn.setAttribute("aria-label", "Écouter DIGIY");
+    btn.setAttribute("aria-pressed", "false");
+    btn.innerHTML = '<span>🎧</span><strong>Écouter DIGIY</strong>';
+
+    document.body.appendChild(panel);
+    document.body.appendChild(btn);
+
+    btn.addEventListener("click", toggleSpeech);
+
+    panel.addEventListener("click", (event) => {
+      const action = event.target?.dataset?.audioAction;
+
+      if (action === "listen") {
+        speak();
       }
 
-      function computeCounts(docs){
-        const total = docs.length;
-        let ok = 0;
-
-        for (const doc of docs) {
-          if (state.checked && state.checked[doc.key]) ok++;
-        }
-
-        const pct = total ? Math.round((ok / total) * 100) : 0;
-
-        return { ok, total, pct };
+      if (action === "close") {
+        hidePanel();
       }
+    });
 
-      function listReceived(docs){
-        return docs
-          .filter((doc) => state.checked && state.checked[doc.key])
-          .map((doc) => "• " + doc.title)
-          .join("\n");
-      }
+    btn.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+      showPanel(data.text);
+    });
+  }
 
-      function listMissing(docs){
-        return docs
-          .filter((doc) => !(state.checked && state.checked[doc.key]))
-          .map((doc) => "• " + doc.title)
-          .join("\n");
-      }
+  function patchOptionalAudioZones() {
+    const zones = document.querySelectorAll("[data-digiy-audio]");
+    const data = pageData();
 
-      function formatDate(value){
-        if (!value) return "—";
+    zones.forEach((zone) => {
+      zone.innerHTML = `
+        <button type="button" data-digiy-audio-play>
+          🎧 Écouter DIGIY
+        </button>
+        <p>${data.title} · une voix t’explique où tu es et quoi faire.</p>
+      `;
 
-        try {
-          return new Date(value).toLocaleString("fr-FR");
-        } catch (_) {
-          return "—";
-        }
-      }
+      zone.querySelector("[data-digiy-audio-play]")?.addEventListener("click", toggleSpeech);
+    });
+  }
 
-      function buildSummary(docs){
-        const counts = computeCounts(docs);
-        const received = listReceived(docs);
-        const missing = listMissing(docs);
+  function boot() {
+    injectStyles();
+    injectUi();
+    patchOptionalAudioZones();
 
-        return [
-          "🧾 DIGIY JOBS — Suivi candidat",
-          "Nom : " + (state.name || "—"),
-          "WhatsApp candidat : " + (state.phone || "—"),
-          "Métier / profil : " + (state.trade || "—"),
-          "Contexte : " + railLabel(state.rail),
-          "Avancement : " + counts.ok + "/" + counts.total + " (" + counts.pct + "%)",
-          "",
-          "✅ Prêt :",
-          received || "—",
-          "",
-          "À préparer :",
-          missing || "—",
-          "",
-          "Prochaine étape : garder le téléphone joignable et vérifier les missions ouvertes."
-        ].join("\n");
-      }
+    window.DIGIY_JOBS_AUDIO = {
+      speak,
+      stop: stopSpeech,
+      show: () => showPanel(pageData().text),
+      hide: hidePanel,
+      goTo
+    };
 
-      async function copyToClipboard(text){
-        try {
-          await navigator.clipboard.writeText(text);
-          alert("Copié ✅");
-        } catch (_) {
-          window.prompt("Copie le texte :", text);
-        }
-      }
+    window.addEventListener("pagehide", stopSpeech);
+  }
 
-      function renderChecklist(docs){
-        const checklistEl = $("checklist");
-        checklistEl.innerHTML = "";
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+})();
 
-        for (const doc of docs) {
-          const checked = !!(state.checked && state.checked[doc.key]);
-          const wrap = document.createElement("div");
-          wrap.className = "item";
-
-          const input = document.createElement("input");
-          input.type = "checkbox";
-          input.id = "chk_" + doc.key;
-          input.checked = checked;
-
-          const textWrap = document.createElement("div");
-
-          const title = document.createElement("div");
-          title.className = "title";
-          title.textContent = doc.title;
-
-          const desc = document.createElement("div");
-          desc.className = "desc";
-          desc.textContent = doc.desc;
-
-          textWrap.appendChild(title);
-          textWrap.appendChild(desc);
-
-          wrap.appendChild(input);
-          wrap.appendChild(textWrap);
-          checklistEl.appendChild(wrap);
-
-          input.addEventListener("change", () => {
-            state.checked = state.checked || {};
-            state.checked[doc.key] = !!input.checked;
-            saveState();
-          });
-        }
-      }
-
-      function render(){
-        const docs = getDocs(state.rail);
-        const counts = computeCounts(docs);
-
-        $("candidateName").value = state.name || "";
-        $("candidatePhone").value = state.phone || "";
-        $("candidateTrade").value = state.trade || "";
-        $("railSelect").value = state.rail || "general";
-
-        $("kpiOk").textContent = String(counts.ok);
-        $("kpiTotal").textContent = String(counts.total);
-        $("kpiPct").textContent = String(counts.pct) + "%";
-        $("barFill").style.width = counts.pct + "%";
-        $("lastUpdate").textContent = formatDate(state.updatedAt);
-        $("summaryBox").value = buildSummary(docs);
-
-        renderChecklist(docs);
-      }
-
-      const params = new URLSearchParams(window.location.search);
-      let state = loadState();
-
-      const railFromUrl = normalizeRail(params.get("secteur") || params.get("rail") || "");
-      if (railFromUrl !== "general") {
-        state.rail = railFromUrl;
-      }
-
-      $("candidateName").addEventListener("input", saveState);
-      $("candidatePhone").addEventListener("input", saveState);
-      $("candidateTrade").addEventListener("input", saveState);
-      $("railSelect").addEventListener("change", function(){
-        state.rail = normalizeRail(this.value);
-        saveState();
-      });
-
-      $("btnSave").addEventListener("click", () => {
-        saveState();
-        alert("Suivi sauvegardé sur cet appareil ✅");
-      });
-
-      $("btnCopy").addEventListener("click", () => {
-        copyToClipboard($("summaryBox").value || "");
-      });
-
-      $("btnReset").addEventListener("click", () => {
-        if (!window.confirm("Réinitialiser le suivi sur cet appareil ?")) return;
-        state = createEmptyState();
-        try {
-          localStorage.removeItem(STORAGE_KEY);
-        } catch (_) {}
-        render();
-      });
-
-      scrubUrl();
-      render();
-    })();
   </script>
+
 </body>
 </html>
 
