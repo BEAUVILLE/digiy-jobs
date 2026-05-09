@@ -1,18 +1,16 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
   <title>DIGIY JOBS — Suivi candidature</title>
-  <meta
-    name="description"
-    content="DIGIY JOBS — suivi public de candidature : garder son fil, préparer ses pièces et copier un résumé propre."
-  />
-  <meta name="theme-color" content="#0A1128" />
+  <meta name="description" content="DIGIY JOBS — suivi public de candidature : garder son fil, préparer ses pièces et copier un résumé propre.">
+  <meta name="theme-color" content="#0a1128">
 
   <style>
     :root{
-      --dark:#0A1128;
+      --dark:#0a1128;
       --dark2:#142041;
       --blue:#0ea5e9;
       --blue2:#38bdf8;
@@ -20,26 +18,24 @@
       --red:#ef4444;
       --gold:#d4a84f;
       --gold2:#e8bf63;
-      --bg:#F0F2F5;
+      --bg:#f0f2f5;
       --card:#ffffff;
       --ink:#0f172a;
       --muted:#475569;
       --line:#e5e7eb;
       --shadow:0 12px 30px rgba(0,0,0,.10);
-      --radius:20px;
       --max:980px;
     }
 
     *{box-sizing:border-box}
-
     html{scroll-behavior:smooth}
 
     body{
       margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(14,165,233,.08), transparent 30%),
-        radial-gradient(circle at right 12%, rgba(16,185,129,.07), transparent 24%),
+        radial-gradient(circle at top left,rgba(14,165,233,.08),transparent 30%),
+        radial-gradient(circle at right 12%,rgba(16,185,129,.07),transparent 24%),
         linear-gradient(180deg,var(--bg),#fff8ec);
       color:var(--ink);
       padding-bottom:calc(84px + env(safe-area-inset-bottom,0px));
@@ -47,66 +43,95 @@
 
     a{color:inherit;text-decoration:none}
     button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
 
     .wrap{
-      max-width:var(--max);
+      width:min(calc(100% - 24px),var(--max));
       margin:0 auto;
-      padding:16px 12px 48px;
+      padding:16px 0 48px;
+    }
+
+    .top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:1000;
+    }
+
+    .brand-mark{
+      width:44px;
+      height:44px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--dark),#20305e);
+      color:#fff;
+      box-shadow:var(--shadow);
+      flex:0 0 auto;
+    }
+
+    .brand small{
+      display:block;
+      margin-top:2px;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:850;
+      letter-spacing:.08em;
     }
 
     .top-links{
       display:flex;
-      gap:10px;
+      gap:8px;
       flex-wrap:wrap;
-      margin-bottom:12px;
+      justify-content:flex-end;
     }
 
-    .chip-link{
+    .chip{
+      min-height:42px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:44px;
-      padding:10px 14px;
+      padding:10px 13px;
       border-radius:999px;
       border:1px solid var(--line);
       background:#fff;
-      font-weight:850;
-      box-shadow:0 8px 20px rgba(15,23,42,.06);
+      font-size:13px;
+      font-weight:900;
+      color:var(--ink);
+      box-shadow:0 8px 20px rgba(15,23,42,.05);
     }
 
-    .chip-link.gold{
+    .chip.gold{
       border-color:rgba(212,168,79,.30);
       background:rgba(212,168,79,.10);
       color:#6b4f1f;
     }
 
-    .chip-link.blue{
+    .chip.blue{
       border-color:rgba(14,165,233,.22);
       background:rgba(14,165,233,.09);
       color:#075985;
     }
 
     .hero{
-      background:
-        radial-gradient(circle at 88% 18%, rgba(212,168,79,.16), transparent 18%),
-        linear-gradient(135deg, rgba(10,17,40,.98), rgba(20,32,65,.98));
-      color:#fff;
       border-radius:26px;
       padding:22px 16px;
+      color:#fff;
+      background:
+        radial-gradient(circle at 88% 18%,rgba(212,168,79,.16),transparent 18%),
+        linear-gradient(135deg,rgba(10,17,40,.98),rgba(20,32,65,.98));
       box-shadow:0 15px 40px rgba(0,0,0,.24);
-      position:relative;
-      overflow:hidden;
       border:1px solid rgba(255,255,255,.10);
-    }
-
-    .hero::before{
-      content:"🧾";
-      position:absolute;
-      right:-28px;
-      top:-34px;
-      font-size:150px;
-      opacity:.08;
-      transform:rotate(10deg);
+      overflow:hidden;
     }
 
     .kicker{
@@ -121,28 +146,29 @@
       font-size:12px;
       letter-spacing:.10em;
       text-transform:uppercase;
-      font-weight:950;
+      font-weight:1000;
       margin-bottom:10px;
     }
 
     h1{
       margin:0;
-      font-weight:950;
-      font-size:clamp(30px,5vw,48px);
+      font-weight:1000;
+      font-size:clamp(30px,5vw,50px);
       line-height:1;
-      letter-spacing:-.035em;
-      max-width:12ch;
+      letter-spacing:-.04em;
+      max-width:14ch;
     }
 
     .lead{
       margin:12px 0 0;
       color:#dbe6f6;
       line-height:1.65;
-      max-width:720px;
+      max-width:760px;
       font-size:16px;
+      font-weight:650;
     }
 
-    .metaRow{
+    .meta-row{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
@@ -158,20 +184,14 @@
       background:rgba(255,255,255,.08);
       color:#fff;
       font-weight:900;
-      font-size:.86rem;
+      font-size:13px;
       border:1px solid rgba(255,255,255,.12);
-    }
-
-    .pill.alt{
-      background:#fff;
-      color:#1e293b;
-      border:1px solid #cbd5e1;
     }
 
     .card{
       background:var(--card);
       border:1px solid var(--line);
-      border-radius:var(--radius);
+      border-radius:22px;
       box-shadow:var(--shadow);
       padding:16px;
       margin-top:12px;
@@ -179,13 +199,17 @@
 
     .card h2{
       margin:0;
-      font-size:1.18rem;
-      font-weight:950;
+      font-size:20px;
+      font-weight:1000;
       color:var(--dark);
       letter-spacing:-.02em;
     }
 
-    .muted{color:var(--muted);line-height:1.55}
+    .muted{
+      color:var(--muted);
+      line-height:1.55;
+      font-weight:650;
+    }
 
     .row{
       display:grid;
@@ -210,14 +234,13 @@
       border-radius:14px;
       border:1px solid #d1d5db;
       padding:12px;
-      font-size:.95rem;
       outline:none;
       background:#fff;
       color:var(--ink);
     }
 
     textarea{
-      min-height:110px;
+      min-height:132px;
       resize:vertical;
       line-height:1.55;
     }
@@ -227,7 +250,7 @@
       box-shadow:0 0 0 4px rgba(14,165,233,.15);
     }
 
-    .kpiRow{
+    .kpi-row{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
@@ -236,7 +259,7 @@
 
     .kpi{
       flex:1;
-      min-width:160px;
+      min-width:150px;
       background:#f9fbfd;
       border:1px solid #e2e8f0;
       border-radius:14px;
@@ -244,16 +267,16 @@
     }
 
     .kpi .big{
-      font-size:1.35rem;
-      font-weight:950;
+      font-size:22px;
+      font-weight:1000;
       color:var(--dark);
     }
 
     .kpi .small{
-      font-size:.9rem;
+      font-size:13px;
       color:#64748b;
       margin-top:2px;
-      font-weight:700;
+      font-weight:800;
     }
 
     .bar{
@@ -267,9 +290,30 @@
     .bar > div{
       height:100%;
       width:0%;
-      background:linear-gradient(90deg, var(--green), #22c55e);
+      background:linear-gradient(90deg,var(--green),#22c55e);
       transition:width .2s ease;
     }
+
+    .notice{
+      margin-top:10px;
+      padding:12px;
+      border-radius:14px;
+      background:#eff6ff;
+      border:1px solid #bfdbfe;
+      color:#1e3a8a;
+      font-size:14px;
+      font-weight:800;
+      line-height:1.5;
+    }
+
+    .okline{
+      margin-top:10px;
+      font-size:14px;
+      color:#334155;
+      font-weight:650;
+    }
+
+    .okline strong{color:var(--dark)}
 
     .list{margin-top:12px}
 
@@ -285,22 +329,23 @@
     }
 
     .item input{
-      transform:scale(1.25);
-      margin-top:2px;
-      cursor:pointer;
       width:auto;
+      transform:scale(1.25);
+      margin-top:3px;
+      cursor:pointer;
     }
 
     .item .title{
-      font-weight:950;
+      font-weight:1000;
       color:var(--dark);
     }
 
     .item .desc{
-      font-size:.92rem;
+      font-size:14px;
       color:var(--muted);
       margin-top:2px;
       line-height:1.45;
+      font-weight:650;
     }
 
     .actions{
@@ -311,22 +356,18 @@
     }
 
     .btn{
+      min-height:48px;
       border:0;
       border-radius:14px;
       padding:12px 14px;
-      font-weight:950;
-      cursor:pointer;
-      text-decoration:none;
+      font-weight:1000;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      transition:transform .18s ease, filter .18s ease, opacity .18s ease;
-      font-size:1rem;
-      min-height:48px;
+      text-align:center;
     }
 
-    .btn:hover{transform:translateY(-1px);filter:brightness(.97)}
     .btn.primary{background:var(--blue);color:#fff}
     .btn.dark{background:var(--dark);color:#fff}
     .btn.green{background:var(--green);color:#fff}
@@ -335,35 +376,16 @@
     .btn.danger{background:var(--red);color:#fff}
 
     .tiny{
-      font-size:.86rem;
+      font-size:13px;
       color:#64748b;
       margin-top:10px;
       line-height:1.5;
+      font-weight:650;
     }
 
-    .notice{
-      margin-top:10px;
-      padding:12px;
-      border-radius:14px;
-      background:#eff6ff;
-      border:1px solid #bfdbfe;
-      color:#1e3a8a;
-      font-size:.92rem;
-      font-weight:700;
-      line-height:1.5;
-    }
-
-    .okline{
-      margin-top:10px;
-      font-size:.9rem;
-      color:#334155;
-    }
-
-    .okline strong{color:var(--dark)}
-
-    .summaryBox{
+    .summary-box{
       width:100%;
-      min-height:132px;
+      min-height:150px;
       border-radius:14px;
       border:1px solid #d1d5db;
       padding:12px;
@@ -405,152 +427,162 @@
       font-weight:1000;
       text-align:center;
       border:1px solid transparent;
-      text-decoration:none;
-      background:transparent;
       padding:0 4px;
     }
 
     .bottom-nav .ico{font-size:18px;line-height:1}
-
-    .bottom-nav a.active{
-      background:var(--dark);
-      color:#fff;
-    }
+    .bottom-nav a.active{background:var(--dark);color:#fff}
 
     @media (max-width:720px){
       .row{grid-template-columns:1fr}
-      .wrap{padding:14px 10px 48px}
+      .wrap{padding:14px 0 48px}
+      .top-links{width:100%}
+      .chip{flex:1 1 auto}
       .actions .btn{width:100%}
-      h1{max-width:none}
+      h1{max-width:none;font-size:34px}
+      .card,.hero{border-radius:20px}
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <nav class="top-links" aria-label="Navigation publique JOBS">
-      <a class="chip-link" href="https://digiylyfe.com/">← Site</a>
-      <a class="chip-link" href="./index.html">Accueil JOBS</a>
-      <a class="chip-link gold" href="./mur%20des%20missions.html">Voir les missions</a>
-      <a class="chip-link blue" href="./postuler.html">Postuler</a>
-      <a class="chip-link" href="./dossier-intelligent.html">Dossier</a>
-    </nav>
+    <header class="top">
+      <a class="brand" href="./index.html" aria-label="Retour accueil JOBS">
+        <span class="brand-mark">DJ</span>
+        <span>
+          DIGIY JOBS
+          <small>SUIVI CANDIDAT</small>
+        </span>
+      </a>
 
-    <section class="hero">
-      <div class="kicker">DIGIY JOBS • suivi candidat</div>
-      <h1>Garder le fil de ma candidature.</h1>
-      <p class="lead">
-        Ici, le candidat garde une trace simple : ce qui est prêt, ce qui manque,
-        son résumé propre et les prochaines pièces à préparer. Aucun code professionnel n’est demandé.
-      </p>
+      <nav class="top-links" aria-label="Navigation">
+        <a class="chip" href="./index.html">Accueil</a>
+        <a class="chip gold" href="./missions.html">Missions</a>
+        <a class="chip blue" href="./postuler.html">Postuler</a>
+        <a class="chip" href="./dossier-intelligent.html">Dossier</a>
+      </nav>
+    </header>
 
-      <div class="metaRow">
-        <div class="pill">Accès : public candidat</div>
-        <div class="pill">Mode : suivi local</div>
-        <div class="pill">Contact : via candidature</div>
-      </div>
-    </section>
+    <main>
+      <section class="hero">
+        <div class="kicker">DIGIY JOBS · suivi candidat</div>
+        <h1>Garder le fil de ma candidature.</h1>
+        <p class="lead">
+          Ici, le candidat garde une trace simple : ce qui est prêt, ce qui manque,
+          son résumé propre et les prochaines pièces à préparer.
+        </p>
 
-    <section class="card">
-      <h2>Mon suivi</h2>
-      <p class="muted" style="margin:8px 0 12px">
-        Ces informations restent sur ton appareil. Elles t’aident à te préparer et à copier un résumé clair si on te le demande.
-      </p>
+        <div class="meta-row">
+          <div class="pill">Accès public candidat</div>
+          <div class="pill">Suivi local</div>
+          <div class="pill">Aucun code pro</div>
+        </div>
+      </section>
 
-      <div class="row">
-        <div class="field">
-          <label for="candidateName">Nom complet</label>
-          <input id="candidateName" type="text" placeholder="Ex : Moussa Diop" autocomplete="name" />
+      <section class="card">
+        <h2>Mon suivi</h2>
+        <p class="muted" style="margin:8px 0 12px">
+          Ces informations restent sur ton appareil. Elles t’aident à te préparer et à copier un résumé clair.
+        </p>
+
+        <div class="row">
+          <div class="field">
+            <label for="candidateName">Nom complet</label>
+            <input id="candidateName" type="text" placeholder="Ex : Moussa Diop" autocomplete="name">
+          </div>
+
+          <div class="field">
+            <label for="candidatePhone">WhatsApp candidat</label>
+            <input id="candidatePhone" type="tel" placeholder="Ex : +221771234567" autocomplete="tel">
+          </div>
+
+          <div class="field">
+            <label for="candidateTrade">Métier / profil</label>
+            <input id="candidateTrade" type="text" placeholder="Ex : maçon, chauffeur, serveuse...">
+          </div>
+
+          <div class="field">
+            <label for="railSelect">Contexte métier</label>
+            <select id="railSelect">
+              <option value="general">Général</option>
+              <option value="build">BTP / travaux</option>
+              <option value="resto">Hôtellerie-Restauration</option>
+            </select>
+          </div>
         </div>
 
-        <div class="field">
-          <label for="candidatePhone">WhatsApp candidat</label>
-          <input id="candidatePhone" type="tel" placeholder="Ex : +221771234567" autocomplete="tel" />
+        <div class="kpi-row">
+          <div class="kpi">
+            <div class="big" id="kpiOk">0</div>
+            <div class="small">Prêts</div>
+          </div>
+
+          <div class="kpi">
+            <div class="big" id="kpiTotal">0</div>
+            <div class="small">Total</div>
+          </div>
+
+          <div class="kpi">
+            <div class="big" id="kpiPct">0%</div>
+            <div class="small">Avancement</div>
+          </div>
         </div>
 
-        <div class="field">
-          <label for="candidateTrade">Métier / profil</label>
-          <input id="candidateTrade" type="text" placeholder="Ex : maçon, chauffeur, serveuse..." />
+        <div class="bar" aria-label="Progression">
+          <div id="barFill"></div>
         </div>
 
-        <div class="field">
-          <label for="railSelect">Contexte métier</label>
-          <select id="railSelect">
-            <option value="general">Général</option>
-            <option value="build">BTP / travaux</option>
-            <option value="resto">Hôtellerie-Restauration</option>
-          </select>
+        <div class="okline">
+          Dernière mise à jour locale :
+          <strong id="lastUpdate">—</strong>
         </div>
-      </div>
 
-      <div class="kpiRow">
-        <div class="kpi">
-          <div class="big" id="kpiOk">0</div>
-          <div class="small">Prêts</div>
+        <div class="notice">
+          Le suivi ne remplace pas une réponse officielle. Il aide simplement à rester prêt, clair et joignable.
         </div>
-        <div class="kpi">
-          <div class="big" id="kpiTotal">0</div>
-          <div class="small">Total</div>
+      </section>
+
+      <section class="card">
+        <h2>✅ Ce que je prépare</h2>
+        <p class="muted" style="margin-top:8px">
+          Coche ce que tu as déjà. Le résumé se met à jour automatiquement.
+        </p>
+
+        <div class="list" id="checklist"></div>
+
+        <div class="actions">
+          <button class="btn primary" id="btnCopy" type="button">📋 Copier mon résumé</button>
+          <button class="btn ghost" id="btnSave" type="button">💾 Sauvegarder</button>
+          <button class="btn danger" id="btnReset" type="button">🧹 Réinitialiser</button>
         </div>
-        <div class="kpi">
-          <div class="big" id="kpiPct">0%</div>
-          <div class="small">Avancement</div>
+
+        <div class="tiny">
+          DIGIY JOBS organise le suivi. Les décisions restent faites par les personnes ou structures concernées.
         </div>
-      </div>
+      </section>
 
-      <div class="bar" aria-label="Progression">
-        <div id="barFill"></div>
-      </div>
+      <section class="card">
+        <h2>Résumé propre</h2>
+        <p class="muted" style="margin-top:8px">
+          Ce texte peut être copié puis envoyé à la bonne personne si nécessaire.
+        </p>
 
-      <div class="okline">
-        Dernière mise à jour locale :
-        <strong id="lastUpdate">—</strong>
-      </div>
+        <textarea id="summaryBox" class="summary-box" readonly></textarea>
 
-      <div class="notice">
-        Le suivi ne remplace pas une réponse officielle. Il aide simplement à rester prêt, clair et joignable.
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>✅ Ce que je prépare</h2>
-      <p class="muted" style="margin-top:8px;font-size:.95rem">
-        Coche ce que tu as déjà. Le résumé se met à jour automatiquement.
-      </p>
-
-      <div class="list" id="checklist"></div>
-
-      <div class="actions">
-        <button class="btn primary" id="btnCopy" type="button">📋 Copier mon résumé</button>
-        <button class="btn ghost" id="btnSave" type="button">💾 Sauvegarder</button>
-        <button class="btn danger" id="btnReset" type="button">🧹 Réinitialiser</button>
-      </div>
-
-      <div class="tiny">
-        DIGIY JOBS organise le suivi. Les décisions restent faites par les personnes ou structures concernées.
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>Résumé propre</h2>
-      <p class="muted" style="margin-top:8px;font-size:.95rem">
-        Ce texte peut être copié puis envoyé à la bonne personne si nécessaire.
-      </p>
-
-      <textarea id="summaryBox" class="summaryBox" readonly></textarea>
-
-      <div class="actions">
-        <a class="btn dark" href="./mur%20des%20missions.html">Voir d’autres missions</a>
-        <a class="btn gold" href="./postuler.html">Déposer une candidature</a>
-        <a class="btn ghost" href="./dossier-intelligent.html">Ouvrir le dossier intelligent</a>
-      </div>
-    </section>
+        <div class="actions">
+          <a class="btn dark" href="./missions.html">Voir d’autres missions</a>
+          <a class="btn gold" href="./postuler.html">Déposer une candidature</a>
+          <a class="btn ghost" href="./dossier-intelligent.html">Ouvrir le dossier</a>
+        </div>
+      </section>
+    </main>
   </div>
 
   <nav class="bottom-nav" aria-label="Navigation rapide DIGIY JOBS">
     <div class="bottom-nav-inner">
       <a href="./index.html"><span class="ico">🏠</span><span>Accueil</span></a>
-      <a href="./mur%20des%20missions.html"><span class="ico">📌</span><span>Missions</span></a>
+      <a href="./missions.html"><span class="ico">📌</span><span>Missions</span></a>
       <a href="./postuler.html"><span class="ico">📝</span><span>Postuler</span></a>
       <a href="./dossier-intelligent.html"><span class="ico">🧾</span><span>Dossier</span></a>
       <a class="active" href="./suivi.html"><span class="ico">✅</span><span>Suivi</span></a>
@@ -558,7 +590,7 @@
   </nav>
 
   <script>
-    (function(){
+    (() => {
       "use strict";
 
       const SENSITIVE_PARAMS = [
@@ -632,14 +664,12 @@
         general: []
       };
 
-      const STORAGE_KEY = "DIGIY_JOBS_SUIVI_PUBLIC_V1";
+      const STORAGE_KEY = "DIGIY_JOBS_SUIVI_PUBLIC_V2";
 
-      function $(id){
-        return document.getElementById(id);
-      }
+      const $ = (id) => document.getElementById(id);
 
       function scrubUrl(){
-        try{
+        try {
           const clean = new URL(window.location.href);
           let changed = false;
 
@@ -660,7 +690,7 @@
           if (changed) {
             history.replaceState({}, document.title, clean.pathname + clean.search + clean.hash);
           }
-        }catch(_){}
+        } catch (_) {}
       }
 
       function normalizeText(value){
@@ -674,7 +704,7 @@
       function normalizeRail(value){
         const raw = normalizeText(value).toLowerCase();
 
-        if(
+        if (
           raw === "build" ||
           raw === "btp" ||
           raw === "chantier" ||
@@ -682,11 +712,11 @@
           raw === "bâtiment" ||
           raw === "multi-service" ||
           raw === "multiservice"
-        ){
+        ) {
           return "build";
         }
 
-        if(
+        if (
           raw === "resto" ||
           raw === "food" ||
           raw === "hotel" ||
@@ -696,7 +726,7 @@
           raw === "hôtellerie" ||
           raw === "hotellerie-restauration" ||
           raw === "hôtellerie-restauration"
-        ){
+        ) {
           return "resto";
         }
 
@@ -704,8 +734,8 @@
       }
 
       function railLabel(rail){
-        if(rail === "build") return "BTP / TRAVAUX";
-        if(rail === "resto") return "HÔTELLERIE-RESTAURATION";
+        if (rail === "build") return "BTP / TRAVAUX";
+        if (rail === "resto") return "HÔTELLERIE-RESTAURATION";
         return "GÉNÉRAL";
       }
 
@@ -725,16 +755,18 @@
       }
 
       function loadState(){
-        try{
+        try {
           const raw = localStorage.getItem(STORAGE_KEY);
-          if(!raw) return createEmptyState();
+          if (!raw) return createEmptyState();
+
           const parsed = JSON.parse(raw);
+
           return {
             ...createEmptyState(),
             ...parsed,
             checked: parsed && parsed.checked && typeof parsed.checked === "object" ? parsed.checked : {}
           };
-        }catch(_){
+        } catch (_) {
           return createEmptyState();
         }
       }
@@ -746,9 +778,9 @@
         state.rail = normalizeRail($("railSelect").value);
         state.updatedAt = new Date().toISOString();
 
-        try{
+        try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-        }catch(_){}
+        } catch (_) {}
 
         render();
       }
@@ -757,11 +789,12 @@
         const total = docs.length;
         let ok = 0;
 
-        for(const doc of docs){
-          if(state.checked && state.checked[doc.key]) ok++;
+        for (const doc of docs) {
+          if (state.checked && state.checked[doc.key]) ok++;
         }
 
         const pct = total ? Math.round((ok / total) * 100) : 0;
+
         return { ok, total, pct };
       }
 
@@ -780,10 +813,11 @@
       }
 
       function formatDate(value){
-        if(!value) return "—";
-        try{
+        if (!value) return "—";
+
+        try {
           return new Date(value).toLocaleString("fr-FR");
-        }catch(_){
+        } catch (_) {
           return "—";
         }
       }
@@ -812,10 +846,10 @@
       }
 
       async function copyToClipboard(text){
-        try{
+        try {
           await navigator.clipboard.writeText(text);
           alert("Copié ✅");
-        }catch(_){
+        } catch (_) {
           window.prompt("Copie le texte :", text);
         }
       }
@@ -824,7 +858,7 @@
         const checklistEl = $("checklist");
         checklistEl.innerHTML = "";
 
-        for(const doc of docs){
+        for (const doc of docs) {
           const checked = !!(state.checked && state.checked[doc.key]);
           const wrap = document.createElement("div");
           wrap.className = "item";
@@ -851,7 +885,7 @@
           wrap.appendChild(textWrap);
           checklistEl.appendChild(wrap);
 
-          input.addEventListener("change", function(){
+          input.addEventListener("change", () => {
             state.checked = state.checked || {};
             state.checked[doc.key] = !!input.checked;
             saveState();
@@ -894,19 +928,21 @@
         saveState();
       });
 
-      $("btnSave").addEventListener("click", function(){
+      $("btnSave").addEventListener("click", () => {
         saveState();
         alert("Suivi sauvegardé sur cet appareil ✅");
       });
 
-      $("btnCopy").addEventListener("click", function(){
+      $("btnCopy").addEventListener("click", () => {
         copyToClipboard($("summaryBox").value || "");
       });
 
-      $("btnReset").addEventListener("click", function(){
-        if(!window.confirm("Réinitialiser le suivi sur cet appareil ?")) return;
+      $("btnReset").addEventListener("click", () => {
+        if (!window.confirm("Réinitialiser le suivi sur cet appareil ?")) return;
         state = createEmptyState();
-        try{ localStorage.removeItem(STORAGE_KEY); }catch(_){}
+        try {
+          localStorage.removeItem(STORAGE_KEY);
+        } catch (_) {}
         render();
       });
 
@@ -916,4 +952,5 @@
   </script>
 </body>
 </html>
+
 
