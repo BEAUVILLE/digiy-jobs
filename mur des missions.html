@@ -508,7 +508,7 @@
       <div id="count" class="count">Chargement des missions...</div>
 
       <div class="toolbar-actions">
-        <a id="spontaneousLink" class="link-btn" href="./postuler.html">Candidature spontanée</a>
+        <a id="spontaneousLink" class="link-btn" href="./postuler.html?offer=5e978d75-339a-465f-b984-4e82362f71db">Candidature spontanée</a>
         <a id="toolbarDossierLink" class="link-btn blue" href="./dossier-intelligent.html">Ouvrir le dossier intelligent</a>
       </div>
     </div>
@@ -556,6 +556,7 @@
         home: "./index.html",
         missions: "./mur%20des%20missions.html",
         postuler: "./postuler.html",
+        spontaneous: "./postuler.html?offer=5e978d75-339a-465f-b984-4e82362f71db",
         mission: "./mission.html",
         dossier: "./dossier-intelligent.html"
       };
@@ -717,7 +718,7 @@
         setHref('homeLink', JOBS_PATHS.home);
         setHref('missionsWallLink', JOBS_PATHS.missions);
         setHref('dossierLink', JOBS_PATHS.dossier);
-        setHref('spontaneousLink', JOBS_PATHS.postuler);
+        setHref('spontaneousLink', JOBS_PATHS.spontaneous);
         setHref('toolbarDossierLink', JOBS_PATHS.dossier);
       }
 
