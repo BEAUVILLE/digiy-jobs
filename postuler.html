@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#071711" />
   <meta
     name="description"
-    content="DIGIY JOBS — candidature simple, claire et réelle pour les missions publiées."
+    content="DIGIY JOBS — candidature simple, claire et réelle pour les missions publiées ou pour laisser son profil à l’agence terrain."
   />
 
   <script>
@@ -30,7 +30,7 @@
       --blue:#38bdf8;
       --green:#22c55e;
       --danger:#fb7185;
-      --max:920px;
+      --max:980px;
       --shadow:0 18px 60px rgba(0,0,0,.28);
     }
 
@@ -47,6 +47,7 @@
 
     a{color:inherit;text-decoration:none}
     button,input,textarea,select{font:inherit}
+    button{cursor:pointer}
 
     .wrap{max-width:var(--max);margin:0 auto;padding:18px 16px 80px}
 
@@ -66,7 +67,7 @@
       border-radius:999px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.05);
-      font-weight:800;
+      font-weight:850;
     }
 
     .chip-link.gold{
@@ -100,7 +101,7 @@
       letter-spacing:.14em;
       text-transform:uppercase;
       color:#fff0b8;
-      font-weight:900;
+      font-weight:950;
       margin-bottom:10px;
     }
 
@@ -155,10 +156,93 @@
       line-height:1.55;
     }
 
-    .assist{
+    .choice-panel,
+    .assist,
+    .form-card{
       margin-top:16px;
-      border:1px solid rgba(56,189,248,.22);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .choice-panel{
+      border:1px solid rgba(250,204,21,.18);
+      background:rgba(255,255,255,.035);
+      padding:16px;
+    }
+
+    .choice-panel h2,
+    .form-card h2{
+      margin:0 0 8px;
+      font-size:22px;
+      line-height:1.1;
+    }
+
+    .choice-panel p,
+    .form-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .choice-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .choice-btn{
+      min-height:92px;
+      border:1px solid var(--line);
       border-radius:22px;
+      background:rgba(255,255,255,.055);
+      color:var(--text);
+      text-align:left;
+      padding:15px;
+      display:grid;
+      gap:6px;
+      transition:transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+
+    .choice-btn:hover{transform:translateY(-1px)}
+    .choice-btn.active{
+      border-color:rgba(250,204,21,.55);
+      background:rgba(250,204,21,.11);
+      color:#fff5bf;
+    }
+
+    .choice-btn strong{font-size:16px}
+    .choice-btn span{font-size:13px;line-height:1.45;color:var(--muted)}
+
+    .quick-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .quick-btn,
+    .availability-btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.055);
+      color:var(--text);
+      min-height:48px;
+      border-radius:16px;
+      padding:10px 12px;
+      font-weight:900;
+      text-align:center;
+    }
+
+    .quick-btn.active,
+    .availability-btn.active{
+      border-color:rgba(56,189,248,.42);
+      background:rgba(56,189,248,.13);
+      color:#d8f5ff;
+    }
+
+    .assist{
+      border:1px solid rgba(56,189,248,.22);
       background:rgba(56,189,248,.08);
       padding:16px;
     }
@@ -209,14 +293,15 @@
     }
 
     .form-card{
-      margin-top:18px;
       border:1px solid var(--line);
-      border-radius:30px;
       background:
         linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)),
         var(--card);
-      box-shadow:var(--shadow);
       padding:22px 18px;
+    }
+
+    .form-head{
+      margin-bottom:16px;
     }
 
     .grid{
@@ -235,7 +320,7 @@
 
     label{
       font-size:13px;
-      font-weight:800;
+      font-weight:850;
       color:#d9fbe7;
     }
 
@@ -250,7 +335,7 @@
       border:1px solid transparent;
     }
 
-    textarea{min-height:140px;resize:vertical}
+    textarea{min-height:120px;resize:vertical}
     input::placeholder,textarea::placeholder{color:rgba(236,255,244,.42)}
 
     input:focus,select:focus,textarea:focus{
@@ -263,6 +348,20 @@
       font-size:12px;
       line-height:1.5;
       margin-top:2px;
+    }
+
+    .required-note{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-top:12px;
+      padding:10px 12px;
+      border-radius:999px;
+      background:rgba(34,197,94,.10);
+      border:1px solid rgba(34,197,94,.22);
+      color:#c6ffd3;
+      font-size:13px;
+      font-weight:900;
     }
 
     .actions{
@@ -279,7 +378,7 @@
       min-height:52px;
       padding:14px 18px;
       border-radius:18px;
-      font-weight:900;
+      font-weight:950;
       cursor:pointer;
       border:none;
     }
@@ -287,7 +386,7 @@
     .btn-primary{
       background:linear-gradient(180deg,var(--gold),#eab308);
       color:#171717;
-      min-width:220px;
+      min-width:240px;
     }
 
     .btn-primary:disabled{
@@ -301,13 +400,19 @@
       color:var(--text);
     }
 
+    .btn-blue{
+      border:1px solid rgba(56,189,248,.28);
+      background:rgba(56,189,248,.12);
+      color:#d8f5ff;
+    }
+
     .status{
       margin-top:16px;
       border-radius:20px;
       padding:14px 16px;
       display:none;
       line-height:1.6;
-      font-weight:700;
+      font-weight:750;
       white-space:pre-line;
     }
 
@@ -332,13 +437,26 @@
       border:1px solid rgba(56,189,248,.22);
     }
 
+    .status.warn{
+      display:block;
+      background:rgba(250,204,21,.10);
+      color:#fff3b0;
+      border:1px solid rgba(250,204,21,.24);
+    }
+
+    @media (max-width: 860px){
+      .quick-grid{grid-template-columns:1fr 1fr}
+    }
+
     @media (max-width: 700px){
       .wrap{padding:14px 12px 70px}
       .hero{padding:22px 14px}
       .form-card{padding:18px 14px}
-      .grid{grid-template-columns:1fr}
+      .grid,.choice-grid{grid-template-columns:1fr}
       .field.full{grid-column:auto}
       h1{font-size:34px}
+      .quick-grid{grid-template-columns:1fr}
+      .btn,.assist-actions a{width:100%}
     }
   </style>
 </head>
@@ -353,16 +471,17 @@
     </div>
 
     <section class="hero">
-      <div class="kicker">JOBS • candidature réelle</div>
-      <h1>Postuler simplement.</h1>
+      <div class="kicker">JOBS • candidature terrain</div>
+      <h1>Postuler sans se perdre.</h1>
       <p class="lead">
-        Ici tu poses une candidature claire : ton nom, ton WhatsApp, ton métier,
-        ta disponibilité et un petit message. DIGIY l’envoie au bon bureau pour traitement.
+        Choisis ton chemin, clique ton métier, ajuste seulement l’essentiel.
+        DIGIY prépare la base pour que ta candidature arrive proprement au bureau.
       </p>
 
       <div class="meta-line">
         <div class="meta-chip">Mode : <strong id="modeChip">candidature</strong></div>
-        <div class="meta-chip">Lecture : <strong id="sourceChip">mission publique</strong></div>
+        <div class="meta-chip">Lecture : <strong id="sourceChip">mission à choisir</strong></div>
+        <div class="meta-chip">Geste : <strong>clic d’abord</strong></div>
       </div>
 
       <div id="offerBox" class="offer-box">
@@ -370,11 +489,56 @@
         <div id="offerMeta" class="offer-meta"></div>
       </div>
 
+      <div class="choice-panel" aria-label="Choix rapide de candidature">
+        <h2>1. Choisis ton chemin</h2>
+        <p>Une agence terrain doit pouvoir recevoir une réponse à une mission, mais aussi garder un bon profil pour la prochaine opportunité.</p>
+
+        <div class="choice-grid">
+          <button id="modeMissionBtn" class="choice-btn active" type="button" data-mode="mission">
+            <strong>🎯 Je réponds à cette mission</strong>
+            <span>Ton profil sera rattaché à l’offre ouverte.</span>
+          </button>
+
+          <button id="modeAgencyBtn" class="choice-btn" type="button" data-mode="agency">
+            <strong>📂 Je laisse mon profil à l’agence</strong>
+            <span>Utile quand tu veux être rappelé pour les prochaines missions.</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="choice-panel" aria-label="Profils métier rapides">
+        <h2>2. Clique ton profil métier</h2>
+        <p>DIGIY remplit le métier et prépare un message simple. Tu peux corriger après.</p>
+
+        <div class="quick-grid" id="quickProfileGrid">
+          <button class="quick-btn" type="button" data-trade="Ouvrier BTP / chantier" data-message="Bonjour, je suis disponible pour une mission BTP ou chantier. Je suis sérieux, ponctuel et prêt à travailler selon le besoin.">🧱 BTP</button>
+          <button class="quick-btn" type="button" data-trade="Serveur / restauration" data-message="Bonjour, je suis disponible pour une mission en restauration. Je peux aider au service, en salle ou selon le besoin de l’établissement.">🍽️ Restauration</button>
+          <button class="quick-btn" type="button" data-trade="Vendeur / boutique" data-message="Bonjour, je suis disponible pour une mission en boutique ou vente. Je peux accueillir les clients, aider au rangement, au stock ou à la caisse.">🛍️ Boutique</button>
+          <button class="quick-btn" type="button" data-trade="Chauffeur / livreur" data-message="Bonjour, je suis disponible pour une mission de chauffeur ou livraison. Je connais le terrain et je peux me rendre disponible rapidement.">🚚 Chauffeur</button>
+          <button class="quick-btn" type="button" data-trade="Aide ménage / services" data-message="Bonjour, je suis disponible pour une mission de service, entretien ou aide ménage. Je suis sérieux et je peux intervenir selon les horaires demandés.">🧹 Services</button>
+          <button class="quick-btn" type="button" data-trade="Beauté / coiffure" data-message="Bonjour, je suis disponible pour une mission beauté, coiffure ou esthétique. Je peux présenter mon expérience et mes disponibilités.">💄 Beauté</button>
+          <button class="quick-btn" type="button" data-trade="Hôtel / villa / maison d’hôtes" data-message="Bonjour, je suis disponible pour une mission en hôtel, villa ou maison d’hôtes. Je peux aider à l’accueil, au service, au ménage ou selon le besoin.">🏨 Hôtel / villa</button>
+          <button class="quick-btn" type="button" data-trade="Profil polyvalent" data-message="Bonjour, je suis disponible pour une mission terrain. Je suis polyvalent, sérieux et prêt à échanger pour voir si mon profil correspond.">🤝 Polyvalent</button>
+        </div>
+      </div>
+
+      <div class="choice-panel" aria-label="Disponibilité rapide">
+        <h2>3. Clique ta disponibilité</h2>
+        <p>Le bureau voit tout de suite si tu peux commencer vite.</p>
+
+        <div class="quick-grid" id="availabilityGrid">
+          <button class="availability-btn active" type="button" data-availability="immediate">⚡ Immédiate</button>
+          <button class="availability-btn" type="button" data-availability="this_week">📅 Cette semaine</button>
+          <button class="availability-btn" type="button" data-availability="this_month">🗓️ Ce mois-ci</button>
+          <button class="availability-btn" type="button" data-availability="to_discuss">💬 À discuter</button>
+        </div>
+      </div>
+
       <div class="assist">
         <strong>Avant d’envoyer</strong>
         <p>
-          Écris comme tu parles, mais reste précis. Le téléphone demandé ici est le tien,
-          pour que le bureau puisse te joindre si ton profil correspond.
+          Le téléphone demandé ici est celui du candidat, pour que le bureau puisse rappeler.
+          Les informations du professionnel restent protégées.
         </p>
         <div class="assist-actions">
           <a id="assistMissionLink" href="./mission.html" hidden>Relire la mission</a>
@@ -385,7 +549,15 @@
     </section>
 
     <section class="form-card">
+      <div class="form-head">
+        <h2>4. Complète juste l’essentiel</h2>
+        <p>Nom, WhatsApp, ville. Le reste peut être pré-rempli par tes clics.</p>
+        <span class="required-note">✅ Le minimum suffit pour démarrer proprement</span>
+      </div>
+
       <form id="applyForm">
+        <input id="application_mode" name="application_mode" type="hidden" value="mission" />
+
         <div class="grid">
           <div class="field">
             <label for="full_name">Nom complet</label>
@@ -410,7 +582,7 @@
 
           <div class="field">
             <label for="trade">Métier / profil</label>
-            <input id="trade" name="trade" type="text" placeholder="Ex: maçon, chauffeur, coiffeuse, vendeur..." />
+            <input id="trade" name="trade" type="text" placeholder="Clique un profil métier ou écris ton métier" />
           </div>
 
           <div class="field">
@@ -430,14 +602,16 @@
           </div>
 
           <div class="field full">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Présente-toi simplement : ce que tu sais faire, où tu es, et pourquoi tu postules."></textarea>
+            <label for="message">Message préparé</label>
+            <textarea id="message" name="message" placeholder="Clique un profil métier : DIGIY prépare un message. Tu peux modifier ensuite."></textarea>
+            <div class="hint">Le message est là pour aider, pas pour enfermer. Tu peux parler simple.</div>
           </div>
         </div>
 
         <div class="actions">
           <button id="submitBtn" type="submit" class="btn btn-primary">Envoyer ma candidature</button>
           <a class="btn btn-secondary" id="seeOffersLink" href="./mur%20des%20missions.html">Voir les missions</a>
+          <a class="btn btn-blue" id="openDossierLink" href="./dossier-intelligent.html">Ouvrir le dossier</a>
         </div>
 
         <div id="statusBox" class="status"></div>
@@ -485,13 +659,15 @@
       const state = {
         offerId: offerParam,
         legacySlug: legacySlug,
-        offer: null
+        offer: null,
+        mode: offerParam ? "mission" : "agency"
       };
 
       const JOBS_PATHS = {
         home: "./index.html",
         wall: "./mur%20des%20missions.html",
-        mission: "./mission.html"
+        mission: "./mission.html",
+        dossier: "./dossier-intelligent.html"
       };
 
       function cleanSensitiveUrl(nextOfferId){
@@ -555,6 +731,24 @@
         return url.pathname + url.search;
       }
 
+      function setMode(mode){
+        state.mode = mode === "agency" ? "agency" : "mission";
+        $("application_mode").value = state.mode;
+
+        $("modeMissionBtn").classList.toggle("active", state.mode === "mission");
+        $("modeAgencyBtn").classList.toggle("active", state.mode === "agency");
+
+        if (state.mode === "agency") {
+          $("modeChip").textContent = "profil agence";
+          $("sourceChip").textContent = "prochaines missions";
+          $("submitBtn").textContent = "Envoyer mon profil à l’agence";
+        } else {
+          $("modeChip").textContent = state.offer ? "candidature liée" : "candidature mission";
+          $("sourceChip").textContent = state.offer ? "mission publique" : "mission à choisir";
+          $("submitBtn").textContent = "Envoyer ma candidature";
+        }
+      }
+
       function syncLinks(){
         $("homeLink").href = JOBS_PATHS.home;
         $("wallLink").href = JOBS_PATHS.wall;
@@ -562,6 +756,7 @@
         $("seeOffersLink").href = JOBS_PATHS.wall;
         $("helpLink").href = JOBS_PATHS.home + "#clawSection";
         $("assistHelpLink").href = JOBS_PATHS.home + "#clawSection";
+        $("openDossierLink").href = JOBS_PATHS.dossier;
 
         const hasMission = Boolean(state.offer?.id || state.offerId);
         $("missionLink").hidden = !hasMission;
@@ -573,8 +768,7 @@
           $("assistMissionLink").href = href;
         }
 
-        $("modeChip").textContent = state.offer ? "candidature liée" : "candidature";
-        $("sourceChip").textContent = state.offer ? "mission publique" : "mission à choisir";
+        setMode(state.mode);
       }
 
       function renderOffer(){
@@ -595,6 +789,8 @@
         ].join(" • ");
 
         state.offerId = offer.id || state.offerId || "";
+        state.mode = "mission";
+
         cleanSensitiveUrl(state.offerId);
         syncLinks();
       }
@@ -609,8 +805,9 @@
         }
 
         if (!state.offerId) {
+          state.mode = "agency";
           syncLinks();
-          showStatus("info", "Choisis une mission depuis le mur, puis envoie ta candidature.");
+          showStatus("info", "Tu peux choisir une mission depuis le mur, ou laisser ton profil à l’agence pour les prochaines opportunités.");
           return;
         }
 
@@ -627,13 +824,50 @@
 
         if (!data || data.ok !== true || !data.item) {
           console.warn("RPC digiy_jobs_public_offer réponse inattendue", data);
-          showStatus("err", "Mission introuvable ou plus active.");
+          showStatus("err", "Mission introuvable ou plus active. Tu peux laisser ton profil à l’agence ou revenir au mur des missions.");
+          state.mode = "agency";
           syncLinks();
           return;
         }
 
         state.offer = data.item;
         renderOffer();
+      }
+
+      function selectQuickProfile(button){
+        document.querySelectorAll(".quick-btn").forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        const trade = button.dataset.trade || "";
+        const message = button.dataset.message || "";
+
+        if (trade) $("trade").value = trade;
+
+        if (!$("message").value.trim() || $("message").dataset.autofilled === "1") {
+          $("message").value = message;
+          $("message").dataset.autofilled = "1";
+        }
+      }
+
+      function selectAvailability(button){
+        document.querySelectorAll(".availability-btn").forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+        $("availability").value = button.dataset.availability || "immediate";
+      }
+
+      function buildSpontaneousMessage(baseMessage){
+        const prefix = "Candidature spontanée / profil agence DIGIY JOBS.";
+        const trade = $("trade").value.trim();
+        const city = $("city").value.trim();
+        const exp = $("years_experience").value.trim();
+
+        return [
+          prefix,
+          trade ? `Profil : ${trade}.` : null,
+          city ? `Ville : ${city}.` : null,
+          exp ? `Expérience : ${exp}.` : null,
+          baseMessage || "Disponible pour échanger si une mission correspond à mon profil."
+        ].filter(Boolean).join("\n");
       }
 
       async function handleSubmit(e){
@@ -645,8 +879,10 @@
           return;
         }
 
-        if (!state.offer?.id) {
-          showStatus("err", "Ouvre cette page depuis une mission active pour que ta candidature arrive au bon bureau.");
+        const isAgencyMode = state.mode === "agency";
+
+        if (!state.offer?.id && !isAgencyMode) {
+          showStatus("err", "Ouvre cette page depuis une mission active, ou choisis “Je laisse mon profil à l’agence”.");
           return;
         }
 
@@ -659,30 +895,40 @@
           return;
         }
 
+        const baseMessage = $("message").value.trim();
+        const finalMessage = isAgencyMode ? buildSpontaneousMessage(baseMessage) : (baseMessage || null);
+
         const payload = {
-          p_offer_id: state.offer.id,
+          p_offer_id: isAgencyMode ? null : state.offer.id,
           p_full_name: fullName,
           p_phone: phone,
-          p_job_title: trade || state.offer.title || null,
+          p_job_title: trade || state.offer?.title || "Profil candidat",
           p_city: $("city").value.trim() || null,
           p_country: $("country").value.trim() || "Sénégal",
           p_availability: $("availability").value || "immediate",
           p_years_experience: $("years_experience").value.trim() || null,
-          p_message: $("message").value.trim() || null
+          p_message: finalMessage
         };
 
         const btn = $("submitBtn");
         btn.disabled = true;
-        btn.textContent = "Envoi en cours...";
+        btn.textContent = isAgencyMode ? "Envoi du profil..." : "Envoi en cours...";
 
         const { data, error } = await sb.rpc("digiy_jobs_public_apply", payload);
 
         btn.disabled = false;
-        btn.textContent = "Envoyer ma candidature";
+        btn.textContent = isAgencyMode ? "Envoyer mon profil à l’agence" : "Envoyer ma candidature";
 
         if (error) {
           console.error(error);
-          showStatus("err", "Impossible d’envoyer la candidature pour le moment.");
+          if (isAgencyMode) {
+            showStatus(
+              "warn",
+              "Le profil agence est prêt côté page, mais Supabase refuse encore les candidatures sans mission.\nAction SQL possible : autoriser digiy_jobs_public_apply avec p_offer_id = null ou créer une mission générique “Candidature spontanée”."
+            );
+          } else {
+            showStatus("err", "Impossible d’envoyer la candidature pour le moment.");
+          }
           return;
         }
 
@@ -694,13 +940,46 @@
 
         $("applyForm").reset();
         $("country").value = "Sénégal";
+        $("availability").value = "immediate";
+        document.querySelectorAll(".quick-btn").forEach((btn) => btn.classList.remove("active"));
+        document.querySelectorAll(".availability-btn").forEach((btn) => btn.classList.toggle("active", btn.dataset.availability === "immediate"));
 
-        showStatus("ok", "Candidature envoyée. Le bureau JOBS pourra la lire et te recontacter si ton profil correspond.");
+        showStatus(
+          "ok",
+          isAgencyMode
+            ? "Profil envoyé à l’agence JOBS. Le bureau pourra le lire et te recontacter si une mission correspond."
+            : "Candidature envoyée. Le bureau JOBS pourra la lire et te recontacter si ton profil correspond."
+        );
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
+      $("modeMissionBtn").addEventListener("click", function(){
+        if (!state.offer?.id) {
+          showStatus("info", "Pour répondre à une mission précise, ouvre d’abord une mission depuis le mur.");
+        }
+        setMode("mission");
+      });
+
+      $("modeAgencyBtn").addEventListener("click", function(){
+        showStatus("info", "Mode profil agence : ton profil servira pour les prochaines missions.");
+        setMode("agency");
+      });
+
+      document.querySelectorAll(".quick-btn").forEach((btn) => {
+        btn.addEventListener("click", function(){ selectQuickProfile(this); });
+      });
+
+      document.querySelectorAll(".availability-btn").forEach((btn) => {
+        btn.addEventListener("click", function(){ selectAvailability(this); });
+      });
+
+      $("message").addEventListener("input", function(){
+        this.dataset.autofilled = "0";
+      });
+
       $("applyForm").addEventListener("submit", handleSubmit);
 
+      $("availability").value = "immediate";
       syncLinks();
       loadOffer();
     })();
