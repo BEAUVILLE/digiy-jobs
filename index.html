@@ -1,64 +1,55 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>DIGIY JOBS — Entrée publique</title>
-  <meta
-    name="description"
-    content="DIGIY JOBS — entrée publique pour voir les missions, déposer une candidature, ouvrir le dossier intelligent et suivre sa candidature."
-  />
-  <meta name="theme-color" content="#0f1720" />
+  <meta name="description" content="DIGIY JOBS — voir les missions, postuler simplement, préparer son dossier et suivre sa candidature.">
+  <meta name="theme-color" content="#0f1720">
 
   <style>
     :root{
       --bg:#f6f1e8;
-      --bg-2:#fffaf1;
+      --bg2:#fffaf1;
       --ink:#15202b;
-      --muted:#677281;
+      --muted:#667085;
       --line:#e7dac4;
-      --card:#ffffffd9;
+      --card:#ffffffdd;
       --deep:#0f1720;
       --gold:#c89a3d;
-      --gold-2:#e6bf6b;
-      --earth:#7a5a31;
-      --green:#1f7a5a;
-      --red:#b64a3c;
+      --gold2:#e6bf6b;
       --blue:#0ea5e9;
-      --blue-2:#38bdf8;
-      --shadow:0 18px 40px rgba(21,32,43,.08);
+      --green:#1f7a5a;
+      --shadow:0 18px 42px rgba(21,32,43,.08);
       --radius:24px;
-      --radius-sm:16px;
-      --max:1200px;
+      --max:1120px;
     }
 
     *{box-sizing:border-box}
-
     html{scroll-behavior:smooth}
 
     body{
       margin:0;
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       color:var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(200,154,61,.10), transparent 30%),
-        radial-gradient(circle at right 20%, rgba(31,122,90,.07), transparent 28%),
-        linear-gradient(180deg,var(--bg),var(--bg-2));
+        radial-gradient(circle at top left,rgba(200,154,61,.12),transparent 32%),
+        radial-gradient(circle at right 20%,rgba(31,122,90,.08),transparent 28%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
       padding-bottom:calc(84px + env(safe-area-inset-bottom,0px));
     }
 
     a{color:inherit;text-decoration:none}
-    button{font:inherit}
-
-    .wrap{width:min(calc(100% - 28px), var(--max));margin:0 auto}
+    .wrap{width:min(calc(100% - 28px),var(--max));margin:0 auto}
 
     .topbar{
       position:sticky;
       top:0;
       z-index:40;
-      backdrop-filter:blur(12px);
-      background:rgba(246,241,232,.84);
+      background:rgba(246,241,232,.88);
       border-bottom:1px solid rgba(231,218,196,.9);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
     }
 
     .topbar-inner{
@@ -73,36 +64,37 @@
       display:flex;
       align-items:center;
       gap:12px;
-      font-weight:900;
+      font-weight:1000;
       letter-spacing:.02em;
     }
 
     .brand-mark{
-      width:40px;
-      height:40px;
-      border-radius:14px;
-      background:linear-gradient(135deg,var(--deep),#233548);
-      color:#fff;
+      width:42px;
+      height:42px;
+      border-radius:15px;
       display:grid;
       place-items:center;
+      background:linear-gradient(135deg,var(--deep),#233548);
+      color:#fff;
       box-shadow:var(--shadow);
-      font-size:14px;
+      flex:0 0 auto;
     }
 
     .brand small{
       display:block;
+      margin-top:2px;
       font-size:12px;
       color:var(--muted);
-      font-weight:700;
+      font-weight:850;
       letter-spacing:.08em;
     }
 
     .nav{
       display:flex;
       align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
       justify-content:flex-end;
+      flex-wrap:wrap;
+      gap:10px;
     }
 
     .nav a{
@@ -110,56 +102,44 @@
       border-radius:999px;
       border:1px solid var(--line);
       background:#fff8;
-      font-weight:700;
       font-size:14px;
+      font-weight:850;
     }
 
     .nav a.primary{
-      background:linear-gradient(135deg,var(--gold),var(--gold-2));
-      border-color:transparent;
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
       color:#23180a;
+      border-color:transparent;
     }
 
     .nav a.blue{
-      background:linear-gradient(135deg,var(--blue),var(--blue-2));
-      border-color:transparent;
+      background:linear-gradient(135deg,var(--blue),#38bdf8);
       color:#fff;
+      border-color:transparent;
     }
 
     .hero{padding:42px 0 24px}
 
     .hero-grid{
       display:grid;
-      grid-template-columns:1.15fr .85fr;
+      grid-template-columns:1.12fr .88fr;
       gap:22px;
       align-items:stretch;
     }
 
-    .hero-card,.panel,.nav-card,.stat,.step,.cta-card,.foot-card{
+    .hero-card,.panel,.door,.stat,.step,.cta-card,.foot-card{
       border:1px solid var(--line);
-      background:var(--card);
       border-radius:var(--radius);
+      background:var(--card);
       box-shadow:var(--shadow);
     }
 
     .hero-card{
       padding:28px;
-      position:relative;
       overflow:hidden;
       background:
-        radial-gradient(circle at top right, rgba(200,154,61,.15), transparent 34%),
-        linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.88));
-    }
-
-    .hero-card::after{
-      content:"";
-      position:absolute;
-      right:-50px;
-      top:-30px;
-      width:190px;
-      height:190px;
-      border-radius:50%;
-      border:26px solid rgba(31,122,90,.06);
+        radial-gradient(circle at top right,rgba(200,154,61,.16),transparent 34%),
+        linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.88));
     }
 
     .eyebrow{
@@ -171,9 +151,9 @@
       border:1px solid var(--line);
       background:#fff;
       font-size:12px;
-      font-weight:900;
+      font-weight:1000;
       letter-spacing:.08em;
-      color:var(--earth);
+      color:#7a5a31;
       text-transform:uppercase;
     }
 
@@ -182,15 +162,16 @@
       font-size:clamp(34px,5vw,64px);
       line-height:.96;
       letter-spacing:-.04em;
-      max-width:11ch;
+      max-width:12ch;
     }
 
     .lead{
       margin:0 0 20px;
-      max-width:62ch;
+      max-width:64ch;
       font-size:17px;
       line-height:1.65;
       color:#334155;
+      font-weight:650;
     }
 
     .hero-actions{
@@ -201,37 +182,21 @@
     }
 
     .btn{
+      min-height:50px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
       padding:14px 18px;
       border-radius:16px;
-      font-weight:900;
-      border:1px solid transparent;
-      transition:transform .18s ease, box-shadow .18s ease;
+      font-weight:1000;
       text-align:center;
+      border:1px solid transparent;
     }
 
-    .btn:hover{transform:translateY(-1px)}
-
-    .btn-dark{
-      background:var(--deep);
-      color:#fff;
-      box-shadow:0 12px 24px rgba(15,23,32,.16);
-    }
-
-    .btn-light{
-      background:#fff;
-      color:var(--ink);
-      border-color:var(--line);
-    }
-
-    .btn-blue{
-      background:linear-gradient(135deg,var(--blue),var(--blue-2));
-      color:#fff;
-      box-shadow:0 12px 24px rgba(14,165,233,.18);
-    }
+    .btn-dark{background:var(--deep);color:#fff}
+    .btn-light{background:#fff;color:var(--ink);border-color:var(--line)}
+    .btn-blue{background:linear-gradient(135deg,var(--blue),#38bdf8);color:#fff}
 
     .hero-notes{
       display:flex;
@@ -246,13 +211,13 @@
       border:1px solid var(--line);
       color:var(--muted);
       font-size:14px;
-      font-weight:700;
+      font-weight:850;
     }
 
     .pill.blue{
       color:#075985;
-      border-color:rgba(14,165,233,.18);
       background:rgba(14,165,233,.08);
+      border-color:rgba(14,165,233,.18);
     }
 
     .panel{
@@ -260,61 +225,20 @@
       display:flex;
       flex-direction:column;
       gap:14px;
-      background:linear-gradient(180deg, rgba(15,23,32,.98), rgba(23,35,49,.98));
+      background:linear-gradient(180deg,rgba(15,23,32,.98),rgba(23,35,49,.98));
       color:#fff;
       border-color:#263243;
     }
 
-    .panel h2{
-      margin:0;
-      font-size:19px;
-      letter-spacing:-.02em;
-    }
-
-    .panel p{
-      margin:0;
-      color:#d2dae4;
-      line-height:1.55;
-    }
-
-    .panel-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:12px;
-    }
-
-    .mini-card{
-      padding:14px;
-      border-radius:18px;
-      border:1px solid #2f3f54;
-      background:rgba(255,255,255,.04);
-      box-shadow:none;
-    }
-
-    .mini-card strong{
-      display:block;
-      font-size:14px;
-      margin-bottom:6px;
-    }
-
-    .mini-card span{
-      font-size:13px;
-      color:#cbd5e1;
-      line-height:1.45;
-    }
-
     .signal{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
+      width:max-content;
       padding:10px 12px;
       border-radius:14px;
       background:rgba(200,154,61,.12);
       border:1px solid rgba(230,191,107,.25);
       color:#ffeab8;
-      font-weight:800;
+      font-weight:900;
       font-size:13px;
-      flex-wrap:wrap;
     }
 
     .signal.blue{
@@ -322,6 +246,27 @@
       border-color:rgba(14,165,233,.18);
       color:#d8f2ff;
     }
+
+    .panel h2{margin:0;font-size:21px}
+    .panel p{margin:0;color:#d2dae4;line-height:1.6;font-weight:650}
+
+    .panel-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .mini{
+      padding:14px;
+      border-radius:18px;
+      border:1px solid #2f3f54;
+      background:rgba(255,255,255,.04);
+    }
+
+    .mini strong{display:block;font-size:14px;margin-bottom:6px}
+    .mini span{font-size:13px;color:#cbd5e1;line-height:1.45;font-weight:650}
+
+    .section{padding:20px 0 12px}
 
     .stats{
       display:grid;
@@ -331,22 +276,8 @@
     }
 
     .stat{padding:18px}
-
-    .stat strong{
-      display:block;
-      font-size:28px;
-      line-height:1;
-      margin-bottom:8px;
-    }
-
-    .stat span{
-      color:var(--muted);
-      font-weight:700;
-      font-size:14px;
-      line-height:1.5;
-    }
-
-    .section{padding:20px 0 12px}
+    .stat strong{display:block;font-size:28px;line-height:1;margin-bottom:8px}
+    .stat span{color:var(--muted);font-weight:850;font-size:14px;line-height:1.5}
 
     .section-head{
       display:flex;
@@ -368,90 +299,70 @@
       color:var(--muted);
       max-width:65ch;
       line-height:1.6;
+      font-weight:650;
     }
 
-    .nav-grid{
+    .door-grid{
       display:grid;
       grid-template-columns:repeat(4,minmax(0,1fr));
       gap:16px;
     }
 
-    .nav-card{
+    .door{
       padding:20px;
       display:flex;
       flex-direction:column;
       gap:14px;
     }
 
-    .nav-card .badge{
+    .badge{
+      width:max-content;
       display:inline-flex;
-      align-items:center;
-      gap:8px;
       padding:8px 11px;
       border-radius:999px;
       font-size:12px;
-      font-weight:900;
+      font-weight:1000;
       text-transform:uppercase;
       letter-spacing:.06em;
-      border:1px solid var(--line);
       background:#fff;
-      width:max-content;
+      border:1px solid var(--line);
     }
 
-    .nav-card .badge.ok{color:var(--green)}
-    .nav-card .badge.warn{color:var(--earth)}
-    .nav-card .badge.hot{color:var(--red)}
-    .nav-card .badge.blue{color:#075985}
+    .badge.ok{color:var(--green)}
+    .badge.warn{color:#7a5a31}
+    .badge.blue{color:#075985}
+    .badge.hot{color:#b64a3c}
 
-    .nav-card h3{
-      margin:0;
-      font-size:23px;
-      letter-spacing:-.03em;
-    }
+    .door h3{margin:0;font-size:23px;letter-spacing:-.03em}
+    .door p{margin:0;color:#475569;line-height:1.6;font-size:14px;font-weight:650;flex:1}
 
-    .nav-card p{
-      margin:0;
-      color:#475569;
-      line-height:1.6;
-      font-size:14px;
-      flex:1;
-    }
-
-    .card-meta{
+    .meta{
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
       gap:10px;
     }
 
-    .meta-item{
+    .meta div{
       padding:12px;
       border-radius:16px;
       background:#fff;
       border:1px solid var(--line);
-      min-height:78px;
+      min-height:74px;
     }
 
-    .meta-item small{
+    .meta small{
       display:block;
       color:var(--muted);
       font-size:12px;
-      font-weight:800;
+      font-weight:1000;
       text-transform:uppercase;
       letter-spacing:.08em;
       margin-bottom:6px;
     }
 
-    .meta-item strong{
-      display:block;
-      font-size:14px;
-      line-height:1.45;
-    }
+    .meta strong{display:block;font-size:14px;line-height:1.45}
 
-    .job-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
+    .door-actions{display:flex;gap:10px;flex-wrap:wrap}
 
     .action-link{
       flex:1 1 160px;
@@ -459,21 +370,12 @@
       padding:13px 14px;
       border-radius:14px;
       border:1px solid var(--line);
-      font-weight:900;
+      font-weight:1000;
       background:#fff;
     }
 
-    .action-link.dark{
-      background:var(--deep);
-      color:#fff;
-      border-color:var(--deep);
-    }
-
-    .action-link.blue{
-      background:rgba(14,165,233,.10);
-      border-color:rgba(14,165,233,.18);
-      color:#075985;
-    }
+    .action-link.dark{background:var(--deep);color:#fff;border-color:var(--deep)}
+    .action-link.blue{background:rgba(14,165,233,.10);border-color:rgba(14,165,233,.18);color:#075985}
 
     .flow-grid{
       display:grid;
@@ -482,29 +384,20 @@
     }
 
     .step{padding:20px}
-
     .step-num{
-      width:40px;
-      height:40px;
-      border-radius:12px;
+      width:42px;
+      height:42px;
+      border-radius:13px;
       display:grid;
       place-items:center;
-      background:linear-gradient(135deg,var(--gold),var(--gold-2));
-      font-weight:900;
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      font-weight:1000;
       color:#23180a;
       margin-bottom:14px;
     }
 
-    .step h3{
-      margin:0 0 10px;
-      font-size:20px;
-    }
-
-    .step p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.65;
-    }
+    .step h3{margin:0 0 10px;font-size:20px}
+    .step p{margin:0;color:var(--muted);line-height:1.65;font-weight:650}
 
     .cta{padding:26px 0 40px}
 
@@ -519,143 +412,19 @@
       border-color:#28364a;
     }
 
-    .cta-card h2{
-      margin:0 0 12px;
-      font-size:clamp(26px,4vw,42px);
-      letter-spacing:-.03em;
-    }
+    .cta-card h2{margin:0 0 12px;font-size:clamp(26px,4vw,42px);letter-spacing:-.03em}
+    .cta-card p{margin:0;color:#d7e0ea;line-height:1.65;font-weight:650}
 
-    .cta-card p{
-      margin:0;
-      color:#d7e0ea;
-      line-height:1.65;
-      max-width:60ch;
-    }
-
-    .cta-right{
-      display:grid;
-      gap:12px;
-    }
-
-    .cta-box{
-      padding:14px 16px;
-      border-radius:18px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-    }
-
-    .cta-box small{
-      display:block;
-      color:#e7c97f;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-bottom:6px;
-    }
-
-    .cta-box strong{
-      font-size:16px;
-      line-height:1.5;
-    }
-
-    .return-house{
-      padding:22px;
-      border:1px solid var(--line);
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      margin-top:20px;
-    }
-
-    .return-house h2{
-      margin:0 0 8px;
-      font-size:clamp(24px,3vw,36px);
-      letter-spacing:-.03em;
-    }
-
-    .return-house p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.6;
-      max-width:70ch;
-    }
-
-    .return-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
+    .cta-right{display:grid;gap:12px}
+    .cta-box{padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10)}
+    .cta-box small{display:block;color:#e7c97f;font-weight:1000;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+    .cta-box strong{font-size:16px;line-height:1.5}
 
     footer{padding:0 0 38px}
-
-    .foot-card{
-      padding:18px 20px;
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-
-    .foot-card p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.6;
-    }
-
-    .foot-links{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .foot-links a{
-      padding:10px 12px;
-      border-radius:12px;
-      background:#fff;
-      border:1px solid var(--line);
-      font-weight:800;
-    }
-
-    .floating-returns{
-      position:fixed;
-      right:16px;
-      bottom:calc(96px + env(safe-area-inset-bottom, 0px));
-      z-index:95;
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:flex-end;
-    }
-
-    .floating-site-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:14px 16px;
-      border-radius:999px;
-      background:linear-gradient(135deg,var(--deep),#233548);
-      color:#fff;
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:0 18px 32px rgba(15,23,32,.22);
-      font-weight:900;
-      font-size:14px;
-      letter-spacing:.01em;
-      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
-    }
-
-    .floating-site-btn:hover{
-      transform:translateY(-2px);
-      box-shadow:0 22px 38px rgba(15,23,32,.28);
-    }
-
-    .floating-site-btn.hub{
-      background:linear-gradient(135deg,var(--gold),var(--gold-2));
-      color:#23180a;
-    }
+    .foot-card{padding:18px 20px;display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+    .foot-card p{margin:0;color:var(--muted);line-height:1.6;font-weight:650}
+    .foot-links{display:flex;gap:10px;flex-wrap:wrap}
+    .foot-links a{padding:10px 12px;border-radius:12px;background:#fff;border:1px solid var(--line);font-weight:900}
 
     .bottom-nav{
       position:fixed;
@@ -690,50 +459,37 @@
       font-weight:1000;
       text-align:center;
       border:1px solid transparent;
-      text-decoration:none;
-      background:transparent;
       padding:0 4px;
     }
 
     .bottom-nav .ico{font-size:18px;line-height:1}
+    .bottom-nav a.active{background:var(--deep);color:#fff}
 
-    .bottom-nav a.active{
-      background:var(--deep);
-      color:#fff;
+    @media (max-width:1180px){
+      .door-grid,.flow-grid{grid-template-columns:1fr 1fr}
     }
 
-    #digiy-audio-btn{
-      bottom:calc(96px + env(safe-area-inset-bottom,0px)) !important;
-    }
-
-    @media (max-width: 1180px){
-      .nav-grid{grid-template-columns:1fr 1fr}
-      .flow-grid{grid-template-columns:1fr 1fr}
-    }
-
-    @media (max-width: 1080px){
+    @media (max-width:1080px){
       .hero-grid,.cta-card,.stats{grid-template-columns:1fr 1fr}
     }
 
-    @media (max-width: 820px){
-      .hero-grid,.cta-card,.nav-grid,.flow-grid,.stats{grid-template-columns:1fr}
-      .panel-grid,.card-meta{grid-template-columns:1fr}
+    @media (max-width:820px){
+      .hero-grid,.cta-card,.door-grid,.flow-grid,.stats{grid-template-columns:1fr}
+      .panel-grid,.meta{grid-template-columns:1fr}
       .nav{display:none}
       .hero{padding-top:22px}
       h1{max-width:none}
-      .floating-returns{
-        right:12px;
-        left:12px;
-        bottom:calc(84px + env(safe-area-inset-bottom, 0px));
-        justify-content:center;
-      }
-      .floating-returns .floating-site-btn{
-        flex:1;
-        padding:15px 16px;
-      }
+    }
+
+    @media (max-width:520px){
+      .wrap{width:min(calc(100% - 20px),var(--max))}
+      .hero-card,.panel,.door,.step,.cta-card{border-radius:20px;padding:18px}
+      .hero-actions .btn{width:100%}
+      .door-actions .action-link{flex:1 1 100%}
     }
   </style>
 </head>
+
 <body>
   <header class="topbar">
     <div class="wrap topbar-inner">
@@ -749,10 +505,10 @@
         <a href="https://digiylyfe.com/">🌍 Site</a>
         <a href="https://digiy-hub.digiylyfe.com/">🧭 HUB</a>
         <a href="https://tarifs.digiylyfe.com/" target="_blank" rel="noopener noreferrer">📦 Tarifs</a>
-        <a id="navWall" href="./mur%20des%20missions.html">Missions</a>
-        <a id="navApply" href="./postuler.html?offer=5e978d75-339a-465f-b984-4e82362f71db">Postuler</a>
-        <a id="navDossier" class="blue" href="./dossier-intelligent.html">Dossier</a>
-        <a id="navSuivi" href="./suivi.html">Suivi</a>
+        <a href="./missions.html">Missions</a>
+        <a href="./postuler.html">Postuler</a>
+        <a class="blue" href="./dossier-intelligent.html">Dossier</a>
+        <a href="./suivi.html">Suivi</a>
         <a class="primary" href="#entrer">Entrer</a>
       </nav>
     </div>
@@ -763,58 +519,42 @@
       <div class="wrap hero-grid">
         <article class="hero-card">
           <span class="eyebrow">Entrée publique DIGIY JOBS</span>
-          <h1>Le travail visible. Les missions lisibles. Le terrain d’abord.</h1>
+          <h1>Voir une mission. Postuler simplement.</h1>
           <p class="lead">
-            DIGIY JOBS montre les missions, ouvre la porte aux candidatures, aide à préparer un dossier plus clair,
-            puis permet au candidat de suivre son dépôt. Ici on cherche la clarté :
-            besoin réel, profil réel, opportunité utile.
+            DIGIY JOBS montre les missions utiles, ouvre la candidature et garde un parcours clair.
+            Le public voit, comprend, postule et suit son dépôt sans entrer dans l’espace professionnel.
           </p>
 
           <div class="hero-actions">
-            <a id="heroWallBtn" class="btn btn-dark" href="./mur%20des%20missions.html">Voir les missions</a>
-            <a id="heroApplyBtn" class="btn btn-light" href="./postuler.html?offer=5e978d75-339a-465f-b984-4e82362f71db">Déposer ma candidature</a>
-            <a id="heroDossierBtn" class="btn btn-blue" href="./dossier-intelligent.html">Ouvrir le dossier</a>
-            <a id="heroSuiviBtn" class="btn btn-light" href="./suivi.html">Suivre ma candidature</a>
-            <a class="btn btn-light" href="https://digiylyfe.com/">🌍 Site DIGIYLYFE</a>
-            <a class="btn btn-light" href="https://digiy-hub.digiylyfe.com/">🧭 HUB DIGIY</a>
-            <a class="btn btn-light" href="https://tarifs.digiylyfe.com/" target="_blank" rel="noopener noreferrer">📦 Tarifs</a>
+            <a class="btn btn-dark" href="./missions.html">Voir les missions</a>
+            <a class="btn btn-light" href="./postuler.html">Déposer ma candidature</a>
+            <a class="btn btn-blue" href="./dossier-intelligent.html">Ouvrir mon dossier</a>
+            <a class="btn btn-light" href="./suivi.html">Suivre ma candidature</a>
           </div>
 
           <div class="hero-notes">
-            <span class="pill">Mur des missions</span>
+            <span class="pill">Missions lisibles</span>
             <span class="pill">Candidature simple</span>
-            <span class="pill blue">Dossier intelligent</span>
-            <span class="pill">Suivi candidature</span>
+            <span class="pill blue">Dossier clair</span>
+            <span class="pill">Suivi candidat</span>
           </div>
         </article>
 
         <aside class="panel" aria-label="Résumé du module">
-          <span class="signal" id="publicPill">Accès : public candidat</span>
-          <span class="signal blue" id="contextPill">Contexte : public</span>
+          <span class="signal">Accès : public candidat</span>
+          <span class="signal blue">Contexte : JOBS public</span>
 
           <h2>Ce que cette porte fait</h2>
           <p>
-            Elle sert d’accueil public propre pour DIGIY JOBS. Depuis ici on ouvre les missions,
-            on postule, on prépare son dossier et on suit sa candidature sans mélanger avec le coffre professionnel.
+            Elle sert d’accueil public propre : voir les missions, postuler, préparer un dossier,
+            puis suivre son dépôt. Le coffre professionnel reste séparé.
           </p>
 
           <div class="panel-grid">
-            <div class="mini-card">
-              <strong>Public</strong>
-              <span>Voir les missions publiées et comprendre le fonctionnement.</span>
-            </div>
-            <div class="mini-card">
-              <strong>Candidat</strong>
-              <span>Déposer une candidature simple, liée ou spontanée.</span>
-            </div>
-            <div class="mini-card">
-              <strong>Dossier</strong>
-              <span>Préparer un profil plus clair selon le bon contexte métier.</span>
-            </div>
-            <div class="mini-card">
-              <strong>Suivi</strong>
-              <span>Retrouver son dépôt et garder un fil clair côté candidat.</span>
-            </div>
+            <div class="mini"><strong>Voir</strong><span>Lire les missions publiées et comprendre le besoin.</span></div>
+            <div class="mini"><strong>Postuler</strong><span>Déposer un profil simple avec WhatsApp et disponibilité.</span></div>
+            <div class="mini"><strong>Dossier</strong><span>Clarifier son profil avant ou après une candidature.</span></div>
+            <div class="mini"><strong>Suivi</strong><span>Retrouver son dépôt sans confusion.</span></div>
           </div>
         </aside>
       </div>
@@ -822,22 +562,10 @@
 
     <section class="section">
       <div class="wrap stats">
-        <article class="stat">
-          <strong>1 hall</strong>
-          <span>Pour entrer proprement dans l’univers JOBS</span>
-        </article>
-        <article class="stat">
-          <strong>4 portes</strong>
-          <span>Missions, postuler, dossier, suivi</span>
-        </article>
-        <article class="stat">
-          <strong>0 code</strong>
-          <span>Le candidat ne cherche pas un PIN</span>
-        </article>
-        <article class="stat">
-          <strong>100%</strong>
-          <span>Parcours public candidat</span>
-        </article>
+        <article class="stat"><strong>1</strong><span>Entrée publique claire</span></article>
+        <article class="stat"><strong>4</strong><span>Actions simples</span></article>
+        <article class="stat"><strong>0</strong><span>Code PIN pour le candidat</span></article>
+        <article class="stat"><strong>100%</strong><span>Parcours public</span></article>
       </div>
     </section>
 
@@ -846,95 +574,53 @@
         <div class="section-head">
           <div>
             <h2>Choisir sa porte</h2>
-            <p>
-              Mission, candidature, dossier ou suivi : chacun a son passage. Le coffre professionnel reste séparé.
-            </p>
+            <p>Le public n’a pas besoin d’une interface lourde. Il choisit : missions, candidature, dossier ou suivi.</p>
           </div>
         </div>
 
-        <div class="nav-grid">
-          <article class="nav-card">
+        <div class="door-grid">
+          <article class="door">
             <span class="badge ok">Public</span>
-            <h3>Mur des missions</h3>
-            <p>
-              Voir les missions publiées, filtrer les besoins, puis ouvrir la fiche qui t’intéresse.
-            </p>
-            <div class="card-meta">
-              <div class="meta-item">
-                <small>Page</small>
-                <strong>mur des missions.html</strong>
-              </div>
-              <div class="meta-item">
-                <small>Usage</small>
-                <strong>Lire avant d’agir</strong>
-              </div>
+            <h3>Missions</h3>
+            <p>Voir les missions publiées, filtrer les besoins, puis ouvrir la fiche qui t’intéresse.</p>
+            <div class="meta">
+              <div><small>Page</small><strong>missions.html</strong></div>
+              <div><small>Usage</small><strong>Lire avant d’agir</strong></div>
             </div>
-            <div class="job-actions">
-              <a id="wallCardBtn" class="action-link dark" href="./mur%20des%20missions.html">Ouvrir le mur</a>
-            </div>
+            <div class="door-actions"><a class="action-link dark" href="./missions.html">Voir les missions</a></div>
           </article>
 
-          <article class="nav-card">
+          <article class="door">
             <span class="badge warn">Candidat</span>
             <h3>Postuler</h3>
-            <p>
-              Déposer une candidature liée à une mission ou envoyer une candidature spontanée.
-            </p>
-            <div class="card-meta">
-              <div class="meta-item">
-                <small>Page</small>
-                <strong>postuler.html</strong>
-              </div>
-              <div class="meta-item">
-                <small>Usage</small>
-                <strong>Nom, WhatsApp, métier, dispo</strong>
-              </div>
+            <p>Déposer une candidature liée à une mission ou envoyer une candidature simple.</p>
+            <div class="meta">
+              <div><small>Page</small><strong>postuler.html</strong></div>
+              <div><small>Usage</small><strong>Nom, WhatsApp, métier</strong></div>
             </div>
-            <div class="job-actions">
-              <a id="applyCardBtn" class="action-link dark" href="./postuler.html?offer=5e978d75-339a-465f-b984-4e82362f71db">Déposer un profil</a>
-            </div>
+            <div class="door-actions"><a class="action-link dark" href="./postuler.html">Déposer un profil</a></div>
           </article>
 
-          <article class="nav-card">
+          <article class="door">
             <span class="badge blue">Dossier</span>
-            <h3>Dossier intelligent</h3>
-            <p>
-              Préparer un dossier plus clair selon le bon contexte métier, avec BUILD ou Hôtellerie-Restauration.
-            </p>
-            <div class="card-meta">
-              <div class="meta-item">
-                <small>Page</small>
-                <strong>dossier-intelligent.html</strong>
-              </div>
-              <div class="meta-item">
-                <small>Usage</small>
-                <strong>Qualifier le profil</strong>
-              </div>
+            <h3>Dossier</h3>
+            <p>Préparer un profil plus clair selon son métier, son expérience et sa disponibilité.</p>
+            <div class="meta">
+              <div><small>Page</small><strong>dossier-intelligent.html</strong></div>
+              <div><small>Usage</small><strong>Clarifier le profil</strong></div>
             </div>
-            <div class="job-actions">
-              <a id="dossierCardBtn" class="action-link blue" href="./dossier-intelligent.html">Ouvrir le dossier</a>
-            </div>
+            <div class="door-actions"><a class="action-link blue" href="./dossier-intelligent.html">Ouvrir le dossier</a></div>
           </article>
 
-          <article class="nav-card">
+          <article class="door">
             <span class="badge hot">Suivi</span>
-            <h3>Suivre ma candidature</h3>
-            <p>
-              Retrouver le fil de son dépôt et rester orienté sans passer par une entrée professionnelle.
-            </p>
-            <div class="card-meta">
-              <div class="meta-item">
-                <small>Page</small>
-                <strong>suivi.html</strong>
-              </div>
-              <div class="meta-item">
-                <small>Usage</small>
-                <strong>Voir où en est mon dépôt</strong>
-              </div>
+            <h3>Suivi</h3>
+            <p>Retrouver son dépôt et garder un fil clair après avoir postulé.</p>
+            <div class="meta">
+              <div><small>Page</small><strong>suivi.html</strong></div>
+              <div><small>Usage</small><strong>Voir où en est mon dépôt</strong></div>
             </div>
-            <div class="job-actions">
-              <a id="suiviCardBtn" class="action-link dark" href="./suivi.html">Ouvrir le suivi</a>
-            </div>
+            <div class="door-actions"><a class="action-link dark" href="./suivi.html">Ouvrir le suivi</a></div>
           </article>
         </div>
       </div>
@@ -944,104 +630,38 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <h2>Lecture simple du parcours</h2>
-            <p>
-              Le public voit, le candidat postule, le dossier affine, puis le suivi garde un fil clair.
-              Le professionnel travaille dans son espace séparé.
-            </p>
+            <h2>Parcours simple</h2>
+            <p>Le candidat n’a pas besoin de comprendre l’arrière-cuisine. Il avance par étapes claires.</p>
           </div>
         </div>
 
         <div class="flow-grid">
-          <article class="step">
-            <div class="step-num">1</div>
-            <h3>Le public voit le besoin</h3>
-            <p>
-              Le mur des missions affiche les offres actives sans ouvrir les outils professionnels.
-            </p>
-          </article>
-
-          <article class="step">
-            <div class="step-num">2</div>
-            <h3>Le candidat se présente</h3>
-            <p>
-              Il ouvre la fiche mission ou la page postuler, remplit l’essentiel, puis la candidature part au bon bureau.
-            </p>
-          </article>
-
-          <article class="step">
-            <div class="step-num">3</div>
-            <h3>Le dossier qualifie mieux</h3>
-            <p>
-              Le dossier intelligent affine le contexte métier et rend la lecture plus nette côté traitement.
-            </p>
-          </article>
-
-          <article class="step">
-            <div class="step-num">4</div>
-            <h3>Le suivi garde le fil</h3>
-            <p>
-              Le candidat retrouve son dépôt sans chercher un code professionnel.
-            </p>
-          </article>
+          <article class="step"><div class="step-num">1</div><h3>Voir</h3><p>Il ouvre les missions et repère un besoin réel.</p></article>
+          <article class="step"><div class="step-num">2</div><h3>Comprendre</h3><p>Il lit la fiche : métier, ville, type, conditions utiles.</p></article>
+          <article class="step"><div class="step-num">3</div><h3>Postuler</h3><p>Il dépose son nom, WhatsApp, métier et disponibilité.</p></article>
+          <article class="step"><div class="step-num">4</div><h3>Suivre</h3><p>Il garde un fil clair avec son dépôt.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="cta" id="contact">
-      <div class="wrap">
-        <article class="cta-card">
-          <div>
-            <h2>L’entrée publique doit être simple, nette et sans confusion.</h2>
-            <p>
-              Cette page n’a pas besoin de tout faire. Son rôle est d’ouvrir les bonnes portes :
-              missions, candidature, dossier intelligent et suivi. Le travail professionnel se fait dans l’autre coffre.
-            </p>
-
-            <div class="hero-actions" style="margin-top:18px;margin-bottom:0">
-              <a id="ctaWallBtn" class="btn btn-dark" href="./mur%20des%20missions.html">Ouvrir le mur</a>
-              <a id="ctaApplyBtn" class="btn btn-light" href="./postuler.html?offer=5e978d75-339a-465f-b984-4e82362f71db">Postuler</a>
-              <a id="ctaDossierBtn" class="btn btn-blue" href="./dossier-intelligent.html">Dossier intelligent</a>
-              <a id="ctaSuiviBtn" class="btn btn-light" href="./suivi.html">Suivre ma candidature</a>
-              <a class="btn btn-light" href="https://digiy-hub.digiylyfe.com/">🧭 HUB DIGIY</a>
-              <a class="btn btn-light" href="https://tarifs.digiylyfe.com/" target="_blank" rel="noopener noreferrer">📦 Tarifs</a>
-            </div>
-          </div>
-
-          <div class="cta-right">
-            <div class="cta-box">
-              <small>Porte publique</small>
-              <strong>Entrée d’accueil pour expliquer et orienter sans faire doublon.</strong>
-            </div>
-            <div class="cta-box">
-              <small>Porte candidat</small>
-              <strong>Une page simple pour envoyer son profil sans détour.</strong>
-            </div>
-            <div class="cta-box">
-              <small>Porte dossier</small>
-              <strong>Une qualification plus propre selon le bon contexte métier.</strong>
-            </div>
-            <div class="cta-box">
-              <small>Porte suivi</small>
-              <strong>Un fil public pour retrouver sa candidature.</strong>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="retours-digiy">
-      <div class="wrap">
-        <div class="return-house">
-          <h2>Revenir dans la maison DIGIY</h2>
+    <section class="cta">
+      <div class="wrap cta-card">
+        <div>
+          <h2>Le travail doit être visible, pas compliqué.</h2>
           <p>
-            Cette page ouvre l’entrée publique JOBS. Pour revenir à la vitrine, au HUB ou aux tarifs officiels,
-            utilise les portes ci-dessous.
+            DIGIY JOBS garde la porte publique claire : voir les missions, postuler simplement,
+            préparer son dossier, suivre son dépôt. Le terrain avance quand l’écran respire.
           </p>
-          <div class="return-actions">
-            <a class="btn btn-light" href="https://digiylyfe.com/">🌍 Site DIGIYLYFE</a>
-            <a class="btn btn-dark" href="https://digiy-hub.digiylyfe.com/">🧭 HUB DIGIY</a>
-            <a class="btn btn-light" href="https://tarifs.digiylyfe.com/" target="_blank" rel="noopener noreferrer">📦 Tarifs</a>
+        </div>
+
+        <div class="cta-right">
+          <div class="cta-box">
+            <small>Action principale</small>
+            <strong><a href="./missions.html">Voir les missions disponibles</a></strong>
+          </div>
+          <div class="cta-box">
+            <small>Après la lecture</small>
+            <strong><a href="./postuler.html">Déposer une candidature</a></strong>
           </div>
         </div>
       </div>
@@ -1049,433 +669,26 @@
   </main>
 
   <footer>
-    <div class="wrap">
-      <div class="foot-card">
-        <p>
-          DIGIY JOBS — entrée publique. Une porte claire pour voir, postuler, préparer et suivre.
-        </p>
-
-        <div class="foot-links">
-          <a href="https://digiylyfe.com/">🌍 Site</a>
-          <a href="https://digiy-hub.digiylyfe.com/">🧭 HUB</a>
-          <a href="https://tarifs.digiylyfe.com/" target="_blank" rel="noopener noreferrer">📦 Tarifs</a>
-          <a href="#top">Retour haut</a>
-          <a id="footWall" href="./mur%20des%20missions.html">Missions</a>
-          <a id="footApply" href="./postuler.html?offer=5e978d75-339a-465f-b984-4e82362f71db">Postuler</a>
-          <a id="footDossier" href="./dossier-intelligent.html">Dossier</a>
-          <a id="footSuivi" href="./suivi.html">Suivi</a>
-        </div>
+    <div class="wrap foot-card">
+      <p>DIGIY JOBS · Entrée publique candidat · BY DIGIYLYFE</p>
+      <div class="foot-links">
+        <a href="https://digiylyfe.com/">Site</a>
+        <a href="https://digiy-hub.digiylyfe.com/">HUB</a>
+        <a href="https://tarifs.digiylyfe.com/">Tarifs</a>
       </div>
     </div>
   </footer>
 
-  <nav class="bottom-nav" aria-label="Navigation rapide DIGIY JOBS">
+  <nav class="bottom-nav" aria-label="Navigation mobile">
     <div class="bottom-nav-inner">
-      <a href="https://digiylyfe.com/"><span class="ico">🌍</span><span>Site</span></a>
-      <a href="https://digiy-hub.digiylyfe.com/"><span class="ico">🧭</span><span>HUB</span></a>
-      <a href="https://tarifs.digiylyfe.com/" target="_blank" rel="noopener noreferrer"><span class="ico">📦</span><span>Tarifs</span></a>
-      <a class="active" id="bottomWall" href="./mur%20des%20missions.html"><span class="ico">📌</span><span>Missions</span></a>
-      <a id="bottomApply" href="./postuler.html?offer=5e978d75-339a-465f-b984-4e82362f71db"><span class="ico">📝</span><span>Postuler</span></a>
+      <a class="active" href="./index.html"><span class="ico">⌂</span>Accueil</a>
+      <a href="./missions.html"><span class="ico">◎</span>Missions</a>
+      <a href="./postuler.html"><span class="ico">＋</span>Postuler</a>
+      <a href="./dossier-intelligent.html"><span class="ico">□</span>Dossier</a>
+      <a href="./suivi.html"><span class="ico">↗</span>Suivi</a>
     </div>
   </nav>
-
-  <div class="floating-returns" aria-label="Retours DIGIY">
-    <a class="floating-site-btn" href="https://digiylyfe.com/" aria-label="Retour au site DIGIYLYFE" title="Retour au site">
-      🌍 Site
-    </a>
-    <a class="floating-site-btn hub" href="https://digiy-hub.digiylyfe.com/" aria-label="Retour au HUB DIGIY" title="Retour au HUB">
-      🧭 HUB
-    </a>
-  </div>
-
-  <script>
-    (function(){
-      "use strict";
-
-      const SENSITIVE_PARAMS = [
-        "slug",
-        "phone",
-        "tel",
-        "resa_tel",
-        "owner_phone",
-        "owner",
-        "owner_id",
-        "business_code",
-        "keybox_code",
-        "keybox_location",
-        "access_note"
-      ];
-
-      function normalizeSecteur(value){
-        const raw = String(value || "").trim().toLowerCase();
-
-        if (
-          raw === "build" ||
-          raw === "btp" ||
-          raw === "chantier"
-        ) return "build";
-
-        if (
-          raw === "resto" ||
-          raw === "hotellerie-restauration" ||
-          raw === "hôtellerie-restauration" ||
-          raw === "food"
-        ) return "hotellerie-restauration";
-
-        return "";
-      }
-
-      const params = new URLSearchParams(window.location.search);
-      const secteur = normalizeSecteur(
-        String(params.get("secteur") || params.get("rail") || "").trim().toLowerCase()
-      );
-
-      const PATHS = {
-        wall: "./mur%20des%20missions.html",
-        apply: "./postuler.html?offer=5e978d75-339a-465f-b984-4e82362f71db",
-        dossier: "./dossier-intelligent.html",
-        suivi: "./suivi.html"
-      };
-
-      function scrubUrl(){
-        const clean = new URL(window.location.href);
-        let changed = false;
-
-        SENSITIVE_PARAMS.forEach((key) => {
-          if (clean.searchParams.has(key)) {
-            clean.searchParams.delete(key);
-            changed = true;
-          }
-        });
-
-        if (changed) {
-          history.replaceState({}, document.title, clean.pathname + clean.search + clean.hash);
-        }
-      }
-
-      function secteurLabel(value){
-        if (value === "build") return "BTP / travaux";
-        if (value === "hotellerie-restauration") return "Hôtellerie-Restauration";
-        return "public";
-      }
-
-      function withPublicContext(path){
-        const url = new URL(path, window.location.href);
-        if (secteur) url.searchParams.set("secteur", secteur);
-        return url.pathname + url.search;
-      }
-
-      function setHref(id, path){
-        const el = document.getElementById(id);
-        if (el) el.href = withPublicContext(path);
-      }
-
-      const contextPill = document.getElementById("contextPill");
-      if (contextPill) {
-        contextPill.textContent = `Contexte : ${secteurLabel(secteur)}`;
-      }
-
-      [
-        ["navWall", PATHS.wall],
-        ["navApply", PATHS.apply],
-        ["navDossier", PATHS.dossier],
-        ["navSuivi", PATHS.suivi],
-        ["heroWallBtn", PATHS.wall],
-        ["heroApplyBtn", PATHS.apply],
-        ["heroDossierBtn", PATHS.dossier],
-        ["heroSuiviBtn", PATHS.suivi],
-        ["wallCardBtn", PATHS.wall],
-        ["applyCardBtn", PATHS.apply],
-        ["dossierCardBtn", PATHS.dossier],
-        ["suiviCardBtn", PATHS.suivi],
-        ["ctaWallBtn", PATHS.wall],
-        ["ctaApplyBtn", PATHS.apply],
-        ["ctaDossierBtn", PATHS.dossier],
-        ["ctaSuiviBtn", PATHS.suivi],
-        ["footWall", PATHS.wall],
-        ["footApply", PATHS.apply],
-        ["footDossier", PATHS.dossier],
-        ["footSuivi", PATHS.suivi],
-        ["bottomWall", PATHS.wall],
-        ["bottomApply", PATHS.apply]
-      ].forEach(function(pair){
-        setHref(pair[0], pair[1]);
-      });
-
-      scrubUrl();
-    })();
-  </script>
-
-  <!-- ============================================================
-       DIGIY AUDIO — JOBS
-       ============================================================ -->
-
-  <script>
-    window.DIGIY_AUDIO_CONFIG = {
-      label: "Écouter travail",
-      stopLabel: "Arrêter",
-      text: "Bienvenue sur DIGIY JOBS. Ici, tu peux voir des missions, déposer ta candidature, préparer ton dossier et suivre ton dépôt. Le candidat cherche une opportunité claire. Le professionnel, lui, travaille dans son espace protégé. DIGIYLYFE garde le terrain simple, direct et humain.",
-      buttonBg: "linear-gradient(135deg,#d4af37,#b78b34)",
-      buttonColor: "#111827",
-      bottom: "24px",
-      left: "24px",
-      rate: 0.82,
-      pitch: 1,
-      volume: 1,
-      zIndex: 99999,
-      shadow: "0 10px 30px rgba(0,0,0,.26)"
-    };
-  </script>
-
-  <style>
-    #digiy-audio-btn{
-      position:fixed;
-      display:inline-flex;
-      align-items:center;
-      gap:12px;
-      padding:16px 26px;
-      border:none;
-      border-radius:999px;
-      cursor:pointer;
-      font-family:Inter,sans-serif;
-      font-weight:900;
-      font-size:17px;
-      line-height:1;
-      -webkit-tap-highlight-color:transparent;
-      user-select:none;
-      transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease;
-    }
-    #digiy-audio-btn:hover{transform:translateY(-2px)}
-    #digiy-audio-btn:active{transform:scale(.97)}
-    #digiy-audio-btn:disabled{opacity:.65;cursor:not-allowed}
-    #digiy-audio-btn .digiy-audio-ico{font-size:18px;line-height:1}
-    #digiy-audio-progress-wrap{
-      position:fixed;
-      left:0;
-      right:0;
-      bottom:0;
-      height:3px;
-      opacity:0;
-      pointer-events:none;
-      transition:opacity .25s ease;
-    }
-    #digiy-audio-progress{
-      width:0%;
-      height:100%;
-      transition:width .18s linear;
-    }
-    @media (max-width:600px){
-      #digiy-audio-btn{
-        font-size:16px;
-        padding:15px 22px;
-        gap:11px;
-      }
-      #digiy-audio-btn .digiy-audio-ico{font-size:17px}
-    }
-  </style>
-
-  <button id="digiy-audio-btn" type="button" aria-label="Écouter travail">
-    <span class="digiy-audio-ico">&#9654;</span>
-    <span class="digiy-audio-lbl">Écouter travail</span>
-  </button>
-
-  <div id="digiy-audio-progress-wrap" aria-hidden="true">
-    <div id="digiy-audio-progress"></div>
-  </div>
-
-  <script>
-    (function(){
-      var cfg = window.DIGIY_AUDIO_CONFIG || {};
-
-      var config = {
-        label: cfg.label || "Écouter DIGIY",
-        stopLabel: cfg.stopLabel || "Arrêter",
-        text: cfg.text || "Bienvenue sur DIGIYLYFE.",
-        buttonBg: cfg.buttonBg || "linear-gradient(135deg,#d4af37,#b78b34)",
-        buttonColor: cfg.buttonColor || "#111827",
-        bottom: cfg.bottom || "24px",
-        left: cfg.left || "24px",
-        rate: typeof cfg.rate === "number" ? cfg.rate : 0.82,
-        pitch: typeof cfg.pitch === "number" ? cfg.pitch : 1,
-        volume: typeof cfg.volume === "number" ? cfg.volume : 1,
-        zIndex: cfg.zIndex || 99999,
-        shadow: cfg.shadow || "0 8px 28px rgba(0,0,0,.24)"
-      };
-
-      var btn = document.getElementById("digiy-audio-btn");
-      var lbl = btn ? btn.querySelector(".digiy-audio-lbl") : null;
-      var ico = btn ? btn.querySelector(".digiy-audio-ico") : null;
-      var progressWrap = document.getElementById("digiy-audio-progress-wrap");
-      var progressBar = document.getElementById("digiy-audio-progress");
-
-      if (!btn || !lbl || !ico || !progressWrap || !progressBar) return;
-
-      btn.style.bottom = config.bottom;
-      btn.style.left = config.left;
-      btn.style.zIndex = String(config.zIndex);
-      btn.style.background = config.buttonBg;
-      btn.style.color = config.buttonColor;
-      btn.style.boxShadow = config.shadow;
-
-      progressWrap.style.zIndex = String(config.zIndex - 1);
-      progressWrap.style.background = "rgba(212,175,55,.2)";
-      progressBar.style.background = "linear-gradient(90deg,#d4af37,#b78b34)";
-
-      if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-        btn.style.display = "none";
-        return;
-      }
-
-      var synth = window.speechSynthesis;
-      var utterance = null;
-      var playing = false;
-      var timer = null;
-      var launchId = 0;
-
-      function getFrenchVoice(){
-        var voices = synth.getVoices() || [];
-        if (!voices.length) return null;
-
-        return (
-          voices.find(function(v){ return /fr[-_]?FR/i.test(v.lang) && /google/i.test(v.name); }) ||
-          voices.find(function(v){ return /fr[-_]?FR/i.test(v.lang); }) ||
-          voices.find(function(v){ return /^fr/i.test(v.lang); }) ||
-          null
-        );
-      }
-
-      function setIdle(){
-        playing = false;
-        ico.innerHTML = "&#9654;";
-        lbl.textContent = config.label;
-        btn.setAttribute("aria-label", config.label);
-        clearInterval(timer);
-        timer = null;
-        progressWrap.style.opacity = "0";
-        progressBar.style.width = "0%";
-      }
-
-      function setPlaying(){
-        playing = true;
-        ico.innerHTML = "&#9632;";
-        lbl.textContent = config.stopLabel;
-        btn.setAttribute("aria-label", config.stopLabel);
-      }
-
-      function stop(){
-        clearInterval(timer);
-        timer = null;
-        try { synth.cancel(); } catch(e){}
-        utterance = null;
-        setIdle();
-      }
-
-      function startProgress(text, currentId){
-        var words = (text.trim().match(/\S+/g) || []).length;
-        var estimatedDuration = Math.max(2500, words * 520);
-        var elapsed = 0;
-
-        clearInterval(timer);
-        progressBar.style.width = "0%";
-        progressWrap.style.opacity = "1";
-
-        timer = setInterval(function(){
-          if (!playing || currentId !== launchId) {
-            clearInterval(timer);
-            timer = null;
-            return;
-          }
-          elapsed += 150;
-          var pct = Math.min((elapsed / estimatedDuration) * 100, 97);
-          progressBar.style.width = pct + "%";
-        }, 150);
-      }
-
-      function launch(){
-        launchId += 1;
-        var currentId = launchId;
-
-        try { synth.cancel(); } catch(e){}
-
-        utterance = new SpeechSynthesisUtterance(config.text);
-        utterance.lang = "fr-FR";
-        utterance.rate = config.rate;
-        utterance.pitch = config.pitch;
-        utterance.volume = config.volume;
-
-        var voice = getFrenchVoice();
-        if (voice) utterance.voice = voice;
-
-        utterance.onstart = function(){
-          if (currentId !== launchId) return;
-          setPlaying();
-          startProgress(config.text, currentId);
-        };
-
-        utterance.onend = function(){
-          if (currentId !== launchId) return;
-          clearInterval(timer);
-          timer = null;
-          progressBar.style.width = "100%";
-          setTimeout(function(){
-            if (currentId === launchId) setIdle();
-          }, 250);
-        };
-
-        utterance.onerror = function(){
-          if (currentId !== launchId) return;
-          stop();
-        };
-
-        synth.speak(utterance);
-      }
-
-      function play(){
-        if (playing) return;
-
-        if (synth.speaking || synth.pending) {
-          try { synth.cancel(); } catch(e){}
-        }
-
-        var voices = synth.getVoices();
-        if (voices && voices.length) {
-          launch();
-          return;
-        }
-
-        var launched = false;
-
-        function handleVoicesChanged(){
-          if (launched) return;
-          launched = true;
-          synth.removeEventListener("voiceschanged", handleVoicesChanged);
-          launch();
-        }
-
-        synth.addEventListener("voiceschanged", handleVoicesChanged);
-
-        setTimeout(function(){
-          if (launched) return;
-          launched = true;
-          synth.removeEventListener("voiceschanged", handleVoicesChanged);
-          launch();
-        }, 700);
-      }
-
-      btn.addEventListener("click", function(){
-        if (playing) stop();
-        else play();
-      });
-
-      window.addEventListener("beforeunload", stop);
-
-      document.addEventListener("visibilitychange", function(){
-        if (document.hidden && playing) stop();
-      });
-
-      setIdle();
-    })();
-  </script>
 </body>
 </html>
+
 
