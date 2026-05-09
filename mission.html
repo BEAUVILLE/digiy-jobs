@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 
-  <title>DIGIY JOBS — Missions</title>
-  <meta name="description" content="DIGIY JOBS — missions publiques, travail réel, candidature simple et parcours candidat clair.">
+  <title>DIGIY JOBS — Mission</title>
+  <meta name="description" content="DIGIY JOBS — fiche mission publique : comprendre vite, postuler simplement.">
   <meta name="theme-color" content="#071711">
 
   <script>
@@ -30,7 +30,7 @@
       --blue:#38bdf8;
       --red:#fb7185;
       --shadow:0 18px 60px rgba(0,0,0,.28);
-      --max:1120px;
+      --max:980px;
     }
 
     *{box-sizing:border-box}
@@ -52,8 +52,7 @@
     }
 
     a{color:inherit;text-decoration:none}
-    button,input,select{font:inherit}
-    button{cursor:pointer}
+    button{font:inherit;cursor:pointer}
 
     .wrap{
       width:min(calc(100% - 28px),var(--max));
@@ -94,7 +93,7 @@
       margin-top:2px;
       color:var(--muted);
       font-size:12px;
-      font-weight:800;
+      font-weight:850;
       letter-spacing:.08em;
     }
 
@@ -143,13 +142,6 @@
       overflow:hidden;
     }
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:18px;
-      align-items:stretch;
-    }
-
     .kicker{
       display:inline-flex;
       align-items:center;
@@ -163,10 +155,10 @@
     }
 
     h1{
-      margin:0 0 10px;
-      font-size:clamp(32px,5vw,58px);
+      margin:0 0 12px;
+      font-size:clamp(32px,6vw,60px);
       line-height:.98;
-      letter-spacing:-.035em;
+      letter-spacing:-.04em;
     }
 
     .lead{
@@ -178,150 +170,67 @@
       font-weight:650;
     }
 
-    .hero-box{
-      border:1px solid var(--line);
-      border-radius:24px;
-      padding:16px;
-      background:rgba(255,255,255,.045);
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-
-    .hero-box h2{
-      margin:0;
-      font-size:20px;
-      letter-spacing:-.02em;
-    }
-
-    .hero-box p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.55;
-      font-size:14px;
-      font-weight:650;
-    }
-
-    .pill-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:9px;
-    }
-
-    .pill{
-      border:1px solid rgba(250,204,21,.25);
-      color:#fff7cc;
-      background:rgba(250,204,21,.08);
-      border-radius:999px;
-      padding:8px 11px;
-      font-size:12px;
-      font-weight:850;
-    }
-
-    .filters{
+    .status{
       margin-top:16px;
-      display:grid;
-      grid-template-columns:1.3fr .8fr .8fr .8fr;
-      gap:10px;
-      align-items:end;
-    }
-
-    .field{
-      display:flex;
-      flex-direction:column;
-      gap:7px;
-    }
-
-    .field label{
-      font-size:13px;
-      font-weight:900;
-      color:#d8fbe6;
-    }
-
-    .field input,
-    .field select{
-      width:100%;
-      outline:none;
-      border-radius:16px;
-      padding:13px 14px;
-      color:var(--text);
-      background:rgba(255,255,255,.08);
-      border:1px solid transparent;
-    }
-
-    .field input::placeholder{color:rgba(236,255,244,.46)}
-
-    .field input:focus,
-    .field select:focus{
-      border-color:rgba(250,204,21,.45);
-      box-shadow:0 0 0 4px rgba(250,204,21,.08);
-    }
-
-    .toolbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin:22px 0 14px;
-      flex-wrap:wrap;
-    }
-
-    .count{
+      border:1px dashed var(--line);
+      border-radius:22px;
+      padding:18px;
       color:var(--muted);
-      font-size:14px;
-      font-weight:850;
+      background:rgba(255,255,255,.035);
+      line-height:1.6;
+      font-weight:750;
     }
 
-    .toolbar-actions{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
+    .status.err{
+      color:#ffd7de;
+      border-color:rgba(251,113,133,.28);
+      background:rgba(251,113,133,.08);
     }
 
-    .link-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:44px;
-      padding:11px 14px;
-      border-radius:999px;
-      border:1px solid rgba(250,204,21,.30);
-      background:rgba(250,204,21,.08);
-      color:#fff5b1;
-      font-weight:900;
-      font-size:13px;
+    .status.ok{
+      color:#caffd5;
+      border-color:rgba(34,197,94,.24);
+      background:rgba(34,197,94,.08);
     }
 
-    .link-btn.blue{
-      border-color:rgba(56,189,248,.28);
-      background:rgba(56,189,248,.10);
-      color:#d9f4ff;
-    }
-
-    .grid{
+    .main-grid{
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-columns:1.05fr .95fr;
       gap:14px;
+      margin-top:16px;
+      align-items:start;
     }
 
     .card{
       border:1px solid var(--line);
-      border-radius:24px;
-      padding:16px;
+      border-radius:26px;
+      padding:18px;
       background:
         linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012)),
         var(--card);
       box-shadow:var(--shadow);
-      display:flex;
-      flex-direction:column;
-      min-height:310px;
+    }
+
+    .card h2{
+      margin:0 0 10px;
+      font-size:23px;
+      letter-spacing:-.02em;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:15px;
+      font-weight:650;
+      white-space:pre-line;
     }
 
     .badge-row{
       display:flex;
       flex-wrap:wrap;
       gap:8px;
-      margin-bottom:12px;
+      margin:0 0 12px;
     }
 
     .badge{
@@ -329,7 +238,7 @@
       align-items:center;
       gap:6px;
       border-radius:999px;
-      padding:7px 10px;
+      padding:8px 11px;
       font-size:12px;
       font-weight:900;
       border:1px solid rgba(255,255,255,.12);
@@ -355,64 +264,48 @@
       color:#d9f4ff;
     }
 
-    .title{
-      font-size:23px;
-      line-height:1.08;
-      font-weight:1000;
-      margin:0 0 9px;
-      letter-spacing:-.02em;
+    .facts{
+      display:grid;
+      gap:10px;
     }
 
-    .meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px 14px;
+    .fact{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:13px;
+      background:rgba(255,255,255,.05);
+    }
+
+    .fact small{
+      display:block;
       color:var(--muted);
-      font-size:14px;
-      margin-bottom:12px;
-      font-weight:750;
-    }
-
-    .desc{
-      color:var(--muted);
-      line-height:1.6;
-      font-size:14px;
-      margin:0 0 14px;
-      flex:1;
-      font-weight:650;
-    }
-
-    .flags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-bottom:14px;
-    }
-
-    .flag{
       font-size:12px;
-      font-weight:900;
-      padding:8px 10px;
-      border-radius:999px;
-      background:rgba(34,197,94,.10);
-      color:#bcffcc;
-      border:1px solid rgba(34,197,94,.22);
+      font-weight:1000;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:5px;
+    }
+
+    .fact strong{
+      display:block;
+      color:var(--text);
+      line-height:1.4;
+      font-size:15px;
     }
 
     .actions{
-      display:flex;
-      gap:9px;
-      margin-top:auto;
+      display:grid;
+      gap:10px;
+      margin-top:14px;
     }
 
     .btn{
-      flex:1;
-      min-height:46px;
+      min-height:52px;
       display:inline-flex;
       justify-content:center;
       align-items:center;
-      border-radius:16px;
-      padding:12px 13px;
+      border-radius:18px;
+      padding:14px 16px;
       font-weight:1000;
       text-align:center;
     }
@@ -428,21 +321,37 @@
       border:1px solid var(--line);
     }
 
-    .empty,.loading,.error{
-      border:1px dashed var(--line);
-      border-radius:24px;
-      padding:24px;
-      text-align:center;
-      color:var(--muted);
-      background:rgba(255,255,255,.03);
-      line-height:1.6;
-      font-weight:750;
+    .btn-blue{
+      background:rgba(56,189,248,.11);
+      color:#d9f4ff;
+      border:1px solid rgba(56,189,248,.28);
     }
 
-    .error{
-      color:#ffd7de;
-      border-color:rgba(251,113,133,.28);
-      background:rgba(251,113,133,.08);
+    details{
+      margin-top:12px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:20px;
+      background:rgba(255,255,255,.035);
+      overflow:hidden;
+    }
+
+    summary{
+      cursor:pointer;
+      list-style:none;
+      padding:13px 14px;
+      font-weight:950;
+      color:#fff4bd;
+    }
+
+    summary::-webkit-details-marker{display:none}
+
+    .details-body{
+      padding:0 14px 14px;
+      color:var(--muted);
+      line-height:1.55;
+      font-weight:650;
+      font-size:14px;
+      white-space:pre-line;
     }
 
     .bottom-nav{
@@ -489,23 +398,19 @@
       border-color:rgba(250,204,21,.22);
     }
 
-    @media (max-width:980px){
-      .hero-grid{grid-template-columns:1fr}
-      .filters{grid-template-columns:1fr 1fr}
-      .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .hidden{display:none!important}
+
+    @media (max-width:820px){
+      .main-grid{grid-template-columns:1fr}
+      .top-links{width:100%}
+      .chip{flex:1 1 auto}
     }
 
-    @media (max-width:640px){
+    @media (max-width:560px){
       .wrap{width:min(calc(100% - 20px),var(--max));padding-top:14px}
       .hero{padding:18px 14px;border-radius:24px}
-      .filters{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-      .toolbar{align-items:flex-start}
-      .toolbar-actions,.top-links{width:100%}
-      .chip,.link-btn{flex:1 1 auto}
+      .card{border-radius:22px;padding:16px}
       h1{font-size:36px}
-      .actions{flex-direction:column}
-      .btn{width:100%}
     }
   </style>
 </head>
@@ -517,12 +422,11 @@
         <span class="brand-mark">DJ</span>
         <span>
           DIGIY JOBS
-          <small>MISSIONS PUBLIQUES</small>
+          <small>FICHE MISSION</small>
         </span>
       </a>
 
       <nav class="top-links" aria-label="Navigation">
-        <a class="chip" href="https://digiylyfe.com/">Site</a>
         <a class="chip" href="./index.html">Accueil</a>
         <a class="chip gold" href="./missions.html">Missions</a>
         <a class="chip blue" href="./dossier-intelligent.html">Dossier</a>
@@ -531,76 +435,72 @@
 
     <main>
       <section class="hero">
-        <div class="hero-grid">
-          <div>
-            <div class="kicker">DIGIY JOBS · missions · terrain</div>
-            <h1>Choisis une mission. Postule simplement.</h1>
-            <p class="lead">
-              Ici, le public lit les missions ouvertes, comprend le besoin, puis postule sans bruit.
-              Les détails importants restent visibles : métier, ville, type, rémunération et conditions utiles.
-            </p>
-          </div>
-
-          <aside class="hero-box">
-            <h2>Lecture rapide</h2>
-            <p>
-              Filtre par métier, secteur, ville ou contrat. Ouvre la fiche si tu veux comprendre avant de postuler.
-            </p>
-            <div class="pill-row">
-              <span class="pill">Voir</span>
-              <span class="pill">Comprendre</span>
-              <span class="pill">Postuler</span>
-              <span class="pill">Partager</span>
-            </div>
-          </aside>
-        </div>
-
-        <div class="filters" aria-label="Filtres des missions">
-          <div class="field">
-            <label for="searchInput">Recherche</label>
-            <input id="searchInput" type="text" placeholder="ex: maçon, chauffeur, serveuse, boutique...">
-          </div>
-
-          <div class="field">
-            <label for="sectorSelect">Secteur</label>
-            <select id="sectorSelect">
-              <option value="">Tous les secteurs</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="citySelect">Ville</label>
-            <select id="citySelect">
-              <option value="">Toutes les villes</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="contractSelect">Contrat</label>
-            <select id="contractSelect">
-              <option value="">Tous les contrats</option>
-              <option value="cdi">CDI</option>
-              <option value="cdd">CDD</option>
-              <option value="mission">Mission</option>
-              <option value="stage">Stage</option>
-              <option value="freelance">Freelance</option>
-              <option value="extra">Extra</option>
-            </select>
-          </div>
-        </div>
+        <div class="kicker">Mission publique · lire puis agir</div>
+        <h1 id="title">Chargement de la mission…</h1>
+        <p id="lead" class="lead">
+          DIGIY prépare la fiche pour comprendre rapidement le besoin.
+        </p>
+        <div id="statusBox" class="status">Chargement en cours…</div>
       </section>
 
-      <div class="toolbar">
-        <div id="count" class="count">Chargement des missions...</div>
+      <section id="missionContent" class="main-grid hidden" aria-label="Détail de la mission">
+        <article class="card">
+          <div id="badges" class="badge-row"></div>
 
-        <div class="toolbar-actions">
-          <a id="spontaneousLink" class="link-btn" href="./postuler.html">Candidature simple</a>
-          <a id="toolbarDossierLink" class="link-btn blue" href="./dossier-intelligent.html">Préparer mon dossier</a>
-        </div>
-      </div>
+          <h2>Ce qu’il faut savoir</h2>
+          <p id="description">Description à venir.</p>
 
-      <div id="statusBox" class="loading">Chargement en cours...</div>
-      <section id="cards" class="grid" style="display:none" aria-label="Liste des missions"></section>
+          <details id="requirementsDetails" class="hidden">
+            <summary>Voir les conditions</summary>
+            <div id="requirements" class="details-body"></div>
+          </details>
+
+          <details>
+            <summary>Conseil candidat</summary>
+            <div class="details-body">
+              Lis la mission, vérifie la ville et le type de contrat, puis postule simplement.
+              Le message peut rester court : disponibilité, métier, expérience, téléphone WhatsApp.
+            </div>
+          </details>
+        </article>
+
+        <aside class="card">
+          <h2>Résumé rapide</h2>
+
+          <div class="facts">
+            <div class="fact">
+              <small>Ville</small>
+              <strong id="city">À préciser</strong>
+            </div>
+
+            <div class="fact">
+              <small>Pays</small>
+              <strong id="country">Sénégal</strong>
+            </div>
+
+            <div class="fact">
+              <small>Contrat</small>
+              <strong id="contract">Mission</strong>
+            </div>
+
+            <div class="fact">
+              <small>Rémunération</small>
+              <strong id="pay">À préciser</strong>
+            </div>
+
+            <div id="employerFact" class="fact hidden">
+              <small>Structure</small>
+              <strong id="employer">À préciser</strong>
+            </div>
+          </div>
+
+          <div class="actions">
+            <a id="applyBtn" class="btn btn-primary" href="./postuler.html">Je postule</a>
+            <a class="btn btn-secondary" href="./missions.html">Voir les autres missions</a>
+            <a class="btn btn-blue" href="./dossier-intelligent.html">Préparer mon dossier</a>
+          </div>
+        </aside>
+      </section>
     </main>
   </div>
 
@@ -608,14 +508,14 @@
     <div class="bottom-nav-inner">
       <a href="./index.html"><span class="ico">⌂</span>Accueil</a>
       <a class="active" href="./missions.html"><span class="ico">◎</span>Missions</a>
-      <a href="./postuler.html"><span class="ico">＋</span>Postuler</a>
+      <a id="bottomApply" href="./postuler.html"><span class="ico">＋</span>Postuler</a>
       <a href="./dossier-intelligent.html"><span class="ico">□</span>Dossier</a>
       <a href="./suivi.html"><span class="ico">↗</span>Suivi</a>
     </div>
   </nav>
 
   <script>
-    (function(){
+    (() => {
       "use strict";
 
       const SUPABASE_URL =
@@ -633,7 +533,7 @@
           : null;
 
       const params = new URLSearchParams(location.search);
-      const $ = (id) => document.getElementById(id);
+      const offerId = String(params.get("id") || params.get("offer") || "").trim();
 
       const SENSITIVE_PARAMS = [
         "slug",
@@ -650,19 +550,12 @@
       ];
 
       const ROUTES = {
-        home: "./index.html",
         missions: "./missions.html",
         postuler: "./postuler.html",
-        mission: "./mission.html",
-        dossier: "./dossier-intelligent.html",
-        suivi: "./suivi.html"
+        dossier: "./dossier-intelligent.html"
       };
 
-      const state = {
-        offers: [],
-        filtered: [],
-        secteur: normalizeSecteur(String(params.get("secteur") || params.get("rail") || "").trim().toLowerCase())
-      };
+      const $ = (id) => document.getElementById(id);
 
       function scrubUrl(){
         try {
@@ -676,14 +569,24 @@
             }
           });
 
-          if (changed) {
-            history.replaceState({}, document.title, clean.pathname + clean.search + clean.hash);
+          const id = String(clean.searchParams.get("id") || clean.searchParams.get("offer") || "").trim();
+
+          clean.searchParams.delete("offer");
+          clean.searchParams.delete("id");
+
+          if (id) clean.searchParams.set("id", id);
+
+          const next = clean.pathname + clean.search + clean.hash;
+          const current = location.pathname + location.search + location.hash;
+
+          if (changed || next !== current) {
+            history.replaceState({}, document.title, next);
           }
         } catch (_) {}
       }
 
-      function escapeHtml(v=""){
-        return String(v)
+      function esc(value = ""){
+        return String(value ?? "")
           .replaceAll("&","&amp;")
           .replaceAll("<","&lt;")
           .replaceAll(">","&gt;")
@@ -691,28 +594,7 @@
           .replaceAll("'","&#039;");
       }
 
-      function normalizeSecteur(v=""){
-        const raw = String(v || "").trim().toLowerCase();
-
-        if (raw === "build" || raw === "btp" || raw === "chantier") return "build";
-
-        if (
-          raw === "resto" ||
-          raw === "hotellerie-restauration" ||
-          raw === "hôtellerie-restauration" ||
-          raw === "food"
-        ) return "hotellerie-restauration";
-
-        return "";
-      }
-
-      function secteurLabel(v=""){
-        if (v === "build") return "BTP / travaux";
-        if (v === "hotellerie-restauration") return "Hôtellerie-Restauration";
-        return "";
-      }
-
-      function labelSector(v=""){
+      function labelSector(v = ""){
         const map = {
           build:"BTP",
           beauty:"Beauté",
@@ -726,7 +608,7 @@
         return map[String(v || "").toLowerCase()] || v || "Secteur";
       }
 
-      function labelContract(v=""){
+      function labelContract(v = ""){
         const map = {
           cdi:"CDI",
           cdd:"CDD",
@@ -738,209 +620,64 @@
         return map[String(v || "").toLowerCase()] || v || "Contrat";
       }
 
-      function shortText(v="", max=170){
-        const s = String(v || "").trim();
-        if (s.length <= max) return s;
-        return s.slice(0, max).trim() + "…";
-      }
-
-      function buildOptions(selectEl, values, formatter = (x) => x, firstLabel = "Tous"){
-        const current = selectEl.value;
-        const unique = [...new Set(values.filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),"fr"));
-
-        selectEl.innerHTML =
-          `<option value="">${firstLabel}</option>` +
-          unique
-            .map(v => `<option value="${escapeHtml(v)}">${escapeHtml(formatter(v))}</option>`)
-            .join("");
-
-        if ([...selectEl.options].some(opt => opt.value === current)) {
-          selectEl.value = current;
-        }
-      }
-
-      function withPublicContext(path, options = {}){
-        const url = new URL(path, location.href);
-        const secteur = normalizeSecteur(options.secteur || state.secteur || "");
-        const offer = String(options.offer || "").trim();
-        const missionId = String(options.id || "").trim();
-
-        if (secteur) url.searchParams.set("secteur", secteur);
-        if (offer) url.searchParams.set("offer", offer);
-        if (missionId) url.searchParams.set("id", missionId);
-
+      function postulerHref(id){
+        const url = new URL(ROUTES.postuler, location.href);
+        if (id) url.searchParams.set("offer", id);
         return url.pathname + url.search;
       }
 
-      function inferSecteurFromOffer(item){
-        const sector = String(item?.sector || "").trim().toLowerCase();
-
-        if (sector === "build") return "build";
-        if (sector === "food") return "hotellerie-restauration";
-
-        const hay = [
-          item?.title,
-          item?.description,
-          item?.requirements,
-          item?.employer_name,
-          item?.contract_type
-        ].join(" ").toLowerCase();
-
-        const buildKeywords = [
-          "maçon","macon","plombier","électricien","electricien",
-          "soudeur","menuisier","peintre","carreleur","chantier",
-          "bâtiment","batiment","travaux","construction","dépannage","depannage"
-        ];
-
-        const restoKeywords = [
-          "serveur","serveuse","restaurant","restauration","cuisine",
-          "cuisinier","cuisinière","commis","plonge","réception",
-          "reception","hôtel","hotel","chambre","bar","salle"
-        ];
-
-        if (buildKeywords.some(k => hay.includes(k))) return "build";
-        if (restoKeywords.some(k => hay.includes(k))) return "hotellerie-restauration";
-
-        return "";
-      }
-
-      function renderStatus(type, text){
+      function showStatus(type, text){
         const box = $("statusBox");
-        box.style.display = "block";
-        box.className = type;
+        box.className = "status" + (type ? " " + type : "");
         box.textContent = text;
-        $("cards").style.display = "none";
       }
 
-      function missionHref(item){
-        const secteur = inferSecteurFromOffer(item) || state.secteur || "";
-
-        return withPublicContext(ROUTES.mission, {
-          secteur,
-          id: item.id
-        });
+      function setText(id, value){
+        const node = $(id);
+        if (node) node.textContent = value || "";
       }
 
-      function applyHref(item){
-        const secteur = inferSecteurFromOffer(item) || state.secteur || "";
-
-        return withPublicContext(ROUTES.postuler, {
-          secteur,
-          offer: item.id
-        });
+      function pickOffer(data){
+        if (!data) return null;
+        if (data.ok === true && data.item) return data.item;
+        if (data.ok === true && Array.isArray(data.items)) return data.items[0] || null;
+        if (data.item) return data.item;
+        if (Array.isArray(data.items)) return data.items[0] || null;
+        if (Array.isArray(data)) return data[0] || null;
+        return data;
       }
 
-      function renderCards(list){
-        const cards = $("cards");
+      async function loadOfferByRpc(id){
+        if (!sb || !id) return null;
 
-        if (!list.length) {
-          renderStatus(
-            "empty",
-            state.secteur
-              ? `Aucune mission active trouvée pour ${secteurLabel(state.secteur)} pour le moment.`
-              : "Aucune mission active trouvée pour le moment."
-          );
-          $("count").textContent = "0 mission trouvée";
-          return;
+        const attempts = [
+          { p_offer_id: id },
+          { p_id: id },
+          { offer_id: id },
+          { id }
+        ];
+
+        for (const args of attempts) {
+          try {
+            const { data, error } = await sb.rpc("digiy_jobs_public_offer", args);
+            if (!error) {
+              const offer = pickOffer(data);
+              if (offer && (offer.id || offer.title)) return offer;
+            }
+          } catch (_) {}
         }
 
-        $("statusBox").style.display = "none";
-        cards.style.display = "grid";
-        $("count").textContent = `${list.length} mission${list.length > 1 ? "s" : ""} trouvée${list.length > 1 ? "s" : ""}`;
-
-        cards.innerHTML = list.map(item => {
-          const flags = [];
-          const inferredSecteur = inferSecteurFromOffer(item);
-
-          if (item.has_housing) {
-            flags.push('<span class="flag">Logement possible</span>');
-          }
-
-          if (item.has_family_welcome) {
-            flags.push('<span class="flag">Accueil familial possible</span>');
-          }
-
-          return `
-            <article class="card">
-              <div class="badge-row">
-                <span class="badge gold">${escapeHtml(labelSector(item.sector))}</span>
-                <span class="badge">${escapeHtml(labelContract(item.contract_type))}</span>
-                ${item.employer_name ? `<span class="badge green">${escapeHtml(item.employer_name)}</span>` : ""}
-                ${inferredSecteur ? `<span class="badge blue">${escapeHtml(secteurLabel(inferredSecteur))}</span>` : ""}
-              </div>
-
-              <h3 class="title">${escapeHtml(item.title || "Mission")}</h3>
-
-              <div class="meta">
-                <span>📍 ${escapeHtml(item.city || "Ville à préciser")}</span>
-                <span>${escapeHtml(item.country || "Sénégal")}</span>
-                <span>💰 ${escapeHtml(item.pay || "Rémunération à préciser")}</span>
-              </div>
-
-              <p class="desc">${escapeHtml(shortText(item.description || "Description à venir."))}</p>
-
-              <div class="flags">${flags.join("")}</div>
-
-              <div class="actions">
-                <a class="btn btn-secondary" href="${missionHref(item)}">Voir la mission</a>
-                <a class="btn btn-primary" href="${applyHref(item)}">Je postule</a>
-              </div>
-            </article>
-          `;
-        }).join("");
+        return null;
       }
 
-      function applyFilters(){
-        const q = $("searchInput").value.trim().toLowerCase();
-        const sector = $("sectorSelect").value.trim().toLowerCase();
-        const city = $("citySelect").value.trim().toLowerCase();
-        const contract = $("contractSelect").value.trim().toLowerCase();
-
-        state.filtered = state.offers.filter(item => {
-          const hay = [
-            item.title,
-            item.sector,
-            item.city,
-            item.country,
-            item.contract_type,
-            item.description,
-            item.requirements,
-            item.employer_name,
-            item.pay
-          ].join(" ").toLowerCase();
-
-          if (q && !hay.includes(q)) return false;
-          if (sector && String(item.sector || "").toLowerCase() !== sector) return false;
-          if (city && String(item.city || "").toLowerCase() !== city) return false;
-          if (contract && String(item.contract_type || "").toLowerCase() !== contract) return false;
-
-          if (state.secteur) {
-            const inferred = inferSecteurFromOffer(item);
-            if (inferred !== state.secteur) return false;
-          }
-
-          return true;
-        });
-
-        renderCards(state.filtered);
-      }
-
-      async function loadOffers(){
-        if (!sb) {
-          renderStatus("error", "Chargement indisponible. Réessaie dans un instant.");
-          $("count").textContent = "Erreur de configuration";
-          return;
-        }
-
-        renderStatus("loading", "Chargement des missions...");
+      async function loadOfferByList(id){
+        if (!sb || !id) return null;
 
         const { data, error } = await sb.rpc("digiy_jobs_public_offers");
 
         if (error) {
           console.error(error);
-          renderStatus("error", "Impossible de charger les missions pour le moment.");
-          $("count").textContent = "Erreur de chargement";
-          return;
+          return null;
         }
 
         const items =
@@ -950,38 +687,106 @@
               ? data
               : [];
 
-        if (!items.length && data && data.ok !== true && !Array.isArray(data)) {
-          console.warn("RPC digiy_jobs_public_offers réponse inattendue", data);
-        }
-
-        state.offers = items;
-
-        buildOptions(
-          $("sectorSelect"),
-          state.offers.map(x => x.sector),
-          labelSector,
-          "Tous les secteurs"
-        );
-
-        buildOptions(
-          $("citySelect"),
-          state.offers.map(x => x.city),
-          (x) => x,
-          "Toutes les villes"
-        );
-
-        applyFilters();
+        return items.find((item) => String(item.id) === String(id)) || null;
       }
 
-      $("searchInput").addEventListener("input", applyFilters);
-      $("sectorSelect").addEventListener("change", applyFilters);
-      $("citySelect").addEventListener("change", applyFilters);
-      $("contractSelect").addEventListener("change", applyFilters);
+      function renderOffer(offer){
+        const id = offer.id || offerId || "";
+        const title = offer.title || "Mission";
+        const description = offer.description || "Description à venir.";
+        const requirements = offer.requirements || "";
 
-      scrubUrl();
-      loadOffers();
+        setText("title", title);
+        setText("lead", "Lis les informations utiles, puis postule si la mission te parle.");
+        setText("description", description);
+        setText("city", offer.city || "Ville à préciser");
+        setText("country", offer.country || "Sénégal");
+        setText("contract", labelContract(offer.contract_type || ""));
+        setText("pay", offer.pay || "Rémunération à préciser");
+
+        if (offer.employer_name) {
+          $("employerFact").classList.remove("hidden");
+          setText("employer", offer.employer_name);
+        }
+
+        const badges = [
+          `<span class="badge gold">${esc(labelSector(offer.sector || ""))}</span>`,
+          `<span class="badge">${esc(labelContract(offer.contract_type || ""))}</span>`
+        ];
+
+        if (offer.has_housing) {
+          badges.push(`<span class="badge green">Logement possible</span>`);
+        }
+
+        if (offer.has_family_welcome) {
+          badges.push(`<span class="badge green">Accueil familial possible</span>`);
+        }
+
+        if (offer.city) {
+          badges.push(`<span class="badge blue">${esc(offer.city)}</span>`);
+        }
+
+        $("badges").innerHTML = badges.join("");
+
+        if (requirements) {
+          $("requirementsDetails").classList.remove("hidden");
+          setText("requirements", requirements);
+        }
+
+        const href = postulerHref(id);
+        $("applyBtn").href = href;
+        $("bottomApply").href = href;
+
+        $("missionContent").classList.remove("hidden");
+        showStatus("ok", "Mission chargée. Tu peux lire puis postuler simplement.");
+      }
+
+      async function boot(){
+        scrubUrl();
+
+        if (!offerId) {
+          setText("title", "Choisis une mission d’abord.");
+          setText("lead", "Cette fiche a besoin d’un identifiant de mission. Ouvre une mission depuis la liste.");
+          showStatus("err", "Aucune mission indiquée. Retourne à la liste des missions.");
+          $("missionContent").classList.add("hidden");
+          return;
+        }
+
+        if (!sb) {
+          showStatus("err", "Chargement indisponible pour le moment. Réessaie dans un instant.");
+          return;
+        }
+
+        try {
+          showStatus("", "Chargement de la mission…");
+
+          let offer = await loadOfferByRpc(offerId);
+
+          if (!offer) {
+            offer = await loadOfferByList(offerId);
+          }
+
+          if (!offer) {
+            setText("title", "Mission introuvable.");
+            setText("lead", "La mission n’est plus disponible ou le lien est incomplet.");
+            showStatus("err", "Impossible de retrouver cette mission. Retourne à la liste des missions.");
+            return;
+          }
+
+          renderOffer(offer);
+        } catch (err) {
+          console.error(err);
+          setText("title", "Chargement impossible.");
+          setText("lead", "La fiche mission n’a pas pu s’ouvrir correctement.");
+          showStatus("err", "Erreur de lecture. Réessaie ou retourne aux missions.");
+        }
+      }
+
+      boot();
     })();
   </script>
 </body>
 </html>
+
+
 
