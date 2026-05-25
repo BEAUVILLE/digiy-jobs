@@ -487,6 +487,171 @@
       .hero-actions .btn{width:100%}
       .door-actions .action-link{flex:1 1 100%}
     }
+  
+    /* =========================================================
+       DIGIY JOBS PUBLIC — LECTEUR TERRAIN VISIBLE
+       Public candidat : écouter, comprendre, agir.
+       ========================================================= */
+    .digiy-public-help{
+      margin-top:16px;
+      padding:14px;
+      border-radius:20px;
+      border:1px solid rgba(14,165,233,.18);
+      background:rgba(14,165,233,.07);
+      display:grid;
+      gap:7px;
+    }
+
+    .digiy-public-help strong{
+      color:#075985;
+      font-size:15px;
+      font-weight:1000;
+    }
+
+    .digiy-public-help span{
+      color:#334155;
+      font-size:14px;
+      line-height:1.55;
+      font-weight:750;
+    }
+
+    .digiy-public-help-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:4px;
+    }
+
+    .digiy-public-help-actions a{
+      min-height:42px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 13px;
+      background:#fff;
+      border:1px solid var(--line);
+      font-size:13px;
+      font-weight:1000;
+      box-shadow:0 10px 24px rgba(21,32,43,.06);
+    }
+
+    .digiy-jobs-audio-card{
+      margin-top:16px;
+      padding:16px;
+      border-radius:22px;
+      border:1px solid rgba(200,154,61,.24);
+      background:
+        radial-gradient(circle at top right,rgba(200,154,61,.14),transparent 36%),
+        #fff;
+      box-shadow:0 14px 32px rgba(21,32,43,.08);
+    }
+
+    .digiy-jobs-audio-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+
+    .digiy-jobs-audio-title{
+      display:grid;
+      gap:3px;
+    }
+
+    .digiy-jobs-audio-title strong{
+      font-size:18px;
+      font-weight:1000;
+      color:#23180a;
+      line-height:1.15;
+    }
+
+    .digiy-jobs-audio-title span{
+      color:var(--muted);
+      font-size:13px;
+      font-weight:850;
+      line-height:1.45;
+    }
+
+    .digiy-jobs-audio-controls{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .digiy-jobs-audio-controls button{
+      min-height:44px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      padding:10px 14px;
+      background:#fff;
+      color:var(--ink);
+      font:900 14px/1 Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      cursor:pointer;
+      box-shadow:0 10px 24px rgba(21,32,43,.06);
+    }
+
+    .digiy-jobs-audio-controls .play{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#23180a;
+      border-color:transparent;
+    }
+
+    .digiy-jobs-audio-controls .stop{
+      background:var(--deep);
+      color:#fff;
+      border-color:var(--deep);
+    }
+
+    .digiy-jobs-audio-text{
+      color:#475569;
+      font-size:14px;
+      line-height:1.6;
+      font-weight:760;
+    }
+
+    .digiy-jobs-audio-progress-wrap{
+      margin-top:11px;
+      height:5px;
+      border-radius:999px;
+      background:rgba(21,32,43,.09);
+      overflow:hidden;
+    }
+
+    .digiy-jobs-audio-progress{
+      width:0%;
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--gold),var(--blue));
+      transition:width .18s linear;
+    }
+
+    .digiy-jobs-audio-status{
+      margin-top:8px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:900;
+    }
+
+    @media(max-width:640px){
+      .digiy-jobs-audio-controls{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        width:100%;
+      }
+
+      .digiy-jobs-audio-controls button{
+        width:100%;
+      }
+
+      .digiy-public-help-actions{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -538,6 +703,36 @@
             <span class="pill blue">Dossier clair</span>
             <span class="pill">Suivi candidat</span>
           </div>
+
+          <div class="digiy-public-help">
+            <strong>Besoin d’aide ?</strong>
+            <span>Tu peux demander une information par WhatsApp ou SMS. DIGIY JOBS reste une porte publique : voir, comprendre, postuler, suivre.</span>
+            <div class="digiy-public-help-actions">
+              <a href="https://wa.me/221771342889?text=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions." target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+              <a href="sms:+221771342889?body=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions.">✉️ SMS</a>
+            </div>
+          </div>
+
+          <div class="digiy-jobs-audio-card" id="digiyJobsAudioCard">
+            <div class="digiy-jobs-audio-head">
+              <div class="digiy-jobs-audio-title">
+                <strong>🎧 Écouter DIGIY JOBS</strong>
+                <span>Une voix explique où tu es, quoi faire, et comment avancer sans te perdre.</span>
+              </div>
+              <div class="digiy-jobs-audio-controls">
+                <button class="play" id="digiyJobsPlayBtn" type="button">▶️ Lecture</button>
+                <button class="stop" id="digiyJobsStopBtn" type="button">⏹ Arrêt</button>
+              </div>
+            </div>
+            <div class="digiy-jobs-audio-text">
+              Le module est public : pas de PIN candidat. Tu peux voir les missions, postuler, préparer ton dossier ou suivre ton dépôt.
+            </div>
+            <div class="digiy-jobs-audio-progress-wrap" aria-hidden="true">
+              <div class="digiy-jobs-audio-progress" id="digiyJobsAudioProgress"></div>
+            </div>
+            <div class="digiy-jobs-audio-status" id="digiyJobsAudioStatus">Prêt à écouter.</div>
+          </div>
+
         </article>
 
         <aside class="panel" aria-label="Résumé du module">
@@ -690,417 +885,203 @@
   </nav>
 
   <script>
-// digiy-jobs-audio.js
-// DIGIY JOBS PUBLIC — lecteur vocal d’accueil
-// Rôle : accueillir le nouveau venu, expliquer la page, donner la bonne direction.
-// À charger avant </body> sur index.html, missions.html, mission.html, postuler.html, dossier-intelligent.html, suivi.html
+    // DIGIY JOBS PUBLIC — lecteur vocal terrain
+    // Module public candidat : lecture claire, pas de PIN, pas d'espace pro.
+    (function(){
+      "use strict";
 
-(() => {
-  "use strict";
-
-  const CFG = {
-    buttonId: "digiyJobsAudioBtn",
-    panelId: "digiyJobsAudioPanel",
-    rate: 0.86,
-    pitch: 1.04,
-    volume: 1
-  };
-
-  const ROUTES = {
-    home: "./index.html",
-    missions: "./missions.html",
-    postuler: "./postuler.html",
-    dossier: "./dossier-intelligent.html",
-    suivi: "./suivi.html"
-  };
-
-  const PAGE_TEXTS = {
-    "index": {
-      title: "Accueil DIGIY JOBS",
-      text:
-        "Bienvenue sur DIGIY JOBS. Ici, tu n’es pas dans un labyrinthe. Tu es à l’entrée publique du travail terrain. Si tu veux chercher une opportunité, commence par Voir les missions. Si tu as déjà repéré une offre, va sur Postuler. Si tu veux préparer ton profil avant d’agir, ouvre le Dossier. Et si tu as déjà déposé quelque chose, va dans Suivi. DIGIY t’aide à avancer étape par étape, sans code professionnel, sans confusion, avec des actions simples."
-    },
-
-    "missions": {
-      title: "Missions DIGIY JOBS",
-      text:
-        "Tu es sur la page des missions. Ici, tu peux lire les offres disponibles, regarder la ville, le métier, le type de contrat et la rémunération si elle est indiquée. Utilise la recherche ou les filtres si tu veux aller plus vite. Quand une mission te parle, ouvre la fiche pour comprendre. Si c’est bon pour toi, clique sur Je postule. Le bon ordre est simple : voir, comprendre, postuler."
-    },
-
-    "mission": {
-      title: "Fiche mission",
-      text:
-        "Tu es sur une fiche mission. Prends le temps de lire le besoin, la ville, le type de travail, la rémunération et les conditions utiles. Si la mission correspond à ton profil, clique sur Je postule. Si tu n’es pas sûr, retourne voir les autres missions ou prépare ton dossier. Ici, on ne force pas. On comprend d’abord, puis on agit proprement."
-    },
-
-    "postuler": {
-      title: "Candidature",
-      text:
-        "Tu es sur la page pour postuler. Pas besoin d’écrire un long discours. Commence par choisir ton chemin : répondre à une mission ou laisser ton profil. Ensuite clique ton métier, choisis ta disponibilité, ajoute ton nom et ton WhatsApp. DIGIY prépare déjà un message simple. Tu peux l’ajuster avec tes mots. Quand c’est clair, tu envoies ta candidature."
-    },
-
-    "dossier": {
-      title: "Dossier candidat",
-      text:
-        "Tu es dans le dossier candidat. Cette page sert à préparer ton profil avant de postuler. Choisis ton secteur, par exemple BTP ou hôtellerie restauration. Clique ton métier, indique ta zone, ta disponibilité et ton expérience. Ensuite DIGIY prépare un résumé propre. Tu peux le copier, le garder, ou l’utiliser pour mieux postuler."
-    },
-
-    "suivi": {
-      title: "Suivi candidature",
-      text:
-        "Tu es dans le suivi candidat. Cette page t’aide à garder le fil. Tu peux noter ton nom, ton WhatsApp, ton métier, puis cocher ce que tu as déjà préparé. Le résumé te permet de rester clair et joignable. Ce suivi reste sur ton appareil. Il ne remplace pas une réponse officielle, mais il t’aide à rester prêt."
-    }
-  };
-
-  function detectPageKey() {
-    const path = String(window.location.pathname || "").toLowerCase();
-
-    if (path.includes("missions.html")) return "missions";
-    if (path.includes("mission.html")) return "mission";
-    if (path.includes("postuler.html")) return "postuler";
-    if (path.includes("dossier-intelligent.html")) return "dossier";
-    if (path.includes("suivi.html")) return "suivi";
-
-    return "index";
-  }
-
-  function pageData() {
-    const key = detectPageKey();
-    return PAGE_TEXTS[key] || PAGE_TEXTS.index;
-  }
-
-  function canSpeak() {
-    return "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
-  }
-
-  function getFrenchVoice() {
-    const voices = window.speechSynthesis.getVoices() || [];
-
-    const exact = voices.find((v) => /fr[-_]?fr/i.test(v.lang || ""));
-    if (exact) return exact;
-
-    const anyFrench = voices.find((v) => /^fr/i.test(v.lang || ""));
-    if (anyFrench) return anyFrench;
-
-    return voices[0] || null;
-  }
-
-  function loadVoices() {
-    return new Promise((resolve) => {
-      if (!canSpeak()) {
-        resolve([]);
-        return;
-      }
-
-      let voices = window.speechSynthesis.getVoices();
-
-      if (voices && voices.length) {
-        resolve(voices);
-        return;
-      }
-
-      let done = false;
-
-      const finish = () => {
-        if (done) return;
-        done = true;
-        resolve(window.speechSynthesis.getVoices() || []);
+      const ROUTES = {
+        missions: "./missions.html",
+        postuler: "./postuler.html",
+        dossier: "./dossier-intelligent.html",
+        suivi: "./suivi.html"
       };
 
-      window.speechSynthesis.onvoiceschanged = finish;
-      setTimeout(finish, 700);
-    });
-  }
+      const PAGE_TEXTS = {
+        index:
+          "Bienvenue sur DIGIY JOBS. Ici, tu es dans l'entrée publique du travail terrain. Pas besoin de code professionnel. Tu peux voir les missions, comprendre une offre, déposer une candidature, préparer ton dossier, ou suivre ton dépôt. diji i t'aide à avancer étape par étape, avec des actions simples.",
+        missions:
+          "Tu es sur la page des missions. Lis les offres disponibles, regarde la ville, le métier, le type de travail et les conditions utiles. Quand une mission te parle, ouvre la fiche. Ensuite tu peux postuler proprement.",
+        mission:
+          "Tu es sur une fiche mission. Prends le temps de lire le besoin, la ville, le type de travail, la rémunération si elle existe, et les conditions utiles. Si la mission correspond à ton profil, clique sur je postule.",
+        postuler:
+          "Tu es sur la page pour postuler. Commence simple : ton nom, ton Ouatsap, ton métier, ta zone et ta disponibilité. diji i prépare le chemin, mais tu gardes tes mots et ta vérité.",
+        dossier:
+          "Tu es dans le dossier candidat. Cette page sert à préparer ton profil avant de postuler. Choisis ton secteur, ton métier, ta zone, ta disponibilité et ton expérience. diji i t'aide à rendre ton profil plus clair.",
+        suivi:
+          "Tu es dans le suivi candidat. Cette page t'aide à garder le fil après une candidature. Tu peux retrouver ton dépôt et rester prêt. Le suivi aide à ne pas perdre la trace."
+      };
 
-  function stopSpeech() {
-    if (!canSpeak()) return;
-    window.speechSynthesis.cancel();
-    updateButton(false);
-  }
+      const playBtn = document.getElementById("digiyJobsPlayBtn");
+      const stopBtn = document.getElementById("digiyJobsStopBtn");
+      const progress = document.getElementById("digiyJobsAudioProgress");
+      const status = document.getElementById("digiyJobsAudioStatus");
 
-  async function speak() {
-    if (!canSpeak()) {
-      showPanel("La lecture vocale n’est pas disponible sur ce navigateur.");
-      return;
-    }
+      if(!playBtn || !stopBtn || !progress || !status) return;
 
-    const data = pageData();
-    const text = data.text;
-
-    await loadVoices();
-
-    window.speechSynthesis.cancel();
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    const voice = getFrenchVoice();
-
-    if (voice) utterance.voice = voice;
-
-    utterance.lang = voice?.lang || "fr-FR";
-    utterance.rate = CFG.rate;
-    utterance.pitch = CFG.pitch;
-    utterance.volume = CFG.volume;
-
-    utterance.onstart = () => updateButton(true);
-    utterance.onend = () => updateButton(false);
-    utterance.onerror = () => updateButton(false);
-
-    window.speechSynthesis.speak(utterance);
-  }
-
-  function toggleSpeech() {
-    if (!canSpeak()) {
-      showPanel("La lecture vocale n’est pas disponible sur ce navigateur.");
-      return;
-    }
-
-    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-      stopSpeech();
-      return;
-    }
-
-    speak();
-  }
-
-  function updateButton(isPlaying) {
-    const btn = document.getElementById(CFG.buttonId);
-    if (!btn) return;
-
-    btn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
-    btn.innerHTML = isPlaying
-      ? '<span>⏹</span><strong>Stop</strong>'
-      : '<span>🎧</span><strong>Écouter DIGIY</strong>';
-  }
-
-  function showPanel(message) {
-    const panel = document.getElementById(CFG.panelId);
-    if (!panel) return;
-
-    panel.querySelector("[data-audio-message]").textContent = message;
-    panel.hidden = false;
-  }
-
-  function hidePanel() {
-    const panel = document.getElementById(CFG.panelId);
-    if (panel) panel.hidden = true;
-  }
-
-  function goTo(path) {
-    window.location.href = path;
-  }
-
-  function injectStyles() {
-    if (document.getElementById("digiyJobsAudioStyle")) return;
-
-    const style = document.createElement("style");
-    style.id = "digiyJobsAudioStyle";
-
-    style.textContent = `
-      #${CFG.buttonId}{
-        position:fixed;
-        left:14px;
-        bottom:calc(92px + env(safe-area-inset-bottom,0px));
-        z-index:120;
-        min-height:50px;
-        border:none;
-        border-radius:999px;
-        padding:12px 16px;
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        gap:9px;
-        background:linear-gradient(135deg,#facc15,#eab308);
-        color:#171717;
-        font:900 14px/1 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-        box-shadow:0 18px 38px rgba(0,0,0,.24);
-        cursor:pointer;
+      if(!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)){
+        status.textContent = "Lecture vocale non disponible sur ce navigateur.";
+        playBtn.disabled = true;
+        stopBtn.disabled = true;
+        return;
       }
 
-      #${CFG.buttonId} span{
-        font-size:18px;
-        line-height:1;
+      const synth = window.speechSynthesis;
+      let playing = false;
+      let timer = null;
+      let launchId = 0;
+
+      function pageKey(){
+        const path = String(window.location.pathname || "").toLowerCase();
+        if(path.includes("missions.html")) return "missions";
+        if(path.includes("mission.html")) return "mission";
+        if(path.includes("postuler.html")) return "postuler";
+        if(path.includes("dossier-intelligent.html")) return "dossier";
+        if(path.includes("suivi.html")) return "suivi";
+        return "index";
       }
 
-      #${CFG.buttonId}[aria-pressed="true"]{
-        background:linear-gradient(135deg,#0f172a,#233548);
-        color:#fff;
+      function preparePronunciation(text){
+        return String(text || "")
+          .replace(/\bDIGIYLYFE\b/g, "diji i laïfe")
+          .replace(/\bDIGIY\b/g, "diji i")
+          .replace(/\bJOBS\b/g, "jobs")
+          .replace(/\bQR\b/g, "Q R")
+          .replace(/\bSMS\b/g, "S M S")
+          .replace(/\bWhatsApp\b/g, "Ouatsap")
+          .replace(/\bWave\b/g, "Ouève")
+          .replace(/0\s*%/g, "zéro pour cent")
+          .replace(/100\s*%/g, "cent pour cent");
       }
 
-      #${CFG.panelId}{
-        position:fixed;
-        left:14px;
-        bottom:calc(152px + env(safe-area-inset-bottom,0px));
-        z-index:121;
-        width:min(360px,calc(100vw - 28px));
-        border:1px solid rgba(255,255,255,.16);
-        border-radius:22px;
-        background:rgba(15,23,42,.94);
-        color:#fff;
-        box-shadow:0 22px 60px rgba(0,0,0,.34);
-        padding:14px;
-        font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      function getFrenchVoice(){
+        const voices = synth.getVoices() || [];
+        return (
+          voices.find(v => /fr[-_]?FR/i.test(v.lang || "") && /google/i.test(v.name || "")) ||
+          voices.find(v => /fr[-_]?FR/i.test(v.lang || "")) ||
+          voices.find(v => /^fr/i.test(v.lang || "")) ||
+          null
+        );
       }
 
-      #${CFG.panelId} h3{
-        margin:0 0 7px;
-        font-size:16px;
-        line-height:1.2;
+      function setIdle(message){
+        playing = false;
+        clearInterval(timer);
+        timer = null;
+        progress.style.width = "0%";
+        playBtn.disabled = false;
+        status.textContent = message || "Prêt à écouter.";
       }
 
-      #${CFG.panelId} p{
-        margin:0;
-        color:rgba(255,255,255,.78);
-        font-size:13px;
-        line-height:1.5;
-        font-weight:650;
+      function setPlaying(){
+        playing = true;
+        playBtn.disabled = true;
+        status.textContent = "Lecture en cours…";
       }
 
-      .digiy-audio-actions{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:8px;
-        margin-top:12px;
+      function stop(){
+        try{ synth.cancel(); }catch(_){}
+        setIdle("Lecture arrêtée.");
       }
 
-      .digiy-audio-actions button,
-      .digiy-audio-actions a{
-        min-height:40px;
-        border-radius:14px;
-        border:1px solid rgba(255,255,255,.14);
-        background:rgba(255,255,255,.08);
-        color:#fff;
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        padding:9px 10px;
-        font-size:12px;
-        font-weight:900;
-        text-decoration:none;
-        cursor:pointer;
+      function startProgress(text, currentId){
+        const words = (text.match(/\S+/g) || []).length;
+        const estimated = Math.max(2500, words * 520);
+        let elapsed = 0;
+        clearInterval(timer);
+        progress.style.width = "0%";
+
+        timer = setInterval(() => {
+          if(!playing || currentId !== launchId){
+            clearInterval(timer);
+            timer = null;
+            return;
+          }
+          elapsed += 150;
+          progress.style.width = Math.min((elapsed / estimated) * 100, 97) + "%";
+        }, 150);
       }
 
-      .digiy-audio-actions button.primary,
-      .digiy-audio-actions a.primary{
-        background:linear-gradient(135deg,#facc15,#eab308);
-        color:#171717;
-        border-color:transparent;
+      function launch(){
+        launchId += 1;
+        const currentId = launchId;
+        const rawText = PAGE_TEXTS[pageKey()] || PAGE_TEXTS.index;
+        const spokenText = preparePronunciation(rawText);
+
+        try{ synth.cancel(); }catch(_){}
+
+        const utterance = new SpeechSynthesisUtterance(spokenText);
+        utterance.lang = "fr-FR";
+        utterance.rate = 0.84;
+        utterance.pitch = 1.03;
+        utterance.volume = 1;
+
+        const voice = getFrenchVoice();
+        if(voice) utterance.voice = voice;
+
+        utterance.onstart = () => {
+          if(currentId !== launchId) return;
+          setPlaying();
+          startProgress(spokenText, currentId);
+        };
+
+        utterance.onend = () => {
+          if(currentId !== launchId) return;
+          progress.style.width = "100%";
+          setTimeout(() => {
+            if(currentId === launchId) setIdle("Lecture terminée.");
+          }, 260);
+        };
+
+        utterance.onerror = () => {
+          if(currentId !== launchId) return;
+          setIdle("Lecture interrompue.");
+        };
+
+        synth.speak(utterance);
       }
 
-      @media(max-width:640px){
-        #${CFG.buttonId}{
-          left:10px;
-          right:auto;
-          bottom:calc(86px + env(safe-area-inset-bottom,0px));
-          padding:12px 14px;
+      function play(){
+        if(playing) return;
+
+        const voices = synth.getVoices();
+        if(voices && voices.length){
+          launch();
+          return;
         }
 
-        #${CFG.panelId}{
-          left:10px;
-          bottom:calc(144px + env(safe-area-inset-bottom,0px));
-          width:min(350px,calc(100vw - 20px));
+        let started = false;
+        function handleVoices(){
+          if(started) return;
+          started = true;
+          synth.removeEventListener("voiceschanged", handleVoices);
+          launch();
         }
-      }
-    `;
 
-    document.head.appendChild(style);
-  }
-
-  function injectUi() {
-    if (document.getElementById(CFG.buttonId)) return;
-
-    const data = pageData();
-
-    const panel = document.createElement("aside");
-    panel.id = CFG.panelId;
-    panel.hidden = true;
-    panel.setAttribute("aria-live", "polite");
-
-    panel.innerHTML = `
-      <h3>Réception DIGIY</h3>
-      <p data-audio-message>${data.text}</p>
-
-      <div class="digiy-audio-actions">
-        <button class="primary" type="button" data-audio-action="listen">Écouter</button>
-        <button type="button" data-audio-action="close">Fermer</button>
-        <a href="${ROUTES.missions}">Missions</a>
-        <a href="${ROUTES.postuler}">Postuler</a>
-        <a href="${ROUTES.dossier}">Dossier</a>
-        <a href="${ROUTES.suivi}">Suivi</a>
-      </div>
-    `;
-
-    const btn = document.createElement("button");
-    btn.id = CFG.buttonId;
-    btn.type = "button";
-    btn.setAttribute("aria-label", "Écouter DIGIY");
-    btn.setAttribute("aria-pressed", "false");
-    btn.innerHTML = '<span>🎧</span><strong>Écouter DIGIY</strong>';
-
-    document.body.appendChild(panel);
-    document.body.appendChild(btn);
-
-    btn.addEventListener("click", toggleSpeech);
-
-    panel.addEventListener("click", (event) => {
-      const action = event.target?.dataset?.audioAction;
-
-      if (action === "listen") {
-        speak();
+        synth.addEventListener("voiceschanged", handleVoices);
+        setTimeout(handleVoices, 700);
       }
 
-      if (action === "close") {
-        hidePanel();
-      }
-    });
+      playBtn.addEventListener("click", play);
+      stopBtn.addEventListener("click", stop);
+      window.addEventListener("pagehide", stop);
+      document.addEventListener("visibilitychange", () => {
+        if(document.hidden && playing) stop();
+      });
 
-    btn.addEventListener("contextmenu", (event) => {
-      event.preventDefault();
-      showPanel(data.text);
-    });
-  }
+      window.DIGIY_JOBS_AUDIO = {
+        play,
+        stop,
+        routes: ROUTES
+      };
 
-  function patchOptionalAudioZones() {
-    const zones = document.querySelectorAll("[data-digiy-audio]");
-    const data = pageData();
-
-    zones.forEach((zone) => {
-      zone.innerHTML = `
-        <button type="button" data-digiy-audio-play>
-          🎧 Écouter DIGIY
-        </button>
-        <p>${data.title} · une voix t’explique où tu es et quoi faire.</p>
-      `;
-
-      zone.querySelector("[data-digiy-audio-play]")?.addEventListener("click", toggleSpeech);
-    });
-  }
-
-  function boot() {
-    injectStyles();
-    injectUi();
-    patchOptionalAudioZones();
-
-    window.DIGIY_JOBS_AUDIO = {
-      speak,
-      stop: stopSpeech,
-      show: () => showPanel(pageData().text),
-      hide: hidePanel,
-      goTo
-    };
-
-    window.addEventListener("pagehide", stopSpeech);
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", boot);
-  } else {
-    boot();
-  }
-})();
-
+      setIdle();
+    })();
   </script>
 
 </body>
 </html>
+
+
 
 
