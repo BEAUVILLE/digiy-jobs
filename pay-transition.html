@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>JOBS vers PAY</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0f1720">
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100dvh;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:radial-gradient(720px 380px at 8% -10%,rgba(14,165,233,.24),transparent 62%),linear-gradient(180deg,#15202b,#0f1720 58%,#081019);color:white;padding:12px;font-weight:900}a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}.wrap{width:min(820px,100%);margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}.top b{color:#e6bf6b}.top a{font-size:12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 10px;background:rgba(255,255,255,.08)}.card{border:1px solid rgba(230,191,107,.34);border-radius:26px;background:rgba(255,255,255,.08);padding:16px;box-shadow:0 18px 44px rgba(0,0,0,.24)}.k{color:#e6bf6b;font-size:12px;letter-spacing:.14em;text-transform:uppercase}h1{font-size:clamp(42px,12vw,76px);line-height:.88;margin:8px 0 10px;font-weight:1000;letter-spacing:-.06em}.lead{line-height:1.4;color:rgba(255,255,255,.84);margin:0 0 10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}label{display:block;margin-top:10px;color:#e6bf6b;font-weight:1000;font-size:12px;text-transform:uppercase;letter-spacing:.08em}textarea,input,select{width:100%;border-radius:16px;border:1px solid rgba(230,191,107,.35);background:#081019;color:white;padding:12px;font-weight:900;margin-top:5px}textarea{min-height:90px;resize:vertical}.btn{min-height:50px;border-radius:16px;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;text-align:center;padding:9px;background:rgba(255,255,255,.1);color:white;font-weight:1000;margin-top:10px;cursor:pointer}.go{background:linear-gradient(135deg,#0ea5e9,#e6bf6b);color:#06130e}.gold{background:#e6bf6b;color:#111}.status{margin-top:10px;padding:10px;border-radius:16px;background:rgba(0,0,0,.18);border:1px dashed rgba(230,191,107,.25);color:#dfffe9;line-height:1.35;font-size:13px}@media(max-width:560px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="top"><b>💼 JOBS → PAY</b><a href="./action.html">← GO JOBS</a></div>
+  <section class="card">
+    <div class="k">Mission · frais · solde · à recevoir</div>
+    <h1>Mission gardée.<br>PAY encaisse.</h1>
+    <p class="lead">JOBS garde la mission, le candidat, l’employeur, le poste et le suivi. PAY reçoit seulement l’argent réel ou le reste à recevoir, après validation humaine.</p>
+    <div class="grid">
+      <div><label>Type</label><select id="type"><option value="income">Recette / frais mission</option><option value="income_solde">Solde mission</option><option value="expense">Dépense</option><option value="receivable">À recevoir</option></select></div>
+      <div><label>Montant</label><input id="amount" inputmode="numeric" value="5000"></div>
+    </div>
+    <div class="grid">
+      <div><label>Canal</label><select id="mode"><option>Wave</option><option>Cash</option><option>Orange Money</option><option>Carte</option></select></div>
+      <div><label>Client / origine</label><input id="who" value="Client JOBS"></div>
+    </div>
+    <label>Mission / poste</label><input id="job" value="Mission JOBS">
+    <label>Note PAY</label><textarea id="phrase">recette JOBS 5000 Wave — Mission JOBS</textarea>
+    <div class="grid"><button class="btn gold" id="copy" type="button">📋 Copier brouillon</button><button class="btn go" id="send" type="button">💳 Valider vers PAY</button></div>
+    <div class="status" id="status">Prêt. JOBS ne confirme pas seul la mission ni le paiement.</div>
+  </section>
+</main>
+<script>
+(function(){
+'use strict';
+const PAY_URL='https://pro-pay.digiylyfe.com/module-bridge.html';
+const $=id=>document.getElementById(id);
+function clean(n){return String(n||'').replace(/[^0-9]/g,'')||'0'}
+function norm(v){return String(v||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+function set(m){$('status').textContent=m}
+function detectType(raw){const t=norm(raw);if(/depense|achat|transport|frais sortie|avance sortie/.test(t))return'expense';if(/doit|dette|credit|reste|a recevoir/.test(t))return'receivable';if(/solde/.test(t))return'income_solde';return'income'}
+function detectChannel(raw){const t=norm(raw);if(t.includes('wave'))return'Wave';if(t.includes('orange'))return'Orange Money';if(t.includes('carte'))return'Carte';if(t.includes('cash')||t.includes('espece'))return'Cash';return'Wave'}
+function extractAmount(raw){const m=String(raw||'').match(/(\d[\d\s.,]*)/);return m?String(m[1]).replace(/[^0-9]/g,''):'5000'}
+function extractJob(raw){let s=String(raw||'').replace(/\d[\d\s.,]*/g,' ').replace(/\b(wave|cash|orange money|orange|carte|fcfa|f|paiement|client|montant|mission|jobs|recette|depense|dépense|frais|solde)\b/ig,' ').replace(/[,;:]+/g,' ').replace(/\s+/g,' ').trim();return s||'Mission JOBS'}
+function load(){try{const d=JSON.parse(localStorage.getItem('DIGIY_JOBS_GO_LATEST')||'null');if(!d)return;const raw=d.raw||d.text||'';$('amount').value=d.amount||extractAmount(raw);$('mode').value=d.mode||detectChannel(raw);$('job').value=d.job||extractJob(raw);$('type').value=d.type||detectType(raw);$('who').value=d.who||'Client JOBS'}catch(e){}refresh()}
+function typeReal(){const t=$('type').value;if(t==='expense')return'expense';if(t==='receivable')return'receivable';return'income'}
+function typeLabel(){const t=$('type').value;if(t==='expense')return'Dépense';if(t==='receivable')return'À recevoir';if(t==='income_solde')return'Solde';return'Recette'}
+function category(){const t=$('type').value;if(t==='expense')return'Dépense JOBS';if(t==='receivable')return'À recevoir JOBS';if(t==='income_solde')return'Solde mission JOBS';return'Recette JOBS'}
+function refresh(){const a=clean($('amount').value),m=$('mode').value||'Cash',j=$('job').value||'Mission JOBS';const head=$('type').value==='expense'?'dépense JOBS':$('type').value==='receivable'?'à recevoir JOBS':$('type').value==='income_solde'?'solde JOBS':'recette JOBS';$('phrase').value=head+' '+a+' '+m+' — '+j;return {a,m,j}}
+function payload(){const r=refresh();return{source:'JOBS',module:'JOBS',target:'PAY',type:typeReal(),typeLabel:typeLabel(),amount:Number(r.a)||0,currency:'XOF',channel:r.m,who:$('who').value||'Client JOBS',category:category(),note:$('phrase').value,proofRef:'JOBS-PAY-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),status:'draft',requiresHumanValidation:true,createdAt:new Date().toISOString(),safety:{jobsKeepsMission:true,payKeepsFinalMoney:true,noAutoPayment:true,noAutoHiring:true,humanValidationRequired:true}}}
+function urlFromPayload(p){const q=new URLSearchParams();q.set('from','JOBS');q.set('type',p.type);q.set('amount',String(Math.round(p.amount||0)));q.set('channel',p.channel);q.set('who',p.who);q.set('category',p.category);q.set('note',p.note);q.set('proofRef',p.proofRef);return PAY_URL+'?'+q.toString()}
+['type','amount','mode','who','job'].forEach(id=>$(id).addEventListener('input',refresh));
+$('copy').onclick=async()=>{refresh();try{await navigator.clipboard.writeText($('phrase').value);set('Brouillon copié.')}catch(e){prompt('Copie le brouillon :',$('phrase').value)}};
+$('send').onclick=()=>{const p=payload();if(!p.amount){set('Montant manquant.');return}try{localStorage.setItem('DIGIY_JOBS_PAY_BRIDGE',JSON.stringify(p));localStorage.setItem('DIGIY_PAY_PENDING_MOVEMENT',JSON.stringify(p));localStorage.setItem('DIGIY_JOBS_LATEST_ACTION',JSON.stringify(p))}catch(e){}set('Ouverture PAY…');location.href=urlFromPayload(p)};
+load();
+})();
+</script>
+</body>
+</html>
