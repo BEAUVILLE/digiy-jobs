@@ -39,5 +39,2382 @@
   <script>
     (function(){"use strict";const PAGE_TEXTS={index:"Bienvenue sur DIGIY JOBS. Ici, tu es dans l'entrée publique du travail terrain. Pas besoin de code professionnel pour le candidat. Tu peux voir les missions, comprendre une offre, déposer une candidature, préparer ton dossier, suivre ton dépôt, ou ouvrir l'inscription JOBS si tu veux publier une mission. diji i t'aide à avancer étape par étape."};const playBtn=document.getElementById("digiyJobsPlayBtn"),stopBtn=document.getElementById("digiyJobsStopBtn"),progress=document.getElementById("digiyJobsAudioProgress"),status=document.getElementById("digiyJobsAudioStatus");if(!playBtn||!stopBtn||!progress||!status)return;if(!("speechSynthesis" in window)||!("SpeechSynthesisUtterance" in window)){status.textContent="Lecture vocale non disponible sur ce navigateur.";playBtn.disabled=true;stopBtn.disabled=true;return}const synth=window.speechSynthesis;let playing=false,timer=null,launchId=0;function preparePronunciation(text){return String(text||"").replace(/\bDIGIYLYFE\b/g,"diji laïfe").replace(/\bDIGIY\b/g,"diji i").replace(/\bJOBS\b/g,"jobs").replace(/\bQR\b/g,"Q R").replace(/\bSMS\b/g,"S M S").replace(/\bWhatsApp\b/g,"Ouatsap").replace(/\bWave\b/g,"Ouève").replace(/0\s*%/g,"zéro pour cent").replace(/100\s*%/g,"cent pour cent")}function getFrenchVoice(){const voices=synth.getVoices()||[];return voices.find(v=>/fr[-_]?FR/i.test(v.lang||"")&&/google/i.test(v.name||""))||voices.find(v=>/fr[-_]?FR/i.test(v.lang||""))||voices.find(v=>/^fr/i.test(v.lang||""))||null}function setIdle(message){playing=false;clearInterval(timer);timer=null;progress.style.width="0%";playBtn.disabled=false;status.textContent=message||"Prêt à écouter."}function stop(){try{synth.cancel()}catch(_){}setIdle("Lecture arrêtée.")}function startProgress(text,currentId){const words=(text.match(/\S+/g)||[]).length,estimated=Math.max(2500,words*520);let elapsed=0;clearInterval(timer);progress.style.width="0%";timer=setInterval(()=>{if(!playing||currentId!==launchId){clearInterval(timer);timer=null;return}elapsed+=150;progress.style.width=Math.min(elapsed/estimated*100,97)+"%"},150)}function launch(){launchId+=1;const currentId=launchId,spokenText=preparePronunciation(PAGE_TEXTS.index);try{synth.cancel()}catch(_){}const u=new SpeechSynthesisUtterance(spokenText);u.lang="fr-FR";u.rate=.84;u.pitch=1.03;u.volume=1;const voice=getFrenchVoice();if(voice)u.voice=voice;u.onstart=()=>{if(currentId!==launchId)return;playing=true;playBtn.disabled=true;status.textContent="Lecture en cours…";startProgress(spokenText,currentId)};u.onend=()=>{if(currentId!==launchId)return;progress.style.width="100%";setTimeout(()=>{if(currentId===launchId)setIdle("Lecture terminée.")},260)};u.onerror=()=>{if(currentId!==launchId)return;setIdle("Lecture interrompue.")};synth.speak(u)}function play(){if(playing)return;const voices=synth.getVoices();if(voices&&voices.length){launch();return}let started=false;function handleVoices(){if(started)return;started=true;synth.removeEventListener("voiceschanged",handleVoices);launch()}synth.addEventListener("voiceschanged",handleVoices);setTimeout(handleVoices,700)}playBtn.addEventListener("click",play);stopBtn.addEventListener("click",stop);window.addEventListener("pagehide",stop);document.addEventListener("visibilitychange",()=>{if(document.hidden&&playing)stop()});setIdle()})();
   </script>
+  <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Taxi Saly — Chauffeur Mbour & Petite Côte | DIGIY DRIVER</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#155f43">
+  <meta name="digiy-version" content="driver-client-clair-gras-2026-05-29">
+
+  <!-- SEO principal -->
+  <meta name="description" content="Commande un taxi à Saly, Mbour, Ngaparou, Somone, AIBD. Chauffeur DIGIY — tarif terrain digne, paiement direct, 0% commission. Course Saly-AIBD dès 25 000 FCFA.">
+  <meta name="keywords" content="taxi saly, chauffeur mbour, vtc saly, course saly aibd, taxi petite côte, chauffeur sénégal, taxi ngaparou, taxi somone, chauffeur digiy, course mbour dakar">
+  <meta name="author" content="DIGIYLYFE — JB Beauville">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://driver-client.digiylyfe.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://driver-client.digiylyfe.com/">
+  <meta property="og:title" content="Taxi Saly & Mbour — Chauffeur DIGIY DRIVER">
+  <meta property="og:description" content="Commander un taxi à Saly, Mbour, Ngaparou, Somone, AIBD. Chauffeur direct, tarif terrain, 0% commission DIGIY.">
+  <meta property="og:image" content="https://digiylyfe.net/wp-content/uploads/2026/03/digiy_services_avec_logo.webp">
+  <meta property="og:locale" content="fr_SN">
+  <meta property="og:site_name" content="DIGIYLYFE">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Taxi Saly & Mbour — DIGIY DRIVER">
+  <meta name="twitter:description" content="Commande ta course à Saly, Mbour, Ngaparou, AIBD. Tarif terrain, contact direct chauffeur, 0% commission.">
+  <meta name="twitter:image" content="https://digiylyfe.net/wp-content/uploads/2026/03/digiy_services_avec_logo.webp">
+
+  <!-- Geo -->
+  <meta name="geo.region" content="SN-TH">
+  <meta name="geo.placename" content="Saly, Mbour, Petite Côte, Sénégal">
+  <meta name="geo.position" content="14.4500;-16.9833">
+  <meta name="ICBM" content="14.4500, -16.9833">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://driver-client.digiylyfe.com/",
+        "name": "DIGIY DRIVER — Taxi Saly Mbour Petite Côte",
+        "description": "Service de taxi et chauffeur VTC à Saly, Mbour, Ngaparou, Somone et toute la Petite Côte du Sénégal. Transferts AIBD, courses locales, circuits touristiques. 0% commission, paiement direct au chauffeur.",
+        "url": "https://driver-client.digiylyfe.com/",
+        "telephone": "+221771342889",
+        "priceRange": "3000-50000 FCFA",
+        "currenciesAccepted": "XOF",
+        "paymentAccepted": "Cash, Wave, Orange Money",
+        "openingHours": "Mo-Su 00:00-24:00",
+        "image": "https://digiylyfe.net/wp-content/uploads/2026/03/digiy_services_avec_logo.webp",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Saly Portudal",
+          "addressLocality": "Saly",
+          "addressRegion": "Thiès",
+          "postalCode": "23000",
+          "addressCountry": "SN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 14.4500,
+          "longitude": -16.9833
+        },
+        "areaServed": [
+          {"@type": "City", "name": "Saly"},
+          {"@type": "City", "name": "Mbour"},
+          {"@type": "City", "name": "Ngaparou"},
+          {"@type": "City", "name": "Somone"},
+          {"@type": "City", "name": "Nianing"},
+          {"@type": "City", "name": "Popenguine"},
+          {"@type": "City", "name": "Dakar"},
+          {"@type": "City", "name": "Thiès"},
+          {"@type": "Place", "name": "Aéroport International Blaise Diagne (AIBD)"}
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+221771342889",
+          "contactType": "customer service",
+          "availableLanguage": ["fr", "Wolof"]
+        }
+      },
+      {
+        "@type": "TaxiService",
+        "name": "DIGIY DRIVER — Taxi Saly Mbour",
+        "provider": {"@type": "Organization", "name": "DIGIYLYFE", "url": "https://digiylyfe.com"},
+        "areaServed": "Petite Côte, Sénégal",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Course Saly — AIBD",
+            "price": "25000",
+            "priceCurrency": "XOF",
+            "description": "Transfert Saly Centre vers l'Aéroport International Blaise Diagne"
+          },
+          {
+            "@type": "Offer",
+            "name": "Course Saly — Dakar",
+            "price": "45000",
+            "priceCurrency": "XOF",
+            "description": "Course Saly Centre vers Dakar Plateau"
+          },
+          {
+            "@type": "Offer",
+            "name": "Course locale Saly — Mbour",
+            "price": "5000",
+            "priceCurrency": "XOF",
+            "description": "Course courte Saly vers Mbour Centre"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Combien coûte un taxi de Saly à l'AIBD ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le tarif conseillé DIGIY DRIVER pour une course de Saly Centre vers l'Aéroport International Blaise Diagne (AIBD) est de 25 000 FCFA. Paiement direct au chauffeur, 0% de commission."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Comment commander un taxi à Saly ou Mbour ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Choisis ton départ et ta destination sur DIGIY DRIVER, sélectionne ton véhicule, puis contacte directement le chauffeur par WhatsApp ou appel au +221 77 134 28 89. Pas d'application à télécharger."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "DIGIY DRIVER fonctionne-t-il pour les transferts aéroport AIBD ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui. DIGIY DRIVER assure les transferts depuis et vers l'AIBD depuis toute la Petite Côte : Saly, Mbour, Ngaparou, Somone, Nianing. Tarifs terrain, chauffeur direct."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quel mode de paiement pour les taxis DIGIY ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le paiement se fait directement au chauffeur : espèces, Wave ou Orange Money. DIGIY ne prend aucune commission."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root{
+      --bg:#061b14;
+      --card:#0b2a1f;
+      --card2:#103728;
+      --line:rgba(255,255,255,.12);
+      --line-strong:rgba(255,255,255,.18);
+      --text:#ecfdf5;
+      --muted:rgba(236,253,245,.72);
+      --muted2:rgba(236,253,245,.52);
+      --gold:#facc15;
+      --green:#22c55e;
+      --red:#ef4444;
+      --blue:#3b82f6;
+      --shadow:0 18px 55px rgba(0,0,0,.40);
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(circle at top, rgba(250,204,21,.10), transparent 35%),
+        radial-gradient(circle at bottom, rgba(34,197,94,.10), transparent 40%),
+        var(--bg);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    .app{
+      min-height:100vh;
+      max-width:920px;
+      margin:0 auto;
+      padding:0 0 28px;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px;
+      background:rgba(6,27,20,.94);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+
+    .brand-logo{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      background:linear-gradient(135deg,#facc15,#f59e0b);
+      color:#111;
+      box-shadow:0 8px 22px rgba(250,204,21,.35);
+      flex:0 0 auto;
+    }
+
+    .brand-title{
+      font-weight:950;
+      letter-spacing:.04em;
+      font-size:18px;
+      line-height:1.05;
+    }
+
+    .brand-sub{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:2px;
+      line-height:1.35;
+    }
+
+    .header-actions{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .btn{
+      border:none;
+      border-radius:14px;
+      min-height:46px;
+      padding:0 14px;
+      cursor:pointer;
+      font-weight:900;
+      color:#111;
+      background:linear-gradient(135deg,#facc15,#f59e0b);
+      box-shadow:0 10px 24px rgba(250,204,21,.20);
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      transition:.18s ease;
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+    .btn:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+      box-shadow:none;
+      transform:none;
+    }
+
+    .btn.ghost{
+      color:var(--text);
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--line);
+      box-shadow:none;
+    }
+
+    .btn.green{
+      background:rgba(34,197,94,.16);
+      color:#bbf7d0;
+      border:1px solid rgba(34,197,94,.45);
+      box-shadow:none;
+    }
+
+    .btn.blue{
+      background:rgba(59,130,246,.16);
+      color:#bfdbfe;
+      border:1px solid rgba(59,130,246,.38);
+      box-shadow:none;
+    }
+
+    .btn.red{
+      background:rgba(239,68,68,.14);
+      color:#fecaca;
+      border:1px solid rgba(239,68,68,.42);
+      box-shadow:none;
+    }
+
+    .hero{
+      margin:16px 14px 0;
+      padding:20px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at top left, rgba(34,197,94,.12), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(250,204,21,.10), transparent 35%),
+        linear-gradient(180deg, rgba(11,42,31,.98), rgba(9,30,22,.98));
+      box-shadow:var(--shadow);
+      display:grid;
+      gap:14px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:14px;
+      align-items:stretch;
+    }
+
+    .hero-main{
+      display:grid;
+      gap:12px;
+      align-content:start;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      width:max-content;
+      max-width:100%;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(250,204,21,.24);
+      background:rgba(250,204,21,.08);
+      color:#fde68a;
+      font-size:11px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .hero-title{
+      font-size:32px;
+      font-weight:950;
+      line-height:1.05;
+      margin:0;
+    }
+
+    .hero-title span{color:#fde68a}
+
+    .hero-sub{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+      margin:0;
+      max-width:58ch;
+      font-weight:700;
+    }
+
+    .hero-mini{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+
+    .mini{
+      padding:14px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      display:grid;
+      gap:4px;
+      min-height:102px;
+      align-content:start;
+    }
+
+    .mini-k{
+      font-size:11px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--muted2);
+    }
+
+    .mini-v{
+      font-size:19px;
+      font-weight:950;
+      line-height:1.08;
+      color:#fff8dc;
+    }
+
+    .mini-s{
+      font-size:12px;
+      line-height:1.45;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .hero-aside{
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:16px;
+      background:
+        radial-gradient(circle at right top, rgba(34,197,94,.08), transparent 40%),
+        linear-gradient(180deg, rgba(16,55,40,.96), rgba(9,30,22,.96));
+      display:grid;
+      gap:12px;
+      align-content:start;
+    }
+
+    .aside-title{
+      font-size:11px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:#bbf7d0;
+    }
+
+    .aside-big{
+      font-size:26px;
+      font-weight:950;
+      line-height:1.08;
+      color:#fff8dc;
+    }
+
+    .aside-sub{
+      font-size:13px;
+      line-height:1.5;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .status-row{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      font-size:11px;
+      font-weight:900;
+    }
+
+    .pill .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--red);
+    }
+
+    .pill.ok .dot{background:var(--green)}
+    .pill.blue .dot{background:var(--blue)}
+    .pill.gold .dot{background:var(--gold)}
+
+    .hud-links{
+      display:grid;
+      gap:10px;
+    }
+
+    .hud-link{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      transition:.18s ease;
+    }
+
+    .hud-link:hover{
+      border-color:var(--line-strong);
+      background:rgba(255,255,255,.06);
+      transform:translateY(-1px);
+    }
+
+    .hud-link-main{
+      display:grid;
+      gap:2px;
+    }
+
+    .hud-link-k{
+      font-size:13px;
+      font-weight:900;
+      color:#fff;
+    }
+
+    .hud-link-s{
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.4;
+      font-weight:700;
+    }
+
+    .hud-link-arrow{
+      color:#fde68a;
+      font-size:18px;
+      font-weight:900;
+      flex-shrink:0;
+    }
+
+    .panel{
+      margin:16px 14px 0;
+      padding:16px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(11,42,31,.98), rgba(9,30,22,.98));
+      box-shadow:var(--shadow);
+    }
+
+    .panel-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:14px;
+      flex-wrap:wrap;
+    }
+
+    .panel-title{
+      font-size:22px;
+      font-weight:950;
+      line-height:1.1;
+    }
+
+    .panel-sub{
+      font-size:13px;
+      color:var(--muted);
+      margin-top:4px;
+      line-height:1.5;
+      max-width:58ch;
+    }
+
+    .focus-box{
+      margin-bottom:14px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+      background:
+        radial-gradient(circle at right top, rgba(250,204,21,.08), transparent 42%),
+        linear-gradient(180deg, rgba(16,55,40,.94), rgba(11,42,31,.94));
+      display:grid;
+      gap:6px;
+    }
+
+    .focus-k{
+      font-size:11px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:#fde68a;
+    }
+
+    .focus-v{
+      font-size:22px;
+      font-weight:950;
+      line-height:1.1;
+      color:#fff8dc;
+    }
+
+    .focus-s{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.5;
+      font-weight:700;
+    }
+
+    .stack{display:grid;gap:10px}
+
+    .field{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-height:58px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .field:hover{
+      border-color:var(--line-strong);
+      background:rgba(255,255,255,.05);
+    }
+
+    .field.static{cursor:default}
+    .field.static:hover{
+      border-color:var(--line);
+      background:rgba(255,255,255,.04);
+    }
+
+    .field-icon{
+      width:36px;
+      height:36px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:16px;
+      flex:0 0 auto;
+    }
+
+    .field-icon.pickup{background:rgba(34,197,94,.16);color:#86efac}
+    .field-icon.dropoff{background:rgba(250,204,21,.16);color:#fde68a}
+    .field-icon.phone{background:rgba(59,130,246,.16);color:#bfdbfe}
+
+    .field input{
+      width:100%;
+      background:none;
+      border:none;
+      outline:none;
+      color:var(--text);
+      font-size:15px;
+      font-weight:800;
+    }
+
+    .field input::placeholder{color:var(--muted)}
+
+    .vehicles{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .vehicle{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 10px;
+      background:rgba(255,255,255,.04);
+      text-align:center;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .vehicle:hover{
+      border-color:var(--line-strong);
+      background:rgba(255,255,255,.06);
+      transform:translateY(-1px);
+    }
+
+    .vehicle.active{
+      border-color:rgba(250,204,21,.55);
+      background:rgba(250,204,21,.08);
+      box-shadow:0 8px 22px rgba(250,204,21,.10);
+    }
+
+    .vehicle-ico{font-size:26px}
+    .vehicle-name{font-size:12px;font-weight:900;margin-top:6px}
+    .vehicle-price{font-size:14px;font-weight:900;color:#fde68a;margin-top:3px}
+    .vehicle-time{font-size:11px;color:var(--muted);margin-top:2px}
+
+    .summary{
+      display:none;
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(250,204,21,.35);
+      background:rgba(250,204,21,.08);
+    }
+
+    .summary.show{display:block}
+
+    .row{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      padding:6px 0;
+      font-size:14px;
+    }
+
+    .row .label{color:var(--muted)}
+
+    .row.total{
+      margin-top:8px;
+      padding-top:10px;
+      border-top:1px solid rgba(250,204,21,.24);
+      font-size:18px;
+      font-weight:950;
+      color:#fde68a;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .actions .btn{flex:1}
+
+    .foot-note{
+      margin-top:12px;
+      font-size:12px;
+      text-align:center;
+      color:var(--muted);
+      line-height:1.45;
+    }
+
+    .foot-note a{
+      color:#fde68a;
+      text-decoration:none;
+      font-weight:900;
+    }
+
+    .contact-panel{
+      display:none;
+      margin-top:16px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+    }
+
+    .contact-panel.show{display:block}
+
+    .contact-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+      margin-bottom:10px;
+      flex-wrap:wrap;
+    }
+
+    .contact-title{
+      font-size:18px;
+      font-weight:950;
+      color:#fde68a;
+    }
+
+    .contact-sub{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.45;
+      margin-top:4px;
+      max-width:56ch;
+    }
+
+    .contact-card{
+      border-radius:16px;
+      padding:12px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.14);
+    }
+
+    .contact-card .row{
+      padding:7px 0;
+    }
+
+    .overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      align-items:flex-end;
+      justify-content:center;
+      z-index:2000;
+    }
+
+    .overlay.show{display:flex}
+
+    .picker{
+      width:100%;
+      max-width:560px;
+      max-height:92vh;
+      border-top-left-radius:22px;
+      border-top-right-radius:22px;
+      background:#0b1511;
+      border:1px solid rgba(255,255,255,.08);
+      padding:14px;
+      animation:slideUp .22s ease;
+    }
+
+    .picker-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+    }
+
+    .picker-title{
+      font-size:18px;
+      font-weight:950;
+      color:#fde68a;
+    }
+
+    .close{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:22px;
+      cursor:pointer;
+      width:36px;
+      height:36px;
+      border-radius:999px;
+    }
+
+    .zones{
+      display:flex;
+      gap:8px;
+      overflow:auto;
+      padding-bottom:6px;
+      margin-bottom:10px;
+    }
+
+    .zone{
+      flex:0 0 auto;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      font-size:12px;
+      font-weight:900;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+
+    .zone.active{
+      border-color:rgba(250,204,21,.45);
+      background:rgba(250,204,21,.10);
+      color:#fde68a;
+    }
+
+    .loc-list{
+      display:grid;
+      gap:8px;
+      max-height:60vh;
+      overflow:auto;
+    }
+
+    .loc-item{
+      text-align:left;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      border-radius:14px;
+      padding:12px 14px;
+      font-size:14px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .loc-item:hover{border-color:rgba(250,204,21,.35)}
+
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.76);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:2200;
+    }
+
+    .modal.show{display:flex}
+
+    .modal-card{
+      width:100%;
+      max-width:400px;
+      border-radius:22px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(11,42,31,.98), rgba(8,27,20,.98));
+      box-shadow:var(--shadow);
+      padding:20px;
+      text-align:center;
+    }
+
+    .spinner{
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      border:4px solid rgba(255,255,255,.10);
+      border-top-color:var(--gold);
+      margin:0 auto 14px;
+      animation:spin .85s linear infinite;
+    }
+
+    .modal-title{
+      font-size:22px;
+      font-weight:950;
+    }
+
+    .modal-sub{
+      margin-top:8px;
+      color:var(--muted);
+      line-height:1.5;
+      font-size:14px;
+    }
+
+
+
+    /* DIGIY AUDIO — voix terrain */
+    .driver-audio{
+      position:relative;
+      margin-top:4px;
+      border:1px solid rgba(250,204,21,.44);
+      border-radius:20px;
+      padding:14px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at top right, rgba(250,204,21,.22), transparent 38%),
+        radial-gradient(circle at bottom left, rgba(34,197,94,.16), transparent 42%),
+        linear-gradient(180deg, rgba(250,204,21,.11), rgba(34,197,94,.08) 58%, rgba(0,0,0,.10));
+      box-shadow:0 18px 40px rgba(0,0,0,.22),0 0 0 1px rgba(250,204,21,.06) inset;
+    }
+
+    .driver-audio-top{
+      position:relative;
+      z-index:1;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .driver-audio-lead{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      margin-bottom:8px;
+      padding:6px 11px;
+      border-radius:999px;
+      background:rgba(250,204,21,.16);
+      border:1px solid rgba(250,204,21,.42);
+      color:#fff3cf;
+      font-size:11px;
+      font-weight:950;
+      letter-spacing:.02em;
+      box-shadow:0 0 18px rgba(250,204,21,.10);
+    }
+
+    .driver-audio-lead .dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:#facc15;
+      box-shadow:0 0 14px rgba(250,204,21,.75);
+      animation:audioPulse 1.5s ease-in-out infinite;
+    }
+
+    .driver-audio-title{
+      font-size:16px;
+      font-weight:950;
+      line-height:1.25;
+      color:#fff8db;
+    }
+
+    .driver-audio-text{
+      margin-top:5px;
+      max-width:560px;
+      color:#e9f7ee;
+      font-size:13px;
+      line-height:1.5;
+      font-weight:700;
+    }
+
+    .driver-audio-hint{
+      margin-top:8px;
+      color:#fff3cf;
+      font-size:12px;
+      font-weight:900;
+    }
+
+    .driver-audio-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .driver-audio-btn{
+      min-height:46px;
+      border-radius:999px;
+      border:1px solid rgba(250,204,21,.65);
+      background:linear-gradient(135deg,#facc15,#f59e0b);
+      color:#062014;
+      font-weight:950;
+      padding:10px 15px;
+      cursor:pointer;
+      box-shadow:0 10px 24px rgba(250,204,21,.26);
+      transition:transform .15s ease,box-shadow .15s ease,filter .15s ease;
+    }
+
+    .driver-audio-btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 14px 30px rgba(250,204,21,.34);
+      filter:saturate(1.05);
+    }
+
+    .driver-audio-btn:active{transform:translateY(1px)}
+
+    .driver-audio-btn.stop{
+      border-color:rgba(239,68,68,.44);
+      background:rgba(239,68,68,.10);
+      color:#fecaca;
+      box-shadow:none;
+    }
+
+    .driver-audio-progress-wrap{
+      position:relative;
+      z-index:1;
+      height:6px;
+      margin-top:12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.12);
+      overflow:hidden;
+    }
+
+    .driver-audio-progress{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg,#facc15,#22c55e);
+      transition:width .2s linear;
+    }
+
+    .driver-audio-glow{
+      position:absolute;
+      right:14px;
+      bottom:12px;
+      width:86px;
+      height:86px;
+      border-radius:999px;
+      background:radial-gradient(circle,rgba(250,204,21,.20),transparent 65%);
+      pointer-events:none;
+      filter:blur(3px);
+    }
+
+    @keyframes audioPulse{
+      0%,100%{transform:scale(1);opacity:1}
+      50%{transform:scale(1.25);opacity:.75}
+    }
+
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+
+    @media (max-width:840px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+
+    @media (max-width:720px){
+      .vehicles{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .actions{display:grid;grid-template-columns:1fr}
+      .header{padding:12px}
+      .brand-title{font-size:16px}
+      .header-actions{width:100%}
+      .hero-mini{grid-template-columns:1fr}
+      .driver-audio-actions,.driver-audio-btn{width:100%}
+      .driver-audio-btn{justify-content:center}
+      .driver-audio-glow{display:none}
+    }
+
+    /* DIGIY DRIVER — bouton flottant inscription chauffeur, sans confusion client */
+    .driver-tarif-float{
+      position:fixed;
+      left:16px;
+      bottom:calc(16px + env(safe-area-inset-bottom,0px));
+      z-index:1800;
+      min-width:230px;
+      min-height:62px;
+      padding:12px 18px;
+      border-radius:999px;
+      border:1px solid rgba(250,204,21,.72);
+      background:
+        radial-gradient(circle at top right,rgba(255,255,255,.28),transparent 34%),
+        linear-gradient(135deg,#facc15,#f59e0b);
+      color:#07140f;
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      box-shadow:0 18px 42px rgba(250,204,21,.32),0 10px 28px rgba(0,0,0,.36);
+      font-weight:950;
+      letter-spacing:.01em;
+      transition:transform .16s ease, filter .16s ease, box-shadow .16s ease;
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    .driver-tarif-float:hover{
+      transform:translateY(-2px);
+      filter:saturate(1.05);
+      box-shadow:0 22px 48px rgba(250,204,21,.38),0 12px 30px rgba(0,0,0,.38);
+    }
+
+    .driver-tarif-float:active{
+      transform:translateY(1px);
+    }
+
+    .driver-tarif-float .tarif-ico{
+      width:38px;
+      height:38px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(6,27,20,.14);
+      font-size:20px;
+      flex:0 0 auto;
+    }
+
+    .driver-tarif-float .tarif-txt{
+      display:grid;
+      gap:1px;
+      line-height:1.1;
+      text-align:left;
+    }
+
+    .driver-tarif-float .tarif-txt strong{
+      font-size:16px;
+      font-weight:1000;
+      color:#061b14;
+    }
+
+    .driver-tarif-float .tarif-txt small{
+      font-size:12px;
+      font-weight:900;
+      color:rgba(6,27,20,.78);
+    }
+
+    @media (max-width:720px){
+      body{
+        padding-bottom:86px;
+      }
+
+      .driver-tarif-float{
+        left:12px;
+        right:12px;
+        bottom:calc(12px + env(safe-area-inset-bottom,0px));
+        min-width:0;
+        width:calc(100% - 24px);
+        min-height:64px;
+        border-radius:18px;
+      }
+
+      .driver-tarif-float .tarif-txt strong{
+        font-size:17px;
+      }
+
+      .driver-tarif-float .tarif-txt small{
+        font-size:12.5px;
+      }
+    }
+
+
+
+    /* DIGIY — lisibilité terrain claire : vert plus lumineux, lettres plus blanches et grasses */
+    :root{
+      --bg:#155f43;
+      --card:#1b6b4c;
+      --card2:#195a43;
+      --line:rgba(255,255,255,.26);
+      --line-strong:rgba(255,255,255,.34);
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.92);
+      --muted2:rgba(255,255,255,.74);
+      --shadow:0 16px 42px rgba(0,0,0,.24);
+    }
+
+    body{
+      background:
+        radial-gradient(circle at top, rgba(250,204,21,.20), transparent 34%),
+        radial-gradient(circle at bottom, rgba(34,197,94,.24), transparent 42%),
+        linear-gradient(180deg,#1c7a55,#155f43 45%,#0d3f30 100%) !important;
+      color:#ffffff !important;
+      font-size:18px;
+      font-weight:800;
+      text-shadow:0 1px 10px rgba(0,0,0,.08);
+    }
+
+    .header{
+      background:rgba(21,95,67,.94) !important;
+      border-bottom-color:rgba(255,255,255,.30) !important;
+    }
+
+    .hero,
+    .panel,
+    .hero-aside,
+    .mini,
+    .focus-box,
+    .field,
+    .vehicle,
+    .summary,
+    .contact-panel,
+    .contact-card,
+    .hud-link,
+    .driver-audio,
+    .picker,
+    .modal-card{
+      border-color:rgba(255,255,255,.28) !important;
+      box-shadow:var(--shadow);
+    }
+
+    .hero,
+    .panel{
+      background:
+        radial-gradient(circle at top left, rgba(250,204,21,.13), transparent 36%),
+        radial-gradient(circle at bottom right, rgba(34,197,94,.14), transparent 42%),
+        linear-gradient(180deg,rgba(32,124,87,.97),rgba(20,91,67,.97)) !important;
+    }
+
+    .hero-aside,
+    .mini,
+    .field,
+    .vehicle,
+    .contact-panel,
+    .contact-card,
+    .hud-link{
+      background:rgba(255,255,255,.08) !important;
+    }
+
+    .focus-box{
+      background:
+        radial-gradient(circle at right top, rgba(250,204,21,.13), transparent 42%),
+        linear-gradient(180deg,rgba(35,132,93,.92),rgba(22,93,68,.92)) !important;
+    }
+
+    .brand-title,
+    .hero-title,
+    .panel-title,
+    .aside-big,
+    .mini-v,
+    .focus-v,
+    .contact-title,
+    .row.total,
+    .vehicle-price,
+    .hud-link-k{
+      color:#ffffff !important;
+      font-weight:1100 !important;
+      text-shadow:0 2px 14px rgba(0,0,0,.18);
+    }
+
+    .hero-title span,
+    .aside-big,
+    .focus-k,
+    .contact-title,
+    .row.total,
+    .vehicle-price,
+    .hud-link-arrow{
+      color:#fff8dc !important;
+    }
+
+    .brand-sub,
+    .hero-sub,
+    .panel-sub,
+    .aside-sub,
+    .mini-s,
+    .focus-s,
+    .hud-link-s,
+    .foot-note,
+    .contact-sub,
+    .row .label,
+    .driver-audio-text,
+    .driver-audio-hint,
+    .modal-sub{
+      color:rgba(255,255,255,.92) !important;
+      font-weight:900 !important;
+      line-height:1.58 !important;
+    }
+
+    .eyebrow,
+    .aside-title,
+    .mini-k,
+    .pill{
+      color:#fff8dc !important;
+      background:rgba(250,204,21,.14) !important;
+      border-color:rgba(250,204,21,.42) !important;
+      font-weight:1100 !important;
+    }
+
+    .btn,
+    .driver-audio-btn,
+    .loc-item,
+    .zone,
+    .field input{
+      font-weight:1100 !important;
+      font-size:16px;
+    }
+
+    .btn.ghost{
+      background:rgba(255,255,255,.10) !important;
+      border-color:rgba(255,255,255,.30) !important;
+      color:#ffffff !important;
+    }
+
+    .btn.green{
+      background:rgba(34,197,94,.22) !important;
+      border-color:rgba(34,197,94,.58) !important;
+      color:#ffffff !important;
+    }
+
+    .field input::placeholder{
+      color:rgba(255,255,255,.82) !important;
+      font-weight:950;
+    }
+
+    .vehicle.active{
+      border-color:rgba(250,204,21,.72) !important;
+      background:rgba(250,204,21,.16) !important;
+    }
+
+    .driver-tarif-float{
+      box-shadow:0 18px 42px rgba(250,204,21,.34),0 10px 28px rgba(0,0,0,.30) !important;
+    }
+
+    @media (max-width:720px){
+      body{font-size:17px;}
+      .hero-title{font-size:34px;}
+      .panel-title{font-size:24px;}
+      .hero-sub,.panel-sub,.aside-sub,.mini-s,.focus-s,.hud-link-s,.contact-sub{font-size:14.5px;}
+      .btn,.driver-audio-btn{font-size:15.5px;}
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="app">
+
+  <header class="header">
+    <div class="brand">
+      <div class="brand-logo">🚗</div>
+      <div>
+        <div class="brand-title">DIGIY DRIVER</div>
+        <div class="brand-sub">Client • commande simple • chauffeur direct</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <a class="btn ghost" href="https://digiylyfe.com/">🌍 Site DIGIYLYFE</a>
+      <a class="btn ghost" href="https://pro-espace.digiylyfe.com/">🧭 HUB</a>
+      <a class="btn ghost" id="galleryBtn" href="#">🚕 Voir les chauffeurs</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-main">
+        <div class="eyebrow">Client DRIVER • commande rapide</div>
+        <h1 class="hero-title">Commander une course <span>sans casser le métier</span></h1>
+        <p class="hero-sub">
+          Choisis ton départ, ta destination, ton type de véhicule, puis contacte directement un chauffeur.
+          DIGIY ne prend pas la commission et ne tire pas les prix vers le bas.
+        </p>
+
+        <div class="driver-audio" aria-label="Explication audio DIGIY DRIVER">
+          <div class="driver-audio-top">
+            <div>
+              <div class="driver-audio-lead"><span class="dot"></span> Conseil DIGIY · écoute d'abord</div>
+              <div class="driver-audio-title">🎧 Comprendre avant de commander</div>
+              <div class="driver-audio-text">Une voix explique comment demander une course, garder le contact direct et respecter le tarif terrain du chauffeur.</div>
+              <div class="driver-audio-hint">👉 35 secondes pour ne pas se tromper.</div>
+            </div>
+            <div class="driver-audio-actions">
+              <button class="driver-audio-btn" id="btnDriverAudio" type="button">🎧 Écouter DIGIY</button>
+              <button class="driver-audio-btn stop" id="btnDriverAudioStop" type="button">⏹ Stop</button>
+            </div>
+          </div>
+          <div class="driver-audio-progress-wrap" aria-hidden="true"><div class="driver-audio-progress" id="driverAudioProgress"></div></div>
+          <div class="driver-audio-glow" aria-hidden="true"></div>
+        </div>
+
+        <div class="hero-mini">
+          <div class="mini">
+            <div class="mini-k">En 2 gestes</div>
+            <div class="mini-v">Départ + arrivée</div>
+            <div class="mini-s">Le client choisit juste l'essentiel pour lancer sa demande.</div>
+          </div>
+
+          <div class="mini">
+            <div class="mini-k">En 1 lecture</div>
+            <div class="mini-v">Tarif digne</div>
+            <div class="mini-s">Le prix affiché protège le métier du chauffeur.</div>
+          </div>
+
+          <div class="mini">
+            <div class="mini-k">En direct</div>
+            <div class="mini-v">WhatsApp / appel</div>
+            <div class="mini-s">Pas d’intermédiaire lourd. Le contact se fait humainement.</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-aside">
+        <div class="aside-title">Doctrine terrain</div>
+        <div class="aside-big">Prix dignes.<br>Contact direct.<br>0% commission.</div>
+        <div class="aside-sub">
+          DIGIY DRIVER sert à mettre en relation proprement. Le téléphone fait le reste.
+        </div>
+
+        <div class="status-row">
+          <div class="pill ok" id="dbPill"><span class="dot"></span><span id="dbText">Service …</span></div>
+          <div class="pill blue"><span class="dot"></span><span>Client DRIVER</span></div>
+          <div class="pill gold"><span class="dot"></span><span>Tarif terrain</span></div>
+        </div>
+
+        <div class="hud-links">
+          <a class="hud-link" id="heroOrderLink" href="#bookingPanel">
+            <div class="hud-link-main">
+              <div class="hud-link-k">Commander maintenant</div>
+              <div class="hud-link-s">Aller directement au bloc départ / destination / tarif.</div>
+            </div>
+            <div class="hud-link-arrow">→</div>
+          </a>
+
+          <a class="hud-link" id="heroDriversLink" href="#">
+            <div class="hud-link-main">
+              <div class="hud-link-k">Voir les chauffeurs</div>
+              <div class="hud-link-s">Ouvrir la galerie DIGIY DRIVER avant de contacter.</div>
+            </div>
+            <div class="hud-link-arrow">→</div>
+          </a>
+
+          <a class="hud-link" href="https://digiylyfe.com/">
+            <div class="hud-link-main">
+              <div class="hud-link-k">🌍 Site DIGIYLYFE</div>
+              <div class="hud-link-s">Retourner à la vitrine principale et retrouver toutes les portes.</div>
+            </div>
+            <div class="hud-link-arrow">→</div>
+          </a>
+
+          <a class="hud-link" href="https://pro-espace.digiylyfe.com/">
+            <div class="hud-link-main">
+              <div class="hud-link-k">🧭 HUB</div>
+              <div class="hud-link-s">Ouvrir le carrefour des modules et garder le circuit complet.</div>
+            </div>
+            <div class="hud-link-arrow">→</div>
+          </a>
+
+          <a class="hud-link" href="https://tarifs.digiylyfe.com/">
+            <div class="hud-link-main">
+              <div class="hud-link-k">📦 Tarifs</div>
+              <div class="hud-link-s">Voir les offres DIGIYLYFE et choisir la bonne porte d’entrée.</div>
+            </div>
+            <div class="hud-link-arrow">→</div>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="panel" id="bookingPanel">
+    <div class="panel-head">
+      <div>
+        <div class="panel-title">Commander une course</div>
+        <div class="panel-sub">Départ, destination, véhicule, téléphone. Puis contact direct avec le chauffeur.</div>
+      </div>
+    </div>
+
+    <div class="focus-box">
+      <div class="focus-k">Lecture avant action</div>
+      <div class="focus-v">Départ + destination + téléphone = demande prête</div>
+      <div class="focus-s">
+        Le prix affiché est un tarif terrain conseillé. Il doit aider le chauffeur à vivre, pas l'écraser.
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="field" id="pickupRow">
+        <div class="field-icon pickup">📍</div>
+        <input id="pickupInput" type="text" placeholder="Point de départ" readonly>
+      </div>
+
+      <div class="field" id="dropoffRow">
+        <div class="field-icon dropoff">🏁</div>
+        <input id="dropoffInput" type="text" placeholder="Destination" readonly>
+      </div>
+
+      <div class="field static">
+        <div class="field-icon phone">📞</div>
+        <input id="clientPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Téléphone WhatsApp (+221 77...)">
+      </div>
+    </div>
+
+    <div class="vehicles" id="vehicleOptions">
+      <div class="vehicle active" data-type="eco" data-multiplier="1">
+        <div class="vehicle-ico">🚗</div>
+        <div class="vehicle-name">Éco</div>
+        <div class="vehicle-price" id="priceEco">—</div>
+        <div class="vehicle-time">terrain</div>
+      </div>
+      <div class="vehicle" data-type="confort" data-multiplier="1.2">
+        <div class="vehicle-ico">🚙</div>
+        <div class="vehicle-name">Confort</div>
+        <div class="vehicle-price" id="priceConfort">—</div>
+        <div class="vehicle-time">terrain</div>
+      </div>
+      <div class="vehicle" data-type="premium" data-multiplier="1.5">
+        <div class="vehicle-ico">🚘</div>
+        <div class="vehicle-name">Premium</div>
+        <div class="vehicle-price" id="pricePremium">—</div>
+        <div class="vehicle-time">terrain</div>
+      </div>
+      <div class="vehicle" data-type="moto" data-multiplier="0.75">
+        <div class="vehicle-ico">🏍️</div>
+        <div class="vehicle-name">Moto</div>
+        <div class="vehicle-price" id="priceMoto">—</div>
+        <div class="vehicle-time">trajets compatibles</div>
+      </div>
+    </div>
+
+    <div class="summary" id="priceSummary">
+      <div class="row"><span class="label">Distance estimée</span><span id="summaryDistance">—</span></div>
+      <div class="row"><span class="label">Durée estimée</span><span id="summaryDuration">—</span></div>
+      <div class="row"><span class="label">Véhicule</span><span id="summaryVehicle">Éco</span></div>
+      <div class="row total"><span>Tarif conseillé</span><span id="summaryTotal">—</span></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn" id="confirmBtn" type="button" disabled>🚕 Préparer ma demande</button>
+      <a class="btn ghost" href="https://digiylyfe.com">← Retour DIGIYLYFE</a>
+    </div>
+
+    <div class="foot-note">
+      Paiement direct au chauffeur • 0% commission DIGIY •
+      <a href="https://digiylyfe.com" target="_blank" rel="noopener">Site principal</a>
+    </div>
+
+    <div class="contact-panel" id="contactPanel">
+      <div class="contact-head">
+        <div>
+          <div class="contact-title">Demande prête</div>
+          <div class="contact-sub">
+            Tu peux maintenant envoyer directement ta demande à un chauffeur DIGIY. Pas d’intermédiaire qui mange la marge. Le client contacte directement le chauffeur.
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="row"><span class="label">Départ</span><span id="contactPickup">—</span></div>
+        <div class="row"><span class="label">Destination</span><span id="contactDropoff">—</span></div>
+        <div class="row"><span class="label">Véhicule</span><span id="contactVehicle">—</span></div>
+        <div class="row"><span class="label">Téléphone client</span><span id="contactPhone">—</span></div>
+        <div class="row"><span class="label">Tarif conseillé</span><span id="contactPrice" style="color:#fde68a;font-weight:900">—</span></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn green" id="whatsappBtn" type="button">💬 Envoyer WhatsApp</button>
+        <button class="btn blue" id="callBtn" type="button">📞 Appeler</button>
+        <button class="btn red" id="resetBtn" type="button">✕ Recommencer</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<a class="driver-tarif-float"
+   href="./inscription-driver.html"
+   aria-label="Inscription chauffeur DIGIY DRIVER">
+  <span class="tarif-ico">🚕</span>
+  <span class="tarif-txt">
+    <strong>Je suis chauffeur</strong>
+    <small>M’inscrire sur DIGIY DRIVER</small>
+  </span>
+</a>
+
+<!-- Overlay picker lieu -->
+<div class="overlay" id="locationOverlay" aria-hidden="true">
+  <div class="picker">
+    <div class="picker-head">
+      <div class="picker-title" id="locationTitle">Choisir un lieu</div>
+      <button class="close" id="closeLocationBtn" type="button">✕</button>
+    </div>
+
+    <div class="zones" id="locationZones"></div>
+    <div class="loc-list" id="locationList"></div>
+  </div>
+</div>
+
+<!-- Modal chargement -->
+<div class="modal" id="searchModal" aria-hidden="true">
+  <div class="modal-card">
+    <div class="spinner"></div>
+    <div class="modal-title">Préparation de la demande…</div>
+    <div class="modal-sub">
+      DIGIY prépare un message propre avec ton trajet et le tarif conseillé.
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ─── CONFIG ─────────────────────────────────────────────────── */
+  const SUPABASE_URL     = "https://wesqmwjjtsefyjnluosj.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_tGHItRgeWDmGjnd0CK1DVQ_BIep4Ug3";
+  const GALLERY_BASE_URL  = "https://beauville.github.io/galerie-chauffeurs/";
+  const DEFAULT_DRIVER_PHONE = "+221771342889";
+
+  /* ─── FIX PRINCIPAL : lazy init Supabase ─────────────────────
+     Avant, createClient() était appelé au niveau racine de l'IIFE.
+     Si le CDN jsdelivr était lent ou bloqué, window.supabase était
+     undefined → TypeError → tout le script mourait → plus aucun
+     listener ne se bindait → les champs départ/destination ne
+     répondaient plus du tout.
+
+     Maintenant : getSb() est appelé uniquement quand on en a besoin
+     (ping, insert). Si Supabase est KO, le pill passe rouge mais
+     le picker, le calcul de tarif, WhatsApp et l'appel fonctionnent
+     normalement. Pierre par pierre. 🦅
+  ─────────────────────────────────────────────────────────────── */
+  let _sb = null;
+
+  function getSb() {
+    if (_sb) return _sb;
+    try {
+      if (window.__digiyDriverSb) {
+        _sb = window.__digiyDriverSb;
+        return _sb;
+      }
+      if (window.supabase && typeof window.supabase.createClient === "function") {
+        _sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        window.__digiyDriverSb = _sb;
+      }
+    } catch(e) {
+      console.warn("[DIGIY DRIVER] Supabase init failed:", e);
+      _sb = null;
+    }
+    return _sb;
+  }
+
+  /* ─── DONNÉES TERRAIN ────────────────────────────────────────── */
+  const ZONE_GROUPS = [
+    { id: "aeroports",    label: "✈️ AÉROPORTS" },
+    { id: "petite_cote",  label: "🏖️ SALY & PETITE CÔTE" },
+    { id: "mbour",        label: "🏙️ MBOUR" },
+    { id: "dakar",        label: "🏙️ DAKAR & BANLIEUE" },
+    { id: "autres_villes",label: "🇸🇳 AUTRES VILLES" }
+  ];
+
+  const LOCATIONS_BY_ZONE = {
+    aeroports: [
+      "Aéroport International Blaise Diagne (AIBD)",
+      "AIBD Départs","AIBD Arrivées","AIBD Zone Hôtels",
+      "Aéroport Léopold Sédar Senghor (LSS)",
+      "Diass","Ndiass"
+    ],
+    petite_cote: [
+      "Saly Centre","Saly Portudal","Saly Niakh Niakhal",
+      "Saly Joseph","Saly Carrefour","Saly Tapée","Saly Koulang",
+      "Ngaparou","Ngaparou Plage",
+      "Somone","Somone Plage","Somone Lagune",
+      "Nianing","Nianing Plage","Malicounda",
+      "Popenguine","Warang","Sindia"
+    ],
+    mbour: [
+      "Mbour Centre","Mbour Plage","Mbour Sérère",
+      "Mbour Gare Routière","Mbour Thiocé",
+      "Dialaw","Toubab Dialaw",
+      "Joal","Joal-Fadiouth","Île aux coquillages","Nguékhokh"
+    ],
+    dakar: [
+      "Dakar Plateau","Médina","Almadies","Ouakam","Yoff",
+      "Parcelles Assainies U1","Parcelles Assainies U10","Parcelles Assainies U20",
+      "Guédiawaye","Golf Sud","Médina Gounass","Sam Notaire",
+      "Pikine","Pikine Rue 10","Tally Boubess","Guinaw Rail","Thiaroye",
+      "HLM","Sicap","Mermoz","Sacré-Cœur","Fann","Point E",
+      "Rufisque","Bargny","Sendou","Diamniadio","Sebikotane",
+      "Keur Massar","Malika","Yeumbeul","Mbao",
+      "Gare Routière Pompiers","Port de Dakar","Gare Ferroviaire"
+    ],
+    autres_villes: [
+      "Thiès Centre","Saint-Louis","Kaolack","Ziguinchor",
+      "Touba","Louga","Tambacounda","Kolda","Matam",
+      "Diourbel","Fatick","Kaffrine","Kédougou","Sédhiou"
+    ]
+  };
+
+  const PLACE_COORDS = {
+    "Aéroport International Blaise Diagne (AIBD)": { lat:14.6700, lng:-17.0733 },
+    "AIBD Départs":       { lat:14.6712, lng:-17.0745 },
+    "AIBD Arrivées":      { lat:14.6689, lng:-17.0723 },
+    "AIBD Zone Hôtels":   { lat:14.6668, lng:-17.0688 },
+    "Aéroport Léopold Sédar Senghor (LSS)": { lat:14.7397, lng:-17.4902 },
+    "Diass":  { lat:14.6550, lng:-17.0720 },
+    "Ndiass": { lat:14.6605, lng:-17.0660 },
+
+    "Saly Centre":       { lat:14.4500, lng:-16.9833 },
+    "Saly Portudal":     { lat:14.4418, lng:-16.9994 },
+    "Saly Niakh Niakhal":{ lat:14.4368, lng:-16.9896 },
+    "Saly Joseph":       { lat:14.4475, lng:-16.9881 },
+    "Saly Carrefour":    { lat:14.4528, lng:-16.9805 },
+    "Saly Tapée":        { lat:14.4595, lng:-16.9789 },
+    "Saly Koulang":      { lat:14.4567, lng:-16.9823 },
+    "Ngaparou":          { lat:14.4734, lng:-16.9686 },
+    "Ngaparou Plage":    { lat:14.4782, lng:-16.9658 },
+    "Somone":            { lat:14.4867, lng:-17.0728 },
+    "Somone Plage":      { lat:14.4900, lng:-17.0780 },
+    "Somone Lagune":     { lat:14.4879, lng:-17.0712 },
+    "Nianing":           { lat:14.3538, lng:-16.9431 },
+    "Nianing Plage":     { lat:14.3507, lng:-16.9479 },
+    "Malicounda":        { lat:14.3955, lng:-16.9910 },
+    "Popenguine":        { lat:14.5498, lng:-17.1107 },
+    "Warang":            { lat:14.3742, lng:-16.9539 },
+    "Sindia":            { lat:14.5932, lng:-17.0410 },
+
+    "Mbour Centre":       { lat:14.4167, lng:-16.9667 },
+    "Mbour Plage":        { lat:14.4095, lng:-16.9601 },
+    "Mbour Sérère":       { lat:14.4206, lng:-16.9725 },
+    "Mbour Gare Routière":{ lat:14.4230, lng:-16.9590 },
+    "Mbour Thiocé":       { lat:14.4305, lng:-16.9582 },
+    "Dialaw":             { lat:14.7243, lng:-17.1558 },
+    "Toubab Dialaw":      { lat:14.7215, lng:-17.1433 },
+    "Joal":               { lat:14.1667, lng:-16.8500 },
+    "Joal-Fadiouth":      { lat:14.1690, lng:-16.8335 },
+    "Île aux coquillages":{ lat:14.1710, lng:-16.8315 },
+    "Nguékhokh":          { lat:14.5127, lng:-17.0040 },
+
+    "Dakar Plateau":     { lat:14.6695, lng:-17.4390 },
+    "Médina":            { lat:14.6802, lng:-17.4445 },
+    "Almadies":          { lat:14.7445, lng:-17.5095 },
+    "Ouakam":            { lat:14.7240, lng:-17.4940 },
+    "Yoff":              { lat:14.7475, lng:-17.4630 },
+    "Parcelles Assainies U1":  { lat:14.7640, lng:-17.4305 },
+    "Parcelles Assainies U10": { lat:14.7700, lng:-17.4210 },
+    "Parcelles Assainies U20": { lat:14.7765, lng:-17.4140 },
+    "Guédiawaye":        { lat:14.7761, lng:-17.3995 },
+    "Golf Sud":          { lat:14.7792, lng:-17.3890 },
+    "Médina Gounass":    { lat:14.7816, lng:-17.3779 },
+    "Sam Notaire":       { lat:14.7831, lng:-17.4044 },
+    "Pikine":            { lat:14.7647, lng:-17.3908 },
+    "Pikine Rue 10":     { lat:14.7568, lng:-17.3924 },
+    "Tally Boubess":     { lat:14.7484, lng:-17.3834 },
+    "Guinaw Rail":       { lat:14.7481, lng:-17.3661 },
+    "Thiaroye":          { lat:14.7460, lng:-17.3502 },
+    "HLM":               { lat:14.7006, lng:-17.4547 },
+    "Sicap":             { lat:14.7090, lng:-17.4585 },
+    "Mermoz":            { lat:14.7060, lng:-17.4755 },
+    "Sacré-Cœur":        { lat:14.7195, lng:-17.4678 },
+    "Fann":              { lat:14.6934, lng:-17.4666 },
+    "Point E":           { lat:14.6958, lng:-17.4568 },
+    "Rufisque":          { lat:14.7171, lng:-17.2733 },
+    "Bargny":            { lat:14.6940, lng:-17.2334 },
+    "Sendou":            { lat:14.6690, lng:-17.2110 },
+    "Diamniadio":        { lat:14.7300, lng:-17.1980 },
+    "Sebikotane":        { lat:14.7467, lng:-17.1352 },
+    "Keur Massar":       { lat:14.7870, lng:-17.3150 },
+    "Malika":            { lat:14.7950, lng:-17.3600 },
+    "Yeumbeul":          { lat:14.7810, lng:-17.3620 },
+    "Mbao":              { lat:14.7360, lng:-17.3230 },
+    "Gare Routière Pompiers": { lat:14.6845, lng:-17.4420 },
+    "Port de Dakar":     { lat:14.6800, lng:-17.4245 },
+    "Gare Ferroviaire":  { lat:14.6737, lng:-17.4338 },
+
+    "Thiès Centre": { lat:14.7886, lng:-16.9317 },
+    "Saint-Louis":  { lat:16.0326, lng:-16.4818 },
+    "Kaolack":      { lat:14.1460, lng:-16.0726 },
+    "Ziguinchor":   { lat:12.5833, lng:-16.2667 },
+    "Touba":        { lat:14.8667, lng:-15.8833 },
+    "Louga":        { lat:15.6187, lng:-16.2244 },
+    "Tambacounda":  { lat:13.7707, lng:-13.6673 },
+    "Kolda":        { lat:12.8939, lng:-14.9413 },
+    "Matam":        { lat:15.6559, lng:-13.2554 },
+    "Diourbel":     { lat:14.6558, lng:-16.2348 },
+    "Fatick":       { lat:14.3390, lng:-16.4111 },
+    "Kaffrine":     { lat:14.1059, lng:-15.5508 },
+    "Kédougou":     { lat:12.5605, lng:-12.1743 },
+    "Sédhiou":      { lat:12.7062, lng:-15.5569 }
+  };
+
+  const ZONE_CENTROIDS = {
+    aeroports:     { lat:14.6688, lng:-17.0710 },
+    petite_cote:   { lat:14.4450, lng:-16.9850 },
+    mbour:         { lat:14.4170, lng:-16.9660 },
+    dakar:         { lat:14.7160, lng:-17.4060 },
+    autres_villes: { lat:14.7886, lng:-16.9317 }
+  };
+
+  const ZONE_CITY = {
+    aeroports: "Diass", petite_cote: "Saly",
+    mbour: "Mbour", dakar: "Dakar", autres_villes: "Sénégal"
+  };
+
+  const ROUTE_PRICES = {
+    "Saly Centre|Aéroport International Blaise Diagne (AIBD)": 25000,
+    "Saly Centre|AIBD Départs":   25000,
+    "Saly Centre|AIBD Arrivées":  25000,
+    "Saly Portudal|Aéroport International Blaise Diagne (AIBD)": 26000,
+    "Ngaparou|Aéroport International Blaise Diagne (AIBD)":      23000,
+    "Ngaparou Plage|Aéroport International Blaise Diagne (AIBD)":24000,
+    "Somone|Aéroport International Blaise Diagne (AIBD)":        20000,
+    "Somone Plage|Aéroport International Blaise Diagne (AIBD)":  21000,
+    "Mbour Centre|Aéroport International Blaise Diagne (AIBD)":  18000,
+    "Nguékhokh|Aéroport International Blaise Diagne (AIBD)":     12000,
+
+    "Saly Centre|Dakar Plateau": 45000,
+    "Saly Centre|Almadies":      50000,
+    "Saly Centre|Ouakam":        48000,
+    "Saly Centre|Yoff":          47000,
+    "Ngaparou|Dakar Plateau":    47000,
+    "Somone|Dakar Plateau":      42000,
+    "Mbour Centre|Dakar Plateau":40000,
+
+    "Saly Centre|Ngaparou":          3500,
+    "Saly Centre|Ngaparou Plage":    4000,
+    "Saly Centre|Somone":            7000,
+    "Saly Centre|Somone Plage":      8000,
+    "Saly Centre|Somone Lagune":     8000,
+    "Saly Centre|Mbour Centre":      5000,
+    "Saly Centre|Mbour Gare Routière":5500,
+    "Saly Centre|Nguékhokh":         6500,
+    "Saly Centre|Nianing":           8500,
+    "Saly Centre|Nianing Plage":     9000,
+    "Saly Centre|Warang":           11000,
+    "Saly Centre|Popenguine":       12000,
+
+    "Ngaparou|Somone":       4500,
+    "Ngaparou|Mbour Centre": 7000,
+    "Somone|Mbour Centre":   9000,
+    "Mbour Centre|Joal":           20000,
+    "Mbour Centre|Joal-Fadiouth":  20000,
+
+    "Dakar Plateau|Aéroport International Blaise Diagne (AIBD)": 18000,
+    "Almadies|Aéroport International Blaise Diagne (AIBD)":      22000,
+    "Ouakam|Aéroport International Blaise Diagne (AIBD)":        21000,
+    "Yoff|Aéroport International Blaise Diagne (AIBD)":          19000,
+    "Rufisque|Aéroport International Blaise Diagne (AIBD)":      12000,
+    "Diamniadio|Aéroport International Blaise Diagne (AIBD)":     8000,
+    "Thiès Centre|Aéroport International Blaise Diagne (AIBD)":  15000
+  };
+
+  const MIN_PRICES = { eco:3000, confort:4000, premium:6000, moto:1500 };
+
+  /* ─── ÉTAT ───────────────────────────────────────────────────── */
+  let currentLocationType = "pickup";
+  let currentZoneId = "aeroports";
+  let currentOrder  = null;
+
+  const booking = {
+    pickup:null, dropoff:null,
+    pickupName:"", dropoffName:"",
+    pickupZoneId:"", dropoffZoneId:"",
+    vehicleType:"eco", multiplier:1,
+    distance:0, duration:0, price:0
+  };
+
+  /* ─── DOM ────────────────────────────────────────────────────── */
+  const el = {
+    dbPill:         document.getElementById("dbPill"),
+    dbText:         document.getElementById("dbText"),
+    galleryBtn:     document.getElementById("galleryBtn"),
+    heroDriversLink:document.getElementById("heroDriversLink"),
+    heroOrderLink:  document.getElementById("heroOrderLink"),
+
+    pickupRow:   document.getElementById("pickupRow"),
+    dropoffRow:  document.getElementById("dropoffRow"),
+    pickupInput: document.getElementById("pickupInput"),
+    dropoffInput:document.getElementById("dropoffInput"),
+    clientPhone: document.getElementById("clientPhone"),
+
+    vehicleOptions: document.getElementById("vehicleOptions"),
+    priceEco:    document.getElementById("priceEco"),
+    priceConfort:document.getElementById("priceConfort"),
+    pricePremium:document.getElementById("pricePremium"),
+    priceMoto:   document.getElementById("priceMoto"),
+
+    summary:        document.getElementById("priceSummary"),
+    summaryDistance:document.getElementById("summaryDistance"),
+    summaryDuration:document.getElementById("summaryDuration"),
+    summaryVehicle: document.getElementById("summaryVehicle"),
+    summaryTotal:   document.getElementById("summaryTotal"),
+
+    confirmBtn: document.getElementById("confirmBtn"),
+
+    contactPanel:  document.getElementById("contactPanel"),
+    contactPickup: document.getElementById("contactPickup"),
+    contactDropoff:document.getElementById("contactDropoff"),
+    contactVehicle:document.getElementById("contactVehicle"),
+    contactPhone:  document.getElementById("contactPhone"),
+    contactPrice:  document.getElementById("contactPrice"),
+    whatsappBtn:   document.getElementById("whatsappBtn"),
+    callBtn:       document.getElementById("callBtn"),
+    resetBtn:      document.getElementById("resetBtn"),
+
+    locationOverlay: document.getElementById("locationOverlay"),
+    locationTitle:   document.getElementById("locationTitle"),
+    locationZones:   document.getElementById("locationZones"),
+    locationList:    document.getElementById("locationList"),
+    closeLocationBtn:document.getElementById("closeLocationBtn"),
+
+    searchModal: document.getElementById("searchModal")
+  };
+
+  /* ─── HELPERS ────────────────────────────────────────────────── */
+  function normPhone(p){
+    p = String(p || "").trim().replace(/\s+/g,"").replace(/[^\d+]/g,"");
+    if (p.startsWith("00221")) p = "+221" + p.slice(5);
+    if (!p.startsWith("+") && p.startsWith("221")) p = "+" + p;
+    if (!p.startsWith("+221") && /^7\d{8}$/.test(p)) p = "+221" + p;
+    return p;
+  }
+
+  function cityFromZone(zoneId){ return ZONE_CITY[zoneId] || "Sénégal"; }
+
+  function cityFromName(name){
+    if (!name) return null;
+    if (name.includes("Saly")||name.includes("Ngaparou")||name.includes("Somone")||
+        name.includes("Nianing")||name.includes("Popenguine")||name.includes("Warang")||
+        name.includes("Sindia")) return "Saly";
+    if (name.includes("Mbour")||name.includes("Dialaw")||name.includes("Joal")||
+        name.includes("Nguékhokh")) return "Mbour";
+    if (name.includes("Dakar")||name.includes("Almadies")||name.includes("Ouakam")||
+        name.includes("Yoff")||name.includes("Pikine")||name.includes("Guédiawaye")||
+        name.includes("Rufisque")||name.includes("Keur Massar")||
+        name.includes("Diamniadio")) return "Dakar";
+    if (name.includes("AIBD")||name.includes("Aéroport")||
+        name.includes("Diass")||name.includes("Ndiass")) return "Diass";
+    if (name.includes("Thiès")) return "Thiès";
+    return null;
+  }
+
+  function getPlaceCoords(name, zoneId){
+    return PLACE_COORDS[name] || ZONE_CENTROIDS[zoneId] || ZONE_CENTROIDS.aeroports;
+  }
+
+  function getRouteKey(a, b){
+    return [a, b].sort((x,y) => x.localeCompare(y,"fr")).join("|");
+  }
+
+  function calcDistanceKm(a, b){
+    const R = 6371;
+    const dLat = (b.lat-a.lat)*Math.PI/180;
+    const dLng = (b.lng-a.lng)*Math.PI/180;
+    const aa = Math.sin(dLat/2)*Math.sin(dLat/2) +
+      Math.cos(a.lat*Math.PI/180)*Math.cos(b.lat*Math.PI/180)*
+      Math.sin(dLng/2)*Math.sin(dLng/2);
+    return R * 2 * Math.atan2(Math.sqrt(aa), Math.sqrt(1-aa));
+  }
+
+  function computeBaseTariff(pickupName, dropoffName, distanceKm){
+    const direct = ROUTE_PRICES[getRouteKey(pickupName, dropoffName)];
+    if (direct) return direct;
+    const base = 2500, perKm = 550;
+    return Math.max(base, Math.round(((base + distanceKm*perKm)/100))*100);
+  }
+
+  function vehicleLabel(type){
+    if (type==="confort") return "Confort";
+    if (type==="premium") return "Premium";
+    if (type==="moto")    return "Moto";
+    return "Éco";
+  }
+
+  function money(n){ return Number(n||0).toLocaleString("fr-FR") + " FCFA"; }
+
+  function setDbState(ok, label){
+    el.dbPill.classList.toggle("ok", !!ok);
+    el.dbText.textContent = label || (ok ? "Supabase OK" : "Supabase OFF");
+  }
+
+  /* ─── GALLERY LINK ───────────────────────────────────────────── */
+  function buildGalleryLink(){
+    if (!el.galleryBtn) return;
+    const pageUrl = new URL(location.href);
+    const slug    = (pageUrl.searchParams.get("slug")||"").trim();
+    const galleryUrl = new URL(GALLERY_BASE_URL);
+    galleryUrl.searchParams.set("return", location.href);
+    if (slug) galleryUrl.searchParams.set("slug", slug);
+    const finalUrl = galleryUrl.toString();
+    el.galleryBtn.href = finalUrl;
+    if (el.heroDriversLink) el.heroDriversLink.href = finalUrl;
+  }
+
+  /* ─── PICKER ZONES ───────────────────────────────────────────── */
+  function buildZones(){
+    el.locationZones.innerHTML = "";
+    ZONE_GROUPS.forEach((zone, index) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "zone" + (index===0 ? " active":"");
+      btn.textContent = zone.label;
+      btn.dataset.zoneId = zone.id;
+      btn.addEventListener("click", () => selectZone(zone.id));
+      el.locationZones.appendChild(btn);
+    });
+  }
+
+  function renderLocationList(list){
+    el.locationList.innerHTML = "";
+    if (!list.length){
+      const div = document.createElement("div");
+      div.className = "loc-item";
+      div.textContent = "Aucun lieu trouvé.";
+      div.style.cursor = "default";
+      el.locationList.appendChild(div);
+      return;
+    }
+    list.forEach(name => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "loc-item";
+      btn.textContent = name;
+      btn.addEventListener("click", () => chooseLocation(name, currentZoneId));
+      el.locationList.appendChild(btn);
+    });
+  }
+
+  function selectZone(zoneId){
+    currentZoneId = zoneId;
+    el.locationZones.querySelectorAll(".zone").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.zoneId===zoneId);
+    });
+    renderLocationList(Array.isArray(LOCATIONS_BY_ZONE[zoneId]) ? LOCATIONS_BY_ZONE[zoneId] : []);
+  }
+
+  function openPicker(type){
+    currentLocationType = type;
+    el.locationTitle.textContent = type==="pickup"
+      ? "Choisir le point de départ"
+      : "Choisir la destination";
+    el.locationOverlay.classList.add("show");
+    el.locationOverlay.setAttribute("aria-hidden","false");
+    selectZone(
+      type==="pickup"  && booking.pickupZoneId  ? booking.pickupZoneId  :
+      type==="dropoff" && booking.dropoffZoneId ? booking.dropoffZoneId :
+      ZONE_GROUPS[0].id
+    );
+  }
+
+  function closePicker(){
+    el.locationOverlay.classList.remove("show");
+    el.locationOverlay.setAttribute("aria-hidden","true");
+  }
+
+  function chooseLocation(name, zoneId){
+    const coords = getPlaceCoords(name, zoneId);
+    if (currentLocationType==="pickup"){
+      booking.pickup = coords;
+      booking.pickupName = name;
+      booking.pickupZoneId = zoneId;
+      el.pickupInput.value = name;
+    } else {
+      booking.dropoff = coords;
+      booking.dropoffName = name;
+      booking.dropoffZoneId = zoneId;
+      el.dropoffInput.value = name;
+    }
+    closePicker();
+    maybeEstimate();
+  }
+
+  /* ─── CALCUL TARIF ───────────────────────────────────────────── */
+  function maybeEstimate(){
+    if (!booking.pickup || !booking.dropoff) return;
+    const rawKm = calcDistanceKm(booking.pickup, booking.dropoff);
+    booking.distance = Math.max(1, rawKm * 1.18);
+    booking.duration = Math.max(3, Math.round((booking.distance/32)*60));
+    updatePrices();
+    el.confirmBtn.disabled = false;
+  }
+
+  function updatePrices(){
+    const base    = computeBaseTariff(booking.pickupName, booking.dropoffName, booking.distance);
+    const eco     = Math.max(MIN_PRICES.eco,     Math.round(base/100)*100);
+    const confort = Math.max(MIN_PRICES.confort,  Math.round((eco*1.2)/100)*100);
+    const premium = Math.max(MIN_PRICES.premium,  Math.round((eco*1.5)/100)*100);
+    const moto    = Math.max(MIN_PRICES.moto,     Math.round((eco*0.75)/100)*100);
+
+    el.priceEco.textContent     = money(eco);
+    el.priceConfort.textContent = money(confort);
+    el.pricePremium.textContent = money(premium);
+    el.priceMoto.textContent    = money(moto);
+
+    let finalPrice = eco;
+    if (booking.vehicleType==="confort") finalPrice = confort;
+    else if (booking.vehicleType==="premium") finalPrice = premium;
+    else if (booking.vehicleType==="moto")    finalPrice = moto;
+    booking.price = finalPrice;
+
+    el.summaryDistance.textContent = booking.distance.toFixed(1) + " km";
+    el.summaryDuration.textContent = booking.duration + " min";
+    el.summaryVehicle.textContent  = vehicleLabel(booking.vehicleType);
+    el.summaryTotal.textContent    = money(booking.price);
+    el.summary.classList.add("show");
+  }
+
+  function setVehicle(type){
+    booking.vehicleType = type;
+    document.querySelectorAll(".vehicle").forEach(v => {
+      v.classList.toggle("active", v.dataset.type===type);
+    });
+    if (booking.distance > 0) updatePrices();
+  }
+
+  /* ─── SUPABASE PING ──────────────────────────────────────────── */
+  async function pingSupabase(){
+    try {
+      const sb = getSb();
+      if (!sb) { setDbState(false, "Mode simple"); return; }
+      const { error } = await sb.from("driver_profiles").select("id").limit(1);
+      if (error) throw error;
+      setDbState(true, "Service prêt");
+    } catch(err){
+      console.error("[DIGIY DRIVER] ping error:", err);
+      setDbState(false, "Mode simple");
+    }
+  }
+
+  /* ─── MODALS ─────────────────────────────────────────────────── */
+  function openSearchModal(){
+    el.searchModal.classList.add("show");
+    el.searchModal.setAttribute("aria-hidden","false");
+  }
+  function closeSearchModal(){
+    el.searchModal.classList.remove("show");
+    el.searchModal.setAttribute("aria-hidden","true");
+  }
+
+  /* ─── CONFIRM BOOKING ────────────────────────────────────────── */
+  async function confirmBooking(){
+    if (!booking.pickup || !booking.dropoff){
+      alert("Choisis un départ et une destination.");
+      return;
+    }
+    const clientPhone = normPhone(el.clientPhone.value);
+    if (!clientPhone || !clientPhone.startsWith("+221")){
+      alert("Numéro WhatsApp invalide. Exemple : +221 77 XXX XX XX");
+      return;
+    }
+
+    openSearchModal();
+
+    try {
+      const orderPayload = {
+        pickup_address:   booking.pickupName,
+        pickup_text:      booking.pickupName,
+        pickup_location:  `${booking.pickup.lat},${booking.pickup.lng}`,
+        dropoff_address:  booking.dropoffName,
+        dropoff_text:     booking.dropoffName,
+        dropoff_location: `${booking.dropoff.lat},${booking.dropoff.lng}`,
+        client_phone: clientPhone,
+        city: cityFromName(booking.pickupName)
+           || cityFromZone(booking.pickupZoneId)
+           || cityFromName(booking.dropoffName)
+           || cityFromZone(booking.dropoffZoneId),
+        status:       "new",
+        price:        booking.price,
+        price_xof:    booking.price,
+        distance:     booking.distance,
+        duration:     booking.duration,
+        vehicle_type: booking.vehicleType,
+        note: `Demande client directe ${vehicleLabel(booking.vehicleType)} - ${booking.distance.toFixed(1)}km`
+      };
+
+      /* Insert Supabase — non-bloquant, flux humain reste prioritaire */
+      try {
+        const sb = getSb();
+        if (sb) {
+          const { data, error } = await sb
+            .from("ride_requests")
+            .insert([orderPayload])
+            .select("id")
+            .single();
+          currentOrder = { id: (!error && data) ? data.id : null, ...orderPayload };
+        } else {
+          currentOrder = { id: null, ...orderPayload };
+        }
+      } catch(_err){
+        currentOrder = { id: null, ...orderPayload };
+      }
+
+      /* Affichage recap */
+      el.contactPickup.textContent  = booking.pickupName;
+      el.contactDropoff.textContent = booking.dropoffName;
+      el.contactVehicle.textContent = vehicleLabel(booking.vehicleType);
+      el.contactPhone.textContent   = clientPhone;
+      el.contactPrice.textContent   = money(booking.price);
+
+      el.contactPanel.classList.add("show");
+      closeSearchModal();
+
+      const top = el.contactPanel.getBoundingClientRect().top + window.scrollY - 90;
+      window.scrollTo({ top, behavior:"smooth" });
+
+    } catch(err){
+      console.error(err);
+      closeSearchModal();
+      alert("Impossible de préparer la demande.");
+    }
+  }
+
+  /* ─── WHATSAPP / APPEL ───────────────────────────────────────── */
+  function getWhatsappMessage(){
+    const phone = normPhone(el.clientPhone.value);
+    return [
+      "Bonjour, je souhaite commander une course DIGIY DRIVER.",
+      "",
+      "📍 Départ : "             + booking.pickupName,
+      "🏁 Destination : "        + booking.dropoffName,
+      "🚘 Véhicule : "           + vehicleLabel(booking.vehicleType),
+      "📏 Distance estimée : "   + booking.distance.toFixed(1) + " km",
+      "⏱️ Durée estimée : "      + booking.duration + " min",
+      "💰 Tarif conseillé : "    + money(booking.price),
+      "📞 Mon numéro : "         + phone,
+      "",
+      "Merci."
+    ].join("\n");
+  }
+
+  function openWhatsapp(){
+    const wa = `https://wa.me/${DEFAULT_DRIVER_PHONE.replace(/[^\d]/g,"")}?text=${encodeURIComponent(getWhatsappMessage())}`;
+    window.open(wa, "_blank", "noopener,noreferrer");
+  }
+
+  function callDriver(){ window.location.href = `tel:${DEFAULT_DRIVER_PHONE}`; }
+
+  function resetRide(){
+    currentOrder = null;
+    el.contactPanel.classList.remove("show");
+    el.confirmBtn.disabled = !(booking.pickup && booking.dropoff);
+  }
+
+  /* ─── EVENTS ─────────────────────────────────────────────────── */
+  function bindEvents(){
+    el.pickupRow.addEventListener("click",  () => openPicker("pickup"));
+    el.dropoffRow.addEventListener("click", () => openPicker("dropoff"));
+
+    el.closeLocationBtn.addEventListener("click", closePicker);
+    el.locationOverlay.addEventListener("click", (e) => {
+      if (e.target === el.locationOverlay) closePicker();
+    });
+
+    el.vehicleOptions.addEventListener("click", (e) => {
+      const card = e.target.closest(".vehicle");
+      if (card) setVehicle(card.dataset.type);
+    });
+
+    el.confirmBtn.addEventListener("click",  confirmBooking);
+    el.whatsappBtn.addEventListener("click", openWhatsapp);
+    el.callBtn.addEventListener("click",     callDriver);
+    el.resetBtn.addEventListener("click",    resetRide);
+
+    if (el.heroOrderLink){
+      el.heroOrderLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = document.getElementById("bookingPanel");
+        if (target) target.scrollIntoView({ behavior:"smooth", block:"start" });
+      });
+    }
+  }
+
+  /* ─── BOOT ───────────────────────────────────────────────────── */
+  function boot(){
+    buildGalleryLink();
+    buildZones();
+    bindEvents();
+    pingSupabase(); /* async, non-bloquant */
+  }
+
+  window.addEventListener("load", boot);
+})();
+</script>
+
+
+<script>
+(function(){
+  "use strict";
+
+  const AUDIO_TEXT = [
+    "Bienvenue sur DIGIY DRIVER.",
+    "Ici, tu demandes une course simplement : tu choisis ton point de départ, ta destination, puis ton type de véhicule.",
+    "DIGIY affiche un tarif terrain conseillé pour protéger le travail du chauffeur.",
+    "Ensuite, tu contactes directement le chauffeur par WhatsApp ou par appel.",
+    "Le paiement se fait directement au chauffeur. DIGIY ne prend aucune commission.",
+    "L'objectif est simple : trouver vite, parler direct, payer juste, et garder le métier debout."
+  ].join(" ");
+
+  const synth = window.speechSynthesis;
+  const btnPlay = document.getElementById("btnDriverAudio");
+  const btnStop = document.getElementById("btnDriverAudioStop");
+  const bar = document.getElementById("driverAudioProgress");
+  let playing = false;
+  let timer = null;
+
+  function getVoice(){
+    if(!synth) return null;
+    const voices = synth.getVoices() || [];
+    return voices.find(v => /^fr/i.test(v.lang || "") && /audrey|amelie|hortense|julie|thomas|paul|french/i.test(v.name || ""))
+      || voices.find(v => /^fr/i.test(v.lang || ""))
+      || null;
+  }
+
+  function resetAudio(){
+    clearInterval(timer);
+    timer = null;
+    playing = false;
+    if(bar) bar.style.width = "0%";
+    if(btnPlay) btnPlay.textContent = "🎧 Écouter DIGIY";
+  }
+
+  function stopAudio(){
+    try{ if(synth) synth.cancel(); }catch(_){ }
+    resetAudio();
+  }
+
+  function playAudio(){
+    if(!("speechSynthesis" in window)){
+      alert("Audio indisponible sur ce navigateur.");
+      return;
+    }
+
+    if(playing){
+      stopAudio();
+      return;
+    }
+
+    try{ synth.cancel(); }catch(_){ }
+    clearInterval(timer);
+
+    const utt = new SpeechSynthesisUtterance(AUDIO_TEXT);
+    utt.lang = "fr-FR";
+    utt.rate = 0.88;
+    utt.pitch = 1.05;
+    utt.volume = 1;
+
+    const voice = getVoice();
+    if(voice) utt.voice = voice;
+
+    playing = true;
+    if(btnPlay) btnPlay.textContent = "⏸️ Lecture en cours";
+    if(bar) bar.style.width = "0%";
+
+    let progress = 0;
+    const duration = Math.max(8000, AUDIO_TEXT.split(" ").length * 470);
+
+    timer = setInterval(() => {
+      progress += 250;
+      if(bar) bar.style.width = Math.min(96, (progress / duration) * 100) + "%";
+    }, 250);
+
+    utt.onend = () => {
+      if(bar) bar.style.width = "100%";
+      setTimeout(resetAudio, 350);
+    };
+    utt.onerror = resetAudio;
+
+    synth.speak(utt);
+  }
+
+  if(btnPlay) btnPlay.addEventListener("click", playAudio);
+  if(btnStop) btnStop.addEventListener("click", stopAudio);
+  if(synth && typeof synth.onvoiceschanged !== "undefined") synth.onvoiceschanged = getVoice;
+  window.addEventListener("beforeunload", stopAudio);
+})();
+</script>
+
+<script src="https://pro-action-digiy.digiylyfe.com/assets/js/digiy-retour-voix.js?v=retour-voix-20260606-v4" defer></script>
+</body>
+</html>
 </body>
 </html>
