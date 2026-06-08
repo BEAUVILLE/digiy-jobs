@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#f4ead2" />
-  <meta name="digiy-version" content="jobs-inscription-readable-clair-note-paiement-20260604" />
+  <meta name="digiy-version" content="jobs-inscription-info-pro-paiement-20260608" />
   <title>Inscription JOBS — DIGIY</title>
 
   <style>
@@ -334,6 +334,7 @@
       font-weight:1000;
     }
 
+    input,
     textarea{
       width:100%;
       min-height:96px;
@@ -352,6 +353,31 @@
     textarea:focus{
       border-color:#facc15;
       box-shadow:0 0 0 4px rgba(250,204,21,.16);
+    }
+
+    input{
+      min-height:48px;
+    }
+
+    .identityGrid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:8px;
+    }
+
+    .identityHelp{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+      font-weight:850;
+    }
+
+    @media(max-width:700px){
+      .identityGrid{
+        grid-template-columns:1fr;
+      }
     }
 
     .line{
@@ -528,6 +554,20 @@
           </div>
         </div>
 
+        <div class="noteBox identityBox">
+          <label>👤 Infos pro pour le paiement</label>
+          <div class="identityGrid">
+            <input id="proName" type="text" autocomplete="name" placeholder="Nom / responsable">
+            <input id="proPhone" type="tel" autocomplete="tel" placeholder="Téléphone / WhatsApp">
+            <input id="proZone" type="text" autocomplete="address-level2" placeholder="Zone / ville">
+            <input id="proActivity" type="text" autocomplete="organization" placeholder="Activité / structure">
+          </div>
+          <p class="identityHelp">
+            Ces infos servent seulement à identifier le paiement dans WhatsApp/SMS.
+            La fiche complète JOBS se construit ailleurs.
+          </p>
+        </div>
+
         <div class="noteBox">
           <label for="paymentNote">📝 Note / preuve paiement</label>
           <textarea id="paymentNote" placeholder="Ex : Paiement Wave envoyé pour JOBS J2 — 19 900 FCFA — au nom de Mamadou Diop — tél +221 77 000 00 00."></textarea>
@@ -560,6 +600,7 @@
 
       const TEL = "221771342889";
       const WAVE_LABEL = "Wave : JB BEAUVILLE · +221 77 134 28 89";
+      const PRO_MEMORY_KEY = "digiy_jobs_payment_identity_v1";
 
       const PLANS = [
         {
@@ -668,6 +709,48 @@
       const $ = id => document.getElementById(id);
       const summary = $("summary");
 
+      function clean(value){
+        return String(value || "").trim();
+      }
+
+      function proInfo(){
+        return {
+          name: clean($("proName")?.value),
+          phone: clean($("proPhone")?.value),
+          zone: clean($("proZone")?.value),
+          activity: clean($("proActivity")?.value)
+        };
+      }
+
+      function proInfoText(){
+        const info = proInfo();
+
+        return [
+          "Nom / responsable : " + (info.name || "à compléter"),
+          "Téléphone / WhatsApp : " + (info.phone || "à compléter"),
+          "Zone / ville : " + (info.zone || "à compléter"),
+          "Activité / structure : " + (info.activity || "à compléter")
+        ].join("\n");
+      }
+
+      function loadProMemory(){
+        let saved = {};
+        try{
+          saved = JSON.parse(localStorage.getItem(PRO_MEMORY_KEY) || "{}");
+        }catch(_){
+          saved = {};
+        }
+
+        if($("proName") && saved.name) $("proName").value = saved.name;
+        if($("proPhone") && saved.phone) $("proPhone").value = saved.phone;
+        if($("proZone") && saved.zone) $("proZone").value = saved.zone;
+        if($("proActivity") && saved.activity) $("proActivity").value = saved.activity;
+      }
+
+      function saveProMemory(){
+        localStorage.setItem(PRO_MEMORY_KEY, JSON.stringify(proInfo()));
+      }
+
       function money(n){
         return new Intl.NumberFormat("fr-FR").format(n) + " FCFA";
       }
@@ -736,6 +819,9 @@
 
 Date de demande : ${date()}
 
+Infos pro :
+${proInfoText()}
+
 Choix :
 ${selectedLines()}
 
@@ -760,6 +846,9 @@ Canal souhaité : WhatsApp ou SMS.`;
         return `Bonjour JB, voici la preuve de paiement Wave pour DIGIY JOBS.
 
 Date de demande : ${date()}
+
+Infos pro :
+${proInfoText()}
 
 ${WAVE_LABEL}
 Montant : ${money(sub)}
@@ -809,6 +898,18 @@ Je joins la capture / preuve de paiement à ce message.`;
         }
       }
 
+      loadProMemory();
+
+      ["proName","proPhone","proZone","proActivity"].forEach(id => {
+        const input = $(id);
+        if(input){
+          input.addEventListener("input", () => {
+            saveProMemory();
+            update(false);
+          });
+        }
+      });
+
       $("paymentNote").addEventListener("input", () => update(false));
 
       $("btnSms").onclick = () => {
@@ -827,6 +928,7 @@ Je joins la capture / preuve de paiement à ce message.`;
 
       $("btnClear").onclick = () => {
         selected.clear();
+        if($("paymentNote")) $("paymentNote").value = "";
         update(true);
       };
 
@@ -845,3 +947,4 @@ Je joins la capture / preuve de paiement à ce message.`;
   </script>
 </body>
 </html>
+
