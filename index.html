@@ -7,7 +7,7 @@
   <meta name="description" content="DIGIY JOBS — voir les missions, postuler simplement, préparer son dossier, suivre sa candidature ou inscrire une offre JOBS.">
   <meta name="theme-color" content="#155f43">
   <meta name="robots" content="index, follow">
-  <meta name="digiy-build" content="jobs-index-lexique-wolof-20260607">
+  <meta name="digiy-build" content="jobs-index-ndimbal-express-public-20260608">
 
   <style>
     :root{
@@ -460,7 +460,7 @@
 
     .door-grid{
       display:grid;
-      grid-template-columns:repeat(5,minmax(0,1fr));
+      grid-template-columns:repeat(4,minmax(0,1fr));
       gap:12px;
     }
     .door{
@@ -479,7 +479,9 @@
     .door:nth-child(2){background:linear-gradient(180deg,#fffdf7,#fff2ce)}
     .door:nth-child(3){background:linear-gradient(180deg,#fffdf7,#e7efff)}
     .door:nth-child(4){background:linear-gradient(180deg,#fffdf7,#f5e9ff)}
-    .door:nth-child(5){background:linear-gradient(180deg,#fffdf7,#e6f8ed)}
+    .door:nth-child(5){background:linear-gradient(180deg,#fffdf7,#fff4e6)}
+    .door:nth-child(6){background:linear-gradient(180deg,#fffdf7,#e6f8ed)}
+    .door:nth-child(7){background:linear-gradient(180deg,#fffdf7,#eef8ef)}
 
     .badge{
       width:max-content;
@@ -496,6 +498,7 @@
     .badge.warn{background:#fff2ce;color:#7c4a03;border-color:rgba(244,185,52,.25)}
     .badge.blue{background:#dbeafe;color:#1e3a8a;border-color:rgba(37,99,235,.18)}
     .badge.hot{background:#f3e8ff;color:#5b21b6;border-color:rgba(91,33,182,.16)}
+    .badge.express{background:#fff2ce;color:#7c4a03;border-color:rgba(244,185,52,.30)}
 
     .door h3{font-size:24px;line-height:1.06;font-weight:1000;letter-spacing:-.025em}
     .door p{font-size:14px;line-height:1.5;color:#526258;font-weight:760}
@@ -692,8 +695,8 @@
     }
     .bottom-nav-inner{
       display:grid;
-      grid-template-columns:repeat(6,minmax(0,1fr));
-      gap:6px;
+      grid-template-columns:repeat(7,minmax(0,1fr));
+      gap:5px;
       max-width:720px;
       margin:0 auto;
     }
@@ -763,6 +766,7 @@
         <a class="blue" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">🇸🇳 Wolof JOBS</a>
         <a class="green" href="./inscription-jobs.html">💼 Inscription JOBS</a>
         <a href="./missions.html">Missions</a>
+        <a class="green" href="./ndimbal-express.html">⚡ NDIMBAL</a>
         <a href="./postuler.html">Postuler</a>
         <a class="blue" href="./dossier-intelligent.html">Dossier</a>
         <a class="primary" href="#entrer">Entrer</a>
@@ -784,6 +788,7 @@
 
             <div class="hero-actions">
               <a class="btn btn-dark" href="./missions.html">Voir les missions</a>
+              <a class="btn btn-gold" href="./ndimbal-express.html">⚡ NDIMBAL Express</a>
               <a class="btn btn-gold" href="./postuler.html">Déposer ma candidature</a>
               <a class="btn btn-blue" href="./dossier-intelligent.html">Préparer mon dossier</a>
               <a class="btn btn-light" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">🇸🇳 Lexique Wolof JOBS</a>
@@ -792,6 +797,7 @@
 
             <div class="hero-notes" aria-label="Repères DIGIY JOBS">
               <span class="pill">Missions lisibles</span>
+              <span class="pill gold">NDIMBAL Express</span>
               <span class="pill gold">Candidature simple</span>
               <span class="pill blue">Dossier clair</span>
               <span class="pill gold">Wolof terrain</span>
@@ -810,7 +816,7 @@
                 </div>
               </div>
               <div class="audio-text">
-                Le module est public côté candidat : voir les missions, postuler, préparer son dossier, suivre son dépôt. Le lexique Wolof JOBS aide à parler emploi, expérience, disponibilité, salaire et entretien avec des mots simples du terrain. Côté professionnel, l’inscription JOBS sert à publier une mission ou chercher un profil.
+                Le module est public côté candidat : voir les missions, ouvrir NDIMBAL Express pour les missions courtes urgentes, postuler, préparer son dossier, suivre son dépôt. Le lexique Wolof JOBS aide à parler emploi, expérience, disponibilité, salaire et entretien avec des mots simples du terrain. Côté professionnel, l’inscription JOBS sert à publier une mission ou chercher un profil.
               </div>
               <div class="audio-progress-wrap" aria-hidden="true"><div class="audio-progress" id="digiyJobsAudioProgress"></div></div>
               <div class="audio-status" id="digiyJobsAudioStatus">Prêt à écouter.</div>
@@ -829,6 +835,7 @@
               </p>
               <div class="mini-grid">
                 <div class="mini"><strong>Voir</strong><span>Lire les missions publiées.</span></div>
+                <div class="mini"><strong>NDIMBAL</strong><span><a href="./ndimbal-express.html">Voir les missions courtes urgentes.</a></span></div>
                 <div class="mini"><strong>Postuler</strong><span>Déposer un profil simple.</span></div>
                 <div class="mini"><strong>Dossier</strong><span>Clarifier métier, expérience et disponibilité.</span></div>
                 <div class="mini"><strong>Wolof</strong><span><a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Lire les mots utiles emploi terrain.</a></span></div>
@@ -852,7 +859,7 @@
     <section class="section" aria-label="Chiffres repères">
       <div class="wrap stats">
         <article class="stat"><strong>1</strong><span>Entrée publique propre</span></article>
-        <article class="stat"><strong>5</strong><span>Portes utiles et lisibles</span></article>
+        <article class="stat"><strong>6</strong><span>Portes utiles et lisibles</span></article>
         <article class="stat"><strong>0</strong><span>Code PIN côté candidat</span></article>
         <article class="stat"><strong>100%</strong><span>Parcours public avant contact</span></article>
       </div>
@@ -863,7 +870,7 @@
         <div class="section-head">
           <div>
             <h2>Choisir sa porte.</h2>
-            <p>Le public avance par cartes simples. Le professionnel ne passe pas par une page confuse : il ouvre directement l’inscription JOBS pour publier une mission.</p>
+            <p>Le public avance par cartes simples. Le professionnel ne passe pas par une page confuse : il ouvre directement l’inscription JOBS pour publier une mission. NDIMBAL Express reste la porte rapide pour les missions courtes et urgentes.</p>
           </div>
         </div>
 
@@ -877,6 +884,17 @@
               <div><small>Usage</small><strong>Lire avant d’agir</strong></div>
             </div>
             <div class="door-actions"><a class="action-link" href="./missions.html">Voir les missions</a></div>
+          </article>
+
+          <article class="door">
+            <span class="badge express">Express</span>
+            <h3>NDIMBAL Express</h3>
+            <p>Voir les missions courtes, urgentes ou ponctuelles : aide terrain, livraison, coup de main, besoin rapide.</p>
+            <div class="meta">
+              <div><small>Page</small><strong>ndimbal-express.html</strong></div>
+              <div><small>Usage</small><strong>Dépanner vite</strong></div>
+            </div>
+            <div class="door-actions"><a class="action-link gold" href="./ndimbal-express.html">Voir NDIMBAL Express</a></div>
           </article>
 
           <article class="door">
@@ -948,6 +966,7 @@
           </p>
           <div class="check-list">
             <div class="check"><b>✓</b><span>Le candidat ne tombe pas dans un espace pro.</span></div>
+            <div class="check"><b>✓</b><span>NDIMBAL Express sépare les missions courtes urgentes des offres JOBS plus structurées.</span></div>
             <div class="check"><b>✓</b><span>Le recruteur a une entrée dédiée pour inscrire une mission.</span></div>
             <div class="check"><b>✓</b><span>Les boutons restent simples sur téléphone : voir, postuler, dossier, suivi.</span></div>
             <div class="check"><b>✓</b><span>L’audio reste court, manuel, jamais automatique.</span></div>
@@ -1014,12 +1033,13 @@
         <div>
           <h2>Le travail doit être visible, pas compliqué.</h2>
           <p>
-            DIGIY JOBS garde une porte publique propre : missions, candidature, dossier, suivi.
+            DIGIY JOBS garde une porte publique propre : missions, NDIMBAL Express, candidature, dossier, suivi.
             Côté pro, l’inscription JOBS reste séparée et claire pour publier une mission.
           </p>
         </div>
         <div class="cta-right">
           <div class="cta-box"><small>Action principale</small><strong><a href="./missions.html">Voir les missions disponibles</a></strong></div>
+          <div class="cta-box"><small>Missions courtes urgentes</small><strong><a href="./ndimbal-express.html">Voir NDIMBAL Express</a></strong></div>
           <div class="cta-box"><small>Après la lecture</small><strong><a href="./postuler.html">Déposer une candidature</a></strong></div>
           <div class="cta-box"><small>Langue terrain</small><strong><a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Ouvrir le lexique Wolof JOBS</a></strong></div>
           <div class="cta-box"><small>Côté pro / recruteur</small><strong><a href="./inscription-jobs.html">Inscrire JOBS / publier une mission</a></strong></div>
@@ -1035,6 +1055,7 @@
         <a href="https://digiylyfe.com/">Site</a>
         <a href="https://digiy-hub.digiylyfe.com/">HUB</a>
         <a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Wolof JOBS</a>
+        <a href="./ndimbal-express.html">NDIMBAL Express</a>
         <a href="./inscription-jobs.html">Inscription JOBS</a>
       </div>
     </div>
@@ -1044,6 +1065,7 @@
     <div class="bottom-nav-inner">
       <a class="active" href="./index.html"><span class="ico">⌂</span>Accueil</a>
       <a href="./missions.html"><span class="ico">◎</span>Missions</a>
+      <a href="./ndimbal-express.html"><span class="ico">⚡</span>NDIMBAL</a>
       <a href="./postuler.html"><span class="ico">＋</span>Postuler</a>
       <a href="./dossier-intelligent.html"><span class="ico">□</span>Dossier</a>
       <a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607"><span class="ico">🇸🇳</span>Wolof</a>
@@ -1054,7 +1076,7 @@
   <script>
     (function(){
       "use strict";
-      const PAGE_TEXT = "Bienvenue sur DIGIY JOBS. Ici, tu es dans la porte publique du travail terrain. Côté candidat, pas besoin de code PIN. Tu peux voir les missions, comprendre une offre, déposer une candidature, préparer ton dossier, ouvrir le lexique Wolof JOBS et suivre ton dépôt. Le lexique aide à parler emploi, expérience, disponibilité, salaire et entretien avec des mots simples du terrain. Côté professionnel, l'inscription JOBS sert à publier une mission ou chercher un profil. diji i garde le parcours simple, humain et clair.";
+      const PAGE_TEXT = "Bienvenue sur DIGIY JOBS. Ici, tu es dans la porte publique du travail terrain. Côté candidat, pas besoin de code PIN. Tu peux voir les missions, ouvrir NDIMBAL Express pour les missions courtes urgentes, comprendre une offre, déposer une candidature, préparer ton dossier, ouvrir le lexique Wolof JOBS et suivre ton dépôt. Le lexique aide à parler emploi, expérience, disponibilité, salaire et entretien avec des mots simples du terrain. Côté professionnel, l'inscription JOBS sert à publier une mission ou chercher un profil. diji i garde le parcours simple, humain et clair.";
 
       const playBtn = document.getElementById("digiyJobsPlayBtn");
       const stopBtn = document.getElementById("digiyJobsStopBtn");
@@ -1180,6 +1202,9 @@
 <script src="https://pro-action-digiy.digiylyfe.com/assets/js/digiy-retour-voix.js?v=retour-voix-20260606-v4" defer></script>
 </body>
 </html>
+
+
+
 
 
 
