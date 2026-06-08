@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>NDIMBAL Express — Annonces courtes payantes DIGIY JOBS</title>
+  <meta name="description" content="NDIMBAL Express — porte publique DIGIY JOBS pour voir les missions courtes et proposer une annonce express payante, vérifiée avant affichage.">
+  <meta name="theme-color" content="#155f43">
+  <meta name="robots" content="index,follow">
+  <meta name="digiy-build" content="ndimbal-express-paid-public-digiy-jobs-20260608">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root{
+      --bg:#fff9ec;
+      --bg2:#f5ecd8;
+      --ink:#10231b;
+      --muted:#5f6f65;
+      --green:#155f43;
+      --green2:#1f7a55;
+      --mint:#dff6e8;
+      --gold:#f4b934;
+      --gold2:#ffe7a3;
+      --blue:#2563eb;
+      --red:#dc2626;
+      --paper:#fffdf7;
+      --line:rgba(21,95,67,.16);
+      --line2:rgba(21,95,67,.26);
+      --shadow:0 20px 55px rgba(31,52,42,.14);
+      --r:26px;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(244,185,52,.30), transparent 34%),
+        radial-gradient(circle at 92% 12%, rgba(31,122,85,.18), transparent 34%),
+        linear-gradient(180deg,var(--bg),var(--bg2) 62%,#efe2cc);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button,input,textarea{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 28px));margin:auto}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,249,236,.90);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(21,95,67,.12);
+    }
+
+    .topbar-inner{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:12px 0;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:1000;
+      color:#0d2118;
+    }
+
+    .brand-mark{
+      width:48px;
+      height:48px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--gold),var(--green2));
+      color:#07140f;
+      box-shadow:0 12px 28px rgba(31,122,85,.18);
+      font-size:24px;
+    }
+
+    .brand small{
+      display:block;
+      margin-top:2px;
+      color:var(--muted);
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .nav{display:flex;gap:8px;flex-wrap:wrap}
+
+    .nav a,.btn{
+      min-height:44px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      padding:10px 14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.68);
+      color:#173528;
+      font-size:13px;
+      font-weight:1000;
+      cursor:pointer;
+      box-shadow:0 8px 22px rgba(31,52,42,.06);
+    }
+
+    .btn.primary,.nav a.primary{
+      color:white;
+      background:linear-gradient(135deg,var(--green),var(--green2));
+      border-color:rgba(21,95,67,.25);
+    }
+
+    .btn.gold{
+      color:#0b1b13;
+      background:linear-gradient(135deg,var(--gold),#f59e0b);
+      border-color:rgba(244,185,52,.32);
+    }
+
+    .btn.blue{
+      background:#dbeafe;
+      color:#1e3a8a;
+      border-color:rgba(37,99,235,.18);
+    }
+
+    .btn.danger{
+      background:rgba(220,38,38,.08);
+      color:#991b1b;
+      border-color:rgba(220,38,38,.18);
+    }
+
+    .hero{padding:28px 0 16px}
+    .hero-shell{
+      border-radius:34px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 10% 12%, rgba(255,231,163,.82), transparent 33%),
+        radial-gradient(circle at 88% 8%, rgba(223,246,232,.98), transparent 36%),
+        linear-gradient(135deg,#fffdf7,#f7ecd8 60%,#eef7e9);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      padding:22px;
+    }
+
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:18px;align-items:stretch}
+
+    .hero-card,.side-card,.panel,.mission-card{
+      border-radius:var(--r);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.68);
+      box-shadow:0 12px 32px rgba(31,52,42,.10);
+    }
+
+    .hero-card{padding:26px;display:grid;gap:17px;align-content:start}
+    .side-card{padding:20px;display:grid;gap:14px}
+
+    .eyebrow{
+      width:max-content;
+      max-width:100%;
+      padding:8px 13px;
+      border-radius:999px;
+      background:rgba(21,95,67,.10);
+      border:1px solid rgba(21,95,67,.18);
+      color:var(--green);
+      font-size:12px;
+      font-weight:1000;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+    }
+
+    h1,h2,h3,p{margin:0}
+    h1{font-size:clamp(38px,6vw,74px);line-height:.94;letter-spacing:-.055em;font-weight:1000;color:#0d2118}
+    h1 span{color:var(--green)}
+    h2{font-size:clamp(28px,4vw,44px);line-height:1;letter-spacing:-.045em;font-weight:1000;color:#10231b}
+    h3{font-size:23px;line-height:1.06;letter-spacing:-.025em;font-weight:1000;color:#10231b}
+    .lead{max-width:68ch;color:#415247;font-size:clamp(16px,2vw,20px);line-height:1.62;font-weight:780}
+
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .pill-row{display:flex;gap:8px;flex-wrap:wrap}
+    .pill{padding:8px 11px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.64);color:#173528;font-size:12px;font-weight:950}
+
+    .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .mini{border:1px solid var(--line);border-radius:18px;padding:13px;background:rgba(255,255,255,.68);display:grid;gap:5px}
+    .mini strong{font-size:16px;font-weight:1000;color:#10231b}
+    .mini span{font-size:13px;line-height:1.42;color:#5f6f65;font-weight:780}
+
+    .section{padding:18px 0}
+    .section-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-end;margin-bottom:14px;flex-wrap:wrap}
+    .section-head p{max-width:760px;margin-top:8px;color:#53645a;font-size:16px;line-height:1.58;font-weight:760}
+
+    .two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:14px;align-items:start}
+    .panel{padding:20px}
+    .form-grid{display:grid;gap:12px}
+    .field{display:grid;gap:6px}
+    label{font-size:12px;font-weight:1000;text-transform:uppercase;letter-spacing:.08em;color:#0f5138}
+    input,textarea{
+      width:100%;
+      min-height:48px;
+      border-radius:16px;
+      border:1px solid var(--line2);
+      background:#fffdf7;
+      color:var(--ink);
+      padding:12px 13px;
+      font-weight:850;
+      outline:none;
+    }
+    textarea{min-height:110px;resize:vertical;line-height:1.45}
+    input:focus,textarea:focus{border-color:var(--green2);box-shadow:0 0 0 4px rgba(31,122,85,.10)}
+
+    .plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .plan{
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:14px;
+      background:rgba(255,255,255,.74);
+      display:grid;
+      gap:7px;
+      text-align:left;
+      cursor:pointer;
+      min-height:138px;
+    }
+    .plan.active{border-color:rgba(244,185,52,.90);background:rgba(255,231,163,.45);box-shadow:0 12px 28px rgba(244,185,52,.14)}
+    .plan-code{width:max-content;padding:6px 9px;border-radius:999px;background:var(--green);color:white;font-size:11px;font-weight:1000}
+    .plan b{font-size:18px;line-height:1.1;color:#10231b}
+    .plan strong{color:#7c4a03}
+    .plan span{font-size:13px;line-height:1.35;color:#5f6f65;font-weight:780}
+
+    .quick-row{display:flex;flex-wrap:wrap;gap:7px}
+    .quick{min-height:36px;border:1px solid var(--line);border-radius:999px;background:rgba(21,95,67,.08);color:var(--green);padding:7px 10px;font-size:12px;font-weight:1000;cursor:pointer}
+
+    .notice{margin-top:12px;padding:13px;border-radius:18px;border:1px dashed rgba(21,95,67,.25);background:rgba(21,95,67,.07);color:#173528;font-size:13px;line-height:1.45;font-weight:850}
+    .notice.gold{background:rgba(244,185,52,.14);border-color:rgba(244,185,52,.32)}
+    .message{display:none;margin-top:12px;padding:13px;border-radius:18px;font-weight:900;font-size:14px;line-height:1.45}
+    .message.ok{display:block;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);color:#166534}
+    .message.err{display:block;background:rgba(220,38,38,.10);border:1px solid rgba(220,38,38,.20);color:#991b1b}
+
+    .summary-box{
+      border:1px solid rgba(244,185,52,.35);
+      border-radius:22px;
+      background:linear-gradient(135deg,#fff7db,#ffffff);
+      padding:16px;
+      display:grid;
+      gap:8px;
+    }
+    .summary-line{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid rgba(21,95,67,.10);font-weight:1000}
+    .summary-line:last-child{border-bottom:0}
+    .summary-line strong{color:#7c4a03}
+
+    .mission-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .mission-card{overflow:hidden;display:grid;min-height:220px}
+    .mission-top{padding:15px;background:radial-gradient(circle at top right, rgba(255,255,255,.72), transparent 36%),linear-gradient(135deg,#dff6e8,#fff2ce);display:grid;gap:8px}
+    .mission-badge{width:max-content;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.74);border:1px solid rgba(21,95,67,.12);font-size:11px;font-weight:1000;color:var(--green);text-transform:uppercase;letter-spacing:.07em}
+    .mission-body{padding:15px;display:grid;gap:10px;align-content:start}
+    .mission-body p{color:#526258;font-size:14px;line-height:1.5;font-weight:770}
+    .tags{display:flex;gap:6px;flex-wrap:wrap}
+    .tags span{padding:6px 8px;border-radius:999px;background:#f2f6ef;color:#4b5c52;font-size:11px;font-weight:950}
+    .mission-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .mission-actions a{flex:1;min-height:42px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;padding:9px 10px;font-size:13px;font-weight:1000;border:1px solid var(--line)}
+    .mission-actions .wa{background:linear-gradient(135deg,var(--green),var(--green2));color:white}
+    .mission-actions .sms{background:#fffdf7;color:#173528}
+    .empty{grid-column:1/-1;padding:22px;border-radius:22px;border:1px dashed var(--line2);background:rgba(255,255,255,.58);color:#53645a;font-weight:850;line-height:1.5}
+
+    .audio-card{border-radius:22px;border:1px solid rgba(244,185,52,.35);background:radial-gradient(circle at right top, rgba(255,231,163,.72), transparent 42%),linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,248,226,.76));box-shadow:0 14px 32px rgba(244,185,52,.12);padding:16px;display:grid;gap:12px}
+    .audio-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+    .audio-head strong{font-size:16px;font-weight:1000}
+    .audio-head span{display:block;margin-top:4px;color:#5f6f65;font-size:13px;font-weight:820;line-height:1.45}
+    .audio-controls{display:flex;gap:8px;flex-wrap:wrap}
+    .audio-controls button{min-height:42px;border:0;border-radius:999px;padding:9px 13px;font-size:13px;font-weight:1000;cursor:pointer}
+    .audio-controls .play{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#0b1b13}
+    .audio-controls .stop{background:rgba(220,38,38,.10);color:#991b1b;border:1px solid rgba(220,38,38,.18)}
+    .audio-text{color:#47594e;font-size:14px;line-height:1.54;font-weight:780}
+    .audio-progress-wrap{height:7px;border-radius:999px;overflow:hidden;background:rgba(21,95,67,.12)}
+    .audio-progress{height:100%;width:0%;background:linear-gradient(90deg,var(--gold),var(--green2));transition:width .18s linear}
+    .audio-status{color:#68776e;font-size:12px;font-weight:900}
+
+    footer{padding:20px 0 92px;color:#607067;font-weight:850;font-size:13px}
+    .foot-card{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:18px}
+    .foot-links{display:flex;gap:12px;flex-wrap:wrap}
+    .foot-links a{font-weight:1000;color:var(--green)}
+
+    .bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(255,249,236,.92);border-top:1px solid rgba(21,95,67,.14);backdrop-filter:blur(16px);display:none}
+    .bottom-nav-inner{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;max-width:720px;margin:0 auto}
+    .bottom-nav a{min-height:54px;border-radius:16px;display:grid;place-items:center;gap:1px;color:#526258;font-size:11px;font-weight:1000}
+    .bottom-nav a.active{background:linear-gradient(135deg,var(--green),var(--green2));color:white}
+    .ico{font-size:18px;line-height:1}
+
+    @media(max-width:920px){
+      .hero-grid,.two-col{grid-template-columns:1fr}
+      .mission-list{grid-template-columns:1fr}
+      .plan-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:760px){
+      .wrap{width:min(100% - 22px,var(--max))}
+      .hero-shell{border-radius:26px;padding:12px}
+      .hero-card,.side-card,.panel{border-radius:22px;padding:18px}
+      .nav{width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+      .nav a{flex:0 0 auto}
+      .actions .btn{width:100%}
+      .mini-grid{grid-template-columns:1fr}
+      .bottom-nav{display:block}
+      .audio-controls,.audio-controls button{width:100%}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="./index.html" aria-label="Retour JOBS">
+        <span class="brand-mark">⚡</span>
+        <span>NDIMBAL Express<small>Ticket annonce · DIGIY JOBS</small></span>
+      </a>
+      <nav class="nav" aria-label="Navigation NDIMBAL Express">
+        <a href="./index.html">← JOBS</a>
+        <a href="./missions.html">Missions JOBS</a>
+        <a class="primary" href="#annonces">Voir annonces</a>
+        <a class="primary" href="#publier">Ticket Express</a>
+        <a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">🇸🇳 Wolof</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-shell">
+        <div class="hero-grid">
+          <article class="hero-card">
+            <span class="eyebrow">Porte publique · dépôt payant filtré</span>
+            <h1>Voir gratuit. <span>Publier filtré.</span></h1>
+            <p class="lead">
+              NDIMBAL Express sert aux missions courtes, urgentes ou ponctuelles.
+              Le public peut voir les annonces validées gratuitement.
+              Pour publier, le demandeur prend un ticket Express, paie par Wave,
+              puis DIGIY vérifie avant affichage.
+            </p>
+            <div class="actions">
+              <a class="btn primary" href="#annonces">⚡ Voir les annonces Express</a>
+              <a class="btn gold" href="#publier">💳 Prendre un ticket Express</a>
+              <a class="btn blue" href="./postuler.html">💼 Déposer mon profil JOBS</a>
+            </div>
+            <div class="pill-row">
+              <span class="pill">Lecture gratuite</span>
+              <span class="pill">Dépôt payant</span>
+              <span class="pill">Vérification avant affichage</span>
+              <span class="pill">0% commission sur la mission</span>
+            </div>
+
+            <section class="audio-card" aria-label="Audio NDIMBAL Express">
+              <div class="audio-head">
+                <div>
+                  <strong>🎧 Écouter NDIMBAL Express</strong>
+                  <span>Une voix courte explique la règle : voir gratuit, publier avec ticket.</span>
+                </div>
+                <div class="audio-controls">
+                  <button class="play" id="audioPlay" type="button">▶️ Lecture</button>
+                  <button class="stop" id="audioStop" type="button">⏹ Arrêt</button>
+                </div>
+              </div>
+              <div class="audio-text">
+                JOBS organise le travail. NDIMBAL Express dépanne le terrain vite. Lire les annonces reste gratuit, mais publier demande un ticket pour éviter le bruit et protéger le temps de validation.
+              </div>
+              <div class="audio-progress-wrap" aria-hidden="true"><div class="audio-progress" id="audioProgress"></div></div>
+              <div class="audio-status" id="audioStatus">Prêt à écouter.</div>
+            </section>
+          </article>
+
+          <aside class="side-card">
+            <span class="eyebrow">Doctrine business</span>
+            <h2>Pas d’open-bar.</h2>
+            <p class="lead" style="font-size:15px">
+              Dépôt gratuit = bruit, faux besoins, temps perdu. Le ticket filtre les demandes
+              et finance le travail de lecture, vérification et affichage.
+            </p>
+            <div class="mini-grid">
+              <div class="mini"><strong>Voir</strong><span>Gratuit pour le public.</span></div>
+              <div class="mini"><strong>Publier</strong><span>Ticket Express obligatoire.</span></div>
+              <div class="mini"><strong>Vérifier</strong><span>DIGIY contrôle avant affichage.</span></div>
+              <div class="mini"><strong>Contacter</strong><span>WhatsApp / SMS direct.</span></div>
+            </div>
+            <div class="notice gold">
+              <strong>Règle simple :</strong> le paiement ne publie pas automatiquement. Il ouvre une demande de vérification.
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="annonces">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Annonces validées.</h2>
+            <p>Les missions courtes apparaissent ici seulement après validation DIGIY. Les dépôts payés restent invisibles tant qu’ils ne sont pas acceptés.</p>
+          </div>
+          <button class="btn primary" type="button" id="btnRefresh">↻ Recharger</button>
+        </div>
+
+        <div class="mission-list" id="missionList">
+          <div class="empty">Chargement des annonces NDIMBAL Express…</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="publier">
+      <div class="wrap two-col">
+        <article class="panel">
+          <span class="eyebrow">Ticket publication Express</span>
+          <h2>Proposer une mission courte.</h2>
+          <p class="lead" style="font-size:15px;margin-top:8px">
+            Choisis un ticket, remplis la mission, puis envoie la demande WhatsApp avec la preuve Wave.
+            Rien n’est publié automatiquement.
+          </p>
+
+          <form class="form-grid" id="expressForm">
+            <div class="field">
+              <label>Choisir mon ticket *</label>
+              <div class="plan-grid" id="planGrid">
+                <button class="plan" type="button" data-plan="N1">
+                  <span class="plan-code">N1</span>
+                  <b>Express 48h</b>
+                  <strong>5 000 FCFA</strong>
+                  <span>Dépôt + vérification + affichage jusqu’à 48h après validation.</span>
+                </button>
+                <button class="plan" type="button" data-plan="N2">
+                  <span class="plan-code">N2</span>
+                  <b>Express Urgent</b>
+                  <strong>10 000 FCFA</strong>
+                  <span>Traitement prioritaire + affichage jusqu’à 72h après validation.</span>
+                </button>
+                <button class="plan" type="button" data-plan="N3">
+                  <span class="plan-code">N3</span>
+                  <b>Express Semaine</b>
+                  <strong>15 000 FCFA</strong>
+                  <span>Mission visible jusqu’à 7 jours après validation.</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="title">Titre de la mission *</label>
+              <input id="title" maxlength="100" autocomplete="off" placeholder="Ex : Livraison urgente de documents à Dakar">
+            </div>
+
+            <div class="field">
+              <label for="zone">Zone / localisation *</label>
+              <input id="zone" autocomplete="address-level2" placeholder="Ex : Saly, Dakar, Mbour">
+              <div class="quick-row">
+                <button type="button" class="quick" data-zone="Saly">Saly</button>
+                <button type="button" class="quick" data-zone="Dakar">Dakar</button>
+                <button type="button" class="quick" data-zone="Mbour">Mbour</button>
+                <button type="button" class="quick" data-zone="Thiès">Thiès</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="phone">Téléphone WhatsApp *</label>
+              <input id="phone" inputmode="tel" autocomplete="tel" placeholder="+221 77 000 00 00">
+            </div>
+
+            <div class="field">
+              <label for="when_time">Quand ? *</label>
+              <input id="when_time" autocomplete="off" placeholder="Ex : maintenant, ce soir, demain matin">
+              <div class="quick-row">
+                <button type="button" class="quick" data-time="Maintenant">Maintenant</button>
+                <button type="button" class="quick" data-time="Aujourd’hui">Aujourd’hui</button>
+                <button type="button" class="quick" data-time="Ce soir">Ce soir</button>
+                <button type="button" class="quick" data-time="Demain">Demain</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="details">Détails utiles</label>
+              <textarea id="details" maxlength="500" placeholder="Explique la mission, la durée, l’aide attendue, le matériel, la rémunération proposée si besoin."></textarea>
+            </div>
+
+            <div class="field">
+              <label for="paymentNote">Note / preuve Wave</label>
+              <textarea id="paymentNote" placeholder="Ex : Paiement Wave envoyé pour NDIMBAL N1 — 5 000 FCFA — au nom de Mamadou Diop."></textarea>
+            </div>
+
+            <div class="summary-box">
+              <div class="summary-line"><span>Ticket choisi</span><strong id="planText">Aucun ticket</strong></div>
+              <div class="summary-line"><span>Total à payer</span><strong id="totalText">0 FCFA</strong></div>
+              <div class="summary-line"><span>Paiement Wave</span><strong>JB BEAUVILLE · +221 77 134 28 89</strong></div>
+            </div>
+
+            <div class="actions">
+              <a class="btn gold" id="btnWa" href="https://wa.me/221771342889" target="_blank" rel="noopener">💬 Envoyer WhatsApp</a>
+              <button class="btn primary" type="button" id="btnSms">📱 Copier SMS</button>
+              <button class="btn danger" type="button" id="btnClear">🧹 Effacer</button>
+            </div>
+
+            <div class="message" id="formMsg"></div>
+
+            <div class="notice">
+              Le ticket finance la vérification et l’affichage. Si la mission est floue, incomplète ou non conforme, DIGIY peut demander correction avant publication.
+            </div>
+          </form>
+        </article>
+
+        <aside class="panel">
+          <span class="eyebrow">Wave</span>
+          <h2>Paiement avant affichage.</h2>
+          <div class="summary-box">
+            <div class="summary-line"><span>Nom Wave</span><strong>JB BEAUVILLE</strong></div>
+            <div class="summary-line"><span>Téléphone</span><strong>+221 77 134 28 89</strong></div>
+            <div class="summary-line"><span>Statut après paiement</span><strong>À vérifier</strong></div>
+          </div>
+          <div class="notice gold">
+            <strong>Important :</strong> le paiement ouvre le dossier. La mission apparaît seulement après validation DIGIY.
+          </div>
+          <div class="notice">
+            <strong>Bon exemple :</strong><br>
+            Livraison urgente de documents à Dakar · Plateau · aujourd’hui avant 16h · rémunération à discuter · WhatsApp direct.
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="https://wa.me/221771342889?text=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20de%20l’aide%20pour%20publier%20une%20mission%20NDIMBAL%20Express." target="_blank" rel="noopener">💬 Aide WhatsApp</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot-card">
+      <p>NDIMBAL Express · Ticket annonce DIGIY JOBS · BY DIGIYLYFE</p>
+      <div class="foot-links">
+        <a href="./index.html">JOBS</a>
+        <a href="./missions.html">Missions JOBS</a>
+        <a href="./postuler.html">Postuler</a>
+        <a href="https://digiylyfe.com/">Site</a>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="bottom-nav" aria-label="Navigation mobile NDIMBAL Express">
+    <div class="bottom-nav-inner">
+      <a href="./index.html"><span class="ico">⌂</span>JOBS</a>
+      <a class="active" href="./ndimbal-express.html"><span class="ico">⚡</span>Express</a>
+      <a href="#annonces"><span class="ico">◎</span>Annonces</a>
+      <a href="#publier"><span class="ico">💳</span>Ticket</a>
+      <a href="./postuler.html"><span class="ico">💼</span>Profil</a>
+    </div>
+  </nav>
+
+  <script>
+    (function(){
+      "use strict";
+
+      const SUPPORT_WA = "221771342889";
+      const WAVE_LABEL = "Wave : JB BEAUVILLE · +221 77 134 28 89";
+      const SUPABASE_URL = "https://wesqmwjjtsefyjnluosj.supabase.co";
+      const SUPABASE_ANON_KEY = "sb_publishable_tGHItRgeWDmGjnd0CK1DVQ_BIep4Ug3";
+      const SB = window.supabase ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+      const PLANS = {
+        N1:{code:"N1", label:"Express 48h", amount:5000, duration:"48h après validation"},
+        N2:{code:"N2", label:"Express Urgent", amount:10000, duration:"72h après validation"},
+        N3:{code:"N3", label:"Express Semaine", amount:15000, duration:"7 jours après validation"}
+      };
+
+      const $ = id => document.getElementById(id);
+      const list = $("missionList");
+      const msgBox = $("formMsg");
+      const DRAFT_KEY = "digiy_ndimbal_express_paid_draft_v1";
+      const fields = ["title","zone","phone","when_time","details","paymentNote"];
+      let selectedPlan = "";
+
+      function esc(s){
+        return String(s || "").replace(/[&<>"']/g, m => ({
+          "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"
+        }[m]));
+      }
+
+      function money(n){ return new Intl.NumberFormat("fr-FR").format(n || 0) + " FCFA"; }
+
+      function normalizePhone(phone){
+        let p = String(phone || "").replace(/\D/g,"");
+        if(p.startsWith("00221")) p = p.slice(5);
+        if(p.startsWith("221")) p = p.slice(3);
+        if(p.length === 9 && p.startsWith("7")) return "221" + p;
+        return p;
+      }
+
+      function waLink(phone, title){
+        const p = normalizePhone(phone);
+        const text = "Bonjour, je vous contacte pour la mission NDIMBAL Express : " + (title || "");
+        return p ? "https://wa.me/" + p + "?text=" + encodeURIComponent(text) : "#";
+      }
+
+      function smsLink(phone, title){
+        const p = String(phone || "").trim();
+        const text = "Bonjour, je vous contacte pour la mission NDIMBAL Express : " + (title || "");
+        return p ? "sms:" + encodeURIComponent(p) + "?body=" + encodeURIComponent(text) : "#";
+      }
+
+      function noteParts(note){
+        const raw = String(note || "");
+        const whenMatch = raw.match(/Quand\s*:\s*([^\n]+)/i);
+        return {
+          when: whenMatch ? whenMatch[1].trim() : "",
+          details: raw.replace(/Quand\s*:\s*[^\n]+\n*/i,"").trim()
+        };
+      }
+
+      function renderMissions(rows){
+        if(!rows || !rows.length){
+          list.innerHTML = `
+            <div class="empty">
+              Aucune annonce NDIMBAL Express validée pour le moment.<br>
+              Les missions payées et reçues apparaissent ici seulement après validation DIGIY.
+            </div>`;
+          return;
+        }
+
+        list.innerHTML = rows.map(row => {
+          const parts = noteParts(row.note);
+          const created = row.created_at ? new Date(row.created_at).toLocaleDateString("fr-FR") : "";
+          return `
+            <article class="mission-card">
+              <div class="mission-top">
+                <span class="mission-badge">⚡ NDIMBAL Express</span>
+                <h3>${esc(row.title || "Mission courte")}</h3>
+              </div>
+              <div class="mission-body">
+                <div class="tags">
+                  <span>📍 ${esc(row.zone || "Zone à préciser")}</span>
+                  ${parts.when ? `<span>⏰ ${esc(parts.when)}</span>` : ""}
+                  ${created ? `<span>🗓️ ${esc(created)}</span>` : ""}
+                </div>
+                <p>${esc(parts.details || "Mission courte publiée sur NDIMBAL Express. Contact direct pour les détails.")}</p>
+                <div class="mission-actions">
+                  <a class="wa" href="${waLink(row.phone, row.title)}" target="_blank" rel="noopener">WhatsApp</a>
+                  <a class="sms" href="${smsLink(row.phone, row.title)}">SMS</a>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join("");
+      }
+
+      async function loadMissions(){
+        if(!SB){
+          list.innerHTML = `<div class="empty">Lecture Supabase indisponible sur ce navigateur.</div>`;
+          return;
+        }
+
+        list.innerHTML = `<div class="empty">Chargement des annonces NDIMBAL Express…</div>`;
+
+        try{
+          const { data, error } = await SB
+            .from("jef_missions")
+            .select("id,title,zone,phone,note,status,created_at")
+            .in("status", ["published","active","open","approved"])
+            .order("created_at", { ascending:false })
+            .limit(20);
+
+          if(error) throw error;
+          renderMissions(data || []);
+        }catch(err){
+          console.error(err);
+          list.innerHTML = `
+            <div class="empty">
+              Les annonces ne peuvent pas être chargées pour le moment.
+              Tu peux recharger ou passer par WhatsApp DIGIY.
+            </div>`;
+        }
+      }
+
+      function showMessage(type, text){
+        msgBox.className = "message " + (type === "ok" ? "ok" : "err");
+        msgBox.textContent = text;
+      }
+
+      function saveDraft(){
+        const data = { selectedPlan };
+        fields.forEach(id => data[id] = ($(id)?.value || ""));
+        try{ localStorage.setItem(DRAFT_KEY, JSON.stringify(data)); }catch(_){}
+      }
+
+      function loadDraft(){
+        try{
+          const data = JSON.parse(localStorage.getItem(DRAFT_KEY) || "{}");
+          fields.forEach(id => { if($(id) && data[id]) $(id).value = data[id]; });
+          if(data.selectedPlan && PLANS[data.selectedPlan]) setPlan(data.selectedPlan);
+        }catch(_){}
+      }
+
+      function clearForm(){
+        fields.forEach(id => { if($(id)) $(id).value = ""; });
+        selectedPlan = "";
+        document.querySelectorAll(".plan").forEach(b => b.classList.remove("active"));
+        sync();
+        try{ localStorage.removeItem(DRAFT_KEY); }catch(_){}
+        msgBox.className = "message";
+        msgBox.textContent = "";
+      }
+
+      function setPlan(code){
+        selectedPlan = PLANS[code] ? code : "";
+        document.querySelectorAll(".plan").forEach(btn => {
+          btn.classList.toggle("active", btn.getAttribute("data-plan") === selectedPlan);
+        });
+        sync();
+        saveDraft();
+      }
+
+      function currentPlan(){ return PLANS[selectedPlan] || null; }
+
+      function missionData(){
+        return {
+          title:$("title").value.trim(),
+          zone:$("zone").value.trim(),
+          phone:$("phone").value.trim(),
+          when:$("when_time").value.trim(),
+          details:$("details").value.trim(),
+          paymentNote:$("paymentNote").value.trim()
+        };
+      }
+
+      function validate(){
+        const p = currentPlan();
+        const d = missionData();
+        if(!p) return "Choisis d’abord un ticket Express.";
+        if(!d.title || d.title.length < 6) return "Le titre doit faire au moins 6 caractères.";
+        if(!d.zone) return "La zone est obligatoire.";
+        if(!d.phone) return "Le téléphone WhatsApp est obligatoire.";
+        if(!normalizePhone(d.phone).match(/^2217[05678]\d{7}$/)) return "Téléphone invalide. Exemple attendu : +221 77 000 00 00.";
+        if(!d.when) return "Le moment de la mission est obligatoire.";
+        return "";
+      }
+
+      function buildMessage(){
+        const p = currentPlan();
+        const d = missionData();
+
+        if(!p){
+          return "Bonjour JB, je veux publier une mission NDIMBAL Express, mais je dois encore choisir mon ticket.";
+        }
+
+        return [
+          "Bonjour JB, je veux proposer une mission NDIMBAL Express.",
+          "",
+          "STATUT : demande payée / à vérifier avant affichage public",
+          "",
+          "TICKET",
+          p.code + " · " + p.label,
+          "Montant : " + money(p.amount),
+          "Durée : " + p.duration,
+          "",
+          "MISSION",
+          "Titre : " + (d.title || "à compléter"),
+          "Zone : " + (d.zone || "à compléter"),
+          "Téléphone WhatsApp : " + (d.phone || "à compléter"),
+          "Quand : " + (d.when || "à compléter"),
+          "Détails : " + (d.details || "à compléter"),
+          "",
+          "PAIEMENT",
+          WAVE_LABEL,
+          "Note / preuve : " + (d.paymentNote || "à compléter après paiement Wave"),
+          "",
+          "Je comprends que le paiement ouvre une demande de vérification, et que l’annonce apparaît seulement après validation DIGIY."
+        ].join("\n");
+      }
+
+      function sync(){
+        const p = currentPlan();
+        $("planText").textContent = p ? (p.code + " · " + p.label) : "Aucun ticket";
+        $("totalText").textContent = p ? money(p.amount) : "0 FCFA";
+
+        const message = buildMessage();
+        $("btnWa").href = "https://wa.me/" + SUPPORT_WA + "?text=" + encodeURIComponent(message);
+      }
+
+      document.querySelectorAll(".plan").forEach(btn => {
+        btn.addEventListener("click", () => setPlan(btn.getAttribute("data-plan")));
+      });
+
+      document.querySelectorAll("[data-zone]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          $("zone").value = btn.getAttribute("data-zone");
+          sync(); saveDraft();
+        });
+      });
+
+      document.querySelectorAll("[data-time]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          $("when_time").value = btn.getAttribute("data-time");
+          sync(); saveDraft();
+        });
+      });
+
+      fields.forEach(id => {
+        if($(id)) $(id).addEventListener("input", () => { sync(); saveDraft(); });
+      });
+
+      $("btnWa").addEventListener("click", function(e){
+        const err = validate();
+        if(err){
+          e.preventDefault();
+          showMessage("err", "⚠️ " + err);
+          return;
+        }
+        showMessage("ok", "✅ Message WhatsApp prêt. Envoie-le avec la preuve Wave.");
+      });
+
+      $("btnSms").addEventListener("click", async function(){
+        const err = validate();
+        if(err){
+          showMessage("err", "⚠️ " + err);
+          return;
+        }
+        try{
+          await navigator.clipboard.writeText(buildMessage());
+          showMessage("ok", "✅ Message SMS copié.");
+        }catch(_){
+          showMessage("err", "Copie impossible automatiquement. Utilise WhatsApp.");
+        }
+      });
+
+      $("btnClear").addEventListener("click", clearForm);
+      $("btnRefresh").addEventListener("click", loadMissions);
+
+      loadDraft();
+      sync();
+      loadMissions();
+
+      /* Audio */
+      const AUDIO_TEXT =
+        "Bienvenue dans NDIMBAL Express. Ici, lire les annonces validées est gratuit, mais publier une mission demande un ticket. " +
+        "Ce ticket évite le bruit, protège le temps de DIGIY et finance la vérification avant affichage. " +
+        "JOBS organise le travail. NDIMBAL Express dépanne le terrain vite : mission courte, aide ponctuelle, besoin urgent, contact direct. " +
+        "Le paiement ne publie pas automatiquement. Il ouvre une demande de vérification. Après validation, l’annonce apparaît côté public.";
+
+      const play = $("audioPlay");
+      const stop = $("audioStop");
+      const progress = $("audioProgress");
+      const status = $("audioStatus");
+      let timer = null;
+      let playing = false;
+      let launchId = 0;
+
+      function pronounce(text){
+        return String(text || "")
+          .replace(/\bDIGIY\b/g,"diji i")
+          .replace(/\bJOBS\b/g,"jobs")
+          .replace(/\bNDIMBAL\b/g,"ndimbal")
+          .replace(/\bWhatsApp\b/g,"Ouatsap")
+          .replace(/\bSMS\b/g,"S M S")
+          .replace(/\bWave\b/g,"Ouève")
+          .replace(/0\s*%/g,"zéro pour cent");
+      }
+
+      function setIdle(text){
+        playing = false;
+        clearInterval(timer);
+        timer = null;
+        if(progress) progress.style.width = "0%";
+        if(play) play.disabled = false;
+        if(status) status.textContent = text || "Prêt à écouter.";
+      }
+
+      function getVoice(){
+        const voices = speechSynthesis.getVoices() || [];
+        return voices.find(v => /fr[-_]?FR/i.test(v.lang || "")) ||
+               voices.find(v => /^fr/i.test(v.lang || "")) ||
+               null;
+      }
+
+      function stopAudio(){
+        launchId += 1;
+        try{ speechSynthesis.cancel(); }catch(_){}
+        setIdle("Lecture arrêtée.");
+      }
+
+      function startProgress(text,currentId){
+        const words = (text.match(/\S+/g) || []).length;
+        const estimated = Math.max(2600, words * 500);
+        let elapsed = 0;
+        clearInterval(timer);
+        progress.style.width = "0%";
+        timer = setInterval(() => {
+          if(!playing || currentId !== launchId){ clearInterval(timer); timer = null; return; }
+          elapsed += 150;
+          progress.style.width = Math.min((elapsed / estimated) * 100, 97) + "%";
+        }, 150);
+      }
+
+      function playAudio(){
+        if(!("speechSynthesis" in window)) return;
+        if(playing) return;
+        launchId += 1;
+        const currentId = launchId;
+        const spoken = pronounce(AUDIO_TEXT);
+        try{ speechSynthesis.cancel(); }catch(_){}
+        const u = new SpeechSynthesisUtterance(spoken);
+        u.lang = "fr-FR";
+        u.rate = .86;
+        u.pitch = 1.02;
+        u.volume = 1;
+        const voice = getVoice();
+        if(voice) u.voice = voice;
+        u.onstart = () => {
+          if(currentId !== launchId) return;
+          playing = true;
+          play.disabled = true;
+          status.textContent = "Lecture en cours…";
+          startProgress(spoken,currentId);
+        };
+        u.onend = () => {
+          if(currentId !== launchId) return;
+          progress.style.width = "100%";
+          setTimeout(() => { if(currentId === launchId) setIdle("Lecture terminée."); }, 260);
+        };
+        u.onerror = () => setIdle("Lecture interrompue.");
+        speechSynthesis.speak(u);
+      }
+
+      if(play) play.addEventListener("click", playAudio);
+      if(stop) stop.addEventListener("click", stopAudio);
+      window.addEventListener("pagehide", stopAudio);
+    })();
+  </script>
+
+  <script src="https://pro-action-digiy.digiylyfe.com/assets/js/digiy-retour-voix.js?v=retour-voix-20260606-v4" defer></script>
+</body>
+</html>
