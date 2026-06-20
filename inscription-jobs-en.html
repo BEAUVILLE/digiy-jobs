@@ -1,85 +1,330 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="index,follow">
-  <meta name="theme-color" content="#155f43">
-  <meta name="digiy-build" content="jobs-english-companion-pages-20260620">
-  <title>DIGIY JOBS — Recruiter registration</title>
-  <meta name="description" content="Register a JOBS offer, publish a field mission or search for a local profile with DIGIY JOBS.">
+  <meta name="theme-color" content="#0b1220">
+  <title>NDIMBAL Annonces — Poser une annonce</title>
+  <meta name="description" content="NDIMBAL Annonces — publier une annonce terrain avec ticket durée 1 semaine, 15 jours ou 1 mois, paiement Wave officiel, preuve envoyée et validation DIGIY avant affichage public. 0% commission.">
+  <meta name="digiy-fix" content="ndimbal-annonces-durees-5000-10000-20000-20260620">
   <style>
-:root{--bg:#f6eedf;--paper:#fffdf7;--ink:#10231b;--muted:#5f6f65;--green:#155f43;--green2:#1f7a55;--gold:#f4b934;--gold2:#ffe7a3;--line:rgba(21,95,67,.16);--shadow:0 20px 55px rgba(31,52,42,.14);--max:1120px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(circle at 8% 0%,rgba(244,185,52,.28),transparent 35%),radial-gradient(circle at 92% 18%,rgba(31,122,85,.18),transparent 34%),linear-gradient(180deg,#fff9ec,var(--bg) 58%,#efe2cc)}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}.wrap{width:min(var(--max),calc(100% - 28px));margin:auto}.top{position:sticky;top:0;z-index:20;background:rgba(255,249,236,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.topin{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0}.brand{display:flex;align-items:center;gap:10px;font-weight:1000}.mark{width:46px;height:46px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold),#f59e0b);box-shadow:0 12px 28px rgba(244,185,52,.25)}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:.12em;margin-top:2px}.nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.pill{min-height:40px;padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.65);font-size:13px;font-weight:950}.pill.primary{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff}.pill.gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#0b1b13}.hero{padding:28px 0 16px}.shell{border:1px solid var(--line);border-radius:34px;background:radial-gradient(circle at 10% 12%,rgba(255,231,163,.78),transparent 32%),radial-gradient(circle at 88% 6%,rgba(223,246,232,.95),transparent 36%),linear-gradient(135deg,#fffdf7,#f7ecd8 58%,#eef7e9);box-shadow:var(--shadow);padding:22px}.grid{display:grid;grid-template-columns:1.08fr .92fr;gap:18px}.card{border:1px solid var(--line);border-radius:26px;background:rgba(255,255,255,.68);box-shadow:0 12px 32px rgba(31,52,42,.1);padding:24px}.eyebrow{display:inline-flex;width:max-content;max-width:100%;padding:8px 12px;border-radius:999px;background:rgba(21,95,67,.1);border:1px solid rgba(21,95,67,.18);color:var(--green);font-size:12px;font-weight:1000;letter-spacing:.1em;text-transform:uppercase}h1{font-size:clamp(38px,6vw,70px);line-height:.94;letter-spacing:-.055em;margin:14px 0 12px}h1 span{color:var(--green)}p{line-height:1.62}.lead{font-size:clamp(17px,2vw,20px);color:#415247;font-weight:760;max-width:68ch}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{min-height:50px;padding:12px 17px;border-radius:16px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;font-size:15px;font-weight:1000;cursor:pointer;box-shadow:0 12px 25px rgba(31,52,42,.1)}.btn.dark{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff}.btn.gold{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#0b1b13}.btn.light{background:#fffdf7;color:#173528;border-color:var(--line)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.mini{border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.66);padding:16px}.mini h3{margin:0 0 7px;font-size:20px}.mini p{margin:0;color:var(--muted);font-weight:760}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.field{display:grid;gap:6px}.field label{font-size:13px;color:var(--muted);font-weight:900}.field input,.field textarea{width:100%;min-height:50px;border-radius:15px;border:1px solid var(--line);padding:10px 12px;background:#fff;color:var(--ink);font-weight:850}.field textarea{min-height:116px;resize:vertical}.full{grid-column:1/-1}.output{white-space:pre-wrap;border:1px solid rgba(21,95,67,.18);border-radius:20px;background:rgba(21,95,67,.06);padding:14px;margin-top:12px;color:#173528;font-weight:800;line-height:1.5}.notice{padding:14px;border-radius:20px;background:rgba(244,185,52,.12);border:1px solid rgba(244,185,52,.25);color:#5b4109;font-weight:850}.footer{padding:20px 0 60px;color:#607067;font-weight:850}.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(12px);opacity:0;pointer-events:none;border-radius:999px;background:var(--green);color:#fff;padding:11px 15px;font-weight:1000;transition:.18s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}@media(max-width:820px){.topin{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.actions .btn{width:100%}}
-</style>
+    :root{
+      --bg:#0b1220;
+      --bg2:#111827;
+      --card:#fffdf7;
+      --paper:#f8fafc;
+      --ink:#17263f;
+      --muted:#64748b;
+      --blue:#2563eb;
+      --blue2:#38bdf8;
+      --green:#166534;
+      --green2:#22c55e;
+      --gold:#facc15;
+      --gold2:#f59e0b;
+      --red:#dc2626;
+      --line:rgba(23,38,63,.16);
+      --line-dark:rgba(255,255,255,.16);
+      --shadow:0 18px 46px rgba(10,18,34,.28);
+      --max:1120px;
+      --safe-bottom:env(safe-area-inset-bottom,0px);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      background:
+        radial-gradient(circle at top left,rgba(56,189,248,.18),transparent 34%),
+        radial-gradient(circle at bottom right,rgba(250,204,21,.18),transparent 34%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
+      color:#f8fafc;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      font-size:17px;
+      font-weight:820;
+      padding-bottom:calc(90px + var(--safe-bottom));
+    }
+    a{color:inherit;text-decoration:none}
+    button,input,textarea,select{font:inherit}
+    button{cursor:pointer}
+    .app{width:min(var(--max),calc(100% - 28px));margin:auto;padding:14px 0}
+    .top{
+      position:sticky;top:0;z-index:20;
+      margin:0 calc((100vw - min(var(--max),calc(100vw - 28px))) / -2) 14px;
+      padding:12px max(14px,calc((100vw - var(--max)) / 2));
+      background:rgba(11,18,32,.94);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line-dark);
+      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;
+    }
+    .brand{font-weight:1000;color:#fff8db;display:flex;gap:10px;align-items:center}
+    .brandMark{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue2),var(--gold));color:#06111f;box-shadow:0 14px 34px rgba(56,189,248,.18);flex:0 0 auto}
+    .brand span{display:block;font-size:12px;color:rgba(248,250,252,.72);margin-top:2px;font-weight:900}
+    .nav{display:flex;gap:8px;flex-wrap:wrap}
+    .btn,button,.nav a{
+      min-height:48px;border-radius:15px;border:1px solid var(--line-dark);background:rgba(255,255,255,.08);color:#fff;padding:0 14px;font-weight:1000;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.08)
+    }
+    .gold{background:linear-gradient(135deg,var(--gold),var(--gold2))!important;color:#06111f!important;border:0!important}
+    .green{background:linear-gradient(135deg,#22c55e,#16a34a)!important;color:#062014!important;border:0!important}
+    .clear{background:rgba(250,204,21,.12)!important;color:#fff8dc!important;border-color:rgba(250,204,21,.40)!important}
+    .danger{background:rgba(220,38,38,.14)!important;color:#fecaca!important;border-color:rgba(220,38,38,.30)!important}
+    .hero,.card{border:1px solid var(--line-dark);border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.06));box-shadow:var(--shadow)}
+    .hero{padding:22px;margin-bottom:14px;display:grid;grid-template-columns:1.08fr .92fr;gap:16px;align-items:start;overflow:hidden;position:relative}
+    .hero:before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--blue2),var(--gold),#22c55e)}
+    .kicker{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(250,204,21,.34);background:rgba(250,204,21,.12);color:#fff3b2;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:1000;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+    h1{margin:0;font-size:clamp(35px,6vw,66px);line-height:.98;font-weight:1000;letter-spacing:-.05em;color:#fff}
+    h2{margin:0 0 10px;color:#fff8db;font-size:clamp(24px,4vw,34px);line-height:1.08;letter-spacing:-.025em}
+    h3{margin:0;color:#10233f;font-size:21px;line-height:1.08;letter-spacing:-.02em}
+    p,.lead{color:rgba(248,250,252,.78);line-height:1.58;font-weight:850}
+    .lead{font-size:clamp(17px,2vw,20px);max-width:74ch}
+    .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .pill{border:1px solid rgba(255,255,255,.16);background:rgba(56,189,248,.10);border-radius:999px;padding:8px 12px;font-size:13px;font-weight:1000;color:#e0f2fe}
+    .waveHero{padding:18px;border-radius:22px;background:linear-gradient(135deg,#facc15,#f59e0b);color:#06111f;border:1px solid rgba(250,204,21,.78);box-shadow:0 16px 34px rgba(0,0,0,.24)}
+    .waveHero small{display:block;font-size:13px;font-weight:1000;letter-spacing:.08em;text-transform:uppercase;opacity:.88;margin-bottom:7px}
+    .waveHero strong{display:block;font-size:clamp(24px,5.6vw,38px);line-height:1.12;font-weight:1000;letter-spacing:-.035em}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+    .step{border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:13px;background:rgba(255,255,255,.075)}
+    .step b{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:13px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#06111f;margin-bottom:7px}
+    .step strong{display:block;color:#fff8db;font-size:17px;margin-bottom:4px}
+    .step span{display:block;color:rgba(248,250,252,.74);font-size:14px;line-height:1.42}
+    .grid{display:grid;grid-template-columns:1.04fr .96fr;gap:14px;align-items:start}
+    .card{padding:16px}.card.light{background:rgba(255,253,247,.96);color:var(--ink);border-color:rgba(255,255,255,.55)}.card.light h2{color:#10233f}.card.light p{color:var(--muted)}
+    .formGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:grid;gap:6px;margin-top:10px}.full{grid-column:1/-1}
+    label{display:block;color:#fff3b2;font-size:12px;font-weight:1000;text-transform:uppercase;letter-spacing:.06em}.card.light label{color:#7a4d00}
+    input,select,textarea{width:100%;border-radius:16px;border:1px solid rgba(23,38,63,.18);background:#fff;color:var(--ink);padding:13px;font-weight:900;outline:none}textarea{min-height:118px;resize:vertical;line-height:1.45}input:focus,select:focus,textarea:focus{border-color:#facc15;box-shadow:0 0 0 4px rgba(250,204,21,.16)}
+    .section{margin:16px 0 10px;padding:12px;border:1px solid rgba(37,99,235,.22);background:rgba(56,189,248,.10);border-radius:16px;font-weight:1000;color:#dbeafe}.card.light .section{color:#0f3b69;background:rgba(56,189,248,.12);border-color:rgba(37,99,235,.22)}
+    .summary{position:sticky;top:88px}.selected,.totals,.dateBox,.payment,.noteBox{margin-top:12px;border:1px solid rgba(250,204,21,.42);border-radius:18px;background:rgba(250,204,21,.12);padding:12px}.payment{background:linear-gradient(135deg,#facc15,#f59e0b);color:#06111f;border:0}.payment h3{color:#06111f}.bigAmount{font-size:32px;font-weight:1000;letter-spacing:-.04em}.kv{display:grid;grid-template-columns:1fr auto;gap:8px;border-bottom:1px solid rgba(23,38,63,.12);padding:8px 0;color:#17324d}.kv:last-child{border-bottom:0}.kv span{color:#657187}.kv strong{font-weight:1000;text-align:right;color:#10233f}.noteText{white-space:pre-wrap;color:#10233f;background:#fff;border:1px dashed rgba(23,38,63,.18);border-radius:16px;padding:12px;line-height:1.45;font-weight:850;min-height:128px}.warning{display:none;margin-top:10px;border:1px solid rgba(220,38,38,.30);background:rgba(220,38,38,.10);color:#fecaca;border-radius:16px;padding:10px 12px;font-weight:950}.warning.show{display:block}.status{margin-top:10px;color:#dfffe9;font-size:13px;line-height:1.45}.footer{text-align:center;color:rgba(248,250,252,.64);font-size:13px;font-weight:1000;padding:18px 0 0}.sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 12px calc(10px + var(--safe-bottom));background:linear-gradient(180deg,rgba(11,18,32,0),rgba(11,18,32,.92) 24%,rgba(11,18,32,.98));backdrop-filter:blur(10px)}.stickyInner{width:min(var(--max),100%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}.sticky a{min-height:54px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-weight:1000}.sticky .main{background:linear-gradient(135deg,#22c55e,#facc15);color:#06111f}.sticky .sub{background:#0f172a;border:1px solid rgba(255,255,255,.14);color:#fff}.toast{position:fixed;left:50%;bottom:calc(84px + var(--safe-bottom));transform:translateX(-50%) translateY(12px);z-index:80;opacity:0;pointer-events:none;border-radius:999px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#06111f;padding:11px 15px;font-weight:1000;transition:.18s;box-shadow:0 16px 40px rgba(0,0,0,.25)}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    @media(max-width:860px){.hero,.grid{grid-template-columns:1fr}.summary{position:static}.steps{grid-template-columns:1fr}.formGrid{grid-template-columns:1fr}.nav a,.nav button,.stickyInner{font-size:14px}.stickyInner{grid-template-columns:1fr}.btn,button,.nav a{width:100%}.nav{width:100%}.top{align-items:flex-start}.brand{width:100%}}
+  </style>
 </head>
 <body>
-<header class="top"><div class="wrap topin">
-  <a class="brand" href="https://jobs.digiylyfe.com/?lang=en&v=jobs-en-pages"><span class="mark">💼</span><span>DIGIY JOBS<small>ENGLISH PAGE</small></span></a>
-  <nav class="nav" aria-label="Main navigation">
-    <a class="pill" href="https://jobs.digiylyfe.com/?lang=en&v=jobs-en-pages">Home EN</a>
-    <a class="pill" href="https://jobs.digiylyfe.com/inscription-jobs.html">🇫🇷 FR original</a>
-    <a class="pill" href="https://jobs.digiylyfe.com/missions-en.html">Missions</a>
-    <a class="pill" href="https://jobs.digiylyfe.com/ndimbal-express-en.html">NDIMBAL</a>
-    <a class="pill" href="https://jobs.digiylyfe.com/postuler-en.html">Apply</a>
-    <a class="pill" href="https://jobs.digiylyfe.com/dossier-intelligent-en.html">Profile</a>
-    <a class="pill" href="https://jobs.digiylyfe.com/suivi-en.html">Follow-up</a>
-    <a class="pill primary" href="https://jobs.digiylyfe.com/inscription-jobs-en.html">Recruiter</a>
-  </nav>
-</div></header>
-<main>
-<section class="hero"><div class="wrap shell"><div class="grid">
-  <article class="card">
-    <span class="eyebrow">Recruiter / professional side</span>
-    <h1>Publish a mission cleanly.</h1>
-    <p class="lead">This page is for professionals, businesses and recruiters who want to publish a mission, find a field profile or make a local job need visible.</p>
-    <div class="actions">
-      <a class="btn dark" href="https://jobs.digiylyfe.com/inscription-jobs.html">Open the live recruiter form</a>
-      <a class="btn light" href="https://jobs.digiylyfe.com/?lang=en&v=jobs-en-pages">Back to JOBS home</a>
-      <a class="btn gold" href="https://wa.me/221771342889?text=Hello DIGIY JOBS, I need information about DIGIY JOBS — Recruiter registration" target="_blank" rel="noopener noreferrer">Ask DIGIY</a>
+  <main class="app">
+    <header class="top">
+      <a class="brand" href="./index.html" aria-label="Retour DIGIY JOBS"><span class="brandMark">📣</span><strong>NDIMBAL ANNONCES<span>WAVE UNIQUEMENT · VALIDATION DIGIY</span></strong></a>
+      <nav class="nav" aria-label="Navigation">
+        <a href="./index.html">← JOBS</a>
+        <a href="./missions.html">Voir les annonces</a>
+        <a class="gold" href="#formulaire">Poser une annonce</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="kicker">Inscription · annonce · Wave · validation DIGIY</div>
+        <h1>Publier une annonce terrain.</h1>
+        <p class="lead">Choisis la durée, écris ton annonce — voiture, terrain, maison, vélo, studio, service — indique le prix demandé, règle le ticket par Wave, puis envoie la preuve. DIGIY valide avant affichage public.</p>
+        <p>Voir les annonces est gratuit. Publier passe par un ticket durée : 1 semaine, 15 jours ou 1 mois. Le paiement se fait uniquement par Wave. DIGIY ne prend pas de commission sur les affaires entre personnes.</p>
+        <div class="pills">
+          <span class="pill">0% commission</span>
+          <span class="pill">Contact direct</span>
+          <span class="pill">Preuve Wave obligatoire</span>
+          <span class="pill">Validation avant public</span>
+        </div>
+      </div>
+      <aside class="waveHero">
+        <small>Paiement Wave officiel</small>
+        <strong>JB BEAUVILLE<br>+221 77 134 28 89</strong>
+        <p style="color:#06111f;margin:12px 0 0;font-weight:1000;line-height:1.4">À régler avant validation. Après paiement, envoie la preuve par WhatsApp ou SMS.</p>
+      </aside>
+    </section>
+
+    <section class="steps" aria-label="Étapes publication">
+      <article class="step"><b>1</b><strong>Choisir</strong><span>Tu choisis la durée et tu indiques le prix demandé.</span></article>
+      <article class="step"><b>2</b><strong>Payer</strong><span>Tu paies par Wave au nom de JB BEAUVILLE.</span></article>
+      <article class="step"><b>3</b><strong>Envoyer</strong><span>Tu envoies la preuve. DIGIY valide l’affichage.</span></article>
+    </section>
+
+    <section class="grid" id="formulaire">
+      <article class="card light">
+        <h2>📋 Ton annonce</h2>
+        <div class="formGrid">
+          <div class="field">
+            <label for="duration">Durée de publication *</label>
+            <select id="duration">
+              <option value="1 semaine" data-label="1 semaine · 5 000 FCFA" data-amount="5000">1 semaine · 5 000 FCFA</option>
+              <option value="15 jours" data-label="15 jours · 10 000 FCFA" data-amount="10000">15 jours · 10 000 FCFA</option>
+              <option value="1 mois" data-label="1 mois · 20 000 FCFA" data-amount="20000">1 mois · 20 000 FCFA</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="category">Catégorie *</label>
+            <select id="category">
+              <option>📣 Annonce courte</option>
+              <option>🚗 Voiture / transport</option>
+              <option>🏡 Maison / terrain</option>
+              <option>🏠 Studio / location</option>
+              <option>🚲 Vélo / moto</option>
+              <option>🛠️ Service</option>
+              <option>📦 Autre annonce</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="title">Titre annonce *</label>
+            <input id="title" placeholder="Ex : Vente voiture · Terrain à vendre · Maison à vendre · Vélo à vendre">
+          </div>
+          <div class="field">
+            <label for="price">Prix demandé</label>
+            <input id="price" placeholder="Ex : 3 500 000 FCFA · 45 000 FCFA · Prix à discuter">
+          </div>
+          <div class="field">
+            <label for="priceInfo">Précision prix</label>
+            <input id="priceInfo" placeholder="Ex : négociable, ferme, avance, location/mois">
+          </div>
+          <div class="field">
+            <label for="zone">Zone / ville *</label>
+            <input id="zone" placeholder="Ex : Saly, Mbour, Dakar">
+          </div>
+          <div class="field">
+            <label for="adContact">Contact annonce *</label>
+            <input id="adContact" placeholder="WhatsApp ou téléphone de l’annonce">
+          </div>
+          <div class="field full">
+            <label for="details">Détails annonce</label>
+            <textarea id="details" placeholder="Conditions, description, disponibilité, quartier, état, surface, documents, rendez-vous. Le prix demandé est déjà dans le champ prix."></textarea>
+          </div>
+        </div>
+
+        <div class="section">Paiement Wave officiel</div>
+        <div class="formGrid">
+          <div class="field">
+            <label for="payerName">Ton nom</label>
+            <input id="payerName" placeholder="Ex : Mamadou Diop">
+          </div>
+          <div class="field">
+            <label for="payerPhone">Téléphone</label>
+            <input id="payerPhone" placeholder="Ex : +221 77 000 00 00">
+          </div>
+          <div class="field full">
+            <label for="paymentNote">Note pour identifier le paiement</label>
+            <textarea id="paymentNote" readonly></textarea>
+          </div>
+        </div>
+
+        <div class="actions" style="margin-top:12px">
+          <a class="btn green" id="waBtn" href="#" target="_blank" rel="noopener noreferrer">📲 WhatsApp</a>
+          <a class="btn clear" id="smsBtn" href="#">💬 SMS</a>
+          <button class="danger" id="clearBtn" type="button">Effacer</button>
+          <button class="gold" id="copyBtn" type="button">Copier</button>
+        </div>
+        <div class="warning" id="warning">⚠️ Champs obligatoires : titre, zone et contact annonce.</div>
+        <div class="status" id="status">Résumé prêt.</div>
+      </article>
+
+      <aside class="card light summary" aria-label="Résumé annonce">
+        <h2>Résumé</h2>
+        <div class="selected">
+          <div class="kv"><span>Module</span><strong>NDIMBAL ANNONCES</strong></div>
+          <div class="kv"><span>Choix</span><strong id="sumChoice">1 semaine · 5 000 FCFA</strong></div>
+          <div class="kv"><span>Montant</span><strong id="sumAmount">5 000 FCFA</strong></div>
+          <div class="kv"><span>Total</span><strong id="sumTotal">5 000 FCFA</strong></div>
+        </div>
+        <div class="payment">
+          <h3>💳 Paiement Wave officiel</h3>
+          <p style="color:#06111f;margin:8px 0;font-weight:950">À régler avant validation. Après paiement, envoie la preuve par WhatsApp ou SMS.</p>
+          <div class="bigAmount" id="waveAmount">5 000 FCFA</div>
+          <div class="kv"><span>Nom</span><strong>JB BEAUVILLE</strong></div>
+          <div class="kv"><span>Téléphone</span><strong>+221 77 134 28 89</strong></div>
+        </div>
+        <div class="noteBox">
+          <div class="noteText" id="summaryText"></div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="footer">DIGIYLYFE · NDIMBAL ANNONCES · WAVE UNIQUEMENT · 0% COMMISSION · CONTACT DIRECT</div>
+  </main>
+
+  <div class="sticky" aria-label="Actions rapides">
+    <div class="stickyInner">
+      <a class="main" id="stickyWa" href="#" target="_blank" rel="noopener noreferrer">📲 Envoyer preuve WhatsApp</a>
+      <a class="sub" href="#formulaire">📋 Revoir l’annonce</a>
     </div>
-  </article>
-  <aside class="card">
-    <div class="notice"><strong>English doorway.</strong><br>This page keeps the public path understandable for international visitors. The French operational page remains available for the live module.</div>
-    <div class="cards"><article class="mini"><h3>Publish a need</h3><p>Explain the role, zone, timing and contact in simple words.</p></article><article class="mini"><h3>Find a profile</h3><p>Make the mission visible to local candidates.</p></article><article class="mini"><h3>Direct relationship</h3><p>DIGIY gives the doorway. The professional keeps control.</p></article></div>
-  </aside>
-</div></div></section>
-<section class="wrap card" id="prepare">
-  <span class="eyebrow">Prepare message</span>
-  <h2>Prepare a recruiter request</h2>
-  <p>Use this before publishing a mission or asking DIGIY to prepare it.</p>
-  <div class="formgrid"><div class="field"><label for="company">Business / recruiter</label><input id="company" data-field="company" type="text" placeholder="Business name"></div><div class="field"><label for="need">Profile needed</label><input id="need" data-field="need" type="text" placeholder="Cashier, driver, helper…"></div><div class="field"><label for="zone">Zone</label><input id="zone" data-field="zone" type="text" placeholder="Saly, Mbour, Dakar…"></div><div class="field"><label for="contact">Contact</label><input id="contact" data-field="contact" type="text" placeholder="WhatsApp / phone"></div><div class="field full"><label for="extra">Extra note</label><textarea id="extra" placeholder="Add details here if needed"></textarea></div></div>
-  <div class="actions">
-    <button class="btn dark" type="button" id="buildBtn">Prepare message</button>
-    <button class="btn light" type="button" id="copyBtn">Copy</button>
-    <a class="btn gold" id="waBtn" href="https://wa.me/221771342889" target="_blank" rel="noopener noreferrer">Send to DIGIY</a>
   </div>
-  <div class="output" id="output">Fill the fields, then prepare the message.</div>
-</section>
-</main>
-<footer class="wrap footer">DIGIY JOBS · English companion page · Payment direct to the professional · 0% commission.</footer>
-<div class="toast" id="toast">Copied</div>
-<script>
-(function(){
-  "use strict";
-  const template = `Hello DIGIY JOBS, I want to publish a mission. Business/recruiter: {company}. Profile needed: {need}. Zone: {zone}. Contact: {contact}. Please help me prepare the JOBS offer.`;
-  const phone = "221771342889";
-  const fields = ['company', 'need', 'zone', 'contact'];
-  function $(id){return document.getElementById(id)}
-  function val(id){return ($(id)?.value||"").trim()||"Not specified"}
-  function toast(t){const el=$("toast"); if(!el)return; el.textContent=t||"Copied"; el.classList.add("show"); clearTimeout(toast.t); toast.t=setTimeout(()=>el.classList.remove("show"),1700)}
-  function build(){
-    let msg = template;
-    fields.forEach(k=>{ msg = msg.replaceAll("{"+k+"}", val(k)); });
-    const extra = ($("extra")?.value||"").trim();
-    if(extra) msg += "\nExtra note: " + extra;
-    $("output").textContent = msg;
-    $("waBtn").href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
-    return msg;
-  }
-  $("buildBtn").addEventListener("click",()=>{build();toast("Message prepared")});
-  $("copyBtn").addEventListener("click",async()=>{const msg=build(); try{await navigator.clipboard.writeText(msg);toast("Message copied")}catch(e){toast("Copy unavailable")}});
-  document.querySelectorAll("input,textarea").forEach(el=>el.addEventListener("input",build));
-})();
-</script>
+  <div class="toast" id="toast">Copié ✅</div>
+
+  <script>
+    (function(){
+      'use strict';
+      const DIGIY_WA='221771342889';
+      const DIGIY_PHONE='+221 77 134 28 89';
+      const DIGIY_PAY_NAME='JB BEAUVILLE';
+      const $=id=>document.getElementById(id);
+      const ids=['duration','category','title','price','priceInfo','zone','adContact','details','payerName','payerPhone'];
+      const nf=new Intl.NumberFormat('fr-FR');
+
+      function val(id){return String($(id)?.value||'').trim()}
+      function dash(v){return v || '—'}
+      function selectedDuration(){
+        const opt=$('duration').selectedOptions[0];
+        return {label:opt.dataset.label||opt.textContent.trim(),amount:Number(opt.dataset.amount||5000)};
+      }
+      function money(n){return nf.format(Number(n||0)).replace(/\u202f/g,' ')+' FCFA'}
+      function note(){
+        const d=selectedDuration();
+        const title=val('title')||'sans titre';
+        const price=val('price')||'non précisé';
+        const payer=val('payerName');
+        const phone=val('payerPhone');
+        return 'Paiement Wave envoyé pour NDIMBAL Annonces — '+d.label+' — '+money(d.amount)+' — annonce : '+title+' — prix demandé : '+price+' — au nom de '+dash(payer)+' — tél '+dash(phone)+'.';
+      }
+      function summary(){
+        const d=selectedDuration();
+        return '📣 NDIMBAL Annonces\n'
+          +'Durée : '+d.label+'\n'
+          +'Montant : '+money(d.amount)+'\n\n'
+          +'Catégorie : '+dash(val('category'))+'\n'
+          +'Titre : '+dash(val('title'))+'\n'
+          +'Prix demandé : '+dash(val('price'))+'\n'
+          +'Précision prix : '+dash(val('priceInfo'))+'\n'
+          +'Zone : '+dash(val('zone'))+'\n'
+          +'Contact annonce : '+dash(val('adContact'))+'\n\n'
+          +'Détails :\n'+dash(val('details'))+'\n\n'
+          +'Paiement Wave officiel :\n'
+          +'Nom : '+DIGIY_PAY_NAME+'\n'
+          +'Téléphone : '+DIGIY_PHONE+'\n'
+          +'Payeur : '+dash(val('payerName'))+'\n'
+          +'Téléphone payeur : '+dash(val('payerPhone'))+'\n'
+          +'Note : '+note()+'\n\n'
+          +'Règle : preuve Wave reçue + validation DIGIY avant affichage public. 0% commission.';
+      }
+      function validate(){
+        const ok=!!(val('title') && val('zone') && val('adContact'));
+        $('warning').classList.toggle('show',!ok);
+        return ok;
+      }
+      function refresh(){
+        const d=selectedDuration();
+        $('sumChoice').textContent=d.label;
+        $('sumAmount').textContent=money(d.amount);
+        $('sumTotal').textContent=money(d.amount);
+        $('waveAmount').textContent=money(d.amount);
+        $('paymentNote').value=note();
+        const text=summary();
+        $('summaryText').textContent=text;
+        const encoded=encodeURIComponent(text);
+        $('waBtn').href='https://wa.me/'+DIGIY_WA+'?text='+encoded;
+        $('stickyWa').href=$('waBtn').href;
+        $('smsBtn').href='sms:'+DIGIY_PHONE.replace(/\s/g,'')+'?&body='+encoded;
+        validate();
+        return text;
+      }
+      function toast(msg){
+        const t=$('toast');t.textContent=msg||'Copié ✅';t.classList.add('show');clearTimeout(window.__digiyToast);window.__digiyToast=setTimeout(()=>t.classList.remove('show'),1700);
+      }
+      $('copyBtn').addEventListener('click',async function(){
+        const text=refresh();
+        try{await navigator.clipboard.writeText(text);toast('Annonce copiée ✅')}catch(e){prompt('Copie le résumé :',text)}
+      });
+      $('clearBtn').addEventListener('click',function(){
+        ids.forEach(id=>{if(id==='duration')return;if(id==='category'){$(id).selectedIndex=0;return}$(id).value=''});
+        refresh();toast('Formulaire effacé');
+      });
+      ids.forEach(id=>$(id)?.addEventListener('input',refresh));
+      ids.forEach(id=>$(id)?.addEventListener('change',refresh));
+      refresh();
+    })();
+  </script>
 </body>
 </html>
+
