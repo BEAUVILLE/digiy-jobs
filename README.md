@@ -1,25 +1,18 @@
-[README-JOBS-EN-PAGES.txt](https://github.com/user-attachments/files/29165426/README-JOBS-EN-PAGES.txt)[UDIGIY JOBS — English pages pack — 2026-06-20
+[README-RESTAURATION-FR.txt](https://github.com/user-attachments/files/29165729/README-RESTAURATION-FR.txt)[Uploading READMERESTAURATION DIGIY JOBS — PAGES FRANÇAISES
 
-Upload these files to the root of the BEAUVILLE/digiy-jobs repository.
-Keep the existing French pages. This pack adds English companion pages and updates index.html so English mode links to them.
-
-Files:
-- index.html
-- missions-en.html
-- ndimbal-express-en.html
-- postuler-en.html
-- dossier-intelligent-en.html
-- suivi-en.html
-- inscription-jobs-en.html
-
-French pages remain:
-- missions.html
+À uploader à la racine du dépôt BEAUVILLE/digiy-jobs :
 - ndimbal-express.html
 - postuler.html
-- dossier-intelligent.html
 - suivi.html
 - inscription-jobs.html
 
-Test after upload:
-https://jobs.digiylyfe.com/?lang=en&v=jobs-en-pages
-ploading README-JOBS-EN-PAGES.txt…]()
+Ces fichiers sont en français, avec <html lang="fr">.
+Ne pas les remplacer par les fichiers -en.html.
+Les pages anglaises doivent rester séparées : ndimbal-express-en.html, postuler-en.html, suivi-en.html, inscription-jobs-en.html.
+
+Test après upload :
+https://jobs.digiylyfe.com/ndimbal-express.html?v=fr-restaure
+https://jobs.digiylyfe.com/postuler.html?v=fr-restaure
+https://jobs.digiylyfe.com/suivi.html?v=fr-restaure
+https://jobs.digiylyfe.com/inscription-jobs.html?v=fr-restaure
+-RESTAURATION-FR.txt…]()
