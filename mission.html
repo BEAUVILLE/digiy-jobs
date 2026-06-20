@@ -1,790 +1,86 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-
-  <title>DIGIY JOBS — Mission</title>
-  <meta name="description" content="DIGIY JOBS — fiche mission publique : comprendre vite, postuler simplement.">
-  <meta name="theme-color" content="#071711">
-
-  <script>
-    window.DIGIY_SUPABASE_URL = "https://wesqmwjjtsefyjnluosj.supabase.co";
-    window.DIGIY_SUPABASE_ANON_KEY = "sb_publishable_tGHItRgeWDmGjnd0CK1DVQ_BIep4Ug3";
-    window.DIGIY_SUPABASE_ANON = window.DIGIY_SUPABASE_ANON_KEY;
-    window.DIGIY_MODULE = "JOBS";
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#155f43">
+  <meta name="digiy-build" content="jobs-english-companion-pages-20260620">
+  <title>DIGIY JOBS — Missions board</title>
+  <meta name="description" content="View local missions, short jobs and field opportunities through DIGIY JOBS.">
   <style>
-    :root{
-      --bg:#071711;
-      --bg2:#0b2319;
-      --card:#0f2b1f;
-      --line:rgba(255,255,255,.12);
-      --text:#ecfff4;
-      --muted:rgba(236,255,244,.72);
-      --gold:#facc15;
-      --gold2:#fde68a;
-      --green:#22c55e;
-      --blue:#38bdf8;
-      --red:#fb7185;
-      --shadow:0 18px 60px rgba(0,0,0,.28);
-      --max:980px;
-    }
-
-    *{box-sizing:border-box}
-
-    html,body{
-      margin:0;
-      padding:0;
-      min-height:100%;
-      background:
-        radial-gradient(circle at top,rgba(250,204,21,.08),transparent 28%),
-        radial-gradient(circle at 84% 10%,rgba(56,189,248,.07),transparent 24%),
-        linear-gradient(180deg,var(--bg),#05110c 100%);
-      color:var(--text);
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    }
-
-    body{
-      padding-bottom:calc(84px + env(safe-area-inset-bottom,0px));
-    }
-
-    a{color:inherit;text-decoration:none}
-    button{font:inherit;cursor:pointer}
-
-    .wrap{
-      width:min(calc(100% - 28px),var(--max));
-      margin:0 auto;
-      padding:18px 0 26px;
-    }
-
-    .top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      margin-bottom:14px;
-      flex-wrap:wrap;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-weight:1000;
-    }
-
-    .brand-mark{
-      width:44px;
-      height:44px;
-      border-radius:16px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(135deg,var(--gold),#eab308);
-      color:#16110a;
-      box-shadow:0 12px 30px rgba(0,0,0,.25);
-      flex:0 0 auto;
-    }
-
-    .brand small{
-      display:block;
-      margin-top:2px;
-      color:var(--muted);
-      font-size:12px;
-      font-weight:850;
-      letter-spacing:.08em;
-    }
-
-    .top-links{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    .chip{
-      min-height:42px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 13px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.05);
-      font-size:13px;
-      font-weight:900;
-      color:var(--text);
-    }
-
-    .chip.gold{
-      border-color:rgba(250,204,21,.30);
-      background:rgba(250,204,21,.10);
-      color:#fff5b1;
-    }
-
-    .chip.blue{
-      border-color:rgba(56,189,248,.28);
-      background:rgba(56,189,248,.10);
-      color:#d9f4ff;
-    }
-
-    .hero{
-      border:1px solid var(--line);
-      border-radius:30px;
-      padding:22px;
-      background:
-        radial-gradient(circle at 86% 18%,rgba(250,204,21,.16),transparent 23%),
-        linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02)),
-        var(--bg2);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      color:var(--gold2);
-      font-size:12px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-weight:1000;
-      margin-bottom:12px;
-    }
-
-    h1{
-      margin:0 0 12px;
-      font-size:clamp(32px,6vw,60px);
-      line-height:.98;
-      letter-spacing:-.04em;
-    }
-
-    .lead{
-      margin:0;
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.6;
-      max-width:720px;
-      font-weight:650;
-    }
-
-    .status{
-      margin-top:16px;
-      border:1px dashed var(--line);
-      border-radius:22px;
-      padding:18px;
-      color:var(--muted);
-      background:rgba(255,255,255,.035);
-      line-height:1.6;
-      font-weight:750;
-    }
-
-    .status.err{
-      color:#ffd7de;
-      border-color:rgba(251,113,133,.28);
-      background:rgba(251,113,133,.08);
-    }
-
-    .status.ok{
-      color:#caffd5;
-      border-color:rgba(34,197,94,.24);
-      background:rgba(34,197,94,.08);
-    }
-
-    .main-grid{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:14px;
-      margin-top:16px;
-      align-items:start;
-    }
-
-    .card{
-      border:1px solid var(--line);
-      border-radius:26px;
-      padding:18px;
-      background:
-        linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012)),
-        var(--card);
-      box-shadow:var(--shadow);
-    }
-
-    .card h2{
-      margin:0 0 10px;
-      font-size:23px;
-      letter-spacing:-.02em;
-    }
-
-    .card p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.65;
-      font-size:15px;
-      font-weight:650;
-      white-space:pre-line;
-    }
-
-    .badge-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin:0 0 12px;
-    }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      border-radius:999px;
-      padding:8px 11px;
-      font-size:12px;
-      font-weight:900;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.05);
-      color:#e9fff1;
-    }
-
-    .badge.gold{
-      border-color:rgba(250,204,21,.28);
-      background:rgba(250,204,21,.09);
-      color:#fff2af;
-    }
-
-    .badge.green{
-      border-color:rgba(34,197,94,.22);
-      background:rgba(34,197,94,.10);
-      color:#caffd5;
-    }
-
-    .badge.blue{
-      border-color:rgba(56,189,248,.25);
-      background:rgba(56,189,248,.10);
-      color:#d9f4ff;
-    }
-
-    .facts{
-      display:grid;
-      gap:10px;
-    }
-
-    .fact{
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:13px;
-      background:rgba(255,255,255,.05);
-    }
-
-    .fact small{
-      display:block;
-      color:var(--muted);
-      font-size:12px;
-      font-weight:1000;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      margin-bottom:5px;
-    }
-
-    .fact strong{
-      display:block;
-      color:var(--text);
-      line-height:1.4;
-      font-size:15px;
-    }
-
-    .actions{
-      display:grid;
-      gap:10px;
-      margin-top:14px;
-    }
-
-    .btn{
-      min-height:52px;
-      display:inline-flex;
-      justify-content:center;
-      align-items:center;
-      border-radius:18px;
-      padding:14px 16px;
-      font-weight:1000;
-      text-align:center;
-    }
-
-    .btn-primary{
-      background:linear-gradient(180deg,var(--gold),#eab308);
-      color:#151515;
-    }
-
-    .btn-secondary{
-      background:rgba(255,255,255,.07);
-      color:var(--text);
-      border:1px solid var(--line);
-    }
-
-    .btn-blue{
-      background:rgba(56,189,248,.11);
-      color:#d9f4ff;
-      border:1px solid rgba(56,189,248,.28);
-    }
-
-    details{
-      margin-top:12px;
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:20px;
-      background:rgba(255,255,255,.035);
-      overflow:hidden;
-    }
-
-    summary{
-      cursor:pointer;
-      list-style:none;
-      padding:13px 14px;
-      font-weight:950;
-      color:#fff4bd;
-    }
-
-    summary::-webkit-details-marker{display:none}
-
-    .details-body{
-      padding:0 14px 14px;
-      color:var(--muted);
-      line-height:1.55;
-      font-weight:650;
-      font-size:14px;
-      white-space:pre-line;
-    }
-
-    .bottom-nav{
-      position:fixed;
-      left:0;
-      right:0;
-      bottom:0;
-      z-index:94;
-      padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));
-      background:rgba(7,23,17,.92);
-      border-top:1px solid rgba(255,255,255,.12);
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
-    }
-
-    .bottom-nav-inner{
-      width:min(760px,100%);
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:6px;
-    }
-
-    .bottom-nav a{
-      min-height:52px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      align-content:center;
-      gap:2px;
-      color:rgba(236,255,244,.72);
-      font-size:11px;
-      font-weight:1000;
-      text-align:center;
-      border:1px solid transparent;
-      padding:0 4px;
-    }
-
-    .bottom-nav .ico{font-size:18px;line-height:1}
-
-    .bottom-nav a.active{
-      background:rgba(250,204,21,.14);
-      color:#fff4bd;
-      border-color:rgba(250,204,21,.22);
-    }
-
-    .hidden{display:none!important}
-
-    @media (max-width:820px){
-      .main-grid{grid-template-columns:1fr}
-      .top-links{width:100%}
-      .chip{flex:1 1 auto}
-    }
-
-    @media (max-width:560px){
-      .wrap{width:min(calc(100% - 20px),var(--max));padding-top:14px}
-      .hero{padding:18px 14px;border-radius:24px}
-      .card{border-radius:22px;padding:16px}
-      h1{font-size:36px}
-    }
-  </style>
+:root{--bg:#f6eedf;--paper:#fffdf7;--ink:#10231b;--muted:#5f6f65;--green:#155f43;--green2:#1f7a55;--gold:#f4b934;--gold2:#ffe7a3;--line:rgba(21,95,67,.16);--shadow:0 20px 55px rgba(31,52,42,.14);--max:1120px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(circle at 8% 0%,rgba(244,185,52,.28),transparent 35%),radial-gradient(circle at 92% 18%,rgba(31,122,85,.18),transparent 34%),linear-gradient(180deg,#fff9ec,var(--bg) 58%,#efe2cc)}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}.wrap{width:min(var(--max),calc(100% - 28px));margin:auto}.top{position:sticky;top:0;z-index:20;background:rgba(255,249,236,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.topin{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0}.brand{display:flex;align-items:center;gap:10px;font-weight:1000}.mark{width:46px;height:46px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold),#f59e0b);box-shadow:0 12px 28px rgba(244,185,52,.25)}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:.12em;margin-top:2px}.nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.pill{min-height:40px;padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.65);font-size:13px;font-weight:950}.pill.primary{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff}.pill.gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#0b1b13}.hero{padding:28px 0 16px}.shell{border:1px solid var(--line);border-radius:34px;background:radial-gradient(circle at 10% 12%,rgba(255,231,163,.78),transparent 32%),radial-gradient(circle at 88% 6%,rgba(223,246,232,.95),transparent 36%),linear-gradient(135deg,#fffdf7,#f7ecd8 58%,#eef7e9);box-shadow:var(--shadow);padding:22px}.grid{display:grid;grid-template-columns:1.08fr .92fr;gap:18px}.card{border:1px solid var(--line);border-radius:26px;background:rgba(255,255,255,.68);box-shadow:0 12px 32px rgba(31,52,42,.1);padding:24px}.eyebrow{display:inline-flex;width:max-content;max-width:100%;padding:8px 12px;border-radius:999px;background:rgba(21,95,67,.1);border:1px solid rgba(21,95,67,.18);color:var(--green);font-size:12px;font-weight:1000;letter-spacing:.1em;text-transform:uppercase}h1{font-size:clamp(38px,6vw,70px);line-height:.94;letter-spacing:-.055em;margin:14px 0 12px}h1 span{color:var(--green)}p{line-height:1.62}.lead{font-size:clamp(17px,2vw,20px);color:#415247;font-weight:760;max-width:68ch}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{min-height:50px;padding:12px 17px;border-radius:16px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;font-size:15px;font-weight:1000;cursor:pointer;box-shadow:0 12px 25px rgba(31,52,42,.1)}.btn.dark{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff}.btn.gold{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#0b1b13}.btn.light{background:#fffdf7;color:#173528;border-color:var(--line)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.mini{border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.66);padding:16px}.mini h3{margin:0 0 7px;font-size:20px}.mini p{margin:0;color:var(--muted);font-weight:760}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.field{display:grid;gap:6px}.field label{font-size:13px;color:var(--muted);font-weight:900}.field input,.field textarea{width:100%;min-height:50px;border-radius:15px;border:1px solid var(--line);padding:10px 12px;background:#fff;color:var(--ink);font-weight:850}.field textarea{min-height:116px;resize:vertical}.full{grid-column:1/-1}.output{white-space:pre-wrap;border:1px solid rgba(21,95,67,.18);border-radius:20px;background:rgba(21,95,67,.06);padding:14px;margin-top:12px;color:#173528;font-weight:800;line-height:1.5}.notice{padding:14px;border-radius:20px;background:rgba(244,185,52,.12);border:1px solid rgba(244,185,52,.25);color:#5b4109;font-weight:850}.footer{padding:20px 0 60px;color:#607067;font-weight:850}.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(12px);opacity:0;pointer-events:none;border-radius:999px;background:var(--green);color:#fff;padding:11px 15px;font-weight:1000;transition:.18s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}@media(max-width:820px){.topin{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.actions .btn{width:100%}}
+</style>
 </head>
-
 <body>
-  <div class="wrap">
-    <header class="top">
-      <a class="brand" href="./index.html" aria-label="Retour accueil JOBS">
-        <span class="brand-mark">DJ</span>
-        <span>
-          DIGIY JOBS
-          <small>FICHE MISSION</small>
-        </span>
-      </a>
-
-      <nav class="top-links" aria-label="Navigation">
-        <a class="chip" href="./index.html">Accueil</a>
-        <a class="chip gold" href="./missions.html">Missions</a>
-        <a class="chip blue" href="./dossier-intelligent.html">Dossier</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="hero">
-        <div class="kicker">Mission publique · lire puis agir</div>
-        <h1 id="title">Chargement de la mission…</h1>
-        <p id="lead" class="lead">
-          DIGIY prépare la fiche pour comprendre rapidement le besoin.
-        </p>
-        <div id="statusBox" class="status">Chargement en cours…</div>
-      </section>
-
-      <section id="missionContent" class="main-grid hidden" aria-label="Détail de la mission">
-        <article class="card">
-          <div id="badges" class="badge-row"></div>
-
-          <h2>Ce qu’il faut savoir</h2>
-          <p id="description">Description à venir.</p>
-
-          <details id="requirementsDetails" class="hidden">
-            <summary>Voir les conditions</summary>
-            <div id="requirements" class="details-body"></div>
-          </details>
-
-          <details>
-            <summary>Conseil candidat</summary>
-            <div class="details-body">
-              Lis la mission, vérifie la ville et le type de contrat, puis postule simplement.
-              Le message peut rester court : disponibilité, métier, expérience, téléphone WhatsApp.
-            </div>
-          </details>
-        </article>
-
-        <aside class="card">
-          <h2>Résumé rapide</h2>
-
-          <div class="facts">
-            <div class="fact">
-              <small>Ville</small>
-              <strong id="city">À préciser</strong>
-            </div>
-
-            <div class="fact">
-              <small>Pays</small>
-              <strong id="country">Sénégal</strong>
-            </div>
-
-            <div class="fact">
-              <small>Contrat</small>
-              <strong id="contract">Mission</strong>
-            </div>
-
-            <div class="fact">
-              <small>Rémunération</small>
-              <strong id="pay">À préciser</strong>
-            </div>
-
-            <div id="employerFact" class="fact hidden">
-              <small>Structure</small>
-              <strong id="employer">À préciser</strong>
-            </div>
-          </div>
-
-          <div class="actions">
-            <a id="applyBtn" class="btn btn-primary" href="./postuler.html">Je postule</a>
-            <a class="btn btn-secondary" href="./missions.html">Voir les autres missions</a>
-            <a class="btn btn-blue" href="./dossier-intelligent.html">Préparer mon dossier</a>
-          </div>
-        </aside>
-      </section>
-    </main>
-  </div>
-
-  <nav class="bottom-nav" aria-label="Navigation mobile">
-    <div class="bottom-nav-inner">
-      <a href="./index.html"><span class="ico">⌂</span>Accueil</a>
-      <a class="active" href="./missions.html"><span class="ico">◎</span>Missions</a>
-      <a id="bottomApply" href="./postuler.html"><span class="ico">＋</span>Postuler</a>
-      <a href="./dossier-intelligent.html"><span class="ico">□</span>Dossier</a>
-      <a href="./suivi.html"><span class="ico">↗</span>Suivi</a>
-    </div>
+<header class="top"><div class="wrap topin">
+  <a class="brand" href="https://jobs.digiylyfe.com/?lang=en&v=jobs-en-pages"><span class="mark">◎</span><span>DIGIY JOBS<small>ENGLISH PAGE</small></span></a>
+  <nav class="nav" aria-label="Main navigation">
+    <a class="pill" href="https://jobs.digiylyfe.com/?lang=en&v=jobs-en-pages">Home EN</a>
+    <a class="pill" href="https://jobs.digiylyfe.com/missions.html">🇫🇷 FR original</a>
+    <a class="pill" href="https://jobs.digiylyfe.com/missions-en.html">Missions</a>
+    <a class="pill" href="https://jobs.digiylyfe.com/ndimbal-express-en.html">NDIMBAL</a>
+    <a class="pill" href="https://jobs.digiylyfe.com/postuler-en.html">Apply</a>
+    <a class="pill" href="https://jobs.digiylyfe.com/dossier-intelligent-en.html">Profile</a>
+    <a class="pill" href="https://jobs.digiylyfe.com/suivi-en.html">Follow-up</a>
+    <a class="pill primary" href="https://jobs.digiylyfe.com/inscription-jobs-en.html">Recruiter</a>
   </nav>
-
-  <script>
-    (() => {
-      "use strict";
-
-      const SUPABASE_URL =
-        window.DIGIY_SUPABASE_URL ||
-        "https://wesqmwjjtsefyjnluosj.supabase.co";
-
-      const SUPABASE_ANON_KEY =
-        window.DIGIY_SUPABASE_ANON ||
-        window.DIGIY_SUPABASE_ANON_KEY ||
-        "";
-
-      const sb =
-        window.supabase && SUPABASE_URL && SUPABASE_ANON_KEY
-          ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-          : null;
-
-      const params = new URLSearchParams(location.search);
-      const offerId = String(params.get("id") || params.get("offer") || "").trim();
-
-      const SENSITIVE_PARAMS = [
-        "slug",
-        "phone",
-        "tel",
-        "resa_tel",
-        "owner_phone",
-        "owner",
-        "owner_id",
-        "business_code",
-        "keybox_code",
-        "keybox_location",
-        "access_note"
-      ];
-
-      const ROUTES = {
-        missions: "./missions.html",
-        postuler: "./postuler.html",
-        dossier: "./dossier-intelligent.html"
-      };
-
-      const $ = (id) => document.getElementById(id);
-
-      function scrubUrl(){
-        try {
-          const clean = new URL(location.href);
-          let changed = false;
-
-          SENSITIVE_PARAMS.forEach((key) => {
-            if (clean.searchParams.has(key)) {
-              clean.searchParams.delete(key);
-              changed = true;
-            }
-          });
-
-          const id = String(clean.searchParams.get("id") || clean.searchParams.get("offer") || "").trim();
-
-          clean.searchParams.delete("offer");
-          clean.searchParams.delete("id");
-
-          if (id) clean.searchParams.set("id", id);
-
-          const next = clean.pathname + clean.search + clean.hash;
-          const current = location.pathname + location.search + location.hash;
-
-          if (changed || next !== current) {
-            history.replaceState({}, document.title, next);
-          }
-        } catch (_) {}
-      }
-
-      function esc(value = ""){
-        return String(value ?? "")
-          .replaceAll("&","&amp;")
-          .replaceAll("<","&lt;")
-          .replaceAll(">","&gt;")
-          .replaceAll('"',"&quot;")
-          .replaceAll("'","&#039;");
-      }
-
-      function labelSector(v = ""){
-        const map = {
-          build:"BTP",
-          beauty:"Beauté",
-          shop:"Boutique",
-          food:"Restauration",
-          service:"Services",
-          driver:"Chauffeur",
-          market:"Marché",
-          admin:"Admin"
-        };
-        return map[String(v || "").toLowerCase()] || v || "Secteur";
-      }
-
-      function labelContract(v = ""){
-        const map = {
-          cdi:"CDI",
-          cdd:"CDD",
-          mission:"Mission",
-          stage:"Stage",
-          freelance:"Freelance",
-          extra:"Extra"
-        };
-        return map[String(v || "").toLowerCase()] || v || "Contrat";
-      }
-
-      function postulerHref(id){
-        const url = new URL(ROUTES.postuler, location.href);
-        if (id) url.searchParams.set("offer", id);
-        return url.pathname + url.search;
-      }
-
-      function showStatus(type, text){
-        const box = $("statusBox");
-        box.className = "status" + (type ? " " + type : "");
-        box.textContent = text;
-      }
-
-      function setText(id, value){
-        const node = $(id);
-        if (node) node.textContent = value || "";
-      }
-
-      function pickOffer(data){
-        if (!data) return null;
-        if (data.ok === true && data.item) return data.item;
-        if (data.ok === true && Array.isArray(data.items)) return data.items[0] || null;
-        if (data.item) return data.item;
-        if (Array.isArray(data.items)) return data.items[0] || null;
-        if (Array.isArray(data)) return data[0] || null;
-        return data;
-      }
-
-      async function loadOfferByRpc(id){
-        if (!sb || !id) return null;
-
-        const attempts = [
-          { p_offer_id: id },
-          { p_id: id },
-          { offer_id: id },
-          { id }
-        ];
-
-        for (const args of attempts) {
-          try {
-            const { data, error } = await sb.rpc("digiy_jobs_public_offer", args);
-            if (!error) {
-              const offer = pickOffer(data);
-              if (offer && (offer.id || offer.title)) return offer;
-            }
-          } catch (_) {}
-        }
-
-        return null;
-      }
-
-      async function loadOfferByList(id){
-        if (!sb || !id) return null;
-
-        const { data, error } = await sb.rpc("digiy_jobs_public_offers");
-
-        if (error) {
-          console.error(error);
-          return null;
-        }
-
-        const items =
-          data && data.ok === true && Array.isArray(data.items)
-            ? data.items
-            : Array.isArray(data)
-              ? data
-              : [];
-
-        return items.find((item) => String(item.id) === String(id)) || null;
-      }
-
-      function renderOffer(offer){
-        const id = offer.id || offerId || "";
-        const title = offer.title || "Mission";
-        const description = offer.description || "Description à venir.";
-        const requirements = offer.requirements || "";
-
-        setText("title", title);
-        setText("lead", "Lis les informations utiles, puis postule si la mission te parle.");
-        setText("description", description);
-        setText("city", offer.city || "Ville à préciser");
-        setText("country", offer.country || "Sénégal");
-        setText("contract", labelContract(offer.contract_type || ""));
-        setText("pay", offer.pay || "Rémunération à préciser");
-
-        if (offer.employer_name) {
-          $("employerFact").classList.remove("hidden");
-          setText("employer", offer.employer_name);
-        }
-
-        const badges = [
-          `<span class="badge gold">${esc(labelSector(offer.sector || ""))}</span>`,
-          `<span class="badge">${esc(labelContract(offer.contract_type || ""))}</span>`
-        ];
-
-        if (offer.has_housing) {
-          badges.push(`<span class="badge green">Logement possible</span>`);
-        }
-
-        if (offer.has_family_welcome) {
-          badges.push(`<span class="badge green">Accueil familial possible</span>`);
-        }
-
-        if (offer.city) {
-          badges.push(`<span class="badge blue">${esc(offer.city)}</span>`);
-        }
-
-        $("badges").innerHTML = badges.join("");
-
-        if (requirements) {
-          $("requirementsDetails").classList.remove("hidden");
-          setText("requirements", requirements);
-        }
-
-        const href = postulerHref(id);
-        $("applyBtn").href = href;
-        $("bottomApply").href = href;
-
-        $("missionContent").classList.remove("hidden");
-        showStatus("ok", "Mission chargée. Tu peux lire puis postuler simplement.");
-      }
-
-      async function boot(){
-        scrubUrl();
-
-        if (!offerId) {
-          setText("title", "Choisis une mission d’abord.");
-          setText("lead", "Cette fiche a besoin d’un identifiant de mission. Ouvre une mission depuis la liste.");
-          showStatus("err", "Aucune mission indiquée. Retourne à la liste des missions.");
-          $("missionContent").classList.add("hidden");
-          return;
-        }
-
-        if (!sb) {
-          showStatus("err", "Chargement indisponible pour le moment. Réessaie dans un instant.");
-          return;
-        }
-
-        try {
-          showStatus("", "Chargement de la mission…");
-
-          let offer = await loadOfferByRpc(offerId);
-
-          if (!offer) {
-            offer = await loadOfferByList(offerId);
-          }
-
-          if (!offer) {
-            setText("title", "Mission introuvable.");
-            setText("lead", "La mission n’est plus disponible ou le lien est incomplet.");
-            showStatus("err", "Impossible de retrouver cette mission. Retourne à la liste des missions.");
-            return;
-          }
-
-          renderOffer(offer);
-        } catch (err) {
-          console.error(err);
-          setText("title", "Chargement impossible.");
-          setText("lead", "La fiche mission n’a pas pu s’ouvrir correctement.");
-          showStatus("err", "Erreur de lecture. Réessaie ou retourne aux missions.");
-        }
-      }
-
-      boot();
-    })();
-  </script>
+</div></header>
+<main>
+<section class="hero"><div class="wrap shell"><div class="grid">
+  <article class="card">
+    <span class="eyebrow">Public missions</span>
+    <h1>Find <span>field</span> work clearly.</h1>
+    <p class="lead">The missions board helps candidates understand what is needed, where it is needed, and how to act without confusion. The professional keeps the relationship direct.</p>
+    <div class="actions">
+      <a class="btn dark" href="https://jobs.digiylyfe.com/missions.html">Open the live missions board</a>
+      <a class="btn light" href="https://jobs.digiylyfe.com/?lang=en&v=jobs-en-pages">Back to JOBS home</a>
+      <a class="btn gold" href="https://wa.me/221771342889?text=Hello DIGIY JOBS, I need information about DIGIY JOBS — Missions board" target="_blank" rel="noopener noreferrer">Ask DIGIY</a>
+    </div>
+  </article>
+  <aside class="card">
+    <div class="notice"><strong>English doorway.</strong><br>This page keeps the public path understandable for international visitors. The French operational page remains available for the live module.</div>
+    <div class="cards"><article class="mini"><h3>Read the need</h3><p>Job type, zone, timing and useful conditions must be easy to understand before anyone applies.</p></article><article class="mini"><h3>Act without confusion</h3><p>A candidate can move from the board to the application page, the profile page or follow-up.</p></article><article class="mini"><h3>Direct human contact</h3><p>DIGIY organizes the doorway. The recruiter and candidate keep the direct relationship.</p></article></div>
+  </aside>
+</div></div></section>
+<section class="wrap card" id="prepare">
+  <span class="eyebrow">Prepare message</span>
+  <h2>Prepare a mission request</h2>
+  <p>Use this if you are looking for a mission and want to write a clean message before contacting DIGIY or a recruiter.</p>
+  <div class="formgrid"><div class="field"><label for="name">Your name</label><input id="name" data-field="name" type="text" placeholder="Example: Jean"></div><div class="field"><label for="skill">Skill / job wanted</label><input id="skill" data-field="skill" type="text" placeholder="Driver, helper, shop assistant…"></div><div class="field"><label for="zone">Preferred zone</label><input id="zone" data-field="zone" type="text" placeholder="Saly, Mbour, Dakar…"></div><div class="field"><label for="availability">Availability</label><input id="availability" data-field="availability" type="text" placeholder="Today, weekend, mornings…"></div><div class="field full"><label for="extra">Extra note</label><textarea id="extra" placeholder="Add details here if needed"></textarea></div></div>
+  <div class="actions">
+    <button class="btn dark" type="button" id="buildBtn">Prepare message</button>
+    <button class="btn light" type="button" id="copyBtn">Copy</button>
+    <a class="btn gold" id="waBtn" href="https://wa.me/221771342889" target="_blank" rel="noopener noreferrer">Send to DIGIY</a>
+  </div>
+  <div class="output" id="output">Fill the fields, then prepare the message.</div>
+</section>
+</main>
+<footer class="wrap footer">DIGIY JOBS · English companion page · Payment direct to the professional · 0% commission.</footer>
+<div class="toast" id="toast">Copied</div>
+<script>
+(function(){
+  "use strict";
+  const template = `Hello DIGIY JOBS, I am looking for a mission. Name: {name}. Skill: {skill}. Zone: {zone}. Availability: {availability}. Please guide me to the right mission.`;
+  const phone = "221771342889";
+  const fields = ['name', 'skill', 'zone', 'availability'];
+  function $(id){return document.getElementById(id)}
+  function val(id){return ($(id)?.value||"").trim()||"Not specified"}
+  function toast(t){const el=$("toast"); if(!el)return; el.textContent=t||"Copied"; el.classList.add("show"); clearTimeout(toast.t); toast.t=setTimeout(()=>el.classList.remove("show"),1700)}
+  function build(){
+    let msg = template;
+    fields.forEach(k=>{ msg = msg.replaceAll("{"+k+"}", val(k)); });
+    const extra = ($("extra")?.value||"").trim();
+    if(extra) msg += "\nExtra note: " + extra;
+    $("output").textContent = msg;
+    $("waBtn").href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
+    return msg;
+  }
+  $("buildBtn").addEventListener("click",()=>{build();toast("Message prepared")});
+  $("copyBtn").addEventListener("click",async()=>{const msg=build(); try{await navigator.clipboard.writeText(msg);toast("Message copied")}catch(e){toast("Copy unavailable")}});
+  document.querySelectorAll("input,textarea").forEach(el=>el.addEventListener("input",build));
+})();
+</script>
 </body>
 </html>
 
