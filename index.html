@@ -1,15 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>DIGIY JOBS — Missions, candidatures & inscription</title>
-  <meta name="description" content="DIGIY JOBS — voir les missions, postuler simplement, préparer son dossier, suivre sa candidature ou inscrire une offre JOBS.">
-  <meta name="theme-color" content="#155f43">
-  <meta name="robots" content="index, follow">
-  <meta name="digiy-build" content="jobs-index-ndimbal-express-public-20260608">
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>DIGIY JOBS — Missions, candidatures &amp; inscription</title>
+<meta content="DIGIY JOBS — voir les missions, postuler simplement, préparer son dossier, suivre sa candidature ou inscrire une offre JOBS." name="description"/>
+<meta content="#155f43" name="theme-color"/>
+<meta content="index, follow" name="robots"/>
+<meta content="jobs-index-ndimbal-express-public-20260608" name="digiy-build"/>
+<meta content="jobs-fr-en-retour-fr-natif-20260620" name="digiy-bilingual"/>
+<meta content="jobs-liens-fr-en-pages-connectees-20260620" name="digiy-fix"/>
+<script>
+    (function(){
+      "use strict";
+      try{
+        var params = new URLSearchParams(window.location.search || "");
+        window.DIGIY_JOBS_LANG = params.get("lang") === "en" ? "en" : "fr";
+        document.documentElement.lang = window.DIGIY_JOBS_LANG;
+      }catch(_){
+        window.DIGIY_JOBS_LANG = "fr";
+        document.documentElement.lang = "fr";
+      }
+    })();
+  </script>
+<style>
     :root{
       --bg:#f6eedf;
       --bg2:#fff9ec;
@@ -750,333 +765,403 @@
       .brand-mark{width:44px;height:44px;border-radius:16px}
       .module-card h2{font-size:27px}
     }
+    /* DIGIY JOBS — sélecteur langue FR/EN */
+    .digiy-lang-switch{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:5px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.68);
+      box-shadow:0 8px 22px rgba(31,52,42,.06);
+      flex:0 0 auto;
+    }
+    .digiy-lang-switch button{
+      min-height:34px;
+      border:0;
+      border-radius:999px;
+      padding:0 10px;
+      background:transparent;
+      color:#173528;
+      font-size:12px;
+      font-weight:1000;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    html[lang="fr"] .digiy-lang-switch button[data-digiy-lang-btn="fr"],
+    html[lang="en"] .digiy-lang-switch button[data-digiy-lang-btn="en"]{
+      color:white;
+      background:linear-gradient(135deg,var(--green),var(--green2));
+      box-shadow:0 6px 18px rgba(21,95,67,.16);
+    }
+    @media (max-width:780px){
+      .digiy-lang-switch{
+        width:100%;
+        justify-content:center;
+      }
+      .digiy-lang-switch button{
+        flex:1;
+        min-height:38px;
+      }
+    }
+
+
+
+    /* DIGIY JOBS — liens connectés sur les cartes FR/EN */
+    .mini,
+    .stat,
+    .mission-card,
+    .step{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .mini:focus-visible,
+    .stat:focus-visible,
+    .mission-card:focus-visible,
+    .step:focus-visible,
+    .door[data-digiy-link]:focus-visible{
+      outline:4px solid rgba(244,185,52,.35);
+      outline-offset:3px;
+    }
+
+    .door[data-digiy-link]{cursor:pointer}
+    .door[data-digiy-link]:hover .action-link{filter:brightness(1.04)}
+
+    .connected-link-hint{
+      display:inline-flex;
+      width:max-content;
+      max-width:100%;
+      min-height:34px;
+      align-items:center;
+      justify-content:center;
+      margin-top:6px;
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(21,95,67,.08);
+      border:1px solid rgba(21,95,67,.14);
+      color:var(--green);
+      font-size:12px;
+      font-weight:1000;
+    }
   </style>
+<meta content="vrais-liens-repo-missions-ndimbal-postuler-dossier-suivi-inscription-20260620" name="digiy-fix-jobs-links"/><meta name="digiy-en-pages" content="missions-en-ndimbal-en-postuler-en-dossier-en-suivi-en-inscription-en-20260620"/>
 </head>
-
 <body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="#top" aria-label="Retour en haut de page">
-        <span class="brand-mark">💼</span>
-        <span>DIGIY JOBS<small>MISSIONS · CANDIDATURES</small></span>
-      </a>
-      <nav class="nav" aria-label="Navigation principale">
-        <a href="https://digiylyfe.com/">🌍 Site</a>
-        <a href="https://digiy-hub.digiylyfe.com/">🧭 HUB</a>
-        <a class="blue" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">🇸🇳 Wolof JOBS</a>
-        <a class="green" href="./inscription-jobs.html">💼 Inscription JOBS</a>
-        <a href="./missions.html">Missions</a>
-        <a class="green" href="./ndimbal-express.html">⚡ NDIMBAL</a>
-        <a href="./postuler.html">Postuler</a>
-        <a class="blue" href="./dossier-intelligent.html">Dossier</a>
-        <a class="primary" href="#entrer">Entrer</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="wrap hero-shell">
-        <div class="hero-grid">
-          <article class="hero-card">
-            <span class="eyebrow">Entrée publique DIGIY JOBS</span>
-            <h1>Le travail terrain, <span>visible et simple.</span></h1>
-            <p class="lead">
+<header class="topbar">
+<div class="wrap topbar-inner">
+<a aria-label="Retour en haut de page" class="brand" href="#top">
+<span class="brand-mark">💼</span>
+<span>DIGIY JOBS<small>MISSIONS · CANDIDATURES</small></span>
+</a>
+<nav aria-label="Navigation principale" class="nav">
+<a href="https://digiylyfe.com/">🌍 Site</a>
+<a href="https://digiy-hub.digiylyfe.com/">🧭 HUB</a>
+<a class="blue" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">🇸🇳 Wolof JOBS</a>
+<a class="green" href="https://jobs.digiylyfe.com/inscription-jobs.html">💼 Inscription JOBS</a>
+<a href="https://jobs.digiylyfe.com/missions.html">Missions</a>
+<a class="green" href="https://jobs.digiylyfe.com/ndimbal-express.html">⚡ NDIMBAL</a>
+<a href="https://jobs.digiylyfe.com/postuler.html">Postuler</a>
+<a class="blue" href="https://jobs.digiylyfe.com/dossier-intelligent.html">Dossier</a>
+<a class="primary" href="#entrer">Entrer</a>
+</nav>
+<div aria-label="Choisir la langue" class="digiy-lang-switch">
+<button data-digiy-lang-btn="fr" onclick="digiyJobsSetLang('fr')" type="button">🇫🇷 FR</button>
+<button data-digiy-lang-btn="en" onclick="digiyJobsSetLang('en')" type="button">🇬🇧 EN</button>
+</div>
+</div>
+</header>
+<main id="top">
+<section class="hero">
+<div class="wrap hero-shell">
+<div class="hero-grid">
+<article class="hero-card">
+<span class="eyebrow">Entrée publique DIGIY JOBS</span>
+<h1>Le travail terrain, <span>visible et simple.</span></h1>
+<p class="lead">
               DIGIY JOBS présente les missions, ouvre la candidature, prépare le dossier et garde le suivi clair.
               Le candidat avance sans code PIN. Le recruteur peut publier une mission depuis sa porte JOBS.
             </p>
-
-            <div class="hero-actions">
-              <a class="btn btn-dark" href="./missions.html">Voir les missions</a>
-              <a class="btn btn-gold" href="./ndimbal-express.html">⚡ NDIMBAL Express</a>
-              <a class="btn btn-gold" href="./postuler.html">Déposer ma candidature</a>
-              <a class="btn btn-blue" href="./dossier-intelligent.html">Préparer mon dossier</a>
-              <a class="btn btn-light" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">🇸🇳 Lexique Wolof JOBS</a>
-              <a class="btn btn-light" href="./suivi.html">Suivre mon dépôt</a>
-            </div>
-
-            <div class="hero-notes" aria-label="Repères DIGIY JOBS">
-              <span class="pill">Missions lisibles</span>
-              <span class="pill gold">NDIMBAL Express</span>
-              <span class="pill gold">Candidature simple</span>
-              <span class="pill blue">Dossier clair</span>
-              <span class="pill gold">Wolof terrain</span>
-              <span class="pill">Contact direct</span>
-            </div>
-
-            <div class="audio-card" id="digiyJobsAudioCard">
-              <div class="audio-head">
-                <div class="audio-title">
-                  <strong>🎧 Écouter DIGIY JOBS</strong>
-                  <span>Une courte voix explique où tu es, quoi faire, et comment avancer sans te perdre.</span>
-                </div>
-                <div class="audio-controls">
-                  <button class="play" id="digiyJobsPlayBtn" type="button">▶️ Lecture</button>
-                  <button class="stop" id="digiyJobsStopBtn" type="button">⏹ Arrêt</button>
-                </div>
-              </div>
-              <div class="audio-text">
+<div class="hero-actions">
+<a class="btn btn-dark" href="https://jobs.digiylyfe.com/missions.html">Voir les missions</a>
+<a class="btn btn-gold" href="https://jobs.digiylyfe.com/ndimbal-express.html">⚡ NDIMBAL Express</a>
+<a class="btn btn-gold" href="https://jobs.digiylyfe.com/postuler.html">Déposer ma candidature</a>
+<a class="btn btn-blue" href="https://jobs.digiylyfe.com/dossier-intelligent.html">Préparer mon dossier</a>
+<a class="btn btn-light" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">🇸🇳 Lexique Wolof JOBS</a>
+<a class="btn btn-light" href="https://jobs.digiylyfe.com/suivi.html">Suivre mon dépôt</a>
+</div>
+<div aria-label="Repères DIGIY JOBS" class="hero-notes">
+<a class="pill" href="https://jobs.digiylyfe.com/missions.html">Missions lisibles</a>
+<a class="pill gold" href="https://jobs.digiylyfe.com/ndimbal-express.html">NDIMBAL Express</a>
+<a class="pill gold" href="https://jobs.digiylyfe.com/postuler.html">Candidature simple</a>
+<a class="pill blue" href="https://jobs.digiylyfe.com/dossier-intelligent.html">Dossier clair</a>
+<a class="pill gold" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Wolof terrain</a>
+<a class="pill" href="https://wa.me/221771342889?text=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions." rel="noopener noreferrer" target="_blank">Contact direct</a>
+</div>
+<div class="audio-card" id="digiyJobsAudioCard">
+<div class="audio-head">
+<div class="audio-title">
+<strong>🎧 Écouter DIGIY JOBS</strong>
+<span>Une courte voix explique où tu es, quoi faire, et comment avancer sans te perdre.</span>
+</div>
+<div class="audio-controls">
+<button class="play" id="digiyJobsPlayBtn" type="button">▶️ Lecture</button>
+<button class="stop" id="digiyJobsStopBtn" type="button">⏹ Arrêt</button>
+</div>
+</div>
+<div class="audio-text">
                 Le module est public côté candidat : voir les missions, ouvrir NDIMBAL Express pour les missions courtes urgentes, postuler, préparer son dossier, suivre son dépôt. Le lexique Wolof JOBS aide à parler emploi, expérience, disponibilité, salaire et entretien avec des mots simples du terrain. Côté professionnel, l’inscription JOBS sert à publier une mission ou chercher un profil.
               </div>
-              <div class="audio-progress-wrap" aria-hidden="true"><div class="audio-progress" id="digiyJobsAudioProgress"></div></div>
-              <div class="audio-status" id="digiyJobsAudioStatus">Prêt à écouter.</div>
-            </div>
-          </article>
-
-          <aside class="hero-side" aria-label="Résumé du module">
-            <article class="module-card">
-              <div class="module-head">
-                <span class="signal">Public candidat · sans PIN</span>
-                <span class="module-icon">💼</span>
-              </div>
-              <h2>Une porte claire pour l’emploi local.</h2>
-              <p>
+<div aria-hidden="true" class="audio-progress-wrap"><div class="audio-progress" id="digiyJobsAudioProgress"></div></div>
+<div class="audio-status" id="digiyJobsAudioStatus">Prêt à écouter.</div>
+</div>
+</article>
+<aside aria-label="Résumé du module" class="hero-side">
+<article class="module-card">
+<div class="module-head">
+<span class="signal">Public candidat · sans PIN</span>
+<span class="module-icon">💼</span>
+</div>
+<h2>Une porte claire pour l’emploi local.</h2>
+<p>
                 Ici on ne noie pas le visiteur. Il voit une mission, comprend le besoin, dépose son profil et garde un fil de suivi. Simple, propre, humain.
               </p>
-              <div class="mini-grid">
-                <div class="mini"><strong>Voir</strong><span>Lire les missions publiées.</span></div>
-                <div class="mini"><strong>NDIMBAL</strong><span><a href="./ndimbal-express.html">Voir les missions courtes urgentes.</a></span></div>
-                <div class="mini"><strong>Postuler</strong><span>Déposer un profil simple.</span></div>
-                <div class="mini"><strong>Dossier</strong><span>Clarifier métier, expérience et disponibilité.</span></div>
-                <div class="mini"><strong>Wolof</strong><span><a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Lire les mots utiles emploi terrain.</a></span></div>
-                <div class="mini"><strong>Inscrire</strong><span>Publier une mission côté pro.</span></div>
-              </div>
-            </article>
-
-            <article class="quick-card">
-              <h3>Besoin d’aide ?</h3>
-              <p>Un candidat ou un recruteur peut demander une information directement. DIGIY oriente, mais la relation reste humaine.</p>
-              <div class="hero-actions">
-                <a class="btn btn-gold" href="https://wa.me/221771342889?text=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions." target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
-                <a class="btn btn-light" href="sms:+221771342889?body=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions.">✉️ SMS</a>
-              </div>
-            </article>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-label="Chiffres repères">
-      <div class="wrap stats">
-        <article class="stat"><strong>1</strong><span>Entrée publique propre</span></article>
-        <article class="stat"><strong>6</strong><span>Portes utiles et lisibles</span></article>
-        <article class="stat"><strong>0</strong><span>Code PIN côté candidat</span></article>
-        <article class="stat"><strong>100%</strong><span>Parcours public avant contact</span></article>
-      </div>
-    </section>
-
-    <section class="section" id="entrer">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2>Choisir sa porte.</h2>
-            <p>Le public avance par cartes simples. Le professionnel ne passe pas par une page confuse : il ouvre directement l’inscription JOBS pour publier une mission. NDIMBAL Express reste la porte rapide pour les missions courtes et urgentes.</p>
-          </div>
-        </div>
-
-        <div class="door-grid">
-          <article class="door">
-            <span class="badge">Public</span>
-            <h3>Missions</h3>
-            <p>Voir les missions publiées, repérer les besoins et ouvrir la fiche qui correspond.</p>
-            <div class="meta">
-              <div><small>Page</small><strong>missions.html</strong></div>
-              <div><small>Usage</small><strong>Lire avant d’agir</strong></div>
-            </div>
-            <div class="door-actions"><a class="action-link" href="./missions.html">Voir les missions</a></div>
-          </article>
-
-          <article class="door">
-            <span class="badge express">Express</span>
-            <h3>NDIMBAL Express</h3>
-            <p>Voir les missions courtes, urgentes ou ponctuelles : aide terrain, livraison, coup de main, besoin rapide.</p>
-            <div class="meta">
-              <div><small>Page</small><strong>ndimbal-express.html</strong></div>
-              <div><small>Usage</small><strong>Dépanner vite</strong></div>
-            </div>
-            <div class="door-actions"><a class="action-link gold" href="./ndimbal-express.html">Voir NDIMBAL Express</a></div>
-          </article>
-
-          <article class="door">
-            <span class="badge warn">Candidat</span>
-            <h3>Postuler</h3>
-            <p>Déposer une candidature liée à une mission ou envoyer un profil simple.</p>
-            <div class="meta">
-              <div><small>Page</small><strong>postuler.html</strong></div>
-              <div><small>Usage</small><strong>Nom, WhatsApp, métier</strong></div>
-            </div>
-            <div class="door-actions"><a class="action-link gold" href="./postuler.html">Déposer un profil</a></div>
-          </article>
-
-          <article class="door">
-            <span class="badge blue">Dossier</span>
-            <h3>Dossier</h3>
-            <p>Préparer un profil plus clair selon le métier, l’expérience et la disponibilité.</p>
-            <div class="meta">
-              <div><small>Page</small><strong>dossier-intelligent.html</strong></div>
-              <div><small>Usage</small><strong>Clarifier le profil</strong></div>
-            </div>
-            <div class="door-actions"><a class="action-link blue" href="./dossier-intelligent.html">Ouvrir le dossier</a></div>
-          </article>
-
-
-          <article class="door">
-            <span class="badge blue">Wolof</span>
-            <h3>Lexique Wolof</h3>
-            <p>Lire les phrases utiles pour l’emploi terrain : chercher du travail, expérience, disponibilité, salaire, entretien.</p>
-            <div class="meta">
-              <div><small>Page</small><strong>lexique-jobs.html</strong></div>
-              <div><small>Usage</small><strong>Parler simple sur le terrain</strong></div>
-            </div>
-            <div class="door-actions"><a class="action-link blue" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Ouvrir le lexique</a></div>
-          </article>
-
-          <article class="door">
-            <span class="badge hot">Suivi</span>
-            <h3>Suivi</h3>
-            <p>Retrouver son dépôt et garder un fil clair après avoir postulé.</p>
-            <div class="meta">
-              <div><small>Page</small><strong>suivi.html</strong></div>
-              <div><small>Usage</small><strong>Voir où en est mon dépôt</strong></div>
-            </div>
-            <div class="door-actions"><a class="action-link" href="./suivi.html">Ouvrir le suivi</a></div>
-          </article>
-
-          <article class="door">
-            <span class="badge">Pro</span>
-            <h3>Inscription JOBS</h3>
-            <p>Publier une offre, recruter, chercher une main-d’œuvre terrain ou rendre une mission visible.</p>
-            <div class="meta">
-              <div><small>Page</small><strong>inscription-jobs.html</strong></div>
-              <div><small>Usage</small><strong>Publier / recruter</strong></div>
-            </div>
-            <div class="door-actions"><a class="action-link" href="./inscription-jobs.html">Inscription JOBS</a></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap mission-preview">
-        <article class="panel-card">
-          <span class="eyebrow">Présentation comme vitrine module</span>
-          <h3>Une page qui donne envie d’entrer.</h3>
-          <p>
+<div class="mini-grid">
+<a class="mini" href="https://jobs.digiylyfe.com/missions.html"><strong>Voir</strong><span>Lire les missions publiées.</span><span class="connected-link-hint">Ouvrir Missions</span></a>
+<a class="mini" href="https://jobs.digiylyfe.com/missions.html"><strong>NDIMBAL</strong><span>Voir les missions courtes urgentes.</span><span class="connected-link-hint">Ouvrir NDIMBAL</span></a>
+<a class="mini" href="https://jobs.digiylyfe.com/postuler.html"><strong>Postuler</strong><span>Déposer un profil simple.</span><span class="connected-link-hint">Postuler</span></a>
+<a class="mini" href="https://jobs.digiylyfe.com/dossier-intelligent.html"><strong>Dossier</strong><span>Clarifier métier, expérience et disponibilité.</span><span class="connected-link-hint">Ouvrir Dossier</span></a>
+<a class="mini" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607"><strong>Wolof</strong><span>Lire les mots utiles emploi terrain.</span><span class="connected-link-hint">Ouvrir Lexique</span></a>
+<a class="mini" href="https://jobs.digiylyfe.com/inscription-jobs.html"><strong>Inscrire</strong><span>Publier une mission côté pro.</span><span class="connected-link-hint">Inscription JOBS</span></a>
+</div>
+</article>
+<article class="quick-card">
+<h3>Besoin d’aide ?</h3>
+<p>Un candidat ou un recruteur peut demander une information directement. DIGIY oriente, mais la relation reste humaine.</p>
+<div class="hero-actions">
+<a class="btn btn-gold" href="https://wa.me/221771342889?text=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions." rel="noopener noreferrer" target="_blank">💬 WhatsApp</a>
+<a class="btn btn-light" href="sms:+221771342889?body=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions.">✉️ SMS</a>
+</div>
+</article>
+</aside>
+</div>
+</div>
+</section>
+<section aria-label="Chiffres repères" class="section">
+<div class="wrap stats">
+<a class="stat" href="#entrer"><strong>1</strong><span>Entrée publique propre</span></a>
+<a class="stat" href="#entrer"><strong>6</strong><span>Portes utiles et lisibles</span></a>
+<a class="stat" href="https://jobs.digiylyfe.com/postuler.html"><strong>0</strong><span>Code PIN côté candidat</span></a>
+<a class="stat" href="https://jobs.digiylyfe.com/missions.html"><strong>100%</strong><span>Parcours public avant contact</span></a>
+</div>
+</section>
+<section class="section" id="entrer">
+<div class="wrap">
+<div class="section-head">
+<div>
+<h2>Choisir sa porte.</h2>
+<p>Le public avance par cartes simples. Le professionnel ne passe pas par une page confuse : il ouvre directement l’inscription JOBS pour publier une mission. NDIMBAL Express reste la porte rapide pour les missions courtes et urgentes.</p>
+</div>
+</div>
+<div class="door-grid">
+<article class="door" data-digiy-link="https://jobs.digiylyfe.com/missions.html" role="link" tabindex="0">
+<span class="badge">Public</span>
+<h3>Missions</h3>
+<p>Voir les missions publiées, repérer les besoins et ouvrir la fiche qui correspond.</p>
+<div class="meta">
+<div><small>Page</small><strong>missions.html</strong></div>
+<div><small>Usage</small><strong>Lire avant d’agir</strong></div>
+</div>
+<div class="door-actions"><a class="action-link" href="https://jobs.digiylyfe.com/missions.html">Voir les missions</a></div>
+</article>
+<article class="door" data-digiy-link="https://jobs.digiylyfe.com/ndimbal-express.html" role="link" tabindex="0">
+<span class="badge express">Express</span>
+<h3>NDIMBAL Express</h3>
+<p>Voir les missions courtes, urgentes ou ponctuelles : aide terrain, livraison, coup de main, besoin rapide.</p>
+<div class="meta">
+<div><small>Page</small><strong>ndimbal-express.html</strong></div>
+<div><small>Usage</small><strong>Dépanner vite</strong></div>
+</div>
+<div class="door-actions"><a class="action-link gold" href="https://jobs.digiylyfe.com/ndimbal-express.html">Voir NDIMBAL Express</a></div>
+</article>
+<article class="door" data-digiy-link="https://jobs.digiylyfe.com/postuler.html" role="link" tabindex="0">
+<span class="badge warn">Candidat</span>
+<h3>Postuler</h3>
+<p>Déposer une candidature liée à une mission ou envoyer un profil simple.</p>
+<div class="meta">
+<div><small>Page</small><strong>postuler.html</strong></div>
+<div><small>Usage</small><strong>Nom, WhatsApp, métier</strong></div>
+</div>
+<div class="door-actions"><a class="action-link gold" href="https://jobs.digiylyfe.com/postuler.html">Déposer un profil</a></div>
+</article>
+<article class="door" data-digiy-link="https://jobs.digiylyfe.com/dossier-intelligent.html" role="link" tabindex="0">
+<span class="badge blue">Dossier</span>
+<h3>Dossier</h3>
+<p>Préparer un profil plus clair selon le métier, l’expérience et la disponibilité.</p>
+<div class="meta">
+<div><small>Page</small><strong>dossier-intelligent.html</strong></div>
+<div><small>Usage</small><strong>Clarifier le profil</strong></div>
+</div>
+<div class="door-actions"><a class="action-link blue" href="https://jobs.digiylyfe.com/dossier-intelligent.html">Ouvrir le dossier</a></div>
+</article>
+<article class="door" data-digiy-link="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607" role="link" tabindex="0">
+<span class="badge blue">Wolof</span>
+<h3>Lexique Wolof</h3>
+<p>Lire les phrases utiles pour l’emploi terrain : chercher du travail, expérience, disponibilité, salaire, entretien.</p>
+<div class="meta">
+<div><small>Page</small><strong>lexique-jobs.html</strong></div>
+<div><small>Usage</small><strong>Parler simple sur le terrain</strong></div>
+</div>
+<div class="door-actions"><a class="action-link blue" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Ouvrir le lexique</a></div>
+</article>
+<article class="door" data-digiy-link="https://jobs.digiylyfe.com/suivi.html" role="link" tabindex="0">
+<span class="badge hot">Suivi</span>
+<h3>Suivi</h3>
+<p>Retrouver son dépôt et garder un fil clair après avoir postulé.</p>
+<div class="meta">
+<div><small>Page</small><strong>suivi.html</strong></div>
+<div><small>Usage</small><strong>Voir où en est mon dépôt</strong></div>
+</div>
+<div class="door-actions"><a class="action-link" href="https://jobs.digiylyfe.com/suivi.html">Ouvrir le suivi</a></div>
+</article>
+<article class="door" data-digiy-link="https://jobs.digiylyfe.com/inscription-jobs.html" role="link" tabindex="0">
+<span class="badge">Pro</span>
+<h3>Inscription JOBS</h3>
+<p>Publier une offre, recruter, chercher une main-d’œuvre terrain ou rendre une mission visible.</p>
+<div class="meta">
+<div><small>Page</small><strong>inscription-jobs.html</strong></div>
+<div><small>Usage</small><strong>Publier / recruter</strong></div>
+</div>
+<div class="door-actions"><a class="action-link" href="https://jobs.digiylyfe.com/inscription-jobs.html">Inscription JOBS</a></div>
+</article>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="wrap mission-preview">
+<article class="panel-card">
+<span class="eyebrow">Présentation comme vitrine module</span>
+<h3>Une page qui donne envie d’entrer.</h3>
+<p>
             La page JOBS doit respirer comme les autres portes DIGIY : une promesse claire, des cartes propres, des actions visibles et aucune confusion entre candidat et recruteur.
           </p>
-          <div class="check-list">
-            <div class="check"><b>✓</b><span>Le candidat ne tombe pas dans un espace pro.</span></div>
-            <div class="check"><b>✓</b><span>NDIMBAL Express sépare les missions courtes urgentes des offres JOBS plus structurées.</span></div>
-            <div class="check"><b>✓</b><span>Le recruteur a une entrée dédiée pour inscrire une mission.</span></div>
-            <div class="check"><b>✓</b><span>Les boutons restent simples sur téléphone : voir, postuler, dossier, suivi.</span></div>
-            <div class="check"><b>✓</b><span>L’audio reste court, manuel, jamais automatique.</span></div>
-          </div>
-        </article>
-
-        <div class="mission-cards" aria-label="Exemples de présentation JOBS">
-          <article class="mission-card">
-            <div class="mission-visual"><span>Mission terrain</span></div>
-            <div class="mission-body">
-              <h4>Service, boutique, restaurant</h4>
-              <p>Des besoins locaux présentés proprement, avec métier, zone et contact clair.</p>
-              <div class="mission-tags"><small>Saly</small><small>Mbour</small><small>Terrain</small></div>
-            </div>
-          </article>
-          <article class="mission-card">
-            <div class="mission-visual"><span>Candidat</span></div>
-            <div class="mission-body">
-              <h4>Profil simple et lisible</h4>
-              <p>Le candidat donne l’essentiel : nom, WhatsApp, métier, disponibilité.</p>
-              <div class="mission-tags"><small>Profil</small><small>WhatsApp</small><small>Suivi</small></div>
-            </div>
-          </article>
-          <article class="mission-card">
-            <div class="mission-visual"><span>Dossier</span></div>
-            <div class="mission-body">
-              <h4>Expérience mieux rangée</h4>
-              <p>Le dossier aide à structurer ce que la personne sait faire réellement.</p>
-              <div class="mission-tags"><small>Métier</small><small>Compétences</small><small>Disponibilité</small></div>
-            </div>
-          </article>
-          <article class="mission-card">
-            <div class="mission-visual"><span>Recruteur</span></div>
-            <div class="mission-body">
-              <h4>Publier une mission</h4>
-              <p>Le professionnel inscrit son besoin dans JOBS, sans mélanger avec les tarifs généraux.</p>
-              <div class="mission-tags"><small>Offre</small><small>Recrutement</small><small>Contact direct</small></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="process">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2>Parcours simple.</h2>
-            <p>Le candidat n’a pas besoin de comprendre l’arrière-cuisine. Il avance par étapes claires, comme sur une vraie porte de module.</p>
-          </div>
-        </div>
-
-        <div class="flow-grid">
-          <article class="step"><div class="step-num">1</div><h3>Voir</h3><p>Il ouvre les missions et repère un besoin réel dans sa zone.</p></article>
-          <article class="step"><div class="step-num">2</div><h3>Comprendre</h3><p>Il lit la fiche : métier, ville, type de mission et conditions utiles.</p></article>
-          <article class="step"><div class="step-num">3</div><h3>Postuler</h3><p>Il dépose son nom, WhatsApp, métier et disponibilité.</p></article>
-          <article class="step"><div class="step-num">4</div><h3>Suivre</h3><p>Il garde un fil clair après son dépôt et peut revenir facilement.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="wrap cta-card">
-        <div>
-          <h2>Le travail doit être visible, pas compliqué.</h2>
-          <p>
+<div class="check-list">
+<div class="check"><b>✓</b><span>Le candidat ne tombe pas dans un espace pro.</span></div>
+<div class="check"><b>✓</b><span>NDIMBAL Express sépare les missions courtes urgentes des offres JOBS plus structurées.</span></div>
+<div class="check"><b>✓</b><span>Le recruteur a une entrée dédiée pour inscrire une mission.</span></div>
+<div class="check"><b>✓</b><span>Les boutons restent simples sur téléphone : voir, postuler, dossier, suivi.</span></div>
+<div class="check"><b>✓</b><span>L’audio reste court, manuel, jamais automatique.</span></div>
+</div>
+</article>
+<div aria-label="Exemples de présentation JOBS" class="mission-cards">
+<a class="mission-card" href="https://jobs.digiylyfe.com/missions.html">
+<div class="mission-visual"><span>Mission terrain</span></div>
+<div class="mission-body">
+<h4>Service, boutique, restaurant</h4>
+<p>Des besoins locaux présentés proprement, avec métier, zone et contact clair.</p>
+<div class="mission-tags"><small>Saly</small><small>Mbour</small><small>Terrain</small></div>
+<span class="connected-link-hint">Voir les missions</span>
+</div>
+</a>
+<a class="mission-card" href="https://jobs.digiylyfe.com/postuler.html">
+<div class="mission-visual"><span>Candidat</span></div>
+<div class="mission-body">
+<h4>Profil simple et lisible</h4>
+<p>Le candidat donne l’essentiel : nom, WhatsApp, métier, disponibilité.</p>
+<div class="mission-tags"><small>Profil</small><small>WhatsApp</small><small>Suivi</small></div>
+<span class="connected-link-hint">Déposer un profil</span>
+</div>
+</a>
+<a class="mission-card" href="https://jobs.digiylyfe.com/dossier-intelligent.html">
+<div class="mission-visual"><span>Dossier</span></div>
+<div class="mission-body">
+<h4>Expérience mieux rangée</h4>
+<p>Le dossier aide à structurer ce que la personne sait faire réellement.</p>
+<div class="mission-tags"><small>Métier</small><small>Compétences</small><small>Disponibilité</small></div>
+<span class="connected-link-hint">Préparer le dossier</span>
+</div>
+</a>
+<a class="mission-card" href="https://jobs.digiylyfe.com/inscription-jobs.html">
+<div class="mission-visual"><span>Recruteur</span></div>
+<div class="mission-body">
+<h4>Publier une mission</h4>
+<p>Le professionnel inscrit son besoin dans JOBS, sans mélanger avec les tarifs généraux.</p>
+<div class="mission-tags"><small>Offre</small><small>Recrutement</small><small>Contact direct</small></div>
+<span class="connected-link-hint">Inscription JOBS</span>
+</div>
+</a>
+</div>
+</div>
+</section>
+<section class="section" id="process">
+<div class="wrap">
+<div class="section-head">
+<div>
+<h2>Parcours simple.</h2>
+<p>Le candidat n’a pas besoin de comprendre l’arrière-cuisine. Il avance par étapes claires, comme sur une vraie porte de module.</p>
+</div>
+</div>
+<div class="flow-grid">
+<a class="step" href="https://jobs.digiylyfe.com/missions.html"><div class="step-num">1</div><h3>Voir</h3><p>Il ouvre les missions et repère un besoin réel dans sa zone.</p><span class="connected-link-hint">Voir les missions</span></a>
+<a class="step" href="https://jobs.digiylyfe.com/missions.html"><div class="step-num">2</div><h3>Comprendre</h3><p>Il lit la fiche : métier, ville, type de mission et conditions utiles.</p><span class="connected-link-hint">Lire les offres</span></a>
+<a class="step" href="https://jobs.digiylyfe.com/postuler.html"><div class="step-num">3</div><h3>Postuler</h3><p>Il dépose son nom, WhatsApp, métier et disponibilité.</p><span class="connected-link-hint">Postuler</span></a>
+<a class="step" href="https://jobs.digiylyfe.com/suivi.html"><div class="step-num">4</div><h3>Suivre</h3><p>Il garde un fil clair après son dépôt et peut revenir facilement.</p><span class="connected-link-hint">Ouvrir le suivi</span></a>
+</div>
+</div>
+</section>
+<section class="cta">
+<div class="wrap cta-card">
+<div>
+<h2>Le travail doit être visible, pas compliqué.</h2>
+<p>
             DIGIY JOBS garde une porte publique propre : missions, NDIMBAL Express, candidature, dossier, suivi.
             Côté pro, l’inscription JOBS reste séparée et claire pour publier une mission.
           </p>
-        </div>
-        <div class="cta-right">
-          <div class="cta-box"><small>Action principale</small><strong><a href="./missions.html">Voir les missions disponibles</a></strong></div>
-          <div class="cta-box"><small>Missions courtes urgentes</small><strong><a href="./ndimbal-express.html">Voir NDIMBAL Express</a></strong></div>
-          <div class="cta-box"><small>Après la lecture</small><strong><a href="./postuler.html">Déposer une candidature</a></strong></div>
-          <div class="cta-box"><small>Langue terrain</small><strong><a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Ouvrir le lexique Wolof JOBS</a></strong></div>
-          <div class="cta-box"><small>Côté pro / recruteur</small><strong><a href="./inscription-jobs.html">Inscrire JOBS / publier une mission</a></strong></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap foot-card">
-      <p>DIGIY JOBS · Entrée publique candidat · BY DIGIYLYFE</p>
-      <div class="foot-links">
-        <a href="https://digiylyfe.com/">Site</a>
-        <a href="https://digiy-hub.digiylyfe.com/">HUB</a>
-        <a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Wolof JOBS</a>
-        <a href="./ndimbal-express.html">NDIMBAL Express</a>
-        <a href="./inscription-jobs.html">Inscription JOBS</a>
-      </div>
-    </div>
-  </footer>
-
-  <nav class="bottom-nav" aria-label="Navigation mobile">
-    <div class="bottom-nav-inner">
-      <a class="active" href="./index.html"><span class="ico">⌂</span>Accueil</a>
-      <a href="./missions.html"><span class="ico">◎</span>Missions</a>
-      <a href="./ndimbal-express.html"><span class="ico">⚡</span>NDIMBAL</a>
-      <a href="./postuler.html"><span class="ico">＋</span>Postuler</a>
-      <a href="./dossier-intelligent.html"><span class="ico">□</span>Dossier</a>
-      <a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607"><span class="ico">🇸🇳</span>Wolof</a>
-      <a href="./suivi.html"><span class="ico">↗</span>Suivi</a>
-    </div>
-  </nav>
-
-  <script>
+</div>
+<div class="cta-right">
+<div class="cta-box"><small>Action principale</small><strong><a href="https://jobs.digiylyfe.com/missions.html">Voir les missions disponibles</a></strong></div>
+<div class="cta-box"><small>Missions courtes urgentes</small><strong><a href="https://jobs.digiylyfe.com/ndimbal-express.html">Voir NDIMBAL Express</a></strong></div>
+<div class="cta-box"><small>Après la lecture</small><strong><a href="https://jobs.digiylyfe.com/postuler.html">Déposer une candidature</a></strong></div>
+<div class="cta-box"><small>Langue terrain</small><strong><a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Ouvrir le lexique Wolof JOBS</a></strong></div>
+<div class="cta-box"><small>Côté pro / recruteur</small><strong><a href="https://jobs.digiylyfe.com/inscription-jobs.html">Inscrire JOBS / publier une mission</a></strong></div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap foot-card">
+<p>DIGIY JOBS · Entrée publique candidat · BY DIGIYLYFE</p>
+<div class="foot-links">
+<a href="https://digiylyfe.com/">Site</a>
+<a href="https://digiy-hub.digiylyfe.com/">HUB</a>
+<a href="https://jobs.digiylyfe.com/missions.html">Missions</a>
+<a href="https://jobs.digiylyfe.com/ndimbal-express.html">NDIMBAL Express</a>
+<a href="https://jobs.digiylyfe.com/postuler.html">Postuler</a>
+<a href="https://jobs.digiylyfe.com/dossier-intelligent.html">Dossier</a>
+<a href="https://jobs.digiylyfe.com/suivi.html">Suivi</a>
+<a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Wolof JOBS</a>
+<a href="https://jobs.digiylyfe.com/inscription-jobs.html">Inscription JOBS</a>
+</div>
+</div>
+</footer>
+<nav aria-label="Navigation mobile" class="bottom-nav">
+<div class="bottom-nav-inner">
+<a class="active" href="https://jobs.digiylyfe.com/"><span class="ico">⌂</span>Accueil</a>
+<a href="https://jobs.digiylyfe.com/missions.html"><span class="ico">◎</span>Missions</a>
+<a href="https://jobs.digiylyfe.com/ndimbal-express.html"><span class="ico">⚡</span>NDIMBAL</a>
+<a href="https://jobs.digiylyfe.com/postuler.html"><span class="ico">＋</span>Postuler</a>
+<a href="https://jobs.digiylyfe.com/dossier-intelligent.html"><span class="ico">□</span>Dossier</a>
+<a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607"><span class="ico">🇸🇳</span>Wolof</a>
+<a href="https://jobs.digiylyfe.com/suivi.html"><span class="ico">↗</span>Suivi</a>
+</div>
+</nav>
+<script>
     (function(){
       "use strict";
-      const PAGE_TEXT = "Bienvenue sur DIGIY JOBS. Ici, tu es dans la porte publique du travail terrain. Côté candidat, pas besoin de code PIN. Tu peux voir les missions, ouvrir NDIMBAL Express pour les missions courtes urgentes, comprendre une offre, déposer une candidature, préparer ton dossier, ouvrir le lexique Wolof JOBS et suivre ton dépôt. Le lexique aide à parler emploi, expérience, disponibilité, salaire et entretien avec des mots simples du terrain. Côté professionnel, l'inscription JOBS sert à publier une mission ou chercher un profil. diji i garde le parcours simple, humain et clair.";
+      const PAGE_TEXT_FR = "Bienvenue sur DIGIY JOBS. Ici, tu es dans la porte publique du travail terrain. Côté candidat, pas besoin de code PIN. Tu peux voir les missions, ouvrir NDIMBAL Express pour les missions courtes urgentes, comprendre une offre, déposer une candidature, préparer ton dossier, ouvrir le lexique Wolof JOBS et suivre ton dépôt. Le lexique aide à parler emploi, expérience, disponibilité, salaire et entretien avec des mots simples du terrain. Côté professionnel, l'inscription JOBS sert à publier une mission ou chercher un profil. diji i garde le parcours simple, humain et clair.";
+      const PAGE_TEXT_EN = "Welcome to DIGIY JOBS. You are in the public doorway for field work. For candidates, no PIN code is needed. You can view missions, open NDIMBAL Express for short urgent jobs, understand an offer, apply, prepare your profile file, open the Wolof JOBS glossary, and follow your submission. The glossary helps people speak about work, experience, availability, pay and interviews with simple field words. On the professional side, JOBS registration is used to publish a mission or look for a profile. Diji keeps the path simple, human and clear.";
+      const PAGE_TEXT = window.DIGIY_JOBS_LANG === "en" ? PAGE_TEXT_EN : PAGE_TEXT_FR;
 
       const playBtn = document.getElementById("digiyJobsPlayBtn");
       const stopBtn = document.getElementById("digiyJobsStopBtn");
@@ -1097,6 +1182,20 @@
       let launchId = 0;
 
       function preparePronunciation(text){
+        const currentLang = window.DIGIY_JOBS_LANG === "en" ? "en" : "fr";
+        if(currentLang === "en"){
+          return String(text || "")
+            .replace(/\bDIGIYLYFE\b/gi,"Diji Lyfe")
+            .replace(/\bDIGIY\b/gi,"Diji")
+            .replace(/\bJOBS\b/gi,"jobs")
+            .replace(/\bNDIMBAL\b/gi,"Ndim-bal")
+            .replace(/\bQR\b/gi,"Q R")
+            .replace(/\bSMS\b/gi,"S M S")
+            .replace(/\bWhatsApp\b/gi,"WhatsApp")
+            .replace(/\bWave\b/gi,"Wave")
+            .replace(/0\s*%/g,"zero percent")
+            .replace(/100\s*%/g,"one hundred percent");
+        }
         return String(text || "")
           .replace(/\bDIGIYLYFE\b/g,"diji laïfe")
           .replace(/\bDIGIY\b/g,"diji i")
@@ -1114,6 +1213,15 @@
         return voices.find(v => /fr[-_]?FR/i.test(v.lang || "") && /google/i.test(v.name || ""))
           || voices.find(v => /fr[-_]?FR/i.test(v.lang || ""))
           || voices.find(v => /^fr/i.test(v.lang || ""))
+          || null;
+      }
+
+
+      function getEnglishVoice(){
+        const voices = synth.getVoices() || [];
+        return voices.find(v => /en[-_]?US/i.test(v.lang || "") && /google|samantha|alex|daniel/i.test(v.name || ""))
+          || voices.find(v => /en[-_]?GB/i.test(v.lang || ""))
+          || voices.find(v => /^en/i.test(v.lang || ""))
           || null;
       }
 
@@ -1152,11 +1260,12 @@
         try{ synth.cancel(); }catch(_){ }
 
         const u = new SpeechSynthesisUtterance(spokenText);
-        u.lang = "fr-FR";
-        u.rate = .86;
-        u.pitch = 1.03;
+        const currentLang = window.DIGIY_JOBS_LANG === "en" ? "en" : "fr";
+        u.lang = currentLang === "en" ? "en-US" : "fr-FR";
+        u.rate = currentLang === "en" ? .92 : .86;
+        u.pitch = currentLang === "en" ? 1.0 : 1.03;
         u.volume = 1;
-        const voice = getFrenchVoice();
+        const voice = currentLang === "en" ? getEnglishVoice() : getFrenchVoice();
         if(voice) u.voice = voice;
 
         u.onstart = function(){
@@ -1198,10 +1307,338 @@
       window.addEventListener("pagehide",stop);
     })();
   </script>
-  
-<script src="https://pro-action-digiy.digiylyfe.com/assets/js/digiy-retour-voix.js?v=retour-voix-20260606-v4" defer></script>
+<script>
+    (function(){
+      "use strict";
+      var LANG = window.DIGIY_JOBS_LANG === "en" ? "en" : "fr";
+      var VERSION = "jobs-fr-en-retour-fr-natif-20260620";
+      var T = {
+        "DIGIY JOBS — Missions, candidatures & inscription": "DIGIY JOBS — Missions, applications & registration",
+        "MISSIONS · CANDIDATURES": "MISSIONS · APPLICATIONS",
+        "🌍 Site": "🌍 Website",
+        "🧭 HUB": "🧭 HUB",
+        "🇸🇳 Wolof JOBS": "🇸🇳 Wolof JOBS",
+        "💼 Inscription JOBS": "💼 JOBS registration",
+        "Postuler": "Apply",
+        "Dossier": "Profile",
+        "Entrer": "Enter",
+        "Entrée publique DIGIY JOBS": "DIGIY JOBS public entrance",
+        "Le travail terrain,": "Field work,",
+        "visible et simple.": "visible and simple.",
+        "DIGIY JOBS présente les missions, ouvre la candidature, prépare le dossier et garde le suivi clair. Le candidat avance sans code PIN. Le recruteur peut publier une mission depuis sa porte JOBS.": "DIGIY JOBS shows missions, opens applications, prepares the profile file and keeps follow-up clear. The candidate moves forward without a PIN code. The recruiter can publish a mission from the JOBS doorway.",
+        "Voir les missions": "View missions",
+        "Déposer ma candidature": "Submit my application",
+        "Préparer mon dossier": "Prepare my profile",
+        "Suivre mon dépôt": "Track my submission",
+        "Missions lisibles": "Readable missions",
+        "Candidature simple": "Simple application",
+        "Dossier clair": "Clear profile",
+        "Wolof terrain": "Field Wolof",
+        "Contact direct": "Direct contact",
+        "🎧 Écouter DIGIY JOBS": "🎧 Listen to DIGIY JOBS",
+        "Une courte voix explique où tu es, quoi faire, et comment avancer sans te perdre.": "A short voice explains where you are, what to do, and how to move forward without getting lost.",
+        "▶️ Lecture": "▶️ Play",
+        "⏹ Arrêt": "⏹ Stop",
+        "Le module est public côté candidat : voir les missions, ouvrir NDIMBAL Express pour les missions courtes urgentes, postuler, préparer son dossier, suivre son dépôt. Le lexique Wolof JOBS aide à parler emploi, expérience, disponibilité, salaire et entretien avec des mots simples du terrain. Côté professionnel, l’inscription JOBS sert à publier une mission ou chercher un profil.": "The module is public on the candidate side: view missions, open NDIMBAL Express for short urgent jobs, apply, prepare a profile, and track a submission. The Wolof JOBS glossary helps people talk about work, experience, availability, pay and interviews with simple field words. On the professional side, JOBS registration is used to publish a mission or look for a profile.",
+        "Prêt à écouter.": "Ready to listen.",
+        "Public candidat · sans PIN": "Public candidate · no PIN",
+        "Une porte claire pour l’emploi local.": "A clear doorway for local work.",
+        "Ici on ne noie pas le visiteur. Il voit une mission, comprend le besoin, dépose son profil et garde un fil de suivi. Simple, propre, humain.": "Here the visitor is not drowned in confusion. They see a mission, understand the need, submit their profile and keep a clear follow-up thread. Simple, clean, human.",
+        "Voir": "View",
+        "Lire les missions publiées.": "Read published missions.",
+        "Voir les missions courtes urgentes.": "View short urgent missions.",
+        "Déposer un profil simple.": "Submit a simple profile.",
+        "Clarifier métier, expérience et disponibilité.": "Clarify job skill, experience and availability.",
+        "Lire les mots utiles emploi terrain.": "Read useful field-work words.",
+        "Inscrire": "Register",
+        "Publier une mission côté pro.": "Publish a mission on the professional side.",
+        "Besoin d’aide ?": "Need help?",
+        "Un candidat ou un recruteur peut demander une information directement. DIGIY oriente, mais la relation reste humaine.": "A candidate or recruiter can ask for information directly. DIGIY guides, but the relationship stays human.",
+        "Entrée publique propre": "Clean public entrance",
+        "Portes utiles et lisibles": "Useful, readable doors",
+        "Code PIN côté candidat": "PIN code on candidate side",
+        "Parcours public avant contact": "Public path before contact",
+        "Choisir sa porte.": "Choose your doorway.",
+        "Le public avance par cartes simples. Le professionnel ne passe pas par une page confuse : il ouvre directement l’inscription JOBS pour publier une mission. NDIMBAL Express reste la porte rapide pour les missions courtes et urgentes.": "The public moves forward through simple cards. The professional does not go through a confusing page: they open JOBS registration directly to publish a mission. NDIMBAL Express remains the fast doorway for short and urgent missions.",
+        "Voir les missions publiées, repérer les besoins et ouvrir la fiche qui correspond.": "View published missions, spot the needs and open the matching card.",
+        "Usage": "Use",
+        "Lire avant d’agir": "Read before acting",
+        "Voir les missions courtes, urgentes ou ponctuelles : aide terrain, livraison, coup de main, besoin rapide.": "View short, urgent or one-off missions: field help, delivery, extra hand, quick need.",
+        "Dépanner vite": "Help quickly",
+        "Voir NDIMBAL Express": "View NDIMBAL Express",
+        "Candidat": "Candidate",
+        "Déposer une candidature liée à une mission ou envoyer un profil simple.": "Submit an application linked to a mission or send a simple profile.",
+        "Nom, WhatsApp, métier": "Name, WhatsApp, skill",
+        "Déposer un profil": "Submit a profile",
+        "Préparer un profil plus clair selon le métier, l’expérience et la disponibilité.": "Prepare a clearer profile based on skill, experience and availability.",
+        "Clarifier le profil": "Clarify the profile",
+        "Ouvrir le dossier": "Open the profile",
+        "Lexique Wolof": "Wolof glossary",
+        "Lire les phrases utiles pour l’emploi terrain : chercher du travail, expérience, disponibilité, salaire, entretien.": "Read useful phrases for field jobs: looking for work, experience, availability, pay, interview.",
+        "Parler simple sur le terrain": "Speak simply in the field",
+        "Ouvrir le lexique": "Open the glossary",
+        "Suivi": "Follow-up",
+        "Retrouver son dépôt et garder un fil clair après avoir postulé.": "Find your submission and keep a clear thread after applying.",
+        "Voir où en est mon dépôt": "See where my submission stands",
+        "Ouvrir le suivi": "Open follow-up",
+        "Pro": "Pro",
+        "Inscription JOBS": "JOBS registration",
+        "Publier une offre, recruter, chercher une main-d’œuvre terrain ou rendre une mission visible.": "Publish an offer, recruit, look for field workers or make a mission visible.",
+        "Publier / recruter": "Publish / recruit",
+        "Présentation comme vitrine module": "Presented as a module showcase",
+        "Une page qui donne envie d’entrer.": "A page that makes people want to enter.",
+        "La page JOBS doit respirer comme les autres portes DIGIY : une promesse claire, des cartes propres, des actions visibles et aucune confusion entre candidat et recruteur.": "The JOBS page must breathe like the other DIGIY doors: a clear promise, clean cards, visible actions and no confusion between candidate and recruiter.",
+        "Le candidat ne tombe pas dans un espace pro.": "The candidate does not land in a pro space.",
+        "NDIMBAL Express sépare les missions courtes urgentes des offres JOBS plus structurées.": "NDIMBAL Express separates short urgent missions from more structured JOBS offers.",
+        "Le recruteur a une entrée dédiée pour inscrire une mission.": "The recruiter has a dedicated entrance to register a mission.",
+        "Les boutons restent simples sur téléphone : voir, postuler, dossier, suivi.": "Buttons stay simple on mobile: view, apply, profile, follow-up.",
+        "L’audio reste court, manuel, jamais automatique.": "Audio stays short, manual, never automatic.",
+        "Mission terrain": "Field mission",
+        "Service, boutique, restaurant": "Service, shop, restaurant",
+        "Des besoins locaux présentés proprement, avec métier, zone et contact clair.": "Local needs presented cleanly, with skill, area and clear contact.",
+        "Terrain": "Field",
+        "Profil simple et lisible": "Simple, readable profile",
+        "Le candidat donne l’essentiel : nom, WhatsApp, métier, disponibilité.": "The candidate gives the essentials: name, WhatsApp, skill, availability.",
+        "Profil": "Profile",
+        "Expérience mieux rangée": "Experience better organized",
+        "Le dossier aide à structurer ce que la personne sait faire réellement.": "The profile helps structure what the person can really do.",
+        "Métier": "Skill",
+        "Compétences": "Skills",
+        "Disponibilité": "Availability",
+        "Recruteur": "Recruiter",
+        "Publier une mission": "Publish a mission",
+        "Le professionnel inscrit son besoin dans JOBS, sans mélanger avec les tarifs généraux.": "The professional registers their need in JOBS, without mixing it with general pricing.",
+        "Offre": "Offer",
+        "Recrutement": "Recruitment",
+        "Parcours simple.": "Simple path.",
+        "Le candidat n’a pas besoin de comprendre l’arrière-cuisine. Il avance par étapes claires, comme sur une vraie porte de module.": "The candidate does not need to understand the back office. They move through clear steps, like a real module doorway.",
+        "Il ouvre les missions et repère un besoin réel dans sa zone.": "They open the missions and spot a real need in their area.",
+        "Comprendre": "Understand",
+        "Il lit la fiche : métier, ville, type de mission et conditions utiles.": "They read the card: skill, city, mission type and useful conditions.",
+        "Il dépose son nom, WhatsApp, métier et disponibilité.": "They submit their name, WhatsApp, skill and availability.",
+        "Suivre": "Follow",
+        "Il garde un fil clair après son dépôt et peut revenir facilement.": "They keep a clear thread after submission and can return easily.",
+        "Le travail doit être visible, pas compliqué.": "Work must be visible, not complicated.",
+        "DIGIY JOBS garde une porte publique propre : missions, NDIMBAL Express, candidature, dossier, suivi. Côté pro, l’inscription JOBS reste séparée et claire pour publier une mission.": "DIGIY JOBS keeps a clean public doorway: missions, NDIMBAL Express, application, profile, follow-up. On the pro side, JOBS registration stays separate and clear for publishing a mission.",
+        "Action principale": "Main action",
+        "Voir les missions disponibles": "View available missions",
+        "Missions courtes urgentes": "Short urgent missions",
+        "Après la lecture": "After reading",
+        "Déposer une candidature": "Submit an application",
+        "Langue terrain": "Field language",
+        "Ouvrir le lexique Wolof JOBS": "Open the Wolof JOBS glossary",
+        "Côté pro / recruteur": "Pro / recruiter side",
+        "Inscrire JOBS / publier une mission": "Register JOBS / publish a mission",
+        "DIGIY JOBS · Entrée publique candidat · BY DIGIYLYFE": "DIGIY JOBS · Public candidate entrance · BY DIGIYLYFE",
+        "Site": "Website",
+        "Accueil": "Home",
+
+        "Ouvrir Missions": "Open Missions",
+        "Ouvrir NDIMBAL": "Open NDIMBAL",
+        "Préparer le dossier": "Prepare profile",
+        "Lire les offres": "Read offers",
+        "Lecture vocale non disponible sur ce navigateur.": "Voice playback is not available in this browser.",
+        "Lecture arrêtée.": "Playback stopped.",
+        "Lecture en cours…": "Playing…",
+        "Lecture terminée.": "Playback finished.",
+        "Lecture interrompue.": "Playback interrupted."
+};
+      var ATTR = {
+        "Retour en haut de page": "Back to top",
+        "Navigation principale": "Main navigation",
+        "Repères DIGIY JOBS": "DIGIY JOBS markers",
+        "Résumé du module": "Module summary",
+        "Chiffres repères": "Key figures",
+        "Exemples de présentation JOBS": "JOBS presentation examples",
+        "Navigation mobile": "Mobile navigation",
+        "Choisir la langue": "Choose language"
+};
+
+      window.digiyJobsSetLang = function(lang){
+        try{
+          var url = new URL(window.location.href);
+          if(lang === "en"){
+            url.searchParams.set("lang","en");
+            url.searchParams.set("v",VERSION);
+            window.location.href = url.toString();
+            return;
+          }
+          url.searchParams.delete("lang");
+          url.searchParams.set("v","jobs-fr-native-20260620");
+          window.location.href = url.pathname + (url.search ? url.search : "") + (url.hash || "");
+        }catch(_){
+          if(lang === "en") window.location.href = "?lang=en&v=" + VERSION;
+          else window.location.href = window.location.pathname + "?v=jobs-fr-native-20260620";
+        }
+      };
+
+      function normalizeText(value){
+        return String(value || "").replace(/\s+/g," ").trim();
+      }
+      function setTextNode(node, value){
+        var raw = node.nodeValue || "";
+        var leading = (raw.match(/^\s*/) || [""])[0];
+        var trailing = (raw.match(/\s*$/) || [""])[0];
+        node.nodeValue = leading + value + trailing;
+      }
+      function translateTextNode(node){
+        if(!node || !node.nodeValue) return;
+        var key = normalizeText(node.nodeValue);
+        if(!key || !T[key]) return;
+        setTextNode(node, T[key]);
+      }
+      function translateAttributes(el){
+        if(!el || !el.getAttribute) return;
+        ["aria-label","title","alt"].forEach(function(name){
+          var val = el.getAttribute(name);
+          var key = normalizeText(val);
+          if(key && ATTR[key]) el.setAttribute(name, ATTR[key]);
+          else if(key && T[key]) el.setAttribute(name, T[key]);
+        });
+      }
+      function translateTree(root){
+        if(LANG !== "en") return;
+        if(!root) root = document.body;
+        if(root.nodeType === 3){
+          translateTextNode(root);
+          return;
+        }
+        if(root.nodeType !== 1 && root.nodeType !== 9 && root.nodeType !== 11) return;
+        if(root.matches && root.matches("script,style,noscript")) return;
+        translateAttributes(root);
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+          acceptNode:function(node){
+            var p = node.parentElement;
+            if(!p || p.closest("script,style,noscript")) return NodeFilter.FILTER_REJECT;
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        });
+        var n;
+        while((n = walker.nextNode())) translateTextNode(n);
+        if(root.querySelectorAll){
+          root.querySelectorAll("[aria-label],[title],[alt]").forEach(translateAttributes);
+        }
+      }
+      function applyHead(){
+        if(LANG === "en"){
+          document.documentElement.lang = "en";
+          document.title = "DIGIY JOBS — Missions, applications & registration";
+          var desc = document.querySelector('meta[name="description"]');
+          if(desc) desc.setAttribute("content","DIGIY JOBS — view missions, apply simply, prepare your profile, follow your application or register a JOBS offer.");
+        }else{
+          document.documentElement.lang = "fr";
+        }
+      }
+      function boot(){
+        applyHead();
+        if(LANG === "en") translateTree(document.body);
+        document.querySelectorAll("[data-digiy-lang-btn]").forEach(function(btn){
+          var active = btn.getAttribute("data-digiy-lang-btn") === LANG;
+          btn.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        if(LANG === "en"){
+          var mo = new MutationObserver(function(list){
+            list.forEach(function(m){
+              if(m.type === "characterData") translateTextNode(m.target);
+              m.addedNodes && m.addedNodes.forEach(function(node){ translateTree(node); });
+            });
+          });
+          mo.observe(document.body, {childList:true, subtree:true, characterData:true});
+        }
+      }
+      if(document.readyState === "loading") document.addEventListener("DOMContentLoaded",boot);
+      else boot();
+    })();
+  </script>
+<script>
+    (function(){
+      "use strict";
+      function openCard(card){
+        if(!card) return;
+        var href = card.getAttribute("data-digiy-link");
+        if(!href) return;
+        window.location.href = href;
+      }
+      document.addEventListener("click", function(e){
+        var card = e.target && e.target.closest ? e.target.closest("[data-digiy-link]") : null;
+        if(!card) return;
+        if(e.target.closest("a,button,input,select,textarea")) return;
+        openCard(card);
+      });
+      document.addEventListener("keydown", function(e){
+        if(e.key !== "Enter" && e.key !== " ") return;
+        var card = e.target && e.target.matches && e.target.matches("[data-digiy-link]") ? e.target : null;
+        if(!card) return;
+        e.preventDefault();
+        openCard(card);
+      });
+    })();
+  </script>
+<script defer="" src="https://pro-action-digiy.digiylyfe.com/assets/js/digiy-retour-voix.js?v=retour-voix-20260606-v4"></script>
+
+<script>
+(function(){
+  "use strict";
+  const JOBS_BASE = "https://jobs.digiylyfe.com/";
+  const JOBS_PAGES = new Set([
+    "missions.html",
+    "mission.html",
+    "ndimbal-express.html",
+    "postuler.html",
+    "dossier-intelligent.html",
+    "suivi.html",
+    "inscription-jobs.html",
+    "action.html",
+    "pay-transition.html"
+  ]);
+  document.addEventListener("click", function(e){
+    const a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if(!a) return;
+    const raw = a.getAttribute("href") || "";
+    const clean = raw.replace(/^\.\//, "");
+    if(JOBS_PAGES.has(clean)){
+      e.preventDefault();
+      window.location.href = JOBS_BASE + clean;
+    }
+  }, true);
+})();
+</script>
+
+
+<script>
+(function(){
+  "use strict";
+  const LANG = (window.DIGIY_JOBS_LANG || new URLSearchParams(location.search).get("lang") || "fr") === "en" ? "en" : "fr";
+  const BASE = "https://jobs.digiylyfe.com/";
+  const EN_MAP = {
+    "missions.html":"missions-en.html",
+    "ndimbal-express.html":"ndimbal-express-en.html",
+    "postuler.html":"postuler-en.html",
+    "dossier-intelligent.html":"dossier-intelligent-en.html",
+    "suivi.html":"suivi-en.html",
+    "inscription-jobs.html":"inscription-jobs-en.html"
+  };
+  function cleanPath(href){
+    try{
+      const u = new URL(href, location.href);
+      return u.pathname.split('/').pop();
+    }catch(_){ return String(href||'').replace(/^\.\//,'').split('?')[0].split('#')[0]; }
+  }
+  function rewrite(){
+    if(LANG !== "en") return;
+    document.querySelectorAll('a[href]').forEach(a=>{
+      const name = cleanPath(a.getAttribute('href'));
+      if(EN_MAP[name]) a.setAttribute('href', BASE + EN_MAP[name]);
+    });
+  }
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", rewrite);
+  else rewrite();
+})();
+</script>
+
 </body>
 </html>
+
 
 
 
