@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#123c2d">
-  <title>PRO JOB Registration — DIGIY tariffs & Wave payment</title>
-  <meta name="description" content="DIGIY PRO JOB registration — recruiter subscription, structured missions, applications, direct contact, Wave payment and DIGIY validation before pro access.">
-  <meta name="digiy-page" content="pro-job-registration-tariffs-wave-en-20260621">
+  <title>PRO JOB Registration — Senegal & France tariffs</title>
+  <meta name="description" content="DIGIY PRO JOB registration — Senegal and France country grids, recruiter subscription, missions, applications, direct contact, Wave or Sendwave payment and DIGIY validation before pro access.">
+  <meta name="digiy-page" content="pro-job-registration-country-grid-sendwave-wave-en-20260629">
   <style>
     :root{
       --bg:#123c2d;
@@ -227,6 +227,47 @@
     }
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
+    .countryPanel{
+      margin:0 0 14px;
+      border:1px solid rgba(250,204,21,.34);
+      border-radius:24px;
+      background:linear-gradient(145deg,rgba(255,253,247,.96),rgba(255,248,220,.92));
+      color:#10231b;
+      padding:14px;
+      box-shadow:0 16px 38px rgba(0,0,0,.16);
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:12px;
+      align-items:center;
+    }
+    .countryPanel strong{display:block;font-size:20px;color:#10231b}
+    .countryPanel span{display:block;margin-top:5px;color:#64746b;font-weight:850;line-height:1.35}
+    .countryPanel select{
+      min-height:48px;
+      border-radius:16px;
+      border:1px solid rgba(17,36,27,.18);
+      background:#fff;
+      color:#10231b;
+      padding:0 14px;
+      font-weight:1000;
+      outline:none;
+      min-width:230px;
+    }
+    .doctrineBox{
+      margin-top:10px;
+      border:1px dashed rgba(21,95,67,.26);
+      background:rgba(21,95,67,.07);
+      border-radius:18px;
+      padding:12px;
+      color:#155f43;
+      font-weight:950;
+      line-height:1.45;
+      font-size:14px;
+    }
+    .offer.pending-france{opacity:.86}
+    .offer.pending-france .price{color:#7a4d00}
+
+
     @media(max-width:900px){
       .hero,.grid{grid-template-columns:1fr}.summary{position:static}.formGrid{grid-template-columns:1fr}.actions{grid-template-columns:1fr 1fr}
       .contact-actions{grid-template-columns:1fr}
@@ -246,7 +287,7 @@
     <header class="top">
       <a class="brand" href="https://jobs.digiylyfe.com/" aria-label="Back to DIGIY JOBS">
         <span class="brandMark">💼</span>
-        <strong>PRO JOB<span>RECRUITER REGISTRATION · TARIFFS · WAVE</span></strong>
+        <strong>PRO JOB<span>RECRUITER REGISTRATION · COUNTRY GRID · WAVE/SENDWAVE</span></strong>
       </a>
       <nav class="nav" aria-label="Navigation">
         <a href="https://jobs.digiylyfe.com/">← Public JOBS</a>
@@ -262,7 +303,7 @@
         <h1>Publish structured missions.</h1>
         <p class="lead">
           PRO JOB is the recruiter doorway inside DIGIY JOBS: publish missions, receive applications, keep direct contact and follow requests clearly.
-          A non-subscribed visitor does not enter the pro space directly: they choose a subscription, pay by Wave, send the proof, then DIGIY opens access.
+          A non-subscribed visitor does not enter the pro space directly: they choose a country grid, pay by Wave in Senegal or by Sendwave from France to the Senegal Wave number, send the proof, then DIGIY opens access.
         </p>
         <div class="pills">
           <span class="pill gold">0% commission</span>
@@ -274,10 +315,27 @@
         </div>
       </div>
       <aside class="waveHero">
-        <small>Official Wave payment</small>
+        <small>Official payment receiver</small>
         <strong>JB BEAUVILLE<br>+221 77 134 28 89</strong>
-        <p>After payment, send the proof by WhatsApp or SMS. DIGIY checks it and helps open PRO JOB access.</p>
+        <p>Senegal pays by Wave direct. France pays by Sendwave to this Senegal Wave receiver. DIGIY checks proof before opening PRO JOB access.</p>
       </aside>
+    </section>
+
+    <section class="countryPanel" aria-label="Country tariff grid">
+      <div>
+        <strong>Country tariff grid</strong>
+        <span id="countryHelp">Senegal uses FCFA and direct Wave payment. France uses EUR and Sendwave to the Senegal Wave number.</span>
+        <div class="doctrineBox">
+          These prices are not an exchange-rate conversion. They are country grids adapted to each market, purchasing power and payment method.
+        </div>
+      </div>
+      <label for="country" style="display:grid;gap:6px;color:#7a4d00;font-size:12px;font-weight:1000;text-transform:uppercase;letter-spacing:.06em">
+        Country
+        <select id="country">
+          <option value="senegal">🇸🇳 Senegal · Wave direct</option>
+          <option value="france">🇫🇷 France · Sendwave to Senegal Wave</option>
+        </select>
+      </label>
     </section>
 
     <section class="grid" id="tariffs">
@@ -306,7 +364,7 @@
           </label>
         </div>
 
-        <div class="tarif-section">✨ Visibility BOOST <span>Temporary spotlight</span></div>
+        <div class="tarif-section">✨ Visibility BOOST <span>Temporary spotlight · France boost tariffs to confirm before payment</span></div>
         <div class="offers">
           <label class="offer">
             <input type="checkbox" class="choice" data-code="E1" data-label="Local Boost" data-amount="5000" data-impact="Small local spotlight on the mission or recruiter page.">
@@ -328,24 +386,24 @@
         <div class="tarif-section">📣 NETWORK subscriber / FIRST non-subscriber <span>Qualified visibility</span></div>
         <div class="offers">
           <label class="offer">
-            <input type="checkbox" class="choice" data-code="R7" data-label="NETWORK subscriber — 7 days" data-amount="15000" data-impact="7-day visibility for a professional already subscribed to DIGIY.">
+            <input type="checkbox" class="choice" data-code="R7" data-label="NETWORK subscriber — 7 days" data-amount="15000" data-eur="28" data-impact="7-day visibility for a professional already subscribed to DIGIY.">
             <span><span class="code">R7</span><strong>NETWORK subscriber — 7 days</strong><small>For a professional already subscribed to DIGIY.</small></span>
             <span class="price">15,000 FCFA</span>
           </label>
           <label class="offer">
-            <input type="checkbox" class="choice" data-code="R15" data-label="NETWORK subscriber — 15 days" data-amount="25000" data-impact="15-day visibility for a professional already subscribed to DIGIY.">
+            <input type="checkbox" class="choice" data-code="R15" data-label="NETWORK subscriber — 15 days" data-amount="25000" data-eur="45" data-impact="15-day visibility for a professional already subscribed to DIGIY.">
             <span><span class="code">R15</span><strong>NETWORK subscriber — 15 days</strong><small>For a professional already subscribed to DIGIY.</small></span>
             <span class="price">25,000 FCFA</span>
           </label>
           <label class="offer">
-            <input type="checkbox" class="choice" data-code="R30" data-label="NETWORK subscriber — 1 month" data-amount="45000" data-impact="1-month visibility for a professional already subscribed to DIGIY.">
+            <input type="checkbox" class="choice" data-code="R30" data-label="NETWORK subscriber — 1 month" data-amount="45000" data-eur="75" data-impact="1-month visibility for a professional already subscribed to DIGIY.">
             <span><span class="code">R30</span><strong>NETWORK subscriber — 1 month</strong><small>For a professional already subscribed to DIGIY.</small></span>
             <span class="price">45,000 FCFA</span>
           </label>
           <label class="offer">
-            <input type="checkbox" class="choice" data-code="FIRST" data-label="FIRST class placement — non-subscriber" data-amount="150000" data-eur="229" data-impact="Qualification, page/showcase, QR, link, ready messages, qualified visibility and priority support.">
+            <input type="checkbox" class="choice" data-code="FIRST" data-label="FIRST class placement — non-subscriber" data-amount="150000" data-eur="260" data-impact="Qualification, page/showcase, QR, link, ready messages, qualified visibility and priority support.">
             <span><span class="code">FIRST</span><strong>FIRST class placement — non-subscriber</strong><small>Qualification, page/showcase, QR, link, ready messages, qualified visibility.</small></span>
-            <span class="price">150,000 FCFA<span>1 month</span></span>
+            <span class="price">150,000 FCFA<span>€260 · 1 month</span></span>
           </label>
         </div>
 
@@ -396,8 +454,8 @@
         </div>
 
         <div class="payment">
-          <h3>💳 Wave payment</h3>
-          <p>Payment name and number</p>
+          <h3 id="paymentTitle">💳 Wave payment</h3>
+          <p id="paymentSubtitle">Payment name and number</p>
           <div class="bigAmount" id="waveAmount">0 FCFA</div>
           <div class="kv"><span>Wave</span><strong>JB BEAUVILLE</strong></div>
           <div class="kv"><span>Phone</span><strong>+221 77 134 28 89</strong></div>
@@ -464,40 +522,85 @@
       const DIGIY_PHONE_DISPLAY = "+221 77 134 28 89";
       const DIGIY_PAY_NAME = "JB BEAUVILLE";
       const PAGE_URL = "https://jobs.digiylyfe.com/inscription-jobs-en.html";
+      const COUNTRY_KEY = "digiy_pro_job_country_grid_v1";
       const $ = id => document.getElementById(id);
       const fields = ["proName","proPhone","zone","activity","note"];
-      const nf = new Intl.NumberFormat("en-US");
+      const nfFcfa = new Intl.NumberFormat("en-US");
+      const nfEur = new Intl.NumberFormat("fr-FR");
 
       function val(id){ return String($(id)?.value || "").trim(); }
       function dash(v){ return v || "—"; }
-      function money(n){ return nf.format(Number(n || 0)) + " FCFA"; }
+      function country(){ return $("country") && $("country").value === "france" ? "france" : "senegal"; }
+      function isFrance(){ return country() === "france"; }
+      function moneyFcfa(n){ return nfFcfa.format(Number(n || 0)) + " FCFA"; }
+      function moneyEur(n){ return nfEur.format(Number(n || 0)) + " €"; }
       function selectedChoices(){
         return Array.from(document.querySelectorAll(".choice:checked")).map(c => ({
           code: c.dataset.code || "",
           label: c.dataset.label || "",
           amount: Number(c.dataset.amount || 0),
+          eur: Number(c.dataset.eur || 0),
           impact: c.dataset.impact || ""
         }));
       }
-      function total(){ return selectedChoices().reduce((sum,c) => sum + c.amount, 0); }
+      function hasFrenchPending(){
+        return isFrance() && selectedChoices().some(c => !c.eur);
+      }
+      function totalFcfa(){ return selectedChoices().reduce((sum,c) => sum + c.amount, 0); }
+      function totalEur(){ return selectedChoices().reduce((sum,c) => sum + (c.eur || 0), 0); }
+      function displayTotal(){
+        if(isFrance()){
+          const t = moneyEur(totalEur());
+          return hasFrenchPending() ? t + " + item(s) to confirm" : t;
+        }
+        return moneyFcfa(totalFcfa());
+      }
+      function amountForChoice(c){
+        if(isFrance()){
+          return c.eur ? moneyEur(c.eur) : "France tariff to confirm";
+        }
+        return moneyFcfa(c.amount);
+      }
       function nowText(){
         try{
           return new Intl.DateTimeFormat("en-US",{dateStyle:"full",timeStyle:"short"}).format(new Date());
         }catch(_){ return new Date().toLocaleString(); }
       }
+      function paymentMethodText(){
+        return isFrance()
+          ? "Sendwave France → Senegal Wave"
+          : "Wave Senegal direct";
+      }
+      function paymentInstruction(){
+        return isFrance()
+          ? "From France: download/open Sendwave, choose Senegal, send the EUR amount to the Senegal Wave receiver below, then send proof by WhatsApp."
+          : "From Senegal: pay directly by Wave to the receiver below, then send proof by WhatsApp.";
+      }
+      function linesText(){
+        const choices = selectedChoices();
+        return choices.length
+          ? choices.map(c => "- " + c.code + " · " + c.label + " · " + amountForChoice(c)).join("\n")
+          : "No choice selected";
+      }
       function noteText(){
         const choices = selectedChoices();
-        const t = total();
         return [
           "💼 PRO JOB DIGIY — recruiter registration",
-          "Choices: " + (choices.length ? choices.map(c => c.code + " " + c.label).join(" + ") : "No choice"),
-          "Subtotal: " + money(t),
-          "Adjustment / discount: 0 FCFA",
-          "Total to pay: " + money(t),
+          "Country grid: " + (isFrance() ? "France · EUR" : "Senegal · FCFA"),
+          "Payment method: " + paymentMethodText(),
           "",
-          "Official Wave payment:",
+          "Choices:",
+          linesText(),
+          "",
+          "Subtotal: " + displayTotal(),
+          "Adjustment / discount: 0",
+          "Total to pay: " + displayTotal(),
+          hasFrenchPending() ? "Pending note: one selected French item has no validated EUR tariff yet. Confirm with DIGIY before payment." : "",
+          "",
+          "Official payment receiver:",
           "Name: " + DIGIY_PAY_NAME,
           "Phone: " + DIGIY_PHONE_DISPLAY,
+          isFrance() ? "Receiver country: Senegal · pay by Sendwave from France to this Wave number." : "Receiver country: Senegal · pay by Wave direct.",
           "",
           "Professional info:",
           "Name / manager: " + dash(val("proName")),
@@ -508,9 +611,11 @@
           "",
           "Request date: " + nowText(),
           "",
-          "After Wave payment, send the screenshot or proof by WhatsApp. DIGIY checks it and helps open PRO JOB access.",
-          "Reminder: PRO JOB is separate from NDIMBAL Express."
-        ].join("\n");
+          paymentInstruction(),
+          "DIGIY checks the proof and helps open PRO JOB access.",
+          "Reminder: PRO JOB is separate from NDIMBAL Express.",
+          "Tariff doctrine: country grid, not an exchange-rate conversion."
+        ].filter(Boolean).join("\n");
       }
       function refreshImpact(){
         const choices = selectedChoices();
@@ -524,18 +629,56 @@
         target.className = "";
         target.innerHTML = "<ul>" + choices.map(c => "<li><b>" + c.code + " — " + c.label + ":</b> " + c.impact + "</li>").join("") + "</ul>";
       }
+      function refreshPriceLabels(){
+        document.querySelectorAll(".choice").forEach(c => {
+          const offer = c.closest(".offer");
+          const price = offer ? offer.querySelector(".price") : null;
+          if(!price) return;
+          const amount = Number(c.dataset.amount || 0);
+          const eur = Number(c.dataset.eur || 0);
+          offer.classList.toggle("pending-france", isFrance() && !eur);
+          if(isFrance()){
+            price.innerHTML = eur
+              ? moneyEur(eur) + "<span>France tariff</span>"
+              : "To confirm<span>France boost tariff</span>";
+          }else{
+            price.innerHTML = moneyFcfa(amount) + (eur ? "<span>Senegal tariff</span>" : "");
+          }
+        });
+      }
       function validate(){
-        const ok = selectedChoices().length > 0;
-        $("warning").classList.toggle("show", !ok);
-        return ok;
+        const hasChoice = selectedChoices().length > 0;
+        const warning = $("warning");
+        if(!warning) return hasChoice;
+        warning.classList.toggle("show", !hasChoice || hasFrenchPending());
+        warning.textContent = !hasChoice
+          ? "⚠️ Choose at least one offer before sending."
+          : "⚠️ One France tariff is still to confirm before payment.";
+        return hasChoice && !hasFrenchPending();
+      }
+      function refreshCountryText(){
+        if($("countryHelp")){
+          $("countryHelp").textContent = isFrance()
+            ? "France uses EUR. Payment is made through Sendwave from France to JB BEAUVILLE’s Senegal Wave number."
+            : "Senegal uses FCFA. Payment is made directly by Wave to JB BEAUVILLE.";
+        }
+        if($("paymentTitle")){
+          $("paymentTitle").textContent = isFrance() ? "💳 Sendwave → Senegal Wave" : "💳 Wave payment";
+        }
+        if($("paymentSubtitle")){
+          $("paymentSubtitle").textContent = isFrance()
+            ? "Sendwave receiver name and Senegal Wave number"
+            : "Payment name and number";
+        }
       }
       function refresh(){
-        const t = total();
+        refreshPriceLabels();
+        refreshCountryText();
         const choices = selectedChoices();
         $("sumChoice").textContent = choices.length ? choices.map(c => c.code).join(" + ") : "No choice";
-        $("sumSubtotal").textContent = money(t);
-        $("sumTotal").textContent = money(t);
-        $("waveAmount").textContent = money(t);
+        $("sumSubtotal").textContent = displayTotal();
+        $("sumTotal").textContent = displayTotal();
+        $("waveAmount").textContent = displayTotal();
         $("summaryText").textContent = noteText();
 
         const encoded = encodeURIComponent(noteText());
@@ -551,6 +694,7 @@
         $("qrLink").href = contactUrl;
         $("qrImg").src = "https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=" + encodeURIComponent(contactUrl);
 
+        try{ localStorage.setItem(COUNTRY_KEY, country()); }catch(_){}
         refreshImpact();
         validate();
       }
@@ -562,6 +706,18 @@
         window.__digiyToast = setTimeout(() => t.classList.remove("show"),1700);
       }
 
+      try{
+        const savedCountry = localStorage.getItem(COUNTRY_KEY);
+        const params = new URLSearchParams(location.search);
+        const fromUrl = String(params.get("pays") || params.get("country") || "").toLowerCase();
+        if($("country")){
+          if(fromUrl === "france" || fromUrl === "fr") $("country").value = "france";
+          else if(fromUrl === "senegal" || fromUrl === "sn") $("country").value = "senegal";
+          else if(savedCountry === "france" || savedCountry === "senegal") $("country").value = savedCountry;
+        }
+      }catch(_){}
+
+      if($("country")) $("country").addEventListener("change", refresh);
       document.querySelectorAll(".choice").forEach(el => el.addEventListener("change", refresh));
       fields.forEach(id => {
         const el = $(id);
@@ -575,7 +731,7 @@
         const text = noteText();
         try{
           await navigator.clipboard.writeText(text);
-          toast("Wave note copied ✅");
+          toast("Payment note copied ✅");
         }catch(e){
           prompt("Copy the summary:", text);
         }
@@ -636,6 +792,9 @@
   </script>
 </body>
 </html>
+
+
+
 
 
 
