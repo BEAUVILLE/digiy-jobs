@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#123c2d">
-  <title>Accès recruteur JOBS — Packs profils qualifiés & paiement DIGIY</title>
-  <meta name="description" content="DIGIY JOBS — accès recruteur à des profils candidats qualifiés, consentis et préparés. Packs 10, 25 et 50 profils avec paiement Wave et validation DIGIY.">
-  <meta name="digiy-page" content="pro-job-inscription-tarifs-wave-20260621">
+  <title>PRO JOB Registration — Senegal & France tariffs</title>
+  <meta name="description" content="DIGIY PRO JOB registration — Senegal and France country grids, recruiter subscription, missions, applications, direct contact, Wave or Sendwave payment and DIGIY validation before pro access.">
+  <meta name="digiy-page" content="pro-job-registration-country-grid-sendwave-wave-en-20260629">
   <style>
     :root{
       --bg:#123c2d;
@@ -227,6 +227,47 @@
     }
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
+    .countryPanel{
+      margin:0 0 14px;
+      border:1px solid rgba(250,204,21,.34);
+      border-radius:24px;
+      background:linear-gradient(145deg,rgba(255,253,247,.96),rgba(255,248,220,.92));
+      color:#10231b;
+      padding:14px;
+      box-shadow:0 16px 38px rgba(0,0,0,.16);
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:12px;
+      align-items:center;
+    }
+    .countryPanel strong{display:block;font-size:20px;color:#10231b}
+    .countryPanel span{display:block;margin-top:5px;color:#64746b;font-weight:850;line-height:1.35}
+    .countryPanel select{
+      min-height:48px;
+      border-radius:16px;
+      border:1px solid rgba(17,36,27,.18);
+      background:#fff;
+      color:#10231b;
+      padding:0 14px;
+      font-weight:1000;
+      outline:none;
+      min-width:230px;
+    }
+    .doctrineBox{
+      margin-top:10px;
+      border:1px dashed rgba(21,95,67,.26);
+      background:rgba(21,95,67,.07);
+      border-radius:18px;
+      padding:12px;
+      color:#155f43;
+      font-weight:950;
+      line-height:1.45;
+      font-size:14px;
+    }
+    .offer.pending-france{opacity:.86}
+    .offer.pending-france .price{color:#7a4d00}
+
+
     @media(max-width:900px){
       .hero,.grid{grid-template-columns:1fr}.summary{position:static}.formGrid{grid-template-columns:1fr}.actions{grid-template-columns:1fr 1fr}
       .contact-actions{grid-template-columns:1fr}
@@ -244,285 +285,337 @@
 <body>
   <main class="app">
     <header class="top">
-      <a class="brand" href="https://jobs.digiylyfe.com/" aria-label="Retour DIGIY JOBS">
+      <a class="brand" href="https://jobs.digiylyfe.com/" aria-label="Back to DIGIY JOBS">
         <span class="brandMark">💼</span>
-        <strong>ACCÈS RECRUTEUR<span>PROFILS QUALIFIÉS · TARIFS · WAVE</span></strong>
+        <strong>PRO JOB<span>RECRUITER REGISTRATION · COUNTRY GRID · WAVE/SENDWAVE</span></strong>
       </a>
       <nav class="nav" aria-label="Navigation">
-        <a href="https://jobs.digiylyfe.com/">← JOBS public</a>
+        <a href="https://jobs.digiylyfe.com/">← Public JOBS</a>
         <a href="https://digiy-hub.digiylyfe.com/">🧭 HUB</a>
-        <a class="clear" href="https://ndimbal-express.digiylyfe.com/">⚡ NDIMBAL séparé</a>
-        <a class="gold" href="#tarifs">Voir les tarifs</a>
+        <a class="clear" href="https://ndimbal-express.digiylyfe.com/">⚡ NDIMBAL is separate</a>
+        <a class="gold" href="#tariffs">View tariffs</a>
       </nav>
     </header>
 
     <section class="hero">
       <div>
-        <div class="kicker">Accès recruteur · profils qualifiés · validation DIGIY</div>
-        <h1>Accéder à des profils qualifiés.</h1>
+        <div class="kicker">Registration · PRO JOB · recruiter · DIGIY validation</div>
+        <h1>Publish structured missions.</h1>
         <p class="lead">
-          DIGIY JOBS ne vend pas des CV bruts. DIGIY ouvre un accès encadré à des profils candidats qualifiés, consentis et préparés : métier, zone, disponibilité, compétences, niveau, langues et mise en relation propre. Le recruteur choisit son pack, règle par Wave, envoie la preuve, puis DIGIY accompagne l’accès.
+          PRO JOB is the recruiter doorway inside DIGIY JOBS: publish missions, receive applications, keep direct contact and follow requests clearly.
+          A non-subscribed visitor does not enter the pro space directly: they choose a country grid, pay by Wave in Senegal or by Sendwave from France to the Senegal Wave number, send the proof, then DIGIY opens access.
         </p>
         <div class="pills">
           <span class="pill gold">0% commission</span>
-          <span class="pill">Contact direct</span>
-          <span class="pill">Profils qualifiés</span>
-          <span class="pill">Candidats consentis</span>
-          <span class="pill">Mise en relation encadrée</span>
-          <span class="pill gold">Séparé de NDIMBAL Express</span>
+          <span class="pill">Direct contact</span>
+          <span class="pill">Structured missions</span>
+          <span class="pill">Applications</span>
+          <span class="pill">Pro access after validation</span>
+          <span class="pill gold">Separate from NDIMBAL Express</span>
         </div>
       </div>
       <aside class="waveHero">
-        <small>Paiement Wave officiel</small>
+        <small>Official payment receiver</small>
         <strong>JB BEAUVILLE<br>+221 77 134 28 89</strong>
-        <p>Après paiement, envoie la preuve par WhatsApp ou SMS. DIGIY vérifie puis accompagne l’ouverture PRO JOB.</p>
+        <p>Senegal pays by Wave direct. France pays by Sendwave to this Senegal Wave receiver. DIGIY checks proof before opening PRO JOB access.</p>
       </aside>
     </section>
 
-    <section class="grid" id="tarifs">
+    <section class="countryPanel" aria-label="Country tariff grid">
+      <div>
+        <strong>Country tariff grid</strong>
+        <span id="countryHelp">Senegal uses FCFA and direct Wave payment. France uses EUR and Sendwave to the Senegal Wave number.</span>
+        <div class="doctrineBox">
+          These prices are not an exchange-rate conversion. They are country grids adapted to each market, purchasing power and payment method.
+        </div>
+      </div>
+      <label for="country" style="display:grid;gap:6px;color:#7a4d00;font-size:12px;font-weight:1000;text-transform:uppercase;letter-spacing:.06em">
+        Country
+        <select id="country">
+          <option value="senegal">🇸🇳 Senegal · Wave direct</option>
+          <option value="france">🇫🇷 France · Sendwave to Senegal Wave</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="grid" id="tariffs">
       <article class="card light">
-        <h2>Tarifs PRO JOB</h2>
-        <p>Clique un ou plusieurs choix. Rien n’est précoché. Si tu te trompes, efface.</p>
+        <h2>PRO JOB tariffs</h2>
+        <p>Click one or several choices. Nothing is preselected. If you make a mistake, clear it.</p>
 
-        <div class="tarif-section">👥 Packs recruteurs <span>Profils qualifiés · mise en relation encadrée</span></div>
-        <p>Le recruteur ne paie pas pour posséder des données. Il paie pour accéder à un service de qualification, de présentation, de tri, de disponibilité et de mise en relation.</p>
+        <div class="tarif-section">💼 PRO JOB subscription <span>For recruiters, missions and applications</span></div>
         <div class="offers">
           <label class="offer">
-            <input type="radio" name="packRecruteur" class="choice" data-code="C10" data-label="Pack Découverte — 10 profils qualifiés" data-amount="35000" data-impact="Accès à 10 profils qualifiés. Idéal pour tester une recherche locale, avec profils préparés, consentement et mise en relation encadrée.">
-            <span><span class="code">C10</span><strong>Pack Découverte</strong><small>Accès à 10 profils qualifiés. Idéal pour tester une recherche locale.</small></span>
-            <span class="price">35 000 FCFA<span>10 profils</span></span>
+            <input type="checkbox" class="choice" data-code="J1" data-label="PRO JOB Essential" data-amount="19900" data-eur="29" data-impact="Recruiter page, simple mission publishing, direct WhatsApp contact, QR and application reception.">
+            <span><span class="code">J1</span><strong>PRO JOB Essential</strong><small>Recruiter page, simple missions, direct contact and applications.</small></span>
+            <span class="price">19,900 FCFA<span>€29</span></span>
           </label>
+
           <label class="offer">
-            <input type="radio" name="packRecruteur" class="choice" data-code="C25" data-label="Pack Recruteur — 25 profils qualifiés" data-amount="75000" data-impact="Accès à 25 profils qualifiés. Pour hôtel, restaurant, commerce, école ou PME avec besoin sérieux.">
-            <span><span class="code">C25</span><strong>Pack Recruteur</strong><small>Accès à 25 profils qualifiés. Pour hôtel, restaurant, commerce, école ou PME.</small></span>
-            <span class="price">75 000 FCFA<span>25 profils</span></span>
+            <input type="checkbox" class="choice" data-code="J2" data-label="PRO JOB Pro" data-amount="29900" data-eur="49" data-impact="Structured missions, ready-to-send texts, application reception, clearer follow-up and stronger recruiter presentation.">
+            <span><span class="code">J2</span><strong>PRO JOB Pro</strong><small>Structured missions, ready texts, applications and clearer follow-up.</small></span>
+            <span class="price">29,900 FCFA<span>€49</span></span>
           </label>
+
           <label class="offer">
-            <input type="radio" name="packRecruteur" class="choice" data-code="C50" data-label="Pack Entreprise — 50 profils qualifiés" data-amount="125000" data-impact="Accès à 50 profils qualifiés. Pour cabinet, groupe ou recrutement multi-postes.">
-            <span><span class="code">C50</span><strong>Pack Entreprise</strong><small>Accès à 50 profils qualifiés. Pour cabinet, groupe, recrutement multi-postes.</small></span>
-            <span class="price">125 000 FCFA<span>50 profils</span></span>
-          </label>
-        </div>
-        <div class="tarif-section">✨ BOOST visibilité <span>Projecteur temporaire</span></div>
-        <div class="offers">
-          <label class="offer">
-            <input type="checkbox" class="choice" data-code="E1" data-label="Boost Local" data-amount="5000" data-impact="Petit projecteur local sur la mission ou la fiche recruteur.">
-            <span><span class="code">E1</span><strong>Boost Local</strong><small>Petit projecteur local.</small></span>
-            <span class="price">5 000 FCFA</span>
-          </label>
-          <label class="offer">
-            <input type="checkbox" class="choice" data-code="E2" data-label="Boost Standard" data-amount="10000" data-impact="Mise en avant renforcée pour attirer plus de candidats.">
-            <span><span class="code">E2</span><strong>Boost Standard</strong><small>Mise en avant renforcée.</small></span>
-            <span class="price">10 000 FCFA</span>
-          </label>
-          <label class="offer">
-            <input type="checkbox" class="choice" data-code="E3" data-label="Boost Premium" data-amount="20000" data-impact="Visibilité maximale autour de la mission, de la zone ou du besoin recruteur.">
-            <span><span class="code">E3</span><strong>Boost Premium</strong><small>Visibilité maximale.</small></span>
-            <span class="price">20 000 FCFA</span>
+            <input type="checkbox" class="choice" data-code="J3" data-label="PRO JOB Recruitment" data-amount="45000" data-eur="69" data-impact="Stronger presence for active recruiters, repeated needs, several missions and structuring support.">
+            <span><span class="code">J3</span><strong>PRO JOB Recruitment</strong><small>Stronger presence for repeated needs, teams and several missions.</small></span>
+            <span class="price">45,000 FCFA<span>€69</span></span>
           </label>
         </div>
 
-        <div class="tarif-section">📣 RÉSEAU abonné / FIRST non-abonné <span>Visibilité qualifiée</span></div>
+        <div class="tarif-section">✨ Visibility BOOST <span>Temporary spotlight · France boost tariffs to confirm before payment</span></div>
         <div class="offers">
           <label class="offer">
-            <input type="checkbox" class="choice" data-code="R7" data-label="RÉSEAU abonné — 7 jours" data-amount="15000" data-impact="Mise en visibilité 7 jours pour un pro déjà abonné DIGIY.">
-            <span><span class="code">R7</span><strong>RÉSEAU abonné — 7 jours</strong><small>Pour pro déjà abonné DIGIY.</small></span>
-            <span class="price">15 000 FCFA</span>
+            <input type="checkbox" class="choice" data-code="E1" data-label="Local Boost" data-amount="5000" data-impact="Small local spotlight on the mission or recruiter page.">
+            <span><span class="code">E1</span><strong>Local Boost</strong><small>Small local spotlight.</small></span>
+            <span class="price">5,000 FCFA</span>
           </label>
           <label class="offer">
-            <input type="checkbox" class="choice" data-code="R15" data-label="RÉSEAU abonné — 15 jours" data-amount="25000" data-impact="Mise en visibilité 15 jours pour un pro déjà abonné DIGIY.">
-            <span><span class="code">R15</span><strong>RÉSEAU abonné — 15 jours</strong><small>Pour pro déjà abonné DIGIY.</small></span>
-            <span class="price">25 000 FCFA</span>
+            <input type="checkbox" class="choice" data-code="E2" data-label="Standard Boost" data-amount="10000" data-impact="Stronger highlighting to attract more candidates.">
+            <span><span class="code">E2</span><strong>Standard Boost</strong><small>Stronger highlighting.</small></span>
+            <span class="price">10,000 FCFA</span>
           </label>
           <label class="offer">
-            <input type="checkbox" class="choice" data-code="R30" data-label="RÉSEAU abonné — 1 mois" data-amount="45000" data-impact="Mise en visibilité 1 mois pour un pro déjà abonné DIGIY.">
-            <span><span class="code">R30</span><strong>RÉSEAU abonné — 1 mois</strong><small>Pour pro déjà abonné DIGIY.</small></span>
-            <span class="price">45 000 FCFA</span>
+            <input type="checkbox" class="choice" data-code="E3" data-label="Premium Boost" data-amount="20000" data-impact="Maximum visibility around the mission, the area or the recruiter need.">
+            <span><span class="code">E3</span><strong>Premium Boost</strong><small>Maximum visibility.</small></span>
+            <span class="price">20,000 FCFA</span>
+          </label>
+        </div>
+
+        <div class="tarif-section">📣 NETWORK subscriber / FIRST non-subscriber <span>Qualified visibility</span></div>
+        <div class="offers">
+          <label class="offer">
+            <input type="checkbox" class="choice" data-code="R7" data-label="NETWORK subscriber — 7 days" data-amount="15000" data-eur="28" data-impact="7-day visibility for a professional already subscribed to DIGIY.">
+            <span><span class="code">R7</span><strong>NETWORK subscriber — 7 days</strong><small>For a professional already subscribed to DIGIY.</small></span>
+            <span class="price">15,000 FCFA</span>
           </label>
           <label class="offer">
-            <input type="checkbox" class="choice" data-code="FIRST" data-label="Mise en classe FIRST — non-abonné" data-amount="150000" data-eur="229" data-impact="Qualification, fiche/vitrine, QR, lien, messages prêts, visibilité qualifiée et accompagnement prioritaire.">
-            <span><span class="code">FIRST</span><strong>Mise en classe FIRST — non-abonné</strong><small>Qualification, fiche/vitrine, QR, lien, messages prêts, visibilité qualifiée.</small></span>
-            <span class="price">150 000 FCFA<span>1 mois</span></span>
+            <input type="checkbox" class="choice" data-code="R15" data-label="NETWORK subscriber — 15 days" data-amount="25000" data-eur="45" data-impact="15-day visibility for a professional already subscribed to DIGIY.">
+            <span><span class="code">R15</span><strong>NETWORK subscriber — 15 days</strong><small>For a professional already subscribed to DIGIY.</small></span>
+            <span class="price">25,000 FCFA</span>
+          </label>
+          <label class="offer">
+            <input type="checkbox" class="choice" data-code="R30" data-label="NETWORK subscriber — 1 month" data-amount="45000" data-eur="75" data-impact="1-month visibility for a professional already subscribed to DIGIY.">
+            <span><span class="code">R30</span><strong>NETWORK subscriber — 1 month</strong><small>For a professional already subscribed to DIGIY.</small></span>
+            <span class="price">45,000 FCFA</span>
+          </label>
+          <label class="offer">
+            <input type="checkbox" class="choice" data-code="FIRST" data-label="FIRST class placement — non-subscriber" data-amount="150000" data-eur="260" data-impact="Qualification, page/showcase, QR, link, ready messages, qualified visibility and priority support.">
+            <span><span class="code">FIRST</span><strong>FIRST class placement — non-subscriber</strong><small>Qualification, page/showcase, QR, link, ready messages, qualified visibility.</small></span>
+            <span class="price">150,000 FCFA<span>€260 · 1 month</span></span>
           </label>
         </div>
 
         <div class="impact" aria-live="polite">
-          <strong>Ce que le pack recruteur apporte</strong>
-          <div id="impactList" class="emptyImpact">Aucun choix sélectionné. Rien n’est précoché.</div>
+          <strong>What the subscription brings me</strong>
+          <div id="impactList" class="emptyImpact">No choice selected. Nothing is preselected.</div>
         </div>
 
-        <div class="tarif-section">Infos pro pour le paiement <span>Pour identifier la demande</span></div>
-        <p>Ces infos servent seulement à identifier ta demande dans le message WhatsApp / SMS. La demande recruteur complète se précise ensuite avec DIGIY. Pour publier une mission, utilise la porte Inscription JOBS séparée.</p>
+        <div class="tarif-section">Professional info for payment <span>To identify the request</span></div>
+        <p>This information is only used to identify your request in the WhatsApp / SMS message. The full recruiter page is built afterward inside PRO JOB.</p>
 
         <div class="formGrid">
           <div class="field">
-            <label for="proName">Nom / responsable</label>
-            <input id="proName" placeholder="Ex : Mamadou Diop">
+            <label for="proName">Name / manager</label>
+            <input id="proName" placeholder="Example: Mamadou Diop">
           </div>
           <div class="field">
-            <label for="proPhone">Téléphone / WhatsApp</label>
-            <input id="proPhone" placeholder="Ex : +221 77 000 00 00">
+            <label for="proPhone">Phone / WhatsApp</label>
+            <input id="proPhone" placeholder="Example: +221 77 000 00 00">
           </div>
           <div class="field">
-            <label for="zone">Zone / ville</label>
-            <input id="zone" placeholder="Ex : Saly, Mbour, Dakar">
+            <label for="zone">Area / city</label>
+            <input id="zone" placeholder="Example: Saly, Mbour, Dakar">
           </div>
           <div class="field">
-            <label for="activity">Activité / besoin</label>
-            <input id="activity" placeholder="Ex : restaurant, hôtel, chantier, boutique">
+            <label for="activity">Activity / need</label>
+            <input id="activity" placeholder="Example: restaurant, hotel, construction site, shop">
           </div>
           <div class="field full">
-            <label for="note">Note libre</label>
-            <textarea id="note" placeholder="Ex : Je cherche serveurs, femmes de chambre, chauffeurs, vendeurs ou profils qualifiés."></textarea>
+            <label for="note">Free note</label>
+            <textarea id="note" placeholder="Example: I want to publish a server / driver / seller / laborer mission."></textarea>
           </div>
         </div>
 
         <div class="actions">
-          <button class="danger fullAction" id="clearInfoBtn" type="button">🧹 Effacer mes infos</button>
+          <button class="danger fullAction" id="clearInfoBtn" type="button">🧹 Clear my info</button>
         </div>
       </article>
 
-      <aside class="card light summary" aria-label="Résumé PRO JOB">
-        <h2>Résumé</h2>
+      <aside class="card light summary" aria-label="PRO JOB summary">
+        <h2>Summary</h2>
         <div class="selected">
           <div class="kv"><span>Module</span><strong>PRO JOB</strong></div>
-          <div class="kv"><span>Choix</span><strong id="sumChoice">Aucun choix</strong></div>
-          <div class="kv"><span>Sous-total</span><strong id="sumSubtotal">0 FCFA</strong></div>
-          <div class="kv"><span>Ajustement / remise</span><strong>0 FCFA</strong></div>
+          <div class="kv"><span>Choice</span><strong id="sumChoice">No choice</strong></div>
+          <div class="kv"><span>Subtotal</span><strong id="sumSubtotal">0 FCFA</strong></div>
+          <div class="kv"><span>Adjustment / discount</span><strong>0 FCFA</strong></div>
           <div class="kv"><span>Total</span><strong id="sumTotal">0 FCFA</strong></div>
         </div>
 
         <div class="payment">
-          <h3>💳 Paiement Wave</h3>
-          <p>Nom et numéro de paiement</p>
+          <h3 id="paymentTitle">💳 Wave payment</h3>
+          <p id="paymentSubtitle">Payment name and number</p>
           <div class="bigAmount" id="waveAmount">0 FCFA</div>
           <div class="kv"><span>Wave</span><strong>JB BEAUVILLE</strong></div>
-          <div class="kv"><span>Téléphone</span><strong>+221 77 134 28 89</strong></div>
+          <div class="kv"><span>Phone</span><strong>+221 77 134 28 89</strong></div>
         </div>
 
         <div class="noteBox">
-          <h3>📝 Note / preuve paiement</h3>
+          <h3>📝 Payment note / proof</h3>
           <div class="noteText" id="summaryText"></div>
         </div>
 
         <div class="actions">
           <a class="btn green" id="waBtn" href="#" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
           <a class="btn blue" id="smsBtn" href="#">📱 SMS</a>
-          <button class="danger" id="clearBtn" type="button">🧹 Effacer</button>
-          <button class="gold" id="copyBtn" type="button">📋 Copier Wave</button>
-          <a class="btn clear fullAction" id="proofBtn" href="#" target="_blank" rel="noopener noreferrer">📸 Envoyer preuve</a>
+          <button class="danger" id="clearBtn" type="button">🧹 Clear</button>
+          <button class="gold" id="copyBtn" type="button">📋 Copy Wave note</button>
+          <a class="btn clear fullAction" id="proofBtn" href="#" target="_blank" rel="noopener noreferrer">📸 Send proof</a>
         </div>
 
-        <div class="warning" id="warning">⚠️ Choisis au moins une offre avant d’envoyer.</div>
-        <div class="status" id="status">Résumé prêt.</div>
+        <div class="warning" id="warning">⚠️ Choose at least one offer before sending.</div>
+        <div class="status" id="status">Summary ready.</div>
       </aside>
     </section>
 
-    <section class="contact-card" aria-label="Contact numérique PRO JOB">
+    <section class="contact-card" aria-label="PRO JOB digital contact">
       <div class="contact-top">
         <div class="contact-title">
-          <div class="kicker">Contact numérique DIGIY</div>
-          <h2>Écris, enregistre, partage.</h2>
-          <p>Pas besoin d’avoir DIGIY dans ton répertoire. Clique le QR sur téléphone, ou scanne-le depuis un autre appareil.</p>
+          <div class="kicker">DIGIY digital contact</div>
+          <h2>Write, save, share.</h2>
+          <p>You do not need to already have DIGIY in your contacts. Tap the QR on a phone, or scan it from another device.</p>
         </div>
       </div>
       <div class="contact-actions">
-        <a class="btn green" id="contactWaBtn" href="#" target="_blank" rel="noopener noreferrer">📲 Écrire sur WhatsApp</a>
-        <button class="btn clear" id="saveContactBtn" type="button">👤 Ajouter aux contacts</button>
-        <button class="btn gold" id="shareBtn" type="button">🔗 Partager cette page</button>
+        <a class="btn green" id="contactWaBtn" href="#" target="_blank" rel="noopener noreferrer">📲 Write on WhatsApp</a>
+        <button class="btn clear" id="saveContactBtn" type="button">👤 Add to contacts</button>
+        <button class="btn gold" id="shareBtn" type="button">🔗 Share this page</button>
       </div>
       <div class="qrBox">
         <div>
-          <strong>QR WhatsApp cliquable</strong>
-          <span>Clique sur téléphone. Scanne sur affiche, carte ou autre appareil.</span>
+          <strong>Clickable WhatsApp QR</strong>
+          <span>Tap on a phone. Scan on a poster, card or another device.</span>
         </div>
         <a class="qrLink" id="qrLink" href="#" target="_blank" rel="noopener noreferrer">
-          <img id="qrImg" src="" alt="QR WhatsApp PRO JOB DIGIY">
+          <img id="qrImg" src="" alt="DIGIY PRO JOB WhatsApp QR">
         </a>
       </div>
     </section>
 
-    <div class="footer">DIGIYLYFE · JOBS · ACCÈS RECRUTEUR · PROFILS QUALIFIÉS · MISE EN RELATION ENCADRÉE</div>
+    <div class="footer">DIGIYLYFE · PRO JOB · RECRUITER REGISTRATION · 0% COMMISSION · DIRECT CONTACT · NDIMBAL EXPRESS STAYS SEPARATE</div>
   </main>
 
-  <div class="sticky" aria-label="Actions rapides">
+  <div class="sticky" aria-label="Quick actions">
     <div class="stickyInner">
-      <a class="main" id="stickyWa" href="#" target="_blank" rel="noopener noreferrer">📸 Envoyer preuve WhatsApp</a>
-      <a class="sub" href="#tarifs">📋 Revoir les tarifs</a>
+      <a class="main" id="stickyWa" href="#" target="_blank" rel="noopener noreferrer">📸 Send proof on WhatsApp</a>
+      <a class="sub" href="#tariffs">📋 Review tariffs</a>
     </div>
   </div>
 
-  <div class="toast" id="toast">Copié ✅</div>
+  <div class="toast" id="toast">Copied ✅</div>
 
   <script>
     (function(){
       "use strict";
-
       const DIGIY_WA = "221771342889";
       const DIGIY_PHONE_DISPLAY = "+221 77 134 28 89";
       const DIGIY_PAY_NAME = "JB BEAUVILLE";
-      const PAGE_URL = "https://jobs.digiylyfe.com/inscription-jobs.html";
+      const PAGE_URL = "https://jobs.digiylyfe.com/inscription-jobs-en.html";
+      const COUNTRY_KEY = "digiy_pro_job_country_grid_v1";
       const $ = id => document.getElementById(id);
-      const nf = new Intl.NumberFormat("fr-FR");
       const fields = ["proName","proPhone","zone","activity","note"];
+      const nfFcfa = new Intl.NumberFormat("en-US");
+      const nfEur = new Intl.NumberFormat("fr-FR");
 
-      function money(n){
-        return nf.format(Number(n || 0)).replace(/\u202f/g," ") + " FCFA";
+      function val(id){ return String($(id)?.value || "").trim(); }
+      function dash(v){ return v || "—"; }
+      function country(){ return $("country") && $("country").value === "france" ? "france" : "senegal"; }
+      function isFrance(){ return country() === "france"; }
+      function moneyFcfa(n){ return nfFcfa.format(Number(n || 0)) + " FCFA"; }
+      function moneyEur(n){ return nfEur.format(Number(n || 0)) + " €"; }
+      function selectedChoices(){
+        return Array.from(document.querySelectorAll(".choice:checked")).map(c => ({
+          code: c.dataset.code || "",
+          label: c.dataset.label || "",
+          amount: Number(c.dataset.amount || 0),
+          eur: Number(c.dataset.eur || 0),
+          impact: c.dataset.impact || ""
+        }));
       }
-      function val(id){
-        return String($(id)?.value || "").trim();
+      function hasFrenchPending(){
+        return isFrance() && selectedChoices().some(c => !c.eur);
       }
-      function dash(v){
-        return v || "—";
+      function totalFcfa(){ return selectedChoices().reduce((sum,c) => sum + c.amount, 0); }
+      function totalEur(){ return selectedChoices().reduce((sum,c) => sum + (c.eur || 0), 0); }
+      function displayTotal(){
+        if(isFrance()){
+          const t = moneyEur(totalEur());
+          return hasFrenchPending() ? t + " + item(s) to confirm" : t;
+        }
+        return moneyFcfa(totalFcfa());
+      }
+      function amountForChoice(c){
+        if(isFrance()){
+          return c.eur ? moneyEur(c.eur) : "France tariff to confirm";
+        }
+        return moneyFcfa(c.amount);
       }
       function nowText(){
         try{
-          return new Intl.DateTimeFormat("fr-FR",{
-            weekday:"long",year:"numeric",month:"long",day:"numeric",
-            hour:"2-digit",minute:"2-digit"
-          }).format(new Date());
-        }catch(_){
-          return new Date().toLocaleString("fr-FR");
-        }
+          return new Intl.DateTimeFormat("en-US",{dateStyle:"full",timeStyle:"short"}).format(new Date());
+        }catch(_){ return new Date().toLocaleString(); }
       }
-      function selectedChoices(){
-        return Array.from(document.querySelectorAll(".choice:checked")).map(input => ({
-          code: input.dataset.code || "",
-          label: input.dataset.label || "",
-          amount: Number(input.dataset.amount || 0),
-          eur: input.dataset.eur || "",
-          impact: input.dataset.impact || ""
-        }));
+      function paymentMethodText(){
+        return isFrance()
+          ? "Sendwave France → Senegal Wave"
+          : "Wave Senegal direct";
       }
-      function total(){
-        return selectedChoices().reduce((sum,item) => sum + item.amount, 0);
+      function paymentInstruction(){
+        return isFrance()
+          ? "From France: download/open Sendwave, choose Senegal, send the EUR amount to the Senegal Wave receiver below, then send proof by WhatsApp."
+          : "From Senegal: pay directly by Wave to the receiver below, then send proof by WhatsApp.";
       }
-      function choiceText(){
+      function linesText(){
         const choices = selectedChoices();
-        if(!choices.length) return "Aucun choix";
-        return choices.map(c => c.code + " — " + c.label + " — " + money(c.amount) + (c.eur ? " · " + c.eur + " €" : "")).join("\n");
+        return choices.length
+          ? choices.map(c => "- " + c.code + " · " + c.label + " · " + amountForChoice(c)).join("\n")
+          : "No choice selected";
       }
       function noteText(){
-        const t = total();
         const choices = selectedChoices();
-        const selectedLine = choices.length ? choiceText() : "Aucun choix sélectionné";
-        return "👥 DIGIY JOBS — Accès recruteur\n"
-          + "Choix :\n" + selectedLine + "\n\n"
-          + "Sous-total : " + money(t) + "\n"
-          + "Ajustement / remise : 0 FCFA\n"
-          + "Total à payer : " + money(t) + "\n\n"
-          + "Paiement Wave :\n"
-          + "Nom : " + DIGIY_PAY_NAME + "\n"
-          + "Téléphone : " + DIGIY_PHONE_DISPLAY + "\n\n"
-          + "Infos pro :\n"
-          + "Nom / responsable : " + dash(val("proName")) + "\n"
-          + "Téléphone / WhatsApp : " + dash(val("proPhone")) + "\n"
-          + "Zone / ville : " + dash(val("zone")) + "\n"
-          + "Activité / besoin : " + dash(val("activity")) + "\n"
-          + "Note : " + dash(val("note")) + "\n\n"
-          + "Date de demande : " + nowText() + "\n\n"
-          + "Après paiement Wave, envoie la capture ou la preuve par WhatsApp. DIGIY vérifie puis accompagne l’accès recruteur.\n"
-          + "Rappel : le recruteur paie la qualification et la mise en relation, pas la possession de données humaines.";
+        return [
+          "💼 PRO JOB DIGIY — recruiter registration",
+          "Country grid: " + (isFrance() ? "France · EUR" : "Senegal · FCFA"),
+          "Payment method: " + paymentMethodText(),
+          "",
+          "Choices:",
+          linesText(),
+          "",
+          "Subtotal: " + displayTotal(),
+          "Adjustment / discount: 0",
+          "Total to pay: " + displayTotal(),
+          hasFrenchPending() ? "Pending note: one selected French item has no validated EUR tariff yet. Confirm with DIGIY before payment." : "",
+          "",
+          "Official payment receiver:",
+          "Name: " + DIGIY_PAY_NAME,
+          "Phone: " + DIGIY_PHONE_DISPLAY,
+          isFrance() ? "Receiver country: Senegal · pay by Sendwave from France to this Wave number." : "Receiver country: Senegal · pay by Wave direct.",
+          "",
+          "Professional info:",
+          "Name / manager: " + dash(val("proName")),
+          "Phone / WhatsApp: " + dash(val("proPhone")),
+          "Area / city: " + dash(val("zone")),
+          "Activity / need: " + dash(val("activity")),
+          "Note: " + dash(val("note")),
+          "",
+          "Request date: " + nowText(),
+          "",
+          paymentInstruction(),
+          "DIGIY checks the proof and helps open PRO JOB access.",
+          "Reminder: PRO JOB is separate from NDIMBAL Express.",
+          "Tariff doctrine: country grid, not an exchange-rate conversion."
+        ].filter(Boolean).join("\n");
       }
       function refreshImpact(){
         const choices = selectedChoices();
@@ -530,24 +623,62 @@
         if(!target) return;
         if(!choices.length){
           target.className = "emptyImpact";
-          target.textContent = "Aucun choix sélectionné. Rien n’est précoché.";
+          target.textContent = "No choice selected. Nothing is preselected.";
           return;
         }
         target.className = "";
-        target.innerHTML = "<ul>" + choices.map(c => "<li><b>" + c.code + " — " + c.label + " :</b> " + c.impact + "</li>").join("") + "</ul>";
+        target.innerHTML = "<ul>" + choices.map(c => "<li><b>" + c.code + " — " + c.label + ":</b> " + c.impact + "</li>").join("") + "</ul>";
+      }
+      function refreshPriceLabels(){
+        document.querySelectorAll(".choice").forEach(c => {
+          const offer = c.closest(".offer");
+          const price = offer ? offer.querySelector(".price") : null;
+          if(!price) return;
+          const amount = Number(c.dataset.amount || 0);
+          const eur = Number(c.dataset.eur || 0);
+          offer.classList.toggle("pending-france", isFrance() && !eur);
+          if(isFrance()){
+            price.innerHTML = eur
+              ? moneyEur(eur) + "<span>France tariff</span>"
+              : "To confirm<span>France boost tariff</span>";
+          }else{
+            price.innerHTML = moneyFcfa(amount) + (eur ? "<span>Senegal tariff</span>" : "");
+          }
+        });
       }
       function validate(){
-        const ok = selectedChoices().length > 0;
-        $("warning").classList.toggle("show", !ok);
-        return ok;
+        const hasChoice = selectedChoices().length > 0;
+        const warning = $("warning");
+        if(!warning) return hasChoice;
+        warning.classList.toggle("show", !hasChoice || hasFrenchPending());
+        warning.textContent = !hasChoice
+          ? "⚠️ Choose at least one offer before sending."
+          : "⚠️ One France tariff is still to confirm before payment.";
+        return hasChoice && !hasFrenchPending();
+      }
+      function refreshCountryText(){
+        if($("countryHelp")){
+          $("countryHelp").textContent = isFrance()
+            ? "France uses EUR. Payment is made through Sendwave from France to JB BEAUVILLE’s Senegal Wave number."
+            : "Senegal uses FCFA. Payment is made directly by Wave to JB BEAUVILLE.";
+        }
+        if($("paymentTitle")){
+          $("paymentTitle").textContent = isFrance() ? "💳 Sendwave → Senegal Wave" : "💳 Wave payment";
+        }
+        if($("paymentSubtitle")){
+          $("paymentSubtitle").textContent = isFrance()
+            ? "Sendwave receiver name and Senegal Wave number"
+            : "Payment name and number";
+        }
       }
       function refresh(){
-        const t = total();
+        refreshPriceLabels();
+        refreshCountryText();
         const choices = selectedChoices();
-        $("sumChoice").textContent = choices.length ? choices.map(c => c.code).join(" + ") : "Aucun choix";
-        $("sumSubtotal").textContent = money(t);
-        $("sumTotal").textContent = money(t);
-        $("waveAmount").textContent = money(t);
+        $("sumChoice").textContent = choices.length ? choices.map(c => c.code).join(" + ") : "No choice";
+        $("sumSubtotal").textContent = displayTotal();
+        $("sumTotal").textContent = displayTotal();
+        $("waveAmount").textContent = displayTotal();
         $("summaryText").textContent = noteText();
 
         const encoded = encodeURIComponent(noteText());
@@ -557,23 +688,36 @@
         $("stickyWa").href = wa;
         $("smsBtn").href = "sms:" + DIGIY_PHONE_DISPLAY.replace(/\s/g,"") + "?&body=" + encoded;
 
-        const contactMsg = "Bonjour DIGIY, je viens de la page PRO JOB. Je veux des informations sur l’inscription recruteur.";
+        const contactMsg = "Hello DIGIY, I am coming from the PRO JOB page. I would like information about recruiter registration.";
         const contactUrl = "https://wa.me/" + DIGIY_WA + "?text=" + encodeURIComponent(contactMsg);
         $("contactWaBtn").href = contactUrl;
         $("qrLink").href = contactUrl;
         $("qrImg").src = "https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=" + encodeURIComponent(contactUrl);
 
+        try{ localStorage.setItem(COUNTRY_KEY, country()); }catch(_){}
         refreshImpact();
         validate();
       }
       function toast(msg){
         const t = $("toast");
-        t.textContent = msg || "Copié ✅";
+        t.textContent = msg || "Copied ✅";
         t.classList.add("show");
         clearTimeout(window.__digiyToast);
         window.__digiyToast = setTimeout(() => t.classList.remove("show"),1700);
       }
 
+      try{
+        const savedCountry = localStorage.getItem(COUNTRY_KEY);
+        const params = new URLSearchParams(location.search);
+        const fromUrl = String(params.get("pays") || params.get("country") || "").toLowerCase();
+        if($("country")){
+          if(fromUrl === "france" || fromUrl === "fr") $("country").value = "france";
+          else if(fromUrl === "senegal" || fromUrl === "sn") $("country").value = "senegal";
+          else if(savedCountry === "france" || savedCountry === "senegal") $("country").value = savedCountry;
+        }
+      }catch(_){}
+
+      if($("country")) $("country").addEventListener("change", refresh);
       document.querySelectorAll(".choice").forEach(el => el.addEventListener("change", refresh));
       fields.forEach(id => {
         const el = $(id);
@@ -587,9 +731,9 @@
         const text = noteText();
         try{
           await navigator.clipboard.writeText(text);
-          toast("Note Wave copiée ✅");
+          toast("Payment note copied ✅");
         }catch(e){
-          prompt("Copie le résumé :", text);
+          prompt("Copy the summary:", text);
         }
       });
 
@@ -597,48 +741,48 @@
         document.querySelectorAll(".choice").forEach(c => c.checked = false);
         fields.forEach(id => { const el = $(id); if(el) el.value = ""; });
         refresh();
-        toast("Page effacée");
+        toast("Page cleared");
       });
 
       $("clearInfoBtn").addEventListener("click", function(){
         fields.forEach(id => { const el = $(id); if(el) el.value = ""; });
         refresh();
-        toast("Infos effacées");
+        toast("Info cleared");
       });
 
       $("saveContactBtn").addEventListener("click", function(){
         const vcard = [
           "BEGIN:VCARD",
           "VERSION:3.0",
-          "FN:DIGIYLYFE ACCES RECRUTEUR",
+          "FN:DIGIYLYFE PRO JOB",
           "ORG:DIGIYLYFE",
           "TEL;TYPE=CELL:" + DIGIY_PHONE_DISPLAY,
           "URL:" + PAGE_URL,
-          "NOTE:PRO JOB DIGIY — inscription recruteur, missions structurées, candidatures et contact direct.",
+          "NOTE:PRO JOB DIGIY — recruiter registration, structured missions, applications and direct contact.",
           "END:VCARD"
         ].join("\n");
         const blob = new Blob([vcard], {type:"text/vcard;charset=utf-8"});
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "DIGIYLYFE-ACCES-RECRUTEUR-contact.vcf";
+        a.download = "DIGIYLYFE-PRO-JOB-contact.vcf";
         document.body.appendChild(a);
         a.click();
         a.remove();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
-        toast("Contact prêt à enregistrer ✅");
+        toast("Contact ready to save ✅");
       });
 
       $("shareBtn").addEventListener("click", async function(){
-        const title = "Inscription PRO JOB — DIGIYLYFE";
-        const text = "Je te partage la page PRO JOB DIGIY : inscription recruteur, missions structurées, candidatures et contact direct.";
+        const title = "PRO JOB Registration — DIGIYLYFE";
+        const text = "I am sharing the DIGIY PRO JOB page: recruiter registration, structured missions, applications and direct contact.";
         try{
           if(navigator.share){
             await navigator.share({title, text, url: PAGE_URL});
-            toast("Partage ouvert ✅");
+            toast("Share opened ✅");
           }else{
             await navigator.clipboard.writeText(text + " " + PAGE_URL);
-            toast("Lien copié ✅");
+            toast("Link copied ✅");
           }
         }catch(_){}
       });
@@ -648,5 +792,9 @@
   </script>
 </body>
 </html>
+
+
+
+
 
 
