@@ -4,11 +4,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>DIGIY JOBS — Missions, candidatures &amp; inscription</title>
-<meta content="DIGIY JOBS — voir les missions, postuler simplement, préparer son dossier, suivre sa candidature, inscrire une offre JOBS ou accéder à des profils candidats qualifiés." name="description"/>
+<title>DIGIY JOBS — Missions, candidats & recruteurs internationaux</title>
+<meta content="DIGIY JOBS — missions, candidats et recruteurs pour les territoires locaux : Afrique, France, diaspora. Postuler, publier une mission, accéder à des profils qualifiés, contact direct." name="description"/>
 <meta content="#155f43" name="theme-color"/>
 <meta content="index, follow" name="robots"/>
-<meta content="jobs-index-ndimbal-express-public-20260608" name="digiy-build"/>
+<meta content="jobs-index-international-afrique-france-diaspora-20260629" name="digiy-build"/>
 <meta content="jobs-fr-en-retour-fr-natif-20260620" name="digiy-bilingual"/>
 <meta content="jobs-liens-fr-en-pages-connectees-20260620" name="digiy-fix"/>
 <meta content="jobs-index-inscription-acces-recruteur-visible-20260624" name="digiy-access-recruteur"/>
@@ -846,6 +846,80 @@
       font-size:12px;
       font-weight:1000;
     }
+
+    /* === DIGIY JOBS · Vue internationale === */
+    .territory-card{
+      margin-top:14px;
+      border:1px solid rgba(21,95,67,.16);
+      border-radius:24px;
+      background:
+        radial-gradient(circle at top left, rgba(244,185,52,.20), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(31,122,85,.15), transparent 42%),
+        rgba(255,255,255,.66);
+      box-shadow:var(--shadow2);
+      padding:18px;
+      display:grid;
+      gap:12px;
+    }
+    .territory-card .territory-kicker{
+      width:max-content;
+      max-width:100%;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(21,95,67,.10);
+      border:1px solid rgba(21,95,67,.18);
+      color:var(--green);
+      font-size:12px;
+      font-weight:1000;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+    }
+    .territory-card h2{
+      font-size:clamp(26px,4vw,42px);
+      line-height:1;
+      letter-spacing:-.045em;
+      font-weight:1000;
+      color:#10231b;
+    }
+    .territory-card p{
+      color:#526258;
+      font-size:15px;
+      line-height:1.6;
+      font-weight:760;
+      max-width:80ch;
+    }
+    .territory-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+    }
+    .territory-item{
+      border:1px solid rgba(21,95,67,.12);
+      border-radius:18px;
+      background:rgba(255,255,255,.62);
+      padding:13px;
+    }
+    .territory-item b{
+      display:block;
+      color:var(--green);
+      font-size:14px;
+      font-weight:1000;
+      margin-bottom:5px;
+    }
+    .territory-item span{
+      display:block;
+      color:#5f6f65;
+      font-size:13px;
+      line-height:1.45;
+      font-weight:760;
+    }
+    @media (max-width:780px){
+      .territory-grid{grid-template-columns:1fr}
+    }
+
   </style>
 <meta content="vrais-liens-repo-missions-ndimbal-postuler-dossier-suivi-inscription-20260620" name="digiy-fix-jobs-links"/><meta name="digiy-en-pages" content="missions-en-ndimbal-en-postuler-en-dossier-en-suivi-en-inscription-en-20260620"/>
 </head>
@@ -854,7 +928,7 @@
 <div class="wrap topbar-inner">
 <a aria-label="Retour en haut de page" class="brand" href="#top">
 <span class="brand-mark">💼</span>
-<span>DIGIY JOBS<small>MISSIONS · CANDIDATURES</small></span>
+<span>DIGIY JOBS<small>MISSIONS · CANDIDATS · RECRUTEURS</small></span>
 </a>
 <nav aria-label="Navigation principale" class="nav">
 <a href="https://digiylyfe.com/">🌍 Site</a>
@@ -880,10 +954,10 @@
 <div class="wrap hero-shell">
 <div class="hero-grid">
 <article class="hero-card">
-<span class="eyebrow">Entrée publique DIGIY JOBS</span>
-<h1>Le travail terrain, <span>visible et simple.</span></h1>
+<span class="eyebrow">Afrique · France · Diaspora · emploi local</span>
+<h1>Le travail local, <span>visible partout.</span></h1>
 <p class="lead">
-              DIGIY JOBS présente les missions, ouvre la candidature, prépare le dossier et garde le suivi clair.
+              DIGIY JOBS relie les missions, les candidats et les recruteurs dans les territoires locaux : Afrique, France et diaspora.
               Le candidat avance sans code PIN. Côté pro, trois gestes restent séparés : Inscription JOBS pour publier une mission, Accès recruteur pour comprendre les profils qualifiés, Inscription accès recruteur pour choisir un pack 10 / 25 / 50 profils.
             </p>
 <div class="hero-actions">
@@ -903,6 +977,7 @@
 <a class="pill blue" href="https://jobs.digiylyfe.com/dossier-intelligent.html">Dossier clair</a>
 <a class="pill gold" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Wolof terrain</a>
 <a class="pill blue" href="https://jobs.digiylyfe.com/acces-recruteur.html">Accès recruteur</a>
+<a class="pill" href="#territoires">Afrique · France · Diaspora</a>
 <a class="pill gold" href="https://jobs.digiylyfe.com/inscription-acces-recruteur.html">Inscription accès recruteur</a>
 <a class="pill" href="https://wa.me/221771342889?text=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions." rel="noopener noreferrer" target="_blank">Contact direct</a>
 </div>
@@ -930,9 +1005,9 @@
 <span class="signal">Public candidat · sans PIN</span>
 <span class="module-icon">💼</span>
 </div>
-<h2>Une porte claire pour l’emploi local.</h2>
+<h2>Une porte claire pour l’emploi local et international.</h2>
 <p>
-                Ici on ne noie pas le visiteur. Il voit une mission, comprend le besoin, dépose son profil et garde un fil de suivi. Simple, propre, humain.
+                Ici on ne noie pas le visiteur. Il voit une mission, comprend le territoire, dépose son profil et garde un fil de suivi. Simple, propre, humain.
               </p>
 <div class="mini-grid">
 <a class="mini" href="https://jobs.digiylyfe.com/missions.html"><strong>Voir</strong><span>Lire les missions publiées.</span><span class="connected-link-hint">Ouvrir Missions</span></a>
@@ -947,7 +1022,7 @@
 </article>
 <article class="quick-card">
 <h3>Besoin d’aide ?</h3>
-<p>Un candidat ou un recruteur peut demander une information directement. DIGIY oriente, mais la relation reste humaine.</p>
+<p>Un candidat, un recruteur ou un relais diaspora peut demander une information directement. DIGIY oriente, mais la relation reste humaine.</p>
 <div class="hero-actions">
 <a class="btn btn-gold" href="https://wa.me/221771342889?text=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions." rel="noopener noreferrer" target="_blank">💬 WhatsApp</a>
 <a class="btn btn-light" href="sms:+221771342889?body=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions.">✉️ SMS</a>
@@ -959,10 +1034,24 @@
 </section>
 <section aria-label="Chiffres repères" class="section">
 <div class="wrap stats">
-<a class="stat" href="#entrer"><strong>1</strong><span>Entrée publique propre</span></a>
-<a class="stat" href="#entrer"><strong>7</strong><span>Portes utiles et lisibles</span></a>
+<a class="stat" href="#entrer"><strong>1</strong><span>Entrée publique internationale</span></a>
+<a class="stat" href="#entrer"><strong>7</strong><span>Portes utiles Afrique · France</span></a>
 <a class="stat" href="https://jobs.digiylyfe.com/postuler.html"><strong>0</strong><span>Code PIN côté candidat</span></a>
 <a class="stat" href="https://jobs.digiylyfe.com/missions.html"><strong>100%</strong><span>Parcours public avant contact</span></a>
+</div>
+</section>
+<section class="section" id="territoires" aria-label="Territoires DIGIY JOBS">
+<div class="wrap">
+<article class="territory-card">
+<span class="territory-kicker">Afrique · France · Diaspora</span>
+<h2>Un même rail JOBS pour plusieurs territoires.</h2>
+<p>DIGIY JOBS n’est pas limité à une seule ville. La méthode sert à rendre les missions lisibles, les candidats présentables et les recruteurs mieux orientés. Le Sénégal reste la preuve terrain, la France ouvre un marché pro plus structuré, et la diaspora devient un pont entre besoins, compétences et opportunités.</p>
+<div class="territory-grid">
+<div class="territory-item"><b>🇸🇳 Afrique · preuve terrain</b><span>Missions locales, NDIMBAL Express, candidatures simples, Wolof terrain, commerces, restos, logements, services et métiers.</span></div>
+<div class="territory-item"><b>🇫🇷 France · recruteurs structurés</b><span>Artisans, restaurants, hébergements, services, petites entreprises et recruteurs qui veulent des profils clairs et consentis.</span></div>
+<div class="territory-item"><b>🌍 Diaspora · pont compétences</b><span>Relier familles, écoles, entreprises, candidats, stages, missions et profils qualifiés sans vendre les données humaines comme un stock.</span></div>
+</div>
+</article>
 </div>
 </section>
 <section class="section" id="entrer">
@@ -970,7 +1059,7 @@
 <div class="section-head">
 <div>
 <h2>Choisir sa porte.</h2>
-<p>Le public avance par cartes simples. Côté pro, on garde trois portes nettes : Inscription JOBS pour publier une mission, Accès recruteur pour expliquer les profils qualifiés, Inscription accès recruteur pour choisir un pack. NDIMBAL Express reste la porte rapide pour les missions courtes et urgentes.</p>
+<p>Le public avance par cartes simples. Côté pro, on garde trois portes nettes : Inscription JOBS pour publier une mission, Accès recruteur pour expliquer les profils qualifiés, Inscription accès recruteur pour choisir un pack. NDIMBAL Express reste la porte rapide pour les missions courtes et urgentes. La page peut servir au Sénégal, en France et à la diaspora.</p>
 </div>
 </div>
 <div class="door-grid">
@@ -1090,7 +1179,7 @@
 <div class="mission-body">
 <h4>Service, boutique, restaurant</h4>
 <p>Des besoins locaux présentés proprement, avec métier, zone et contact clair.</p>
-<div class="mission-tags"><small>Saly</small><small>Mbour</small><small>Terrain</small></div>
+<div class="mission-tags"><small>Saly</small><small>France</small><small>Diaspora</small></div>
 <span class="connected-link-hint">Voir les missions</span>
 </div>
 </a>
@@ -1181,7 +1270,7 @@
 </main>
 <footer>
 <div class="wrap foot-card">
-<p>DIGIY JOBS · Entrée publique candidat · BY DIGIYLYFE</p>
+<p>DIGIY JOBS · Afrique · France · Diaspora · BY DIGIYLYFE</p>
 <div class="foot-links">
 <a href="https://digiylyfe.com/">Site</a>
 <a href="https://digiy-hub.digiylyfe.com/">HUB</a>
@@ -1190,6 +1279,7 @@
 <a href="https://jobs.digiylyfe.com/postuler.html">Postuler</a>
 <a href="https://jobs.digiylyfe.com/dossier-intelligent.html">Dossier</a>
 <a href="https://jobs.digiylyfe.com/suivi.html">Suivi</a>
+<a href="#territoires">Territoires</a>
 <a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Wolof JOBS</a>
 <a href="https://jobs.digiylyfe.com/inscription-jobs.html">Inscription JOBS</a>
 <a href="https://jobs.digiylyfe.com/acces-recruteur.html">Accès recruteur</a>
@@ -1206,6 +1296,7 @@
 <a href="https://jobs.digiylyfe.com/dossier-intelligent.html"><span class="ico">□</span>Dossier</a>
 <a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607"><span class="ico">🇸🇳</span>Wolof</a>
 <a href="https://jobs.digiylyfe.com/suivi.html"><span class="ico">↗</span>Suivi</a>
+<a href="#territoires"><span class="ico">🌍</span>Intl</a>
 <a href="https://jobs.digiylyfe.com/acces-recruteur.html"><span class="ico">👥</span>Recruteur</a>
 <a href="https://jobs.digiylyfe.com/inscription-acces-recruteur.html"><span class="ico">📝</span>Pack</a>
 </div>
@@ -1213,8 +1304,8 @@
 <script>
     (function(){
       "use strict";
-      const PAGE_TEXT_FR = "Bienvenue sur DIGIY JOBS. Ici, tu es dans la porte publique du travail terrain. Côté candidat, pas besoin de code PIN. Tu peux voir les missions, ouvrir NDIMBAL Express pour les missions courtes urgentes, comprendre une offre, déposer une candidature, préparer ton dossier, ouvrir le lexique Wolof JOBS et suivre ton dépôt. Le lexique aide à parler emploi, expérience, disponibilité, salaire et entretien avec des mots simples du terrain. Côté professionnel, l'inscription JOBS sert à publier une mission. L'accès recruteur explique les profils qualifiés et l'inscription accès recruteur permet de demander un pack 10, 25 ou 50 profils. diji i garde le parcours simple, humain et clair.";
-      const PAGE_TEXT_EN = "Welcome to DIGIY JOBS. You are in the public doorway for field work. For candidates, no PIN code is needed. You can view missions, open NDIMBAL Express for short urgent jobs, understand an offer, apply, prepare your profile file, open the Wolof JOBS glossary, and follow your submission. The glossary helps people speak about work, experience, availability, pay and interviews with simple field words. On the professional side, JOBS registration is used to publish a mission or look for a profile. Diji keeps the path simple, human and clear.";
+      const PAGE_TEXT_FR = "Bienvenue sur DIGIY JOBS. Ici, tu es dans la porte publique du travail local, ouverte à l’Afrique, à la France et à la diaspora. Côté candidat, pas besoin de code PIN. Tu peux voir les missions, ouvrir NDIMBAL Express pour les missions courtes urgentes, comprendre une offre, déposer une candidature, préparer ton dossier, ouvrir le lexique Wolof JOBS et suivre ton dépôt. Le lexique aide à parler emploi, expérience, disponibilité, salaire et entretien avec des mots simples du terrain. Côté professionnel, l'inscription JOBS sert à publier une mission. L'accès recruteur explique les profils qualifiés et l'inscription accès recruteur permet de demander un pack 10, 25 ou 50 profils. diji i garde le parcours simple, humain et clair.";
+      const PAGE_TEXT_EN = "Welcome to DIGIY JOBS. You are in the public doorway for local work, open to Africa, France and the diaspora. Senegal is the field proof, France is the structured pro market, and the diaspora is the skills bridge. For candidates, no PIN code is needed. You can view missions, open NDIMBAL Express for short urgent jobs, understand an offer, apply, prepare your profile file, open the Wolof JOBS glossary, and follow your submission. The glossary helps people speak about work, experience, availability, pay and interviews with simple field words. On the professional side, JOBS registration is used to publish a mission or look for a profile. Diji keeps the path simple, human and clear.";
       const PAGE_TEXT = window.DIGIY_JOBS_LANG === "en" ? PAGE_TEXT_EN : PAGE_TEXT_FR;
 
       const playBtn = document.getElementById("digiyJobsPlayBtn");
@@ -1368,7 +1459,7 @@
       var VERSION = "jobs-fr-en-retour-fr-natif-20260620";
       var T = {
         "DIGIY JOBS — Missions, candidatures & inscription": "DIGIY JOBS — Missions, applications & registration",
-        "MISSIONS · CANDIDATURES": "MISSIONS · APPLICATIONS",
+        "MISSIONS · CANDIDATS · RECRUTEURS": "MISSIONS · CANDIDATES · RECRUITERS",
         "🌍 Site": "🌍 Website",
         "🧭 HUB": "🧭 HUB",
         "🇸🇳 Wolof JOBS": "🇸🇳 Wolof JOBS",
@@ -1426,7 +1517,7 @@
         "Prêt à écouter.": "Ready to listen.",
         "Public candidat · sans PIN": "Public candidate · no PIN",
         "Une porte claire pour l’emploi local.": "A clear doorway for local work.",
-        "Ici on ne noie pas le visiteur. Il voit une mission, comprend le besoin, dépose son profil et garde un fil de suivi. Simple, propre, humain.": "Here the visitor is not drowned in confusion. They see a mission, understand the need, submit their profile and keep a clear follow-up thread. Simple, clean, human.",
+        "Ici on ne noie pas le visiteur. Il voit une mission, comprend le territoire, dépose son profil et garde un fil de suivi. Simple, propre, humain.": "Here the visitor is not drowned in confusion. They see a mission, understand the need, submit their profile and keep a clear follow-up thread. Simple, clean, human.",
         "Voir": "View",
         "Lire les missions publiées.": "Read published missions.",
         "Voir les missions courtes urgentes.": "View short urgent missions.",
@@ -1436,7 +1527,7 @@
         "Inscrire": "Register",
         "Publier une mission côté pro.": "Publish a mission on the professional side.",
         "Besoin d’aide ?": "Need help?",
-        "Un candidat ou un recruteur peut demander une information directement. DIGIY oriente, mais la relation reste humaine.": "A candidate or recruiter can ask for information directly. DIGIY guides, but the relationship stays human.",
+        "Un candidat, un recruteur ou un relais diaspora peut demander une information directement. DIGIY oriente, mais la relation reste humaine.": "A candidate or recruiter can ask for information directly. DIGIY guides, but the relationship stays human.",
         "Entrée publique propre": "Clean public entrance",
         "Portes utiles et lisibles": "Useful, readable doors",
         "Code PIN côté candidat": "PIN code on candidate side",
@@ -1512,7 +1603,7 @@
         "Ouvrir le lexique Wolof JOBS": "Open the Wolof JOBS glossary",
         "Côté pro / recruteur": "Pro / recruiter side",
         "Inscrire JOBS / publier une mission": "Register JOBS / publish a mission",
-        "DIGIY JOBS · Entrée publique candidat · BY DIGIYLYFE": "DIGIY JOBS · Public candidate entrance · BY DIGIYLYFE",
+        "DIGIY JOBS · Afrique · France · Diaspora · BY DIGIYLYFE": "DIGIY JOBS · Africa · France · Diaspora · BY DIGIYLYFE",
         "Site": "Website",
         "Accueil": "Home",
 
@@ -1524,7 +1615,40 @@
         "Lecture arrêtée.": "Playback stopped.",
         "Lecture en cours…": "Playing…",
         "Lecture terminée.": "Playback finished.",
-        "Lecture interrompue.": "Playback interrupted."
+        "Lecture interrompue.": "Playback interrupted.",
+        /* DIGIY JOBS · international EN overrides */
+        "DIGIY JOBS — Missions, candidats & recruteurs internationaux": "DIGIY JOBS — International missions, candidates & recruiters",
+        "MISSIONS · CANDIDATS · RECRUTEURS": "MISSIONS · CANDIDATES · RECRUITERS",
+        "Afrique · France · Diaspora · emploi local": "Africa · France · Diaspora · local work",
+        "Le travail local,": "Local work,",
+        "visible partout.": "visible everywhere.",
+        "DIGIY JOBS relie les missions, les candidats et les recruteurs dans les territoires locaux : Afrique, France et diaspora. Le candidat avance sans code PIN. Côté pro, trois gestes restent séparés : Inscription JOBS pour publier une mission, Accès recruteur pour comprendre les profils qualifiés, Inscription accès recruteur pour choisir un pack 10 / 25 / 50 profils.": "DIGIY JOBS connects missions, candidates and recruiters across local territories: Africa, France and the diaspora. Candidates move forward without a PIN code. On the pro side, three actions stay separate: JOBS registration to publish a mission, Recruiter access to understand qualified profiles, and Recruiter access registration to choose a 10 / 25 / 50 profile pack.",
+        "Une porte claire pour l’emploi local et international.": "A clear doorway for local and international work.",
+        "Ici on ne noie pas le visiteur. Il voit une mission, comprend le territoire, dépose son profil et garde un fil de suivi. Simple, propre, humain.": "Here, the visitor is not drowned in complexity. They see a mission, understand the territory, submit their profile and keep a clear follow-up thread. Simple, clean, human.",
+        "Un candidat, un recruteur ou un relais diaspora peut demander une information directement. DIGIY oriente, mais la relation reste humaine.": "A candidate, recruiter or diaspora relay can ask for information directly. DIGIY guides the path, but the relationship remains human.",
+        "Entrée publique internationale": "International public entrance",
+        "Portes utiles Afrique · France": "Useful doors Africa · France",
+        "Un même rail JOBS pour plusieurs territoires.": "One JOBS rail for several territories.",
+        "DIGIY JOBS n’est pas limité à une seule ville. La méthode sert à rendre les missions lisibles, les candidats présentables et les recruteurs mieux orientés. Le Sénégal reste la preuve terrain, la France ouvre un marché pro plus structuré, et la diaspora devient un pont entre besoins, compétences et opportunités.": "DIGIY JOBS is not limited to one city. The method makes missions readable, candidates presentable and recruiters better guided. Senegal remains the field proof, France opens a more structured professional market, and the diaspora becomes a bridge between needs, skills and opportunities.",
+        "🇸🇳 Afrique · preuve terrain": "🇸🇳 Africa · field proof",
+        "Missions locales, NDIMBAL Express, candidatures simples, Wolof terrain, commerces, restos, logements, services et métiers.": "Local missions, NDIMBAL Express, simple applications, field Wolof, shops, restaurants, housing, services and trades.",
+        "🇫🇷 France · recruteurs structurés": "🇫🇷 France · structured recruiters",
+        "Artisans, restaurants, hébergements, services, petites entreprises et recruteurs qui veulent des profils clairs et consentis.": "Artisans, restaurants, accommodation providers, services, small businesses and recruiters who want clear, consent-based profiles.",
+        "🌍 Diaspora · pont compétences": "🌍 Diaspora · skills bridge",
+        "Relier familles, écoles, entreprises, candidats, stages, missions et profils qualifiés sans vendre les données humaines comme un stock.": "Connect families, schools, businesses, candidates, internships, missions and qualified profiles without selling human data as stock.",
+        "Le public avance par cartes simples. Côté pro, on garde trois portes nettes : Inscription JOBS pour publier une mission, Accès recruteur pour expliquer les profils qualifiés, Inscription accès recruteur pour choisir un pack. NDIMBAL Express reste la porte rapide pour les missions courtes et urgentes. La page peut servir au Sénégal, en France et à la diaspora.": "The public moves through simple cards. On the pro side, three doors stay clear: JOBS registration to publish a mission, Recruiter access to explain qualified profiles, and Recruiter access registration to choose a pack. NDIMBAL Express remains the fast door for short and urgent missions. The page can serve Senegal, France and the diaspora.",
+        "Ouvrir le module PRO JOB pour publier une mission structurée, recevoir les candidatures et garder le contact direct.": "Open the PRO JOB module to publish a structured mission, receive applications and keep direct contact.",
+        "Le pro garde une entrée dédiée pour inscrire / publier une mission.": "The pro keeps a dedicated entrance to register / publish a mission.",
+        "L’accès recruteur sépare les packs profils qualifiés de la publication d’offres.": "Recruiter access separates qualified-profile packs from job-offer publishing.",
+        "France": "France",
+        "Diaspora": "Diaspora",
+        "Territoires": "Territories",
+        "Intl": "Intl",
+        "DIGIY JOBS · Afrique · France · Diaspora · BY DIGIYLYFE": "DIGIY JOBS · Africa · France · Diaspora · BY DIGIYLYFE",
+        "DIGIY JOBS garde une porte publique propre : missions, NDIMBAL Express, candidature, dossier, suivi. Côté pro, l’inscription JOBS reste séparée et claire pour publier une mission ; l’accès recruteur reste séparé pour les profils qualifiés.": "DIGIY JOBS keeps a clean public doorway: missions, NDIMBAL Express, application, profile, follow-up. On the pro side, JOBS registration stays separate and clear for publishing a mission; Recruiter access stays separate for qualified profiles.",
+        "Profils candidats qualifiés": "Qualified candidate profiles",
+        "Accès recruteur aux candidats": "Recruiter access to candidates",
+        "Pack": "Pack"
 };
       var ATTR = {
         "Retour en haut de page": "Back to top",
@@ -1605,9 +1729,9 @@
       function applyHead(){
         if(LANG === "en"){
           document.documentElement.lang = "en";
-          document.title = "DIGIY JOBS — Missions, applications & registration";
+          document.title = "DIGIY JOBS — International missions, candidates & recruiters";
           var desc = document.querySelector('meta[name="description"]');
-          if(desc) desc.setAttribute("content","DIGIY JOBS — view missions, apply simply, prepare your profile, follow your application or register a JOBS offer.");
+          if(desc) desc.setAttribute("content","DIGIY JOBS — missions, candidates and recruiters for local territories: Africa, France and the diaspora. Apply, publish a mission, access qualified profiles, direct contact.");
         }else{
           document.documentElement.lang = "fr";
         }
@@ -1722,6 +1846,54 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
