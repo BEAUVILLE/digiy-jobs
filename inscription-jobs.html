@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#123c2d">
   <title>Demande PRO JOB — Tarifs Sénégal & France</title>
   <meta name="description" content="Demande PRO JOB DIGIY — grilles pays Sénégal et France, activation recruteur, missions, candidatures, contact direct, paiement Wave ou Sendwave et validation DIGIY avant accès pro.">
-  <meta name="digiy-page" content="pro-job-demande-recruteur-fr-grille-pays-sendwave-wave-20260707">
+  <meta name="digiy-page" content="pro-job-presence-40eur-metier-15eur-20260718">
   <style>
     :root{
       --bg:#123c2d;
@@ -266,6 +266,8 @@
     }
     .offer.pending-france{opacity:.86}
     .offer.pending-france .price{color:#7a4d00}
+    .offer.disabled{opacity:.46;filter:grayscale(.15);cursor:not-allowed}
+    .offer.disabled input{cursor:not-allowed}
 
 
 
@@ -357,16 +359,18 @@
         <div class="kicker">Demande · PRO JOB · recruteur · validation DIGIY</div>
         <h1>Publier des missions structurées.</h1>
         <p class="lead">
-          PRO JOB est la porte recruteur dans DIGIY JOBS : publier des missions, recevoir des candidatures, garder le contact direct et suivre les demandes clairement.
-          La demande recruteur est sans engagement : aucun choix n’est précoché. L’activation PRO JOB devient payante seulement si le recruteur valide une offre, règle par Wave au Sénégal ou Sendwave depuis la France vers le numéro Wave Sénégal, envoie la preuve, puis DIGIY ouvre l’accès.
+          PRO JOB est la porte recruteur dans DIGIY JOBS.
+          DIGIY PRÉSENCE construit la page recruteur, le QR et le contact direct.
+          DIGIY MÉTIER ajoute l’outil de gestion des missions et candidatures uniquement si le recruteur le choisit.
+          NDIMBAL Express reste séparé.
         </p>
         <div class="pills">
-          <span class="pill gold">0% commission</span>
+          <span class="pill gold">Présence 19 900 FCFA / 40 €</span>
+          <span class="pill gold">Métier +8 000 FCFA / +15 €</span>
+          <span class="pill">Total 27 900 FCFA / 55 €</span>
+          <span class="pill">0% commission</span>
           <span class="pill">Contact direct</span>
-          <span class="pill">Missions structurées</span>
-          <span class="pill">Candidatures</span>
-          <span class="pill">Accès pro après validation</span>
-          <span class="pill gold">Séparé de NDIMBAL Express</span>
+          <span class="pill gold">NDIMBAL séparé</span>
         </div>
       </div>
       <aside class="waveHero">
@@ -381,7 +385,9 @@
         <strong>Grille tarifaire pays</strong>
         <span id="countryHelp">Le Sénégal utilise les FCFA et le paiement Wave direct. La France utilise les euros et Sendwave vers le numéro Wave Sénégal.</span>
         <div class="doctrineBox">
-          Ces prix ne sont pas une conversion au taux de change. Ce sont des grilles pays adaptées à chaque marché, au pouvoir d’achat et au moyen de paiement.
+          Sénégal : Présence 19 900 FCFA ; Métier +8 000 FCFA ; total 27 900 FCFA.
+          France : Présence 40 € ; Métier +15 € ; total 55 €.
+          Ce sont des grilles pays, pas une conversion au taux de change.
         </div>
       </div>
       <label for="country" style="display:grid;gap:6px;color:#7a4d00;font-size:12px;font-weight:1000;text-transform:uppercase;letter-spacing:.06em">
@@ -395,49 +401,73 @@
 
 
     <section class="jobDoctrine" aria-label="Doctrine commerciale PRO JOB">
-      <span class="jobDoctrineTag">Demande recruteur sans engagement · Activation PRO JOB payante · 0% commission</span>
-      <h2>Le candidat postule librement. Le recruteur demande sans engagement. L’accès PRO JOB s’active clairement.</h2>
+      <span class="jobDoctrineTag">Demande gratuite · Présence 19 900 / 40 € · Métier +8 000 / +15 € · 0% commission</span>
+      <h2>Commencer proprement. Monter quand les recrutements le demandent.</h2>
       <p>
-        DIGIY JOBS ne prend aucune commission sur l’embauche, la mission ou le salaire.
-        La demande recruteur / orientation est sans engagement : le paiement concerne uniquement
-        l’activation d’une présence PRO JOB, d’une page recruteur, d’une mission structurée,
-        d’un QR, d’un BOOST ou d’un pack visibilité.
+        DIGIY PRÉSENCE donne au recruteur une page professionnelle, un QR officiel,
+        un lien partageable, un contact direct et la maintenance essentielle.
+        DIGIY MÉTIER ajoute le logiciel PRO JOB pour publier les missions,
+        recevoir les candidatures et suivre les demandes. Cette option reste facultative.
+        PRO CARNET, BOOST, RÉSEAU et NDIMBAL Express restent séparés.
       </p>
       <div class="jobDoctrineGrid">
-        <span>✅ Candidat : consultation / candidature libre</span>
-        <span>📝 Recruteur : demande sans engagement</span>
-        <span>💼 Activation PRO JOB payante</span>
-        <span>🇫🇷 France / diaspora : Sendwave possible</span>
+        <span>1 · DIGIY PRÉSENCE · 19 900 FCFA / 40 €</span>
+        <span>2 · DIGIY MÉTIER · +8 000 FCFA / +15 €</span>
+        <span>✅ Total avec logiciel · 27 900 FCFA / 55 €</span>
+        <span>Aucun module supplémentaire imposé</span>
       </div>
     </section>
 
     <section class="grid" id="tariffs">
       <article class="card light">
-        <h2>Tarifs PRO JOB</h2>
-        <p>Clique un ou plusieurs choix seulement si tu veux activer PRO JOB. Rien n’est précoché. Si tu te trompes, efface.</p>
+        <h2>Activation PRO JOB</h2>
+        <p>Commence par DIGIY PRÉSENCE. Ajoute DIGIY MÉTIER seulement si tu veux le logiciel de gestion des missions et candidatures.</p>
 
-        <div class="tarif-section">💼 Activation PRO JOB <span>Pour recruteurs, missions et candidatures</span></div>
+        <div class="tarif-section">1 · SOCLE — DIGIY PRÉSENCE <span>Page recruteur, QR, lien et contact direct</span></div>
         <div class="offers">
           <label class="offer">
-            <input type="checkbox" class="choice" data-code="J1" data-label="PRO JOB Essentiel" data-amount="19900" data-eur="29" data-impact="Page recruteur, publication de mission simple, contact WhatsApp direct, QR et réception de candidatures.">
-            <span><span class="code">J1</span><strong>PRO JOB Essentiel</strong><small>Page recruteur, missions simples, contact direct et candidatures.</small></span>
-            <span class="price">19,900 FCFA<span>€29</span></span>
-          </label>
-
-          <label class="offer">
-            <input type="checkbox" class="choice" data-code="J2" data-label="PRO JOB Pro" data-amount="29900" data-eur="49" data-impact="Missions structurées, ready-to-send texts, application reception, clearer follow-up and stronger recruiter presentation.">
-            <span><span class="code">J2</span><strong>PRO JOB Pro</strong><small>Missions structurées, ready texts, applications and clearer follow-up.</small></span>
-            <span class="price">29,900 FCFA<span>€49</span></span>
-          </label>
-
-          <label class="offer">
-            <input type="checkbox" class="choice" data-code="J3" data-label="PRO JOB Recrutement" data-amount="45000" data-eur="69" data-impact="Présence renforcée pour recruteurs actifs, besoins répétés, plusieurs missions et accompagnement de structuration.">
-            <span><span class="code">J3</span><strong>PRO JOB Recrutement</strong><small>Présence renforcée pour besoins répétés, équipes et plusieurs missions.</small></span>
-            <span class="price">45,000 FCFA<span>€69</span></span>
+            <input
+              type="checkbox"
+              class="choice"
+              data-code="PRESENCE"
+              data-label="DIGIY PRÉSENCE PRO JOB"
+              data-amount="19900"
+              data-eur="40"
+              data-impact="Page recruteur professionnelle, QR officiel, lien partageable, contact direct et maintenance essentielle."
+            >
+            <span>
+              <span class="code">PRESENCE</span>
+              <strong>DIGIY PRÉSENCE PRO JOB</strong>
+              <small>Page recruteur, QR officiel, lien partageable, contact direct et maintenance essentielle.</small>
+            </span>
+            <span class="price">19,900 FCFA<span>€40</span></span>
           </label>
         </div>
 
-        <div class="tarif-section">✨ BOOST visibilité <span>Mise en avant temporaire · tarifs BOOST France à confirmer avant paiement</span></div>
+        <div class="tarif-section">2 · OPTION MÉTIER — DIGIY MÉTIER <span>Facultatif · logiciel missions et candidatures</span></div>
+        <div class="offers">
+          <label class="offer disabled" id="metierOffer">
+            <input
+              type="checkbox"
+              class="choice"
+              id="metierChoice"
+              data-code="METIER"
+              data-label="DIGIY MÉTIER PRO JOB"
+              data-amount="8000"
+              data-eur="15"
+              data-impact="Logiciel PRO JOB pour publier les missions, recevoir les candidatures et suivre les demandes."
+              disabled
+            >
+            <span>
+              <span class="code">METIER</span>
+              <strong>DIGIY MÉTIER PRO JOB</strong>
+              <small>Option facultative : missions structurées, candidatures et suivi recruteur.</small>
+            </span>
+            <span class="price">8,000 FCFA<span>€15</span></span>
+          </label>
+        </div>
+
+        <div class="tarif-section">✨ BOOST visibilité <span>Mise en avant temporaire · séparée de Présence et Métier</span></div>
         <div class="offers">
           <label class="offer">
             <input type="checkbox" class="choice" data-code="E1" data-label="BOOST local" data-amount="5000" data-impact="Petite mise en avant locale de la mission ou de la page recruteur.">
@@ -507,7 +537,7 @@
           </div>
           <div class="field full">
             <label for="note">Note libre</label>
-            <textarea id="note" placeholder="Exemple : je veux publier une mission serveur / chauffeur / vendeur / manœuvre."></textarea>
+            <textarea id="note" placeholder="Exemple : DIGIY PRÉSENCE seule, ou Présence + DIGIY MÉTIER pour gérer les missions et candidatures."></textarea>
           </div>
         </div>
 
@@ -616,6 +646,20 @@
           impact: c.dataset.impact || ""
         }));
       }
+
+      function syncMetierAvailability(){
+        const presence = document.querySelector('.choice[data-code="PRESENCE"]');
+        const metier = document.querySelector('.choice[data-code="METIER"]');
+        const offer = document.getElementById("metierOffer");
+        const enabled = !!(presence && presence.checked);
+
+        if(metier){
+          metier.disabled = !enabled;
+          if(!enabled) metier.checked = false;
+        }
+
+        if(offer) offer.classList.toggle("disabled", !enabled);
+      }
       function hasFrenchPending(){
         return isFrance() && selectedChoixs().some(c => !c.eur);
       }
@@ -664,10 +708,15 @@
           "Demande initiale : sans engagement avant activation PRO JOB",
           "Doctrine : 0% commission sur l'embauche, la mission ou le salaire.",
           "",
-          "Choixs:",
+          "Choix :",
           linesText(),
           "",
-          "Sous-total: " + displayTotal(),
+          "Doctrine PRO JOB :",
+          "- DIGIY PRÉSENCE : socle",
+          "- DIGIY MÉTIER : option facultative",
+          "- PRO CARNET, BOOST, RÉSEAU et NDIMBAL Express : séparés",
+          "",
+          "Sous-total : " + displayTotal(),
           "Ajustement / remise: 0",
           "Total à payer : " + displayTotal(),
           hasFrenchPending() ? "Note : un élément France sélectionné n’a pas encore de tarif EUR validé. Confirme avec DIGIY avant paiement." : "",
@@ -747,10 +796,11 @@
         }
       }
       function refresh(){
+        syncMetierAvailability();
         refreshPriceLabels();
         refreshPaysText();
         const choices = selectedChoixs();
-        $("sumChoix").textContent = choices.length ? choices.map(c => c.code).join(" + ") : "Aucun choix";
+        $("sumChoix").textContent = choices.length ? choices.map(c => c.code).join(" + ") : "Aucun choix · commence par PRESENCE";
         $("sumSous-total").textContent = displayTotal();
         $("sumTotal").textContent = displayTotal();
         $("waveAmount").textContent = displayTotal();
@@ -867,6 +917,21 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
