@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#123c2d">
-  <title>Demande PRO JOB — SMS direct · Sénégal & France</title>
+  <title>Demande PRO JOB — Coordonnées d’abord · SMS direct</title>
   <meta name="description" content="Demande PRO JOB DIGIY — grilles pays Sénégal et France, activation recruteur, missions, candidatures, contact direct, paiement Wave ou Sendwave et validation DIGIY avant accès pro.">
-  <meta name="digiy-page" content="pro-job-direct-sms-sans-copier-coller-20260724">
+  <meta name="digiy-page" content="pro-job-direct-sms-coordonnees-obligatoires-en-haut-20260724">
   <style>
     :root{
       --bg:#123c2d;
@@ -164,6 +164,23 @@
     .emptyImpact{color:#64746b;font-weight:900}
 
     .formGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .contactFirst{
+      margin:14px 0 18px;
+      padding:15px;
+      border:2px solid rgba(21,95,67,.25);
+      border-radius:20px;
+      background:linear-gradient(180deg,#f7fff9,#ffffff);
+      box-shadow:0 10px 26px rgba(18,60,45,.08);
+    }
+    .contactFirst h3{margin:0;color:#123c2d;font-size:22px}
+    .contactFirstIntro{
+      margin:7px 0 2px!important;
+      color:#53645b!important;
+      font-size:14px;
+      line-height:1.5;
+      font-weight:900;
+    }
+    .requiredMark{color:#b91c1c;font-weight:1000}
     .field{display:grid;gap:6px;margin-top:10px}
     .full{grid-column:1/-1}
     label{display:block;color:#7a4d00;font-size:12px;font-weight:1000;text-transform:uppercase;letter-spacing:.06em}
@@ -187,6 +204,12 @@
     .noteText{white-space:pre-wrap;color:#10231b;background:#fff;border:1px dashed rgba(17,36,27,.18);border-radius:16px;padding:12px;line-height:1.45;font-weight:850;min-height:128px}
     .warning{display:none;margin-top:10px;border:1px solid rgba(220,38,38,.30);background:rgba(220,38,38,.10);color:#fecaca;border-radius:16px;padding:10px 12px;font-weight:950}
     .warning.show{display:block}
+    .action-disabled{
+      opacity:.48!important;
+      filter:grayscale(.28);
+      cursor:not-allowed!important;
+      transform:none!important;
+    }
     .status{margin-top:10px;color:#dfffe9;font-size:13px;line-height:1.45}
 
     .actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}
@@ -436,7 +459,47 @@
         <h2>Activation PRO JOB</h2>
         <p>Commence par DIGIY PRÉSENCE pour la carte de visibilité, le QR et la présence sur le site. Ajoute DIGIY MÉTIER seulement si tu veux la fiche recruteur complète et le moteur de gestion des missions et candidatures.</p>
 
-        <div class="tarif-section">1 · SOCLE — DIGIY PRÉSENCE <span>Carte de visibilité, QR, lien et présence sur le site</span></div>
+        <section class="contactFirst" id="contactFirst" aria-label="Coordonnées obligatoires">
+          <h3>1 · Vos coordonnées</h3>
+          <p class="contactFirstIntro">
+            Renseignez d’abord ces informations. Aucun SMS, WhatsApp ou envoi de preuve ne peut partir sans elles.
+            Les champs marqués <span class="requiredMark">*</span> sont obligatoires.
+          </p>
+
+          <div class="formGrid">
+            <div class="field">
+              <label for="proName">Nom / responsable <span class="requiredMark">*</span></label>
+              <input id="proName" name="proName" autocomplete="name" placeholder="Exemple : Mamadou Diop" required>
+            </div>
+            <div class="field">
+              <label for="proTéléphone">Téléphone / WhatsApp <span class="requiredMark">*</span></label>
+              <input id="proTéléphone" name="proTelephone" type="tel" inputmode="tel" autocomplete="tel"
+                     placeholder="Exemple : +221 77 000 00 00" required minlength="8">
+            </div>
+            <div class="field">
+              <label for="zone">Zone / ville <span class="requiredMark">*</span></label>
+              <input id="zone" name="zone" autocomplete="address-level2"
+                     placeholder="Exemple : Saly, Mbour, Dakar" required>
+            </div>
+            <div class="field">
+              <label for="activity">Activité / besoin <span class="requiredMark">*</span></label>
+              <input id="activity" name="activity"
+                     placeholder="Exemple : restaurant, hôtel, chantier, boutique" required>
+            </div>
+            <div class="field full">
+              <label for="note">Note libre <span style="text-transform:none;color:#64746b">(facultatif)</span></label>
+              <textarea id="note" name="note"
+                        placeholder="Précisez votre besoin, votre mission ou votre calendrier si nécessaire."></textarea>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="danger fullAction" id="clearInfoBtn" type="button">🧹 Effacer mes coordonnées</button>
+          </div>
+        </section>
+
+        <div class="tarif-section">2 · Choisissez votre formule <span>Commencez par DIGIY PRÉSENCE</span></div>
+        <div class="tarif-section">2A · SOCLE — DIGIY PRÉSENCE <span>Carte de visibilité, QR, lien et présence sur le site</span></div>
         <div class="offers">
           <label class="offer">
             <input
@@ -466,7 +529,7 @@
           </ul>
         </div>
 
-        <div class="tarif-section">2 · OPTION MÉTIER — DIGIY MÉTIER <span>Facultatif · fiche recruteur complète + moteur missions et candidatures</span></div>
+        <div class="tarif-section">2B · OPTION MÉTIER — DIGIY MÉTIER <span>Facultatif · fiche recruteur complète + moteur missions et candidatures</span></div>
         <div class="offers">
           <label class="offer disabled" id="metierOffer">
             <input
@@ -537,36 +600,7 @@
           <div id="impactList" class="emptyImpact">Aucun choix sélectionné. Rien n'est précoché.</div>
         </div>
 
-        <div class="tarif-section">Infos recruteur pour la demande <span>Pour identifier la demande</span></div>
-        <p>Ces informations servent seulement à identifier la demande dans le message WhatsApp / SMS. La demande initiale est sans engagement ; la carte de visibilité s'active avec DIGIY PRÉSENCE, puis la fiche recruteur complète et le moteur PRO JOB s'ajoutent uniquement avec DIGIY MÉTIER.</p>
-
-        <div class="formGrid">
-          <div class="field">
-            <label for="proName">Nom / responsable</label>
-            <input id="proName" placeholder="Exemple : Mamadou Diop">
-          </div>
-          <div class="field">
-            <label for="proTéléphone">Téléphone / WhatsApp</label>
-            <input id="proTéléphone" placeholder="Exemple : +221 77 000 00 00">
-          </div>
-          <div class="field">
-            <label for="zone">Zone / ville</label>
-            <input id="zone" placeholder="Exemple : Saly, Mbour, Dakar">
-          </div>
-          <div class="field">
-            <label for="activity">Activité / besoin</label>
-            <input id="activity" placeholder="Exemple : restaurant, hôtel, chantier, boutique">
-          </div>
-          <div class="field full">
-            <label for="note">Note libre</label>
-            <textarea id="note" placeholder="Exemple : DIGIY PRÉSENCE pour la carte de visibilité, ou Présence + DIGIY MÉTIER pour la fiche recruteur complète et le moteur missions/candidatures."></textarea>
-          </div>
-        </div>
-
-        <div class="actions">
-          <button class="danger fullAction" id="clearInfoBtn" type="button">🧹 Effacer mes infos</button>
-        </div>
-      </article>
+</article>
 
       <aside class="card light summary" aria-label="PRO JOB summary">
         <h2>Récapitulatif</h2>
@@ -602,7 +636,7 @@
         <p class="smsDirectHelp">Sur téléphone, aucun copier-coller : Messages s’ouvre avec le numéro DIGIY et une demande courte déjà remplie. Il reste seulement à appuyer sur Envoyer.</p>
 
         <div class="warning" id="warning">⚠️ Choisis au moins une offre avant d'envoyer.</div>
-        <div class="status" id="status">Récapitulatif prêt.</div>
+        <div class="status" id="status">Coordonnées obligatoires · Choix obligatoire · Envoi direct ensuite.</div>
       </aside>
     </section>
 
@@ -842,15 +876,71 @@
           }
         });
       }
-      function validate(){
+      function requiredContactFields(){
+        return ["proName","proTéléphone","zone","activity"]
+          .map(id => $(id))
+          .filter(Boolean);
+      }
+
+      function contactInfoComplete(){
+        return requiredContactFields().every(el => String(el.value || "").trim() && el.checkValidity());
+      }
+
+      function validateContactInfo(showMessage){
+        const fieldsToCheck = requiredContactFields();
+        const invalid = fieldsToCheck.find(el => !String(el.value || "").trim() || !el.checkValidity());
+
+        if(invalid){
+          if(showMessage){
+            const warning = $("warning");
+            if(warning){
+              warning.classList.add("show");
+              warning.textContent = "⚠️ Renseigne d’abord le nom, le téléphone, la ville et l’activité.";
+              warning.scrollIntoView({behavior:"smooth",block:"center"});
+            }
+            invalid.focus({preventScroll:true});
+            invalid.scrollIntoView({behavior:"smooth",block:"center"});
+            invalid.reportValidity();
+          }
+          return false;
+        }
+        return true;
+      }
+
+      function updateSendState(){
+        const ready = contactInfoComplete() && selectedChoixs().length > 0 && !hasFrenchPending();
+        ["waBtn","smsBtn","proofBtn","stickyWa"].forEach(id => {
+          const el = $(id);
+          if(!el) return;
+          el.classList.toggle("action-disabled", !ready);
+          el.setAttribute("aria-disabled", String(!ready));
+        });
+      }
+
+      function validate(showMessage){
+        const hasContact = validateContactInfo(!!showMessage);
         const hasChoix = selectedChoixs().length > 0;
+        const pendingFrance = hasFrenchPending();
         const warning = $("warning");
-        if(!warning) return hasChoix;
-        warning.classList.toggle("show", !hasChoix || hasFrenchPending());
-        warning.textContent = !hasChoix
-          ? "⚠️ Choisis au moins une offre avant d'envoyer."
-          : "⚠️ Un tarif France reste à confirmer avant paiement.";
-        return hasChoix && !hasFrenchPending();
+
+        if(showMessage && warning){
+          if(!hasContact){
+            warning.classList.add("show");
+            warning.textContent = "⚠️ Renseigne d’abord le nom, le téléphone, la ville et l’activité.";
+          }else if(!hasChoix){
+            warning.classList.add("show");
+            warning.textContent = "⚠️ Choisis au moins une offre avant d'envoyer.";
+          }else if(pendingFrance){
+            warning.classList.add("show");
+            warning.textContent = "⚠️ Un tarif France reste à confirmer avant paiement.";
+          }else{
+            warning.classList.remove("show");
+          }
+        }else if(warning){
+          warning.classList.remove("show");
+        }
+
+        return hasContact && hasChoix && !pendingFrance;
       }
       function refreshPaysText(){
         if($("countryHelp")){
@@ -893,7 +983,8 @@
 
         try{ localStorage.setItem(COUNTRY_KEY, country()); }catch(_){}
         refreshImpact();
-        validate();
+        updateSendState();
+        validate(false);
       }
       function toast(msg){
         const t = $("toast");
@@ -924,10 +1015,21 @@
         }
       });
 
+      function guardDirectSend(event){
+        if(validate(true)) return true;
+        event.preventDefault();
+        return false;
+      }
+
+      ["waBtn","proofBtn","stickyWa"].forEach(id => {
+        const el = $(id);
+        if(el) el.addEventListener("click", guardDirectSend);
+      });
+
       $("smsBtn").addEventListener("click", function(event){
         event.preventDefault();
 
-        if(!validate()){
+        if(!validate(true)){
           const warning = $("warning");
           if(warning) warning.scrollIntoView({behavior:"smooth",block:"center"});
           return;
@@ -1005,6 +1107,42 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
