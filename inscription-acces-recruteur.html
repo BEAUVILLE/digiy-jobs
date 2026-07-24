@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#123c2d">
-  <title>Demande PRO JOB — Tarifs Sénégal & France</title>
+  <title>Demande PRO JOB — SMS direct · Sénégal & France</title>
   <meta name="description" content="Demande PRO JOB DIGIY — grilles pays Sénégal et France, activation recruteur, missions, candidatures, contact direct, paiement Wave ou Sendwave et validation DIGIY avant accès pro.">
-  <meta name="digiy-page" content="pro-job-carte-visibilite-19900-fiche-moteur-8000-20260723">
+  <meta name="digiy-page" content="pro-job-direct-sms-sans-copier-coller-20260724">
   <style>
     :root{
       --bg:#123c2d;
@@ -191,6 +191,19 @@
 
     .actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}
     .actions .fullAction{grid-column:1/-1}
+    .smsDirectHelp{
+      margin:10px 0 0;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(37,99,235,.08);
+      border:1px solid rgba(37,99,235,.18);
+      color:#24416d;
+      font-size:13px;
+      line-height:1.45;
+      font-weight:900;
+      text-align:center;
+    }
+    .copyFallback[hidden]{display:none!important}
 
     .contact-card{
       margin-top:14px;
@@ -580,14 +593,16 @@
 
         <div class="actions">
           <a class="btn green" id="waBtn" href="#" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
-          <a class="btn blue" id="smsBtn" href="#">📱 SMS</a>
+          <a class="btn blue fullAction" id="smsBtn" href="#">📱 Ouvrir mon SMS déjà rempli</a>
           <button class="danger" id="clearBtn" type="button">🧹 Effacer</button>
-          <button class="gold" id="copyBtn" type="button">📋 Copier la note Wave</button>
+          <button class="gold copyFallback" id="copyBtn" type="button">Autre solution : copier la note</button>
           <a class="btn clear fullAction" id="proofBtn" href="#" target="_blank" rel="noopener noreferrer">📸 Envoyer la preuve</a>
         </div>
 
+        <p class="smsDirectHelp">Sur téléphone, aucun copier-coller : Messages s’ouvre avec le numéro DIGIY et une demande courte déjà remplie. Il reste seulement à appuyer sur Envoyer.</p>
+
         <div class="warning" id="warning">⚠️ Choisis au moins une offre avant d'envoyer.</div>
-        <div class="status" id="status">Récapitulatif ready.</div>
+        <div class="status" id="status">Récapitulatif prêt.</div>
       </aside>
     </section>
 
@@ -639,6 +654,12 @@
       const fields = ["proName","proTéléphone","zone","activity","note"];
       const nfFcfa = new Intl.NumberFormat("en-US");
       const nfEur = new Intl.NumberFormat("fr-FR");
+      const IS_IOS_OR_IPADOS =
+        /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      const MOBILE_SMS_SUPPORTED =
+        /Android|Windows Phone|Mobile/i.test(navigator.userAgent) ||
+        IS_IOS_OR_IPADOS;
 
       function val(id){ return String($(id)?.value || "").trim(); }
       function dash(v){ return v || "—"; }
@@ -763,6 +784,35 @@
           "Doctrine tarifaire : grille pays, pas conversion au taux de change."
         ].filter(Boolean).join("\n");
       }
+      function shortValue(value, maxLength){
+        const clean = String(value || "").replace(/\s+/g, " ").trim();
+        return clean.length > maxLength ? clean.slice(0, maxLength - 1) + "…" : clean;
+      }
+
+      function smsText(){
+        const choices = selectedChoixs();
+        const codes = choices.length ? choices.map(c => c.code).join(" + ") : "Aucun choix";
+        return [
+          "DEMANDE PRO JOB DIGIY",
+          "Pays: " + (isFrance() ? "France" : "Senegal"),
+          "Choix: " + codes,
+          "Total: " + displayTotal(),
+          "Nom/responsable: " + shortValue(dash(val("proName")), 55),
+          "Telephone candidat: " + shortValue(dash(val("proTéléphone")), 28),
+          "Zone/ville: " + shortValue(dash(val("zone")), 45),
+          "Activite/besoin: " + shortValue(dash(val("activity")), 70),
+          val("note") ? "Note: " + shortValue(val("note"), 140) : "",
+          "Je demande a etre recontacte pour valider mon acces PRO JOB.",
+          "0% commission DIGIY."
+        ].filter(Boolean).join("\n");
+      }
+
+      function buildSmsHref(message){
+        const number = DIGIY_PHONE_DISPLAY.replace(/\s/g, "");
+        const separator = IS_IOS_OR_IPADOS ? "&" : "?";
+        return "sms:" + number + separator + "body=" + encodeURIComponent(message);
+      }
+
       function refreshImpact(){
         const choices = selectedChoixs();
         const target = $("impactList");
@@ -833,7 +883,7 @@
         $("waBtn").href = wa;
         $("proofBtn").href = wa;
         $("stickyWa").href = wa;
-        $("smsBtn").href = "sms:" + DIGIY_PHONE_DISPLAY.replace(/\s/g,"") + "?&body=" + encoded;
+        $("smsBtn").href = buildSmsHref(smsText());
 
         const contactMsg = "Bonjour DIGIY, je viens de la page PRO JOB. Je veux des informations sur la demande recruteur.";
         const contactUrl = "https://wa.me/" + DIGIY_WA + "?text=" + encodeURIComponent(contactMsg);
@@ -873,6 +923,22 @@
           el.addEventListener("change", refresh);
         }
       });
+
+      $("smsBtn").addEventListener("click", function(event){
+        event.preventDefault();
+
+        if(!validate()){
+          const warning = $("warning");
+          if(warning) warning.scrollIntoView({behavior:"smooth",block:"center"});
+          return;
+        }
+
+        const href = buildSmsHref(smsText());
+        $("smsBtn").href = href;
+        window.location.href = href;
+      });
+
+      $("copyBtn").hidden = MOBILE_SMS_SUPPORTED;
 
       $("copyBtn").addEventListener("click", async function(){
         const text = noteText();
@@ -939,6 +1005,43 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
