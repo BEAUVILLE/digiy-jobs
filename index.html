@@ -1,50 +1,29 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>DIGIY JOBS — Missions, candidats & recruteurs internationaux</title>
-<meta content="DIGIY JOBS — missions, candidats et recruteurs pour les territoires locaux : Afrique, France, diaspora. Postuler, publier une mission, accéder à des profils qualifiés, contact direct." name="description"/>
-<meta content="#155f43" name="theme-color"/>
-<meta content="index, follow" name="robots"/>
-<meta content="jobs-index-international-porte-20260706" name="digiy-build"/>
-<meta content="jobs-fr-en-retour-fr-natif-20260620" name="digiy-bilingual"/>
-<meta content="jobs-liens-fr-en-pages-connectees-20260620" name="digiy-fix"/>
-<meta content="jobs-index-inscription-acces-recruteur-visible-20260624" name="digiy-access-recruteur"/>
-<script>
-    (function(){
-      "use strict";
-      try{
-        var params = new URLSearchParams(window.location.search || "");
-        window.DIGIY_JOBS_LANG = params.get("lang") === "en" ? "en" : "fr";
-        document.documentElement.lang = window.DIGIY_JOBS_LANG;
-      }catch(_){
-        window.DIGIY_JOBS_LANG = "fr";
-        document.documentElement.lang = "fr";
-      }
-    })();
-  </script>
-<style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#155f43">
+  <meta name="robots" content="index,follow">
+  <meta name="description" content="DIGIY JOBS — missions, candidatures, NDIMBAL Express et accès recruteur. Des portes simples, un contact direct, Afrique, France et diaspora.">
+  <meta name="digiy-build" content="jobs-epure-portes-haut-20260727">
+  <title>DIGIY JOBS — Missions, candidats et recruteurs</title>
+
+  <style>
     :root{
       --bg:#f6eedf;
-      --bg2:#fff9ec;
       --paper:#fffdf7;
       --ink:#10231b;
       --muted:#5f6f65;
-      --soft:#eef3e7;
       --green:#155f43;
       --green2:#1f7a55;
       --mint:#dff6e8;
       --gold:#f4b934;
       --gold2:#ffe7a3;
       --blue:#2563eb;
-      --red:#dc2626;
       --line:rgba(21,95,67,.16);
-      --line2:rgba(21,95,67,.25);
       --shadow:0 20px 55px rgba(31,52,42,.14);
       --shadow2:0 12px 32px rgba(31,52,42,.10);
-      --radius:26px;
       --max:1160px;
     }
 
@@ -56,817 +35,139 @@
       color:var(--ink);
       font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
       background:
-        radial-gradient(circle at 8% 0%, rgba(244,185,52,.28), transparent 35%),
-        radial-gradient(circle at 92% 18%, rgba(31,122,85,.18), transparent 34%),
-        linear-gradient(180deg,var(--bg2),var(--bg) 58%,#efe2cc);
+        radial-gradient(circle at 8% 0%,rgba(244,185,52,.26),transparent 34%),
+        radial-gradient(circle at 92% 14%,rgba(31,122,85,.18),transparent 32%),
+        linear-gradient(180deg,#fff9ec,var(--bg) 62%,#efe2cc);
       -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
     }
 
     a{color:inherit;text-decoration:none}
-    button,input{font:inherit}
-    .wrap{width:min(var(--max), calc(100% - 32px));margin-inline:auto}
+    button{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 28px));margin-inline:auto}
 
     .topbar{
       position:sticky;
       top:0;
-      z-index:50;
+      z-index:40;
       border-bottom:1px solid rgba(21,95,67,.12);
-      background:rgba(255,249,236,.86);
+      background:rgba(255,249,236,.91);
       backdrop-filter:blur(16px);
     }
 
     .topbar-inner{
-      min-height:78px;
+      min-height:70px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:18px;
-      padding:12px 0;
+      gap:14px;
+      padding:9px 0;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:12px;
-      min-width:220px;
+      gap:11px;
+      min-width:0;
       font-weight:1000;
-      letter-spacing:.02em;
     }
 
     .brand-mark{
-      width:48px;
-      height:48px;
-      border-radius:18px;
+      width:46px;
+      height:46px;
+      border-radius:17px;
       display:grid;
       place-items:center;
-      color:#07140f;
-      background:
-        radial-gradient(circle at top right, rgba(255,255,255,.45), transparent 42%),
-        linear-gradient(135deg,var(--gold),#f59e0b);
-      box-shadow:0 12px 28px rgba(244,185,52,.28);
-      font-size:22px;
+      background:linear-gradient(135deg,var(--gold),#f59e0b);
+      box-shadow:0 10px 25px rgba(244,185,52,.25);
+      font-size:21px;
+      flex:none;
     }
 
+    .brand strong{display:block;font-size:16px;line-height:1}
     .brand small{
       display:block;
-      margin-top:2px;
+      margin-top:4px;
       color:var(--muted);
-      font-size:11px;
+      font-size:10px;
+      letter-spacing:.12em;
       font-weight:900;
-      letter-spacing:.14em;
     }
 
-    .nav{
+    .top-actions{
       display:flex;
-      justify-content:flex-end;
       align-items:center;
       gap:8px;
-      flex-wrap:wrap;
     }
 
-    .nav a,
-    .chip-link{
+    .lang{
       display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:7px;
-      min-height:42px;
-      padding:9px 13px;
+      gap:4px;
+      padding:4px;
       border-radius:999px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.58);
-      color:#173528;
-      font-size:13px;
-      font-weight:950;
-      box-shadow:0 8px 22px rgba(31,52,42,.06);
-      transition:.18s ease;
+      background:rgba(255,255,255,.66);
     }
 
-    .nav a:hover,
-    .chip-link:hover,
-    .btn:hover,
-    .door:hover,
-    .mission-card:hover{transform:translateY(-2px)}
+    .lang button{
+      min-height:34px;
+      padding:0 10px;
+      border:0;
+      border-radius:999px;
+      background:transparent;
+      color:var(--green);
+      font-size:12px;
+      font-weight:1000;
+      cursor:pointer;
+    }
 
-    .nav .primary,
-    .chip-link.primary{
-      color:white;
-      border-color:rgba(21,95,67,.35);
+    .lang button.active{
+      color:#fff;
       background:linear-gradient(135deg,var(--green),var(--green2));
     }
 
-    .nav .green{background:var(--mint);border-color:rgba(21,95,67,.22)}
-    .nav .blue{background:#dbeafe;border-color:rgba(37,99,235,.18)}
+    .hub-link{
+      min-height:42px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:0 13px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fffdf7;
+      color:var(--green);
+      font-size:13px;
+      font-weight:1000;
+    }
 
-    .hero{padding:32px 0 18px}
+    .hero{padding:24px 0 14px}
 
-    .hero-shell{
+    .hero-card{
       position:relative;
       overflow:hidden;
       border:1px solid var(--line);
-      border-radius:34px;
+      border-radius:32px;
+      padding:28px;
       background:
-        radial-gradient(circle at 10% 12%, rgba(255,231,163,.80), transparent 32%),
-        radial-gradient(circle at 88% 6%, rgba(223,246,232,.95), transparent 36%),
+        radial-gradient(circle at 10% 12%,rgba(255,231,163,.78),transparent 31%),
+        radial-gradient(circle at 88% 6%,rgba(223,246,232,.92),transparent 35%),
         linear-gradient(135deg,#fffdf7,#f7ecd8 58%,#eef7e9);
       box-shadow:var(--shadow);
-      padding:22px;
     }
 
-    .hero-shell:before{
+    .hero-card::after{
       content:"";
       position:absolute;
-      inset:auto -80px -140px auto;
-      width:330px;
-      height:330px;
-      border-radius:999px;
-      background:rgba(21,95,67,.08);
+      right:-90px;
+      bottom:-135px;
+      width:300px;
+      height:300px;
+      border-radius:50%;
+      background:rgba(21,95,67,.07);
       pointer-events:none;
     }
 
-    .hero-grid{
-      position:relative;
-      display:grid;
-      grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);
-      gap:20px;
-      align-items:stretch;
-    }
-
-    .hero-card,
-    .module-card,
-    .panel-card,
-    .cta-card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:rgba(255,255,255,.64);
-      box-shadow:var(--shadow2);
-    }
-
-    .hero-card{padding:28px;display:grid;gap:18px;align-content:start}
-
     .eyebrow{
-      width:max-content;
-      max-width:100%;
       display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 13px;
-      border-radius:999px;
-      background:rgba(21,95,67,.10);
-      border:1px solid rgba(21,95,67,.18);
-      color:var(--green);
-      font-size:12px;
-      font-weight:1000;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-    }
-
-    h1,h2,h3,p{margin:0}
-    h1{
-      max-width:780px;
-      font-size:clamp(38px,6vw,76px);
-      line-height:.94;
-      letter-spacing:-.055em;
-      font-weight:1000;
-      color:#0d2118;
-    }
-    h1 span{color:var(--green)}
-
-    .lead{
-      max-width:67ch;
-      color:#415247;
-      font-size:clamp(17px,2vw,20px);
-      line-height:1.62;
-      font-weight:760;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      min-height:50px;
-      padding:12px 17px;
-      border-radius:16px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      border:1px solid transparent;
-      font-size:15px;
-      font-weight:1000;
-      cursor:pointer;
-      transition:.18s ease;
-      box-shadow:0 12px 25px rgba(31,52,42,.10);
-    }
-
-    .btn-dark{background:linear-gradient(135deg,var(--green),var(--green2));color:white;border-color:rgba(21,95,67,.18)}
-    .btn-gold{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#0b1b13;border-color:rgba(244,185,52,.28)}
-    .btn-blue{background:#dbeafe;color:#1e3a8a;border-color:rgba(37,99,235,.18)}
-    .btn-light{background:#fffdf7;color:#173528;border-color:var(--line)}
-
-    .hero-notes{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:7px;
-      border-radius:999px;
-      padding:8px 11px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.60);
-      color:#173528;
-      font-size:12px;
-      font-weight:950;
-    }
-
-    .pill:before{
-      content:"";
-      width:8px;
-      height:8px;
-      border-radius:999px;
-      background:var(--green2);
-      box-shadow:0 0 0 4px rgba(31,122,85,.10);
-    }
-    .pill.gold:before{background:var(--gold);box-shadow:0 0 0 4px rgba(244,185,52,.14)}
-    .pill.blue:before{background:var(--blue);box-shadow:0 0 0 4px rgba(37,99,235,.12)}
-
-    .audio-card{
-      overflow:hidden;
-      border-radius:22px;
-      border:1px solid rgba(244,185,52,.35);
-      background:
-        radial-gradient(circle at right top, rgba(255,231,163,.72), transparent 42%),
-        linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,248,226,.76));
-      box-shadow:0 14px 32px rgba(244,185,52,.12);
-      padding:16px;
-    }
-
-    .audio-head{
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      align-items:flex-start;
-      flex-wrap:wrap;
-    }
-
-    .audio-title{display:grid;gap:4px;max-width:610px}
-    .audio-title strong{font-size:16px;font-weight:1000;color:#12251c}
-    .audio-title span{font-size:13px;color:#5f6f65;font-weight:820;line-height:1.45}
-    .audio-controls{display:flex;gap:8px;flex-wrap:wrap}
-
-    .audio-controls button{
-      min-height:42px;
-      border:0;
-      border-radius:999px;
-      padding:9px 13px;
-      font-size:13px;
-      font-weight:1000;
-      cursor:pointer;
-      transition:.18s ease;
-    }
-    .audio-controls .play{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#0b1b13}
-    .audio-controls .stop{background:rgba(220,38,38,.10);color:#991b1b;border:1px solid rgba(220,38,38,.18)}
-
-    .audio-text{
-      margin-top:12px;
-      color:#47594e;
-      font-size:14px;
-      line-height:1.54;
-      font-weight:780;
-    }
-
-    .audio-progress-wrap{
-      height:7px;
-      margin-top:12px;
-      border-radius:999px;
-      overflow:hidden;
-      background:rgba(21,95,67,.12);
-    }
-    .audio-progress{height:100%;width:0%;background:linear-gradient(90deg,var(--gold),var(--green2));transition:width .18s linear}
-    .audio-status{margin-top:8px;color:#68776e;font-size:12px;font-weight:900}
-
-    .hero-side{
-      display:grid;
-      gap:14px;
-    }
-
-    .module-card{padding:20px;display:grid;gap:14px;align-content:start}
-
-    .module-head{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
-    }
-
-    .module-icon{
-      width:58px;
-      height:58px;
-      border-radius:22px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(135deg,var(--green),var(--green2));
-      color:white;
-      font-size:28px;
-      box-shadow:0 14px 32px rgba(21,95,67,.18);
-    }
-
-    .signal{
-      display:inline-flex;
-      width:max-content;
-      max-width:100%;
-      padding:8px 11px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:1000;
-      color:#0f5138;
-      background:var(--mint);
-      border:1px solid rgba(21,95,67,.18);
-    }
-
-    .module-card h2{
-      font-size:30px;
-      line-height:1.05;
-      letter-spacing:-.035em;
-      font-weight:1000;
-    }
-    .module-card p{color:#526258;font-size:15px;line-height:1.58;font-weight:760}
-
-    .mini-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:10px;
-    }
-
-    .mini{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.62);
-      border-radius:18px;
-      padding:13px;
-      display:grid;
-      gap:5px;
-      min-height:102px;
-    }
-    .mini strong{font-size:16px;font-weight:1000;color:#10231b}
-    .mini span{font-size:13px;color:#5f6f65;line-height:1.42;font-weight:760}
-
-    .quick-card{
-      padding:18px;
-      border-radius:24px;
-      background:
-        radial-gradient(circle at right top, rgba(21,95,67,.14), transparent 44%),
-        linear-gradient(135deg,#143d2d,#155f43);
-      color:white;
-      box-shadow:0 16px 38px rgba(21,95,67,.22);
-      display:grid;
-      gap:12px;
-    }
-    .quick-card h3{font-size:24px;line-height:1.08;font-weight:1000;color:white}
-    .quick-card p{font-size:14px;color:rgba(255,255,255,.86);line-height:1.54;font-weight:760}
-    .quick-card .btn{box-shadow:none}
-
-    .section{padding:18px 0}
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:12px;
-    }
-    .stat{
-      border:1px solid var(--line);
-      border-radius:22px;
-      background:rgba(255,255,255,.62);
-      box-shadow:var(--shadow2);
-      padding:18px;
-      display:grid;
-      gap:6px;
-    }
-    .stat strong{font-size:34px;line-height:1;font-weight:1000;color:var(--green)}
-    .stat span{font-size:13px;color:#53645a;line-height:1.4;font-weight:850}
-
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:18px;
-      margin-bottom:14px;
-    }
-    .section-head h2{
-      font-size:clamp(28px,4vw,44px);
-      letter-spacing:-.045em;
-      line-height:1;
-      font-weight:1000;
-    }
-    .section-head p{
-      margin-top:8px;
-      max-width:760px;
-      color:#53645a;
-      font-size:16px;
-      line-height:1.58;
-      font-weight:750;
-    }
-
-    .door-grid{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:12px;
-    }
-    .door{
-      min-height:285px;
-      border:1px solid var(--line);
-      border-radius:26px;
-      padding:17px;
-      background:rgba(255,255,255,.66);
-      box-shadow:var(--shadow2);
-      display:grid;
-      align-content:start;
-      gap:12px;
-      transition:.18s ease;
-    }
-    .door:nth-child(1){background:linear-gradient(180deg,#fffdf7,#eef8ef)}
-    .door:nth-child(2){background:linear-gradient(180deg,#fffdf7,#fff2ce)}
-    .door:nth-child(3){background:linear-gradient(180deg,#fffdf7,#e7efff)}
-    .door:nth-child(4){background:linear-gradient(180deg,#fffdf7,#f5e9ff)}
-    .door:nth-child(5){background:linear-gradient(180deg,#fffdf7,#fff4e6)}
-    .door:nth-child(6){background:linear-gradient(180deg,#fffdf7,#e6f8ed)}
-    .door:nth-child(7){background:linear-gradient(180deg,#fffdf7,#eef8ef)}
-
-    .badge{
-      width:max-content;
-      padding:7px 10px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:1000;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      background:var(--mint);
-      color:#0f5138;
-      border:1px solid rgba(21,95,67,.18);
-    }
-    .badge.warn{background:#fff2ce;color:#7c4a03;border-color:rgba(244,185,52,.25)}
-    .badge.blue{background:#dbeafe;color:#1e3a8a;border-color:rgba(37,99,235,.18)}
-    .badge.hot{background:#f3e8ff;color:#5b21b6;border-color:rgba(91,33,182,.16)}
-    .badge.express{background:#fff2ce;color:#7c4a03;border-color:rgba(244,185,52,.30)}
-
-    .door h3{font-size:24px;line-height:1.06;font-weight:1000;letter-spacing:-.025em}
-    .door p{font-size:14px;line-height:1.5;color:#526258;font-weight:760}
-
-    .meta{
-      display:grid;
-      gap:7px;
-      margin-top:2px;
-    }
-    .meta div{
-      display:grid;
-      gap:2px;
-      padding:10px;
-      border-radius:16px;
-      border:1px solid rgba(21,95,67,.10);
-      background:rgba(255,255,255,.56);
-    }
-    .meta small{color:#78867d;font-size:11px;font-weight:950;text-transform:uppercase;letter-spacing:.08em}
-    .meta strong{font-size:13px;color:#17251d;font-weight:1000;word-break:break-word}
-
-    .door-actions{margin-top:auto}
-    .action-link{
-      width:100%;
-      min-height:46px;
-      border-radius:16px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 12px;
-      font-size:14px;
-      font-weight:1000;
-      color:white;
-      background:linear-gradient(135deg,var(--green),var(--green2));
-    }
-    .action-link.gold{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#0b1b13}
-    .action-link.blue{background:#2563eb;color:white}
-
-    .mission-preview{
-      display:grid;
-      grid-template-columns:.95fr 1.05fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    .panel-card{padding:20px;display:grid;gap:12px;align-content:start}
-    .panel-card h3{font-size:28px;font-weight:1000;letter-spacing:-.035em;line-height:1.05}
-    .panel-card p{font-size:15px;color:#526258;line-height:1.58;font-weight:760}
-    .check-list{display:grid;gap:9px;margin-top:2px}
-    .check{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      padding:11px 12px;
-      border:1px solid var(--line);
-      border-radius:16px;
-      background:rgba(255,255,255,.58);
-      color:#173528;
-      font-size:14px;
-      font-weight:840;
-      line-height:1.45;
-    }
-    .check b{color:var(--green)}
-
-    .mission-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-    .mission-card{
-      border:1px solid var(--line);
-      border-radius:24px;
-      background:rgba(255,255,255,.68);
-      box-shadow:var(--shadow2);
-      overflow:hidden;
-      transition:.18s ease;
-    }
-    .mission-visual{
-      min-height:116px;
-      padding:14px;
-      display:flex;
-      align-items:flex-end;
-      background:
-        radial-gradient(circle at 20% 18%, rgba(255,255,255,.75), transparent 28%),
-        linear-gradient(135deg,#dff6e8,#fff2ce);
-    }
-    .mission-card:nth-child(2) .mission-visual{background:linear-gradient(135deg,#dbeafe,#fff2ce)}
-    .mission-card:nth-child(3) .mission-visual{background:linear-gradient(135deg,#f3e8ff,#dff6e8)}
-    .mission-card:nth-child(4) .mission-visual{background:linear-gradient(135deg,#fff2ce,#ffe4e6)}
-
-    .mission-visual span{
-      display:inline-flex;
-      padding:8px 11px;
-      border-radius:999px;
-      background:rgba(255,255,255,.70);
-      border:1px solid rgba(21,95,67,.12);
-      font-size:12px;
-      font-weight:1000;
-      color:#173528;
-    }
-    .mission-body{padding:15px;display:grid;gap:8px}
-    .mission-body h4{margin:0;font-size:17px;line-height:1.16;font-weight:1000;color:#10231b}
-    .mission-body p{font-size:13px;color:#5f6f65;line-height:1.45;font-weight:760}
-    .mission-tags{display:flex;gap:6px;flex-wrap:wrap}
-    .mission-tags small{padding:6px 8px;border-radius:999px;background:#f2f6ef;color:#4b5c52;font-size:11px;font-weight:950}
-
-    .flow-grid{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:12px;
-    }
-    .step{
-      position:relative;
-      overflow:hidden;
-      min-height:178px;
-      border:1px solid var(--line);
-      border-radius:24px;
-      background:rgba(255,255,255,.66);
-      box-shadow:var(--shadow2);
-      padding:18px;
-      display:grid;
-      gap:10px;
-      align-content:start;
-    }
-    .step:after{
-      content:"";
-      position:absolute;
-      right:-34px;
-      bottom:-48px;
-      width:128px;
-      height:128px;
-      border-radius:999px;
-      background:rgba(21,95,67,.07);
-    }
-    .step-num{
-      width:42px;
-      height:42px;
-      border-radius:15px;
-      display:grid;
-      place-items:center;
-      background:var(--green);
-      color:white;
-      font-size:18px;
-      font-weight:1000;
-      box-shadow:0 10px 24px rgba(21,95,67,.18);
-    }
-    .step h3{font-size:22px;font-weight:1000;letter-spacing:-.02em}
-    .step p{font-size:14px;line-height:1.5;color:#526258;font-weight:760}
-
-    .cta{padding:20px 0 34px}
-    .cta-card{
-      padding:22px;
-      display:grid;
-      grid-template-columns:1fr minmax(280px,.55fr);
-      gap:16px;
-      align-items:stretch;
-      background:
-        radial-gradient(circle at left top, rgba(255,231,163,.68), transparent 34%),
-        linear-gradient(135deg,#fffdf7,#eef8ef);
-    }
-    .cta-card h2{font-size:clamp(30px,4vw,52px);letter-spacing:-.05em;line-height:.98;font-weight:1000;color:#10231b}
-    .cta-card p{margin-top:10px;font-size:16px;line-height:1.62;color:#526258;font-weight:760;max-width:760px}
-    .cta-right{display:grid;gap:10px}
-    .cta-box{
-      border:1px solid var(--line);
-      border-radius:20px;
-      background:rgba(255,255,255,.68);
-      padding:14px;
-      display:grid;
-      gap:5px;
-    }
-    .cta-box small{color:#728075;font-size:11px;font-weight:1000;text-transform:uppercase;letter-spacing:.08em}
-    .cta-box strong{font-size:17px;font-weight:1000;color:var(--green)}
-
-    footer{padding:20px 0 96px;color:#607067}
-    .foot-card{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      border-top:1px solid var(--line);
-      padding-top:18px;
-      font-weight:850;
-      font-size:13px;
-    }
-    .foot-links{display:flex;gap:12px;flex-wrap:wrap}
-    .foot-links a{font-weight:1000;color:var(--green)}
-
-    .bottom-nav{
-      display:none;
-      position:fixed;
-      left:0;
-      right:0;
-      bottom:0;
-      z-index:60;
-      padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));
-      background:rgba(255,249,236,.92);
-      border-top:1px solid rgba(21,95,67,.14);
-      backdrop-filter:blur(16px);
-    }
-    .bottom-nav-inner{
-      display:grid;
-      grid-template-columns:repeat(9,minmax(0,1fr));
-      gap:5px;
-      max-width:720px;
-      margin:0 auto;
-    }
-    .bottom-nav a{
-      min-height:54px;
-      border-radius:16px;
-      display:grid;
-      place-items:center;
-      gap:1px;
-      color:#526258;
-      font-size:11px;
-      font-weight:1000;
-    }
-    .bottom-nav a.active{
-      background:linear-gradient(135deg,var(--green),var(--green2));
-      color:white;
-    }
-    .bottom-nav .ico{font-size:18px;line-height:1}
-
-    @media (max-width:1040px){
-      .hero-grid{grid-template-columns:1fr}
-      .door-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-      .mission-preview{grid-template-columns:1fr}
-    }
-
-    @media (max-width:780px){
-      .wrap{width:min(100% - 22px,var(--max))}
-      .topbar-inner{align-items:flex-start;flex-direction:column;gap:10px}
-      .nav{width:100%;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
-      .nav a{flex:0 0 auto}
-      .hero{padding-top:18px}
-      .hero-shell{border-radius:26px;padding:12px}
-      .hero-card{padding:20px;border-radius:22px}
-      .lead{font-size:16px}
-      .hero-actions .btn{width:100%}
-      .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .door-grid{grid-template-columns:1fr}
-      .mission-cards{grid-template-columns:1fr}
-      .flow-grid{grid-template-columns:1fr}
-      .cta-card{grid-template-columns:1fr}
-      .mini-grid{grid-template-columns:1fr}
-      .bottom-nav{display:block}
-      .audio-controls,.audio-controls button{width:100%}
-      .audio-controls button{justify-content:center}
-    }
-
-    @media (max-width:430px){
-      h1{font-size:39px}
-      .stats{grid-template-columns:1fr}
-      .brand{min-width:0}
-      .brand-mark{width:44px;height:44px;border-radius:16px}
-      .module-card h2{font-size:27px}
-    }
-    /* DIGIY JOBS — sélecteur langue FR/EN */
-    .digiy-lang-switch{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:5px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.68);
-      box-shadow:0 8px 22px rgba(31,52,42,.06);
-      flex:0 0 auto;
-    }
-    .digiy-lang-switch button{
-      min-height:34px;
-      border:0;
-      border-radius:999px;
-      padding:0 10px;
-      background:transparent;
-      color:#173528;
-      font-size:12px;
-      font-weight:1000;
-      cursor:pointer;
-      white-space:nowrap;
-    }
-    html[lang="fr"] .digiy-lang-switch button[data-digiy-lang-btn="fr"],
-    html[lang="en"] .digiy-lang-switch button[data-digiy-lang-btn="en"]{
-      color:white;
-      background:linear-gradient(135deg,var(--green),var(--green2));
-      box-shadow:0 6px 18px rgba(21,95,67,.16);
-    }
-    @media (max-width:780px){
-      .digiy-lang-switch{
-        width:100%;
-        justify-content:center;
-      }
-      .digiy-lang-switch button{
-        flex:1;
-        min-height:38px;
-      }
-    }
-
-
-
-    /* DIGIY JOBS — liens connectés sur les cartes FR/EN */
-    .mini,
-    .stat,
-    .mission-card,
-    .step{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    .mini:focus-visible,
-    .stat:focus-visible,
-    .mission-card:focus-visible,
-    .step:focus-visible,
-    .door[data-digiy-link]:focus-visible{
-      outline:4px solid rgba(244,185,52,.35);
-      outline-offset:3px;
-    }
-
-    .door[data-digiy-link]{cursor:pointer}
-    .door[data-digiy-link]:hover .action-link{filter:brightness(1.04)}
-
-    .connected-link-hint{
-      display:inline-flex;
-      width:max-content;
-      max-width:100%;
-      min-height:34px;
-      align-items:center;
-      justify-content:center;
-      margin-top:6px;
-      padding:7px 10px;
-      border-radius:999px;
-      background:rgba(21,95,67,.08);
-      border:1px solid rgba(21,95,67,.14);
-      color:var(--green);
-      font-size:12px;
-      font-weight:1000;
-    }
-
-    /* === DIGIY JOBS · Vue internationale === */
-    .territory-card{
-      margin-top:14px;
-      border:1px solid rgba(21,95,67,.16);
-      border-radius:24px;
-      background:
-        radial-gradient(circle at top left, rgba(244,185,52,.20), transparent 38%),
-        radial-gradient(circle at bottom right, rgba(31,122,85,.15), transparent 42%),
-        rgba(255,255,255,.66);
-      box-shadow:var(--shadow2);
-      padding:18px;
-      display:grid;
-      gap:12px;
-    }
-    .territory-card .territory-kicker{
-      width:max-content;
-      max-width:100%;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
       padding:8px 12px;
       border-radius:999px;
       background:rgba(21,95,67,.10);
@@ -874,978 +175,642 @@
       color:var(--green);
       font-size:12px;
       font-weight:1000;
-      letter-spacing:.10em;
+      letter-spacing:.08em;
       text-transform:uppercase;
     }
-    .territory-card h2{
-      font-size:clamp(26px,4vw,42px);
-      line-height:1;
-      letter-spacing:-.045em;
+
+    h1{
+      position:relative;
+      z-index:1;
+      margin:14px 0 10px;
+      max-width:820px;
+      font-size:clamp(38px,6vw,70px);
+      line-height:.95;
+      letter-spacing:-.055em;
       font-weight:1000;
-      color:#10231b;
     }
-    .territory-card p{
+
+    h1 span{color:var(--green)}
+
+    .lead{
+      position:relative;
+      z-index:1;
+      max-width:760px;
+      margin:0;
+      color:#415247;
+      font-size:clamp(17px,2vw,20px);
+      line-height:1.58;
+      font-weight:760;
+    }
+
+    .hero-actions{
+      position:relative;
+      z-index:1;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .btn{
+      min-height:50px;
+      padding:11px 17px;
+      border-radius:16px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      border:1px solid transparent;
+      font-size:14px;
+      font-weight:1000;
+      text-align:center;
+      transition:transform .18s ease;
+    }
+
+    .btn:hover,.door:hover{transform:translateY(-2px)}
+    .btn-dark{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff}
+    .btn-gold{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#0b1b13}
+    .btn-light{background:#fffdf7;color:var(--green);border-color:var(--line)}
+    .btn-blue{background:#dbeafe;color:#1e3a8a;border-color:rgba(37,99,235,.18)}
+
+    .section{padding:14px 0}
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:16px;
+      margin-bottom:14px;
+    }
+
+    .section-head h2{
+      margin:0;
+      font-size:clamp(27px,4vw,42px);
+      line-height:1;
+      letter-spacing:-.04em;
+      font-weight:1000;
+    }
+
+    .section-head p{
+      margin:7px 0 0;
+      max-width:680px;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.55;
+      font-weight:760;
+    }
+
+    .doors{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:13px;
+    }
+
+    .door{
+      min-height:265px;
+      display:flex;
+      flex-direction:column;
+      gap:11px;
+      padding:17px;
+      border:1px solid var(--line);
+      border-radius:25px;
+      box-shadow:var(--shadow2);
+      background:#fffdf7;
+      transition:transform .18s ease;
+    }
+
+    .door:nth-child(1){background:linear-gradient(180deg,#fffdf7,#eef8ef)}
+    .door:nth-child(2){background:linear-gradient(180deg,#fffdf7,#fff2ce)}
+    .door:nth-child(3){background:linear-gradient(180deg,#fffdf7,#e7efff)}
+    .door:nth-child(4){background:linear-gradient(180deg,#fffdf7,#f3e8ff)}
+
+    .door-icon{
+      width:52px;
+      height:52px;
+      display:grid;
+      place-items:center;
+      border-radius:19px;
+      background:rgba(21,95,67,.09);
+      font-size:25px;
+    }
+
+    .door:nth-child(2) .door-icon{background:rgba(244,185,52,.18)}
+    .door:nth-child(3) .door-icon{background:rgba(37,99,235,.12)}
+    .door:nth-child(4) .door-icon{background:rgba(91,33,182,.10)}
+
+    .door h3{
+      margin:0;
+      font-size:23px;
+      line-height:1.05;
+      letter-spacing:-.025em;
+      font-weight:1000;
+    }
+
+    .door p{
+      margin:0;
+      color:#526258;
+      font-size:14px;
+      line-height:1.5;
+      font-weight:760;
+      flex:1;
+    }
+
+    .door-link{
+      min-height:46px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:15px;
+      padding:9px 12px;
+      text-align:center;
+      color:#fff;
+      background:linear-gradient(135deg,var(--green),var(--green2));
+      font-size:14px;
+      font-weight:1000;
+    }
+
+    .door:nth-child(2) .door-link{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#0b1b13}
+    .door:nth-child(3) .door-link{background:#2563eb}
+    .door:nth-child(4) .door-link{background:#6d28d9}
+
+    .info-details{
+      margin:16px 0 26px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:27px;
+      background:rgba(255,255,255,.70);
+      box-shadow:var(--shadow2);
+    }
+
+    .info-details > summary{
+      min-height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 18px;
+      list-style:none;
+      cursor:pointer;
+      color:#fff;
+      background:linear-gradient(135deg,var(--green),var(--green2));
+      font-size:17px;
+      font-weight:1000;
+      user-select:none;
+    }
+
+    .info-details > summary::-webkit-details-marker{display:none}
+    .info-details > summary::after{
+      content:"+";
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:rgba(255,255,255,.17);
+      font-size:22px;
+      line-height:1;
+      flex:none;
+    }
+    .info-details[open] > summary::after{content:"−"}
+
+    .info-body{padding:18px;display:grid;gap:16px}
+
+    .info-intro{
+      margin:0;
       color:#526258;
       font-size:15px;
       line-height:1.6;
       font-weight:760;
-      max-width:80ch;
     }
-    .territory-grid{
+
+    .secondary-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:11px;
+    }
+
+    .secondary{
+      min-height:148px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      padding:15px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      background:#fffdf7;
+    }
+
+    .secondary strong{font-size:17px;line-height:1.08;font-weight:1000}
+    .secondary span{color:var(--muted);font-size:13px;line-height:1.45;font-weight:760;flex:1}
+    .secondary a{
+      min-height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 10px;
+      border-radius:13px;
+      background:rgba(21,95,67,.09);
+      color:var(--green);
+      font-size:13px;
+      font-weight:1000;
+      text-align:center;
+    }
+
+    .doctrine{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
       gap:10px;
     }
-    .territory-item{
-      border:1px solid rgba(21,95,67,.12);
-      border-radius:18px;
-      background:rgba(255,255,255,.62);
+
+    .doctrine div{
       padding:13px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(223,246,232,.48);
     }
-    .territory-item b{
-      display:block;
-      color:var(--green);
-      font-size:14px;
-      font-weight:1000;
-      margin-bottom:5px;
+
+    .doctrine b{display:block;margin-bottom:5px;color:var(--green);font-size:14px}
+    .doctrine span{color:#526258;font-size:13px;line-height:1.45;font-weight:760}
+
+    .contact-row{
+      display:flex;
+      gap:9px;
+      flex-wrap:wrap;
+      padding-top:2px;
     }
-    .territory-item span{
-      display:block;
-      color:#5f6f65;
+
+    footer{
+      padding:4px 0 28px;
+      color:#607067;
       font-size:13px;
-      line-height:1.45;
-      font-weight:760;
-    }
-    @media (max-width:780px){
-      .territory-grid{grid-template-columns:1fr}
+      font-weight:800;
     }
 
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid var(--line);
+      padding-top:17px;
+    }
+
+    @media(max-width:980px){
+      .doors{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .secondary-grid,.doctrine{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:680px){
+      .wrap{width:min(var(--max),calc(100% - 18px))}
+      .topbar-inner{min-height:64px}
+      .hub-link{display:none}
+      .hero{padding-top:14px}
+      .hero-card{padding:21px;border-radius:25px}
+      h1{font-size:40px}
+      .hero-actions{display:grid;grid-template-columns:1fr 1fr}
+      .btn{width:100%}
+      .section-head{display:block}
+      .doors{
+        display:flex;
+        overflow-x:auto;
+        gap:10px;
+        scroll-snap-type:x mandatory;
+        padding:1px 1px 10px;
+        scrollbar-width:none;
+      }
+      .doors::-webkit-scrollbar{display:none}
+      .door{
+        flex:0 0 min(84vw,315px);
+        min-height:250px;
+        scroll-snap-align:start;
+      }
+      .secondary-grid,.doctrine{grid-template-columns:1fr}
+      .info-body{padding:14px}
+      .info-details > summary{font-size:15px;padding:13px 15px}
+    }
+
+    @media(max-width:430px){
+      .hero-actions{grid-template-columns:1fr}
+      h1{font-size:37px}
+      .brand small{display:none}
+    }
   </style>
-<meta content="vrais-liens-repo-missions-ndimbal-postuler-dossier-suivi-inscription-20260620" name="digiy-fix-jobs-links"/><meta name="digiy-en-pages" content="missions-en-ndimbal-en-postuler-en-dossier-en-suivi-en-inscription-en-20260620"/>
 </head>
+
 <body>
-<header class="topbar">
-<div class="wrap topbar-inner">
-<a aria-label="Retour en haut de page" class="brand" href="#top">
-<span class="brand-mark">💼</span>
-<span>DIGIY JOBS<small>MISSIONS · CANDIDATS · RECRUTEURS</small></span>
-</a>
-<nav aria-label="Navigation principale" class="nav">
-<a href="https://digiylyfe.com/">🌍 Site</a>
-<a href="https://digiy-hub.digiylyfe.com/">🧭 HUB</a>
-<a class="blue" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">🇸🇳 Wolof JOBS</a>
-<a class="green" href="https://jobs.digiylyfe.com/inscription-jobs.html">💼 Inscription JOBS</a>
-<a class="blue" href="https://jobs.digiylyfe.com/acces-recruteur.html">👥 Accès recruteur</a>
-<a class="primary" href="https://jobs.digiylyfe.com/inscription-acces-recruteur.html">📝 Inscription accès recruteur</a>
-<a href="https://jobs.digiylyfe.com/missions.html">Missions</a>
-<a class="green" href="https://jobs.digiylyfe.com/ndimbal-express.html">⚡ NDIMBAL</a>
-<a href="https://jobs.digiylyfe.com/postuler.html">Postuler</a>
-<a class="blue" href="https://jobs.digiylyfe.com/dossier-intelligent.html">Dossier</a>
-<a class="primary" href="#entrer">Entrer</a>
-</nav>
-<div aria-label="Choisir la langue" class="digiy-lang-switch">
-<button data-digiy-lang-btn="fr" onclick="digiyJobsSetLang('fr')" type="button">🇫🇷 FR</button>
-<button data-digiy-lang-btn="en" onclick="digiyJobsSetLang('en')" type="button">🇬🇧 EN</button>
-</div>
-</div>
-</header>
-<main id="top">
-<section class="hero">
-<div class="wrap hero-shell">
-<div class="hero-grid">
-<article class="hero-card">
-<span class="eyebrow">Afrique · France · Diaspora · emploi local</span>
-<h1>Le travail local, <span>visible partout.</span></h1>
-<p class="lead">
-              DIGIY JOBS relie les missions, les candidats et les recruteurs dans les territoires locaux : Afrique, France et diaspora.
-              Le candidat avance sans code PIN. Côté pro, trois gestes restent séparés : Inscription JOBS pour publier une mission, Accès recruteur pour comprendre les profils qualifiés, Inscription accès recruteur pour choisir un pack 10 / 25 / 50 profils.
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="Retour en haut">
+        <span class="brand-mark">💼</span>
+        <span>
+          <strong>DIGIY JOBS</strong>
+          <small data-i18n="brand_sub">MISSIONS · CANDIDATS · RECRUTEURS</small>
+        </span>
+      </a>
+
+      <div class="top-actions">
+        <a class="hub-link" href="https://digiy-hub.digiylyfe.com/" data-i18n="hub">🧭 HUB</a>
+        <div class="lang" aria-label="Choisir la langue">
+          <button id="langFr" type="button" class="active">FR</button>
+          <button id="langEn" type="button">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-card">
+          <span class="eyebrow" data-i18n="eyebrow">Afrique · France · Diaspora</span>
+          <h1 data-i18n="hero_title">Le travail local, <span>visible partout.</span></h1>
+          <p class="lead" data-i18n="hero_text">
+            Trouve une mission, réponds rapidement ou accède aux profils utiles. DIGIY organise les portes ; candidats et recruteurs gardent le contact humain.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="https://jobs.digiylyfe.com/missions.html" data-i18n="see_missions">💼 Voir les missions</a>
+            <a class="btn btn-gold" href="https://jobs.digiylyfe.com/ndimbal-express.html" data-i18n="see_ndimbal">⚡ NDIMBAL Express</a>
+            <a class="btn btn-blue" href="https://jobs.digiylyfe.com/postuler.html" data-i18n="apply">📄 Postuler</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="doorsTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2 id="doorsTitle" data-i18n="doors_title">Choisis ta porte.</h2>
+            <p data-i18n="doors_text">Les quatre actions principales sont visibles immédiatement. Sur téléphone, fais glisser les cartes.</p>
+          </div>
+        </div>
+
+        <div class="doors">
+          <article class="door">
+            <div class="door-icon">💼</div>
+            <h3 data-i18n="door_missions_title">Missions</h3>
+            <p data-i18n="door_missions_text">Consulte les besoins publiés et ouvre directement la mission qui te correspond.</p>
+            <a class="door-link" href="https://jobs.digiylyfe.com/missions.html" data-i18n="door_missions_action">Voir les missions</a>
+          </article>
+
+          <article class="door">
+            <div class="door-icon">⚡</div>
+            <h3>NDIMBAL Express</h3>
+            <p data-i18n="door_ndimbal_text">Missions courtes, urgentes ou ponctuelles : aide terrain, livraison et coup de main.</p>
+            <a class="door-link" href="https://jobs.digiylyfe.com/ndimbal-express.html" data-i18n="door_ndimbal_action">Voir NDIMBAL</a>
+          </article>
+
+          <article class="door">
+            <div class="door-icon">📄</div>
+            <h3 data-i18n="door_apply_title">Postuler</h3>
+            <p data-i18n="door_apply_text">Dépose un profil simple ou réponds à une mission sans entrer dans un espace professionnel.</p>
+            <a class="door-link" href="https://jobs.digiylyfe.com/postuler.html" data-i18n="door_apply_action">Déposer ma candidature</a>
+          </article>
+
+          <article class="door">
+            <div class="door-icon">👥</div>
+            <h3 data-i18n="door_recruiter_title">Recruteur</h3>
+            <p data-i18n="door_recruiter_text">Comprends l’accès aux profils qualifiés et les règles d’une mise en relation propre.</p>
+            <a class="door-link" href="https://jobs.digiylyfe.com/acces-recruteur.html" data-i18n="door_recruiter_action">Accès recruteur</a>
+          </article>
+        </div>
+
+        <details class="info-details">
+          <summary data-i18n="details_title">Découvrir le fonctionnement de DIGIY JOBS</summary>
+
+          <div class="info-body">
+            <p class="info-intro" data-i18n="details_intro">
+              Les accès secondaires restent disponibles sans encombrer le parcours principal : dossier, suivi, publication de mission, packs recruteur, Wolof et contacts.
             </p>
-<div class="hero-actions">
-<a class="btn btn-dark" href="https://jobs.digiylyfe.com/missions.html">Voir les missions</a>
-<a class="btn btn-gold" href="https://jobs.digiylyfe.com/ndimbal-express.html">⚡ NDIMBAL Express</a>
-<a class="btn btn-gold" href="https://jobs.digiylyfe.com/postuler.html">Déposer ma candidature</a>
-<a class="btn btn-blue" href="https://jobs.digiylyfe.com/dossier-intelligent.html">Préparer mon dossier</a>
-<a class="btn btn-light" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">🇸🇳 Lexique Wolof JOBS</a>
-<a class="btn btn-blue" href="https://jobs.digiylyfe.com/acces-recruteur.html">👥 Accès recruteur</a>
-<a class="btn btn-gold" href="https://jobs.digiylyfe.com/inscription-acces-recruteur.html">📝 Inscription accès recruteur</a>
-<a class="btn btn-light" href="https://jobs.digiylyfe.com/suivi.html">Suivre mon dépôt</a>
-</div>
-<div aria-label="Repères DIGIY JOBS" class="hero-notes">
-<a class="pill" href="https://jobs.digiylyfe.com/missions.html">Missions lisibles</a>
-<a class="pill gold" href="https://jobs.digiylyfe.com/ndimbal-express.html">NDIMBAL Express</a>
-<a class="pill gold" href="https://jobs.digiylyfe.com/postuler.html">Candidature simple</a>
-<a class="pill blue" href="https://jobs.digiylyfe.com/dossier-intelligent.html">Dossier clair</a>
-<a class="pill gold" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Wolof terrain</a>
-<a class="pill blue" href="https://jobs.digiylyfe.com/acces-recruteur.html">Accès recruteur</a>
-<a class="pill" href="#territoires">Afrique · France · Diaspora</a>
-<a class="pill gold" href="https://jobs.digiylyfe.com/inscription-acces-recruteur.html">Inscription accès recruteur</a>
-<a class="pill" href="https://wa.me/221771342889?text=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions." rel="noopener noreferrer" target="_blank">Contact direct</a>
-</div>
-<div class="audio-card" id="digiyJobsAudioCard">
-<div class="audio-head">
-<div class="audio-title">
-<strong>🎧 Écouter DIGIY JOBS</strong>
-<span>Une courte voix explique où tu es, quoi faire, et comment avancer sans te perdre.</span>
-</div>
-<div class="audio-controls">
-<button class="play" id="digiyJobsPlayBtn" type="button">▶️ Lecture</button>
-<button class="stop" id="digiyJobsStopBtn" type="button">⏹ Arrêt</button>
-</div>
-</div>
-<div class="audio-text">
-                Le module est public côté candidat : voir les missions, ouvrir NDIMBAL Express pour les missions courtes urgentes, postuler, préparer son dossier, suivre son dépôt. Le lexique Wolof JOBS aide à parler emploi, expérience, disponibilité, salaire et entretien avec des mots simples du terrain. Côté professionnel, l’inscription JOBS sert à publier une mission ou chercher un profil.
+
+            <div class="secondary-grid">
+              <article class="secondary">
+                <strong data-i18n="sec_dossier_title">🧠 Préparer mon dossier</strong>
+                <span data-i18n="sec_dossier_text">Clarifie ton métier, ton expérience et ta disponibilité.</span>
+                <a href="https://jobs.digiylyfe.com/dossier-intelligent.html" data-i18n="open_dossier">Ouvrir le dossier</a>
+              </article>
+
+              <article class="secondary">
+                <strong data-i18n="sec_follow_title">🔎 Suivre mon dépôt</strong>
+                <span data-i18n="sec_follow_text">Retrouve ta candidature et garde un fil après l’envoi.</span>
+                <a href="https://jobs.digiylyfe.com/suivi.html" data-i18n="open_follow">Ouvrir le suivi</a>
+              </article>
+
+              <article class="secondary">
+                <strong data-i18n="sec_publish_title">📢 Publier une mission</strong>
+                <span data-i18n="sec_publish_text">Inscription JOBS pour une entreprise ou un professionnel qui recrute.</span>
+                <a href="https://jobs.digiylyfe.com/inscription-jobs.html" data-i18n="open_publish">Inscription JOBS</a>
+              </article>
+
+              <article class="secondary">
+                <strong data-i18n="sec_pack_title">📦 Pack recruteur</strong>
+                <span data-i18n="sec_pack_text">Choisis un accès à 10, 25 ou 50 profils qualifiés et consentis.</span>
+                <a href="https://jobs.digiylyfe.com/inscription-acces-recruteur.html" data-i18n="open_pack">Choisir un pack</a>
+              </article>
+
+              <article class="secondary">
+                <strong data-i18n="sec_wolof_title">🇸🇳 Lexique Wolof JOBS</strong>
+                <span data-i18n="sec_wolof_text">Emploi, expérience, disponibilité, salaire et entretien en mots simples.</span>
+                <a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607" data-i18n="open_wolof">Ouvrir le lexique</a>
+              </article>
+
+              <article class="secondary">
+                <strong data-i18n="sec_home_title">🧭 Maison DIGIY</strong>
+                <span data-i18n="sec_home_text">Retourne au site principal ou au HUB sans barre fixe envahissante.</span>
+                <a href="https://digiy-hub.digiylyfe.com/" data-i18n="open_hub">Ouvrir le HUB</a>
+              </article>
+            </div>
+
+            <div class="doctrine">
+              <div>
+                <b data-i18n="doc_1_title">Candidat public</b>
+                <span data-i18n="doc_1_text">Voir les missions et postuler ne demande aucun code PIN.</span>
               </div>
-<div aria-hidden="true" class="audio-progress-wrap"><div class="audio-progress" id="digiyJobsAudioProgress"></div></div>
-<div class="audio-status" id="digiyJobsAudioStatus">Prêt à écouter.</div>
-</div>
-</article>
-<aside aria-label="Résumé du module" class="hero-side">
-<article class="module-card">
-<div class="module-head">
-<span class="signal">Public candidat · sans PIN</span>
-<span class="module-icon">💼</span>
-</div>
-<h2>Une porte claire pour l’emploi local et international.</h2>
-<p>
-                Ici on ne noie pas le visiteur. Il voit une mission, comprend le territoire, dépose son profil et garde un fil de suivi. Simple, propre, humain.
-              </p>
-<div class="mini-grid">
-<a class="mini" href="https://jobs.digiylyfe.com/missions.html"><strong>Voir</strong><span>Lire les missions publiées.</span><span class="connected-link-hint">Ouvrir Missions</span></a>
-<a class="mini" href="https://jobs.digiylyfe.com/missions.html"><strong>NDIMBAL</strong><span>Voir les missions courtes urgentes.</span><span class="connected-link-hint">Ouvrir NDIMBAL</span></a>
-<a class="mini" href="https://jobs.digiylyfe.com/postuler.html"><strong>Postuler</strong><span>Déposer un profil simple.</span><span class="connected-link-hint">Postuler</span></a>
-<a class="mini" href="https://jobs.digiylyfe.com/dossier-intelligent.html"><strong>Dossier</strong><span>Clarifier métier, expérience et disponibilité.</span><span class="connected-link-hint">Ouvrir Dossier</span></a>
-<a class="mini" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607"><strong>Wolof</strong><span>Lire les mots utiles emploi terrain.</span><span class="connected-link-hint">Ouvrir Lexique</span></a>
-<a class="mini" href="https://jobs.digiylyfe.com/inscription-jobs.html"><strong>Inscrire</strong><span>Publier une mission côté pro.</span><span class="connected-link-hint">Inscription JOBS</span></a>
-<a class="mini" href="https://jobs.digiylyfe.com/acces-recruteur.html"><strong>Recruteur</strong><span>Comprendre les profils candidats qualifiés.</span><span class="connected-link-hint">Accès recruteur</span></a>
-<a class="mini" href="https://jobs.digiylyfe.com/inscription-acces-recruteur.html"><strong>Pack recruteur</strong><span>Choisir 10, 25 ou 50 profils qualifiés.</span><span class="connected-link-hint">Inscription accès recruteur</span></a>
-</div>
-</article>
-<article class="quick-card">
-<h3>Besoin d’aide ?</h3>
-<p>Un candidat, un recruteur ou un relais diaspora peut demander une information directement. DIGIY oriente, mais la relation reste humaine.</p>
-<div class="hero-actions">
-<a class="btn btn-gold" href="https://wa.me/221771342889?text=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions." rel="noopener noreferrer" target="_blank">💬 WhatsApp</a>
-<a class="btn btn-light" href="sms:+221771342889?body=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions.">✉️ SMS</a>
-</div>
-</article>
-</aside>
-</div>
-</div>
-</section>
-<section aria-label="Chiffres repères" class="section">
-<div class="wrap stats">
-<a class="stat" href="#entrer"><strong>1</strong><span>Entrée publique internationale</span></a>
-<a class="stat" href="#entrer"><strong>7</strong><span>Portes utiles Afrique · France</span></a>
-<a class="stat" href="https://jobs.digiylyfe.com/postuler.html"><strong>0</strong><span>Code PIN côté candidat</span></a>
-<a class="stat" href="https://jobs.digiylyfe.com/missions.html"><strong>100%</strong><span>Parcours public avant contact</span></a>
-</div>
-</section>
-<section class="section" id="territoires" aria-label="Territoires DIGIY JOBS">
-<div class="wrap">
-<article class="territory-card">
-<span class="territory-kicker">Afrique · France · Diaspora</span>
-<h2>Une même porte JOBS pour plusieurs territoires.</h2>
-<p>DIGIY JOBS n’est pas limité à une seule ville. La méthode sert à rendre les missions lisibles, les candidats présentables et les recruteurs mieux orientés. Le Sénégal reste la preuve terrain, la France ouvre un marché pro plus structuré, et la diaspora devient un pont entre besoins, compétences et opportunités.</p>
-<div class="territory-grid">
-<div class="territory-item"><b>🇸🇳 Afrique · preuve terrain</b><span>Missions locales, NDIMBAL Express, candidatures simples, Wolof terrain, commerces, restos, logements, services et métiers.</span></div>
-<div class="territory-item"><b>🇫🇷 France · recruteurs structurés</b><span>Artisans, restaurants, hébergements, services, petites entreprises et recruteurs qui veulent des profils clairs et consentis.</span></div>
-<div class="territory-item"><b>🌍 Diaspora · pont compétences</b><span>Relier familles, écoles, entreprises, candidats, stages, missions et profils qualifiés sans vendre les données humaines comme un stock.</span></div>
-</div>
-</article>
-</div>
-</section>
-<section class="section" id="entrer">
-<div class="wrap">
-<div class="section-head">
-<div>
-<h2>Choisir sa porte.</h2>
-<p>Le public avance par cartes simples. Côté pro, on garde trois portes nettes : Inscription JOBS pour publier une mission, Accès recruteur pour expliquer les profils qualifiés, Inscription accès recruteur pour choisir un pack. NDIMBAL Express reste la porte rapide pour les missions courtes et urgentes. La page peut servir au Sénégal, en France et à la diaspora.</p>
-</div>
-</div>
-<div class="door-grid">
-<article class="door" data-digiy-link="https://jobs.digiylyfe.com/missions.html" role="link" tabindex="0">
-<span class="badge">Public</span>
-<h3>Missions</h3>
-<p>Voir les missions publiées, repérer les besoins et ouvrir la fiche qui correspond.</p>
-<div class="meta">
-<div><small>Page</small><strong>missions.html</strong></div>
-<div><small>Usage</small><strong>Lire avant d’agir</strong></div>
-</div>
-<div class="door-actions"><a class="action-link" href="https://jobs.digiylyfe.com/missions.html">Voir les missions</a></div>
-</article>
-<article class="door" data-digiy-link="https://jobs.digiylyfe.com/ndimbal-express.html" role="link" tabindex="0">
-<span class="badge express">Express</span>
-<h3>NDIMBAL Express</h3>
-<p>Voir les missions courtes, urgentes ou ponctuelles : aide terrain, livraison, coup de main, besoin rapide.</p>
-<div class="meta">
-<div><small>Page</small><strong>ndimbal-express.html</strong></div>
-<div><small>Usage</small><strong>Dépanner vite</strong></div>
-</div>
-<div class="door-actions"><a class="action-link gold" href="https://jobs.digiylyfe.com/ndimbal-express.html">Voir NDIMBAL Express</a></div>
-</article>
-<article class="door" data-digiy-link="https://jobs.digiylyfe.com/postuler.html" role="link" tabindex="0">
-<span class="badge warn">Candidat</span>
-<h3>Postuler</h3>
-<p>Déposer une candidature liée à une mission ou envoyer un profil simple.</p>
-<div class="meta">
-<div><small>Page</small><strong>postuler.html</strong></div>
-<div><small>Usage</small><strong>Nom, WhatsApp, métier</strong></div>
-</div>
-<div class="door-actions"><a class="action-link gold" href="https://jobs.digiylyfe.com/postuler.html">Déposer un profil</a></div>
-</article>
-<article class="door" data-digiy-link="https://jobs.digiylyfe.com/dossier-intelligent.html" role="link" tabindex="0">
-<span class="badge blue">Dossier</span>
-<h3>Dossier</h3>
-<p>Préparer un profil plus clair selon le métier, l’expérience et la disponibilité.</p>
-<div class="meta">
-<div><small>Page</small><strong>dossier-intelligent.html</strong></div>
-<div><small>Usage</small><strong>Clarifier le profil</strong></div>
-</div>
-<div class="door-actions"><a class="action-link blue" href="https://jobs.digiylyfe.com/dossier-intelligent.html">Ouvrir le dossier</a></div>
-</article>
-<article class="door" data-digiy-link="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607" role="link" tabindex="0">
-<span class="badge blue">Wolof</span>
-<h3>Lexique Wolof</h3>
-<p>Lire les phrases utiles pour l’emploi terrain : chercher du travail, expérience, disponibilité, salaire, entretien.</p>
-<div class="meta">
-<div><small>Page</small><strong>lexique-jobs.html</strong></div>
-<div><small>Usage</small><strong>Parler simple sur le terrain</strong></div>
-</div>
-<div class="door-actions"><a class="action-link blue" href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Ouvrir le lexique</a></div>
-</article>
-<article class="door" data-digiy-link="https://jobs.digiylyfe.com/suivi.html" role="link" tabindex="0">
-<span class="badge hot">Suivi</span>
-<h3>Suivi</h3>
-<p>Retrouver son dépôt et garder un fil clair après avoir postulé.</p>
-<div class="meta">
-<div><small>Page</small><strong>suivi.html</strong></div>
-<div><small>Usage</small><strong>Voir où en est mon dépôt</strong></div>
-</div>
-<div class="door-actions"><a class="action-link" href="https://jobs.digiylyfe.com/suivi.html">Ouvrir le suivi</a></div>
-</article>
-<article class="door" data-digiy-link="https://jobs.digiylyfe.com/inscription-jobs.html" role="link" tabindex="0">
-<span class="badge">Pro</span>
-<h3>Inscription JOBS</h3>
-<p>Ouvrir le module PRO JOB pour publier une mission structurée, recevoir les candidatures et garder le contact direct.</p>
-<div class="meta">
-<div><small>Page</small><strong>inscription-jobs.html</strong></div>
-<div><small>Usage</small><strong>Publier une mission</strong></div>
-</div>
-<div class="door-actions"><a class="action-link" href="https://jobs.digiylyfe.com/inscription-jobs.html">Inscription JOBS</a></div>
-</article>
-<article class="door" data-digiy-link="https://jobs.digiylyfe.com/acces-recruteur.html" role="link" tabindex="0">
-<span class="badge blue">Recruteur</span>
-<h3>Accès recruteur</h3>
-<p>Comprendre la charte, les profils qualifiés, le cadre candidat et la mise en relation propre.</p>
-<div class="meta">
-<div><small>Page</small><strong>acces-recruteur.html</strong></div>
-<div><small>Usage</small><strong>Comprendre l’accès encadré</strong></div>
-</div>
-<div class="door-actions"><a class="action-link blue" href="https://jobs.digiylyfe.com/acces-recruteur.html">Voir l’accès recruteur</a></div>
-</article>
-<article class="door" data-digiy-link="https://jobs.digiylyfe.com/inscription-acces-recruteur.html" role="link" tabindex="0">
-<span class="badge warn">Inscription</span>
-<h3>Inscription accès recruteur</h3>
-<p>Choisir un pack recruteur : 10 profils à 35 000 FCFA, 25 profils à 75 000 FCFA, 50 profils à 125 000 FCFA.</p>
-<div class="meta">
-<div><small>Page</small><strong>inscription-acces-recruteur.html</strong></div>
-<div><small>Usage</small><strong>Demander un pack</strong></div>
-</div>
-<div class="door-actions"><a class="action-link gold" href="https://jobs.digiylyfe.com/inscription-acces-recruteur.html">Inscription accès recruteur</a></div>
-</article>
-</div>
-</div>
-</section>
-<section class="section">
-<div class="wrap mission-preview">
-<article class="panel-card">
-<span class="eyebrow">Présentation comme vitrine module</span>
-<h3>Une page qui donne envie d’entrer.</h3>
-<p>
-            La page JOBS doit respirer comme les autres portes DIGIY : une promesse claire, des cartes propres, des actions visibles et aucune confusion entre candidat et recruteur.
-          </p>
-<div class="check-list">
-<div class="check"><b>✓</b><span>Le candidat ne tombe pas dans un espace pro.</span></div>
-<div class="check"><b>✓</b><span>NDIMBAL Express sépare les missions courtes urgentes des offres JOBS plus structurées.</span></div>
-<div class="check"><b>✓</b><span>Le pro garde une entrée dédiée pour inscrire / publier une mission.</span></div>
-<div class="check"><b>✓</b><span>L’accès recruteur sépare les packs profils qualifiés de la publication d’offres.</span></div>
-<div class="check"><b>✓</b><span>Les boutons restent simples sur téléphone : voir, postuler, dossier, suivi.</span></div>
-<div class="check"><b>✓</b><span>L’audio reste court, manuel, jamais automatique.</span></div>
-</div>
-</article>
-<div aria-label="Exemples de présentation JOBS" class="mission-cards">
-<a class="mission-card" href="https://jobs.digiylyfe.com/missions.html">
-<div class="mission-visual"><span>Mission terrain</span></div>
-<div class="mission-body">
-<h4>Service, boutique, restaurant</h4>
-<p>Des besoins locaux présentés proprement, avec métier, zone et contact clair.</p>
-<div class="mission-tags"><small>Saly</small><small>France</small><small>Diaspora</small></div>
-<span class="connected-link-hint">Voir les missions</span>
-</div>
-</a>
-<a class="mission-card" href="https://jobs.digiylyfe.com/postuler.html">
-<div class="mission-visual"><span>Candidat</span></div>
-<div class="mission-body">
-<h4>Profil simple et lisible</h4>
-<p>Le candidat donne l’essentiel : nom, WhatsApp, métier, disponibilité.</p>
-<div class="mission-tags"><small>Profil</small><small>WhatsApp</small><small>Suivi</small></div>
-<span class="connected-link-hint">Déposer un profil</span>
-</div>
-</a>
-<a class="mission-card" href="https://jobs.digiylyfe.com/dossier-intelligent.html">
-<div class="mission-visual"><span>Dossier</span></div>
-<div class="mission-body">
-<h4>Expérience mieux rangée</h4>
-<p>Le dossier aide à structurer ce que la personne sait faire réellement.</p>
-<div class="mission-tags"><small>Métier</small><small>Compétences</small><small>Disponibilité</small></div>
-<span class="connected-link-hint">Préparer le dossier</span>
-</div>
-</a>
-<a class="mission-card" href="https://jobs.digiylyfe.com/inscription-jobs.html">
-<div class="mission-visual"><span>Recruteur</span></div>
-<div class="mission-body">
-<h4>Publier une mission</h4>
-<p>Le professionnel inscrit son besoin dans JOBS, sans mélanger avec les tarifs généraux.</p>
-<div class="mission-tags"><small>Offre</small><small>Recrutement</small><small>Contact direct</small></div>
-<span class="connected-link-hint">Inscription JOBS</span>
-</div>
-</a>
-<a class="mission-card" href="https://jobs.digiylyfe.com/acces-recruteur.html">
-<div class="mission-visual"><span>Profils qualifiés</span></div>
-<div class="mission-body">
-<h4>Accès recruteur propre</h4>
-<p>Le recruteur paie pour la qualification et la mise en relation, pas pour posséder des données humaines.</p>
-<div class="mission-tags"><small>Profils</small><small>Consentement</small><small>Mise en relation</small></div>
-<span class="connected-link-hint">Accès recruteur</span>
-</div>
-</a>
-<a class="mission-card" href="https://jobs.digiylyfe.com/inscription-acces-recruteur.html">
-<div class="mission-visual"><span>Pack recruteur</span></div>
-<div class="mission-body">
-<h4>Inscription accès recruteur</h4>
-<p>Le recruteur choisit son pack 10, 25 ou 50 profils, règle et transmet sa preuve pour validation DIGIY.</p>
-<div class="mission-tags"><small>35 000</small><small>75 000</small><small>125 000</small></div>
-<span class="connected-link-hint">Demander un pack</span>
-</div>
-</a>
-</div>
-</div>
-</section>
-<section class="section" id="process">
-<div class="wrap">
-<div class="section-head">
-<div>
-<h2>Parcours simple.</h2>
-<p>Le candidat n’a pas besoin de comprendre l’arrière-cuisine. Il avance par étapes claires, comme sur une vraie porte de module.</p>
-</div>
-</div>
-<div class="flow-grid">
-<a class="step" href="https://jobs.digiylyfe.com/missions.html"><div class="step-num">1</div><h3>Voir</h3><p>Il ouvre les missions et repère un besoin réel dans sa zone.</p><span class="connected-link-hint">Voir les missions</span></a>
-<a class="step" href="https://jobs.digiylyfe.com/missions.html"><div class="step-num">2</div><h3>Comprendre</h3><p>Il lit la fiche : métier, ville, type de mission et conditions utiles.</p><span class="connected-link-hint">Lire les offres</span></a>
-<a class="step" href="https://jobs.digiylyfe.com/postuler.html"><div class="step-num">3</div><h3>Postuler</h3><p>Il dépose son nom, WhatsApp, métier et disponibilité.</p><span class="connected-link-hint">Postuler</span></a>
-<a class="step" href="https://jobs.digiylyfe.com/suivi.html"><div class="step-num">4</div><h3>Suivre</h3><p>Il garde un fil clair après son dépôt et peut revenir facilement.</p><span class="connected-link-hint">Ouvrir le suivi</span></a>
-</div>
-</div>
-</section>
-<section class="cta">
-<div class="wrap cta-card">
-<div>
-<h2>Le travail doit être visible, pas compliqué.</h2>
-<p>
-            DIGIY JOBS garde une porte publique propre : missions, NDIMBAL Express, candidature, dossier, suivi.
-            Côté pro, l’inscription JOBS reste séparée et claire pour publier une mission ; l’accès recruteur reste séparé pour les profils qualifiés.
-          </p>
-</div>
-<div class="cta-right">
-<div class="cta-box"><small>Action principale</small><strong><a href="https://jobs.digiylyfe.com/missions.html">Voir les missions disponibles</a></strong></div>
-<div class="cta-box"><small>Missions courtes urgentes</small><strong><a href="https://jobs.digiylyfe.com/ndimbal-express.html">Voir NDIMBAL Express</a></strong></div>
-<div class="cta-box"><small>Après la lecture</small><strong><a href="https://jobs.digiylyfe.com/postuler.html">Déposer une candidature</a></strong></div>
-<div class="cta-box"><small>Langue terrain</small><strong><a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Ouvrir le lexique Wolof JOBS</a></strong></div>
-<div class="cta-box"><small>Côté pro / recruteur</small><strong><a href="https://jobs.digiylyfe.com/inscription-jobs.html">Inscrire JOBS / publier une mission</a></strong></div>
-<div class="cta-box"><small>Profils qualifiés</small><strong><a href="https://jobs.digiylyfe.com/acces-recruteur.html">Accès recruteur aux candidats</a></strong></div>
-<div class="cta-box"><small>Inscription accès recruteur</small><strong><a href="https://jobs.digiylyfe.com/inscription-acces-recruteur.html">Demander un pack 10 / 25 / 50 profils</a></strong></div>
-</div>
-</div>
-</section>
-</main>
-<footer>
-<div class="wrap foot-card">
-<p>DIGIY JOBS · Afrique · France · Diaspora · BY DIGIYLYFE</p>
-<div class="foot-links">
-<a href="https://digiylyfe.com/">Site</a>
-<a href="https://digiy-hub.digiylyfe.com/">HUB</a>
-<a href="https://jobs.digiylyfe.com/missions.html">Missions</a>
-<a href="https://jobs.digiylyfe.com/ndimbal-express.html">NDIMBAL Express</a>
-<a href="https://jobs.digiylyfe.com/postuler.html">Postuler</a>
-<a href="https://jobs.digiylyfe.com/dossier-intelligent.html">Dossier</a>
-<a href="https://jobs.digiylyfe.com/suivi.html">Suivi</a>
-<a href="#territoires">Territoires</a>
-<a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607">Wolof JOBS</a>
-<a href="https://jobs.digiylyfe.com/inscription-jobs.html">Inscription JOBS</a>
-<a href="https://jobs.digiylyfe.com/acces-recruteur.html">Accès recruteur</a>
-<a href="https://jobs.digiylyfe.com/inscription-acces-recruteur.html">Inscription accès recruteur</a>
-</div>
-</div>
-</footer>
-<nav aria-label="Navigation mobile" class="bottom-nav">
-<div class="bottom-nav-inner">
-<a class="active" href="https://jobs.digiylyfe.com/"><span class="ico">⌂</span>Accueil</a>
-<a href="https://jobs.digiylyfe.com/missions.html"><span class="ico">◎</span>Missions</a>
-<a href="https://jobs.digiylyfe.com/ndimbal-express.html"><span class="ico">⚡</span>NDIMBAL</a>
-<a href="https://jobs.digiylyfe.com/postuler.html"><span class="ico">＋</span>Postuler</a>
-<a href="https://jobs.digiylyfe.com/dossier-intelligent.html"><span class="ico">□</span>Dossier</a>
-<a href="https://jobs.digiylyfe.com/lexique-jobs.html?v=lexique-jobs-v2-mobile-20260607"><span class="ico">🇸🇳</span>Wolof</a>
-<a href="https://jobs.digiylyfe.com/suivi.html"><span class="ico">↗</span>Suivi</a>
-<a href="#territoires"><span class="ico">🌍</span>Intl</a>
-<a href="https://jobs.digiylyfe.com/acces-recruteur.html"><span class="ico">👥</span>Recruteur</a>
-<a href="https://jobs.digiylyfe.com/inscription-acces-recruteur.html"><span class="ico">📝</span>Pack</a>
-</div>
-</nav>
-<script>
-    (function(){
-      "use strict";
-      const PAGE_TEXT_FR = "Bienvenue sur DIGIY JOBS. Ici, tu es dans la porte publique du travail local, ouverte à l’Afrique, à la France et à la diaspora. Côté candidat, pas besoin de code PIN. Tu peux voir les missions, ouvrir NDIMBAL Express pour les missions courtes urgentes, comprendre une offre, déposer une candidature, préparer ton dossier, ouvrir le lexique Wolof JOBS et suivre ton dépôt. Le lexique aide à parler emploi, expérience, disponibilité, salaire et entretien avec des mots simples du terrain. Côté professionnel, l'inscription JOBS sert à publier une mission. L'accès recruteur explique les profils qualifiés et l'inscription accès recruteur permet de demander un pack 10, 25 ou 50 profils. diji i garde le parcours simple, humain et clair.";
-      const PAGE_TEXT_EN = "Welcome to DIGIY JOBS. You are in the public doorway for local work, open to Africa, France and the diaspora. Senegal is the field proof, France is the structured pro market, and the diaspora is the skills bridge. For candidates, no PIN code is needed. You can view missions, open NDIMBAL Express for short urgent jobs, understand an offer, apply, prepare your profile file, open the Wolof JOBS glossary, and follow your submission. The glossary helps people speak about work, experience, availability, pay and interviews with simple field words. On the professional side, JOBS registration is used to publish a mission or look for a profile. Diji keeps the path simple, human and clear.";
-      const PAGE_TEXT = window.DIGIY_JOBS_LANG === "en" ? PAGE_TEXT_EN : PAGE_TEXT_FR;
+              <div>
+                <b data-i18n="doc_2_title">Profils protégés</b>
+                <span data-i18n="doc_2_text">L’accès recruteur reste encadré ; les données humaines ne sont pas un stock public.</span>
+              </div>
+              <div>
+                <b data-i18n="doc_3_title">Contact humain</b>
+                <span data-i18n="doc_3_text">DIGIY oriente ; le candidat et le recruteur gardent la relation.</span>
+              </div>
+            </div>
 
-      const playBtn = document.getElementById("digiyJobsPlayBtn");
-      const stopBtn = document.getElementById("digiyJobsStopBtn");
-      const progress = document.getElementById("digiyJobsAudioProgress");
-      const status = document.getElementById("digiyJobsAudioStatus");
-      if(!playBtn || !stopBtn || !progress || !status) return;
+            <div class="contact-row">
+              <a class="btn btn-dark" href="https://wa.me/221771342889?text=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions." target="_blank" rel="noopener noreferrer" data-i18n="whatsapp">💬 WhatsApp DIGIY</a>
+              <a class="btn btn-light" href="sms:+221771342889?body=Bonjour%20DIGIY%20JOBS%2C%20je%20veux%20des%20informations%20sur%20les%20missions." data-i18n="sms">✉️ SMS DIGIY</a>
+              <a class="btn btn-light" href="https://digiylyfe.com/" data-i18n="site">🌍 Site DIGIYLYFE</a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
 
-      if(!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)){
-        status.textContent = "Lecture vocale non disponible sur ce navigateur.";
-        playBtn.disabled = true;
-        stopBtn.disabled = true;
-        return;
+  <footer>
+    <div class="wrap foot">
+      <span data-i18n="footer">DIGIY JOBS — missions, candidats et recruteurs · Afrique · France · Diaspora.</span>
+      <span data-i18n="footer_rule">Le candidat avance simplement. Le recruteur accède proprement.</span>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    "use strict";
+
+    const COPY = {
+      fr:{
+        title:"DIGIY JOBS — Missions, candidats et recruteurs",
+        meta:"DIGIY JOBS — missions, candidatures, NDIMBAL Express et accès recruteur. Des portes simples, un contact direct, Afrique, France et diaspora.",
+        brand_sub:"MISSIONS · CANDIDATS · RECRUTEURS",
+        hub:"🧭 HUB",
+        eyebrow:"Afrique · France · Diaspora",
+        hero_title:'Le travail local, <span>visible partout.</span>',
+        hero_text:"Trouve une mission, réponds rapidement ou accède aux profils utiles. DIGIY organise les portes ; candidats et recruteurs gardent le contact humain.",
+        see_missions:"💼 Voir les missions",
+        see_ndimbal:"⚡ NDIMBAL Express",
+        apply:"📄 Postuler",
+        doors_title:"Choisis ta porte.",
+        doors_text:"Les quatre actions principales sont visibles immédiatement. Sur téléphone, fais glisser les cartes.",
+        door_missions_title:"Missions",
+        door_missions_text:"Consulte les besoins publiés et ouvre directement la mission qui te correspond.",
+        door_missions_action:"Voir les missions",
+        door_ndimbal_text:"Missions courtes, urgentes ou ponctuelles : aide terrain, livraison et coup de main.",
+        door_ndimbal_action:"Voir NDIMBAL",
+        door_apply_title:"Postuler",
+        door_apply_text:"Dépose un profil simple ou réponds à une mission sans entrer dans un espace professionnel.",
+        door_apply_action:"Déposer ma candidature",
+        door_recruiter_title:"Recruteur",
+        door_recruiter_text:"Comprends l’accès aux profils qualifiés et les règles d’une mise en relation propre.",
+        door_recruiter_action:"Accès recruteur",
+        details_title:"Découvrir le fonctionnement de DIGIY JOBS",
+        details_intro:"Les accès secondaires restent disponibles sans encombrer le parcours principal : dossier, suivi, publication de mission, packs recruteur, Wolof et contacts.",
+        sec_dossier_title:"🧠 Préparer mon dossier",
+        sec_dossier_text:"Clarifie ton métier, ton expérience et ta disponibilité.",
+        open_dossier:"Ouvrir le dossier",
+        sec_follow_title:"🔎 Suivre mon dépôt",
+        sec_follow_text:"Retrouve ta candidature et garde un fil après l’envoi.",
+        open_follow:"Ouvrir le suivi",
+        sec_publish_title:"📢 Publier une mission",
+        sec_publish_text:"Inscription JOBS pour une entreprise ou un professionnel qui recrute.",
+        open_publish:"Inscription JOBS",
+        sec_pack_title:"📦 Pack recruteur",
+        sec_pack_text:"Choisis un accès à 10, 25 ou 50 profils qualifiés et consentis.",
+        open_pack:"Choisir un pack",
+        sec_wolof_title:"🇸🇳 Lexique Wolof JOBS",
+        sec_wolof_text:"Emploi, expérience, disponibilité, salaire et entretien en mots simples.",
+        open_wolof:"Ouvrir le lexique",
+        sec_home_title:"🧭 Maison DIGIY",
+        sec_home_text:"Retourne au site principal ou au HUB sans barre fixe envahissante.",
+        open_hub:"Ouvrir le HUB",
+        doc_1_title:"Candidat public",
+        doc_1_text:"Voir les missions et postuler ne demande aucun code PIN.",
+        doc_2_title:"Profils protégés",
+        doc_2_text:"L’accès recruteur reste encadré ; les données humaines ne sont pas un stock public.",
+        doc_3_title:"Contact humain",
+        doc_3_text:"DIGIY oriente ; le candidat et le recruteur gardent la relation.",
+        whatsapp:"💬 WhatsApp DIGIY",
+        sms:"✉️ SMS DIGIY",
+        site:"🌍 Site DIGIYLYFE",
+        footer:"DIGIY JOBS — missions, candidats et recruteurs · Afrique · France · Diaspora.",
+        footer_rule:"Le candidat avance simplement. Le recruteur accède proprement."
+      },
+      en:{
+        title:"DIGIY JOBS — Missions, candidates and recruiters",
+        meta:"DIGIY JOBS — missions, applications, NDIMBAL Express and recruiter access. Simple doors and direct contact across Africa, France and the diaspora.",
+        brand_sub:"MISSIONS · CANDIDATES · RECRUITERS",
+        hub:"🧭 HUB",
+        eyebrow:"Africa · France · Diaspora",
+        hero_title:'Local work, <span>visible everywhere.</span>',
+        hero_text:"Find a mission, respond quickly or access useful profiles. DIGIY organizes the doors; candidates and recruiters keep the human relationship.",
+        see_missions:"💼 View missions",
+        see_ndimbal:"⚡ NDIMBAL Express",
+        apply:"📄 Apply",
+        doors_title:"Choose your door.",
+        doors_text:"The four main actions appear immediately. On mobile, swipe through the cards.",
+        door_missions_title:"Missions",
+        door_missions_text:"Browse published needs and open the mission that matches you directly.",
+        door_missions_action:"View missions",
+        door_ndimbal_text:"Short, urgent or occasional missions: field help, delivery and quick assistance.",
+        door_ndimbal_action:"View NDIMBAL",
+        door_apply_title:"Apply",
+        door_apply_text:"Submit a simple profile or answer a mission without entering a professional area.",
+        door_apply_action:"Submit my application",
+        door_recruiter_title:"Recruiter",
+        door_recruiter_text:"Understand access to qualified profiles and the rules of a proper introduction.",
+        door_recruiter_action:"Recruiter access",
+        details_title:"Discover how DIGIY JOBS works",
+        details_intro:"Secondary access remains available without cluttering the main route: profile file, tracking, mission publication, recruiter packs, Wolof and contacts.",
+        sec_dossier_title:"🧠 Prepare my profile",
+        sec_dossier_text:"Clarify your trade, experience and availability.",
+        open_dossier:"Open profile file",
+        sec_follow_title:"🔎 Track my submission",
+        sec_follow_text:"Find your application and keep a clear thread after sending.",
+        open_follow:"Open tracking",
+        sec_publish_title:"📢 Publish a mission",
+        sec_publish_text:"JOBS registration for a company or professional who is recruiting.",
+        open_publish:"JOBS registration",
+        sec_pack_title:"📦 Recruiter pack",
+        sec_pack_text:"Choose access to 10, 25 or 50 qualified, consenting profiles.",
+        open_pack:"Choose a pack",
+        sec_wolof_title:"🇸🇳 Wolof JOBS glossary",
+        sec_wolof_text:"Employment, experience, availability, salary and interview in simple words.",
+        open_wolof:"Open glossary",
+        sec_home_title:"🧭 DIGIY home",
+        sec_home_text:"Return to the main site or HUB without an intrusive fixed bar.",
+        open_hub:"Open HUB",
+        doc_1_title:"Public candidate route",
+        doc_1_text:"Viewing missions and applying requires no PIN code.",
+        doc_2_title:"Protected profiles",
+        doc_2_text:"Recruiter access is supervised; human data is not a public stock.",
+        doc_3_title:"Human contact",
+        doc_3_text:"DIGIY guides; candidates and recruiters keep the relationship.",
+        whatsapp:"💬 WhatsApp DIGIY",
+        sms:"✉️ SMS DIGIY",
+        site:"🌍 DIGIYLYFE site",
+        footer:"DIGIY JOBS — missions, candidates and recruiters · Africa · France · Diaspora.",
+        footer_rule:"Candidates move simply. Recruiters access properly."
       }
+    };
 
-      const synth = window.speechSynthesis;
-      let playing = false;
-      let timer = null;
-      let launchId = 0;
+    const frBtn = document.getElementById("langFr");
+    const enBtn = document.getElementById("langEn");
 
-      function preparePronunciation(text){
-        const currentLang = window.DIGIY_JOBS_LANG === "en" ? "en" : "fr";
-        if(currentLang === "en"){
-          return String(text || "")
-            .replace(/\bDIGIYLYFE\b/gi,"Diji Lyfe")
-            .replace(/\bDIGIY\b/gi,"Diji")
-            .replace(/\bJOBS\b/gi,"jobs")
-            .replace(/\bNDIMBAL\b/gi,"Ndim-bal")
-            .replace(/\bQR\b/gi,"Q R")
-            .replace(/\bSMS\b/gi,"S M S")
-            .replace(/\bWhatsApp\b/gi,"WhatsApp")
-            .replace(/\bWave\b/gi,"Wave")
-            .replace(/0\s*%/g,"zero percent")
-            .replace(/100\s*%/g,"one hundred percent");
-        }
-        return String(text || "")
-          .replace(/\bDIGIYLYFE\b/g,"diji laïfe")
-          .replace(/\bDIGIY\b/g,"diji i")
-          .replace(/\bJOBS\b/g,"jobs")
-          .replace(/\bQR\b/g,"Q R")
-          .replace(/\bSMS\b/g,"S M S")
-          .replace(/\bWhatsApp\b/g,"Ouatsap")
-          .replace(/\bWave\b/g,"Ouève")
-          .replace(/0\s*%/g,"zéro pour cent")
-          .replace(/100\s*%/g,"cent pour cent");
-      }
+    function applyLang(lang){
+      lang = lang === "en" ? "en" : "fr";
+      const c = COPY[lang];
+      document.documentElement.lang = lang;
+      document.title = c.title;
+      const meta = document.querySelector('meta[name="description"]');
+      if(meta) meta.setAttribute("content",c.meta);
 
-      function getFrenchVoice(){
-        const voices = synth.getVoices() || [];
-        return voices.find(v => /fr[-_]?FR/i.test(v.lang || "") && /google/i.test(v.name || ""))
-          || voices.find(v => /fr[-_]?FR/i.test(v.lang || ""))
-          || voices.find(v => /^fr/i.test(v.lang || ""))
-          || null;
-      }
-
-
-      function getEnglishVoice(){
-        const voices = synth.getVoices() || [];
-        return voices.find(v => /en[-_]?US/i.test(v.lang || "") && /google|samantha|alex|daniel/i.test(v.name || ""))
-          || voices.find(v => /en[-_]?GB/i.test(v.lang || ""))
-          || voices.find(v => /^en/i.test(v.lang || ""))
-          || null;
-      }
-
-      function setIdle(message){
-        playing = false;
-        clearInterval(timer);
-        timer = null;
-        progress.style.width = "0%";
-        playBtn.disabled = false;
-        status.textContent = message || "Prêt à écouter.";
-      }
-
-      function stop(){
-        launchId += 1;
-        try{ synth.cancel(); }catch(_){ }
-        setIdle("Lecture arrêtée.");
-      }
-
-      function startProgress(text,currentId){
-        const words = (text.match(/\S+/g) || []).length;
-        const estimated = Math.max(2600, words * 490);
-        let elapsed = 0;
-        clearInterval(timer);
-        progress.style.width = "0%";
-        timer = setInterval(function(){
-          if(!playing || currentId !== launchId){ clearInterval(timer); timer = null; return; }
-          elapsed += 150;
-          progress.style.width = Math.min((elapsed / estimated) * 100, 97) + "%";
-        },150);
-      }
-
-      function launch(){
-        launchId += 1;
-        const currentId = launchId;
-        const spokenText = preparePronunciation(PAGE_TEXT);
-        try{ synth.cancel(); }catch(_){ }
-
-        const u = new SpeechSynthesisUtterance(spokenText);
-        const currentLang = window.DIGIY_JOBS_LANG === "en" ? "en" : "fr";
-        u.lang = currentLang === "en" ? "en-US" : "fr-FR";
-        u.rate = currentLang === "en" ? .92 : .86;
-        u.pitch = currentLang === "en" ? 1.0 : 1.03;
-        u.volume = 1;
-        const voice = currentLang === "en" ? getEnglishVoice() : getFrenchVoice();
-        if(voice) u.voice = voice;
-
-        u.onstart = function(){
-          if(currentId !== launchId) return;
-          playing = true;
-          playBtn.disabled = true;
-          status.textContent = "Lecture en cours…";
-          startProgress(spokenText,currentId);
-        };
-        u.onend = function(){
-          if(currentId !== launchId) return;
-          progress.style.width = "100%";
-          setTimeout(function(){ if(currentId === launchId) setIdle("Lecture terminée."); },260);
-        };
-        u.onerror = function(){
-          if(currentId !== launchId) return;
-          setIdle("Lecture interrompue.");
-        };
-        synth.speak(u);
-      }
-
-      function play(){
-        if(playing) return;
-        const voices = synth.getVoices();
-        if(voices && voices.length){ launch(); return; }
-        let started = false;
-        function handleVoices(){
-          if(started) return;
-          started = true;
-          synth.removeEventListener("voiceschanged",handleVoices);
-          launch();
-        }
-        synth.addEventListener("voiceschanged",handleVoices);
-        setTimeout(handleVoices,700);
-      }
-
-      playBtn.addEventListener("click",play);
-      stopBtn.addEventListener("click",stop);
-      window.addEventListener("pagehide",stop);
-    })();
-  </script>
-<script>
-    (function(){
-      "use strict";
-      var LANG = window.DIGIY_JOBS_LANG === "en" ? "en" : "fr";
-      var VERSION = "jobs-fr-en-retour-fr-natif-20260620";
-      var T = {
-        "DIGIY JOBS — Missions, candidatures & inscription": "DIGIY JOBS — Missions, applications & registration",
-        "MISSIONS · CANDIDATS · RECRUTEURS": "MISSIONS · CANDIDATES · RECRUITERS",
-        "🌍 Site": "🌍 Website",
-        "🧭 HUB": "🧭 HUB",
-        "🇸🇳 Wolof JOBS": "🇸🇳 Wolof JOBS",
-        "💼 Inscription JOBS": "💼 JOBS registration",
-        "👥 Accès recruteur": "👥 Recruiter access",
-        "Accès recruteur": "Recruiter access",
-        "Accéder à des profils candidats qualifiés.": "Access qualified candidate profiles.",
-        "Profils qualifiés": "Qualified profiles",
-        "Voir les profils qualifiés": "View qualified profiles",
-        "Accéder à des profils candidats qualifiés, consentis et préparés, sans vendre les données humaines comme un stock.": "Access qualified, consent-based and prepared candidate profiles, without selling human data as stock.",
-        "L’accès recruteur sépare les profils qualifiés de la vente brute de CV.": "Recruiter access separates qualified profiles from raw CV selling.",
-        "Accès recruteur propre": "Clean recruiter access",
-        "Le recruteur paie pour la qualification et la mise en relation, pas pour posséder des données humaines.": "The recruiter pays for qualification and connection, not to own human data.",
-        "Profils": "Profiles",
-        "Consentement": "Consent",
-        "Mise en relation": "Connection",
-        "Accès recruteur aux candidats": "Recruiter access to candidates",
-        "📝 Inscription accès recruteur": "📝 Recruiter access registration",
-        "Inscription accès recruteur": "Recruiter access registration",
-        "Pack recruteur": "Recruiter pack",
-        "Choisir 10, 25 ou 50 profils qualifiés.": "Choose 10, 25 or 50 qualified profiles.",
-        "Demander un pack": "Request a pack",
-        "Demander un pack 10 / 25 / 50 profils": "Request a 10 / 25 / 50 profile pack",
-        "Comprendre les profils candidats qualifiés.": "Understand qualified candidate profiles.",
-        "Voir l’accès recruteur": "View recruiter access",
-        "Comprendre l’accès encadré": "Understand controlled access",
-        "Choisir un pack recruteur : 10 profils à 35 000 FCFA, 25 profils à 75 000 FCFA, 50 profils à 125 000 FCFA.": "Choose a recruiter pack: 10 profiles at 35,000 FCFA, 25 profiles at 75,000 FCFA, 50 profiles at 125,000 FCFA.",
-        "Le recruteur choisit son pack 10, 25 ou 50 profils, règle et transmet sa preuve pour validation DIGIY.": "The recruiter chooses a 10, 25 or 50 profile pack, pays and sends proof for DIGIY validation.",
-        "35 000": "35,000",
-        "75 000": "75,000",
-        "125 000": "125,000",
-
-        "Recruteur": "Recruiter",
-        "Postuler": "Apply",
-        "Dossier": "Profile",
-        "Entrer": "Enter",
-        "Entrée publique DIGIY JOBS": "DIGIY JOBS public entrance",
-        "Le travail terrain,": "Field work,",
-        "visible et simple.": "visible and simple.",
-        "DIGIY JOBS présente les missions, ouvre la candidature, prépare le dossier et garde le suivi clair. Le candidat avance sans code PIN. Côté pro, deux portes restent séparées : Inscription JOBS pour publier une mission, Accès recruteur pour consulter des profils qualifiés.": "DIGIY JOBS shows missions, opens applications, prepares the profile file and keeps follow-up clear. Candidates move forward without a PIN code. On the professional side, two doors stay separate: JOBS registration to publish a mission, Recruiter access to consult qualified profiles.",
-        "Voir les missions": "View missions",
-        "Déposer ma candidature": "Submit my application",
-        "Préparer mon dossier": "Prepare my profile",
-        "Suivre mon dépôt": "Track my submission",
-        "Missions lisibles": "Readable missions",
-        "Candidature simple": "Simple application",
-        "Dossier clair": "Clear profile",
-        "Wolof terrain": "Field Wolof",
-        "Contact direct": "Direct contact",
-        "🎧 Écouter DIGIY JOBS": "🎧 Listen to DIGIY JOBS",
-        "Une courte voix explique où tu es, quoi faire, et comment avancer sans te perdre.": "A short voice explains where you are, what to do, and how to move forward without getting lost.",
-        "▶️ Lecture": "▶️ Play",
-        "⏹ Arrêt": "⏹ Stop",
-        "Le module est public côté candidat : voir les missions, ouvrir NDIMBAL Express pour les missions courtes urgentes, postuler, préparer son dossier, suivre son dépôt. Le lexique Wolof JOBS aide à parler emploi, expérience, disponibilité, salaire et entretien avec des mots simples du terrain. Côté professionnel, l’inscription JOBS sert à publier une mission ou chercher un profil.": "The module is public on the candidate side: view missions, open NDIMBAL Express for short urgent jobs, apply, prepare a profile, and track a submission. The Wolof JOBS glossary helps people talk about work, experience, availability, pay and interviews with simple field words. On the professional side, JOBS registration is used to publish a mission or look for a profile.",
-        "Prêt à écouter.": "Ready to listen.",
-        "Public candidat · sans PIN": "Public candidate · no PIN",
-        "Une porte claire pour l’emploi local.": "A clear doorway for local work.",
-        "Ici on ne noie pas le visiteur. Il voit une mission, comprend le territoire, dépose son profil et garde un fil de suivi. Simple, propre, humain.": "Here the visitor is not drowned in confusion. They see a mission, understand the need, submit their profile and keep a clear follow-up thread. Simple, clean, human.",
-        "Voir": "View",
-        "Lire les missions publiées.": "Read published missions.",
-        "Voir les missions courtes urgentes.": "View short urgent missions.",
-        "Déposer un profil simple.": "Submit a simple profile.",
-        "Clarifier métier, expérience et disponibilité.": "Clarify job skill, experience and availability.",
-        "Lire les mots utiles emploi terrain.": "Read useful field-work words.",
-        "Inscrire": "Register",
-        "Publier une mission côté pro.": "Publish a mission on the professional side.",
-        "Besoin d’aide ?": "Need help?",
-        "Un candidat, un recruteur ou un relais diaspora peut demander une information directement. DIGIY oriente, mais la relation reste humaine.": "A candidate or recruiter can ask for information directly. DIGIY guides, but the relationship stays human.",
-        "Entrée publique propre": "Clean public entrance",
-        "Portes utiles et lisibles": "Useful, readable doors",
-        "Code PIN côté candidat": "PIN code on candidate side",
-        "Parcours public avant contact": "Public path before contact",
-        "Choisir sa porte.": "Choose your doorway.",
-        "Le public avance par cartes simples. Côté pro, on garde deux portes nettes : Inscription JOBS pour publier une mission, Accès recruteur pour demander des profils qualifiés. NDIMBAL Express reste la porte rapide pour les missions courtes et urgentes.": "The public moves forward through simple cards. The professional does not go through a confusing page: they open JOBS registration directly to publish a mission. NDIMBAL Express remains the fast doorway for short and urgent missions.",
-        "Voir les missions publiées, repérer les besoins et ouvrir la fiche qui correspond.": "View published missions, spot the needs and open the matching card.",
-        "Usage": "Use",
-        "Lire avant d’agir": "Read before acting",
-        "Voir les missions courtes, urgentes ou ponctuelles : aide terrain, livraison, coup de main, besoin rapide.": "View short, urgent or one-off missions: field help, delivery, extra hand, quick need.",
-        "Dépanner vite": "Help quickly",
-        "Voir NDIMBAL Express": "View NDIMBAL Express",
-        "Candidat": "Candidate",
-        "Déposer une candidature liée à une mission ou envoyer un profil simple.": "Submit an application linked to a mission or send a simple profile.",
-        "Nom, WhatsApp, métier": "Name, WhatsApp, skill",
-        "Déposer un profil": "Submit a profile",
-        "Préparer un profil plus clair selon le métier, l’expérience et la disponibilité.": "Prepare a clearer profile based on skill, experience and availability.",
-        "Clarifier le profil": "Clarify the profile",
-        "Ouvrir le dossier": "Open the profile",
-        "Lexique Wolof": "Wolof glossary",
-        "Lire les phrases utiles pour l’emploi terrain : chercher du travail, expérience, disponibilité, salaire, entretien.": "Read useful phrases for field jobs: looking for work, experience, availability, pay, interview.",
-        "Parler simple sur le terrain": "Speak simply in the field",
-        "Ouvrir le lexique": "Open the glossary",
-        "Suivi": "Follow-up",
-        "Retrouver son dépôt et garder un fil clair après avoir postulé.": "Find your submission and keep a clear thread after applying.",
-        "Voir où en est mon dépôt": "See where my submission stands",
-        "Ouvrir le suivi": "Open follow-up",
-        "Pro": "Pro",
-        "Inscription JOBS": "JOBS registration",
-        "Publier une offre, recruter, chercher une main-d’œuvre terrain ou rendre une mission visible.": "Publish an offer, recruit, look for field workers or make a mission visible.",
-        "Publier / recruter": "Publish / recruit",
-        "Présentation comme vitrine module": "Presented as a module showcase",
-        "Une page qui donne envie d’entrer.": "A page that makes people want to enter.",
-        "La page JOBS doit respirer comme les autres portes DIGIY : une promesse claire, des cartes propres, des actions visibles et aucune confusion entre candidat et recruteur.": "The JOBS page must breathe like the other DIGIY doors: a clear promise, clean cards, visible actions and no confusion between candidate and recruiter.",
-        "Le candidat ne tombe pas dans un espace pro.": "The candidate does not land in a pro space.",
-        "NDIMBAL Express sépare les missions courtes urgentes des offres JOBS plus structurées.": "NDIMBAL Express separates short urgent missions from more structured JOBS offers.",
-        "Le recruteur a une entrée dédiée pour inscrire une mission.": "The recruiter has a dedicated entrance to register a mission.",
-        "Les boutons restent simples sur téléphone : voir, postuler, dossier, suivi.": "Buttons stay simple on mobile: view, apply, profile, follow-up.",
-        "L’audio reste court, manuel, jamais automatique.": "Audio stays short, manual, never automatic.",
-        "Mission terrain": "Field mission",
-        "Service, boutique, restaurant": "Service, shop, restaurant",
-        "Des besoins locaux présentés proprement, avec métier, zone et contact clair.": "Local needs presented cleanly, with skill, area and clear contact.",
-        "Terrain": "Field",
-        "Profil simple et lisible": "Simple, readable profile",
-        "Le candidat donne l’essentiel : nom, WhatsApp, métier, disponibilité.": "The candidate gives the essentials: name, WhatsApp, skill, availability.",
-        "Profil": "Profile",
-        "Expérience mieux rangée": "Experience better organized",
-        "Le dossier aide à structurer ce que la personne sait faire réellement.": "The profile helps structure what the person can really do.",
-        "Métier": "Skill",
-        "Compétences": "Skills",
-        "Disponibilité": "Availability",
-        "Recruteur": "Recruiter",
-        "Publier une mission": "Publish a mission",
-        "Le professionnel inscrit son besoin dans JOBS, sans mélanger avec les tarifs généraux.": "The professional registers their need in JOBS, without mixing it with general pricing.",
-        "Offre": "Offer",
-        "Recrutement": "Recruitment",
-        "Parcours simple.": "Simple path.",
-        "Le candidat n’a pas besoin de comprendre l’arrière-cuisine. Il avance par étapes claires, comme sur une vraie porte de module.": "The candidate does not need to understand the back office. They move through clear steps, like a real module doorway.",
-        "Il ouvre les missions et repère un besoin réel dans sa zone.": "They open the missions and spot a real need in their area.",
-        "Comprendre": "Understand",
-        "Il lit la fiche : métier, ville, type de mission et conditions utiles.": "They read the card: skill, city, mission type and useful conditions.",
-        "Il dépose son nom, WhatsApp, métier et disponibilité.": "They submit their name, WhatsApp, skill and availability.",
-        "Suivre": "Follow",
-        "Il garde un fil clair après son dépôt et peut revenir facilement.": "They keep a clear thread after submission and can return easily.",
-        "Le travail doit être visible, pas compliqué.": "Work must be visible, not complicated.",
-        "DIGIY JOBS garde une porte publique propre : missions, NDIMBAL Express, candidature, dossier, suivi. Côté pro, l’inscription JOBS reste séparée et claire pour publier une mission ; l’accès recruteur reste séparé pour les profils qualifiés.": "DIGIY JOBS keeps a clean public doorway: missions, NDIMBAL Express, application, profile, follow-up. On the pro side, JOBS registration stays separate and clear for publishing a mission.",
-        "Action principale": "Main action",
-        "Voir les missions disponibles": "View available missions",
-        "Missions courtes urgentes": "Short urgent missions",
-        "Après la lecture": "After reading",
-        "Déposer une candidature": "Submit an application",
-        "Langue terrain": "Field language",
-        "Ouvrir le lexique Wolof JOBS": "Open the Wolof JOBS glossary",
-        "Côté pro / recruteur": "Pro / recruiter side",
-        "Inscrire JOBS / publier une mission": "Register JOBS / publish a mission",
-        "DIGIY JOBS · Afrique · France · Diaspora · BY DIGIYLYFE": "DIGIY JOBS · Africa · France · Diaspora · BY DIGIYLYFE",
-        "Site": "Website",
-        "Accueil": "Home",
-
-        "Ouvrir Missions": "Open Missions",
-        "Ouvrir NDIMBAL": "Open NDIMBAL",
-        "Préparer le dossier": "Prepare profile",
-        "Lire les offres": "Read offers",
-        "Lecture vocale non disponible sur ce navigateur.": "Voice playback is not available in this browser.",
-        "Lecture arrêtée.": "Playback stopped.",
-        "Lecture en cours…": "Playing…",
-        "Lecture terminée.": "Playback finished.",
-        "Lecture interrompue.": "Playback interrupted.",
-        /* DIGIY JOBS · international EN overrides */
-        "DIGIY JOBS — Missions, candidats & recruteurs internationaux": "DIGIY JOBS — International missions, candidates & recruiters",
-        "MISSIONS · CANDIDATS · RECRUTEURS": "MISSIONS · CANDIDATES · RECRUITERS",
-        "Afrique · France · Diaspora · emploi local": "Africa · France · Diaspora · local work",
-        "Le travail local,": "Local work,",
-        "visible partout.": "visible everywhere.",
-        "DIGIY JOBS relie les missions, les candidats et les recruteurs dans les territoires locaux : Afrique, France et diaspora. Le candidat avance sans code PIN. Côté pro, trois gestes restent séparés : Inscription JOBS pour publier une mission, Accès recruteur pour comprendre les profils qualifiés, Inscription accès recruteur pour choisir un pack 10 / 25 / 50 profils.": "DIGIY JOBS connects missions, candidates and recruiters across local territories: Africa, France and the diaspora. Candidates move forward without a PIN code. On the pro side, three actions stay separate: JOBS registration to publish a mission, Recruiter access to understand qualified profiles, and Recruiter access registration to choose a 10 / 25 / 50 profile pack.",
-        "Une porte claire pour l’emploi local et international.": "A clear doorway for local and international work.",
-        "Ici on ne noie pas le visiteur. Il voit une mission, comprend le territoire, dépose son profil et garde un fil de suivi. Simple, propre, humain.": "Here, the visitor is not drowned in complexity. They see a mission, understand the territory, submit their profile and keep a clear follow-up thread. Simple, clean, human.",
-        "Un candidat, un recruteur ou un relais diaspora peut demander une information directement. DIGIY oriente, mais la relation reste humaine.": "A candidate, recruiter or diaspora relay can ask for information directly. DIGIY guides the path, but the relationship remains human.",
-        "Entrée publique internationale": "International public entrance",
-        "Portes utiles Afrique · France": "Useful doors Africa · France",
-        "Une même porte JOBS pour plusieurs territoires.": "One JOBS door for several territories.",
-        "DIGIY JOBS n’est pas limité à une seule ville. La méthode sert à rendre les missions lisibles, les candidats présentables et les recruteurs mieux orientés. Le Sénégal reste la preuve terrain, la France ouvre un marché pro plus structuré, et la diaspora devient un pont entre besoins, compétences et opportunités.": "DIGIY JOBS is not limited to one city. The method makes missions readable, candidates presentable and recruiters better guided. Senegal remains the field proof, France opens a more structured professional market, and the diaspora becomes a bridge between needs, skills and opportunities.",
-        "🇸🇳 Afrique · preuve terrain": "🇸🇳 Africa · field proof",
-        "Missions locales, NDIMBAL Express, candidatures simples, Wolof terrain, commerces, restos, logements, services et métiers.": "Local missions, NDIMBAL Express, simple applications, field Wolof, shops, restaurants, housing, services and trades.",
-        "🇫🇷 France · recruteurs structurés": "🇫🇷 France · structured recruiters",
-        "Artisans, restaurants, hébergements, services, petites entreprises et recruteurs qui veulent des profils clairs et consentis.": "Artisans, restaurants, accommodation providers, services, small businesses and recruiters who want clear, consent-based profiles.",
-        "🌍 Diaspora · pont compétences": "🌍 Diaspora · skills bridge",
-        "Relier familles, écoles, entreprises, candidats, stages, missions et profils qualifiés sans vendre les données humaines comme un stock.": "Connect families, schools, businesses, candidates, internships, missions and qualified profiles without selling human data as stock.",
-        "Le public avance par cartes simples. Côté pro, on garde trois portes nettes : Inscription JOBS pour publier une mission, Accès recruteur pour expliquer les profils qualifiés, Inscription accès recruteur pour choisir un pack. NDIMBAL Express reste la porte rapide pour les missions courtes et urgentes. La page peut servir au Sénégal, en France et à la diaspora.": "The public moves through simple cards. On the pro side, three doors stay clear: JOBS registration to publish a mission, Recruiter access to explain qualified profiles, and Recruiter access registration to choose a pack. NDIMBAL Express remains the fast door for short and urgent missions. The page can serve Senegal, France and the diaspora.",
-        "Ouvrir le module PRO JOB pour publier une mission structurée, recevoir les candidatures et garder le contact direct.": "Open the PRO JOB module to publish a structured mission, receive applications and keep direct contact.",
-        "Le pro garde une entrée dédiée pour inscrire / publier une mission.": "The pro keeps a dedicated entrance to register / publish a mission.",
-        "L’accès recruteur sépare les packs profils qualifiés de la publication d’offres.": "Recruiter access separates qualified-profile packs from job-offer publishing.",
-        "France": "France",
-        "Diaspora": "Diaspora",
-        "Territoires": "Territories",
-        "Intl": "Intl",
-        "DIGIY JOBS · Afrique · France · Diaspora · BY DIGIYLYFE": "DIGIY JOBS · Africa · France · Diaspora · BY DIGIYLYFE",
-        "DIGIY JOBS garde une porte publique propre : missions, NDIMBAL Express, candidature, dossier, suivi. Côté pro, l’inscription JOBS reste séparée et claire pour publier une mission ; l’accès recruteur reste séparé pour les profils qualifiés.": "DIGIY JOBS keeps a clean public doorway: missions, NDIMBAL Express, application, profile, follow-up. On the pro side, JOBS registration stays separate and clear for publishing a mission; Recruiter access stays separate for qualified profiles.",
-        "Profils candidats qualifiés": "Qualified candidate profiles",
-        "Accès recruteur aux candidats": "Recruiter access to candidates",
-        "Pack": "Pack"
-};
-      var ATTR = {
-        "Retour en haut de page": "Back to top",
-        "Navigation principale": "Main navigation",
-        "Repères DIGIY JOBS": "DIGIY JOBS markers",
-        "Résumé du module": "Module summary",
-        "Chiffres repères": "Key figures",
-        "Exemples de présentation JOBS": "JOBS presentation examples",
-        "Navigation mobile": "Mobile navigation",
-        "Choisir la langue": "Choose language"
-};
-
-      window.digiyJobsSetLang = function(lang){
-        try{
-          var url = new URL(window.location.href);
-          if(lang === "en"){
-            url.searchParams.set("lang","en");
-            url.searchParams.set("v",VERSION);
-            window.location.href = url.toString();
-            return;
-          }
-          url.searchParams.delete("lang");
-          url.searchParams.set("v","jobs-fr-native-20260620");
-          window.location.href = url.pathname + (url.search ? url.search : "") + (url.hash || "");
-        }catch(_){
-          if(lang === "en") window.location.href = "?lang=en&v=" + VERSION;
-          else window.location.href = window.location.pathname + "?v=jobs-fr-native-20260620";
-        }
-      };
-
-      function normalizeText(value){
-        return String(value || "").replace(/\s+/g," ").trim();
-      }
-      function setTextNode(node, value){
-        var raw = node.nodeValue || "";
-        var leading = (raw.match(/^\s*/) || [""])[0];
-        var trailing = (raw.match(/\s*$/) || [""])[0];
-        node.nodeValue = leading + value + trailing;
-      }
-      function translateTextNode(node){
-        if(!node || !node.nodeValue) return;
-        var key = normalizeText(node.nodeValue);
-        if(!key || !T[key]) return;
-        setTextNode(node, T[key]);
-      }
-      function translateAttributes(el){
-        if(!el || !el.getAttribute) return;
-        ["aria-label","title","alt"].forEach(function(name){
-          var val = el.getAttribute(name);
-          var key = normalizeText(val);
-          if(key && ATTR[key]) el.setAttribute(name, ATTR[key]);
-          else if(key && T[key]) el.setAttribute(name, T[key]);
-        });
-      }
-      function translateTree(root){
-        if(LANG !== "en") return;
-        if(!root) root = document.body;
-        if(root.nodeType === 3){
-          translateTextNode(root);
-          return;
-        }
-        if(root.nodeType !== 1 && root.nodeType !== 9 && root.nodeType !== 11) return;
-        if(root.matches && root.matches("script,style,noscript")) return;
-        translateAttributes(root);
-        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-          acceptNode:function(node){
-            var p = node.parentElement;
-            if(!p || p.closest("script,style,noscript")) return NodeFilter.FILTER_REJECT;
-            return NodeFilter.FILTER_ACCEPT;
-          }
-        });
-        var n;
-        while((n = walker.nextNode())) translateTextNode(n);
-        if(root.querySelectorAll){
-          root.querySelectorAll("[aria-label],[title],[alt]").forEach(translateAttributes);
-        }
-      }
-      function applyHead(){
-        if(LANG === "en"){
-          document.documentElement.lang = "en";
-          document.title = "DIGIY JOBS — International missions, candidates & recruiters";
-          var desc = document.querySelector('meta[name="description"]');
-          if(desc) desc.setAttribute("content","DIGIY JOBS — missions, candidates and recruiters for local territories: Africa, France and the diaspora. Apply, publish a mission, access qualified profiles, direct contact.");
-        }else{
-          document.documentElement.lang = "fr";
-        }
-      }
-      function boot(){
-        applyHead();
-        if(LANG === "en") translateTree(document.body);
-        document.querySelectorAll("[data-digiy-lang-btn]").forEach(function(btn){
-          var active = btn.getAttribute("data-digiy-lang-btn") === LANG;
-          btn.setAttribute("aria-pressed", active ? "true" : "false");
-        });
-        if(LANG === "en"){
-          var mo = new MutationObserver(function(list){
-            list.forEach(function(m){
-              if(m.type === "characterData") translateTextNode(m.target);
-              m.addedNodes && m.addedNodes.forEach(function(node){ translateTree(node); });
-            });
-          });
-          mo.observe(document.body, {childList:true, subtree:true, characterData:true});
-        }
-      }
-      if(document.readyState === "loading") document.addEventListener("DOMContentLoaded",boot);
-      else boot();
-    })();
-  </script>
-<script>
-    (function(){
-      "use strict";
-      function openCard(card){
-        if(!card) return;
-        var href = card.getAttribute("data-digiy-link");
-        if(!href) return;
-        window.location.href = href;
-      }
-      document.addEventListener("click", function(e){
-        var card = e.target && e.target.closest ? e.target.closest("[data-digiy-link]") : null;
-        if(!card) return;
-        if(e.target.closest("a,button,input,select,textarea")) return;
-        openCard(card);
+      document.querySelectorAll("[data-i18n]").forEach(function(el){
+        const key = el.getAttribute("data-i18n");
+        if(c[key] == null) return;
+        if(key === "hero_title") el.innerHTML = c[key];
+        else el.textContent = c[key];
       });
-      document.addEventListener("keydown", function(e){
-        if(e.key !== "Enter" && e.key !== " ") return;
-        var card = e.target && e.target.matches && e.target.matches("[data-digiy-link]") ? e.target : null;
-        if(!card) return;
-        e.preventDefault();
-        openCard(card);
-      });
-    })();
-  </script>
-<script defer="" src="https://pro-action-digiy.digiylyfe.com/assets/js/digiy-retour-voix.js?v=retour-voix-20260606-v4"></script>
 
-<script>
-(function(){
-  "use strict";
-  const JOBS_BASE = "https://jobs.digiylyfe.com/";
-  const JOBS_PAGES = new Set([
-    "missions.html",
-    "mission.html",
-    "ndimbal-express.html",
-    "postuler.html",
-    "dossier-intelligent.html",
-    "suivi.html",
-    "inscription-jobs.html",
-    "inscription-acces-recruteur.html",
-    "action.html",
-    "pay-transition.html"
-  ]);
-  document.addEventListener("click", function(e){
-    const a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
-    if(!a) return;
-    const raw = a.getAttribute("href") || "";
-    const clean = raw.replace(/^\.\//, "");
-    if(JOBS_PAGES.has(clean)){
-      e.preventDefault();
-      window.location.href = JOBS_BASE + clean;
+      frBtn.classList.toggle("active",lang === "fr");
+      enBtn.classList.toggle("active",lang === "en");
+
+      const u = new URL(location.href);
+      if(lang === "fr") u.searchParams.delete("lang");
+      else u.searchParams.set("lang","en");
+      history.replaceState({},"",u.pathname + u.search + u.hash);
     }
-  }, true);
-})();
-</script>
 
+    frBtn.addEventListener("click",function(){applyLang("fr");});
+    enBtn.addEventListener("click",function(){applyLang("en");});
 
-<script>
-(function(){
-  "use strict";
-  const LANG = (window.DIGIY_JOBS_LANG || new URLSearchParams(location.search).get("lang") || "fr") === "en" ? "en" : "fr";
-  const BASE = "https://jobs.digiylyfe.com/";
-  const EN_MAP = {
-    "missions.html":"missions-en.html",
-    "ndimbal-express.html":"ndimbal-express-en.html",
-    "postuler.html":"postuler-en.html",
-    "dossier-intelligent.html":"dossier-intelligent-en.html",
-    "suivi.html":"suivi-en.html",
-    "inscription-jobs.html":"inscription-jobs-en.html"
-  };
-  function cleanPath(href){
-    try{
-      const u = new URL(href, location.href);
-      return u.pathname.split('/').pop();
-    }catch(_){ return String(href||'').replace(/^\.\//,'').split('?')[0].split('#')[0]; }
-  }
-  function rewrite(){
-    if(LANG !== "en") return;
-    document.querySelectorAll('a[href]').forEach(a=>{
-      const name = cleanPath(a.getAttribute('href'));
-      if(EN_MAP[name]) a.setAttribute('href', BASE + EN_MAP[name]);
-    });
-  }
-  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", rewrite);
-  else rewrite();
-})();
-</script>
-
+    const start = new URLSearchParams(location.search).get("lang") === "en" ? "en" : "fr";
+    applyLang(start);
+  })();
+  </script>
 </body>
 </html>
+
 
 
 
