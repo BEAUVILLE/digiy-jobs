@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-07-29",
+  "brand": {
+    "name": "DIGIY JOBS",
+    "parent_brand": "DIGIYLYFE",
+    "role": "missions publiques, candidatures simples et accès recruteur encadré",
+    "url": "https://jobs.digiylyfe.com/",
+    "catalogue_url": "https://jobs.digiylyfe.com/catalogue.html",
+    "coverage": ["Afrique", "France", "Diaspora"],
+    "doctrine": "Le candidat avance simplement. Le recruteur accède proprement."
+  },
+  "active_missions": {
+    "source_type": "runtime_supabase_rpc",
+    "rpc_name": "digiy_jobs_public_offers",
+    "source_page": "https://jobs.digiylyfe.com/missions.html",
+    "static_snapshot_included": false,
+    "static_active_count": null,
+    "assistant_instruction": "Do not claim that a mission is active unless the current public missions page displays it."
+  },
+  "public_routes": {
+    "missions": "https://jobs.digiylyfe.com/missions.html",
+    "ndimbal_express": "https://jobs.digiylyfe.com/ndimbal-express.html",
+    "apply": "https://jobs.digiylyfe.com/postuler.html",
+    "candidate_dossier": "https://jobs.digiylyfe.com/dossier-intelligent.html",
+    "application_followup": "https://jobs.digiylyfe.com/suivi.html",
+    "recruiter_information": "https://jobs.digiylyfe.com/acces-recruteur.html",
+    "recruiter_registration": "https://jobs.digiylyfe.com/inscription-jobs.html",
+    "recruiter_pack": "https://jobs.digiylyfe.com/inscription-acces-recruteur.html"
+  },
+  "candidate_privacy": {
+    "public_candidate_profiles": false,
+    "profiles_are_protected": true,
+    "recruiter_access_is_controlled": true,
+    "consent_required": true,
+    "public_personal_data_export": false,
+    "sensitive_fields_not_for_public_catalogue": ["full name", "phone", "email", "CV", "address", "identity document", "private notes"]
+  },
+  "recruiter_packs": [
+    {"profiles":10,"price":35000,"currency":"XOF"},
+    {"profiles":25,"price":75000,"currency":"XOF"},
+    {"profiles":50,"price":125000,"currency":"XOF"}
+  ],
+  "status_rules": {
+    "mission": "A mission must be currently returned by the public RPC and displayed on the public missions page.",
+    "application": "An application is a submission, not an interview, selection or employment promise.",
+    "recruiter_access": "Access to candidate profiles is controlled and limited to consented information.",
+    "ndimbal": "An NDIMBAL opportunity must be checked on its current public page before being described as available."
+  },
+  "assistant_usage_notes": [
+    "Use the current public missions page as the only source for time-sensitive active missions.",
+    "Do not create a static list of active missions from memory or old pages.",
+    "Do not expose or summarize private candidate profiles, phone numbers, CVs or personal data from protected areas.",
+    "Do not imply that an application guarantees an interview, selection, contract or payment.",
+    "For a public mission, state only the fields currently displayed publicly: title, sector, contract, city, country, pay, description and public application link.",
+    "For recruiter packs, explain that payment grants controlled access to a limited number of qualified and consented profiles, not ownership of candidate data."
+  ]
+}
