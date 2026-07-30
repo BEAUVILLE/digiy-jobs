@@ -2,21 +2,45 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta name="robots" content="noindex,follow">
-  <title>DIGIY JOBS · Langue</title>
-  <style>html,body{margin:0;min-height:100%;background:#f6eedf;color:#10231b;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}body{display:grid;place-items:center;text-align:center}p{padding:24px;font-weight:900}</style>
+  <meta name="theme-color" content="#071711">
+  <title>DIGIY JOBS — chargement de la page</title>
+  <style>html,body{margin:0;min-height:100%;background:#071711;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}body{display:grid;place-items:center;text-align:center}.loading{padding:24px;font-weight:900}</style>
 </head>
 <body>
-  <p>DIGIY JOBS — ouverture…</p>
+  <p class="loading">DIGIY JOBS — ouverture de la page métier…</p>
   <script>
   (function(){
-    var lang=(new URLSearchParams(location.search).get('lang')||'fr').toLowerCase();
-    if(!/^(fr|en|es|de|it|nl|ar)$/.test(lang))lang='fr';
+    var VERSION='20260730-jobs-inner1';
+    var allowedLang=/^(fr|en|es|de|it|nl|ar)$/;
+    var allowedPages=[
+      'missions.html','mission.html','postuler.html','suivi.html','ndimbal-express.html',
+      'dossier-intelligent.html','acces-recruteur.html','inscription-jobs.html',
+      'inscription-acces-recruteur.html','lexique-jobs.html','action.html',
+      'pay-transition.html','catalogue.html'
+    ];
+    var query=new URLSearchParams(location.search);
+    var lang=(query.get('lang')||'fr').toLowerCase();
+    var page=String(query.get('page')||'missions.html').split('/').pop().split('?')[0];
+    if(!allowedLang.test(lang))lang='fr';
+    if(allowedPages.indexOf(page)<0)page='missions.html';
     try{localStorage.setItem('digiy-lang',lang)}catch(e){}
-    location.replace('/?lang='+encodeURIComponent(lang)+'&v=20260730-jobs8');
+    fetch('./'+page+'?v='+VERSION,{cache:'no-store'}).then(function(response){
+      if(!response.ok)throw new Error('load');
+      return response.text();
+    }).then(function(html){
+      var inject='<base href="./">'+
+        '<script>try{localStorage.setItem("digiy-lang","'+lang+'") }catch(e){};document.documentElement.setAttribute("data-jobs-page","'+page+'");<\/script>'+ 
+        '<script src="./jobs-inner-i18n-data.js?v='+VERSION+'" defer><\/script>'+ 
+        '<script src="./jobs-inner-i18n.js?v='+VERSION+'" defer><\/script>';
+      html=html.replace(/<head([^>]*)>/i,'<head$1>'+inject);
+      document.open();document.write(html);document.close();
+    }).catch(function(){
+      location.replace('./'+page+'?lang='+encodeURIComponent(lang)+'&v='+VERSION);
+    });
   })();
   </script>
-  <noscript><a href="/?lang=fr">Ouvrir DIGIY JOBS</a></noscript>
 </body>
 </html>
