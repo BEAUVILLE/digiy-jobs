@@ -1,0 +1,11 @@
+/* DIGIY JOBS — vrai pack multilingue */
+(function(){'use strict';
+var D=window.DIGIY_JOBS_PACK_DATA;if(!D)return;var SUP=['fr','en','es','de','it','nl','ar'];
+function lang(){try{if(window.DIGIY_I18N)return window.DIGIY_I18N.getLanguage();var q=new URL(location.href).searchParams.get('lang');if(SUP.includes(q))return q;var s=localStorage.getItem('digiy-lang');if(SUP.includes(s))return s;}catch(e){}return'fr';}
+function buttons(){var bar=document.querySelector('.lang');if(!bar||bar.dataset.seven)return;bar.dataset.seven='1';[['es','ES'],['de','DE'],['it','IT'],['nl','NL'],['ar','AR']].forEach(function(v){var b=document.createElement('button');b.type='button';b.dataset.lang=v[0];b.textContent=v[1];b.addEventListener('click',function(){window.DIGIY_I18N&&window.DIGIY_I18N.setLanguage(v[0]);});bar.appendChild(b);});}
+function apply(l){if(!D.rows[l])return;var c=D.rows[l];document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.dataset.i18n;if(c[k]==null)return;if(k==='hero_title')el.innerHTML=c[k];else el.textContent=c[k];});var m=D.meta[l];if(m){document.title=m.title;var d=document.querySelector('meta[name="description"]');if(d)d.content=m.description;document.querySelectorAll('a[href*="wa.me/"],a[href^="sms:"]').forEach(function(a){if(a.href.indexOf('wa.me')>=0){try{var u=new URL(a.href);u.searchParams.set('text',m.message);a.href=u.toString();}catch(e){}}else{var p=(a.getAttribute('href')||'').split('?')[0];a.setAttribute('href',p+'?body='+encodeURIComponent(m.message));}});}buttons();document.querySelectorAll('.lang button').forEach(function(b){var x=b.dataset.lang||(b.id==='langFr'?'fr':b.id==='langEn'?'en':'');b.classList.toggle('active',x===l);});}
+document.addEventListener('click',function(e){var b=e.target&&e.target.closest?e.target.closest('#langFr,#langEn'):null;if(b&&window.DIGIY_I18N)window.DIGIY_I18N.setLanguage(b.id==='langEn'?'en':'fr');},true);
+document.addEventListener('digiy:languagechange',function(e){setTimeout(function(){apply(e.detail.lang);},0);});
+function init(){buttons();apply(lang());}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
