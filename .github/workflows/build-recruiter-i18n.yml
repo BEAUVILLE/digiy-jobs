@@ -2,7 +2,9 @@ name: Construire la traduction complète recruteur
 
 on:
   push:
-    branches: [agent/recruiter-page-full-i18n]
+    branches:
+      - main
+      - agent/recruiter-page-full-i18n
     paths:
       - ".github/workflows/build-recruiter-i18n.yml"
   workflow_dispatch:
