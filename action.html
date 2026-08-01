@@ -41,6 +41,6 @@ $('copy').onclick=function(){prepare();navigator.clipboard&&navigator.clipboard.
 $('listen').onclick=function(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){toast('Micro non disponible');return}var r=new SR();r.lang='fr-FR';r.onresult=function(e){$('txt').value=e.results[0][0].transcript;prepare()};r.start();toast('Micro ouvert')};
 })();
 </script>
-  <script src="/jobs-pages-i18n.js?v=20260801-jobs7-pages" defer></script>
+  <script src="/jobs-pages-i18n.js?v=20260801-jobs7-pages-fix1" defer></script>
 </body>
 </html>
