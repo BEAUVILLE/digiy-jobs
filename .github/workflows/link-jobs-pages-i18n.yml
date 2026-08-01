@@ -22,8 +22,13 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
 
-          marker = '<script src="/jobs-pages-i18n.js?v=20260801-jobs7-pages" defer></script>'
+          marker = '<script src="/jobs-pages-i18n.js?v=20260801-jobs7-pages-fix1" defer></script>'
+          pattern = re.compile(
+              r'<script\s+src=["\']/jobs-pages-i18n\.js(?:\?[^"\']*)?["\']\s+defer></script>',
+              re.I,
+          )
           changed = []
 
           for path in sorted(Path('.').glob('*.html')):
@@ -31,16 +36,19 @@ jobs:
                   continue
 
               text = path.read_text(encoding='utf-8')
-              if 'jobs-pages-i18n.js' in text:
+              updated, count = pattern.subn(marker, text)
+
+              if count == 0:
+                  if '</body>' in updated.lower():
+                      pos = updated.lower().rfind('</body>')
+                      updated = updated[:pos] + '  ' + marker + '\n' + updated[pos:]
+                  else:
+                      updated += '\n' + marker + '\n'
+
+              if updated == text:
                   continue
 
-              if '</body>' in text.lower():
-                  pos = text.lower().rfind('</body>')
-                  text = text[:pos] + '  ' + marker + '\n' + text[pos:]
-              else:
-                  text += '\n' + marker + '\n'
-
-              path.write_text(text, encoding='utf-8')
+              path.write_text(updated, encoding='utf-8')
               changed.append(str(path))
 
           print('Pages reliées :', ', '.join(changed) if changed else 'aucune modification')
@@ -55,5 +63,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add '*.html'
-          git commit -m "Relier les pages JOBS aux 7 langues"
+          git commit -m "Corriger le sélecteur de langue JOBS"
           git push
