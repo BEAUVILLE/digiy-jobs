@@ -1,0 +1,59 @@
+name: Relier les pages JOBS aux 7 langues
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "jobs-pages-i18n.js"
+      - "jobs-pages-i18n-*.js"
+      - ".github/workflows/link-jobs-pages-i18n.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  link-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Relier les pages HTML au moteur commun
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          marker = '<script src="/jobs-pages-i18n.js?v=20260801-jobs7-pages" defer></script>'
+          changed = []
+
+          for path in sorted(Path('.').glob('*.html')):
+              if path.name == '404.html':
+                  continue
+
+              text = path.read_text(encoding='utf-8')
+              if 'jobs-pages-i18n.js' in text:
+                  continue
+
+              if '</body>' in text.lower():
+                  pos = text.lower().rfind('</body>')
+                  text = text[:pos] + '  ' + marker + '\n' + text[pos:]
+              else:
+                  text += '\n' + marker + '\n'
+
+              path.write_text(text, encoding='utf-8')
+              changed.append(str(path))
+
+          print('Pages reliées :', ', '.join(changed) if changed else 'aucune modification')
+          PY
+
+      - name: Publier les liaisons
+        run: |
+          if git diff --quiet; then
+            echo "Toutes les pages sont déjà reliées."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '*.html'
+          git commit -m "Relier les pages JOBS aux 7 langues"
+          git push
