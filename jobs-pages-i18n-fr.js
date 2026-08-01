@@ -1,0 +1,1 @@
+window.DIGIY_JOBS_TRANSLATIONS={};
