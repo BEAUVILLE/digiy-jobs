@@ -1,0 +1,54 @@
+name: Brancher les packs recruteur sur PAY
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "jobs-pack-payment.js"
+      - ".github/workflows/link-recruiter-pack-payment.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  link-pack-payment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Relier la page recruteur au paiement
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          page = Path('acces-recruteur.html')
+          text = page.read_text(encoding='utf-8')
+          script = '  <script src="/jobs-pack-payment.js?v=20260801-packs-pay1" defer></script>'
+
+          if script not in text:
+              marker = '  <script src="/jobs-pages-i18n.js?v=20260801-jobs7-pages-fix1" defer></script>'
+              if marker in text:
+                  text = text.replace(marker, marker + '\n' + script)
+              elif '</body>' in text.lower():
+                  pos = text.lower().rfind('</body>')
+                  text = text[:pos] + script + '\n' + text[pos:]
+              else:
+                  raise SystemExit('Fin de page introuvable')
+              page.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Vérifier le JavaScript
+        run: node --check jobs-pack-payment.js
+
+      - name: Publier la liaison
+        run: |
+          if git diff --quiet; then
+            echo "La page recruteur est déjà reliée à PAY."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add acces-recruteur.html
+          git commit -m "Relier les packs recruteur à PAY"
+          git push
