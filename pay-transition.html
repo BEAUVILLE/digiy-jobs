@@ -93,5 +93,6 @@ async function copy(text){try{await navigator.clipboard.writeText(text);$("statu
 $("pack").addEventListener("change",update);["name","phoneInput","structure","zone","reference"].forEach(id=>$(id).addEventListener("input",update));$("copyWave").onclick=()=>copy(WAVE_DISPLAY);$("copyDetails").onclick=()=>copy(details());setPackFromContext();apply();
 })();
 </script>
+  <script src="/jobs-pages-i18n.js?v=20260801-jobs7-pages-fix1" defer></script>
 </body>
 </html>
