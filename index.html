@@ -1,96 +1,443 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="index,follow"><link rel="canonical" href="https://jobs.digiylyfe.com/"><link rel="alternate" hreflang="pt" href="https://jobs.digiylyfe.com/pt/"><title>DIGIY JOBS — WORLD8</title><style>html,body{margin:0;min-height:100%;background:#f4ead2;color:#173426;font-family:system-ui;display:grid;place-items:center}.loading{padding:24px;font-weight:900}</style></head><body><p class="loading">DIGIY JOBS — chargement…</p><script>(function(){var p=new URLSearchParams(location.search),l=(p.get('lang')||'').slice(0,2).toLowerCase();if(!/^(fr|en|es|pt|de|it|nl|ar)$/.test(l)){try{l=(localStorage.getItem('digiy-lang')||'').slice(0,2).toLowerCase()}catch(e){}}if(!/^(fr|en|es|pt|de|it|nl|ar)$/.test(l))l='fr';try{localStorage.setItem('digiy-lang',l);localStorage.setItem('digiy_lang',l)}catch(e){}fetch('./index-native7-world8-source.html?v=20260812-jobs-28000-v2',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('load');return r.text()}).then(function(h){
-var TARIFS='https://digiylyfe.com/tarifs-adherents.html';
-var JOBS={
-fr:{
-  member:'ADHÉRENT JOBS', price:'28 000 FCFA / mois',
-  memberText:'Carte de visite digitale · 1 photo · QR · présence JOBS · WhatsApp · SMS · appel direct · 8 langues · 0 % commission.',
-  memberCta:'Tarifs adhérents', free:'Candidats : accès gratuit',
-  publish:'Publier une annonce',
-  publishText:'Adhérent JOBS : envoyez votre mission par une porte simple. Pas de cockpit recruteur, pas de pack de profils, pas de quota d’annonces.',
-  publishCta:'Envoyer mon annonce',
-  wa:'Bonjour DIGIY, je suis adhérent JOBS et je souhaite publier une annonce. Poste / mission : '
-},
-en:{
-  member:'JOBS MEMBER', price:'28,000 FCFA / month',
-  memberText:'Digital business card · 1 photo · QR · JOBS presence · WhatsApp · SMS · direct call · 8 languages · 0% commission.',
-  memberCta:'Member pricing', free:'Candidates: free access',
-  publish:'Publish a job',
-  publishText:'JOBS members send their vacancy through one simple door. No recruiter cockpit, no profile packs, no job quota.',
-  publishCta:'Send my job',
-  wa:'Hello DIGIY, I am a JOBS member and I want to publish a job. Role / mission: '
-},
-es:{
-  member:'MIEMBRO JOBS', price:'28 000 FCFA / mes',
-  memberText:'Tarjeta digital · 1 foto · QR · presencia JOBS · WhatsApp · SMS · llamada directa · 8 idiomas · 0 % comisión.',
-  memberCta:'Tarifas para miembros', free:'Candidatos: acceso gratuito',
-  publish:'Publicar un anuncio',
-  publishText:'El miembro JOBS envía su oferta por una puerta simple. Sin cockpit de reclutamiento, sin paquetes de perfiles y sin cuota de anuncios.',
-  publishCta:'Enviar mi anuncio',
-  wa:'Hola DIGIY, soy miembro JOBS y deseo publicar un anuncio. Puesto / misión: '
-},
-pt:{
-  member:'MEMBRO JOBS', price:'28 000 FCFA / mês',
-  memberText:'Cartão digital · 1 foto · QR · presença JOBS · WhatsApp · SMS · chamada direta · 8 idiomas · 0% comissão.',
-  memberCta:'Preços para membros', free:'Candidatos: acesso gratuito',
-  publish:'Publicar anúncio',
-  publishText:'O membro JOBS envia a vaga por uma porta simples. Sem cockpit de recrutamento, sem pacotes de perfis e sem limite de anúncios.',
-  publishCta:'Enviar meu anúncio',
-  wa:'Olá DIGIY, sou membro JOBS e quero publicar um anúncio. Vaga / missão: '
-},
-de:{
-  member:'JOBS MITGLIED', price:'28.000 FCFA / Monat',
-  memberText:'Digitale Visitenkarte · 1 Foto · QR · JOBS-Präsenz · WhatsApp · SMS · Direktanruf · 8 Sprachen · 0 % Provision.',
-  memberCta:'Mitgliederpreise', free:'Kandidaten: kostenloser Zugang',
-  publish:'Stellenanzeige veröffentlichen',
-  publishText:'JOBS-Mitglieder senden ihre Stelle über eine einfache Tür. Kein Recruiter-Cockpit, keine Profilpakete und kein Anzeigenlimit.',
-  publishCta:'Anzeige senden',
-  wa:'Hallo DIGIY, ich bin JOBS-Mitglied und möchte eine Stellenanzeige veröffentlichen. Stelle / Auftrag: '
-},
-it:{
-  member:'ADERENTE JOBS', price:'28.000 FCFA / mese',
-  memberText:'Biglietto da visita digitale · 1 foto · QR · presenza JOBS · WhatsApp · SMS · chiamata diretta · 8 lingue · 0% commissione.',
-  memberCta:'Tariffe aderenti', free:'Candidati: accesso gratuito',
-  publish:'Pubblicare un annuncio',
-  publishText:'L’aderente JOBS invia l’offerta tramite una porta semplice. Nessun cockpit recruiter, nessun pacchetto profili e nessun limite di annunci.',
-  publishCta:'Invia il mio annuncio',
-  wa:'Ciao DIGIY, sono aderente JOBS e desidero pubblicare un annuncio. Posizione / missione: '
-},
-nl:{
-  member:'JOBS LID', price:'28.000 FCFA / maand',
-  memberText:'Digitaal visitekaartje · 1 foto · QR · JOBS-zichtbaarheid · WhatsApp · SMS · direct bellen · 8 talen · 0% commissie.',
-  memberCta:'Ledentarieven', free:'Candidaten: gratis toegang',
-  publish:'Vacature plaatsen',
-  publishText:'JOBS-leden sturen hun vacature via één eenvoudige deur. Geen recruitercockpit, geen profielpakketten en geen advertentielimiet.',
-  publishCta:'Mijn vacature sturen',
-  wa:'Hallo DIGIY, ik ben JOBS-lid en wil een vacature plaatsen. Functie / opdracht: '
-},
-ar:{
-  member:'عضو JOBS', price:'28 000 فرنك إفريقي / شهر',
-  memberText:'بطاقة أعمال رقمية · صورة واحدة · QR · ظهور في JOBS · واتساب · SMS · اتصال مباشر · 8 لغات · عمولة 0٪.',
-  memberCta:'أسعار الأعضاء', free:'المرشحون: دخول مجاني',
-  publish:'نشر إعلان وظيفة',
-  publishText:'يرسل عضو JOBS الإعلان عبر باب بسيط. لا لوحة توظيف، لا باقات ملفات، ولا حد لعدد الإعلانات.',
-  publishCta:'إرسال إعلاني',
-  wa:'مرحبًا DIGIY، أنا عضو JOBS وأرغب في نشر إعلان. الوظيفة / المهمة: '
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DIGIY JOBS · Standard DIGIYLYFE V4 · Candidat gratuit · Atelier</title>
+<style>
+:root{--green:#073f32;--green2:#0d634b;--gold:#d8ad46;--cream:#f6f1e5;--paper:#fffefa;--ink:#173b31;--muted:#6e8179;--line:#dfe8e2}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--cream);color:var(--ink)}
+header{background:var(--green);color:#fff;border-bottom:4px solid var(--gold);padding:16px 14px}
+.wrap{max-width:980px;margin:auto}
+.headtop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.brandmark{font-size:26px} .brand{font-weight:950;font-size:22px} .sub{font-size:11px;color:#eadfae;margin-top:3px}
+.zero{border:1px solid var(--gold);border-radius:999px;padding:7px 10px;color:#f2d77e;font-size:10px;font-weight:900;text-align:center;white-space:nowrap}
+.nav,.langs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.nav a,.langs button{border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;border-radius:999px;padding:6px 9px;font-size:9px;font-weight:850;text-decoration:none;cursor:pointer}
+.langs button{background:#fffefa;color:var(--green);border-color:#e1e8e4} .langs button.active{background:var(--gold);border-color:var(--gold)}
+.join{margin-top:10px;display:flex;justify-content:space-between;gap:10px;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(216,173,70,.55);border-radius:13px;padding:9px 10px}
+.join div{display:flex;flex-direction:column;gap:2px} .join strong{font-size:11px} .join span{font-size:9px;color:#e8e2ca}
+.join a{background:var(--gold);color:var(--green);text-decoration:none;border-radius:999px;padding:8px 10px;font-size:9px;font-weight:950;text-align:center}
+main{max-width:980px;margin:auto;padding:16px 8px 40px}
+.section{display:flex;align-items:center;gap:9px;margin-bottom:9px} .section .ico{width:38px;height:38px;background:#e4efe8;border-radius:50%;display:grid;place-items:center}
+.section h1{font-size:18px;margin:0} .section p{font-size:10px;color:var(--muted);margin:2px 0 0}
+.doctrine{background:#fff8df;border:1px solid #ead28a;border-left:4px solid var(--gold);border-radius:11px;padding:9px 10px;font-size:9px;line-height:1.35;color:#5e5124;margin-bottom:10px}
+.doctrine strong{display:block;color:var(--green);font-size:10px;margin-bottom:3px}
+.listing{display:grid;grid-template-columns:34% 66%;background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:10px 0;box-shadow:0 7px 18px rgba(7,63,50,.07)}
+.visual{position:relative;display:block;min-height:390px;background:#dce5df;overflow:hidden} .visual img{width:100%;height:100%;object-fit:cover;display:block}
+.visual-hint{position:absolute;bottom:7px;left:6px;right:6px;background:rgba(7,63,50,.9);color:#fff;border-radius:999px;padding:6px 5px;text-align:center;font-size:8px;font-weight:900}
+.info{padding:10px 9px} .eyebrow{color:var(--gold);font-size:7px;font-weight:950;letter-spacing:.7px;margin:0 0 3px}
+.name-row{display:block} h2{font-size:17px;margin:0;color:var(--green);line-height:1.05} .activity{font-size:9px;color:var(--muted);margin:3px 0}
+.area{display:inline-block;background:#e8f1eb;border-radius:999px;padding:4px 6px;font-size:8px;font-weight:850}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin:7px 0 5px} .chip{font-size:7.5px;background:#eef4f0;border:1px solid #dfe8e2;border-radius:999px;padding:4px 5px;font-weight:750}
+.desc,.rule{font-size:8.5px;line-height:1.3;color:var(--muted);margin:5px 0} .rule{border-left:2px solid var(--gold);padding-left:6px}
+.direct{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:7px 0;margin:7px 0;display:grid;gap:3px}
+.direct div{display:grid;grid-template-columns:1.05fr .95fr;gap:4px;font-size:8px} .direct strong{color:var(--green);font-size:8.5px}
+.qrrow{display:flex;gap:7px;align-items:center;background:#edf5ef;border-radius:9px;padding:7px} .qr{width:54px;height:54px;background:white;padding:2px;border-radius:5px}
+.qrrow div{display:flex;flex-direction:column;gap:3px} .qrrow strong{font-size:8.5px} .qrrow span{font-size:7.5px;color:var(--muted);line-height:1.2}
+.actions{display:grid;grid-template-columns:1fr;gap:5px;margin-top:7px} .btn{text-decoration:none;border-radius:999px;padding:8px 7px;text-align:center;font-size:9px;font-weight:950}
+.primary{background:var(--green);color:#fff} .secondary{border:1px solid var(--green2);color:var(--green2);background:#fff} .whatsapp{border:1px solid #1d8b57;color:#1d8b57;background:#fff}
+footer{text-align:center;color:var(--muted);font-size:8px;padding:18px 5px}
+html[dir="rtl"] body{direction:rtl} html[dir="rtl"] .rule{border-left:0;border-right:2px solid var(--gold);padding-left:0;padding-right:6px}
+@media(min-width:651px){
+  main{padding:22px 14px 50px} .listing{grid-template-columns:34% 66%;border-radius:20px} .visual{min-height:440px} .info{padding:18px}
+  h2{font-size:25px} .activity{font-size:13px} .area{font-size:11px} .chip{font-size:11px;padding:6px 9px}
+  .desc,.rule{font-size:12px} .direct{grid-template-columns:repeat(3,1fr);gap:7px;padding:12px 0;margin:13px 0} .direct div{display:flex;flex-direction:column;text-align:center;font-size:10px}
+  .direct strong{font-size:11px} .qr{width:74px;height:74px} .qrrow strong{font-size:12px} .qrrow span{font-size:11px}
+  .actions{grid-template-columns:repeat(2,1fr);gap:8px} .btn{font-size:11px;padding:10px}
+  .doctrine{font-size:11px;padding:11px 12px} .section h1{font-size:22px} .section p{font-size:13px}
 }
+@media(max-width:380px){.listing{grid-template-columns:32% 68%} .visual{min-height:370px} .info{padding:8px 7px} h2{font-size:16px} .chip{font-size:7px;padding:3px 4px} .qr{width:48px;height:48px}}
+</style>
+
+<style id="job-recruiter-slot-style">
+.recruiter-slot{border:2px dashed var(--gold);background:linear-gradient(180deg,#fffefa,#fff9e8)}
+.slot-visual{background:linear-gradient(160deg,#073f32,#0c6049);display:flex;align-items:center;justify-content:center}
+.slot-art{min-height:100%;width:100%;padding:18px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff}
+.slot-icon{font-size:42px;margin-bottom:10px}.slot-art strong{font-size:15px;line-height:1.05}.slot-art span{margin-top:10px;background:#d8ad46;color:#073f32;border-radius:999px;padding:6px 8px;font-size:8px;font-weight:950}.slot-art small{margin-top:8px;color:#eadfac;font-size:7px}
+.qr-empty{display:grid;place-items:center;border:2px dashed #9db4a7;color:#6d7d77;font-size:9px;font-weight:950;background:#fff}
+.empty-qrrow{background:#f5f1df}
+</style>
+
+
+<script>
+window.DIGIY_SUPABASE_URL="https://wesqmwjjtsefyjnluosj.supabase.co";
+window.DIGIY_SUPABASE_ANON_KEY="sb_publishable_tGHItRgeWDmGjnd0CK1DVQ_BIep4Ug3";
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<style id="job-spontaneous-form-style">
+.spontaneous-box{margin:12px 0 16px;background:#fffefa;border:2px solid var(--gold);border-radius:14px;overflow:hidden;box-shadow:0 6px 16px rgba(7,63,50,.07)}
+.spontaneous-head{background:linear-gradient(135deg,#073f32,#0c6049);color:#fff;padding:12px}
+.spontaneous-head .mini{font-size:8px;font-weight:950;color:#eadfac;letter-spacing:.5px}
+.spontaneous-head h2{margin:4px 0 3px;color:#fff;font-size:18px}.spontaneous-head p{margin:0;color:#e6f0eb;font-size:9px;line-height:1.35}
+.spontaneous-form{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:10px}
+.job-field{display:grid;gap:3px}.job-field.full{grid-column:1/-1}.job-field label{font-size:8px;font-weight:950;color:#294538}
+.job-field input,.job-field textarea{width:100%;border:1px solid var(--line);border-radius:9px;background:#fff;padding:8px;font:inherit;font-size:9px;color:var(--ink)}
+.job-field input{min-height:38px}.job-field textarea{min-height:75px;resize:vertical}
+.job-consent{display:flex;align-items:flex-start;gap:6px;font-size:7.5px;line-height:1.35;color:var(--muted);font-weight:750}
+.job-consent input{width:auto;min-height:auto;margin-top:2px}
+.job-send{border:0;background:var(--g);color:#fff;border-radius:999px;padding:10px;font:inherit;font-size:9px;font-weight:950;cursor:pointer;width:100%}
+.job-send:disabled{opacity:.55;cursor:wait}
+.job-status{margin:0 10px 10px;padding:8px;border-radius:9px;background:#fff8df;border:1px solid #ead28a;color:#5e5124;font-size:8px;font-weight:850;line-height:1.35}
+.job-status.ok{background:#eaf3ed;border-color:#b9d7c4;color:#0b5b3e}.job-status.err{background:#fff0f0;border-color:#edc5c5;color:#8d2525}
+@media(max-width:430px){.spontaneous-form{grid-template-columns:1fr}.job-field.full{grid-column:auto}}
+@media(min-width:651px){.spontaneous-box{border-radius:20px}.spontaneous-head{padding:18px}.spontaneous-head h2{font-size:25px}.spontaneous-head p{font-size:12px}.spontaneous-form{padding:18px;gap:10px}.job-field label{font-size:10px}.job-field input,.job-field textarea{font-size:11px;padding:10px}.job-field input{min-height:44px}.job-field textarea{min-height:95px}.job-consent{font-size:9px}.job-send{font-size:11px;padding:12px}.job-status{margin:0 18px 18px;font-size:10px;padding:10px}}
+</style>
+
+
+<style id="job-candidate-free-style">
+.candidate-free{margin:10px 0 12px;background:#eaf3ed;border:2px solid #87b89a;border-radius:13px;padding:10px 12px;color:#0b5b3e;display:flex;gap:9px;align-items:flex-start}
+.candidate-free .free-icon{font-size:22px;line-height:1}
+.candidate-free strong{display:block;font-size:10px;margin-bottom:2px}
+.candidate-free span{display:block;font-size:8.5px;line-height:1.35}
+@media(min-width:651px){.candidate-free{padding:14px 16px;border-radius:18px}.candidate-free .free-icon{font-size:28px}.candidate-free strong{font-size:13px}.candidate-free span{font-size:10.5px}}
+</style>
+
+</head>
+<body>
+<header>
+<div class="wrap">
+  <div class="headtop">
+    <div><div class="brandmark">💼</div><div class="brand">DIGIY JOBS</div><div class="sub">Missions publiques · candidats protégés · relation humaine</div></div>
+    <div class="zero">0 % COMMISSION<br>DIGIYLYFE</div>
+  </div>
+  <div class="nav">
+    <a href="https://digiylyfe.com/?lang=fr" target="_blank">🌍 DIGIYLYFE</a>
+    <a href="https://jobs.digiylyfe.com/" target="_blank">💼 DIGIY JOBS</a>
+  </div>
+  <div class="langs" id="langs">
+    <button data-lang="fr" class="active">🇫🇷 FR</button><button data-lang="en">🇬🇧 EN</button><button data-lang="es">🇪🇸 ES</button><button data-lang="pt">🇵🇹 PT</button>
+    <button data-lang="de">🇩🇪 DE</button><button data-lang="it">🇮🇹 IT</button><button data-lang="nl">🇳🇱 NL</button><button data-lang="ar">🇸🇦 AR</button>
+  </div>
+  <div class="join">
+    <div><strong data-i18n="joinq">Vous recrutez ?</strong><span data-i18n="jointext">Rejoignez DIGIYLYFE comme adhérent JOB et publiez vos besoins dans un cadre humain et direct.</span></div>
+    <a href="https://digiylyfe.com/tarifs-adherents.html" target="_blank" data-i18n="join">DEMANDE D’ADHÉSION · 28 000 FCFA / mois</a>
+  </div>
+</div>
+</header>
+<main>
+  <section class="section"><div class="ico">🛍️</div><div><h1 data-i18n="title">DIGIY JOBS · MISSIONS</h1><p data-i18n="subtitle">Missions publiques · Candidature simple · Profils protégés</p></div></section>
+  <div class="doctrine"><strong>🛡️ <span data-i18n="role">RÔLE DE DIGIYLYFE</span></strong><span data-i18n="doctrine">DIGIY JOBS publie les missions validées et organise une porte de candidature simple. Le recruteur reste seul responsable de l’offre, des conditions, de la sélection, du contrat, de la rémunération et de l’embauche. Une candidature ne garantit ni entretien ni emploi. Les profils candidats restent protégés et ne sont jamais exposés comme un catalogue public.</span></div>
+  
+    
+    
+    <article class="listing recruiter-slot" aria-label="Emplacement libre pour une entreprise qui recrute">
+      <a class="visual slot-visual" href="https://digiylyfe.com/tarifs-adherents.html" target="_blank" rel="noopener" aria-label="Devenir adhérent DIGIY JOBS">
+        <div class="slot-art">
+          <div class="slot-icon">🏢</div>
+          <strong>ENTREPRISE<br>QUI RECRUTE</strong>
+          <span>EMPLACEMENT LIBRE</span>
+          <small>Votre logo / votre photo ici</small>
+        </div>
+        <span class="visual-hint">↗ <span>EMPLACEMENT LIBRE</span></span>
+      </a>
+      <div class="info">
+        <p class="eyebrow">CARTE COMMERCIALE · RECRUTEUR</p>
+        <div class="name-row">
+          <div>
+            <h2>ENTREPRISE QUI RECRUTE</h2>
+            <p class="activity">EMPLACEMENT LIBRE</p>
+          </div>
+          <span class="area">📍 Votre zone</span>
+        </div>
+
+        <div class="chips">
+          <span class="chip">Votre secteur</span>
+          <span class="chip">Vos postes</span>
+          <span class="chip">Votre zone</span>
+          <span class="chip">Votre contact</span>
+        </div>
+
+        <p class="desc">Votre entreprise recrute ? Cet emplacement est prévu pour présenter votre activité, vos besoins de recrutement et votre présence DIGIYLYFE.</p>
+        <p class="rule">Aucune entreprise fictive n’est affichée ici : cet espace reste libre jusqu’à l’adhésion et la validation du dossier d’une entreprise réelle.</p>
+
+        <div class="direct">
+          <div><strong>Entreprise</strong><span>À renseigner</span></div>
+          <div><strong>Recrutement</strong><span>À renseigner</span></div>
+          <div><strong>Statut</strong><span>EMPLACEMENT LIBRE</span></div>
+        </div>
+
+        <div class="qrrow empty-qrrow">
+          <div class="qr qr-empty" aria-label="Emplacement QR de l'entreprise">QR</div>
+          <div>
+            <strong>QR · ENTREPRISE</strong>
+            <span>Le QR de l’entreprise sera posé après validation de sa carte DIGIYLYFE.</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn primary" href="https://digiylyfe.com/tarifs-adherents.html" target="_blank" rel="noopener">🏢 ENTREPRISE / RECRUTEUR · 28 000 FCFA / mois</a>
+          <a class="btn secondary" href="https://jobs.digiylyfe.com/" target="_blank" rel="noopener">💼 VOIR DIGIY JOBS</a>
+        </div>
+      </div>
+    </article>
+
+    
+    <div class="candidate-free" id="candidate-free">
+      <div class="free-icon">✅</div>
+      <div>
+        <strong data-job-i18n="free_title">CANDIDAT · 100 % GRATUIT</strong>
+        <span data-job-i18n="free_text">Aucun paiement pour consulter une offre, postuler, déposer une candidature spontanée ou être mis en relation. Les 28 000 FCFA concernent uniquement l’entreprise / le recruteur adhérent.</span>
+      </div>
+    </div>
+
+<section class="spontaneous-box" id="candidature-spontanee">
+      <div class="spontaneous-head">
+        <div class="mini" data-job-i18n="sp_kicker">🙋 CANDIDATURE SPONTANÉE · DIRECTEMENT DANS LA VITRINE</div>
+        <h2 data-job-i18n="sp_title">Vous cherchez une mission ? Présentez-vous.</h2>
+        <p data-job-i18n="sp_intro">Votre profil n’est pas publié. Il est enregistré dans DIGIY JOBS pour permettre une mise en relation avec une mission adaptée.</p>
+      </div>
+
+      <form id="spontaneousForm" class="spontaneous-form">
+        <div class="job-field">
+          <label for="spName" data-job-i18n="name">Nom et prénom</label>
+          <input id="spName" required maxlength="80" autocomplete="name">
+        </div>
+        <div class="job-field">
+          <label for="spPhone" data-job-i18n="phone">WhatsApp / téléphone</label>
+          <input id="spPhone" required inputmode="tel" maxlength="20" autocomplete="tel">
+        </div>
+        <div class="job-field">
+          <label for="spJob" data-job-i18n="job">Métier recherché</label>
+          <input id="spJob" required maxlength="100">
+        </div>
+        <div class="job-field">
+          <label for="spCity" data-job-i18n="city">Ville</label>
+          <input id="spCity" required maxlength="100">
+        </div>
+        <div class="job-field">
+          <label for="spCountry" data-job-i18n="country">Pays</label>
+          <input id="spCountry" value="Sénégal" maxlength="80">
+        </div>
+        <div class="job-field">
+          <label for="spAvailability" data-job-i18n="availability">Disponibilité</label>
+          <input id="spAvailability" maxlength="100" placeholder="Immédiate, week-end…">
+        </div>
+        <div class="job-field">
+          <label for="spExperience" data-job-i18n="experience">Expérience</label>
+          <input id="spExperience" maxlength="100" placeholder="Débutant, 2 ans…">
+        </div>
+        <div class="job-field full">
+          <label for="spMessage" data-job-i18n="message">Message</label>
+          <textarea id="spMessage" maxlength="1000" placeholder="Ce que vous savez faire et ce que vous recherchez."></textarea>
+        </div>
+        <div class="job-field full">
+          <label class="job-consent">
+            <input id="spConsent" type="checkbox" required>
+            <span data-job-i18n="consent">J’autorise DIGIY JOBS à enregistrer ces informations et à les transmettre dans le cadre d’une mise en relation professionnelle adaptée.</span>
+          </label>
+        </div>
+        <div class="job-field full">
+          <button id="spSubmit" class="job-send" type="submit" data-job-i18n="send">ENVOYER MA CANDIDATURE SPONTANÉE</button>
+        </div>
+      </form>
+      <div id="spStatus" class="job-status" data-job-i18n="privacy">🔒 Votre profil reste protégé et n’apparaît pas dans la vitrine publique.</div>
+    </section>
+
+
+<article class="listing">
+      <a class="visual" href="https://jobs.digiylyfe.com/mission.html?id=5e978d75-339a-465f-b984-4e82362f71db&lang=fr" target="_blank" rel="noopener" aria-label="Voir l’offre Candidature spontanée">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MDAiIGhlaWdodD0iMTIwMCIgdmlld0JveD0iMCAwIDcwMCAxMjAwIj4KICAgIDxyZWN0IHdpZHRoPSI3MDAiIGhlaWdodD0iMTIwMCIgZmlsbD0iIzA3M2YzMiIvPgogICAgPGNpcmNsZSBjeD0iMzUwIiBjeT0iMzQwIiByPSIxNTAiIGZpbGw9IiNkOGFkNDYiIG9wYWNpdHk9Ii45NSIvPgogICAgPHRleHQgeD0iMzUwIiB5PSIzOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTU1Ij7wn6SdPC90ZXh0PgogICAgPHRleHQgeD0iMzUwIiB5PSI2MjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIj5DYW5kaWRhdHVyZSBzcG9udGFuw6llPC90ZXh0PgogICAgPHRleHQgeD0iMzUwIiB5PSI2OTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjMwIiBmaWxsPSIjZWFkZmFjIj5ESUdJWSBKT0JTIOKAlCBBZ2VuY2UgdGVycmFpbjwvdGV4dD4KICAgIDx0ZXh0IHg9IjM1MCIgeT0iMTA0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNkOGFkNDYiPkRJR0lZIEpPQlM8L3RleHQ+CiAgICA8L3N2Zz4=" alt="Candidature spontanée">
+        <span class="visual-hint">↗ <span data-i18n="card">VOIR L’OFFRE</span></span>
+      </a>
+      <div class="info">
+        <p class="eyebrow">MISSION PUBLIQUE DIGIY JOBS</p>
+        <div class="name-row">
+          <div>
+            <h2>Candidature spontanée</h2>
+            <p class="activity">Service · Tous métiers terrain</p>
+          </div>
+          <span class="area">📍 Saly · Sénégal</span>
+        </div>
+
+        <div class="chips">
+          <span class="chip">Mission</span>
+          <span class="chip">Selon mission</span>
+          <span class="chip">DIGIY JOBS — Agence terrain</span>
+        </div>
+
+        <p class="desc">Déposez votre candidature pour être rapproché d’une mission adaptée à votre métier, votre ville et votre disponibilité.</p>
+        <p class="rule">Mission publique actuelle. La candidature ne garantit ni entretien, ni sélection, ni embauche. Le recruteur confirme directement les conditions finales.</p>
+
+        <div class="direct">
+          <div><strong>Recruteur</strong><span>DIGIY JOBS — Agence terrain</span></div>
+          <div><strong>Contrat</strong><span>Mission</span></div>
+          <div><strong>Rémunération</strong><span>Selon mission</span></div>
+        </div>
+
+        <div class="qrrow">
+          <img class="qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOAQAAAABQysQIAAACoUlEQVR4nO2aQYobMRBFn0YNsyzDHCBHUd8s5GbVR5kbyMuBMj+LUjuBLKZDHNOCaYyxZS3qU79+/ZJcxCfP7eWzHfC15X9uQR2gSlWOeS5WCRoALc4U7rEtTRJst0vT+6qO5Ley1k6V1E8X7pEtpaxc12ADFvNS1oAArmV5diz/vmXZP7Tat9s3cV0FiyjWlyfH8mBEQFuCYiq0uF5iWZ8dy+MQaQDbgq2+lxoUeBWLieu5wv0LrevtzxcwodahfDoBVYpc6S01UNJ8iHpjx1I7kmqnysM01s8U7rEcOTZyFDRomKsDSbwZWefQoAWtSpJLClOW0pysA1rqA5bc27MDYRMikmMadSRPILUTJslrn451CxBvW1wvwMel19hexe1NvBegPjOWB7Jur5qgpW4DmIf5pKwLU9ZR0FK3wwStdjQf60aHxQRIrt7CHHPMw8SUORLmSn2zhNY0Ouyc/Whg8dhx1d7CXPK0EDMiGnVkSnGIfR7XtHU0BnD5+JyitzuH+RB1EovkpEkwz1OUkbIzhXtQvesuC3VHF/bb+5nCPc66rJ2gqY+jrchfp2RdG4ODSTkfyauGYZhzPhpkg5blEzZ6buZuQkSZC69jPG/JOt0V70zhHmddpCz0pk4OegDmk+Yo5S4dXZXi7rrz65nCPdiPhsT9liP2w/w5O2yrnfutBCZJ96uKKeej3jDlrJflo92szjofpVuQx1hoVZ4kBCadj+6infTLw1X1IeDzIepw1wG55DlZ5FQ+YR29jDu+a8F+fFwoZV3I81WCVvvpwv302X0dQQrdsHO1M696J6J0DsCwQOZzdthfd3zx5jc2wRJbgcVY+P7UWB6XI41+KnWqXLtbmFMZ7nd81HTdeW3UGYeQ87GufP2L5vRbfgJbkZSnci3WWAAAAABJRU5ErkJggg==" alt="QR mission Candidature spontanée">
+          <div>
+            <strong>QR · MISSION</strong>
+            <span>Scannez pour ouvrir cette offre publique DIGIY JOBS.</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn primary" href="https://jobs.digiylyfe.com/mission.html?id=5e978d75-339a-465f-b984-4e82362f71db&lang=fr" target="_blank" rel="noopener" data-i18n="card">VOIR L’OFFRE</a>
+          <a class="btn secondary" href="https://jobs.digiylyfe.com/postuler.html?offer=5e978d75-339a-465f-b984-4e82362f71db&lang=fr" target="_blank" rel="noopener" data-i18n="fiche">POSTULER</a>
+          <a class="btn whatsapp" href="https://jobs.digiylyfe.com/missions.html" target="_blank" rel="noopener" data-i18n="site">VOIR LES MISSIONS</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="listing">
+      <a class="visual" href="https://jobs.digiylyfe.com/mission.html?id=a411474f-d799-4bdf-af0c-a37e921153c1&lang=fr" target="_blank" rel="noopener" aria-label="Voir l’offre Maçon polyvalent chantier villa">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MDAiIGhlaWdodD0iMTIwMCIgdmlld0JveD0iMCAwIDcwMCAxMjAwIj4KICAgIDxyZWN0IHdpZHRoPSI3MDAiIGhlaWdodD0iMTIwMCIgZmlsbD0iIzA3M2YzMiIvPgogICAgPGNpcmNsZSBjeD0iMzUwIiBjeT0iMzQwIiByPSIxNTAiIGZpbGw9IiNkOGFkNDYiIG9wYWNpdHk9Ii45NSIvPgogICAgPHRleHQgeD0iMzUwIiB5PSIzOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTU1Ij7wn6exPC90ZXh0PgogICAgPHRleHQgeD0iMzUwIiB5PSI2MjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIj5NYcOnb24gcG9seXZhbGVudCBjaGFudDwvdGV4dD4KICAgIDx0ZXh0IHg9IjM1MCIgeT0iNjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzMCIgZmlsbD0iI2VhZGZhYyI+RElHSVkgQlVJTEQ8L3RleHQ+CiAgICA8dGV4dCB4PSIzNTAiIHk9IjEwNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI2IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZDhhZDQ2Ij5ESUdJWSBKT0JTPC90ZXh0PgogICAgPC9zdmc+" alt="Maçon polyvalent chantier villa">
+        <span class="visual-hint">↗ <span data-i18n="card">VOIR L’OFFRE</span></span>
+      </a>
+      <div class="info">
+        <p class="eyebrow">MISSION PUBLIQUE DIGIY JOBS</p>
+        <div class="name-row">
+          <div>
+            <h2>Maçon polyvalent chantier villa</h2>
+            <p class="activity">Bâtiment · Chantier</p>
+          </div>
+          <span class="area">📍 Saly · Sénégal</span>
+        </div>
+
+        <div class="chips">
+          <span class="chip">Mission</span>
+          <span class="chip">90 000 à 140 000 FCFA</span>
+          <span class="chip">DIGIY BUILD</span>
+        </div>
+
+        <p class="desc">Travaux de finition et petit gros œuvre sur chantier local. Expérience chantier, ponctualité et autonomie demandées.</p>
+        <p class="rule">Mission publique actuelle. La candidature ne garantit ni entretien, ni sélection, ni embauche. Le recruteur confirme directement les conditions finales.</p>
+
+        <div class="direct">
+          <div><strong>Recruteur</strong><span>DIGIY BUILD</span></div>
+          <div><strong>Contrat</strong><span>Mission</span></div>
+          <div><strong>Rémunération</strong><span>90 000 à 140 000 FCFA</span></div>
+        </div>
+
+        <div class="qrrow">
+          <img class="qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOAQAAAABQysQIAAACoElEQVR4nO1aS2ojQQx9FTVkKUMOMEdR38xXk4/iG6iXAZk3C1U72dmQTKYFKbwwbS0kpHoftQfx4NxeHkUAvyH/MgQMABBSAkLfHxpgAADLI6X7XIiRBC5Qvp/AAOnjBAkIyThcus+EjLFiWxMXCYw/vmxrAglgG8tP5/L1kGX/MmeMuLy/cSGGxvLDuXx7yHYeYx3jvGxrbiO39T/m8oUQMIykhDGQ6kKXMBRWkIyOyHAZYwBYYK/XM7YzAAnDtt7GGKfDpfvwsE6AdJlfWOhdv3TrUVHPDtQAd2JKZT3vVxEJdYYlLAvx1Ks6wBoyLDihwBImdNJJplLCJKzn1IFhdXHmpIXtNSK1YUV0KIUOGOlViARSWe3rVtECgLi8D8sFt7eQvLwStzfiOgDIT+byfVMnrGFDAnKHCPVUbzp1k3eAGrxUQpkwCTTUDJNhhY77xZnd8VS25KOw4iOGpTKVgFWBbfmIEoA66QmTMCFz8hSa8lGqM1C1TCleYF6NO1K6z2JdGfDZIwiZMJKpHfloCoY9f6QyAaGjyml6jzhVnNDLTWRdK/WW94iUfd5mg3ZRB/TkozChCwmddk/o5Y+68hHJwO7vHOqpLNMkgZ73yIuSPrvygu6JeEdK98mpS1hREsOKmEgCgHrbHrkEStEV0E3Vrd7yHpXAVrIAPCbWCQlYU4aVAObaxErg1QdN/VEYlKnOXaPOPcNdQhwp3WeRQac/mqYvpvBG233dXKLqtBWl6D4WREdK90lkAFCaoXaP3O1ez6l7me/4tiHXkdu6qI8T6o1Yib2jpfvw1GhJINWntLtPYFv0ropms2ZdtRRqyrCGT1Zit+SAevFsx4o+LRYgu1It/dAQGXasK/Gj/NivzjVXu4rG779oDh/yF4BIvkUYG8IeAAAAAElFTkSuQmCC" alt="QR mission Maçon polyvalent chantier villa">
+          <div>
+            <strong>QR · MISSION</strong>
+            <span>Scannez pour ouvrir cette offre publique DIGIY JOBS.</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn primary" href="https://jobs.digiylyfe.com/mission.html?id=a411474f-d799-4bdf-af0c-a37e921153c1&lang=fr" target="_blank" rel="noopener" data-i18n="card">VOIR L’OFFRE</a>
+          <a class="btn secondary" href="https://jobs.digiylyfe.com/postuler.html?offer=a411474f-d799-4bdf-af0c-a37e921153c1&lang=fr" target="_blank" rel="noopener" data-i18n="fiche">POSTULER</a>
+          <a class="btn whatsapp" href="https://jobs.digiylyfe.com/missions.html" target="_blank" rel="noopener" data-i18n="site">VOIR LES MISSIONS</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="listing">
+      <a class="visual" href="https://jobs.digiylyfe.com/mission.html?id=f967e0e9-d06f-4d7a-bdc9-889946f37c9a&lang=fr" target="_blank" rel="noopener" aria-label="Voir l’offre Coiffeuse ou coiffeur salon quartier">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MDAiIGhlaWdodD0iMTIwMCIgdmlld0JveD0iMCAwIDcwMCAxMjAwIj4KICAgIDxyZWN0IHdpZHRoPSI3MDAiIGhlaWdodD0iMTIwMCIgZmlsbD0iIzA3M2YzMiIvPgogICAgPGNpcmNsZSBjeD0iMzUwIiBjeT0iMzQwIiByPSIxNTAiIGZpbGw9IiNkOGFkNDYiIG9wYWNpdHk9Ii45NSIvPgogICAgPHRleHQgeD0iMzUwIiB5PSIzOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTU1Ij7inILvuI88L3RleHQ+CiAgICA8dGV4dCB4PSIzNTAiIHk9IjYyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmYiPkNvaWZmZXVzZSBvdSBjb2lmZmV1ciA8L3RleHQ+CiAgICA8dGV4dCB4PSIzNTAiIHk9IjY5MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMzAiIGZpbGw9IiNlYWRmYWMiPkRJR0lZIFNUWUxFPC90ZXh0PgogICAgPHRleHQgeD0iMzUwIiB5PSIxMDQwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2Q4YWQ0NiI+RElHSVkgSk9CUzwvdGV4dD4KICAgIDwvc3ZnPg==" alt="Coiffeuse ou coiffeur salon quartier">
+        <span class="visual-hint">↗ <span data-i18n="card">VOIR L’OFFRE</span></span>
+      </a>
+      <div class="info">
+        <p class="eyebrow">MISSION PUBLIQUE DIGIY JOBS</p>
+        <div class="name-row">
+          <div>
+            <h2>Coiffeuse ou coiffeur salon quartier</h2>
+            <p class="activity">Beauté · Coiffure</p>
+          </div>
+          <span class="area">📍 Mbour · Sénégal</span>
+        </div>
+
+        <div class="chips">
+          <span class="chip">CDI</span>
+          <span class="chip">Salaire + prime</span>
+          <span class="chip">DIGIY STYLE</span>
+        </div>
+
+        <p class="desc">Salon recherchant un profil accueillant, maîtrisant tresses ou coupe et capable de gérer une clientèle locale.</p>
+        <p class="rule">Mission publique actuelle. La candidature ne garantit ni entretien, ni sélection, ni embauche. Le recruteur confirme directement les conditions finales.</p>
+
+        <div class="direct">
+          <div><strong>Recruteur</strong><span>DIGIY STYLE</span></div>
+          <div><strong>Contrat</strong><span>CDI</span></div>
+          <div><strong>Rémunération</strong><span>Salaire + prime</span></div>
+        </div>
+
+        <div class="qrrow">
+          <img class="qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOAQAAAABQysQIAAACuklEQVR4nO2awY0bSwxEX28P4COVgUPhZPBDckzOoBXKZsA5GqBQ/8Cev76tAO8XpgEPdBgJPLDQzWIVqSY+eR5vn0XA35D/MwQFQJekgY20UV/BAfC8UrrPIXJJXQOTgvqA9/AuKZZD9Aa0tnPsyf1xo30fm42EBI62vTqXPw/ZzhfvcQcfx034JprF9uJcvhgR4M1GMzU8j1tu+6tz+TpEgg0eG+Le31tPGnwTm4njWuk+F3JvrQHfwrfjBzjH3sM59kdr7Xa5dD8PMUlK7skdSO5FC48bKkq/VrqfPwqn+lHQA0lA10irF63G3kijPoln/WSj2i74kh1Wo4djSpDUpS6lqYf3cK14RgF43b2JK7yHgyekLYhIo0vYqPcC0oM01fGtiAg7i8hG1yhamAp2RUSBpB70IPm4b6XDF711mBJPHFwaaUoTeN29BRGpKA68zus8nZEm1kSEDYVj0rxyXnYJyCX7kXp4ddU8jV6Cgvl+pXSfrKOT2byHZ/UmG6WLFvSwKOgaXarCOe2561QOCyKahJA2isATugY26shWRFQSDhM2pKHwtFEY19R1s3y6xjREpinqWLOOpLpgc7olnUKoymrBM9L4mNHNIaQkYZpldaV0n2fvHmX9pPBTP3iyqD9yhU9Q4dVYy5tPTX6ldJ/2R6N0KTZ+03VKG0vWUXBKBXp4/6gpTRVxpXSfZm96OJA4pl5y/GSJ1RC9Ab++69cNhXeNPFoeO8febvT3/eW5/HkI5SNKb6eNMn0nny86r1OR9lyBnRuxHq5F+1HAf0s9G4o5ESpaWNLD1o4voLZgNmpWXEZp0Q47hyRQo4bJeMG67F2IeniasOn4iigWZIaPHV8e9Pem458e9x02+7nx46W5fG0dnbvyc+FSNnDNeV0ATNlgNbibc+/SQqshan//RXP5kH8BMw6dt5HnwgYAAAAASUVORK5CYII=" alt="QR mission Coiffeuse ou coiffeur salon quartier">
+          <div>
+            <strong>QR · MISSION</strong>
+            <span>Scannez pour ouvrir cette offre publique DIGIY JOBS.</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn primary" href="https://jobs.digiylyfe.com/mission.html?id=f967e0e9-d06f-4d7a-bdc9-889946f37c9a&lang=fr" target="_blank" rel="noopener" data-i18n="card">VOIR L’OFFRE</a>
+          <a class="btn secondary" href="https://jobs.digiylyfe.com/postuler.html?offer=f967e0e9-d06f-4d7a-bdc9-889946f37c9a&lang=fr" target="_blank" rel="noopener" data-i18n="fiche">POSTULER</a>
+          <a class="btn whatsapp" href="https://jobs.digiylyfe.com/missions.html" target="_blank" rel="noopener" data-i18n="site">VOIR LES MISSIONS</a>
+        </div>
+      </div>
+    </article>
+    
+  <footer data-i18n="footer">MAQUETTE ATELIER JOBS V4 · CANDIDAT 100 % GRATUIT · 28 000 FCFA ENTREPRISE / RECRUTEUR UNIQUEMENT · CARTE RECRUTEUR + FORMULAIRE CANDIDATURE SPONTANÉE · 8 LANGUES · CANDIDATS PROTÉGÉS · Aucun logiciel public · Aucun push.</footer>
+</main>
+<script>
+const T = {"fr": {"tag": "ADHÉRENT DIGIYLYFE", "title": "DIGIY JOBS · MISSIONS", "subtitle": "Missions publiques · Candidature simple · Profils protégés", "joinq": "Vous recrutez ?", "join": "DEMANDE D’ADHÉSION · 28 000 FCFA / mois", "jointext": "Rejoignez DIGIYLYFE comme adhérent JOB et publiez vos besoins dans un cadre humain et direct.", "role": "RÔLE DE DIGIYLYFE", "doctrine": "DIGIY JOBS publie les missions validées et organise une porte de candidature simple. Le recruteur reste seul responsable de l’offre, des conditions, de la sélection, du contrat, de la rémunération et de l’embauche. Une candidature ne garantit ni entretien ni emploi. Les profils candidats restent protégés et ne sont jamais exposés comme un catalogue public.", "contact": "Contact direct", "payment": "Paiement direct", "merchant": "au commerçant", "commission": "commission DIGIYLYFE", "availability": "Produits, disponibilité, prix et conditions : accord direct avec le commerçant, sous sa responsabilité.", "qr": "Scannez pour ouvrir et conserver sa présence DIGIYLYFE.", "card": "VOIR LA CARTE", "fiche": "VOIR LA FICHE", "site": "VOIR LE SITE", "wa": "WhatsApp direct", "footer": "MAQUETTE ATELIER JOBS V4 · CANDIDAT 100 % GRATUIT · 28 000 FCFA ENTREPRISE / RECRUTEUR UNIQUEMENT · CARTE RECRUTEUR + FORMULAIRE CANDIDATURE SPONTANÉE · 8 LANGUES · CANDIDATS PROTÉGÉS · Aucun logiciel public · Aucun push."}, "en": {"tag": "DIGIYLYFE MEMBER", "title": "DIGIY JOBS · MISSIONS", "subtitle": "Public missions · Simple application · Protected profiles", "joinq": "Are you recruiting?", "join": "MEMBERSHIP REQUEST · 28,000 FCFA / month", "jointext": "Join DIGIYLYFE as a JOB member and publish your needs in a direct, human framework.", "role": "ROLE OF DIGIYLYFE", "doctrine": "DIGIY JOBS publishes validated missions and provides a simple application doorway. The recruiter remains solely responsible for the offer, conditions, selection, contract, pay and hiring. An application does not guarantee an interview or employment. Candidate profiles remain protected and are never exposed as a public catalogue.", "contact": "Direct contact", "payment": "Direct payment", "merchant": "to merchant", "commission": "DIGIYLYFE commission", "availability": "Products, availability, prices and conditions: agreed directly with the merchant, under their responsibility.", "qr": "Scan to open and save their DIGIYLYFE presence.", "card": "VIEW CARD", "fiche": "VIEW PROFILE", "site": "VIEW SITE", "wa": "Direct WhatsApp", "footer": "WORKSHOP MOCKUP · MOBILE-FIRST · 8 LANGUAGES · MEMBERS · No public software · No push."}, "es": {"tag": "MIEMBRO DIGIYLYFE", "title": "DIGIY JOBS · MISIONES", "subtitle": "Misiones públicas · Candidatura simple · Perfiles protegidos", "joinq": "¿Estás contratando?", "join": "SOLICITUD DE ADHESIÓN · 28 000 FCFA / mes", "jointext": "Únete a DIGIYLYFE como miembro y prepara tu tarjeta de visita digital.", "role": "PAPEL DE DIGIYLYFE", "doctrine": "DIGIYLYFE publica la presencia digital de sus miembros. Cada comerciante es el único responsable de su actividad, productos, precios, obligaciones, stock, ventas, entregas y compromisos con sus clientes. DIGIYLYFE no vende en su nombre ni cobra sus ventas.", "contact": "Contacto directo", "payment": "Pago directo", "merchant": "al comerciante", "commission": "comisión DIGIYLYFE", "availability": "Productos, disponibilidad, precios y condiciones: acuerdo directo con el comerciante, bajo su responsabilidad.", "qr": "Escanea para abrir y guardar su presencia DIGIYLYFE.", "card": "VER TARJETA", "fiche": "VER FICHA", "site": "VER SITIO", "wa": "WhatsApp directo", "footer": "MAQUETA DE TALLER · MOBILE-FIRST · 8 IDIOMAS · MIEMBROS · Sin software público · Sin push."}, "pt": {"tag": "MEMBRO DIGIYLYFE", "title": "DIGIY JOBS · MISSÕES", "subtitle": "Missões públicas · Candidatura simples · Perfis protegidos", "joinq": "Está a recrutar?", "join": "PEDIDO DE ADESÃO · 28 000 FCFA / mês", "jointext": "Junte-se à DIGIYLYFE como membro e prepare o seu cartão de visita digital.", "role": "PAPEL DA DIGIYLYFE", "doctrine": "A DIGIYLYFE publica a presença digital dos seus membros. Cada comerciante é o único responsável pela sua atividade, produtos, preços, obrigações, stock, vendas, entregas e compromissos com os clientes. A DIGIYLYFE não vende em seu nome nem recebe o pagamento das suas vendas.", "contact": "Contacto direto", "payment": "Pagamento direto", "merchant": "ao comerciante", "commission": "comissão DIGIYLYFE", "availability": "Produtos, disponibilidade, preços e condições: acordo direto com o comerciante, sob a sua responsabilidade.", "qr": "Digitalize para abrir e guardar a presença DIGIYLYFE.", "card": "VER CARTÃO", "fiche": "VER FICHA", "site": "VER SITE", "wa": "WhatsApp direto", "footer": "MAQUETE DE OFICINA · MOBILE-FIRST · 8 IDIOMAS · MEMBROS · Sem software público · Sem push."}, "de": {"tag": "DIGIYLYFE MITGLIED", "title": "DIGIY JOBS · AUFTRÄGE", "subtitle": "Öffentliche Aufträge · Einfache Bewerbung · Geschützte Profile", "joinq": "Sie rekrutieren?", "join": "MITGLIEDSCHAFT ANFRAGEN · 28.000 FCFA / Monat", "jointext": "Werden Sie DIGIYLYFE-Mitglied und erstellen Sie Ihre digitale Visitenkarte.", "role": "ROLLE VON DIGIYLYFE", "doctrine": "DIGIYLYFE veröffentlicht die digitale Präsenz seiner Mitglieder. Jeder Händler ist allein verantwortlich für Tätigkeit, Produkte, Preise, Pflichten, Bestand, Verkäufe, Lieferungen und Zusagen gegenüber Kunden. DIGIYLYFE verkauft nicht in seinem Namen und nimmt keine Zahlungen für seine Verkäufe entgegen.", "contact": "Direkter Kontakt", "payment": "Direkte Zahlung", "merchant": "an den Händler", "commission": "DIGIYLYFE Provision", "availability": "Produkte, Verfügbarkeit, Preise und Bedingungen: direkte Vereinbarung mit dem Händler in dessen Verantwortung.", "qr": "Scannen, um die DIGIYLYFE-Präsenz zu öffnen und zu speichern.", "card": "KARTE ANSEHEN", "fiche": "PROFIL ANSEHEN", "site": "WEBSITE", "wa": "WhatsApp direkt", "footer": "WERKSTATT-MOCKUP · MOBILE-FIRST · 8 SPRACHEN · MITGLIEDER · Keine öffentliche Software · Kein Push."}, "it": {"tag": "ADERENTE DIGIYLYFE", "title": "DIGIY JOBS · MISSIONI", "subtitle": "Missioni pubbliche · Candidatura semplice · Profili protetti", "joinq": "Stai assumendo?", "join": "RICHIESTA DI ADESIONE · 28 000 FCFA / mese", "jointext": "Entra in DIGIYLYFE come aderente e prepara il tuo biglietto da visita digitale.", "role": "RUOLO DI DIGIYLYFE", "doctrine": "DIGIYLYFE pubblica la presenza digitale dei suoi aderenti. Ogni commerciante resta l'unico responsabile della propria attività, prodotti, prezzi, obblighi, scorte, vendite, consegne e impegni verso i clienti. DIGIYLYFE non vende al suo posto e non incassa i pagamenti delle sue vendite.", "contact": "Contatto diretto", "payment": "Pagamento diretto", "merchant": "al commerciante", "commission": "commissione DIGIYLYFE", "availability": "Prodotti, disponibilità, prezzi e condizioni: accordo diretto con il commerciante, sotto la sua responsabilità.", "qr": "Scansiona per aprire e salvare la presenza DIGIYLYFE.", "card": "VEDI BIGLIETTO", "fiche": "VEDI SCHEDA", "site": "VEDI SITO", "wa": "WhatsApp diretto", "footer": "MOCKUP OFFICINA · MOBILE-FIRST · 8 LINGUE · ADERENTI · Nessun software pubblico · Nessun push."}, "nl": {"tag": "DIGIYLYFE LID", "title": "DIGIY JOBS · OPDRACHTEN", "subtitle": "Openbare opdrachten · Eenvoudig solliciteren · Beschermde profielen", "joinq": "Ben je aan het werven?", "join": "LIDMAATSCHAP AANVRAGEN · 28.000 FCFA / maand", "jointext": "Word lid van DIGIYLYFE en maak je digitale visitekaart klaar.", "role": "ROL VAN DIGIYLYFE", "doctrine": "DIGIYLYFE publiceert de digitale aanwezigheid van zijn leden. Elke handelaar blijft zelf verantwoordelijk voor zijn activiteit, producten, prijzen, verplichtingen, voorraad, verkoop, leveringen en afspraken met klanten. DIGIYLYFE verkoopt niet namens hem en ontvangt geen betalingen voor zijn verkopen.", "contact": "Direct contact", "payment": "Direct betalen", "merchant": "aan handelaar", "commission": "DIGIYLYFE commissie", "availability": "Producten, beschikbaarheid, prijzen en voorwaarden: rechtstreeks afgesproken met de handelaar, onder diens verantwoordelijkheid.", "qr": "Scan om de DIGIYLYFE-pagina te openen en te bewaren.", "card": "BEKIJK KAART", "fiche": "BEKIJK FICHE", "site": "BEKIJK SITE", "wa": "WhatsApp direct", "footer": "WERKPLAATS MOCKUP · MOBILE-FIRST · 8 TALEN · LEDEN · Geen publieke software · Geen push."}, "ar": {"tag": "عضو DIGIYLYFE", "title": "DIGIY JOBS · المهام", "subtitle": "مهام عامة · تقديم بسيط · ملفات محمية", "joinq": "هل توظّف؟", "join": "طلب العضوية · 28,000 فرنك CFA / شهر", "jointext": "انضم إلى DIGIYLYFE كعضو وجهّز بطاقة عملك الرقمية.", "role": "دور DIGIYLYFE", "doctrine": "تنشر DIGIYLYFE الحضور الرقمي لأعضائها. يبقى كل تاجر مسؤولاً وحده عن نشاطه ومنتجاته وأسعاره والتزاماته ومخزونه ومبيعاته وتسليماته وتعهداته تجاه العملاء. لا تبيع DIGIYLYFE نيابة عنه ولا تستلم مدفوعات مبيعاته.", "contact": "تواصل مباشر", "payment": "دفع مباشر", "merchant": "للتاجر", "commission": "عمولة DIGIYLYFE", "availability": "المنتجات والتوفر والأسعار والشروط: اتفاق مباشر مع التاجر وتحت مسؤوليته.", "qr": "امسح الرمز لفتح وحفظ حضور DIGIYLYFE.", "card": "عرض البطاقة", "fiche": "عرض الصفحة", "site": "عرض الموقع", "wa": "واتساب مباشر", "footer": "نموذج ورشة · للهاتف أولاً · 8 لغات · أعضاء · بدون برنامج عام · بدون نشر."}};
+function setLang(lang){
+  if(!T[lang]) lang='fr';
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.dataset.i18n; if(T[lang][k]) el.textContent=T[lang][k];
+  });
+  document.querySelectorAll('#langs button').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  const u=new URL(location.href); u.searchParams.set('lang',lang); history.replaceState(null,'',u);
+}
+document.querySelectorAll('#langs button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+setLang(new URLSearchParams(location.search).get('lang')||'fr');
+</script>
+
+<script id="job-spontaneous-form-js">
+(()=>{"use strict";
+const OFFER="5e978d75-339a-465f-b984-4e82362f71db";
+const COPY={
+fr:{free_title:"CANDIDAT · 100 % GRATUIT",free_text:"Aucun paiement pour consulter une offre, postuler, déposer une candidature spontanée ou être mis en relation. Les 28 000 FCFA concernent uniquement l’entreprise / le recruteur adhérent.",sp_kicker:"🙋 CANDIDATURE SPONTANÉE · DIRECTEMENT DANS LA VITRINE",sp_title:"Vous cherchez une mission ? Présentez-vous.",sp_intro:"Votre profil n’est pas publié. Il est enregistré dans DIGIY JOBS pour permettre une mise en relation avec une mission adaptée.",name:"Nom et prénom",phone:"WhatsApp / téléphone",job:"Métier recherché",city:"Ville",country:"Pays",availability:"Disponibilité",experience:"Expérience",message:"Message",consent:"J’autorise DIGIY JOBS à enregistrer ces informations et à les transmettre dans le cadre d’une mise en relation professionnelle adaptée.",send:"ENVOYER MA CANDIDATURE SPONTANÉE",privacy:"🔒 Votre profil reste protégé et n’apparaît pas dans la vitrine publique.",sending:"Envoi de votre candidature…",ok:"✅ Candidature spontanée enregistrée.",err:"Candidature impossible pour le moment."},
+en:{free_title:"CANDIDATE · 100% FREE",free_text:"No payment to view an offer, apply, submit a spontaneous application or be introduced to an employer. The 28,000 FCFA fee applies only to the member company / recruiter.",sp_kicker:"🙋 SPONTANEOUS APPLICATION · DIRECTLY IN THE SHOWCASE",sp_title:"Looking for a mission? Introduce yourself.",sp_intro:"Your profile is not public. It is recorded in DIGIY JOBS to help match you with a suitable mission.",name:"Full name",phone:"WhatsApp / phone",job:"Job sought",city:"City",country:"Country",availability:"Availability",experience:"Experience",message:"Message",consent:"I allow DIGIY JOBS to record this information and share it only for a suitable professional introduction.",send:"SEND MY SPONTANEOUS APPLICATION",privacy:"🔒 Your profile remains protected and is not shown publicly.",sending:"Sending your application…",ok:"✅ Spontaneous application recorded.",err:"Application unavailable right now."},
+es:{free_title:"CANDIDATO · 100 % GRATIS",free_text:"No se cobra por consultar una oferta, postular, enviar una candidatura espontánea o ser puesto en contacto. Los 28 000 FCFA corresponden únicamente a la empresa / reclutador adherente.",sp_kicker:"🙋 CANDIDATURA ESPONTÁNEA · EN LA VITRINA",sp_title:"¿Buscas una misión? Preséntate.",sp_intro:"Tu perfil no se publica. DIGIY JOBS lo registra para facilitar una conexión profesional adecuada.",name:"Nombre y apellidos",phone:"WhatsApp / teléfono",job:"Trabajo buscado",city:"Ciudad",country:"País",availability:"Disponibilidad",experience:"Experiencia",message:"Mensaje",consent:"Autorizo a DIGIY JOBS a registrar estos datos y transmitirlos únicamente para una conexión profesional adecuada.",send:"ENVIAR MI CANDIDATURA",privacy:"🔒 Tu perfil permanece protegido y no aparece públicamente.",sending:"Enviando candidatura…",ok:"✅ Candidatura registrada.",err:"No se puede enviar ahora."},
+pt:{free_title:"CANDIDATO · 100% GRATUITO",free_text:"Nenhum pagamento para consultar uma oferta, candidatar-se, enviar candidatura espontânea ou ser colocado em contacto. Os 28 000 FCFA aplicam-se apenas à empresa / recrutador aderente.",sp_kicker:"🙋 CANDIDATURA ESPONTÂNEA · NA VITRINE",sp_title:"Procura uma missão? Apresente-se.",sp_intro:"O seu perfil não é público. A DIGIY JOBS regista-o para facilitar uma ligação profissional adequada.",name:"Nome completo",phone:"WhatsApp / telefone",job:"Profissão procurada",city:"Cidade",country:"País",availability:"Disponibilidade",experience:"Experiência",message:"Mensagem",consent:"Autorizo a DIGIY JOBS a registar estes dados e transmiti-los apenas para uma ligação profissional adequada.",send:"ENVIAR A MINHA CANDIDATURA",privacy:"🔒 O seu perfil permanece protegido e não aparece publicamente.",sending:"A enviar candidatura…",ok:"✅ Candidatura registada.",err:"Não é possível enviar agora."},
+de:{free_title:"BEWERBER · 100 % KOSTENLOS",free_text:"Keine Zahlung für Stellenansicht, Bewerbung, Initiativbewerbung oder Vermittlung. Die 28.000 FCFA gelten nur für das Mitgliedsunternehmen / den Recruiter.",sp_kicker:"🙋 INITIATIVBEWERBUNG · DIREKT IM SCHAUFENSTER",sp_title:"Sie suchen einen Auftrag? Stellen Sie sich vor.",sp_intro:"Ihr Profil wird nicht öffentlich angezeigt. DIGIY JOBS speichert es für eine passende berufliche Vermittlung.",name:"Vor- und Nachname",phone:"WhatsApp / Telefon",job:"Gesuchter Beruf",city:"Stadt",country:"Land",availability:"Verfügbarkeit",experience:"Erfahrung",message:"Nachricht",consent:"Ich erlaube DIGIY JOBS, diese Angaben für eine passende berufliche Vermittlung zu speichern und weiterzugeben.",send:"INITIATIVBEWERBUNG SENDEN",privacy:"🔒 Ihr Profil bleibt geschützt und wird nicht öffentlich angezeigt.",sending:"Bewerbung wird gesendet…",ok:"✅ Bewerbung gespeichert.",err:"Bewerbung derzeit nicht möglich."},
+it:{free_title:"CANDIDATO · 100% GRATUITO",free_text:"Nessun pagamento per consultare un’offerta, candidarsi, inviare una candidatura spontanea o essere messi in contatto. I 28 000 FCFA riguardano solo l’azienda / recruiter aderente.",sp_kicker:"🙋 CANDIDATURA SPONTANEA · NELLA VETRINA",sp_title:"Cerchi una missione? Presentati.",sp_intro:"Il tuo profilo non viene pubblicato. DIGIY JOBS lo registra per facilitare un contatto professionale adeguato.",name:"Nome e cognome",phone:"WhatsApp / telefono",job:"Lavoro cercato",city:"Città",country:"Paese",availability:"Disponibilità",experience:"Esperienza",message:"Messaggio",consent:"Autorizzo DIGIY JOBS a registrare questi dati e trasmetterli solo per un contatto professionale adeguato.",send:"INVIA LA MIA CANDIDATURA",privacy:"🔒 Il tuo profilo resta protetto e non appare pubblicamente.",sending:"Invio candidatura…",ok:"✅ Candidatura registrata.",err:"Invio non disponibile al momento."},
+nl:{free_title:"KANDIDAAT · 100% GRATIS",free_text:"Geen betaling om een vacature te bekijken, te solliciteren, een open sollicitatie te sturen of in contact te worden gebracht. De 28.000 FCFA geldt alleen voor het aangesloten bedrijf / recruiter.",sp_kicker:"🙋 OPEN SOLLICITATIE · DIRECT IN DE ETALAGE",sp_title:"Zoek je een opdracht? Stel jezelf voor.",sp_intro:"Je profiel wordt niet openbaar gemaakt. DIGIY JOBS registreert het voor een passende professionele match.",name:"Naam en voornaam",phone:"WhatsApp / telefoon",job:"Gezocht beroep",city:"Stad",country:"Land",availability:"Beschikbaarheid",experience:"Ervaring",message:"Bericht",consent:"Ik geef DIGIY JOBS toestemming deze gegevens te registreren en alleen te delen voor een passende professionele kennismaking.",send:"OPEN SOLLICITATIE VERSTUREN",privacy:"🔒 Je profiel blijft beschermd en verschijnt niet openbaar.",sending:"Sollicitatie verzenden…",ok:"✅ Sollicitatie geregistreerd.",err:"Solliciteren is nu niet mogelijk."},
+ar:{free_title:"المرشح · مجاني 100٪",free_text:"لا يوجد أي دفع لمشاهدة عرض أو التقدم أو إرسال طلب مفتوح أو الحصول على ربط مهني. مبلغ 28,000 فرنك CFA يخص فقط الشركة / مسؤول التوظيف العضو.",sp_kicker:"🙋 طلب عمل مفتوح · مباشرة في الواجهة",sp_title:"تبحث عن مهمة؟ عرّف بنفسك.",sp_intro:"ملفك غير منشور للعامة. تسجله DIGIY JOBS لتسهيل ربط مهني مناسب.",name:"الاسم الكامل",phone:"واتساب / الهاتف",job:"المهنة المطلوبة",city:"المدينة",country:"البلد",availability:"التوفر",experience:"الخبرة",message:"رسالة",consent:"أسمح لـ DIGIY JOBS بتسجيل هذه المعلومات ومشاركتها فقط من أجل ربط مهني مناسب.",send:"إرسال طلبي المفتوح",privacy:"🔒 يبقى ملفك محمياً ولا يظهر في الواجهة العامة.",sending:"جارٍ إرسال الطلب…",ok:"✅ تم تسجيل الطلب.",err:"تعذر إرسال الطلب حالياً."}
 };
-var J=JOBS[l]||JOBS.fr;
-var wa='https://wa.me/221771342889?text='+encodeURIComponent(J.wa);
+function lang(){const l=(document.documentElement.lang||"fr").slice(0,2).toLowerCase();return COPY[l]?l:"fr"}
+function translate(){const t=COPY[lang()];document.querySelectorAll("[data-job-i18n]").forEach(el=>{const k=el.dataset.jobI18n;if(t[k])el.textContent=t[k]})}
+translate();
+new MutationObserver(translate).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
+const f=document.getElementById("spontaneousForm"), status=document.getElementById("spStatus"), btn=document.getElementById("spSubmit");
+if(!f || !window.supabase) return;
+const sb=window.supabase.createClient(window.DIGIY_SUPABASE_URL,window.DIGIY_SUPABASE_ANON_KEY,{auth:{persistSession:false,autoRefreshToken:false}});
+function setStatus(text,cls=""){status.textContent=text;status.className="job-status "+cls}
+f.addEventListener("submit",async e=>{
+ e.preventDefault(); const t=COPY[lang()];
+ btn.disabled=true; setStatus(t.sending);
+ try{
+  const {data,error}=await sb.rpc("digiy_jobs_public_apply",{
+    p_offer_id:OFFER,
+    p_full_name:document.getElementById("spName").value.trim(),
+    p_phone:document.getElementById("spPhone").value.trim(),
+    p_job_title:document.getElementById("spJob").value.trim(),
+    p_city:document.getElementById("spCity").value.trim(),
+    p_country:document.getElementById("spCountry").value.trim()||"Sénégal",
+    p_availability:document.getElementById("spAvailability").value.trim(),
+    p_years_experience:document.getElementById("spExperience").value.trim(),
+    p_message:document.getElementById("spMessage").value.trim()
+  });
+  if(error) throw error;
+  setStatus(t.ok,"ok"); f.reset(); document.getElementById("spCountry").value="Sénégal";
+ }catch(err){console.error(err);setStatus(t.err,"err")}
+ finally{btn.disabled=false}
+});
+})();
+</script>
 
-/* 1) La 4e porte reste une ACTION : publier une annonce. */
-var publishDoor='<article class="door"><div class="icon">📢</div><h3>'+J.publish+'</h3><p>'+J.publishText+'</p><a class="door-link" href="'+wa+'" target="_blank" rel="noopener noreferrer">'+J.publishCta+'</a></article>';
-h=h.replace(/<article class="door"><div class="icon">👥<\/div>[\s\S]*?<\/article>/,publishDoor);
-
-/* 2) L'adhésion est une offre visible, pas une porte métier. */
-var memberBox='<section class="section" id="adhesion-jobs"><div class="wrap"><div style="border:2px solid rgba(244,185,52,.55);border-radius:26px;padding:18px;background:linear-gradient(135deg,#fff6d8,#eff9ef);box-shadow:0 12px 32px rgba(31,52,42,.10)"><div style="display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap"><div style="max-width:760px"><div style="font-size:12px;font-weight:1000;color:#155f43;letter-spacing:.08em">'+J.member+'</div><div style="font-size:30px;font-weight:1000;color:#10231b;margin-top:4px">'+J.price+'</div><p style="margin:8px 0 0;color:#526258;font-weight:800;line-height:1.5">'+J.memberText+'</p><div style="margin-top:8px;font-size:13px;font-weight:1000;color:#155f43">'+J.free+'</div></div><a class="btn gold" href="'+TARIFS+'" target="_blank" rel="noopener noreferrer">💳 '+J.memberCta+'</a></div></div></div></section>';
-h=h.replace(/(<\/section>\s*<section class="section"><div class="wrap">\s*<div class="section-head">)/,function(m){return '</section>'+memberBox+'<section class="section"><div class="wrap"><div class="section-head">';});
-
-/* 3) Dans les accès secondaires : conserver publication, supprimer seulement packs/accès recruteur obsolètes. */
-h=h.replace(/<article class="secondary"><strong data-i18n="publish_title">[\s\S]*?<\/article>/,
-  '<article class="secondary"><strong>📢 '+J.publish+'</strong><span>'+J.publishText+'</span><a href="'+wa+'" target="_blank" rel="noopener noreferrer">'+J.publishCta+'</a></article>');
-h=h.replace(/<article class="secondary"><strong data-i18n="pack_title">[\s\S]*?<\/article>/,'');
-h=h.replace(/packs recruteur/gi,'publication des annonces');
-h=h.replace(/accès recruteur/gi,'adhésion JOBS');
-
-var x='<base href="./"><script>try{localStorage.setItem("digiy-lang","'+l+'");localStorage.setItem("digiy_lang","'+l+'") }catch(e){}<\/script><script src="./world8-dict.js?v=20260811-world8" defer><\/script><script src="https://digiylyfe.com/assets/i18n/digiy-world8.js?v=20260811-world8" defer><\/script><script src="https://digiylyfe.com/assets/i18n/digiy-world8-runtime.js?v=20260811-world8" defer><\/script>';h=h.replace(/<head([^>]*)>/i,'<head$1>'+x);document.open();document.write(h);document.close()}).catch(function(){location.replace('./index-native7-world8-source.html?lang='+encodeURIComponent(l))})})();</script>  <script src="/jobs-pages-i18n.js?v=20260801-jobs7-pages-fix1" defer></script>
-</body></html>
+</body>
+</html>
