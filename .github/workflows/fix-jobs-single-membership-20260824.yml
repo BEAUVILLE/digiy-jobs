@@ -1,0 +1,35 @@
+name: Fix JOBS single membership
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-jobs-single-membership-20260824.yml'
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply single membership to JOBS
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          s=s.replace('https://digiylyfe.com/tarifs-adherents.html', 'https://digiylyfe.com/tarifs-adherents-1.html?country=fr')
+          s=s.replace('DEMANDE D’ADHÉSION · 28 000 FCFA / mois', 'DEMANDE D’ADHÉSION · 19 900 FCFA / mois · 45 € EUROPE')
+          s=s.replace('🏢 ENTREPRISE / RECRUTEUR · 28 000 FCFA / mois', '🏢 ENTREPRISE / RECRUTEUR · 19 900 FCFA / mois · 45 € EUROPE')
+          s=s.replace('Les 28 000 FCFA concernent uniquement l’entreprise / le recruteur adhérent.', 'Les 19 900 FCFA / 45 € concernent uniquement l’entreprise / le recruteur adhérent.')
+          s=s.replace('28 000 FCFA', '19 900 FCFA')
+          if '28 000' in s or 'tarifs-adherents.html' in s:
+              raise SystemExit('Legacy JOBS 28000 route/text still present; aborting')
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit JOBS correction
+        run: |
+          git config user.name "DIGIYLYFE"
+          git config user.email "actions@users.noreply.github.com"
+          git rm .github/workflows/fix-jobs-single-membership-20260824.yml
+          git add index.html
+          git diff --cached --quiet || git commit -m "JOBS: single membership 19 900 FCFA / 45 EUR"
+          git push
