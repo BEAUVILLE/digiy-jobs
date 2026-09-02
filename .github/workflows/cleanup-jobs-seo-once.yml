@@ -1,0 +1,100 @@
+name: Nettoyage SEO public DIGIY JOBS — une fois
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cleanup-jobs-seo-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Nettoyer les traces atelier et renforcer les signaux SEO
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          old_title = '<title>DIGIY JOBS · Standard DIGIYLYFE V4 · Candidat gratuit · Atelier</title>'
+          new_title = '<title>DIGIY JOBS — Missions locales · Candidature gratuite</title>'
+          if old_title not in text:
+              raise SystemExit('Titre attendu introuvable : arrêt de sécurité.')
+          text = text.replace(old_title, new_title, 1)
+
+          viewport = '<meta name="viewport" content="width=device-width,initial-scale=1">\n'
+          seo = (
+              viewport
+              + '<meta name="description" content="Trouvez des missions locales et postulez gratuitement avec DIGIY JOBS. Profils candidats protégés, relation directe avec les recruteurs et 0 % commission DIGIYLYFE.">\n'
+              + '<meta name="robots" content="index,follow">\n'
+              + '<link rel="canonical" href="https://jobs.digiylyfe.com/">\n'
+          )
+          if '<link rel="canonical" href="https://jobs.digiylyfe.com/">' not in text:
+              if viewport not in text:
+                  raise SystemExit('Viewport attendu introuvable : arrêt de sécurité.')
+              text = text.replace(viewport, seo, 1)
+
+          replacements = {
+              'MAQUETTE ATELIER JOBS V4 · CANDIDAT 100 % GRATUIT · 19 900 FCFA ENTREPRISE / RECRUTEUR UNIQUEMENT · CARTE RECRUTEUR + FORMULAIRE CANDIDATURE SPONTANÉE · 8 LANGUES · CANDIDATS PROTÉGÉS · Aucun logiciel public · Aucun push.':
+                  'DIGIY JOBS · CANDIDAT 100 % GRATUIT · ENTREPRISE / RECRUTEUR ADHÉRENT · 8 LANGUES · PROFILS PROTÉGÉS · RELATION DIRECTE.',
+              'WORKSHOP MOCKUP · MOBILE-FIRST · 8 LANGUAGES · MEMBERS · No public software · No push.':
+                  'DIGIY JOBS · CANDIDATE ACCESS 100% FREE · MEMBER COMPANY / RECRUITER · 8 LANGUAGES · PROTECTED PROFILES · DIRECT RELATIONSHIP.',
+              'MAQUETA DE TALLER · MOBILE-FIRST · 8 IDIOMAS · MIEMBROS · Sin software público · Sin push.':
+                  'DIGIY JOBS · CANDIDATO 100 % GRATIS · EMPRESA / RECLUTADOR ADHERENTE · 8 IDIOMAS · PERFILES PROTEGIDOS · RELACIÓN DIRECTA.',
+              'MAQUETE DE OFICINA · MOBILE-FIRST · 8 IDIOMAS · MEMBROS · Sem software público · Sem push.':
+                  'DIGIY JOBS · CANDIDATO 100% GRATUITO · EMPRESA / RECRUTADOR ADERENTE · 8 IDIOMAS · PERFIS PROTEGIDOS · RELAÇÃO DIRETA.',
+              'WERKSTATT-MOCKUP · MOBILE-FIRST · 8 SPRACHEN · MITGLIEDER · Keine öffentliche Software · Kein Push.':
+                  'DIGIY JOBS · BEWERBER 100 % KOSTENLOS · MITGLIEDSUNTERNEHMEN / RECRUITER · 8 SPRACHEN · GESCHÜTZTE PROFILE · DIREKTER KONTAKT.',
+              'MOCKUP OFFICINA · MOBILE-FIRST · 8 LINGUE · ADERENTI · Nessun software pubblico · Nessun push.':
+                  'DIGIY JOBS · CANDIDATO 100% GRATUITO · AZIENDA / RECRUITER ADERENTE · 8 LINGUE · PROFILI PROTETTI · RAPPORTO DIRETTO.',
+              'WERKPLAATS MOCKUP · MOBILE-FIRST · 8 TALEN · LEDEN · Geen publieke software · Geen push.':
+                  'DIGIY JOBS · KANDIDAAT 100% GRATIS · AANGESLOTEN BEDRIJF / RECRUITER · 8 TALEN · BESCHERMDE PROFIELEN · DIRECT CONTACT.',
+              'نموذج ورشة · للهاتف أولاً · 8 لغات · أعضاء · بدون برنامج عام · بدون نشر.':
+                  'DIGIY JOBS · المرشح مجاني 100٪ · شركة / مسؤول توظيف عضو · 8 لغات · ملفات محمية · تواصل مباشر.'
+          }
+
+          for old, new in replacements.items():
+              text = text.replace(old, new)
+
+          forbidden = ['atelier', 'maquette', 'workshop', 'mockup', 'taller', 'oficina', 'werkstatt', 'officina', 'werkplaats', 'ورشة', 'standard digiylyfe v4']
+          lower = text.lower()
+          leftovers = [word for word in forbidden if word.lower() in lower]
+          if leftovers:
+              raise SystemExit('Traces internes restantes : ' + ', '.join(leftovers))
+
+          required = [
+              '<title>DIGIY JOBS — Missions locales · Candidature gratuite</title>',
+              '<meta name="description"',
+              '<meta name="robots" content="index,follow">',
+              '<link rel="canonical" href="https://jobs.digiylyfe.com/">',
+              'DIGIY JOBS · CANDIDAT 100 % GRATUIT'
+          ]
+          missing = [item for item in required if item not in text]
+          if missing:
+              raise SystemExit('Contrôle SEO incomplet : ' + ', '.join(missing))
+
+          path.write_text(text, encoding='utf-8')
+          print('Nettoyage JOBS validé.')
+          PY
+
+      - name: Retirer cette automatisation temporaire
+        run: rm -f .github/workflows/cleanup-jobs-seo-once.yml
+
+      - name: Publier le nettoyage
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .github/workflows/cleanup-jobs-seo-once.yml
+          if git diff --cached --quiet; then
+            echo "Aucun changement à publier."
+            exit 0
+          fi
+          git commit -m "Nettoyer les traces atelier et le SEO public JOBS"
+          git push
