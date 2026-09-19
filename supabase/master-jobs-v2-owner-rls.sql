@@ -48,3 +48,13 @@ grant select on table public.digiy_jobs_candidates_pro to authenticated;
 revoke update on table public.digiy_jobs_candidates_pro from authenticated;
 grant update (status, note, updated_at)
 on table public.digiy_jobs_candidates_pro to authenticated;
+
+
+-- LEGACY HARDENING
+-- Ces anciens RPC par slug ne vérifiaient pas l'identité du demandeur.
+-- Le MASTER V2 passe désormais par Auth + workspace + RLS.
+revoke execute on function public.digiy_jobs_get_bureau_by_slug(text) from anon, authenticated;
+revoke execute on function public.digiy_jobs_pro_candidates_by_slug(text) from anon, authenticated;
+revoke execute on function public.digiy_jobs_pro_insert_offer(text, jsonb) from anon, authenticated;
+revoke execute on function public.digiy_jobs_pro_offers_by_slug(text) from anon, authenticated;
+revoke execute on function public.digiy_jobs_pro_update_candidate_status(text, uuid, text) from anon, authenticated;
