@@ -18,12 +18,14 @@ h1{margin:8px 0}
 <p class="meta">Demandes recruteurs reçues avant contrôle et publication.</p>
 <div id="status" class="card">Chargement…</div>
 <div id="list"></div>
+<div class="card" style="margin-top:18px"><strong>📢 Offres JOBS publiées</strong><div class="meta">Suivi des offres actives et clôturées.</div></div>
+<div id="offersList"></div>
 </div>
 <script>
 (function(){
 "use strict";
 const sb=window.supabase.createClient(window.DIGIY_SUPABASE_URL,window.DIGIY_SUPABASE_ANON_KEY);
-const status=document.getElementById("status"),list=document.getElementById("list");
+const status=document.getElementById("status"),list=document.getElementById("list"),offersList=document.getElementById("offersList");
 function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
 async function boot(){
  const {data:{user}}=await sb.auth.getUser();
@@ -52,6 +54,7 @@ async function boot(){
  document.querySelectorAll("[data-subscription-check]").forEach(btn=>btn.onclick=()=>checkSubscription(btn.dataset.subscriptionCheck,btn));
  document.querySelectorAll("[data-ready]").forEach(btn=>btn.onclick=()=>markReady(btn.dataset.ready));
  document.querySelectorAll("[data-publish]").forEach(btn=>btn.onclick=()=>publishOffer(btn.dataset.publish));
+ await loadOffers();
 }
 async function setRequestStatus(id,next){
  const label={approved:"valider",rejected:"refuser",pending_review:"remettre en attente"}[next]||next;
@@ -87,6 +90,22 @@ async function publishOffer(id){
  alert("✅ Offre publiée.");
  await boot();
 }
+async function loadOffers(){
+ const {data,error}=await sb.rpc("digiy_jobs_admin_offers_v1");
+ if(error){offersList.innerHTML='<div class="card">⚠️ '+esc(error.message)+'</div>';return}
+ offersList.innerHTML=(data||[]).map(o=>{
+  const active=o.status==="active";
+  return '<article class="card"><div><strong>'+esc(o.title||"Offre")+'</strong> · '+esc(o.employer_name||"")+'</div><div class="meta">'+esc(o.city||"")+(o.country?' · '+esc(o.country):'')+'</div><div class="meta">Candidatures : '+esc(o.candidates_count||0)+'</div><span class="status">'+esc(o.status||"")+'</span>'+(active?'<div class="review-actions"><button class="reject" data-close-offer="'+esc(o.id)+'">⛔ Clôturer l’offre</button></div>':'')+'</article>';
+ }).join("")||'<div class="card">Aucune offre publiée.</div>';
+ document.querySelectorAll("[data-close-offer]").forEach(btn=>btn.onclick=()=>closeOffer(btn.dataset.closeOffer));
+}
+async function closeOffer(id){
+ if(!confirm("Clôturer cette offre JOBS ?"))return;
+ const {error}=await sb.rpc("digiy_jobs_admin_close_offer_v1",{p_offer_id:id});
+ if(error){alert("⚠️ "+error.message);return}
+ await loadOffers();
+}
+
 document.getElementById("logout").onclick=async()=>{await sb.auth.signOut();location.replace("./acces-digiy.html")};
 boot();
 })();
