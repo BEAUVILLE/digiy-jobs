@@ -9,7 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0"></script>
 <style>
 :root{--g:#073f32;--gold:#d8ad46;--bg:#f6f1e5;--ink:#173b31;--line:#dfe8e2}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink)}.wrap{width:min(980px,calc(100% - 24px));margin:auto;padding:18px 0 50px}.top{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap}.btn{border:0;border-radius:999px;padding:11px 15px;background:var(--g);color:#fff;font-weight:900;cursor:pointer}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:12px}.meta{color:#6c7d75;font-size:14px}.need{white-space:pre-wrap;line-height:1.5}.status{display:inline-block;padding:5px 9px;border-radius:999px;background:#fff5cf;border:1px solid #ead28a;font-size:12px;font-weight:900}h1{margin:8px 0}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink)}.wrap{width:min(980px,calc(100% - 24px));margin:auto;padding:18px 0 50px}.top{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap}.btn{border:0;border-radius:999px;padding:11px 15px;background:var(--g);color:#fff;font-weight:900;cursor:pointer}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:12px}.meta{color:#6c7d75;font-size:14px}.need{white-space:pre-wrap;line-height:1.5}.status{display:inline-block;padding:5px 9px;border-radius:999px;background:#fff5cf;border:1px solid #ead28a;font-size:12px;font-weight:900}.review-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.review-actions button{border:0;border-radius:999px;padding:9px 13px;font-weight:900;cursor:pointer}.approve{background:#0f6b4f;color:#fff}.reject{background:#7d2f2f;color:#fff}.reset{background:#ece7d8;color:#173b31}h1{margin:8px 0}
 </style>
 </head>
 <body><div class="wrap">
@@ -32,7 +32,23 @@ async function boot(){
  const {data,error}=await sb.rpc("digiy_jobs_admin_recruiter_requests_v1");
  if(error){status.textContent="⚠️ "+error.message;return}
  status.textContent=(data||[]).length+" demande(s) recruteur";
- list.innerHTML=(data||[]).map(r=>'<article class="card"><div><strong>'+esc(r.company_name||"Entreprise")+'</strong> · '+esc(r.recruiter_name||"")+'</div><div class="meta">'+esc(r.zone||"")+(r.period_text?' · '+esc(r.period_text):'')+'</div><p class="need">'+esc(r.need_description||"")+'</p><div class="meta">☎ '+esc(r.phone||"")+'</div><span class="status">'+esc(r.status||"pending_review")+'</span></article>').join("")||'<div class="card">Aucune demande reçue.</div>';
+ list.innerHTML=(data||[]).map(r=>{
+  const st=r.status||"pending_review";
+  const actions='<div class="review-actions">'+
+    '<button class="approve" data-id="'+esc(r.id)+'" data-status="approved">✅ Valider</button>'+
+    '<button class="reject" data-id="'+esc(r.id)+'" data-status="rejected">❌ Refuser</button>'+
+    (st!=="pending_review"?'<button class="reset" data-id="'+esc(r.id)+'" data-status="pending_review">↩ Remettre en attente</button>':'')+
+  '</div>';
+  return '<article class="card"><div><strong>'+esc(r.company_name||"Entreprise")+'</strong> · '+esc(r.recruiter_name||"")+'</div><div class="meta">'+esc(r.zone||"")+(r.period_text?' · '+esc(r.period_text):'')+'</div><p class="need">'+esc(r.need_description||"")+'</p><div class="meta">☎ '+esc(r.phone||"")+'</div><span class="status">'+esc(st)+'</span>'+actions+'</article>';
+ }).join("")||'<div class="card">Aucune demande reçue.</div>';
+ document.querySelectorAll("[data-status]").forEach(btn=>btn.onclick=()=>setRequestStatus(btn.dataset.id,btn.dataset.status));
+}
+async function setRequestStatus(id,next){
+ const label={approved:"valider",rejected:"refuser",pending_review:"remettre en attente"}[next]||next;
+ if(!confirm("Confirmer : "+label+" cette demande ?")) return;
+ const {error}=await sb.rpc("digiy_jobs_admin_set_recruiter_request_status_v1",{p_id:id,p_status:next});
+ if(error){alert("⚠️ "+error.message);return}
+ await boot();
 }
 document.getElementById("logout").onclick=async()=>{await sb.auth.signOut();location.replace("./acces-digiy.html")};
 boot();
