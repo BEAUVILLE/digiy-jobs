@@ -27,7 +27,7 @@ function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&l
 async function boot(){
  const {data:{user}}=await sb.auth.getUser();
  if(!user){location.replace("./acces-digiy.html");return}
- const {data:ok,error:ae}=await sb.rpc("is_jobs_admin");
+ const {data:ok,error:ae}=await sb.rpc("digiy_jobs_admin_access_v1");
  if(ae||ok!==true){await sb.auth.signOut();location.replace("./acces-digiy.html");return}
  const {data,error}=await sb.rpc("digiy_jobs_admin_recruiter_requests_v1");
  if(error){status.textContent="⚠️ "+error.message;return}
