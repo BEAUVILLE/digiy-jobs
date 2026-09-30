@@ -203,6 +203,10 @@ window.DIGIY_SUPABASE_ANON_KEY="sb_publishable_tGHItRgeWDmGjnd0CK1DVQ_BIep4Ug3";
           <label for="rrZone" data-rec-i18n="zone">Zone / ville</label>
           <input id="rrZone" required maxlength="120">
         </div>
+        <div class="job-field">
+          <label for="rrCountry">Pays</label>
+          <input id="rrCountry" value="Sénégal" maxlength="80">
+        </div>
         <div class="job-field full">
           <label for="rrPeriod" data-rec-i18n="period">Date / période</label>
           <input id="rrPeriod" maxlength="160" placeholder="Ex. samedi 10 octobre · 3 semaines · dès que possible">
@@ -506,11 +510,12 @@ function setStatus(text,cls=""){status.hidden=false;status.textContent=text;stat
 form.addEventListener("submit",async e=>{
  e.preventDefault();const t=COPY[lang()];btn.disabled=true;setStatus(t.sending);
  try{
-  const {error}=await sb.rpc("digiy_jobs_public_recruiter_request_v1",{
+  const {error}=await sb.rpc("digiy_jobs_public_recruiter_request_v2",{
    p_recruiter_name:document.getElementById("rrName").value.trim(),
    p_company_name:document.getElementById("rrCompany").value.trim(),
    p_phone:document.getElementById("rrPhone").value.trim(),
    p_zone:document.getElementById("rrZone").value.trim(),
+   p_country_text:document.getElementById("rrCountry").value.trim()||"Sénégal",
    p_period_text:document.getElementById("rrPeriod").value.trim(),
    p_need_description:document.getElementById("rrNeed").value.trim()
   });
