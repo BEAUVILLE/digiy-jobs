@@ -32,7 +32,7 @@ const msg=document.getElementById("msg"),email=document.getElementById("email"),
 async function go(){
  const {data:{session}}=await sb.auth.getSession();
  if(!session)return false;
- const {data,error}=await sb.rpc("is_jobs_admin");
+ const {data,error}=await sb.rpc("digiy_jobs_admin_access_v1");
  if(error||data!==true){msg.textContent="Accès JOBS non autorisé.";await sb.auth.signOut();return false}
  location.replace("./gestion-jobs.html");return true;
 }
