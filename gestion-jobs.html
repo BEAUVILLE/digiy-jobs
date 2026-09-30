@@ -42,11 +42,15 @@ async function boot(){
   const pubGate=st==="approved"||st==="ready_to_publish"
     ? '<div class="review-actions"><button class="reset" data-subscription-check="'+esc(r.id)+'">🔎 Vérifier adhésion JOBS</button><button class="approve" data-ready="'+esc(r.id)+'" '+(st==="ready_to_publish"?'disabled':'')+'>📋 Prête à publier</button></div><div class="meta" id="sub-'+esc(r.id)+'">Adhésion non vérifiée.</div>'
     : '';
-  return '<article class="card"><div><strong>'+esc(r.company_name||"Entreprise")+'</strong> · '+esc(r.recruiter_name||"")+'</div><div class="meta">'+esc(r.zone||"")+(r.period_text?' · '+esc(r.period_text):'')+'</div><p class="need">'+esc(r.need_description||"")+'</p><div class="meta">☎ '+esc(r.phone||"")+'</div><span class="status">'+esc(st)+'</span>'+actions+pubGate+'</article>';
+  const publishBox=st==="ready_to_publish"
+    ? '<div class="card" style="margin-top:12px;background:#fbfaf4"><strong>Publication de l’offre</strong><div class="meta">Complète uniquement ce qui ne doit pas être inventé.</div><div class="job-field"><label>Intitulé du poste</label><input id="title-'+esc(r.id)+'"></div><div class="job-field"><label>Secteur</label><input id="sector-'+esc(r.id)+'"></div><div class="job-field"><label>Type de contrat</label><input id="contract-'+esc(r.id)+'" placeholder="Mission, CDI, CDD…"></div><div class="job-field"><label>Rémunération</label><input id="pay-'+esc(r.id)+'" placeholder="Ex. 150 000 FCFA / mois"></div><div class="job-field"><label>Exigences / profil recherché</label><textarea id="req-'+esc(r.id)+'"></textarea></div><button class="btn" data-publish="'+esc(r.id)+'">🚀 Publier l’offre</button></div>'
+    : '';
+  return '<article class="card"><div><strong>'+esc(r.company_name||"Entreprise")+'</strong> · '+esc(r.recruiter_name||"")+'</div><div class="meta">'+esc(r.zone||"")+(r.country_text?' · '+esc(r.country_text):'')+(r.period_text?' · '+esc(r.period_text):'')+'</div><p class="need">'+esc(r.need_description||"")+'</p><div class="meta">☎ '+esc(r.phone||"")+'</div><span class="status">'+esc(st)+'</span>'+actions+pubGate+publishBox+'</article>';
  }).join("")||'<div class="card">Aucune demande reçue.</div>';
  document.querySelectorAll("[data-status]").forEach(btn=>btn.onclick=()=>setRequestStatus(btn.dataset.id,btn.dataset.status));
  document.querySelectorAll("[data-subscription-check]").forEach(btn=>btn.onclick=()=>checkSubscription(btn.dataset.subscriptionCheck,btn));
  document.querySelectorAll("[data-ready]").forEach(btn=>btn.onclick=()=>markReady(btn.dataset.ready));
+ document.querySelectorAll("[data-publish]").forEach(btn=>btn.onclick=()=>publishOffer(btn.dataset.publish));
 }
 async function setRequestStatus(id,next){
  const label={approved:"valider",rejected:"refuser",pending_review:"remettre en attente"}[next]||next;
@@ -67,6 +71,19 @@ async function markReady(id){
  if(!confirm("Confirmer le passage en PRÊTE À PUBLIER ?"))return;
  const {error}=await sb.rpc("digiy_jobs_admin_mark_ready_v1",{p_id:id});
  if(error){alert(error.message==="active_jobs_subscription_required"?"⚠️ Adhésion JOBS active requise.":"⚠️ "+error.message);return}
+ await boot();
+}
+async function publishOffer(id){
+ const title=document.getElementById("title-"+id).value.trim();
+ const sector=document.getElementById("sector-"+id).value.trim();
+ const contract=document.getElementById("contract-"+id).value.trim();
+ const pay=document.getElementById("pay-"+id).value.trim();
+ const requirements=document.getElementById("req-"+id).value.trim();
+ if(!title||!sector){alert("Intitulé et secteur sont obligatoires.");return}
+ if(!confirm("Publier cette offre JOBS maintenant ?"))return;
+ const {data,error}=await sb.rpc("digiy_jobs_admin_publish_request_v1",{p_id:id,p_title:title,p_sector:sector,p_contract_type:contract,p_pay:pay,p_requirements:requirements});
+ if(error){alert("⚠️ "+error.message);return}
+ alert("✅ Offre publiée.");
  await boot();
 }
 document.getElementById("logout").onclick=async()=>{await sb.auth.signOut();location.replace("./acces-digiy.html")};
