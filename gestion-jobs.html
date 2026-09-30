@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>DIGIY JOBS · Gestion DIGIY</title>
+<script>window.DIGIY_SUPABASE_URL="https://wesqmwjjtsefyjnluosj.supabase.co";window.DIGIY_SUPABASE_ANON_KEY="sb_publishable_tGHItRgeWDmGjnd0CK1DVQ_BIep4Ug3";</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0"></script>
+<style>
+:root{--g:#073f32;--gold:#d8ad46;--bg:#f6f1e5;--ink:#173b31;--line:#dfe8e2}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink)}.wrap{width:min(980px,calc(100% - 24px));margin:auto;padding:18px 0 50px}.top{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap}.btn{border:0;border-radius:999px;padding:11px 15px;background:var(--g);color:#fff;font-weight:900;cursor:pointer}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:12px}.meta{color:#6c7d75;font-size:14px}.need{white-space:pre-wrap;line-height:1.5}.status{display:inline-block;padding:5px 9px;border-radius:999px;background:#fff5cf;border:1px solid #ead28a;font-size:12px;font-weight:900}h1{margin:8px 0}
+</style>
+</head>
+<body><div class="wrap">
+<div class="top"><div><div>💼 DIGIY JOBS</div><h1>Gestion DIGIY</h1></div><button class="btn" id="logout">Déconnexion</button></div>
+<p class="meta">Demandes recruteurs reçues avant contrôle et publication.</p>
+<div id="status" class="card">Chargement…</div>
+<div id="list"></div>
+</div>
+<script>
+(function(){
+"use strict";
+const sb=window.supabase.createClient(window.DIGIY_SUPABASE_URL,window.DIGIY_SUPABASE_ANON_KEY);
+const status=document.getElementById("status"),list=document.getElementById("list");
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+async function boot(){
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){location.replace("./acces-digiy.html");return}
+ const {data:ok,error:ae}=await sb.rpc("is_jobs_admin");
+ if(ae||ok!==true){await sb.auth.signOut();location.replace("./acces-digiy.html");return}
+ const {data,error}=await sb.rpc("digiy_jobs_admin_recruiter_requests_v1");
+ if(error){status.textContent="⚠️ "+error.message;return}
+ status.textContent=(data||[]).length+" demande(s) recruteur";
+ list.innerHTML=(data||[]).map(r=>'<article class="card"><div><strong>'+esc(r.company_name||"Entreprise")+'</strong> · '+esc(r.recruiter_name||"")+'</div><div class="meta">'+esc(r.zone||"")+(r.period_text?' · '+esc(r.period_text):'')+'</div><p class="need">'+esc(r.need_description||"")+'</p><div class="meta">☎ '+esc(r.phone||"")+'</div><span class="status">'+esc(r.status||"pending_review")+'</span></article>').join("")||'<div class="card">Aucune demande reçue.</div>';
+}
+document.getElementById("logout").onclick=async()=>{await sb.auth.signOut();location.replace("./acces-digiy.html")};
+boot();
+})();
+</script>
+</body></html>
