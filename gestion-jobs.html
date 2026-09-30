@@ -39,15 +39,34 @@ async function boot(){
     '<button class="reject" data-id="'+esc(r.id)+'" data-status="rejected">❌ Refuser</button>'+
     (st!=="pending_review"?'<button class="reset" data-id="'+esc(r.id)+'" data-status="pending_review">↩ Remettre en attente</button>':'')+
   '</div>';
-  return '<article class="card"><div><strong>'+esc(r.company_name||"Entreprise")+'</strong> · '+esc(r.recruiter_name||"")+'</div><div class="meta">'+esc(r.zone||"")+(r.period_text?' · '+esc(r.period_text):'')+'</div><p class="need">'+esc(r.need_description||"")+'</p><div class="meta">☎ '+esc(r.phone||"")+'</div><span class="status">'+esc(st)+'</span>'+actions+'</article>';
+  const pubGate=st==="approved"||st==="ready_to_publish"
+    ? '<div class="review-actions"><button class="reset" data-subscription-check="'+esc(r.id)+'">🔎 Vérifier adhésion JOBS</button><button class="approve" data-ready="'+esc(r.id)+'" '+(st==="ready_to_publish"?'disabled':'')+'>📋 Prête à publier</button></div><div class="meta" id="sub-'+esc(r.id)+'">Adhésion non vérifiée.</div>'
+    : '';
+  return '<article class="card"><div><strong>'+esc(r.company_name||"Entreprise")+'</strong> · '+esc(r.recruiter_name||"")+'</div><div class="meta">'+esc(r.zone||"")+(r.period_text?' · '+esc(r.period_text):'')+'</div><p class="need">'+esc(r.need_description||"")+'</p><div class="meta">☎ '+esc(r.phone||"")+'</div><span class="status">'+esc(st)+'</span>'+actions+pubGate+'</article>';
  }).join("")||'<div class="card">Aucune demande reçue.</div>';
  document.querySelectorAll("[data-status]").forEach(btn=>btn.onclick=()=>setRequestStatus(btn.dataset.id,btn.dataset.status));
+ document.querySelectorAll("[data-subscription-check]").forEach(btn=>btn.onclick=()=>checkSubscription(btn.dataset.subscriptionCheck,btn));
+ document.querySelectorAll("[data-ready]").forEach(btn=>btn.onclick=()=>markReady(btn.dataset.ready));
 }
 async function setRequestStatus(id,next){
  const label={approved:"valider",rejected:"refuser",pending_review:"remettre en attente"}[next]||next;
  if(!confirm("Confirmer : "+label+" cette demande ?")) return;
  const {error}=await sb.rpc("digiy_jobs_admin_set_recruiter_request_status_v1",{p_id:id,p_status:next});
  if(error){alert("⚠️ "+error.message);return}
+ await boot();
+}
+async function checkSubscription(id,btn){
+ const box=document.getElementById("sub-"+id);if(box)box.textContent="Vérification…";
+ const {data,error}=await sb.rpc("digiy_jobs_admin_request_subscription_v1",{p_id:id});
+ if(error){if(box)box.textContent="⚠️ "+error.message;return}
+ if(!data?.found){if(box)box.textContent="❌ Aucune adhésion JOBS trouvée pour ce contact.";return}
+ const legacy=Number(data.price_monthly||0)!==19900;
+ if(box)box.textContent=(data.active?"✅ Adhésion active":"⚠️ Adhésion inactive")+" · "+(data.slug||"")+(legacy?" · historique":"");
+}
+async function markReady(id){
+ if(!confirm("Confirmer le passage en PRÊTE À PUBLIER ?"))return;
+ const {error}=await sb.rpc("digiy_jobs_admin_mark_ready_v1",{p_id:id});
+ if(error){alert(error.message==="active_jobs_subscription_required"?"⚠️ Adhésion JOBS active requise.":"⚠️ "+error.message);return}
  await boot();
 }
 document.getElementById("logout").onclick=async()=>{await sb.auth.signOut();location.replace("./acces-digiy.html")};
