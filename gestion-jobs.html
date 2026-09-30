@@ -37,11 +37,15 @@ async function boot(){
  status.textContent=(data||[]).length+" demande(s) recruteur";
  list.innerHTML=(data||[]).map(r=>{
   const st=r.status||"pending_review";
-  const actions='<div class="review-actions">'+
-    '<button class="approve" data-id="'+esc(r.id)+'" data-status="approved">✅ Valider</button>'+
-    '<button class="reject" data-id="'+esc(r.id)+'" data-status="rejected">❌ Refuser</button>'+
-    (st!=="pending_review"?'<button class="reset" data-id="'+esc(r.id)+'" data-status="pending_review">↩ Remettre en attente</button>':'')+
-  '</div>';
+  const actions=st==="published"
+    ? ''
+    : st==="pending_review"
+      ? '<div class="review-actions"><button class="approve" data-id="'+esc(r.id)+'" data-status="approved">✅ Valider</button><button class="reject" data-id="'+esc(r.id)+'" data-status="rejected">❌ Refuser</button></div>'
+      : '<div class="review-actions">'+
+          (st!=="approved"?'<button class="approve" data-id="'+esc(r.id)+'" data-status="approved">✅ Valider</button>':'')+
+          (st!=="rejected"?'<button class="reject" data-id="'+esc(r.id)+'" data-status="rejected">❌ Refuser</button>':'')+
+          '<button class="reset" data-id="'+esc(r.id)+'" data-status="pending_review">↩ Remettre en attente</button>'+
+        '</div>';
   const pubGate=st==="approved"||st==="ready_to_publish"
     ? '<div class="review-actions"><button class="reset" data-subscription-check="'+esc(r.id)+'">🔎 Vérifier adhésion JOBS</button><button class="approve" data-ready="'+esc(r.id)+'" '+(st==="ready_to_publish"?'disabled':'')+'>📋 Prête à publier</button></div><div class="meta" id="sub-'+esc(r.id)+'">Adhésion non vérifiée.</div>'
     : '';
