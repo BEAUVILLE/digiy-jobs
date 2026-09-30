@@ -179,6 +179,44 @@ window.DIGIY_SUPABASE_ANON_KEY="sb_publishable_tGHItRgeWDmGjnd0CK1DVQ_BIep4Ug3";
     </article>
 
     
+    <section class="spontaneous-box" id="recruiter-request">
+      <div class="spontaneous-head">
+        <div class="mini" data-rec-i18n="kicker">🏢 RECRUTEUR · ENVOYER UN BESOIN À DIGIY</div>
+        <h2 data-rec-i18n="title">Vous recrutez ? Envoyez-nous votre besoin.</h2>
+        <p data-rec-i18n="intro">DIGIY contrôle la demande avant toute publication. Aucun cockpit recruteur : vous gardez une relation simple et directe.</p>
+      </div>
+      <form id="recruiterRequestForm" class="spontaneous-form">
+        <div class="job-field">
+          <label for="rrName" data-rec-i18n="name">Votre nom</label>
+          <input id="rrName" required maxlength="100" autocomplete="name">
+        </div>
+        <div class="job-field">
+          <label for="rrCompany" data-rec-i18n="company">Entreprise / activité</label>
+          <input id="rrCompany" required maxlength="120">
+        </div>
+        <div class="job-field">
+          <label for="rrPhone" data-rec-i18n="phone">WhatsApp / téléphone</label>
+          <input id="rrPhone" required inputmode="tel" maxlength="30" autocomplete="tel">
+        </div>
+        <div class="job-field">
+          <label for="rrZone" data-rec-i18n="zone">Zone / ville</label>
+          <input id="rrZone" required maxlength="120">
+        </div>
+        <div class="job-field full">
+          <label for="rrPeriod" data-rec-i18n="period">Date / période</label>
+          <input id="rrPeriod" maxlength="160" placeholder="Ex. samedi 10 octobre · 3 semaines · dès que possible">
+        </div>
+        <div class="job-field full">
+          <label for="rrNeed" data-rec-i18n="need">Besoin de recrutement</label>
+          <textarea id="rrNeed" required minlength="10" maxlength="2000" placeholder="Métier, nombre de personnes, horaires, expérience, conditions utiles…"></textarea>
+        </div>
+        <div class="job-field full">
+          <button id="rrSubmit" class="job-send" type="submit" data-rec-i18n="send">ENVOYER MON BESOIN À DIGIY</button>
+        </div>
+      </form>
+      <div id="rrStatus" class="job-status" hidden></div>
+    </section>
+
     <div class="candidate-free" id="candidate-free">
       <div class="free-icon">✅</div>
       <div>
@@ -443,6 +481,44 @@ f.addEventListener("submit",async e=>{
 })();
 </script>
 
+
+<script>
+(function(){
+"use strict";
+const COPY={
+fr:{kicker:"🏢 RECRUTEUR · ENVOYER UN BESOIN À DIGIY",title:"Vous recrutez ? Envoyez-nous votre besoin.",intro:"DIGIY contrôle la demande avant toute publication. Aucun cockpit recruteur : vous gardez une relation simple et directe.",name:"Votre nom",company:"Entreprise / activité",phone:"WhatsApp / téléphone",zone:"Zone / ville",period:"Date / période",need:"Besoin de recrutement",send:"ENVOYER MON BESOIN À DIGIY",sending:"Envoi du besoin…",ok:"✅ Besoin reçu. DIGIY le contrôle avant publication.",err:"Impossible d’envoyer le besoin pour le moment."},
+en:{kicker:"🏢 RECRUITER · SEND A NEED TO DIGIY",title:"Hiring? Send us your need.",intro:"DIGIY reviews the request before publication. No recruiter cockpit: the relationship stays simple and direct.",name:"Your name",company:"Company / activity",phone:"WhatsApp / phone",zone:"Area / city",period:"Date / period",need:"Recruitment need",send:"SEND MY NEED TO DIGIY",sending:"Sending…",ok:"✅ Need received. DIGIY will review it before publication.",err:"Unable to send the request right now."},
+es:{kicker:"🏢 RECLUTADOR · ENVIAR UNA NECESIDAD A DIGIY",title:"¿Contrata? Envíenos su necesidad.",intro:"DIGIY revisa la solicitud antes de publicarla. Sin panel reclutador: relación simple y directa.",name:"Su nombre",company:"Empresa / actividad",phone:"WhatsApp / teléfono",zone:"Zona / ciudad",period:"Fecha / período",need:"Necesidad de contratación",send:"ENVIAR MI NECESIDAD A DIGIY",sending:"Enviando…",ok:"✅ Solicitud recibida. DIGIY la revisará antes de publicarla.",err:"No se puede enviar ahora."},
+pt:{kicker:"🏢 RECRUTADOR · ENVIAR UMA NECESSIDADE À DIGIY",title:"Está a recrutar? Envie-nos a necessidade.",intro:"A DIGIY revê o pedido antes da publicação. Sem cockpit de recrutador: relação simples e direta.",name:"Seu nome",company:"Empresa / atividade",phone:"WhatsApp / telefone",zone:"Zona / cidade",period:"Data / período",need:"Necessidade de recrutamento",send:"ENVIAR À DIGIY",sending:"A enviar…",ok:"✅ Pedido recebido. A DIGIY irá rever antes da publicação.",err:"Não foi possível enviar agora."},
+de:{kicker:"🏢 RECRUITER · BEDARF AN DIGIY SENDEN",title:"Sie stellen ein? Senden Sie uns Ihren Bedarf.",intro:"DIGIY prüft die Anfrage vor der Veröffentlichung. Kein Recruiter-Cockpit: einfach und direkt.",name:"Ihr Name",company:"Unternehmen / Tätigkeit",phone:"WhatsApp / Telefon",zone:"Gebiet / Stadt",period:"Datum / Zeitraum",need:"Personalbedarf",send:"BEDARF AN DIGIY SENDEN",sending:"Wird gesendet…",ok:"✅ Anfrage erhalten. DIGIY prüft sie vor Veröffentlichung.",err:"Anfrage kann derzeit nicht gesendet werden."},
+it:{kicker:"🏢 RECRUITER · INVIA UNA RICHIESTA A DIGIY",title:"Stai assumendo? Inviaci la tua esigenza.",intro:"DIGIY controlla la richiesta prima della pubblicazione. Nessun cockpit recruiter: rapporto semplice e diretto.",name:"Il tuo nome",company:"Azienda / attività",phone:"WhatsApp / telefono",zone:"Zona / città",period:"Data / periodo",need:"Esigenza di reclutamento",send:"INVIA A DIGIY",sending:"Invio…",ok:"✅ Richiesta ricevuta. DIGIY la controllerà prima della pubblicazione.",err:"Impossibile inviare ora."},
+nl:{kicker:"🏢 RECRUITER · STUUR EEN BEHOEFTE NAAR DIGIY",title:"Werft u aan? Stuur ons uw behoefte.",intro:"DIGIY controleert de aanvraag vóór publicatie. Geen recruiter-cockpit: eenvoudig en direct.",name:"Uw naam",company:"Bedrijf / activiteit",phone:"WhatsApp / telefoon",zone:"Zone / stad",period:"Datum / periode",need:"Wervingsbehoefte",send:"STUUR NAAR DIGIY",sending:"Verzenden…",ok:"✅ Aanvraag ontvangen. DIGIY controleert deze vóór publicatie.",err:"Kan nu niet verzenden."},
+ar:{kicker:"🏢 المُجَنِّد · أرسل حاجتك إلى DIGIY",title:"هل توظّف؟ أرسل لنا حاجتك.",intro:"تراجع DIGIY الطلب قبل أي نشر. لا توجد لوحة مجنّد: العلاقة بسيطة ومباشرة.",name:"اسمك",company:"الشركة / النشاط",phone:"واتساب / الهاتف",zone:"المنطقة / المدينة",period:"التاريخ / الفترة",need:"حاجة التوظيف",send:"أرسل حاجتي إلى DIGIY",sending:"جارٍ الإرسال…",ok:"✅ تم استلام الطلب. ستراجعه DIGIY قبل النشر.",err:"تعذر إرسال الطلب حالياً."}
+};
+function lang(){const l=(document.documentElement.lang||"fr").slice(0,2).toLowerCase();return COPY[l]?l:"fr"}
+function translate(){const t=COPY[lang()];document.querySelectorAll("[data-rec-i18n]").forEach(el=>{const k=el.dataset.recI18n;if(t[k])el.textContent=t[k]})}
+translate();new MutationObserver(translate).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
+const form=document.getElementById("recruiterRequestForm"),status=document.getElementById("rrStatus"),btn=document.getElementById("rrSubmit");
+if(!form||!window.supabase)return;
+const sb=window.supabase.createClient(window.DIGIY_SUPABASE_URL,window.DIGIY_SUPABASE_ANON_KEY,{auth:{persistSession:false,autoRefreshToken:false}});
+function setStatus(text,cls=""){status.hidden=false;status.textContent=text;status.className="job-status "+cls}
+form.addEventListener("submit",async e=>{
+ e.preventDefault();const t=COPY[lang()];btn.disabled=true;setStatus(t.sending);
+ try{
+  const {error}=await sb.rpc("digiy_jobs_public_recruiter_request_v1",{
+   p_recruiter_name:document.getElementById("rrName").value.trim(),
+   p_company_name:document.getElementById("rrCompany").value.trim(),
+   p_phone:document.getElementById("rrPhone").value.trim(),
+   p_zone:document.getElementById("rrZone").value.trim(),
+   p_period_text:document.getElementById("rrPeriod").value.trim(),
+   p_need_description:document.getElementById("rrNeed").value.trim()
+  });
+  if(error)throw error;setStatus(t.ok,"ok");form.reset();
+ }catch(err){console.error(err);setStatus(t.err,"err")}
+ finally{btn.disabled=false}
+});
+})();
+</script>
 
 <div class="digiy-global-home-return" style="max-width:980px;margin:18px auto;padding:0 14px;text-align:center">
   <a href="https://digiylyfe.com/" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 15px;border-radius:999px;text-decoration:none;font:900 14px/1.2 system-ui,-apple-system,Segoe UI,sans-serif;border:1px solid rgba(127,127,127,.28);background:rgba(255,255,255,.08);color:inherit">🏠 Retour à l’accueil DIGIYLYFE</a>
