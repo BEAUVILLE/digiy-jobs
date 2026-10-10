@@ -53,11 +53,12 @@ $("send").onclick=async()=>{
   }catch(_){}
   $("send").disabled=true;
   try{
-    const redirect=new URL("./gestion-jobs-v2.html",location.href);
-    if(workspace)redirect.searchParams.set("workspace",workspace);
-    redirect.searchParams.set("lang",lang);
+    // Redirect to exactly one static allowlisted Auth callback, like BUILD.
+    // Once authenticated, gestion-jobs-v2 discovers the owner's active workspace
+    // via Auth UID + RLS instead of trusting caller-supplied query parameters.
+    const redirect="https://jobs.digiylyfe.com/gestion-jobs-v2.html";
     const {error}=await sb.auth.signInWithOtp({
-      email,options:{shouldCreateUser:false,emailRedirectTo:redirect.href}
+      email,options:{shouldCreateUser:false,emailRedirectTo:redirect}
     });
     if(error){msg(error.message);return}
     msg(tr("sent"),"ok");
