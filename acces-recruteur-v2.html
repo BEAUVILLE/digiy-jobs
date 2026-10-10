@@ -27,6 +27,7 @@ html[dir="rtl"] body{direction:rtl}
 <input id="email" type="email" autocomplete="email" placeholder="email@exemple.com">
 <button class="send" id="send" type="button" data-i18n="send">Envoyer le magic link</button>
 <div id="msg" class="msg"></div>
+<a id="openManagement" class="back" href="./gestion-jobs-v2.html">🔐 Ouvrir ma gestion après connexion</a>
 <a class="back" id="back" href="./missions.html" data-i18n="back">← Retour aux missions</a>
 </main>
 <script>
@@ -39,7 +40,31 @@ function apply(){document.documentElement.lang=lang;document.documentElement.dir
 document.querySelectorAll("[data-lang]").forEach(b=>b.onclick=()=>{lang=b.dataset.lang;apply()});
 try{const u=new URL(ret,location.origin);if(u.origin===location.origin||u.hostname.endsWith(".digiylyfe.com"))$("back").href=u.href}catch(_){}
 function msg(t,type="bad"){const e=$("msg");e.textContent=t;e.className="msg show "+type}
-$("send").onclick=async()=>{if(!workspace){msg(tr("missing"));return}const email=$("email").value.trim();if(!email){msg(tr("email"));return}$("send").disabled=true;const redirect=new URL("./gestion-jobs-v2.html",location.href);redirect.searchParams.set("workspace",workspace);redirect.searchParams.set("lang",lang);redirect.searchParams.set("return",$("back").href);const {error}=await sb.auth.signInWithOtp({email,options:{shouldCreateUser:false,emailRedirectTo:redirect.href}});$("send").disabled=false;if(error){msg(error.message);return}msg(tr("sent"),"ok")};apply();
+const managementUrl=new URL("./gestion-jobs-v2.html",location.href);
+if(workspace)managementUrl.searchParams.set("workspace",workspace);
+managementUrl.searchParams.set("lang",lang);
+$("openManagement").href=managementUrl.href;
+$("send").onclick=async()=>{
+  const email=$("email").value.trim();if(!email){msg(tr("email"));return}
+  // Same-origin context survives link-based navigation; it is never an auth credential.
+  try{
+    if(workspace)localStorage.setItem("digiy_jobs_owner_workspace",workspace);
+    localStorage.setItem("digiy_jobs_owner_lang",lang);
+  }catch(_){}
+  $("send").disabled=true;
+  try{
+    const redirect=new URL("./gestion-jobs-v2.html",location.href);
+    if(workspace)redirect.searchParams.set("workspace",workspace);
+    redirect.searchParams.set("lang",lang);
+    const {error}=await sb.auth.signInWithOtp({
+      email,options:{shouldCreateUser:false,emailRedirectTo:redirect.href}
+    });
+    if(error){msg(error.message);return}
+    msg(tr("sent"),"ok");
+  }catch(e){msg(e?.message||String(e))}
+  finally{$("send").disabled=false}
+};
+apply();
 })();
 </script>
 </body>
