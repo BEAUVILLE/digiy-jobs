@@ -1,0 +1,30 @@
+name: DIGIY JOBS V5 — contrôle magic link recruteur
+on:
+  pull_request:
+    paths:
+      - 'acces-recruteur-v2.html'
+      - 'gestion-jobs-v2.html'
+      - 'tests/jobs-magiclink-pilot-v5.test.cjs'
+      - '.github/workflows/jobs-pilot-magiclink-v5.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'acces-recruteur-v2.html'
+      - 'gestion-jobs-v2.html'
+      - 'tests/jobs-magiclink-pilot-v5.test.cjs'
+      - '.github/workflows/jobs-pilot-magiclink-v5.yml'
+permissions:
+  contents: read
+jobs:
+  magiclink:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vérifier les tests Node
+        run: node --check tests/jobs-magiclink-pilot-v5.test.cjs
+      - name: Tester email, propriétaire et absence d'accès inter-recruteurs
+        run: node --test tests/jobs-magiclink-pilot-v5.test.cjs
