@@ -1,0 +1,23 @@
+name: JOBS owner email access
+on:
+  pull_request:
+    paths:
+      - 'gestion-jobs-v2.html'
+      - 'owner-phone-mfa-v1.js'
+      - 'owner-email-no-sms-v4.test.cjs'
+      - '.github/workflows/owner-email-no-sms-v4.yml'
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check owner-phone-mfa-v1.js
+      - run: node --test owner-email-no-sms-v4.test.cjs
