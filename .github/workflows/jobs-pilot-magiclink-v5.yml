@@ -4,6 +4,7 @@ on:
     paths:
       - 'acces-recruteur-v2.html'
       - 'gestion-jobs-v2.html'
+      - 'master-v2.html'
       - 'tests/jobs-magiclink-pilot-v5.test.cjs'
       - '.github/workflows/jobs-pilot-magiclink-v5.yml'
   push:
@@ -11,6 +12,7 @@ on:
     paths:
       - 'acces-recruteur-v2.html'
       - 'gestion-jobs-v2.html'
+      - 'master-v2.html'
       - 'tests/jobs-magiclink-pilot-v5.test.cjs'
       - '.github/workflows/jobs-pilot-magiclink-v5.yml'
 permissions:
