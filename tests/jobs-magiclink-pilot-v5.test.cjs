@@ -115,3 +115,9 @@ test('JOBS V6: magic links from both portals use exact static management URL',()
  assert.doesNotMatch(landing,/redirect\.searchParams\.set\("workspace"/);
  assert.doesNotMatch(access,/redirect\.searchParams\.set\("workspace"/);
 });
+
+test('JOBS V6: public index has an obvious recruiter email entry as fallback',()=>{
+ const index=fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8');
+ assert.match(index,/href="\.\/acces-recruteur-v2\.html" aria-label="Gestion du recruteur par magic link email"/);
+ assert.match(index,/ACCÈS RECRUTEUR/);
+});
