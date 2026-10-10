@@ -65,7 +65,8 @@ test('JOBS pilot: link sends email magic link to existing owner only',async()=>{
  const r=await login();
  assert.equal(r.sent.length,1);
  assert.equal(r.sent[0].options.shouldCreateUser,false);
- assert.match(r.sent[0].options.emailRedirectTo,/workspace=pilote-jobs-baptiste-digiy/);
+ assert.equal(r.sent[0].options.emailRedirectTo,'https://jobs.digiylyfe.com/gestion-jobs-v2.html');
+ assert.doesNotMatch(r.sent[0].options.emailRedirectTo,/workspace=|lang=|return=/);
  assert.equal(r.cache.digiy_jobs_owner_workspace,pilot);
  assert.match(r.d.$('openManagement').href,/gestion-jobs-v2\.html/);
 });
@@ -73,8 +74,7 @@ test('JOBS future member: generic entry requests email without workspace argumen
  const r=await login({workspace:''});
  assert.equal(r.sent.length,1);
  assert.equal(r.sent[0].options.shouldCreateUser,false);
- assert.match(r.sent[0].options.emailRedirectTo,/gestion-jobs-v2\.html/);
- assert.doesNotMatch(r.sent[0].options.emailRedirectTo,/workspace=/);
+ assert.equal(r.sent[0].options.emailRedirectTo,'https://jobs.digiylyfe.com/gestion-jobs-v2.html');
 });
 test('JOBS returns from email: discovers only authenticated owner workspace',async()=>{
  const r=await manager();
@@ -107,4 +107,11 @@ test('JOBS public landing no longer blocks recruiters behind MASTER or invents a
  assert.doesNotMatch(publicHome,/EXEMPLE D’OFFRE/);
  assert.match(publicHome,/acces-recruteur-v2\.html/);
  assert.match(publicHome,/if\(CFG\.masterMode\)/);
+});
+
+test('JOBS V6: magic links from both portals use exact static management URL',()=>{
+ const landing=fs.readFileSync(path.join(__dirname,'..','master-v2.html'),'utf8');
+ assert.match(landing,/const redirect="https:\/\/jobs\.digiylyfe\.com\/gestion-jobs-v2\.html"/);
+ assert.doesNotMatch(landing,/redirect\.searchParams\.set\("workspace"/);
+ assert.doesNotMatch(access,/redirect\.searchParams\.set\("workspace"/);
 });
