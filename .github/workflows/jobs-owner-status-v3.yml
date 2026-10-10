@@ -1,0 +1,28 @@
+name: DIGIY JOBS V3 — statut réel des offres
+on:
+  pull_request:
+    paths:
+      - 'gestion-jobs-v2.html'
+      - 'jobs-owner-status-v3.test.cjs'
+      - '.github/workflows/jobs-owner-status-v3.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'gestion-jobs-v2.html'
+      - 'jobs-owner-status-v3.test.cjs'
+      - '.github/workflows/jobs-owner-status-v3.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Tester les transitions d'offres réelles
+        run: |
+          node --check jobs-owner-status-v3.test.cjs
+          node --test jobs-owner-status-v3.test.cjs
