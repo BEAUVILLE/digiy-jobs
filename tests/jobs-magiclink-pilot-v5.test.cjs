@@ -7,6 +7,7 @@ const path=require('node:path');
 const access=fs.readFileSync(path.join(__dirname,'..','acces-recruteur-v2.html'),'utf8');
 const management=fs.readFileSync(path.join(__dirname,'..','gestion-jobs-v2.html'),'utf8');
 const accessJs=access.match(/<script>\s*([\s\S]*?)<\/script>/)?.[1];
+const publicHome=fs.readFileSync(path.join(__dirname,'..','master-v2.html'),'utf8');
 const manageJs=management.match(/<script>\s*([\s\S]*?)<\/script>/)?.[1];
 assert.ok(accessJs && manageJs);
 const pilot='pilote-jobs-baptiste-digiy';
@@ -100,4 +101,10 @@ test('JOBS wrong explicit workspace denied even for logged-in owner',async()=>{
  const r=await manager({workspace:'another-tenant'});
  assert.equal(r.d.$('workspaceCard').hidden,true);
  assert.ok(!r.reads.includes('digiy_jobs_candidates_pro'));
+});
+
+test('JOBS public landing no longer blocks recruiters behind MASTER or invents a vacancy',()=>{
+ assert.doesNotMatch(publicHome,/EXEMPLE D’OFFRE/);
+ assert.match(publicHome,/acces-recruteur-v2\.html/);
+ assert.match(publicHome,/if\(CFG\.masterMode\)/);
 });
