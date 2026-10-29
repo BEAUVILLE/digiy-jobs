@@ -427,55 +427,14 @@ window.DIGIY_SUPABASE_ANON_KEY="sb_publishable_tGHItRgeWDmGjnd0CK1DVQ_BIep4Ug3";
     
   <footer data-i18n="footer">DIGIY JOBS · CANDIDAT 100 % GRATUIT · ENTREPRISE / RECRUTEUR ADHÉRENT · 8 LANGUES · PROFILS PROTÉGÉS · RELATION DIRECTE.</footer>
 </main>
-<script>
-function updateJobsMachineMetadata(){
-  const jobs=[...document.querySelectorAll('article.listing:not(.recruiter-slot)')].filter(card=>
-    card.querySelector('.eyebrow')?.textContent.trim()==='MISSION PUBLIQUE DIGIY JOBS'
-  ).map(card=>{
-    const title=card.querySelector('h2')?.textContent.trim();
-    const activity=card.querySelector('.activity')?.textContent.trim();
-    const area=card.querySelector('.area')?.textContent.replace(/^📍\s*/,'').trim();
-    const description=card.querySelector('.desc')?.textContent.trim();
-    const url=card.querySelector('.visual')?.href;
-    const direct=[...card.querySelectorAll('.direct div')].map(row=>({
-      label:row.querySelector('strong')?.textContent.trim(),
-      value:row.querySelector('span')?.textContent.trim()
-    }));
-    const recruiter=direct.find(x=>x.label==='Recruteur')?.value;
-    const contract=direct.find(x=>x.label==='Contrat')?.value;
-    if(!title || !url) return null;
-    const item={
-      "@type":"JobPosting",
-      "title":title,
-      "description":description || activity || undefined,
-      "url":url,
-      "employmentType":contract || undefined,
-      "jobLocation":area ? {
-        "@type":"Place",
-        "address":{"@type":"PostalAddress","addressLocality":area}
-      } : undefined,
-      "hiringOrganization":recruiter ? {"@type":"Organization","name":recruiter} : undefined
-    };
-    Object.keys(item).forEach(key=>item[key]===undefined&&delete item[key]);
-    return item;
-  }).filter(Boolean);
-  const schema={
-    "@context":"https://schema.org",
-    "@graph":[
-      {"@type":"CollectionPage","@id":"https://jobs.digiylyfe.com/","name":"DIGIY JOBS — Missions publiques","url":"https://jobs.digiylyfe.com/"},
-      ...jobs
-    ]
-  };
-  let jsonLd=document.getElementById('digiy-jobs-schema');
-  if(!jsonLd){
-    jsonLd=document.createElement('script');
-    jsonLd.type='application/ld+json';
-    jsonLd.id='digiy-jobs-schema';
-    document.head.appendChild(jsonLd);
-  }
-  jsonLd.textContent=JSON.stringify(schema);
+<script type="application/ld+json" id="digiy-jobs-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://jobs.digiylyfe.com/",
+  "name": "DIGIY JOBS — Missions publiques",
+  "url": "https://jobs.digiylyfe.com/"
 }
-document.addEventListener('DOMContentLoaded',updateJobsMachineMetadata);
 </script>
 
 <script>
