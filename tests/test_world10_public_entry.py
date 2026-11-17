@@ -49,8 +49,7 @@ class World10Entry(unittest.TestCase):
         starts=[m.end() for m in re.finditer(r"const COPY=",HTML)]
         self.assertEqual(len(starts),2)
         for start in starts:
-            end=HTML.index("};\\nfunction lang()",start)
-            d=json.loads(HTML[start:end+1])
+            d=json.JSONDecoder().raw_decode(HTML[start:])[0]
             self.assertEqual(set(d),LANGS)
             for l in ("wo","zh"):
                 self.assertEqual(set(d[l]),set(d["fr"]))
