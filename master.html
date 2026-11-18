@@ -44,5 +44,6 @@ document.getElementById('grid').innerHTML=x.items.map(it=>'<article class="place
 document.querySelectorAll('[data-lang]').forEach(b=>{b.classList.toggle('active',b.dataset.lang===lang);b.addEventListener('click',()=>{const u=new URL(location.href);u.searchParams.set('lang',b.dataset.lang);location.href=u.toString()})});
 })();
 </script>
+  <script src="/jobs-pages-i18n.js?v=20260801-jobs7-pages-fix1" defer></script>
 </body>
 </html>
