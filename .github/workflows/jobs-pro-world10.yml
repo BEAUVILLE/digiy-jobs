@@ -1,0 +1,25 @@
+name: DIGIY JOBS PRO · WORLD10 recruteur réel
+on:
+  pull_request:
+    paths:
+      - 'gestion-jobs-v2.html'
+      - 'acces-recruteur-v2.html'
+      - 'tests/jobs-pro-world10.test.cjs'
+      - '.github/workflows/jobs-pro-world10.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'gestion-jobs-v2.html'
+      - 'acces-recruteur-v2.html'
+      - 'tests/jobs-pro-world10.test.cjs'
+      - '.github/workflows/jobs-pro-world10.yml'
+permissions:
+  contents: read
+jobs:
+  test-jobs-pro-world10:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Simuler le vrai cockpit recruteur WO ZH et les droits privés
+        run: node --test tests/jobs-pro-world10.test.cjs
