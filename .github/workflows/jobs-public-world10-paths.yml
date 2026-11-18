@@ -1,0 +1,33 @@
+name: DIGIY JOBS · WORLD10 parcours public
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'mission.html'
+      - 'jobs-public-cards-world10.js'
+      - 'jobs-pages-i18n.js'
+      - 'jobs-pages-i18n-wo.js'
+      - 'jobs-pages-i18n-zh.js'
+      - 'tests/jobs-public-world10-paths.test.cjs'
+      - '.github/workflows/jobs-public-world10-paths.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'mission.html'
+      - 'jobs-public-cards-world10.js'
+      - 'jobs-pages-i18n.js'
+      - 'jobs-pages-i18n-wo.js'
+      - 'jobs-pages-i18n-zh.js'
+      - 'tests/jobs-public-world10-paths.test.cjs'
+      - '.github/workflows/jobs-public-world10-paths.yml'
+permissions:
+  contents: read
+jobs:
+  world10-public-navigation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify WO/ZH job cards, mission routes and applicant languages
+        run: node --test tests/jobs-public-world10-paths.test.cjs
